@@ -34,6 +34,8 @@ CASE "Akkers"
   CALL PlaatsAkkers
 CASE "Bos"
   CALL PlaatsBos
+CASE "Heuvels"
+  CALL PlaatsHeuvels
 CASE ELSE
   END
 END SELECT
@@ -71,8 +73,8 @@ SUB PlaatsAkkers
       CALL tekst(2, "Aan de rechterkant van de weg staat een boerderij.")
       CALL tekst(2, "Er komt rook achter de boerderij vandaan.")
       PRINT
-      CALL tekst(2, "In het westen westen ligt een bos")
-      CALL tekst(2, "In het zuiden loop een weg richting een dorp")
+      CALL tekst(2, "In het westen ligt een bos")
+      CALL tekst(2, "In het zuiden loopt een weg richting een dorp")
     END IF
 
     acties(i%) = "Bekijk tas"
@@ -87,7 +89,7 @@ SUB PlaatsAkkers
     SELECT CASE Opdracht$
     CASE "Westen"
       CLS
-      CALL tekst(2, "Je wandeld naar het westen, richting het bos.")
+      CALL tekst(2, "Je wandelt naar het westen, richting het bos.")
       Plaats$ = "Bos"
     CASE "Bekijk tas"
       CALL BekijkTas
@@ -144,11 +146,11 @@ SUB PlaatsBos
     SELECT CASE Opdracht$
     CASE "Oosten"
       CLS
-      CALL tekst(2, "Je wandeld naar het oosten, richting de akkers.")
+      CALL tekst(2, "Je wandelt naar het oosten, richting de akkers.")
       Plaats$ = "Akkers"
     CASE "Westen"
       CLS
-      CALL tekst(2, "Je wandeld naar het westen, richting de naar de heuvels.")
+      CALL tekst(2, "Je wandelt naar het westen, richting de heuvels.")
       Plaats$ = "Heuvels"
     CASE "Pak tak"
       CLS
@@ -198,8 +200,8 @@ SUB PlaatsHeuvels
     SELECT CASE Opdracht$
     CASE "Oosten"
       CLS
-      CALL tekst(2, "Je wandeld naar het oosten, richting de akkers.")
-      Plaats$ = "Akkers"
+      CALL tekst(2, "Je wandelt naar het oosten, richting het bos.")
+      Plaats$ = "Bos"
     CASE "Bekijk tas"
       CALL BekijkTas
       Gekeken = 0
@@ -225,12 +227,15 @@ SUB Start
   money% = 3
 
   CLS
-  CALL tekst(2, "Er was eens, lang geleden een stoere koerier.")
+  CALL tekst(2, "Er was eens, lang geleden een stoere koerier...")
+  PRINT
+  CALL tekst(2, Zijn$ + " naam was " + Naam$ + ".")
+  PRINT
   CALL tekst(2, Hij$ + " was altijd super snel in het bezorgen van brieven en pakketjes.")
   CALL tekst(2, "Dingen bezorgen was dan ook " + Zijn$ + " lust en " + Zijn$ + " leven.")
   PRINT
-  CALL tekst(2, "Op een dag was " + Hij$ + " onderweg met een heel belangrijk pakket voor de koning...")
-  CALL tekst(2, "De koning was ernstig ziek, en had dringend medicijnen nodig!")
+  CALL tekst(2, "Op een dag is " + Hij$ + " onderweg met een heel belangrijk pakket voor de koning...")
+  CALL tekst(2, "De koning is ernstig ziek, en heeft dringend medicijnen nodig!")
   PRINT
   CALL tekst(2, "Gelukkig is " + Naam$ + " te paard onderweg om een magische drank te bezorgen!")
 
@@ -291,7 +296,7 @@ SUB Start
         PRINT
         CALL tekst(3, Naam$ + ": 'Verdorie, de medicijnen zijn echt verloren'")
         PRINT
-        CALL tekst(2, "Je raap de tas op")
+        CALL tekst(2, "Je raapt de tas op")
       END IF
       IF inventory(0) = 0 THEN
         CALL tekst(2, "Op de grond ligt een vers afgebroken tak")
