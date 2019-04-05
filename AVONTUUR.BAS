@@ -1,5 +1,6 @@
 DECLARE SUB PlaatsBos ()
 DECLARE SUB PlaatsAkkers ()
+DECLARE SUB PlaatsHeuvels ()
 DECLARE SUB BekijkTas ()
 DECLARE SUB wisActies ()
 DECLARE FUNCTION welkeActie% ()
@@ -166,6 +167,50 @@ SUB PlaatsBos
 
 END SUB
 
+SUB PlaatsHeuvels
+  PRINT
+  Gekeken = 1
+
+  DO
+    CALL wisActies
+    i% = 0
+    IF Gekeken = 0 THEN
+      acties(i%) = "Kijk rond"
+      actieTeksten$(i%) = "Bekijk omgeving"
+      i% = i% + 1
+    ELSE
+      CALL tekst(2, "Je staat in de heuvels. De zon schijnt heerlijk.")
+      CALL tekst(2, "Er is een mooi uitzicht van de omgeving.")
+      PRINT
+      CALL tekst(2, "Verder op het pad zie je een Mijn")
+      CALL tekst(2, "Naar het oosten loopt het pad naar het bos")
+    END IF
+
+    acties(i%) = "Bekijk tas"
+    actieTeksten$(i%) = "Bekijk inhoud van tas"
+
+    i% = i% + 1
+    acties$(i%) = "Oosten"
+    actieTeksten$(i%) = "Ga naar het oosten, richting het bos"
+
+    Opdracht$ = acties$(welkeActie%)
+
+    SELECT CASE Opdracht$
+    CASE "Oosten"
+      CLS
+      CALL tekst(2, "Je wandeld naar het oosten, richting de akkers.")
+      Plaats$ = "Akkers"
+    CASE "Bekijk tas"
+      CALL BekijkTas
+      Gekeken = 0
+    CASE "Kijk rond"
+      Gekeken = 1
+      CLS
+    END SELECT
+  LOOP UNTIL Plaats$ <> "Heuvels"
+
+END SUB
+
 SUB Start
   CLS
   INPUT "Hoi, wat is jouw naam"; Naam$
@@ -184,7 +229,7 @@ SUB Start
   CALL tekst(2, Hij$ + " was altijd super snel in het bezorgen van brieven en pakketjes.")
   CALL tekst(2, "Dingen bezorgen was dan ook " + Zijn$ + " lust en " + Zijn$ + " leven.")
   PRINT
-  CALL tekst(2, "Op een dag was " + Hij$ + " onderweg met een heel belangrijke pakket voor de koning...")
+  CALL tekst(2, "Op een dag was " + Hij$ + " onderweg met een heel belangrijk pakket voor de koning...")
   CALL tekst(2, "De koning was ernstig ziek, en had dringend medicijnen nodig!")
   PRINT
   CALL tekst(2, "Gelukkig is " + Naam$ + " te paard onderweg om een magische drank te bezorgen!")
@@ -243,6 +288,7 @@ SUB Start
       CALL tekst(2, "In het westen zijn heuvels")
       IF Gekeken = 0 THEN
         CALL tekst(2, "Op de grond ligt je tas, en scherven van de fles medicijen")
+        PRINT
         CALL tekst(3, Naam$ + ": 'Verdorie, de medicijnen zijn echt verloren'")
         PRINT
         CALL tekst(2, "Je raap de tas op")
