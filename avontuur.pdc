@@ -1,0 +1,194 @@
+: diagram "Avontuur"  {
+   skew            = straight
+   events [] {
+
+      beklim_toren:event {
+         depends_on []   = koop_zwaard_bij_wapensmid;
+      }
+
+      bezorg_graan_bij_molenaar:event {
+         depends_on []   = zet_graan_op_wagen;
+      }
+
+      bezorg_meel_bij_bakker:event {
+         depends_on []   = krijg_meel_bij_molenaar;
+      }
+
+      breng_dochter_naar_bakker:event {
+         depends_on []   = trek_tand_van_draak;
+      }
+
+      breng_medicijnen_naar_koning : event {
+         depends_on [] = zet_zadel_op_draak, krijg_medicijn_van_heks;
+         end_state       = positive
+      }
+
+      breng_molensteen_naar_toren:event {
+         depends_on []   = zet_molensteen_op_wagen;
+      }
+
+      breng_paard_naar_hoefsmid:event {
+         depends_on []   = praat_met_boer;
+      }
+
+      ga_naar_hut_in_moeras:event {
+         depends_on []   = praat_met_bakker;
+      }
+
+      geef_dwerg_eten:event {
+         depends_on []   = praat_met_dwerg, koop_eten_bij_bakker;
+      }
+
+      geef_edelsteen_aan_heks:event {
+         depends_on []   = praat_met_heks, krijg_edelsteen_van_dwerg;
+      }
+
+      geef_houweel_aan_dwerg:event {
+         depends_on []   = repareer_houweel;
+      }
+
+      geef_leer_aan_hoefsmid:event {
+         depends_on []   = pak_stuk_leer_in_toren;
+      }
+
+      geef_paard_nieuwe_hoefijzers:event {
+         depends_on []   = breng_paard_naar_hoefsmid;
+      }
+
+      haal_wagen_in_dorp_met_paard:event {
+         depends_on []   = geef_paard_nieuwe_hoefijzers;
+      }
+
+      hijs_lift_met_molensteen:event {
+         depends_on []   = zet_hendel_op_lift, leg_molensteen_op_lift;
+      }
+
+      knoop_touw_aan_molensteen : event {
+         depends_on []   = pak_touw_op_boerderij;
+      }
+
+      knoop_touw_aan_tand:event {
+         depends_on []   = pak_touw_op_boerderij;
+      }
+
+      koop_eten_bij_bakker:event {
+         depends_on []   = praat_met_dwerg;
+      }
+
+      koop_zwaard_bij_wapensmid:event {
+         depends_on []   = krijg_geld_van_meel;
+      }
+
+      krijg_edelsteen_van_dwerg:event {
+         depends_on []   = geef_houweel_aan_dwerg;
+      }
+
+      krijg_geld_van_meel:event {
+         depends_on []   = bezorg_meel_bij_bakker;
+      }
+
+      krijg_ingredientenlijst_van_heks : event {
+        depends_on [] = praat_met_heks, geef_edelsteen_aan_heks;
+      }
+
+      krijg_kapotte_houweel_van_dwerg:event {
+         depends_on []   = geef_dwerg_eten;
+      }
+
+      krijg_medicijn_van_heks : event {
+         depends_on [] = pak_tand_van_draak, pluk_kruiden_in_bos, pluk_paddenstoelen_in_woud, krijg_taart_van_bakker;
+      }
+
+      krijg_meel_bij_molenaar:event {
+         depends_on []   = bezorg_graan_bij_molenaar;
+      }
+
+      krijg_taart_van_bakker : event {
+         depends_on []   = krijg_ingredientenlijst_van_heks, breng_dochter_naar_bakker;
+      }
+
+      leg_molensteen_op_lift:event {
+         depends_on []   = breng_molensteen_naar_toren, praat_met_dochter_van_bakker;
+      }
+
+      maak_zadel_bij_hoefsmid : event {
+         depends_on [] = geef_leer_aan_hoefsmid;
+      }
+
+      pak_hendel_in_mijn:event {
+         depends_on []   = geef_dwerg_eten;
+      }
+
+      pak_hout_in_bos:event {
+         depends_on []   = ;
+      }
+
+      pak_stuk_leer_in_toren:event {
+         depends_on []   = trek_tand_van_draak;
+      }
+
+      pak_tand_van_draak : event {
+         depends_on []   = krijg_ingredientenlijst_van_heks, trek_tand_van_draak;
+      }
+
+      pak_touw_op_boerderij:event {
+         depends_on []   = ;
+      }
+
+      pluk_kruiden_in_bos : event {
+         depends_on []   = krijg_ingredientenlijst_van_heks;
+      }
+
+      pluk_paddenstoelen_in_woud : event {
+         depends_on [] = krijg_ingredientenlijst_van_heks;
+      }
+
+      praat_met_bakker:event {
+         depends_on []   = ;
+      }
+
+      praat_met_boer:event {
+         depends_on []   = ;
+      }
+
+      praat_met_dochter_van_bakker:event {
+         depends_on []   = beklim_toren;
+      }
+
+      praat_met_dwerg:event {
+         depends_on []   = ;
+      }
+
+      praat_met_heks : event {
+         depends_on [] = ga_naar_hut_in_moeras;
+      }
+
+      repareer_houweel:event {
+         depends_on []   = pak_hout_in_bos, krijg_kapotte_houweel_van_dwerg;
+      }
+
+      snij_touw_van_lift:event {
+         depends_on []   = koop_zwaard_bij_wapensmid, knoop_touw_aan_molensteen, knoop_touw_aan_tand;
+      }
+
+      trek_tand_van_draak: event {
+         depends_on []   = snij_touw_van_lift;
+      }
+
+      zet_graan_op_wagen:event {
+         depends_on []   = haal_wagen_in_dorp_met_paard, praat_met_boer;
+      }
+
+      zet_hendel_op_lift:event {
+         depends_on []   = pak_hendel_in_mijn;
+      }
+
+      zet_molensteen_op_wagen:event {
+         depends_on []   = bezorg_meel_bij_bakker;
+      }
+
+      zet_zadel_op_draak : event {
+         depends_on [] = maak_zadel_bij_hoefsmid, trek_tand_van_draak;
+      }
+   }
+}

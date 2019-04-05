@@ -65,7 +65,7 @@ SUB start
   'CALL tekst(2, "Bovendien, is je paard er vandoor!")
   'PRINT
   'CALL tekst(2, "Daar stond " + Naam$ + " dan.. Alleen in het bos, zonder vervoer of medicijnen...")
-   
+
   Gekeken = 0
 
   DO
@@ -81,7 +81,7 @@ SUB start
       acties$(i%) = "Westen"
       actieTeksten$(i%) = "Ga naar het westen"
     END IF
-   
+
     Opdracht$ = acties$(welkeActie%)
 
     SELECT CASE Opdracht$
