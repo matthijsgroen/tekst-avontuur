@@ -51,10 +51,12 @@ DATA "1=1;3=2", "*c2", "Je wandelt naar het oosten, richting het bos", "", "&2=0
 DATA "1=1;3=4", "*c2", "Je wandelt naar het westen, richting het bos", "", "&2=0;3=0"
 DATA "1=2;3=2", "*c2", "Je wandelt naar het oosten, richting de akkers", "", "&2=0;3=0"
 DATA "1=3;3=4", "*c2", "Je wandelt naar het westen, richting de heuvels", "", "&2=0;3=0"
+DATA "1=3;3=1", "*c2", "Je klimt omhoog, richting de heuvels", "", "&2=0;3=0"
+DATA "1=4;3=3", "*c2", "Je daalt af naar het zuiden, over een sompig pad, richting het moeras", "", "&2=0;3=0"
 
 ' Inventory
 DATA "2=1", "*c15", "Je hebt het volgende bij je:", "&"
-DATA "2=1;22>0", "*c7", "- #22 ducaten", "&"
+DATA "2=1;22>0", "*c7", "- #22 geldstukken", "&"
 DATA "2=1;21=2", "*c7", "- een stok, opgeraapt in het bos", "&"
 
 ' 1. Bos
@@ -70,7 +72,6 @@ DATA "21=1;2=2", "*c2", "Je bukt en raapt de tak op. Je voelt nog even aan je ho
 DATA "Deze tak heeft je best pijn gedaan.", "&21=2"
 
 ' 2. Akkers
-
 DATA "1=2;2=0", "*c2"
 DATA "Je staat in een boeren landschap."
 DATA "Aan de linkerkant van de weg staat een molen."
@@ -80,12 +81,22 @@ DATA "In het westen ligt een bos"
 DATA "In het zuiden loopt een weg richting een dorp", "&"
 
 ' 3. Heuvels
-
 DATA "1=3;2=0", "*c2"
 DATA "Je staat in de heuvels. De zon schijnt heerlijk."
 DATA "Er is een mooi uitzicht van de omgeving.", ""
 DATA "Verder op het pad zie je een Mijn"
-DATA "Naar het oosten loopt het pad naar het bos", "&"
+DATA "Naar het oosten loopt het pad naar het bos"
+DATA "Naar het zuiden loopt een drassig pad een moeras in", "&"
+
+' 4. Moeras
+DATA "1=4;2=0", "*c2"
+DATA "Je bent aan de rand van het moeras"
+DATA "Aan het eind van het pad blijf je staan.", ""
+DATA "*c3", "$n: 'Ik ga niet zomaar verder hier heen.'"
+DATA " 'Ik wil eerst een goed plan hebben om aan medicijnen te komen'"
+DATA " 'Wie weet wat hier allemaal tegen kan komen'"
+DATA "*c2", "", "In de verte klinken rare bubbelende geluiden."
+DATA "", "Er loopt een pad naar het noorden, omhoog richting heuvels.", "&"
 
 DATA "END"
 
@@ -93,14 +104,22 @@ DATA "END"
 2 DATA "1=0", "Bekijk omgeving", "1=1"
 DATA "2!0", "Bekijk omgeving", "2=0"
 DATA "20=1;2!1", "Bekijk inhoud van tas", "2=1"
+
 ' 1. Bos acties
 DATA "1=1;21=0", "Raap de tak op", "21=1;2=2"
 DATA "1=1", "Ga naar het oosten, richting de akkers", "1=2;3=2"
 DATA "1=1", "Ga naar het westen, richting de heuvels", "1=3;3=4"
+
 ' 2. Akker acties
 DATA "1=2", "Ga naar het westen, richting het bos", "1=1;3=4"
+
 ' 3. Heuvel acties
 DATA "1=3", "Ga naar het oosten, richting het bos", "1=1;3=2"
+DATA "1=3", "Ga naar het zuiden, richting het moeras", "1=4;3=3"
+
+' 4. Moeras acties
+DATA "1=4", "Ga naar het noorden, richting de heuvels", "1=3;3=1"
+
 DATA "END"
 
 DIM SHARED Naam$
