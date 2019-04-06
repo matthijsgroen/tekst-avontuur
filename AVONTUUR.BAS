@@ -366,6 +366,7 @@ FUNCTION Interpoleer$ (zin$)
 END FUNCTION
 
 SUB Muteer (slot%, op$, value%)
+  'PRINT "Muteer"; slot%; Gebeurtenissen(slot%); op$; value%
   SELECT CASE op$
     CASE "="
       Gebeurtenissen(slot%) = value%
@@ -455,6 +456,7 @@ FUNCTION Toegestaan% (predicate$)
 END FUNCTION
 
 FUNCTION Toets (slot%, op$, value%)
+  'PRINT "Toets"; slot%, Gebeurtenissen(slot%), op$; value%
   IF op$ = "=" AND Gebeurtenissen(slot%) = value% THEN
     Toets = 1
   ELSEIF op$ = "!" AND Gebeurtenissen(slot%) <> value% THEN
@@ -516,7 +518,7 @@ SUB ToonGebeurtenis
         SELECT CASE op$
           CASE "&"
             ' Einde en acties
-            acties$ = MID$(zin$, 1, LEN(zin$) - 1)
+            acties$ = MID$(zin$, 2, LEN(zin$) - 1)
             IF acties$ <> "" THEN
               CALL VoerActieUit(acties$)
             END IF
@@ -549,8 +551,7 @@ SUB VoerActieUit (actie$)
   slot$ = ""
   op$ = ""
   value$ = ""
-
-  FOR i% = 1 TO LEN(actie$)
+  FOR i% = 1 TO LEN(actie$) + 1
     char$ = MID$(actie$, i%, 1)
     SELECT CASE char$
       CASE "0" TO "9"
