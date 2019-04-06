@@ -13,7 +13,15 @@ ON KEY(15) GOSUB Stoppen
 ' 0 = Spel gewonnen (1), Bezig(0), Verloren(2)
 ' 1 = location
 '   0 = Intro
-' 2 = open inventory
+'   1 = Bos
+'   2 = Akkers
+'   3 = Heuvels
+' 2 = location state 0 = look, 1 = Open inventory, 2 = empty
+' 3 = Travel state
+'   1 = arrive by foot from north
+'   2 = arrive by foot from east
+'   3 = arrive by foot from south
+'   4 = arrive by foot from west
 
 ' 20 = hasBag
 ' 21 = hasBranch
@@ -38,10 +46,15 @@ DATA "'En mijn paard is er vandoor!'"
 DATA "*c2", "", "Daar stond $n dan.. Alleen in het bos, zonder vervoer of medicijnen..."
 DATA "&"
 
+' Travelling
+DATA "1=1;3=2", "*c2", "Je wandelt naar het oosten, richting het bos", "", "&2=0;3=0"
+DATA "1=2;3=2", "*c2", "Je wandelt naar het oosten, richting de akkers", "", "&2=0;3=0"
+DATA "1=3;3=4", "*c2", "Je wandelt naar het westen, richting de heuvels", "", "&2=0;3=0"
+
 ' Inventory
 DATA "2=1", "*c15", "Je hebt het volgende bij je:", "&"
 DATA "2=1;22>0", "*c7", "- #22 ducaten", "&"
-DATA "2=1;21=1", "*c7", "- een stok, opgeraapt in het bos", "&"
+DATA "2=1;21=2", "*c7", "- een stok, opgeraapt in het bos", "&"
 
 ' Bos
 DATA "1=1;2=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -52,6 +65,8 @@ DATA "", "*c3", "$n: 'Verdorie, de medicijnen zijn echt verloren'"
 DATA "*c2", "", "Je raapt de tas op", "&20=1;22=3"
 DATA "1=1;2=0;21=0", "*c2", "Op de grond ligt een vers afgebroken tak"
 DATA "&"
+DATA "21=1;2=2", "*c2", "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd."
+DATA "Deze tak heeft je best pijn gedaan.", "&21=2"
 
 DATA "END"
 
@@ -59,6 +74,12 @@ DATA "END"
 2 DATA "1=0", "Bekijk omgeving", "1=1"
 DATA "2!0", "Bekijk omgeving", "2=0"
 DATA "20=1;2!1", "Bekijk inhoud van tas", "2=1"
+' Bos acties
+DATA "1=1;21=0", "Raap de tak op", "21=1;2=2"
+DATA "1=1", "Ga naar het oosten, richting de akkers", "1=2;3=2"
+DATA "1=1", "Ga naar het westen, richting de heuvels", "1=3;3=4"
+' Heuvel acties
+DATA "1=3", "Ga naar het oosten, richting het bos", "1=1;3=2"
 DATA "END"
 
 DIM SHARED Naam$
@@ -129,72 +150,6 @@ END
     'END SELECT
 
   'LOOP UNTIL Plaats$ <> "Akkers"
-
-'END SUB
-
-'SUB PlaatsBos
-  'PRINT
-  'Gekeken = 1
-
-  'DO
-    'CALL wisActies
-    'i% = 0
-    'IF Gekeken = 0 THEN
-      'acties(i%) = "Kijk rond"
-      'actieTeksten$(i%) = "Bekijk omgeving"
-      'i% = i% + 1
-    'ELSE
-      'CALL Tekst(2, "Je staat in het bos. Het is een stralende dag.")
-      'CALL Tekst(2, "De wind laat de blaadjes ritselen.")
-      'PRINT
-      'CALL Tekst(2, "In het oosten zijn akkers")
-      'CALL Tekst(2, "In het westen zijn heuvels")
-      'IF inventory(0) = 0 THEN
-        'CALL Tekst(2, "Op de grond ligt een vers afgebroken tak")
-      'END IF
-    'END IF
-
-    'acties(i%) = "Bekijk tas"
-    'actieTeksten$(i%) = "Bekijk inhoud van tas"
-
-    'IF inventory(0) = 0 THEN
-      'i% = i% + 1
-      'acties$(i%) = "Pak tak"
-      'actieTeksten$(i%) = "Raap de tak op"
-    'END IF
-
-    'i% = i% + 1
-    'acties$(i%) = "Oosten"
-    'actieTeksten$(i%) = "Ga naar het oosten, richting de akkers"
-    'i% = i% + 1
-    'acties$(i%) = "Westen"
-    'actieTeksten$(i%) = "Ga naar het westen, richting de heuvels"
-
-    'Opdracht$ = acties$(welkeActie%)
-
-    'SELECT CASE Opdracht$
-    'CASE "Oosten"
-      'CLS
-      'CALL Tekst(2, "Je wandelt naar het oosten, richting de akkers.")
-      'Plaats$ = "Akkers"
-    'CASE "Westen"
-      'CLS
-      'CALL Tekst(2, "Je wandelt naar het westen, richting de heuvels.")
-      'Plaats$ = "Heuvels"
-    'CASE "Pak tak"
-      'CLS
-      'CALL Tekst(2, "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd.")
-      'CALL Tekst(2, "Deze tak heeft je best pijn gedaan.")
-      'inventory(0) = 1
-      'Gekeken = 0
-    'CASE "Bekijk tas"
-      'CALL BekijkTas
-      'Gekeken = 0
-    'CASE "Kijk rond"
-      'Gekeken = 1
-      'CLS
-    'END SELECT
-  'LOOP UNTIL Plaats$ <> "Bos"
 
 'END SUB
 
