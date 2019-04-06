@@ -11,24 +11,54 @@ KEY(15) ON
 ON KEY(15) GOSUB Stoppen
 ' Gebeurtenissen
 ' 0 = Spel gewonnen (1), Bezig(0), Verloren(2)
-1 DATA "1=0", 2, "Lang geleden was er...", ""
-DATA "1=0", 2, "Een stoere koerier genaamd $n", ""
-DATA "1=0", 2, "2", ""
-DATA "1=0", -1, "2", ""
-DATA "1=0", 4, "Auw! Dat deed pijn!", ""
-DATA "1=0", -2, "a4b4e4", ""
-DATA "1=0", -1, "2", ""
-DATA "1=0", 2, "", ""
-DATA "1=0", 2, "$H ging altijd erg hard op $z paard", ""
-DATA "1=1", 2, "Dit moet je niet zien", ""
-DATA "1=1", 2, "$n nam $z stok en sloeg hard!", ""
-DATA "1=1", 7, "Je hebt #02 ducaten bij je", ""
+' 1 = location
+'   0 = Intro
+' 2 = open inventory
+
+' 20 = hasBag
+' 21 = hasBranch
+' 22 = money
+
+' Intro
+1 DATA "1=0",
+DATA "*c2", "Er was eens, lang geleden een stoere koerier..."
+DATA "", "$Z naam was $n", ""
+DATA "$H was altijd super snel in het bezorgen van brieven en pakketjes."
+DATA "Dingen bezorgen was dan ook $z lust en $z leven."
+DATA ""
+DATA "Op een dag is $h onderweg met een heel belangrijk pakket voor de koning..."
+DATA "De koning is ernstig ziek, en heeft dringend medicijnen nodig!"
+DATA ""
+DATA "Gelukkig is $n te paard onderweg om een magische drank te bezorgen!"
+DATA "*s3", ""
+DATA "*c4", "Auw! een laag hangende tak!", ""
+DATA "*c2", "$n viel ineens hard van $z paard...",
+DATA "*c3", "$n: 'Oh nee! De magische drank is stuk gevallen!'"
+DATA "'En mijn paard is er vandoor!'"
+DATA "*c2", "", "Daar stond $n dan.. Alleen in het bos, zonder vervoer of medicijnen..."
+DATA "&"
+
+' Inventory
+DATA "2=1", "*c15", "Je hebt het volgende bij je:", "&"
+DATA "2=1;22>0", "*c7", "- #22 ducaten", "&"
+DATA "2=1;21=1", "*c7", "- een stok, opgeraapt in het bos", "&"
+
+' Bos
+DATA "1=1;2=0", "*c2", "Je staat in het bos. Het is een stralende dag."
+DATA "De wind laat de blaadjes ritselen.", ""
+DATA "In het oosten zijn akkers", "In het westen zijn heuvels", "&"
+DATA "1=1;2=0;20=0", "*c2", "Op de grond ligt je tas, en scherven van de fles medicijen"
+DATA "", "*c3", "$n: 'Verdorie, de medicijnen zijn echt verloren'"
+DATA "*c2", "", "Je raapt de tas op", "&20=1;21=3"
+DATA "1=1;2=0;21=0", "*c2", "Op de grond ligt een vers afgebroken tak"
+DATA "&"
+
 DATA "END"
 
 ' Acties
-2 DATA "1=0", "Vlieg!", "1=1"
-DATA "2<8;1=1", "Pak geld", "2+2"
-DATA "2>7", "Win spel!", "0=1"
+2 DATA "1=0", "Bekijk omgeving", "1=1"
+DATA "2!0", "Bekijk omgeving", "2=0"
+DATA "20=1;2!1", "Bekijk inhoud van tas", "2=1"
 DATA "END"
 
 DIM SHARED Naam$
@@ -557,13 +587,36 @@ END SUB
 
 SUB ToonGebeurtenis
   RESTORE 1
+  verteller% = 2
   DO
     READ predicate$
     IF Toegestaan%(predicate$) THEN
-      READ verteller%, zin$, change$
-      CALL Tekst(verteller%, Interpoleer(zin$))
+      DO
+        READ zin$
+        op$ = LEFT$(zin$, 1)
+        SELECT CASE op$
+          CASE "&"
+            ' Einde en mutaties
+          CASE "*"
+            ' Markup instructie
+            commando$ = MID$(zin$, 2, 1)
+            gegevens$ = MID$(zin$, 3, LEN(zin$) - 2)
+            SELECT CASE commando$
+              CASE "c"
+                verteller% = VAL(gegevens$)
+              CASE "s"
+                SLEEP VAL(gegevens$)
+              CASE "p"
+                PLAY gegevens$
+            END SELECT
+          CASE ELSE
+            CALL Tekst(verteller%, Interpoleer(zin$))
+        END SELECT
+      LOOP UNTIL op$ = "&"
     ELSEIF predicate$ <> "END" THEN
-      READ verteller%, zin$, change$
+      DO
+        READ zin$
+      LOOP UNTIL LEFT$(zin$, 1) = "&"
     END IF
   LOOP UNTIL predicate$ = "END"
 
