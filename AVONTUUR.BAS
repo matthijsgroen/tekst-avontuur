@@ -596,7 +596,11 @@ SUB ToonGebeurtenis
         op$ = LEFT$(zin$, 1)
         SELECT CASE op$
           CASE "&"
-            ' Einde en mutaties
+            ' Einde en acties
+            acties$ = MID$(zin$, 1, LEN(zin$) - 1)
+            IF acties$ <> "" THEN
+              CALL VoerActieUit(acties$)
+            END IF
           CASE "*"
             ' Markup instructie
             commando$ = MID$(zin$, 2, 1)
