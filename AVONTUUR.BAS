@@ -49,7 +49,7 @@ DATA "De wind laat de blaadjes ritselen.", ""
 DATA "In het oosten zijn akkers", "In het westen zijn heuvels", "&"
 DATA "1=1;2=0;20=0", "*c2", "Op de grond ligt je tas, en scherven van de fles medicijen"
 DATA "", "*c3", "$n: 'Verdorie, de medicijnen zijn echt verloren'"
-DATA "*c2", "", "Je raapt de tas op", "&20=1;21=3"
+DATA "*c2", "", "Je raapt de tas op", "&20=1;22=3"
 DATA "1=1;2=0;21=0", "*c2", "Op de grond ligt een vers afgebroken tak"
 DATA "&"
 
@@ -84,19 +84,6 @@ END
 
 Stoppen:
 END
-
-
-'SUB BekijkTas
-  'CLS
-  'COLOR 15
-  'PRINT "Je hebt het volgende bij je:"
-  'COLOR 7
-  'CALL Tekst(7, "-" + STR$(money%) + " dukaten")
-  'IF inventory(0) = 1 THEN
-    'CALL Tekst(7, "- een stok, opgeraapt in het bos")
-  'END IF
-  'PRINT
-'END SUB
 
 'SUB PlaatsAkkers
   'PRINT
@@ -256,42 +243,6 @@ END
 'END SUB
 
 'SUB Start
-  'CLS
-  'INPUT "Hoi, wat is jouw naam"; Naam$
-  'INPUT "Ben je een jongen of een meisje? (j/m) ", gender$
-  'IF UCASE$(LEFT$(gender$, 1)) = "J" THEN
-    'Hij$ = "hij"
-    'Zijn$ = "zijn"
-  'ELSE
-    'Hij$ = "zij"
-    'Zijn$ = "haar"
-  'END IF
-  'money% = 3
-
-  'CLS
-  'CALL Tekst(2, "Er was eens, lang geleden een stoere koerier...")
-  'PRINT
-  'CALL Tekst(2, Zijn$ + " naam was " + Naam$ + ".")
-  'PRINT
-  'CALL Tekst(2, Hij$ + " was altijd super snel in het bezorgen van brieven en pakketjes.")
-  'CALL Tekst(2, "Dingen bezorgen was dan ook " + Zijn$ + " lust en " + Zijn$ + " leven.")
-  'PRINT
-  'CALL Tekst(2, "Op een dag is " + Hij$ + " onderweg met een heel belangrijk pakket voor de koning...")
-  'CALL Tekst(2, "De koning is ernstig ziek, en heeft dringend medicijnen nodig!")
-  'PRINT
-  'CALL Tekst(2, "Gelukkig is " + Naam$ + " te paard onderweg om een magische drank te bezorgen!")
-
-  'SLEEP 3
-  'PRINT
-  'CALL Tekst(4, "Auw! een laag hangende tak!")
-  'PRINT
-
-  'CALL Tekst(2, Naam$ + " viel ineens hard van " + Zijn$ + " paard...")
-  'PRINT
-  'CALL Tekst(3, Naam$ + ": 'Oh nee! De magische drank is stuk gevallen!'")
-  'CALL Tekst(3, "'En mijn paard is er vandoor!'")
-  'PRINT
-  'CALL Tekst(2, "Daar stond " + Naam$ + " dan.. Alleen in het bos, zonder vervoer of medicijnen...")
 
   'Gekeken = 0
 
@@ -365,38 +316,6 @@ END
 
   'LOOP UNTIL Plaats$ <> "Start"
 
-'END SUB
-
-'FUNCTION welkeActie%
-  'PRINT
-  'COLOR 15
-  'PRINT "Wat ga je doen?"
-  'COLOR 7
-
-  'maxActies% = 0
-  'FOR i% = LBOUND(acties$) TO UBOUND(acties$)
-    'IF acties$(i%) <> "" THEN
-      'PRINT (i% + 1); ") "; actieTeksten$(i%)
-      'maxActies% = maxActies% + 1
-    'END IF
-  'NEXT i%
-
-  'DO
-    'DO
-      'Keuze$ = INKEY$
-    'LOOP UNTIL Keuze$ <> ""
-    'Gekozen% = ASC(Keuze$) - ASC("1")
-  'LOOP UNTIL Gekozen% >= 0 AND Gekozen% < maxActies%
-
-  'welkeActie = Gekozen%
-
-'END FUNCTION
-
-'SUB wisActies
-  'FOR i% = LBOUND(acties$) TO UBOUND(acties$)
-    'acties$(i%) = ""
-    'actieTeksten$(i%) = ""
-  'NEXT i%
 'END SUB
 
 FUNCTION Interpoleer$ (zin$)
