@@ -27,7 +27,7 @@ ON KEY(15) GOSUB Stoppen
 ' 21 = hasBranch
 ' 22 = money
 
-' Intro
+' 0. Intro
 1 DATA "1=0",
 DATA "*c2", "Er was eens, lang geleden een stoere koerier..."
 DATA "", "$Z naam was $n", ""
@@ -48,6 +48,7 @@ DATA "&"
 
 ' Travelling
 DATA "1=1;3=2", "*c2", "Je wandelt naar het oosten, richting het bos", "", "&2=0;3=0"
+DATA "1=1;3=4", "*c2", "Je wandelt naar het westen, richting het bos", "", "&2=0;3=0"
 DATA "1=2;3=2", "*c2", "Je wandelt naar het oosten, richting de akkers", "", "&2=0;3=0"
 DATA "1=3;3=4", "*c2", "Je wandelt naar het westen, richting de heuvels", "", "&2=0;3=0"
 
@@ -56,7 +57,7 @@ DATA "2=1", "*c15", "Je hebt het volgende bij je:", "&"
 DATA "2=1;22>0", "*c7", "- #22 ducaten", "&"
 DATA "2=1;21=2", "*c7", "- een stok, opgeraapt in het bos", "&"
 
-' Bos
+' 1. Bos
 DATA "1=1;2=0", "*c2", "Je staat in het bos. Het is een stralende dag."
 DATA "De wind laat de blaadjes ritselen.", ""
 DATA "In het oosten zijn akkers", "In het westen zijn heuvels", "&"
@@ -68,17 +69,37 @@ DATA "&"
 DATA "21=1;2=2", "*c2", "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd."
 DATA "Deze tak heeft je best pijn gedaan.", "&21=2"
 
+' 2. Akkers
+
+DATA "1=2;2=0", "*c2"
+DATA "Je staat in een boeren landschap."
+DATA "Aan de linkerkant van de weg staat een molen."
+DATA "Aan de rechterkant van de weg staat een boerderij."
+DATA "Er komt rook achter de boerderij vandaan.", ""
+DATA "In het westen ligt een bos"
+DATA "In het zuiden loopt een weg richting een dorp", "&"
+
+' 3. Heuvels
+
+DATA "1=3;2=0", "*c2"
+DATA "Je staat in de heuvels. De zon schijnt heerlijk."
+DATA "Er is een mooi uitzicht van de omgeving.", ""
+DATA "Verder op het pad zie je een Mijn"
+DATA "Naar het oosten loopt het pad naar het bos", "&"
+
 DATA "END"
 
 ' Acties
 2 DATA "1=0", "Bekijk omgeving", "1=1"
 DATA "2!0", "Bekijk omgeving", "2=0"
 DATA "20=1;2!1", "Bekijk inhoud van tas", "2=1"
-' Bos acties
+' 1. Bos acties
 DATA "1=1;21=0", "Raap de tak op", "21=1;2=2"
 DATA "1=1", "Ga naar het oosten, richting de akkers", "1=2;3=2"
 DATA "1=1", "Ga naar het westen, richting de heuvels", "1=3;3=4"
-' Heuvel acties
+' 2. Akker acties
+DATA "1=2", "Ga naar het westen, richting het bos", "1=1;3=4"
+' 3. Heuvel acties
 DATA "1=3", "Ga naar het oosten, richting het bos", "1=1;3=2"
 DATA "END"
 
@@ -105,173 +126,6 @@ END
 
 Stoppen:
 END
-
-'SUB PlaatsAkkers
-  'PRINT
-  'Gekeken = 1
-
-  'DO
-    'CALL wisActies
-    'i% = 0
-    'IF Gekeken = 0 THEN
-      'acties(i%) = "Kijk rond"
-      'actieTeksten$(i%) = "Bekijk omgeving"
-      'i% = i% + 1
-    'ELSE
-      'CALL Tekst(2, "Je staat in een boeren landschap.")
-      'CALL Tekst(2, "Aan de linkerkant van de weg staat een molen.")
-      'CALL Tekst(2, "Aan de rechterkant van de weg staat een boerderij.")
-      'CALL Tekst(2, "Er komt rook achter de boerderij vandaan.")
-      'PRINT
-      'CALL Tekst(2, "In het westen ligt een bos")
-      'CALL Tekst(2, "In het zuiden loopt een weg richting een dorp")
-    'END IF
-
-    'acties(i%) = "Bekijk tas"
-    'actieTeksten$(i%) = "Bekijk inhoud van tas"
-
-    'i% = i% + 1
-    'acties$(i%) = "Westen"
-    'actieTeksten$(i%) = "Ga naar het westen, richting het bos"
-
-    'Opdracht$ = acties$(welkeActie%)
-
-    'SELECT CASE Opdracht$
-    'CASE "Westen"
-      'CLS
-      'CALL Tekst(2, "Je wandelt naar het westen, richting het bos.")
-      'Plaats$ = "Bos"
-    'CASE "Bekijk tas"
-      'CALL BekijkTas
-      'Gekeken = 0
-    'CASE "Kijk rond"
-      'Gekeken = 1
-      'CLS
-    'END SELECT
-
-  'LOOP UNTIL Plaats$ <> "Akkers"
-
-'END SUB
-
-'SUB PlaatsHeuvels
-  'PRINT
-  'Gekeken = 1
-
-  'DO
-    'CALL wisActies
-    'i% = 0
-    'IF Gekeken = 0 THEN
-      'acties(i%) = "Kijk rond"
-      'actieTeksten$(i%) = "Bekijk omgeving"
-      'i% = i% + 1
-    'ELSE
-      'CALL Tekst(2, "Je staat in de heuvels. De zon schijnt heerlijk.")
-      'CALL Tekst(2, "Er is een mooi uitzicht van de omgeving.")
-      'PRINT
-      'CALL Tekst(2, "Verder op het pad zie je een Mijn")
-      'CALL Tekst(2, "Naar het oosten loopt het pad naar het bos")
-    'END IF
-
-    'acties(i%) = "Bekijk tas"
-    'actieTeksten$(i%) = "Bekijk inhoud van tas"
-
-    'i% = i% + 1
-    'acties$(i%) = "Oosten"
-    'actieTeksten$(i%) = "Ga naar het oosten, richting het bos"
-
-    'Opdracht$ = acties$(welkeActie%)
-
-    'SELECT CASE Opdracht$
-    'CASE "Oosten"
-      'CLS
-      'CALL Tekst(2, "Je wandelt naar het oosten, richting het bos.")
-      'Plaats$ = "Bos"
-    'CASE "Bekijk tas"
-      'CALL BekijkTas
-      'Gekeken = 0
-    'CASE "Kijk rond"
-      'Gekeken = 1
-      'CLS
-    'END SELECT
-  'LOOP UNTIL Plaats$ <> "Heuvels"
-
-'END SUB
-
-'SUB Start
-
-  'Gekeken = 0
-
-  'DO
-    'CALL wisActies
-    'i% = 0
-
-    'IF Gekeken <> 1 THEN
-      'acties(i%) = "Kijk rond"
-      'actieTeksten$(i%) = "Bekijk omgeving"
-      'i% = i% + 1
-    'END IF
-
-    'IF Gekeken <> 0 THEN
-      'acties(i%) = "Bekijk tas"
-      'actieTeksten$(i%) = "Bekijk inhoud van tas"
-
-      'IF inventory(0) = 0 THEN
-        'i% = i% + 1
-        'acties$(i%) = "Pak tak"
-        'actieTeksten$(i%) = "Raap de tak op"
-      'END IF
-
-      'i% = i% + 1
-      'acties$(i%) = "Oosten"
-      'actieTeksten$(i%) = "Ga naar het oosten, richting de akkers"
-      'i% = i% + 1
-      'acties$(i%) = "Westen"
-      'actieTeksten$(i%) = "Ga naar het westen, richting de heuvels"
-    'END IF
-
-    'Opdracht$ = acties$(welkeActie%)
-
-    'SELECT CASE Opdracht$
-    'CASE "Kijk rond"
-      'CLS
-      'CALL Tekst(2, "Je staat in het bos. Het is een stralende dag.")
-      'CALL Tekst(2, "De wind laat de blaadjes ritselen.")
-      'PRINT
-      'CALL Tekst(2, "In het oosten zijn akkers")
-      'CALL Tekst(2, "In het westen zijn heuvels")
-      'IF Gekeken = 0 THEN
-        'CALL Tekst(2, "Op de grond ligt je tas, en scherven van de fles medicijen")
-        'PRINT
-        'CALL Tekst(3, Naam$ + ": 'Verdorie, de medicijnen zijn echt verloren'")
-        'PRINT
-        'CALL Tekst(2, "Je raapt de tas op")
-      'END IF
-      'IF inventory(0) = 0 THEN
-        'CALL Tekst(2, "Op de grond ligt een vers afgebroken tak")
-      'END IF
-      'Gekeken = 1
-    'CASE "Oosten"
-      'CLS
-      'CALL Tekst(2, "Je wandeld naar het oosten, richting de akkers.")
-      'Plaats$ = "Akkers"
-    'CASE "Westen"
-      'CLS
-      'CALL Tekst(2, "Je wandeld naar het westen, richting de naar de heuvels.")
-      'Plaats$ = "Heuvels"
-    'CASE "Pak tak"
-      'CLS
-      'CALL Tekst(2, "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd.")
-      'CALL Tekst(2, "Deze tak heeft je best pijn gedaan.")
-      'inventory(0) = 1
-      'Gekeken = 2
-    'CASE "Bekijk tas"
-      'CALL BekijkTas
-      'Gekeken = 2
-    'END SELECT
-
-  'LOOP UNTIL Plaats$ <> "Start"
-
-'END SUB
 
 FUNCTION Interpoleer$ (zin$)
   result$ = ""
