@@ -533,16 +533,16 @@ FUNCTION Toegestaan% (Bewering$)
   Waarde$ = ""
 
   FOR i% = 1 TO LEN(Bewering$)
-    char$ = MID$(Bewering$, i%, 1)
-    SELECT CASE char$
+    Karakter$ = MID$(Bewering$, i%, 1)
+    SELECT CASE Karakter$
     CASE "0" TO "9"
       IF Bewerking$ = "" THEN
-        Plek$ = Plek$ + char$
+        Plek$ = Plek$ + Karakter$
       ELSE
-        Waarde$ = Waarde$ + char$
+        Waarde$ = Waarde$ + Karakter$
       END IF
     CASE "=", "!", ">", "<"
-      Bewerking$ = char$
+      Bewerking$ = Karakter$
     CASE ";"
       resultaat = Toets(VAL(Plek$), Bewerking$, VAL(Waarde$))
       IF resultaat = 0 THEN
@@ -658,16 +658,16 @@ SUB VoerActieUit (Actie$)
   Bewerking$ = ""
   Waarde$ = ""
   FOR i% = 1 TO LEN(Actie$) + 1
-    char$ = MID$(Actie$, i%, 1)
-    SELECT CASE char$
+    Karakter$ = MID$(Actie$, i%, 1)
+    SELECT CASE Karakter$
       CASE "0" TO "9"
         IF Bewerking$ = "" THEN
-          Plek$ = Plek$ + char$
+          Plek$ = Plek$ + Karakter$
         ELSE
-          Waarde$ = Waarde$ + char$
+          Waarde$ = Waarde$ + Karakter$
         END IF
       CASE "=", "+"
-        Bewerking$ = char$
+        Bewerking$ = Karakter$
       CASE ";"
         CALL Muteer(VAL(Plek$), Bewerking$, VAL(Waarde$))
         Bewerking$ = ""
