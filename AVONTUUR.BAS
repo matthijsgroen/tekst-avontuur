@@ -8,17 +8,17 @@ DECLARE SUB Tekst (Kleur%, Regel$)
 DECLARE FUNCTION Interpoleer$ (Zin$)
 
 ' Zorg dat we spel kunnen afsluiten met ESC
-KEY 15, CHR$(0) + CHR$(1) ' ESC
+KEY 15, CHR$(0) + CHR$(1) ' esc
 KEY(15) ON
 ON KEY(15) GOSUB Stoppen
 
-KEY 16, CHR$(0) + CHR$(31) ' S
+KEY 16, CHR$(0) + CHR$(31) ' s
 ON KEY(16) GOSUB Opslaan
 ON ERROR GOTO Foutafhandeling
 
 ' Gebeurtenissen
 ' 0 = Spel gewonnen (1), Bezig(0), Verloren(2)
-' 1 = location
+' 1 = Locatie
 '   0 = Proloog
 '   1 = Bos
 '   2 = Akkers
@@ -28,9 +28,9 @@ ON ERROR GOTO Foutafhandeling
 '   6 = Dorp
 '   7 = Donker woud
 '   8 = Rivier
-' 2 = location state 0 = look, 1 = Open inventory, 2 = empty
-' 4 = Tijdelijke lokatie state
-' 5 = Tijdelijke lokatie retries
+' 2 = Locatie toestand 0 = look, 1 = Open tas, 2 = leeg
+' 4 = Tijdelijke lokatie toestand (voor gesprekken)
+' 5 = Tijdelijke lokatie teller
 
 ' 11 = Lokatie status Mijn
 ' 12 = Lokatie status Hut
@@ -40,10 +40,11 @@ ON ERROR GOTO Foutafhandeling
 ' 16 = Lokatie status Bakkerij
 ' 17 = Lokatie status Toren
 
-' 20 = hasBag
-' 21 = hasBranch
-' 22 = money
-' 23 = prolog key / food
+' 20 = beschikbaarheid tas
+' 21 = tak
+' 22 = geld
+' 23 = proloog sleutel / vogelvoer
+' 24 = 1 = kapotte houweel, 2 = gerepareerde houweel
 
 ' 0. Proloog
 1 DATA "1=0;4=0"
@@ -116,7 +117,7 @@ DATA "We hopen dat je dit bericht snel ontvangt en je snel de juiste medicijnen 
 DATA "", "Gegroet,", "  De dokter van de koning", "*s2", "*c2", ""
 DATA "Je blijft een tijdje naar de brief staren.", "De koning?", "Heeft jouw hulp nodig?"
 DATA "Je gaat snel de deur uit, richting een groot avontuur..."
-DATA "&4=0;22=3;20=0;2=0"
+DATA "&4=20;22=3;20=0;2=0"
 
 ' 5. Intro
 DATA "1=5", "*c2"
@@ -133,14 +134,14 @@ DATA "'En mijn paard is er vandoor!'"
 DATA "*c2", "", "Daar stond $n dan.. Alleen in het bos, zonder vervoer of medicijnen..."
 DATA "&"
 
-' Travelling
-' 3 = Travel state
-'   1 = arrive by foot from north
-'   2 = arrive by foot from east
-'   3 = arrive by foot from south
-'   4 = arrive by foot from west
-'   5 = arrive from sublocation 1
-'   6 = arrive from sublocation 2
+' Reizen
+' 3 = Reis toestand
+'   1 = Arriveer te voet vanuit het noorden
+'   2 = Arriveer te voet vanuit het oosten
+'   3 = Arriveer te voet vanuit het zuiden
+'   4 = Arriveer te voet vanuit het westen
+'   5 = Arriveer vanuit sub-lokatie 1
+'   6 = Arriveer vanuit sub-lokatie 2
 DATA "1=1;3=2", "*c2", "Je wandelt naar het oosten, richting het bos", "", "&2=0;3=0"
 DATA "1=1;3=4", "*c2", "Je wandelt naar het westen, richting het bos", "", "&2=0;3=0"
 DATA "1=2;3=2", "*c2", "Je wandelt naar het oosten, richting de akkers", "", "&2=0;3=0"
@@ -155,12 +156,14 @@ DATA "1=6;3=1", "*c2", "Je wandelt naar het noorden, richting het dorp", "", "&2
 DATA "1=7;3=2", "*c2", "Je wandelt over een smal kronkelig pad, richting het donkere woud", "", "&2=0;3=0"
 DATA "1=8;3=3", "*c2", "Je wandelt naar het zuiden, richting de rivier", "", "&2=0;3=0"
 
-' Inventory
+' Tas
 DATA "2=1", "*c15", "Je hebt het volgende bij je:", "&"
-DATA "2=1;22>0", "*c7", "- #22 geldstukken", "&"
-DATA "2=1;21=2", "*c7", "- een stok, opgeraapt in het bos", "&"
-DATA "2=1;23>0;23<3", "*c7", "- de sleutel van je kast", "&23=2"
-DATA "2=1;23=3", "*c7", "- vogelvoer", "&"
+DATA "2=1;22>0", "*c7", "-#22 geldstukken", "&"
+DATA "2=1;21=2", "*c7", "- Een stok, opgeraapt in het bos", "&"
+DATA "2=1;23>0;23<3", "*c7", "- De sleutel van je kast", "&23=2"
+DATA "2=1;23=3", "*c7", "- Vogelvoer", "&"
+DATA "2=1;24=1", "*c7", "- Houweel met gebroken heft", "&"
+DATA "2=1;24=2", "*c7", "- Gerepareerde houweel", "&"
 
 ' 1. Bos
 DATA "1=1;2=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -232,7 +235,7 @@ DATA " 'Dit was de weg richting het kasteel van de koning'"
 DATA " 'Hier moet ik een oplossing voor gaan vinden'", "&"
 
 ' 11. Mijn
-DATA "1=11;11<2;4=0", "*c2"
+DATA "1=11;11<2;4=0;2=0", "*c2"
 DATA "Je loopt van de weg af, richting de ingang van de mijn."
 DATA "Er ligt een mijnkarretje. Voor de ingang zit een dwerg"
 DATA "", "Hij ziet er niet al te vrolijk uit"
@@ -241,12 +244,17 @@ DATA "", "*c2", "De dwerg kijkt een beetje boos je aan"
 DATA "", "*c9", "Dwerg: 'Grr. Stom ding, stom ding!'"
 DATA "&11=1"
 
-DATA "1=11;11=2;4=0", "*c2"
+DATA "1=11;11=2;4=0;2=1", "*c2"
 DATA "Je loopt van de weg af, richting de ingang van de mijn."
 DATA "Er ligt een mijnkarretje. Voor de ingang zit Thorin de dwerg"
 DATA "", "Hij ziet er niet al te vrolijk uit", ""
 DATA "*c9", "Thorin: 'Hallo $n'"
 DATA "&"
+
+DATA "1=11;11=2;4=2", "*c3"
+DATA "$n: 'Zou ik je houweel mogen hebben?'"
+DATA "", "*c9", "Dwerg: 'Tuurlijk. Alleen de bovenkant is nog heel.'"
+DATA " 'De heft is gebroken. Ik heb er niets meer aan'", "", "&4=0;24=1"
 
 DATA "1=11;11=2;4=1", "*c3"
 DATA "$n: 'Hoe kan ik je helpen?'"
@@ -329,8 +337,10 @@ DATA "1=11;11=1;4=0", "Zeg: 'Pardon?'", "4=2"
 DATA "1=11;11=1;4=0", "Zeg: 'Ok ik ga weer.'", "1=3;3=5"
 
 DATA "1=11;11=2;4=0", "Zeg: 'Hoe kan ik je helpen?'", "4=1"
-DATA "1=11;11=2;4=0", "Zeg: 'Zou ik je houweel mogen hebben?'", "4=2"
+DATA "1=11;11=2;4=0;24=0", "Zeg: 'Zou ik je houweel mogen hebben?'", "4=2"
 DATA "1=11;11=2;4=0", "Zeg: 'Sorry, ik moet er weer vandoor'", "1=3;3=5"
+
+DATA "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "24=2;21=3"
 
 DATA "END"
 
@@ -394,12 +404,20 @@ GOTO SpelLus
 
 Start:
 HuidigSpel% = AantalOpslag% + 1
+NaamInvoer:
 CLS
 PRINT "Welkom!"
 PRINT
 INPUT "Hoi, wat is jouw naam"; Naam$
-INPUT "Ben je een jongen of een meisje? (j/m) ", Invoer$
-IF UCASE$(LEFT$(Invoer$, 1)) = "J" THEN
+IF LTRIM$(Naam$) = "" THEN
+  GOTO NaamInvoer
+END IF
+PRINT "Ben je een jongen of een meisje? (j/m) "
+DO
+  Keuze$ = INKEY$
+LOOP UNTIL Keuze$ = "j" OR Keuze$ = "m"
+
+IF Keuze$ = "j" THEN
   Geslacht% = 1
 ELSE
   Geslacht% = 0
@@ -416,6 +434,7 @@ LOOP UNTIL Gebeurtenissen(0) <> 0
 END
 
 Stoppen:
+COLOR 7
 CLS
 PRINT "Bedankt voor het spelen!"
 END

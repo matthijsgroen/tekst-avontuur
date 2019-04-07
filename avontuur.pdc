@@ -72,7 +72,7 @@
       }
 
       koop_eten_bij_bakker:event {
-         depends_on []   = praat_met_dwerg;
+         depends_on []   = ;
       }
 
       koop_zwaard_bij_wapensmid:event {
@@ -80,7 +80,7 @@
       }
 
       krijg_edelsteen_van_dwerg:event {
-         depends_on []   = geef_houweel_aan_dwerg;
+         depends_on []   = geef_houweel_aan_dwerg, geef_dwerg_eten;
       }
 
       krijg_geld_van_meel:event {
@@ -92,7 +92,7 @@
       }
 
       krijg_kapotte_houweel_van_dwerg:event {
-         depends_on []   = geef_dwerg_eten;
+         depends_on []   = praat_met_dwerg;
       }
 
       krijg_medicijn_van_heks : event {
