@@ -1,11 +1,11 @@
-DECLARE SUB Muteer (slot%, op$, value%)
-DECLARE SUB VoerActieUit (actie$)
+DECLARE SUB Muteer (Plek%, Bewerking$, Waarde%)
+DECLARE SUB VoerActieUit (Actie$)
 DECLARE SUB ToonActies ()
-DECLARE FUNCTION Toets! (slot%, op$, value%)
-DECLARE FUNCTION Toegestaan% (predicate$)
+DECLARE FUNCTION Toets! (Plek%, Bewerking$, Waarde%)
+DECLARE FUNCTION Toegestaan% (Bewering$)
 DECLARE SUB ToonGebeurtenis ()
 DECLARE SUB Tekst (Kleur%, Regel$)
-DECLARE FUNCTION Interpoleer$ (Tekst$)
+DECLARE FUNCTION Interpoleer$ (Zin$)
 
 ' Zorg dat we spel kunnen afsluiten met ESC
 KEY 15, CHR$(0) + CHR$(1) ' ESC
@@ -29,13 +29,16 @@ ON ERROR GOTO Foutafhandeling
 '   7 = Donker woud
 '   8 = Rivier
 ' 2 = location state 0 = look, 1 = Open inventory, 2 = empty
-' 3 = Travel state
-'   1 = arrive by foot from north
-'   2 = arrive by foot from east
-'   3 = arrive by foot from south
-'   4 = arrive by foot from west
-' 4 = Proloog state
-' 5 = Proloog retries
+' 4 = Tijdelijke lokatie state
+' 5 = Tijdelijke lokatie retries
+
+' 11 = Lokatie status Mijn
+' 12 = Lokatie status Hut
+' 13 = Lokatie status Boerderij
+' 14 = Lokatie status Molen
+' 15 = Lokatie status Smederij
+' 16 = Lokatie status Bakkerij
+' 17 = Lokatie status Toren
 
 ' 20 = hasBag
 ' 21 = hasBranch
@@ -113,7 +116,7 @@ DATA "We hopen dat je dit bericht snel ontvangt en je snel de juiste medicijnen 
 DATA "", "Gegroet,", "  De dokter van de koning", "*s2", "*c2", ""
 DATA "Je blijft een tijdje naar de brief staren.", "De koning?", "Heeft jouw hulp nodig?"
 DATA "Je gaat snel de deur uit, richting een groot avontuur..."
-DATA "&4=20;22=3;20=0;2=0"
+DATA "&4=0;22=3;20=0;2=0"
 
 ' 5. Intro
 DATA "1=5", "*c2"
@@ -131,16 +134,26 @@ DATA "*c2", "", "Daar stond $n dan.. Alleen in het bos, zonder vervoer of medici
 DATA "&"
 
 ' Travelling
+' 3 = Travel state
+'   1 = arrive by foot from north
+'   2 = arrive by foot from east
+'   3 = arrive by foot from south
+'   4 = arrive by foot from west
+'   5 = arrive from sublocation 1
+'   6 = arrive from sublocation 2
 DATA "1=1;3=2", "*c2", "Je wandelt naar het oosten, richting het bos", "", "&2=0;3=0"
 DATA "1=1;3=4", "*c2", "Je wandelt naar het westen, richting het bos", "", "&2=0;3=0"
 DATA "1=2;3=2", "*c2", "Je wandelt naar het oosten, richting de akkers", "", "&2=0;3=0"
 DATA "1=2;3=1", "*c2", "Je wandelt naar het noorden, richting de akkers", "", "&2=0;3=0"
 DATA "1=3;3=4", "*c2", "Je wandelt naar het westen, richting de heuvels", "", "&2=0;3=0"
 DATA "1=3;3=1", "*c2", "Je klimt omhoog, richting de heuvels", "", "&2=0;3=0"
+DATA "1=3;3=5", "*c2", "Je groet de dwerg, en loopt weer richting de weg", "", "&2=0;3=0"
 DATA "1=4;3=3", "*c2", "Je daalt af naar het zuiden, over een sompig pad, richting het moeras", "", "&2=0;3=0"
 DATA "1=6;3=2", "*c2", "Je wandelt naar het zuiden, richting het dorp", "", "&2=0;3=0"
 DATA "1=6;3=4", "*c2", "Je wandelt naar het westen, richting het dorp", "", "&2=0;3=0"
+DATA "1=6;3=1", "*c2", "Je wandelt naar het noorden, richting het dorp", "", "&2=0;3=0"
 DATA "1=7;3=2", "*c2", "Je wandelt over een smal kronkelig pad, richting het donkere woud", "", "&2=0;3=0"
+DATA "1=8;3=3", "*c2", "Je wandelt naar het zuiden, richting de rivier", "", "&2=0;3=0"
 
 ' Inventory
 DATA "2=1", "*c15", "Je hebt het volgende bij je:", "&"
@@ -164,7 +177,6 @@ DATA "Deze tak heeft je best pijn gedaan.", "&21=2"
 ' 2. Akkers
 DATA "1=2;2=0", "*c2"
 DATA "Je staat in een boeren landschap."
-DATA "Aan de linkerkant van de weg staat een molen."
 DATA "Aan de rechterkant van de weg staat een boerderij."
 DATA "Er komt rook achter de boerderij vandaan.", ""
 DATA "In het westen ligt een bos"
@@ -174,7 +186,8 @@ DATA "In het zuiden loopt een weg richting een dorp", "&"
 DATA "1=3;2=0", "*c2"
 DATA "Je staat in de heuvels. De zon schijnt heerlijk."
 DATA "Er is een mooi uitzicht van de omgeving.", ""
-DATA "Verder op het pad zie je een Mijn"
+DATA "Verder op het pad zie je een mijn"
+DATA "Iets hoger op de heuvel staat een molen"
 DATA "Naar het oosten loopt het pad naar het bos"
 DATA "Naar het zuiden loopt een drassig pad een moeras in", "&"
 
@@ -209,6 +222,56 @@ DATA "Je staat aan de rand van een donker woud."
 DATA "Het ziet er erg donker en gevaarlijk uit", ""
 DATA "*c3", "$n: 'Brr.. hier heb ik niets te zoeken'", "&"
 
+' 8. Rivier
+DATA "1=8;2=0", "*c2"
+DATA "Je staat bij een ingestorte brug over de rivier"
+DATA "Er lijkt geen mogenlijkheid te zijn om over te steken"
+DATA "De rivier stroomt snel en gevaarlijk", ""
+DATA "*c3", "$n: 'Verdorie zo kan ik hier niet weg komen'"
+DATA " 'Dit was de weg richting het kasteel van de koning'"
+DATA " 'Hier moet ik een oplossing voor gaan vinden'", "&"
+
+' 11. Mijn
+DATA "1=11;11<2;4=0", "*c2"
+DATA "Je loopt van de weg af, richting de ingang van de mijn."
+DATA "Er ligt een mijnkarretje. Voor de ingang zit een dwerg"
+DATA "", "Hij ziet er niet al te vrolijk uit"
+DATA "", "*c3", "$n: 'Hallo, kun je mij helpen?'"
+DATA "", "*c2", "De dwerg kijkt een beetje boos je aan"
+DATA "", "*c9", "Dwerg: 'Grr. Stom ding, stom ding!'"
+DATA "&11=1"
+
+DATA "1=11;11=2;4=0", "*c2"
+DATA "Je loopt van de weg af, richting de ingang van de mijn."
+DATA "Er ligt een mijnkarretje. Voor de ingang zit Thorin de dwerg"
+DATA "", "Hij ziet er niet al te vrolijk uit", ""
+DATA "*c9", "Thorin: 'Hallo $n'"
+DATA "&"
+
+DATA "1=11;11=2;4=1", "*c3"
+DATA "$n: 'Hoe kan ik je helpen?'"
+DATA "", "*c9", "Dwerg: 'Heb je iets te eten voor mij?'"
+DATA " 'En een nieuwe houweel?'", "&4=0"
+
+DATA "1=11;11=1;4=1", "*c3"
+DATA "$n: 'Je bent zelf een stom ding!'"
+DATA "", "*c9", "Dwerg: 'Ik heb het niet tegen jou!'", "&"
+DATA "1=11;11=1;4=2", "*c3"
+DATA "$n: 'Pardon? Wie is een stom ding?'"
+DATA "", "*c9", "Dwerg: 'Sorry, ik heb het niet tegen jou..'", "&"
+DATA "1=11;11=1;4>0;4<3", "*c9"
+DATA " 'Sorry van mijn manieren, ik heb wat tegenslag!'"
+DATA " 'Mijn naam is Thorin, en wie mag jij wezen?'"
+DATA "*c3", "$n: 'Mijn naam is $n'"
+DATA "*c9", "Thorin: 'Hallo $n. Sorry dat ik zo ruw deed'"
+DATA " 'Mijn houweel ik gebroken!'"
+DATA " 'Ik had net een ader van edelstenen ontdekt!'"
+DATA " 'Ik heb zo hard mijn best gedaan om ze los te krijgen'"
+DATA " 'Nu is mijn houweel gebroken. En ik heb honger!'"
+DATA " 'Ik heb veel te hard gewerkt, en nu heb ik niets!'"
+DATA "*c2", "", "De dwerg zucht diep"
+DATA "&11=2;4=0"
+
 DATA "END"
 
 ' Acties
@@ -242,6 +305,7 @@ DATA "1=2", "Ga naar het westen, richting het bos", "1=1;3=4"
 DATA "1=2", "Ga naar het zuiden, richting het dorp", "1=6;3=3"
 
 ' 3. Heuvel acties
+DATA "1=3", "Volg het pad naar de mijn", "1=11;4=0"
 DATA "1=3", "Ga naar het oosten, richting het bos", "1=1;3=2"
 DATA "1=3", "Ga naar het zuiden, richting het moeras", "1=4;3=3"
 
@@ -251,9 +315,22 @@ DATA "1=4", "Ga naar het noorden, richting de heuvels", "1=3;3=1"
 ' 6. Dorp Acties
 DATA "1=6", "Ga naar het noorden, richting de akkers", "1=2;3=1"
 DATA "1=6", "Ga naar het oosten, richting de het donkere woud", "1=7;3=2"
+DATA "1=6", "Ga naar het zuiden, richting de rivier", "1=8;3=3"
 
 ' 7. Donker woud acties
 DATA "1=7", "Ga naar het westen, richting het dorp", "1=6;3=4"
+
+' 8. Rivier acties
+DATA "1=8", "Ga naar het noorden, richting het dorp", "1=6;3=1"
+
+' 11. Mijn Acties
+DATA "1=11;11=1;4=0", "Zeg: 'Je bent zelf een stom ding!'", "4=1"
+DATA "1=11;11=1;4=0", "Zeg: 'Pardon?'", "4=2"
+DATA "1=11;11=1;4=0", "Zeg: 'Ok ik ga weer.'", "1=3;3=5"
+
+DATA "1=11;11=2;4=0", "Zeg: 'Hoe kan ik je helpen?'", "4=1"
+DATA "1=11;11=2;4=0", "Zeg: 'Zou ik je houweel mogen hebben?'", "4=2"
+DATA "1=11;11=2;4=0", "Zeg: 'Sorry, ik moet er weer vandoor'", "1=3;3=5"
 
 DATA "END"
 
@@ -269,33 +346,33 @@ PRINT "Avontuur!"
 AantalOpslag% = 0
 
 FOR i% = 1 TO 5
-	SpelOpslag$ = "OPSLAG" + STR$(i%) + ".SAV"
-	OPEN SpelOpslag$ FOR INPUT AS 1
-	IF errorflag = 0 THEN
-		AantalOpslag% = AantalOpslag + 1
-	END IF
-	CLOSE
+  SpelOpslag$ = "OPSLAG" + STR$(i%) + ".SAV"
+  OPEN SpelOpslag$ FOR INPUT AS 1
+  IF Fout = 0 THEN
+    AantalOpslag% = AantalOpslag + 1
+  END IF
+  CLOSE
 NEXT i%
 
 LOCATE 7, 1
 PRINT SPACE$(19); STRING$(40, "-")
 PRINT SPACE$(19); "1 ) Nieuw spel"
 IF AantalOpslag% > 0 THEN
-	FOR i% = 2 TO AantalOpslag% + 1
-		PRINT SPACE$(18); i%; ") Spel"; (i% - 1); "laden"
-	NEXT i%
+  FOR i% = 2 TO AantalOpslag% + 1
+    PRINT SPACE$(18); i%; ") Spel"; (i% - 1); "laden"
+  NEXT i%
 END IF
 PRINT SPACE$(19); STRING$(40, "-")
 PRINT SPACE$(19); "Toetsen tijdens spelen:"
-PRINT SPACE$(19); "S) Spel opslaan"
+PRINT SPACE$(19); "s) Spel opslaan"
 PRINT SPACE$(19); "esc) Stoppen"
 PRINT SPACE$(19); STRING$(40, "-")
 
 DO
-	DO
-		Keuze$ = INKEY$
-	LOOP UNTIL Keuze$ <> ""
-	Gekozen% = ASC(Keuze$) - ASC("1")
+  DO
+    Keuze$ = INKEY$
+  LOOP UNTIL Keuze$ <> ""
+  Gekozen% = ASC(Keuze$) - ASC("1")
 LOOP UNTIL Gekozen% >= 0 AND Gekozen% <= AantalOpslag%
 
 IF Gekozen% = 0 THEN GOTO Start
@@ -308,8 +385,8 @@ LINE INPUT #1, Naam$
 LINE INPUT #1, BestandRegel$
 Geslacht% = VAL(BestandRegel$)
 FOR i% = 0 TO 100
-	LINE INPUT #1, BestandRegel$
-	Gebeurtenissen(i%) = VAL(BestandRegel$)
+  LINE INPUT #1, BestandRegel$
+  Gebeurtenissen(i%) = VAL(BestandRegel$)
 NEXT i%
 CLOSE 1
 
@@ -323,285 +400,286 @@ PRINT
 INPUT "Hoi, wat is jouw naam"; Naam$
 INPUT "Ben je een jongen of een meisje? (j/m) ", Invoer$
 IF UCASE$(LEFT$(Invoer$, 1)) = "J" THEN
-	Geslacht% = 1
+  Geslacht% = 1
 ELSE
-	Geslacht% = 0
+  Geslacht% = 0
 END IF
 
 SpelLus:
 KEY(16) ON
 DO
-	CLS
-	CALL ToonGebeurtenis
-	CALL ToonActies
+  CLS
+  CALL ToonGebeurtenis
+  CALL ToonActies
 LOOP UNTIL Gebeurtenissen(0) <> 0
 
 END
 
 Stoppen:
+CLS
+PRINT "Bedankt voor het spelen!"
 END
 
 Foutafhandeling:
-	fout = ERR
+  Fout = ERR
 RESUME NEXT
 
 Opslaan:
-	SpelOpslag$ = "OPSLAG" + STR$(HuidigSpel%) + ".SAV"
+  SpelOpslag$ = "OPSLAG" + STR$(HuidigSpel%) + ".SAV"
   OPEN SpelOpslag$ FOR OUTPUT AS 1
-	PRINT #1, Naam$
-	PRINT #1, Geslacht%
-	FOR i% = 0 TO 100
-		PRINT #1, Gebeurtenissen(i%)
-	NEXT i%
-	CLOSE 1
+  PRINT #1, Naam$
+  PRINT #1, Geslacht%
+  FOR i% = 0 TO 100
+    PRINT #1, Gebeurtenissen(i%)
+  NEXT i%
+  CLOSE 1
 RETURN
 
-FUNCTION Interpoleer$ (zin$)
-	result$ = ""
+FUNCTION Interpoleer$ (Zin$)
+  Resultaat$ = ""
 
-	FOR i% = 1 TO LEN(zin$)
-		char$ = MID$(zin$, i%, 1)
-		IF char$ = "$" THEN
-			SELECT CASE MID$(zin$, i%, 2)
-				CASE "$n"
-					result$ = result$ + Naam$
-				CASE "$h"
-					IF Geslacht% THEN
-						result$ = result$ + "hij"
-					ELSE
-						result$ = result$ + "zij"
-					END IF
-				CASE "$H"
-					IF Geslacht% THEN
-						result$ = result$ + "Hij"
-					ELSE
-						result$ = result$ + "Zij"
-					END IF
-				CASE "$z"
-					IF Geslacht% THEN
-						result$ = result$ + "zijn"
-					ELSE
-						result$ = result$ + "haar"
-					END IF
-				CASE "$Z"
-					IF Geslacht% THEN
-						result$ = result$ + "Zijn"
-					ELSE
-						result$ = result$ + "Haar"
-					END IF
-			END SELECT
-			i% = i% + 1
-		ELSEIF char$ = "#" THEN
-			slot% = VAL(MID$(zin$, i% + 1, 2))
-			result$ = result$ + STR$(Gebeurtenissen(slot%))
-			i% = i% + 2
-		ELSE
-			result$ = result$ + char$
-		END IF
-	NEXT i%
+  FOR i% = 1 TO LEN(Zin$)
+    Karakter$ = MID$(Zin$, i%, 1)
+    IF Karakter$ = "$" THEN
+      SELECT CASE MID$(Zin$, i%, 2)
+      CASE "$n"
+        Resultaat$ = Resultaat$ + Naam$
+      CASE "$h"
+        IF Geslacht% THEN
+          Resultaat$ = Resultaat$ + "hij"
+        ELSE
+          Resultaat$ = Resultaat$ + "zij"
+        END IF
+      CASE "$H"
+        IF Geslacht% THEN
+          Resultaat$ = Resultaat$ + "Hij"
+        ELSE
+          Resultaat$ = Resultaat$ + "Zij"
+        END IF
+      CASE "$z"
+        IF Geslacht% THEN
+          Resultaat$ = Resultaat$ + "zijn"
+        ELSE
+          Resultaat$ = Resultaat$ + "haar"
+        END IF
+      CASE "$Z"
+        IF Geslacht% THEN
+          Resultaat$ = Resultaat$ + "Zijn"
+        ELSE
+          Resultaat$ = Resultaat$ + "Haar"
+        END IF
+      END SELECT
+      i% = i% + 1
+    ELSEIF Karakter$ = "#" THEN
+      Plek% = VAL(MID$(Zin$, i% + 1, 2))
+      Resultaat$ = Resultaat$ + STR$(Gebeurtenissen(Plek%))
+      i% = i% + 2
+    ELSE
+      Resultaat$ = Resultaat$ + Karakter$
+    END IF
+  NEXT i%
 
-	Interpoleer$ = result$
+  Interpoleer$ = Resultaat$
 END FUNCTION
 
-SUB Muteer (slot%, op$, value%)
-	'PRINT "Muteer"; slot%; Gebeurtenissen(slot%); op$; value%
-	SELECT CASE op$
-		CASE "="
-			Gebeurtenissen(slot%) = value%
-		CASE "+"
-			Gebeurtenissen(slot%) = Gebeurtenissen(slot%) + value%
-	END SELECT
+SUB Muteer (Plek%, Bewerking$, Waarde%)
+  'PRINT "Muteer"; Plek%; Gebeurtenissen(Plek%); Bewerking$; Waarde%
+  SELECT CASE Bewerking$
+  CASE "="
+    Gebeurtenissen(Plek%) = Waarde%
+  CASE "+"
+    Gebeurtenissen(Plek%) = Gebeurtenissen(Plek%) + Waarde%
+  END SELECT
 END SUB
 
 SUB Tekst (Kleur%, Regel$)
-	COLOR Kleur%
-	IF Kleur% <> 4 THEN
-		TIMER ON
-		Overslaan = 0
-		FOR i% = 1 TO LEN(Regel$)
-			TijdStart = TIMER
-			PRINT MID$(Regel$, i%, 1);
-			IF Overslaan = 0 THEN
-				DO
-					IF INKEY$ = " " THEN
-						Overslaan = -1
-					END IF
-				LOOP UNTIL TIMER > TijdStart + .05
-			END IF
-		NEXT i%
-		TIMER OFF
-		PRINT
-	ELSE
-		PRINT Regel$
-		TIMER ON
-		TijdStart = TIMER
-		DO
-		LOOP UNTIL TIMER > TijdStart + (.05 * LEN(Regel$))
-		TIMER OFF
-	END IF
-	COLOR 7
+  COLOR Kleur%
+  IF Kleur% <> 4 THEN
+    TIMER ON
+    Overslaan = 0
+    FOR i% = 1 TO LEN(Regel$)
+      TijdStart = TIMER
+      PRINT MID$(Regel$, i%, 1);
+      IF Overslaan = 0 THEN
+  DO
+    IF INKEY$ = " " THEN
+      Overslaan = -1
+    END IF
+  LOOP UNTIL TIMER > TijdStart + .05
+      END IF
+    NEXT i%
+    TIMER OFF
+    PRINT
+  ELSE
+    PRINT Regel$
+    TIMER ON
+    TijdStart = TIMER
+    DO
+    LOOP UNTIL TIMER > TijdStart + (.05 * LEN(Regel$))
+    TIMER OFF
+  END IF
+  COLOR 7
 END SUB
 
-FUNCTION Toegestaan% (predicate$)
-	IF predicate$ = "END" THEN
-		Toegestaan = 0
-		EXIT FUNCTION
-	END IF
+FUNCTION Toegestaan% (Bewering$)
+  IF Bewering$ = "END" THEN
+    Toegestaan = 0
+    EXIT FUNCTION
+  END IF
 
-	Toegestaan = 1
+  Toegestaan = 1
+  Plek$ = ""
+  Bewerking$ = ""
+  Waarde$ = ""
 
-	slot$ = ""
-	op$ = ""
-	value$ = ""
+  FOR i% = 1 TO LEN(Bewering$)
+    char$ = MID$(Bewering$, i%, 1)
+    SELECT CASE char$
+    CASE "0" TO "9"
+      IF Bewerking$ = "" THEN
+        Plek$ = Plek$ + char$
+      ELSE
+        Waarde$ = Waarde$ + char$
+      END IF
+    CASE "=", "!", ">", "<"
+      Bewerking$ = char$
+    CASE ";"
+      resultaat = Toets(VAL(Plek$), Bewerking$, VAL(Waarde$))
+      IF resultaat = 0 THEN
+  Toegestaan = 0
+  EXIT FUNCTION
+      END IF
+      Bewerking$ = ""
+      Waarde$ = ""
+      Plek$ = ""
+    END SELECT
+  NEXT i%
 
-	FOR i% = 1 TO LEN(predicate$)
-		char$ = MID$(predicate$, i%, 1)
-		SELECT CASE char$
-			CASE "0" TO "9"
-				IF op$ = "" THEN
-					slot$ = slot$ + char$
-				ELSE
-					value$ = value$ + char$
-				END IF
-			CASE "=", "!", ">", "<"
-				op$ = char$
-			CASE ";"
-				resultaat = Toets(VAL(slot$), op$, VAL(value$))
-				IF resultaat = 0 THEN
-					Toegestaan = 0
-					EXIT FUNCTION
-				END IF
-				op$ = ""
-				value$ = ""
-				slot$ = ""
-		END SELECT
-
-	NEXT i%
-
-	IF op$ <> "" THEN
-		Toegestaan = Toets(VAL(slot$), op$, VAL(value$))
-	END IF
-
+  IF Bewerking$ <> "" THEN
+    Toegestaan = Toets(VAL(Plek$), Bewerking$, VAL(Waarde$))
+  END IF
 END FUNCTION
 
-FUNCTION Toets (slot%, op$, value%)
-	'PRINT "Toets"; slot%, Gebeurtenissen(slot%), op$; value%
-	IF op$ = "=" AND Gebeurtenissen(slot%) = value% THEN
-		Toets = 1
-	ELSEIF op$ = "!" AND Gebeurtenissen(slot%) <> value% THEN
-		Toets = 1
-	ELSEIF op$ = ">" AND Gebeurtenissen(slot%) > value% THEN
-		Toets = 1
-	ELSEIF op$ = "<" AND Gebeurtenissen(slot%) < value% THEN
-		Toets = 1
-	ELSE
-		Toets = 0
-	END IF
+FUNCTION Toets (Plek%, Bewerking$, Waarde%)
+  'PRINT "Toets"; Plek%, Gebeurtenissen(Plek%), Bewerking$; Waarde%
+  IF Bewerking$ = "=" AND Gebeurtenissen(Plek%) = Waarde% THEN
+    Toets = 1
+  ELSEIF Bewerking$ = "!" AND Gebeurtenissen(Plek%) <> Waarde% THEN
+    Toets = 1
+  ELSEIF Bewerking$ = ">" AND Gebeurtenissen(Plek%) > Waarde% THEN
+    Toets = 1
+  ELSEIF Bewerking$ = "<" AND Gebeurtenissen(Plek%) < Waarde% THEN
+    Toets = 1
+  ELSE
+    Toets = 0
+  END IF
 
 END FUNCTION
 
 SUB ToonActies
-	DIM actie(10) AS STRING
-	DIM ActieTekst(10) AS STRING
-	ActieTeller% = 0
+  DIM Actie(10) AS STRING
+  DIM ActieTekst(10) AS STRING
+  ActieTeller% = 0
 
-	RESTORE 2
-	DO
-		READ predicate$
-		IF Toegestaan%(predicate$) THEN
-			READ ActieTekst(ActieTeller%), actie(ActieTeller%)
-			ActieTeller% = ActieTeller% + 1
-		ELSEIF predicate$ <> "END" THEN
-			READ zin$, change$
-		END IF
-	LOOP UNTIL predicate$ = "END"
+  RESTORE 2
+  DO
+    READ Bewering$
+    IF Toegestaan%(Bewering$) THEN
+      READ ActieTekst(ActieTeller%), Actie(ActieTeller%)
+      ActieTeller% = ActieTeller% + 1
+    ELSEIF Bewering$ <> "END" THEN
+      ' Negeer data tot volgende bewering
+      READ Zin$, Aanpassing$
+    END IF
+  LOOP UNTIL Bewering$ = "END"
 
-	COLOR 15
-	PRINT
-	PRINT "Wat ga je doen:"
-	COLOR 7
-	FOR i% = 1 TO ActieTeller%
-		PRINT i%; ") "; ActieTekst(i% - 1)
-	NEXT i%
+  COLOR 15
+  PRINT
+  PRINT "Wat ga je doen:"
+  COLOR 7
+  FOR i% = 1 TO ActieTeller%
+    PRINT i%; ") "; ActieTekst(i% - 1)
+  NEXT i%
 
-	DO
-		DO
-			Keuze$ = INKEY$
-		LOOP UNTIL Keuze$ <> ""
-		Gekozen% = ASC(Keuze$) - ASC("1")
-	LOOP UNTIL Gekozen% >= 0 AND Gekozen% < ActieTeller%
+  DO
+    DO
+      Keuze$ = INKEY$
+    LOOP UNTIL Keuze$ <> ""
+    Gekozen% = ASC(Keuze$) - ASC("1")
+  LOOP UNTIL Gekozen% >= 0 AND Gekozen% < ActieTeller%
 
-	VoerActieUit (actie(Gekozen%))
+  VoerActieUit (Actie(Gekozen%))
 
 END SUB
 
 SUB ToonGebeurtenis
-	RESTORE 1
-	verteller% = 2
-	DO
-		READ predicate$
-		IF Toegestaan%(predicate$) THEN
-			DO
-				READ zin$
-				op$ = LEFT$(zin$, 1)
-				SELECT CASE op$
-					CASE "&"
-						' Einde en acties
-						acties$ = MID$(zin$, 2, LEN(zin$) - 1)
-						IF acties$ <> "" THEN
-							CALL VoerActieUit(acties$)
-						END IF
-					CASE "*"
-						' Markup instructie
-						commando$ = MID$(zin$, 2, 1)
-						gegevens$ = MID$(zin$, 3, LEN(zin$) - 2)
-						SELECT CASE commando$
-							CASE "c"
-								verteller% = VAL(gegevens$)
-							CASE "s"
-								SLEEP VAL(gegevens$)
-							CASE "p"
-								PLAY gegevens$
-						END SELECT
-					CASE ELSE
-						CALL Tekst(verteller%, Interpoleer(zin$))
-				END SELECT
-			LOOP UNTIL op$ = "&"
-		ELSEIF predicate$ <> "END" THEN
-			DO
-				READ zin$
-			LOOP UNTIL LEFT$(zin$, 1) = "&"
-		END IF
-	LOOP UNTIL predicate$ = "END"
+  RESTORE 1
+  Verteller% = 2
+  DO
+    READ Bewering$
+    IF Toegestaan%(Bewering$) THEN
+      DO
+        READ Zin$
+        Bewerking$ = LEFT$(Zin$, 1)
+        SELECT CASE Bewerking$
+          CASE "&"
+            ' Einde en acties
+            acties$ = MID$(Zin$, 2, LEN(Zin$) - 1)
+            IF acties$ <> "" THEN
+              CALL VoerActieUit(acties$)
+            END IF
+          CASE "*"
+            ' Markup instructie
+            Commando$ = MID$(Zin$, 2, 1)
+            Gegevens$ = MID$(Zin$, 3, LEN(Zin$) - 2)
+            SELECT CASE Commando$
+              CASE "c"
+                Verteller% = VAL(Gegevens$)
+              CASE "s"
+                SLEEP VAL(Gegevens$)
+              CASE "p"
+                PLAY Gegevens$
+            END SELECT
+          CASE ELSE
+            CALL Tekst(Verteller%, Interpoleer(Zin$))
+        END SELECT
+      LOOP UNTIL Bewerking$ = "&"
+    ELSEIF Bewering$ <> "END" THEN
+      DO
+        READ Zin$
+      LOOP UNTIL LEFT$(Zin$, 1) = "&"
+    END IF
+  LOOP UNTIL Bewering$ = "END"
 
 END SUB
 
-SUB VoerActieUit (actie$)
-	slot$ = ""
-	op$ = ""
-	value$ = ""
-	FOR i% = 1 TO LEN(actie$) + 1
-		char$ = MID$(actie$, i%, 1)
-		SELECT CASE char$
-			CASE "0" TO "9"
-				IF op$ = "" THEN
-					slot$ = slot$ + char$
-				ELSE
-					value$ = value$ + char$
-				END IF
-			CASE "=", "+"
-				op$ = char$
-			CASE ";"
-				CALL Muteer(VAL(slot$), op$, VAL(value$))
-				op$ = ""
-				value$ = ""
-				slot$ = ""
-		END SELECT
+SUB VoerActieUit (Actie$)
+  Plek$ = ""
+  Bewerking$ = ""
+  Waarde$ = ""
+  FOR i% = 1 TO LEN(Actie$) + 1
+    char$ = MID$(Actie$, i%, 1)
+    SELECT CASE char$
+      CASE "0" TO "9"
+        IF Bewerking$ = "" THEN
+          Plek$ = Plek$ + char$
+        ELSE
+          Waarde$ = Waarde$ + char$
+        END IF
+      CASE "=", "+"
+        Bewerking$ = char$
+      CASE ";"
+        CALL Muteer(VAL(Plek$), Bewerking$, VAL(Waarde$))
+        Bewerking$ = ""
+        Waarde$ = ""
+        Plek$ = ""
+    END SELECT
 
-	NEXT i%
+  NEXT i%
 
-	IF op$ <> "" THEN
-		CALL Muteer(VAL(slot$), op$, VAL(value$))
-	END IF
+  IF Bewerking$ <> "" THEN
+    CALL Muteer(VAL(Plek$), Bewerking$, VAL(Waarde$))
+  END IF
 
 END SUB
+
