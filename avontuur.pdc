@@ -1,9 +1,18 @@
 : diagram "Avontuur"  {
    skew            = straight
+   recursion_check = true
    events [] {
 
       beklim_toren:event {
          depends_on []   = koop_zwaard_bij_wapensmid;
+      }
+      betaal_twee_geldstukken:event {
+         depends_on []   = ;
+      }
+
+      betaal_twee_goudstukken_aan_hoefsmid: event {
+         logic_gate_type = or
+         depends_on []   = betaal_twee_geldstukken, vind_een_geldstuk_bij_de_rivier;
       }
 
       bezorg_graan_bij_molenaar:event {
@@ -52,11 +61,11 @@
       }
 
       geef_paard_nieuwe_hoefijzers:event {
-         depends_on []   = breng_paard_naar_hoefsmid;
+         depends_on []   = breng_paard_naar_hoefsmid, betaal_twee_goudstukken_aan_hoefsmid;
       }
 
-      haal_wagen_in_dorp_met_paard:event {
-         depends_on []   = geef_paard_nieuwe_hoefijzers;
+      haal_wagen_bij_molenaar_met_paard:event {
+         depends_on []   = geef_paard_nieuwe_hoefijzers, praat_met_molenaar;
       }
 
       hijs_lift_met_molensteen:event {
@@ -72,7 +81,8 @@
       }
 
       koop_eten_bij_bakker:event {
-         depends_on []   = ;
+      logic_gate_type = or
+         depends_on []   = vind_een_geldstuk_bij_de_rivier, betaal_twee_geldstukken;
       }
 
       koop_zwaard_bij_wapensmid:event {
@@ -163,6 +173,10 @@
          depends_on [] = ga_naar_hut_in_moeras;
       }
 
+      praat_met_molenaar : event {
+         depends_on []   = ;
+      }
+
       repareer_houweel:event {
          depends_on []   = pak_hout_in_bos, krijg_kapotte_houweel_van_dwerg;
       }
@@ -175,8 +189,12 @@
          depends_on []   = snij_touw_van_lift;
       }
 
+      vind_een_geldstuk_bij_de_rivier : event {
+         depends_on []   = ;
+      }
+
       zet_graan_op_wagen:event {
-         depends_on []   = haal_wagen_in_dorp_met_paard, praat_met_boer;
+         depends_on []   = haal_wagen_bij_molenaar_met_paard, praat_met_boer;
       }
 
       zet_hendel_op_lift:event {
@@ -190,5 +208,6 @@
       zet_zadel_op_draak : event {
          depends_on [] = maak_zadel_bij_hoefsmid, trek_tand_van_draak;
       }
+
    }
 }
