@@ -76,7 +76,7 @@ DATA "&"
 DATA "1=0;10=0;4=3", "*c2"
 DATA "Je kijkt de hele kamer rond, op zoek naar de bron van het geluid"
 DATA "", "*c3", "$n: 'Hey, er zit een raaf tegen het raam te tikken!'"
-DATA "", "*c14", "<TIK, TIK, TIK!>",
+DATA "", "*c14", "<TIK, TIK, TIK!>"
 DATA "&"
 
 DATA "1=0;10=1;4=1", "*c2", "Je probeert de raaf weg te jagen.", "&"
@@ -90,7 +90,7 @@ DATA "1=0;10=0;4=4", "*c2", "Je opent het raam. De raaf springt snel naar binnen
 DATA "Zo te zien heeft hij een brief aan zijn poot hangen."
 DATA "&10=1"
 
-DATA "1=0;10=2;2=0;4=4", "*c2", "Je geeft de raaf wat vogelvoer",
+DATA "1=0;10=2;2=0;4=4", "*c2", "Je geeft de raaf wat vogelvoer"
 DATA "De raaf is je erg dankbaar!"
 DATA "&23=4;"
 
@@ -131,7 +131,7 @@ DATA ""
 DATA "Gelukkig is $n te paard onderweg om een magische drank te bezorgen!"
 DATA "*s3", ""
 DATA "*c4", "Auw! Een laaghangende tak!", ""
-DATA "*c2", "$n viel ineens hard van $z paard...",
+DATA "*c2", "$n viel ineens hard van $z paard..."
 DATA "*c3", "$n: 'Oh nee! De magische drank is stuk gevallen!'"
 DATA "'En mijn paard is er vandoor!'"
 DATA "*c2", "", "Daar stond $n dan.. Alleen in het bos, zonder vervoer of medicijnen..."
@@ -587,8 +587,8 @@ FUNCTION Toegestaan% (Bewering$)
     CASE ";"
       resultaat = Toets(VAL(Plek$), Bewerking$, VAL(Waarde$))
       IF resultaat = 0 THEN
-  Toegestaan = 0
-  EXIT FUNCTION
+        Toegestaan = 0
+        EXIT FUNCTION
       END IF
       Bewerking$ = ""
       Waarde$ = ""
