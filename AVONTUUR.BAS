@@ -29,7 +29,7 @@ ON ERROR GOTO Foutafhandeling
 '   7 = Donker woud
 '   8 = Rivier
 ' 2 = Locatie toestand 0 = look, 1 = Open tas, 2 = leeg
-' 4 = Tijdelijke lokatie toestand (voor gesprekken)
+' 4 = Actie van speler
 ' 5 = Tijdelijke lokatie teller
 
 ' 10 = Lokatie status Proloog
@@ -161,6 +161,10 @@ DATA "1=8;3=3", "*c2", "Je wandelt naar het zuiden, richting de rivier", "", "&2
 DATA "2=11;3=5", "*c2", "Je loopt van de weg af, richting de ingang van de mijn.", "", "&2=0;3=0"
 
 ' Tas
+DATA "2=1;4=1", "*c2", "Je verwijderd de oude heft van de houweel,"
+DATA "en gebruikt de stok uit het bos om een nieuwe heft te maken."
+DATA "", "Het past! De houweel is weer zo goed als nieuw.", "", "&24=2;21=3"
+
 DATA "2=1", "*c15", "Je hebt het volgende bij je:", "&"
 DATA "2=1;22>0", "*c7", "-#22 geldstukken", "&"
 DATA "2=1;21=2", "*c7", "- Een stok, opgeraapt in het bos", "&"
@@ -170,15 +174,14 @@ DATA "2=1;24=1", "*c7", "- Houweel met gebroken heft", "&"
 DATA "2=1;24=2", "*c7", "- Gerepareerde houweel", "&"
 
 ' 1. Bos
-DATA "1=1;2=0", "*c2", "Je staat in het bos. Het is een stralende dag."
+DATA "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
 DATA "De wind laat de blaadjes ritselen.", ""
 DATA "In het oosten zijn akkers", "In het westen zijn heuvels", "&"
 DATA "1=1;2=0;20=0", "*c2", "Op de grond ligt je tas, en scherven van de fles medicijnen"
 DATA "", "*c3", "$n: 'Verdorie, de medicijnen zijn echt verloren'"
 DATA "*c2", "", "Je raapt de tas op", "&20=1;22=3"
-DATA "1=1;2=0;21=0", "*c2", "Op de grond ligt een vers afgebroken tak"
-DATA "&"
-DATA "21=1;2=2", "*c2", "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd."
+DATA "1=1;2=0;4=0;21=0", "*c2", "Op de grond ligt een vers afgebroken tak", "&"
+DATA "1=1;2=0;4=1", "*c2", "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd."
 DATA "Deze tak heeft je best pijn gedaan.", "&21=2"
 
 ' 2. Akkers
@@ -239,7 +242,7 @@ DATA " 'Dit was de weg richting het kasteel van de koning'"
 DATA " 'Hier moet ik een oplossing voor gaan vinden'", "&"
 
 ' 11. Mijn
-DATA "1=11;11<2;4=0;2=0", "*c2"
+DATA "1=11;2=0;11<2;4=0", "*c2"
 DATA "Je bent bij de mijn"
 DATA "Er ligt een mijnkarretje. Voor de ingang zit een dwerg"
 DATA "", "Hij ziet er niet al te vrolijk uit"
@@ -248,38 +251,42 @@ DATA "", "*c2", "De dwerg kijkt een beetje boos je aan"
 DATA "", "*c9", "Dwerg: 'Grr. Stom ding, stom ding!'"
 DATA "&11=1"
 
-DATA "1=11;11=2;4=0;2=0", "*c2"
+DATA "1=11;2=0;11=2;4=0", "*c2"
 DATA "Je bent bij de mijn"
 DATA "Er ligt een mijnkarretje. Voor de ingang zit Thorin de dwerg"
 DATA "", "Hij ziet er niet al te vrolijk uit", ""
 DATA "*c9", "Thorin: 'Hallo $n'"
 DATA "&"
 
-DATA "1=11;11=2;4=3", "*c3"
+DATA "1=11;2=0;11=2;4=3", "*c3"
 DATA "$n: 'Ik heb je houweel kunnen repareren'"
 DATA "", "*c9", "Thorin: 'Echt waar? Laat zien'", ""
 DATA "*c3", "$n: 'Alsjeblieft'"
 DATA "*c2", "", "Je geeft de gerepareerde houweel aan Thorin"
 DATA "Hij bekijkt hem grondig"
-DATA "", "*c9", "Thorin: 'Wow hij is zo goed als nieuw! bedankt!'", "&"
+DATA "", "*c9", "Thorin: 'Wow hij is zo goed als nieuw! bedankt!'", "&4=0;24=4"
 
-DATA "1=11;11=2;4=2", "*c3"
+DATA "1=11;2=0;11=2;4=2", "*c3"
 DATA "$n: 'Zou ik je houweel mogen hebben?'"
 DATA "", "*c9", "Thorin: 'Tuurlijk. Alleen de bovenkant is nog heel.'"
-DATA " 'Het heft is gebroken. Ik heb er niets meer aan'", "", "&4=0;24=1"
+DATA " 'Het heft is gebroken. Ik heb er niets meer aan'", "&4=0;24=1"
 
-DATA "1=11;11=2;4=1;24!4", "*c3"
+DATA "1=11;2=0;11=2;4=1;24!4", "*c3"
 DATA "$n: 'Hoe kan ik je helpen?'"
 DATA "", "*c9", "Thorin: 'Heb je iets te eten voor mij?'"
 DATA " 'En een nieuwe houweel?'", "&4=0"
 
-DATA "1=11;11=1;4=1", "*c3"
+DATA "1=11;2=0;11=2;4=1;24=4", "*c3"
+DATA "$n: 'Hoe kan ik je helpen?'"
+DATA "", "*c9", "Thorin: 'Heb je iets te eten voor mij?'", "&4=0"
+
+DATA "1=11;2=0;11=1;4=1", "*c3"
 DATA "$n: 'Je bent zelf een stom ding!'"
 DATA "", "*c9", "Dwerg: 'Ik heb het niet tegen jou!'", "&"
-DATA "1=11;11=1;4=2", "*c3"
+DATA "1=11;2=0;11=1;4=2", "*c3"
 DATA "$n: 'Pardon? Wie is een stom ding?'"
 DATA "", "*c9", "Dwerg: 'Sorry, ik heb het niet tegen jou..'", "&"
-DATA "1=11;11=1;4>0;4<3", "*c9"
+DATA "1=11;2=0;11=1;4>0;4<3", "*c9"
 DATA " 'Sorry van mijn manieren, ik heb wat tegenslag!'"
 DATA " 'Mijn naam is Thorin, en wie mag jij wezen?'",""
 DATA "*c3", "$n: 'Mijn naam is $n'",""
@@ -313,11 +320,11 @@ DATA "1=0;2=0;10=2;23=3", "Geef de raaf te eten", "4=4"
 DATA "1=0;10=3", "Begin avontuur", "1=5;4=0"
 
 DATA "1=5", "Bekijk omgeving", "1=1"
-DATA "2=1;1!0", "Bekijk omgeving", "2=0"
-DATA "20=1;2=0", "Bekijk inhoud van tas", "2=1"
+DATA "2=1;1!0", "Bekijk omgeving", "2=0;4=0"
+DATA "20=1;2=0", "Bekijk inhoud van tas", "2=1;4=0"
 
 ' 1. Bos acties
-DATA "2=0;1=1;21=0", "Raap de tak op", "21=1;2=2"
+DATA "2=0;1=1;21=0", "Raap de tak op", "4=1"
 DATA "2=0;1=1", "Ga naar het oosten, richting de akkers", "1=2;3=2"
 DATA "2=0;1=1", "Ga naar het westen, richting de heuvels", "1=3;3=4"
 
@@ -351,11 +358,11 @@ DATA "2=0;1=11;11=1;4=0", "Zeg: 'Ok ik ga weer.'", "1=3;3=5"
 
 DATA "2=0;1=11;11=2;4=0", "Zeg: 'Hoe kan ik je helpen?'", "4=1"
 DATA "2=0;1=11;11=2;4=0;24=0", "Zeg: 'Zou ik je houweel mogen hebben?'", "4=2"
-DATA "2=0;1=11;11=2;4=0;24=2", "Geef gerepareerde houweel aan Thorin", "4=3;24=4"
+DATA "2=0;1=11;11=2;4=0;24=2", "Geef gerepareerde houweel aan Thorin", "4=3"
 DATA "2=0;1=11;11=2;4=0", "Zeg: 'Sorry, ik moet er weer vandoor'", "1=3;3=5"
 
 ' Generale inventory acties
-DATA "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "24=2;21=3"
+DATA "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
 
 DATA "END"
 
