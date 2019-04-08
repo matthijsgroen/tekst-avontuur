@@ -32,6 +32,7 @@ ON ERROR GOTO Foutafhandeling
 ' 4 = Tijdelijke lokatie toestand (voor gesprekken)
 ' 5 = Tijdelijke lokatie teller
 
+' 10 = Lokatie status Proloog
 ' 11 = Lokatie status Mijn
 ' 12 = Lokatie status Hut
 ' 13 = Lokatie status Boerderij
@@ -47,7 +48,7 @@ ON ERROR GOTO Foutafhandeling
 ' 24 = 1 = kapotte houweel, 2 = gerepareerde houweel
 
 ' 0. Proloog
-1 DATA "1=0;4=0"
+1 DATA "1=0;10=0;4=0"
 DATA "*c2", "Er was eens, lang geleden een stoere koerier..."
 DATA "$Z naam was $n", ""
 DATA "$H was altijd super snel in het bezorgen van brieven en pakketjes."
@@ -56,13 +57,13 @@ DATA "Op het moment dat ons avontuur begint, ligt $n rustig te slapen...", ""
 DATA "*s2", "*c14", "<tik, tik, tik>", "*c3", "", "$n: 'huh?'"
 DATA "&2=2"
 
-DATA "1=0;4=1", "*c2"
+DATA "1=0;10=0;4=1", "*c2"
 DATA "Je probeert nog even verder te slapen.", ""
 DATA "*c3", "$n: 'Gaaaaap..   ..zzzzzz'", ""
 DATA "*s2", "*c14", "<tik, tik, tik>", "*c3", "", "$n: 'hmmmz?'"
 DATA "&"
 
-DATA "1=0;4=2", "*c3"
+DATA "1=0;10=0;4=2", "*c3"
 DATA "$n: 'Ja, ja, ik kom al!'", "", "*c2"
 DATA "Met veel tegenzin klim je uit je bed."
 DATA "Je strompelt naar de deur."
@@ -72,42 +73,44 @@ DATA "*c2", "", "Als je de deur van je kamer open doet, staat er niemand.", ""
 DATA "*c3", "$n: 'Waar komt dat geluid dan vandaan?'"
 DATA "&"
 
-DATA "1=0;4=3", "*c2"
+DATA "1=0;10=0;4=3", "*c2"
 DATA "Je kijkt de hele kamer rond, op zoek naar de bron van het geluid"
 DATA "", "*c3", "$n: 'Hey, er zit een raaf tegen het raam te tikken!'"
 DATA "", "*c14", "<TIK, TIK, TIK!>",
 DATA "&"
 
-DATA "1=0;4=4", "*c2", "Je opent het raam. De raaf springt snel naar binnen."
-DATA "Zo te zien heeft hij een brief aan zijn poot hangen."
-DATA "&"
-
-DATA "1=0;4=5;2=2", "*c2", "Je probeert de raaf weg te jagen.", "&"
-DATA "1=0;4=6;2=2", "*c2", "Je probeert weer in bed te kruipen.", "&"
-DATA "1=0;4=7;2=2", "*c2", "Je probeert het briefje van de raaf te pakken.", "&"
-DATA "1=0;4>4;4<8;2=2", "*c2", "De raaf pikt naar je hand."
+DATA "1=0;10=1;4=1", "*c2", "Je probeert de raaf weg te jagen.", "&"
+DATA "1=0;10=1;4=2", "*c2", "Je probeert weer in bed te kruipen.", "&"
+DATA "1=0;10=1;4=3", "*c2", "Je probeert het briefje van de raaf te pakken.", "&"
+DATA "1=0;10=1;4>0;4<4", "*c2", "De raaf pikt naar je hand."
 DATA "*c3", "$n: 'Grrr!'"
 DATA "&"
 
-DATA "1=0;4=12", "*c2", "Je geeft de raaf wat vogelvoer",
+DATA "1=0;10=0;4=4", "*c2", "Je opent het raam. De raaf springt snel naar binnen."
+DATA "Zo te zien heeft hij een brief aan zijn poot hangen."
+DATA "&10=1"
+
+DATA "1=0;10=2;2=0;4=4", "*c2", "Je geeft de raaf wat vogelvoer",
 DATA "De raaf is je erg dankbaar!"
-DATA "&23=4;4=8"
+DATA "&23=4;"
 
-DATA "1=0;2=0", "*c2", "Je kijkt de kamer rond", "", "&"
-DATA "1=0;2=0;20=0", "Je tas hangt aan de achterkant van de deur", "&"
-DATA "1=0;2=0", "Je hebt een mooie kast tussen je bed en bureau in staan", "&"
-DATA "1=0;2=0;23!4", "Een redelijk agressieve raaf zit op je bureau", "&"
-DATA "1=0;2=0;23=4", "Een rustige raaf zit op je bureau", "&"
-
-DATA "1=0;4=9;23!2;", "*c2", "De kast zit op slot", "&4=8"
-DATA "1=0;4=9;23=2;", "*c2", "Je opent de kast met de sleutel", ""
+DATA "1=0;10=2;2=0;4=1;23>2", "*c2", "De kast is al open, maar er zit niets interessants meer in", "&"
+DATA "1=0;10=2;2=0;4=1;23<2", "*c2", "De kast zit op slot", "&"
+DATA "1=0;10=2;2=0;4=1;23=2", "*c2", "Je opent de kast met de sleutel", ""
 DATA "*c3", "$n: 'Hey, hier ligt vogelvoer!'"
 DATA "", "*c2", "Je pakt het vogelvoer uit de kast", "&4=8;23=3"
-DATA "1=0;4=10;23=0", "*c2", "Je pakt je tas van achter de deur", "&20=1;22=100;23=1;4=8"
-DATA "1=0;4=11;23!4", "*c2", "Je probeert het briefje van de raaf te pakken."
+DATA "1=0;10=2;2=0;4=2;23=0", "*c2", "Je pakt je tas van achter de deur", "&20=1;22=100;23=1"
+
+DATA "1=0;10=2;2=0;4=0;", "*c2", "Je kijkt de kamer rond", "", "&"
+DATA "1=0;10=2;2=0;4=0;20=0", "Je tas hangt aan de achterkant van de deur", "&"
+DATA "1=0;10=2;2=0;4=0", "Je hebt een mooie kast tussen je bed en bureau in staan", "&"
+DATA "1=0;10=2;2=0;4=0;23!4", "Een redelijk agressieve raaf zit op je bureau", "&"
+DATA "1=0;10=2;2=0;4=0;23=4", "Een rustige raaf zit op je bureau", "&"
+
+DATA "1=0;10=2;2=0;4=3;23!4", "*c2", "Je probeert het briefje van de raaf te pakken."
 DATA "De raaf pikt naar je hand.", "*c3", "$n: 'Grrr!'"
 DATA "&4=8"
-DATA "1=0;4=11;23=4", "*c2", "Je probeert het briefje van de raaf te pakken."
+DATA "1=0;10=2;2=0;4=3;23=4", "*c2", "Je probeert het briefje van de raaf te pakken."
 DATA "De raaf blijft rustig.", "", "Je leest de brief:", "*c6", "*s1", ""
 DATA "Beste $n,"
 DATA "", "De koning is ernstig ziek."
@@ -117,7 +120,7 @@ DATA "We hopen dat je dit bericht snel ontvangt en je snel de juiste medicijnen 
 DATA "", "Gegroet,", "  De dokter van de koning", "*s2", "*c2", ""
 DATA "Je blijft een tijdje naar de brief staren.", "De koning?", "Heeft jouw hulp nodig?"
 DATA "Je gaat snel de deur uit, richting een groot avontuur..."
-DATA "&4=20;22=3;20=0;2=0"
+DATA "&10=3;22=3;20=0;2=0"
 
 ' 5. Intro
 DATA "1=5", "*c2"
@@ -155,6 +158,7 @@ DATA "1=6;3=4", "*c2", "Je wandelt naar het westen, richting het dorp", "", "&2=
 DATA "1=6;3=1", "*c2", "Je wandelt naar het noorden, richting het dorp", "", "&2=0;3=0"
 DATA "1=7;3=2", "*c2", "Je wandelt over een smal kronkelig pad, richting het donkere woud", "", "&2=0;3=0"
 DATA "1=8;3=3", "*c2", "Je wandelt naar het zuiden, richting de rivier", "", "&2=0;3=0"
+DATA "2=11;3=5", "*c2", "Je loopt van de weg af, richting de ingang van de mijn.", "", "&2=0;3=0"
 
 ' Tas
 DATA "2=1", "*c15", "Je hebt het volgende bij je:", "&"
@@ -236,7 +240,7 @@ DATA " 'Hier moet ik een oplossing voor gaan vinden'", "&"
 
 ' 11. Mijn
 DATA "1=11;11<2;4=0;2=0", "*c2"
-DATA "Je loopt van de weg af, richting de ingang van de mijn."
+DATA "Je bent bij de mijn"
 DATA "Er ligt een mijnkarretje. Voor de ingang zit een dwerg"
 DATA "", "Hij ziet er niet al te vrolijk uit"
 DATA "", "*c3", "$n: 'Hallo, kun je mij helpen?'"
@@ -244,21 +248,29 @@ DATA "", "*c2", "De dwerg kijkt een beetje boos je aan"
 DATA "", "*c9", "Dwerg: 'Grr. Stom ding, stom ding!'"
 DATA "&11=1"
 
-DATA "1=11;11=2;4=0;2=1", "*c2"
-DATA "Je loopt van de weg af, richting de ingang van de mijn."
+DATA "1=11;11=2;4=0;2=0", "*c2"
+DATA "Je bent bij de mijn"
 DATA "Er ligt een mijnkarretje. Voor de ingang zit Thorin de dwerg"
 DATA "", "Hij ziet er niet al te vrolijk uit", ""
 DATA "*c9", "Thorin: 'Hallo $n'"
 DATA "&"
 
+DATA "1=11;11=2;4=3", "*c3"
+DATA "$n: 'Ik heb je houweel kunnen repareren'"
+DATA "", "*c9", "Thorin: 'Echt waar? Laat zien'", ""
+DATA "*c3", "$n: 'Alsjeblieft'"
+DATA "*c2", "", "Je geeft de gerepareerde houweel aan Thorin"
+DATA "Hij bekijkt hem grondig"
+DATA "", "*c9", "Thorin: 'Wow hij is zo goed als nieuw! bedankt!'", "&"
+
 DATA "1=11;11=2;4=2", "*c3"
 DATA "$n: 'Zou ik je houweel mogen hebben?'"
-DATA "", "*c9", "Dwerg: 'Tuurlijk. Alleen de bovenkant is nog heel.'"
+DATA "", "*c9", "Thorin: 'Tuurlijk. Alleen de bovenkant is nog heel.'"
 DATA " 'Het heft is gebroken. Ik heb er niets meer aan'", "", "&4=0;24=1"
 
-DATA "1=11;11=2;4=1", "*c3"
+DATA "1=11;11=2;4=1;24!4", "*c3"
 DATA "$n: 'Hoe kan ik je helpen?'"
-DATA "", "*c9", "Dwerg: 'Heb je iets te eten voor mij?'"
+DATA "", "*c9", "Thorin: 'Heb je iets te eten voor mij?'"
 DATA " 'En een nieuwe houweel?'", "&4=0"
 
 DATA "1=11;11=1;4=1", "*c3"
@@ -269,77 +281,80 @@ DATA "$n: 'Pardon? Wie is een stom ding?'"
 DATA "", "*c9", "Dwerg: 'Sorry, ik heb het niet tegen jou..'", "&"
 DATA "1=11;11=1;4>0;4<3", "*c9"
 DATA " 'Sorry van mijn manieren, ik heb wat tegenslag!'"
-DATA " 'Mijn naam is Thorin, en wie mag jij wezen?'"
-DATA "*c3", "$n: 'Mijn naam is $n'"
+DATA " 'Mijn naam is Thorin, en wie mag jij wezen?'",""
+DATA "*c3", "$n: 'Mijn naam is $n'",""
 DATA "*c9", "Thorin: 'Hallo $n. Sorry dat ik zo ruw deed'"
 DATA " 'Mijn houweel ik gebroken!'"
 DATA " 'Ik had net een ader van edelstenen ontdekt!'"
 DATA " 'Ik heb zo hard mijn best gedaan om ze los te krijgen'"
 DATA " 'Nu is mijn houweel gebroken. En ik heb honger!'"
 DATA " 'Ik heb veel te hard gewerkt, en nu heb ik niets!'"
-DATA "*c2", "", "De dwerg zucht diep"
+DATA "*c2", "", "Thorin zucht diep"
 DATA "&11=2;4=0"
 
 DATA "END"
 
 ' Acties
-2 DATA "1=0;4<2", "Word wakker", "4=2"
-DATA "1=0;4<2", "Probeer nog even verder te slapen", "4=1"
-DATA "1=0;4=2", "Kijk waar geluid vandaan komt", "4=3"
-DATA "1=0;4=3", "Open raam", "4=4"
-DATA "1=0;4>3;4<8", "Jaag de raaf weg", "4=5;5+1"
-DATA "1=0;4>3;4<8", "Het tikken is weg! Probeer weer in bed te kruipen", "4=6;5+1"
-DATA "1=0;4>3;4<8", "Pak briefje van de raaf", "4=7;5+1"
-DATA "1=0;4>3;4<8;5>2", "Kijk de kamer rond", "2=0;4=8"
+2 DATA "1=0;10=0;4<2", "Word wakker", "4=2"
+DATA "1=0;10=0;4<2", "Probeer nog even verder te slapen", "4=1"
+DATA "1=0;10=0;4=2", "Kijk waar geluid vandaan komt", "4=3"
+DATA "1=0;10=0;4=3", "Open raam", "4=4"
+DATA "1=0;10=1", "Jaag de raaf weg", "4=1;5+1"
+DATA "1=0;10=1", "Het tikken is weg! Probeer weer in bed te kruipen", "4=2;5+1"
+DATA "1=0;10=1", "Pak briefje van de raaf", "4=3;5+1"
+DATA "1=0;10=1;5>2", "Kijk de kamer rond", "2=0;4=0;10=2"
 
-DATA "2!0;1=0;4>7", "Bekijk omgeving", "2=0"
-DATA "1=0;4=8", "Open de kast", "4=9;2=2"
-DATA "1=0;4=8;20=0", "Pak je tas", "4=10;2=2"
-DATA "1=0;4=8", "Pak briefje van de raaf", "4=11;2=2"
-DATA "1=0;4=8;23=3", "Geef de raaf te eten", "4=12;2=2"
-DATA "1=0;4=20", "Begin avontuur", "1=5;4=0"
+DATA "1=0;10=2;2!1;4!0", "Bekijk omgeving", "2=0;4=0"
+DATA "1=0;10=2;2=1", "Bekijk omgeving", "2=0;4=0"
+DATA "1=0;2=0;10=2", "Open de kast", "4=1"
+DATA "1=0;2=0;10=2;20=0", "Pak je tas", "4=2"
+DATA "1=0;2=0;10=2", "Pak briefje van de raaf", "4=3"
+DATA "1=0;2=0;10=2;23=3", "Geef de raaf te eten", "4=4"
+DATA "1=0;10=3", "Begin avontuur", "1=5;4=0"
 
 DATA "1=5", "Bekijk omgeving", "1=1"
-DATA "2!0;1!0", "Bekijk omgeving", "2=0"
-DATA "20=1;2!1", "Bekijk inhoud van tas", "2=1"
+DATA "2=1;1!0", "Bekijk omgeving", "2=0"
+DATA "20=1;2=0", "Bekijk inhoud van tas", "2=1"
 
 ' 1. Bos acties
-DATA "1=1;21=0", "Raap de tak op", "21=1;2=2"
-DATA "1=1", "Ga naar het oosten, richting de akkers", "1=2;3=2"
-DATA "1=1", "Ga naar het westen, richting de heuvels", "1=3;3=4"
+DATA "2=0;1=1;21=0", "Raap de tak op", "21=1;2=2"
+DATA "2=0;1=1", "Ga naar het oosten, richting de akkers", "1=2;3=2"
+DATA "2=0;1=1", "Ga naar het westen, richting de heuvels", "1=3;3=4"
 
 ' 2. Akker acties
-DATA "1=2", "Ga naar het westen, richting het bos", "1=1;3=4"
-DATA "1=2", "Ga naar het zuiden, richting het dorp", "1=6;3=3"
+DATA "2=0;1=2", "Ga naar het westen, richting het bos", "1=1;3=4"
+DATA "2=0;1=2", "Ga naar het zuiden, richting het dorp", "1=6;3=3"
 
 ' 3. Heuvel acties
-DATA "1=3", "Volg het pad naar de mijn", "1=11;4=0"
-DATA "1=3", "Ga naar het oosten, richting het bos", "1=1;3=2"
-DATA "1=3", "Ga naar het zuiden, richting het moeras", "1=4;3=3"
+DATA "2=0;1=3", "Volg het pad naar de mijn", "1=11;4=0;3=5"
+DATA "2=0;1=3", "Ga naar het oosten, richting het bos", "1=1;3=2"
+DATA "2=0;1=3", "Ga naar het zuiden, richting het moeras", "1=4;3=3"
 
 ' 4. Moeras acties
-DATA "1=4", "Ga naar het noorden, richting de heuvels", "1=3;3=1"
+DATA "2=0;1=4", "Ga naar het noorden, richting de heuvels", "1=3;3=1"
 
 ' 6. Dorp Acties
-DATA "1=6", "Ga naar het noorden, richting de akkers", "1=2;3=1"
-DATA "1=6", "Ga naar het oosten, richting de het donkere woud", "1=7;3=2"
-DATA "1=6", "Ga naar het zuiden, richting de rivier", "1=8;3=3"
+DATA "2=0;1=6", "Ga naar het noorden, richting de akkers", "1=2;3=1"
+DATA "2=0;1=6", "Ga naar het oosten, richting de het donkere woud", "1=7;3=2"
+DATA "2=0;1=6", "Ga naar het zuiden, richting de rivier", "1=8;3=3"
 
 ' 7. Donker woud acties
-DATA "1=7", "Ga naar het westen, richting het dorp", "1=6;3=4"
+DATA "2=0;1=7", "Ga naar het westen, richting het dorp", "1=6;3=4"
 
 ' 8. Rivier acties
-DATA "1=8", "Ga naar het noorden, richting het dorp", "1=6;3=1"
+DATA "2=0;1=8", "Ga naar het noorden, richting het dorp", "1=6;3=1"
 
 ' 11. Mijn Acties
-DATA "1=11;11=1;4=0", "Zeg: 'Je bent zelf een stom ding!'", "4=1"
-DATA "1=11;11=1;4=0", "Zeg: 'Pardon?'", "4=2"
-DATA "1=11;11=1;4=0", "Zeg: 'Ok ik ga weer.'", "1=3;3=5"
+DATA "2=0;1=11;11=1;4=0", "Zeg: 'Je bent zelf een stom ding!'", "4=1"
+DATA "2=0;1=11;11=1;4=0", "Zeg: 'Pardon?'", "4=2"
+DATA "2=0;1=11;11=1;4=0", "Zeg: 'Ok ik ga weer.'", "1=3;3=5"
 
-DATA "1=11;11=2;4=0", "Zeg: 'Hoe kan ik je helpen?'", "4=1"
-DATA "1=11;11=2;4=0;24=0", "Zeg: 'Zou ik je houweel mogen hebben?'", "4=2"
-DATA "1=11;11=2;4=0", "Zeg: 'Sorry, ik moet er weer vandoor'", "1=3;3=5"
+DATA "2=0;1=11;11=2;4=0", "Zeg: 'Hoe kan ik je helpen?'", "4=1"
+DATA "2=0;1=11;11=2;4=0;24=0", "Zeg: 'Zou ik je houweel mogen hebben?'", "4=2"
+DATA "2=0;1=11;11=2;4=0;24=2", "Geef gerepareerde houweel aan Thorin", "4=3;24=4"
+DATA "2=0;1=11;11=2;4=0", "Zeg: 'Sorry, ik moet er weer vandoor'", "1=3;3=5"
 
+' Generale inventory acties
 DATA "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "24=2;21=3"
 
 DATA "END"
