@@ -167,6 +167,9 @@ DATA "2=1;4=1", "*c2", "Je verwijderd de oude heft van de houweel,"
 DATA "en gebruikt de stok uit het bos om een nieuwe heft te maken."
 DATA "", "Het past! De houweel is weer zo goed als nieuw.", "", "&24=2;21=3"
 
+DATA "2=1;4=2", "*c2", "De koeken ruiken heerlijk,"
+DATA "Maar toch besluit je ze voor later te bewaren.", "", "&"
+
 DATA "2=1", "*c15", "Je hebt het volgende bij je:", "&"
 DATA "2=1;22>1", "*c7", "-#22 geldstukken", "&"
 DATA "2=1;22=1", "*c7", "- 1 geldstuk", "&"
@@ -176,6 +179,7 @@ DATA "2=1;23=3", "*c7", "- Vogelvoer", "&"
 DATA "2=1;24=1", "*c7", "- Houweel met gebroken heft", "&"
 DATA "2=1;24=2", "*c7", "- Gerepareerde houweel", "&"
 DATA "2=1;25=2", "*c7", "- Koeken, vers van de bakker", "&"
+DATA "2=1;26=1", "*c7", "- Een fonkelende edelsteen", "&"
 
 ' 1. Bos
 DATA "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -262,27 +266,51 @@ DATA "", "Hij ziet er niet al te vrolijk uit", ""
 DATA "*c9", "Thorin: 'Hallo $n'"
 DATA "&"
 
+DATA "1=11;2=0;11=3;4=0", "*c2"
+DATA "Je bent bij de mijn"
+DATA "Er ligt een mijnkarretje. Thorin de dwerg is in de mijn aan het werk"
+DATA "", "Hij ziet er vrolijk uit", ""
+DATA "*c9", "Thorin: 'Hallo $n'"
+DATA "&"
+
 DATA "1=11;2=0;11=2;4=3", "*c3"
 DATA "$n: 'Ik heb je houweel kunnen repareren'"
 DATA "", "*c9", "Thorin: 'Echt waar? Laat zien'", ""
 DATA "*c3", "$n: 'Alsjeblieft'"
-DATA "*c2", "", "Je geeft de gerepareerde houweel aan Thorin"
-DATA "Hij bekijkt hem grondig"
+DATA "*c2", "", "Je geeft de gerepareerde houweel aan Thorin. Hij bekijkt hem grondig"
 DATA "", "*c9", "Thorin: 'Wow hij is zo goed als nieuw! bedankt!'", "&4=0;24=4"
+
+DATA "1=11;2=0;11=2;4=4", "*c2", "Je bied Thorin de koeken aan", "", "*c3"
+DATA "$n: 'Hier, alsjeblieft'"
+DATA "", "*c9", "Thorin: 'Whoa die ruiken lekker, bedankt!'", "", "*c2"
+DATA "Thorin zit te smullen van de koeken"
+DATA "", "*c9", "Thorin: 'Zo daar was ik echt aan toe!'", "&4=0;25=3"
+
+DATA "1=11;2=0;11=2;24=4;25=3", "*c2", "Thorin staat op, en loopt de mijn in. Met nieuwe energie,"
+DATA "en een gerepareerde houweel, gaat hij op de edelstenen inhakken", ""
+DATA "*c9", "Thorin: 'Hei ho, Hei ho....", "*c2", "", 
+DATA "Stukken edelsten vallen op de grond. Een stuk rolt naar je toe", "&11=3;4=0"
+
+DATA "1=11;2=0;11=3;4=1;26=0", "*c2"
+DATA "Je raapt de edelsteen op. Hij fonkelt mooi in het zonlicht", "&26=1;4=0"
 
 DATA "1=11;2=0;11=2;4=2", "*c3"
 DATA "$n: 'Zou ik je houweel mogen hebben?'"
 DATA "", "*c9", "Thorin: 'Tuurlijk. Alleen de bovenkant is nog heel.'"
 DATA " 'Het heft is gebroken. Ik heb er niets meer aan'", "&4=0;24=1"
 
-DATA "1=11;2=0;11=2;4=1;24!4", "*c3"
+DATA "1=11;2=0;11=2;4=1;24!4;25!3", "*c3"
 DATA "$n: 'Hoe kan ik je helpen?'"
 DATA "", "*c9", "Thorin: 'Heb je iets te eten voor mij?'"
 DATA " 'En een nieuwe houweel?'", "&4=0"
 
-DATA "1=11;2=0;11=2;4=1;24=4", "*c3"
+DATA "1=11;2=0;11=2;4=1;24=4;25!3", "*c3"
 DATA "$n: 'Hoe kan ik je helpen?'"
 DATA "", "*c9", "Thorin: 'Heb je iets te eten voor mij?'", "&4=0"
+
+DATA "1=11;2=0;11=2;4=1;24!4;25=3", "*c3"
+DATA "$n: 'Hoe kan ik je helpen?'"
+DATA "", "*c9", "Thorin: 'Ik heb dringend een nieuwe houweel nodig'", "&4=0"
 
 DATA "1=11;2=0;11=1;4=1", "*c3"
 DATA "$n: 'Je bent zelf een stom ding!'"
@@ -400,7 +428,13 @@ DATA "2=0;1=11;11=1;4=0", "Zeg: 'Ok ik ga weer.'", "1=3;3=5"
 DATA "2=0;1=11;11=2;4=0", "Zeg: 'Hoe kan ik je helpen?'", "4=1"
 DATA "2=0;1=11;11=2;4=0;24=0", "Zeg: 'Zou ik je houweel mogen hebben?'", "4=2"
 DATA "2=0;1=11;11=2;4=0;24=2", "Geef gerepareerde houweel aan Thorin", "4=3"
+DATA "2=0;1=11;11=2;4=0;25=2", "Geef koeken aan Thorin", "4=4"
+'DATA "2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan medicijnen kan komen?'", "4=5"
+'DATA "2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan vervoer kan komen?'", "4=6"
 DATA "2=0;1=11;11=2;4=0", "Zeg: 'Sorry, ik moet er weer vandoor'", "1=3;3=5"
+
+DATA "2=0;1=11;11=3;4=0;26=0", "Raap edelsteen op", "4=1"
+DATA "2=0;1=11;11=3;4=0", "Zeg: 'Ok, ik ben er weer vandoor'", "1=3;3=5"
 
 ' 16. Bakkerij
 'DATA "2=0;1=16;16=1;4=0", "Zeg: 'Hallo? Is alles goed met u?'", "4=1"
@@ -415,6 +449,7 @@ DATA "2=0;1=16;16=2;4=0;22<3", "Oei, ik heb niet genoeg geld", "4=2"
 
 ' Generale inventory acties
 DATA "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
+DATA "2=1;25=2", "Eet koeken", "4=2"
 
 DATA "END"
 
