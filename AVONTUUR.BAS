@@ -428,13 +428,13 @@ Start:
 HuidigSpel% = AantalOpslag% + 1
 NaamInvoer:
 CLS
-PRINT "Welkom!"
+PRINT "Hallo avonturier!"
 PRINT
-INPUT "Hoi, wat is jouw naam"; Naam$
+INPUT "Wat is je naam"; Naam$
 IF LTRIM$(Naam$) = "" THEN
   GOTO NaamInvoer
 END IF
-PRINT "Ben je een jongen of een meisje? (j/m) "
+PRINT "Ben je een jongen of een meisje? (j/m)"
 DO
   Keuze$ = INKEY$
 LOOP UNTIL Keuze$ = "j" OR Keuze$ = "m"

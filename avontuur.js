@@ -1,16 +1,77 @@
 const { promisify } = require("util");
 const readFile = promisify(require("fs").readFile);
+const stdin = process.stdin;
+stdin.resume();
+
+const sleep = duration =>
+  new Promise(resolve =>
+    skip ? resolve() : setTimeout(resolve, duration * 1e3)
+  );
+
+// https://en.wikipedia.org/wiki/ANSI_escape_code
+const color = index =>
+  process.stdout.write(
+    [
+      "\u001b[30m", // 0 = black
+      "\u001b[31m", // 1 = blue
+      "\u001b[32m", // 2 = green
+      "\u001b[36m", // 3 = cyan
+      "\u001b[33m", // 4 = red
+      "\u001b[35m", // 5 = magenta
+      "\u001b[33m", // 6 = yellow
+      "\u001b[37m", // 7 = white
+      "\u001b[90m", // 8 = grey
+      "\u001b[94m", // 9 = bright blue
+      "\u001b[92m", // 10 = bright green
+      "\u001b[96m", // 11 = bright cyan
+      "\u001b[91m", // 12 = bright red
+      "\u001b[95m", // 13 = bright magenta
+      "\u001b[93m", // 14 = bright yellow
+      "\u001b[97m" // 15 = bright white
+    ][index]
+  );
+
+const print = tekst => process.stdout.write(tekst);
+const cls = () => process.stdout.write("\x1Bc");
+
+const input = prompt =>
+  new Promise(resolve => {
+    print(prompt + "? ");
+    stdin.setRawMode(false);
+    stdin.setEncoding("utf8");
+    const callback = function(chunk) {
+      resolve(chunk.slice(0, -1));
+
+      stdin.setRawMode(true);
+      stdin.setEncoding("utf8");
+      stdin.removeListener("data", callback);
+    };
+
+    stdin.on("data", callback);
+  });
 
 let skip = false;
 let keyPressed = null;
-const stdin = process.stdin;
 stdin.setRawMode(true);
-stdin.resume();
 stdin.setEncoding("utf8");
 
-const naam = "Hiddo";
-const geslacht = true;
+stdin.on("data", function(key) {
+  // ctrl-c ( end of text )
+  if (key === "\u0003" || key === "\u001b") {
+    cls();
+    color(7);
+    print("Bedankt voor het spelen!\n");
 
+    process.exit();
+  }
+  if (key === "\u0020") {
+    skip = true;
+  }
+  keyPressed = key;
+});
+
+let naam = "";
+let geslacht = null;
 let screenData = [];
 let actieData = [];
 
@@ -85,37 +146,6 @@ const interpoleer = zin =>
     .replace(/\$z/g, geslacht ? "zijn" : "haar")
     .replace(/\$Z/g, geslacht ? "Zijn" : "Haar")
     .replace(/#\d{2}/g, num => ` ${gameState[parseInt(num.slice(1), 10)]}`);
-
-const sleep = duration =>
-  new Promise(resolve =>
-    skip ? resolve() : setTimeout(resolve, duration * 1e3)
-  );
-
-// https://en.wikipedia.org/wiki/ANSI_escape_code
-const color = index =>
-  process.stdout.write(
-    [
-      "\u001b[30m", // 0 = black
-      "\u001b[31m", // 1 = blue
-      "\u001b[32m", // 2 = green
-      "\u001b[36m", // 3 = cyan
-      "\u001b[33m", // 4 = red
-      "\u001b[35m", // 5 = magenta
-      "\u001b[33m", // 6 = yellow
-      "\u001b[37m", // 7 = white
-      "\u001b[90m", // 8 = grey
-      "\u001b[94m", // 9 = bright blue
-      "\u001b[92m", // 10 = bright green
-      "\u001b[96m", // 11 = bright cyan
-      "\u001b[91m", // 12 = bright red
-      "\u001b[95m", // 13 = bright magenta
-      "\u001b[93m", // 14 = bright yellow
-      "\u001b[97m" // 15 = bright white
-    ][index]
-  );
-
-const print = tekst => process.stdout.write(tekst);
-const cls = () => process.stdout.write("\x1Bc");
 
 const tekst = async (verteller, zin) => {
   color(verteller);
@@ -242,6 +272,17 @@ const toonActies = async () => {
 };
 
 const gameLus = async () => {
+  cls();
+  print("Hallo avonturier!\n");
+  print("\n");
+  naam = await input("Wat is je naam");
+  print("Ben je een jongen of een meisje? (j/m)\n");
+  let toets;
+  do {
+    toets = await keypress();
+  } while (toets !== "j" && toets !== "m");
+  geslacht = toets === "j";
+
   await readBasicData();
   do {
     await toonGebeurtenis();
@@ -249,36 +290,5 @@ const gameLus = async () => {
   } while (gameState[0] === 0);
   process.exit(0);
 };
-
-function toUnicode(theString) {
-  var unicodeString = "";
-  for (var i = 0; i < theString.length; i++) {
-    var theUnicode = theString
-      .charCodeAt(i)
-      .toString(16)
-      .toUpperCase();
-    while (theUnicode.length < 4) {
-      theUnicode = "0" + theUnicode;
-    }
-    theUnicode = "\\u" + theUnicode;
-    unicodeString += theUnicode;
-  }
-  return unicodeString;
-}
-
-stdin.on("data", function(key) {
-  // ctrl-c ( end of text )
-  if (key === "\u0003" || key === "\u001b") {
-    cls();
-    color(7);
-    print("Bedankt voor het spelen!\n");
-
-    process.exit();
-  }
-  if (key === "\u0020") {
-    skip = true;
-  }
-  keyPressed = key;
-});
 
 gameLus();
