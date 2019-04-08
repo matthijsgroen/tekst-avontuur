@@ -82,9 +82,8 @@ DATA "&"
 DATA "1=0;10=1;4=1", "*c2", "Je probeert de raaf weg te jagen.", "&"
 DATA "1=0;10=1;4=2", "*c2", "Je probeert weer in bed te kruipen.", "&"
 DATA "1=0;10=1;4=3", "*c2", "Je probeert het briefje van de raaf te pakken.", "&"
-DATA "1=0;10=1;4>0;4<4", "*c2", "De raaf pikt naar je hand."
-DATA "*c3", "$n: 'Grrr!'"
-DATA "&"
+DATA "1=0;10=1;4>0;4<4", "*c2", "", "De raaf pikt naar je hand."
+DATA "*c3", " ", "$n: 'Grrr!'", "&"
 
 DATA "1=0;10=0;4=4", "*c2", "Je opent het raam. De raaf springt snel naar binnen."
 DATA "Zo te zien heeft hij een brief aan zijn poot hangen."
@@ -128,10 +127,9 @@ DATA "$n wist snel aan de juiste medicijnen te komen,"
 DATA "in de vorm van een magische drank."
 DATA "$H is nu onderweg naar de koning, om ze te bezorgen."
 DATA ""
-DATA "Gelukkig is $n te paard onderweg om een magische drank te bezorgen!"
 DATA "*s3", ""
 DATA "*c4", "Auw! Een laaghangende tak!", ""
-DATA "*c2", "$n viel ineens hard van $z paard..."
+DATA "*c2", "$n viel ineens hard van $z paard...", ""
 DATA "*c3", "$n: 'Oh nee! De magische drank is stuk gevallen!'"
 DATA "'En mijn paard is er vandoor!'"
 DATA "*c2", "", "Daar stond $n dan.. Alleen in het bos, zonder vervoer of medicijnen..."
@@ -145,20 +143,24 @@ DATA "&"
 '   4 = Arriveer te voet vanuit het westen
 '   5 = Arriveer vanuit sub-lokatie 1
 '   6 = Arriveer vanuit sub-lokatie 2
-DATA "1=1;3=2", "*c2", "Je wandelt naar het oosten, richting het bos", "", "&2=0;3=0"
-DATA "1=1;3=4", "*c2", "Je wandelt naar het westen, richting het bos", "", "&2=0;3=0"
-DATA "1=2;3=2", "*c2", "Je wandelt naar het oosten, richting de akkers", "", "&2=0;3=0"
-DATA "1=2;3=1", "*c2", "Je wandelt naar het noorden, richting de akkers", "", "&2=0;3=0"
-DATA "1=3;3=4", "*c2", "Je wandelt naar het westen, richting de heuvels", "", "&2=0;3=0"
-DATA "1=3;3=1", "*c2", "Je klimt omhoog, richting de heuvels", "", "&2=0;3=0"
-DATA "1=3;3=5", "*c2", "Je groet de dwerg, en loopt weer richting de weg", "", "&2=0;3=0"
-DATA "1=4;3=3", "*c2", "Je daalt af naar het zuiden, over een sompig pad, richting het moeras", "", "&2=0;3=0"
-DATA "1=6;3=2", "*c2", "Je wandelt naar het zuiden, richting het dorp", "", "&2=0;3=0"
-DATA "1=6;3=4", "*c2", "Je wandelt naar het westen, richting het dorp", "", "&2=0;3=0"
-DATA "1=6;3=1", "*c2", "Je wandelt naar het noorden, richting het dorp", "", "&2=0;3=0"
-DATA "1=7;3=2", "*c2", "Je wandelt over een smal kronkelig pad, richting het donkere woud", "", "&2=0;3=0"
-DATA "1=8;3=3", "*c2", "Je wandelt naar het zuiden, richting de rivier", "", "&2=0;3=0"
-DATA "2=11;3=5", "*c2", "Je loopt van de weg af, richting de ingang van de mijn.", "", "&2=0;3=0"
+DATA "1=1;3=2", "*c2", "Je wandelt naar het oosten, richting het bos", "", "&3=0"
+DATA "1=1;3=4", "*c2", "Je wandelt naar het westen, richting het bos", "", "&3=0"
+DATA "1=2;3=2", "*c2", "Je wandelt naar het oosten, richting de akkers", "", "&3=0"
+DATA "1=2;3=1", "*c2", "Je wandelt naar het noorden, richting de akkers", "", "&3=0"
+DATA "1=3;3=4", "*c2", "Je wandelt naar het westen, richting de heuvels", "", "&3=0"
+DATA "1=3;3=1", "*c2", "Je klimt omhoog, richting de heuvels", "", "&3=0"
+DATA "1=3;3=5", "*c2", "Je groet de dwerg, en loopt weer richting de weg", "", "&3=0"
+DATA "1=4;3=3", "*c2", "Je daalt af naar het zuiden, over een sompig pad, richting het moeras", "", "&3=0"
+DATA "1=6;3=2", "*c2", "Je wandelt naar het zuiden, richting het dorp", "", "&3=0"
+DATA "1=6;3=4", "*c2", "Je wandelt naar het westen, richting het dorp", "", "&3=0"
+DATA "1=6;3=1", "*c2", "Je wandelt naar het noorden, richting het dorp", "", "&3=0"
+DATA "1=7;3=2", "*c2", "Je wandelt over een smal kronkelig pad, richting het donkere woud", "", "&3=0"
+DATA "1=8;3=3", "*c2", "Je wandelt naar het zuiden, richting de rivier", "", "&3=0"
+DATA "1=11;3=5", "*c2", "Je loopt van de weg af, richting de ingang van de mijn.", "", "&3=0"
+DATA "1=16;3=5", "*c2", "Uit de bakkerij komt een geur van heerlijke verse broodjes en taarten"
+DATA "", "Je stapt watertandend de winkel binnen.", "", "&3=0"
+DATA "1=6;3=5;16=1;25=0", "*c2", "Geen idee met wat je aanmoet met de situatie, loop je weer naar buiten", "", "&3=0;1=6"
+DATA "1=6;3=5;16=1;25!0", "*c2", "Je loopt weer naar buiten", "", "&3=0;1=6"
 
 ' Tas
 DATA "2=1;4=1", "*c2", "Je verwijderd de oude heft van de houweel,"
@@ -166,12 +168,14 @@ DATA "en gebruikt de stok uit het bos om een nieuwe heft te maken."
 DATA "", "Het past! De houweel is weer zo goed als nieuw.", "", "&24=2;21=3"
 
 DATA "2=1", "*c15", "Je hebt het volgende bij je:", "&"
-DATA "2=1;22>0", "*c7", "-#22 geldstukken", "&"
+DATA "2=1;22>1", "*c7", "-#22 geldstukken", "&"
+DATA "2=1;22=1", "*c7", "- 1 geldstuk", "&"
 DATA "2=1;21=2", "*c7", "- Een stok, opgeraapt in het bos", "&"
 DATA "2=1;23>0;23<3", "*c7", "- De sleutel van je kast", "&23=2"
 DATA "2=1;23=3", "*c7", "- Vogelvoer", "&"
 DATA "2=1;24=1", "*c7", "- Houweel met gebroken heft", "&"
 DATA "2=1;24=2", "*c7", "- Gerepareerde houweel", "&"
+DATA "2=1;25=2", "*c7", "- Koeken, vers van de bakker", "&"
 
 ' 1. Bos
 DATA "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -218,9 +222,9 @@ DATA "*c2", "", "In de verte klinken rare bubbelende geluiden."
 DATA "", "Er loopt een pad naar het noorden, omhoog richting heuvels.", "&"
 
 ' 6. Dorp
-DATA "1=6;2=0", "*c2"
+DATA "1=6;2=0;4=0", "*c2"
 DATA "Je bent in het dorp", ""
-DATA "Er hangt een gezellige sfeer", ""
+DATA "Er hangt een rare stilte", ""
 DATA "Aan de linkerkant van de weg zit een bakker"
 DATA "Aan de rechterkant van de weg een grote smederij", ""
 DATA "De weg loopt verder naar het zuiden, richting een rivier"
@@ -299,10 +303,47 @@ DATA " 'Ik heb veel te hard gewerkt, en nu heb ik niets!'"
 DATA "*c2", "", "Thorin zucht diep"
 DATA "&11=2;4=0"
 
+' 16. Bakkerij
+DATA "1=16;16=1;2=0;4=0", "*c2"
+DATA "Je staat in de bakkerij. De bakker ziet er verdrietig uit.", ""
+DATA "Er hangt een geur van heerlijke verse broodjes en taarten", "&"
+
+DATA "1=16;16=1;4=2;2=0", "*c3"
+DATA "$n: 'Hallo? Kan ik iets te eten kopen?'", "", "*c2"
+DATA "De bakker lijkt ineens door te hebben dat er iemand in zijn winkel staat"
+DATA "", "*c9", "Bakker: 'Oh. Sorry, ik had het even niet in de gaten'"
+DATA " 'Ja, we hebben nog wel wat koeken te koop. Ze kosten 2 geldstukken'"
+DATA "&4=0;25=1"
+
+DATA "1=16;16=0;4=0", "*c2"
+DATA "Je had verwacht op een vriendelijke manier door de bakker begroet te worden,"
+DATA "maar helaas. De bakker ziet er verdrietig uit.", "", "*c3", "$n: 'Hallo, mijn naam is $n'"
+DATA " 'Ik ben dringend op zoek naar medicijnen voor de koning. Kunt u mij helpen?'"
+DATA "", "*c2", "De bakker geeft geen antwoord, en staart voor zich uit.", "&16=1"
+
+DATA "1=16;16=1;2=0;4=1", "*c3"
+DATA "$n: 'Hallo? Is alles goed met u?'", "", "&4=0"
+
+DATA "1=16;16=2;2=0;4=0", "*c3", "De bakker kijkt je afwachtend aan.", ""
+DATA "*c9", "Bakker: 'De koeken kosten 2 geldstukken'", "&"
+
+DATA "1=16;16=1;2=0;4=3", "*c3", "$n: 'Ik wil graag wat koeken kopen'", "", "*c9"
+DATA "Bakker: 'Dat is dan 2 geldstukken'", "&16=2;4=0"
+
+DATA "1=16;16=2;2=0;4=2", "*c3"
+DATA "$n: 'Hmm, misschien toch een andere keer'", "", "*c9"
+DATA "Bakker: 'Ok, prima'", "&16=1;4=0"
+
+DATA "1=16;16=2;2=0;4=1", "*c3"
+DATA "$n: 'Alstublieft, 2 geldstukken'", "", "*c9"
+DATA "Bakker: 'Alsjeblieft'", "", "*c2", "De bakker geeft een paar heerlijke koeken"
+DATA "&16=1;4=0;25=2;22-2"
+
 DATA "END"
 
 ' Acties
-2 DATA "1=0;10=0;4<2", "Word wakker", "4=2"
+2 DATA "20=1;2=0", "Bekijk inhoud van tas", "2=1;4=0"
+DATA "1=0;10=0;4<2", "Word wakker", "4=2"
 DATA "1=0;10=0;4<2", "Probeer nog even verder te slapen", "4=1"
 DATA "1=0;10=0;4=2", "Kijk waar geluid vandaan komt", "4=3"
 DATA "1=0;10=0;4=3", "Open raam", "4=4"
@@ -311,8 +352,8 @@ DATA "1=0;10=1", "Het tikken is weg! Probeer weer in bed te kruipen", "4=2;5+1"
 DATA "1=0;10=1", "Pak briefje van de raaf", "4=3;5+1"
 DATA "1=0;10=1;5>2", "Kijk de kamer rond", "2=0;4=0;10=2"
 
-DATA "1=0;10=2;2!1;4!0", "Bekijk omgeving", "2=0;4=0"
-DATA "1=0;10=2;2=1", "Bekijk omgeving", "2=0;4=0"
+DATA "1=0;10=2;2!1;4!0", "Kijk de kamer rond", "2=0;4=0"
+DATA "1=0;10=2;2=1", "Sluit tas", "2=0;4=0"
 DATA "1=0;2=0;10=2", "Open de kast", "4=1"
 DATA "1=0;2=0;10=2;20=0", "Pak je tas", "4=2"
 DATA "1=0;2=0;10=2", "Pak briefje van de raaf", "4=3"
@@ -320,8 +361,7 @@ DATA "1=0;2=0;10=2;23=3", "Geef de raaf te eten", "4=4"
 DATA "1=0;10=3", "Begin avontuur", "1=5;4=0"
 
 DATA "1=5", "Bekijk omgeving", "1=1"
-DATA "2=1;1!0", "Bekijk omgeving", "2=0;4=0"
-DATA "20=1;2=0", "Bekijk inhoud van tas", "2=1;4=0"
+DATA "2=1;1!0", "Sluit tas", "2=0;4=0"
 
 ' 1. Bos acties
 DATA "2=0;1=1;21=0", "Raap de tak op", "4=1"
@@ -341,6 +381,7 @@ DATA "2=0;1=3", "Ga naar het zuiden, richting het moeras", "1=4;3=3"
 DATA "2=0;1=4", "Ga naar het noorden, richting de heuvels", "1=3;3=1"
 
 ' 6. Dorp Acties
+DATA "2=0;1=6", "Wandel naar de bakkerij", "1=16;4=0;3=5"
 DATA "2=0;1=6", "Ga naar het noorden, richting de akkers", "1=2;3=1"
 DATA "2=0;1=6", "Ga naar het oosten, richting de het donkere woud", "1=7;3=2"
 DATA "2=0;1=6", "Ga naar het zuiden, richting de rivier", "1=8;3=3"
@@ -360,6 +401,17 @@ DATA "2=0;1=11;11=2;4=0", "Zeg: 'Hoe kan ik je helpen?'", "4=1"
 DATA "2=0;1=11;11=2;4=0;24=0", "Zeg: 'Zou ik je houweel mogen hebben?'", "4=2"
 DATA "2=0;1=11;11=2;4=0;24=2", "Geef gerepareerde houweel aan Thorin", "4=3"
 DATA "2=0;1=11;11=2;4=0", "Zeg: 'Sorry, ik moet er weer vandoor'", "1=3;3=5"
+
+' 16. Bakkerij
+'DATA "2=0;1=16;16=1;4=0", "Zeg: 'Hallo? Is alles goed met u?'", "4=1"
+DATA "2=0;1=16;16=1;4=0;25<1", "Zeg: 'Hallo? Kan ik iets te eten kopen?'", "4=2"
+DATA "2=0;1=16;16=1;4=0;25<2;25>0", "Zeg: 'Ik wil graag koeken kopen'", "4=3"
+DATA "2=0;1=16;16=1;4=0", "Verlaat de bakkerij", "1=6;3=5;4=0"
+
+' 16.2. Koeken kopen
+DATA "2=0;1=16;16=2;4=0;22>1", "Zeg: 'Alstublieft, 2 geldstukken'", "4=1"
+DATA "2=0;1=16;16=2;4=0;22>1", "Zeg: 'Hmm, misschien toch andere keer'", "4=2"
+DATA "2=0;1=16;16=2;4=0;22<3", "Oei, ik heb niet genoeg geld", "4=2"
 
 ' Generale inventory acties
 DATA "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
@@ -532,6 +584,8 @@ SUB Muteer (Plek%, Bewerking$, Waarde%)
     Gebeurtenissen(Plek%) = Waarde%
   CASE "+"
     Gebeurtenissen(Plek%) = Gebeurtenissen(Plek%) + Waarde%
+  CASE "-"
+    Gebeurtenissen(Plek%) = Gebeurtenissen(Plek%) - Waarde%
   END SELECT
 END SUB
 
@@ -708,7 +762,7 @@ SUB VoerActieUit (Actie$)
         ELSE
           Waarde$ = Waarde$ + Karakter$
         END IF
-      CASE "=", "+"
+      CASE "=", "+", "-"
         Bewerking$ = Karakter$
       CASE ";"
         CALL Muteer(VAL(Plek$), Bewerking$, VAL(Waarde$))

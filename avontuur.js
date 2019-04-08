@@ -206,6 +206,9 @@ const muteer = (plek, bewerking, waarde) => {
   if (bewerking === "+") {
     gameState[plek] += waarde;
   }
+  if (bewerking === "-") {
+    gameState[plek] -= waarde;
+  }
 };
 
 const voerActieUit = actie => {
