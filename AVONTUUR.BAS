@@ -286,9 +286,17 @@ DATA "", "*c9", "Thorin: 'Whoa die ruiken lekker, bedankt!'", "", "*c2"
 DATA "Thorin zit te smullen van de koeken"
 DATA "", "*c9", "Thorin: 'Zo daar was ik echt aan toe!'", "&4=0;25=3"
 
+DATA "1=11;2=0;11>1;4=5", "*c3", "$n: 'Thorin, zou jij weten hoe ik aan medicijnen kan komen?'", "", "*c2"
+DATA "Thorin denkt even na.", "*c9", "", "Thorin: 'Geen idee, dat zou je het beste in het dorp kunnen vragen'"
+DATA " 'Ze hebben daar van alles. Het dorp ligt in het zuid oosten vanaf hier'", "&4=0"
+
+DATA "1=11;2=0;11>1;4=6", "*c3", "$n: 'Thorin, zou jij weten hoe ik aan vervoer kan komen?'", "", "*c2"
+DATA "Thorin denkt even na.", "*c9", "", "Thorin: 'Hmm de boer verderop heeft een paard. Je zou kunnen'"
+DATA " 'vragen of je die mag lenen?'", "&4=0"
+
 DATA "1=11;2=0;11=2;24=4;25=3", "*c2", "Thorin staat op, en loopt de mijn in. Met nieuwe energie,"
 DATA "en een gerepareerde houweel, gaat hij op de edelstenen inhakken", ""
-DATA "*c9", "Thorin: 'Hei ho, Hei ho....", "*c2", "", 
+DATA "*c9", "Thorin: 'Hei ho, Hei ho....", "*c2", "",
 DATA "Stukken edelsten vallen op de grond. Een stuk rolt naar je toe", "&11=3;4=0"
 
 DATA "1=11;2=0;11=3;4=1;26=0", "*c2"
@@ -323,11 +331,9 @@ DATA " 'Sorry van mijn manieren, ik heb wat tegenslag!'"
 DATA " 'Mijn naam is Thorin, en wie mag jij wezen?'",""
 DATA "*c3", "$n: 'Mijn naam is $n'",""
 DATA "*c9", "Thorin: 'Hallo $n. Sorry dat ik zo ruw deed'"
-DATA " 'Mijn houweel ik gebroken!'"
-DATA " 'Ik had net een ader van edelstenen ontdekt!'"
+DATA " 'Mijn houweel is gebroken, en ik had net een ader van edelstenen ontdekt!'"
 DATA " 'Ik heb zo hard mijn best gedaan om ze los te krijgen'"
 DATA " 'Nu is mijn houweel gebroken. En ik heb honger!'"
-DATA " 'Ik heb veel te hard gewerkt, en nu heb ik niets!'"
 DATA "*c2", "", "Thorin zucht diep"
 DATA "&11=2;4=0"
 
@@ -429,8 +435,8 @@ DATA "2=0;1=11;11=2;4=0", "Zeg: 'Hoe kan ik je helpen?'", "4=1"
 DATA "2=0;1=11;11=2;4=0;24=0", "Zeg: 'Zou ik je houweel mogen hebben?'", "4=2"
 DATA "2=0;1=11;11=2;4=0;24=2", "Geef gerepareerde houweel aan Thorin", "4=3"
 DATA "2=0;1=11;11=2;4=0;25=2", "Geef koeken aan Thorin", "4=4"
-'DATA "2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan medicijnen kan komen?'", "4=5"
-'DATA "2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan vervoer kan komen?'", "4=6"
+DATA "2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan medicijnen kan komen?'", "4=5"
+DATA "2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan vervoer kan komen?'", "4=6"
 DATA "2=0;1=11;11=2;4=0", "Zeg: 'Sorry, ik moet er weer vandoor'", "1=3;3=5"
 
 DATA "2=0;1=11;11=3;4=0;26=0", "Raap edelsteen op", "4=1"
