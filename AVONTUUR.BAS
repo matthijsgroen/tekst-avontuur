@@ -370,6 +370,7 @@ DIM SHARED Naam$
 DIM SHARED Geslacht%
 DIM SHARED Gebeurtenissen(100) AS INTEGER
 DIM SHARED HuidigSpel%
+DIM SHARED Overslaan%
 
 CLS
 LOCATE 5, 20
@@ -448,6 +449,7 @@ END IF
 SpelLus:
 KEY(16) ON
 DO
+  Overslaan% = 0
   CLS
   CALL ToonGebeurtenis
   CALL ToonActies
@@ -537,16 +539,15 @@ SUB Tekst (Kleur%, Regel$)
   COLOR Kleur%
   IF Kleur% <> 4 THEN
     TIMER ON
-    Overslaan = 0
     FOR i% = 1 TO LEN(Regel$)
       TijdStart = TIMER
       PRINT MID$(Regel$, i%, 1);
-      IF Overslaan = 0 THEN
-  DO
-    IF INKEY$ = " " THEN
-      Overslaan = -1
-    END IF
-  LOOP UNTIL TIMER > TijdStart + .05
+      IF Overslaan% = 0 THEN
+        DO
+          IF INKEY$ = " " THEN
+            Overslaan% = -1
+          END IF
+        LOOP UNTIL TIMER > TijdStart + .05
       END IF
     NEXT i%
     TIMER OFF
