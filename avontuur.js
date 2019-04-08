@@ -273,7 +273,7 @@ const toonActies = async () => {
   voerActieUit(acties[keuze - 1].actie);
 };
 
-const gameLus = async () => {
+const spelLus = async () => {
   cls();
   print("Hallo avonturier!\n");
   print("\n");
@@ -293,4 +293,4 @@ const gameLus = async () => {
   process.exit(0);
 };
 
-gameLus();
+spelLus();
