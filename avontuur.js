@@ -15,10 +15,10 @@ const color = index =>
   process.stdout.write(
     [
       "\u001b[30m", // 0 = black
-      "\u001b[31m", // 1 = blue
+      "\u001b[34m", // 1 = blue
       "\u001b[32m", // 2 = green
       "\u001b[36m", // 3 = cyan
-      "\u001b[33m", // 4 = red
+      "\u001b[31m", // 4 = red
       "\u001b[35m", // 5 = magenta
       "\u001b[33m", // 6 = yellow
       "\u001b[37m", // 7 = white
@@ -87,7 +87,7 @@ const readBasicData = async () => {
       if (line.startsWith(startToken) && !started) {
         started = true;
       }
-      if (started && line.includes('DATA "')) {
+      if (started && !line.trim().startsWith("'") && line.includes('DATA "')) {
         data += line.slice(line.indexOf('"'));
         if (line.includes("END")) {
           started = false;
