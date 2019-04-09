@@ -9,7 +9,7 @@
       betaal_twee_geldstukken:event {
          depends_on []   = ;
       }
-
+      
       betaal_twee_goudstukken_aan_hoefsmid: event {
          logic_gate_type = or
          depends_on []   = betaal_twee_geldstukken, vind_een_geldstuk_bij_de_rivier;
@@ -172,7 +172,7 @@
       praat_met_heks : event {
          depends_on [] = ga_naar_hut_in_moeras;
       }
-
+      
       praat_met_molenaar : event {
          depends_on []   = ;
       }
@@ -182,13 +182,13 @@
       }
 
       snij_touw_van_lift:event {
-         depends_on []   = koop_zwaard_bij_wapensmid, knoop_touw_aan_molensteen, knoop_touw_aan_tand;
+         depends_on []   = koop_zwaard_bij_wapensmid, knoop_touw_aan_molensteen, knoop_touw_aan_tand, hijs_lift_met_molensteen;
       }
 
       trek_tand_van_draak: event {
          depends_on []   = snij_touw_van_lift;
       }
-
+      
       vind_een_geldstuk_bij_de_rivier : event {
          depends_on []   = ;
       }
