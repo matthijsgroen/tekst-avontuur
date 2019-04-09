@@ -9,7 +9,7 @@ Het hele spel heeft 3 variabelen:
 In het begin van het spel zijn deze allemaal ingevuld, waarbij de spel toestand
 bestaat uit 100 nullen ('0')
 
-## De spel lus
+# De spel lus
 
 De inhoud van het spel data alles zal laten werken, bestaat uit 2 lijsten van
 strings en het laatste elemen moet `"END"` bevatten. (Dit omdat QBasic niet weet
@@ -26,7 +26,7 @@ Vervolgens als de speler een actie kiest, begint het weer van voor af aan,
 totdat het spel afgesloten wordt, of het eerste getal van de speltoestand geen
 `0` waarde meer bevat.
 
-## Scherm omschrijven
+# Scherm omschrijven
 
 In de lijst van strings van het scherm zit het volgende formaat:
 
@@ -39,7 +39,7 @@ element tegen wordt gekomen.
 
 Mutaties en condities zijn het zelfde voor scherm opmaak en speler acties.
 
-## Acties omschrijven
+# Acties omschrijven
 
 In de lijst van strings van acties zit het volgende formaat:
 
@@ -52,7 +52,7 @@ Een actie bestaat dus ALTIJD uit 3 elementen. De lijst wordt verwerkt tot het
 
 Mutaties en condities zijn het zelfde voor scherm opmaak en speler acties.
 
-## Condities
+# Condities
 
 Condities hebben het volgende formaat:
 
@@ -79,7 +79,7 @@ Je kan op deze manier zelf een representatie van iets maken op een getal lokatie
 in de speltoestand. Bijvoorbeeld de lokatie waar je in het spel bevind, of
 hoeveel geld je hebt, of de status van een voorwerp dat je bezit.
 
-## Mutaties
+# Mutaties
 
 Condities hebben het volgende formaat:
 
@@ -97,7 +97,7 @@ Soorten bewerkingen:
 - `+` waarde op speltoestand lokatie wordt verhoogd met gegeven getal waarde
 - `-` waarde op speltoestand lokatie wordt verlaagd met gegeven getal waarde
 
-## Opmaak
+# Opmaak
 
 Een opmaak element kan worden gebruikt in de scherm opbouw, en begint altijd met
 een `*`. Hiermee wordt het onderscheid gemaakt tussen een opmaak element en een
@@ -116,7 +116,7 @@ Ondersteunde instructie typen:
 - `s` Wachten. gevolgd door een getal, wat staat voor de tijdsduur, in hele
   seconden.
 
-## Tekst
+# Tekst
 
 Tekst elementen beginnen niet met een `*` of een `&`. Deze kunnen gewoon tekst
 bevatten. 1 element tekst staat voor 1 regel op het scherm.
@@ -133,3 +133,16 @@ Waardes uit de speltoestand in tekst gebruiken:
   speltoestand. De lokatie in tekst moet altijd worden aangegeven door 2
   cijfers. Om een waarde in het lokatie gebied 0-9 te tonen, moet je een
   voorloop nul gebruiken (`#04`).
+
+# Voorbeeld
+
+```basic
+' beschrijving
+1 DATA "1=0", "*c15", "Welkom bij Avontuur", "", "*c2", "Ik ben het geautomatiseerde helpsysteem", "&"
+1 DATA "1=1", "*c2", "even geduld...", "*s3", "*c2", "Sorry, al onze medewerkers zijn in gesprek", "&1=0"
+DATA "END"
+
+' acties
+2 DATA "1=0", "Help?", "1=1"
+2 DATA "1=0", "Afsluiten", "0=1"
+```
