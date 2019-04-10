@@ -47,9 +47,17 @@
       geef_dwerg_eten:event {
          depends_on []   = praat_met_dwerg, koop_eten_bij_bakker;
       }
+      
+      vind_ketting_in_woud : event {
+         depends_on []   = koop_zwaard_bij_wapensmid;
+      }
+      
+      maak_sieraad_bij_smid : event {
+         depends_on []   = krijg_edelsteen_van_dwerg, vind_ketting_in_woud;
+      }
 
-      geef_edelsteen_aan_heks:event {
-         depends_on []   = praat_met_heks, krijg_edelsteen_van_dwerg;
+      geef_sieraad_aan_heks:event {
+         depends_on []   = praat_met_heks, maak_sieraad_bij_smid;
       }
 
       geef_houweel_aan_dwerg:event {
@@ -86,7 +94,7 @@
       }
 
       koop_zwaard_bij_wapensmid:event {
-         depends_on []   = krijg_geld_van_meel;
+         depends_on []   = krijg_geld_van_meel, praat_met_bakker;
       }
 
       krijg_edelsteen_van_dwerg:event {
@@ -98,7 +106,7 @@
       }
 
       krijg_ingredientenlijst_van_heks : event {
-        depends_on [] = praat_met_heks, geef_edelsteen_aan_heks;
+        depends_on [] = praat_met_heks, geef_sieraad_aan_heks;
       }
 
       krijg_kapotte_houweel_van_dwerg:event {
