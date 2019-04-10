@@ -1,6 +1,6 @@
 # Data formaat voor 'Avontuur'
 
-Het hele spel heeft 3 variabelen:
+Het hele spel heeft 3 variabelen voor de status van het spel
 
 1. Naam van de speler
 2. Geslacht van de speler
@@ -12,8 +12,7 @@ bestaat uit 100 nullen ('0')
 # De spel lus
 
 De inhoud van het spel data alles zal laten werken, bestaat uit 2 lijsten van
-strings en het laatste elemen moet `"END"` bevatten. (Dit omdat QBasic niet weet
-hoe lang de data lijst is)
+strings.
 
 1. De tekst voor het scherm te omschrijven
 2. De acties die de speler uit kan voeren
@@ -48,7 +47,7 @@ In de lijst van strings van acties zit het volgende formaat:
 3. Mutatie
 
 Een actie bestaat dus ALTIJD uit 3 elementen. De lijst wordt verwerkt tot het
-`"END"` element tegen wordt gekomen.
+eind van het bestand.
 
 Mutaties en condities zijn het zelfde voor scherm opmaak en speler acties.
 
@@ -137,12 +136,32 @@ Waardes uit de speltoestand in tekst gebruiken:
 # Voorbeeld
 
 ```basic
-' beschrijving
-1 DATA "1=0", "*c15", "Welkom bij Avontuur", "", "*c2", "Ik ben het geautomatiseerde helpsysteem", "&"
-DATA "1=1", "*c2", "even geduld...", "*s3", "*c2", "Sorry, al onze medewerkers zijn in gesprek", "&1=0"
-DATA "END"
+' Mini avontuur met de helpdesk
+' 1 is status van het gesprek
+' 2 is de wachtrij
+
+"1=0", "*c15", "Welkom bij Avontuur", ""
+"*c2", "Ik ben een geautomatiseerd helpsysteem", "&2=3"
+
+"1=1", "*c2", "een moment geduld...", "*s2", "&"
+"1=1;2=0", "Hallo? Is daar iemand?", "&1=3"
+' Wachtrij
+"1=1;2>0", "Sorry, al onze medewerkers zijn in gesprek", "&"
+"1=1;2>1", "Er zijn nog#02 wachtenden voor u", "&2-1;1=0"
+"1=1;2=1", "Er is nog 1 wachtenden voor u", "&2-1;1=0"
+
+"1=4", "Sorry daarbij kan ik u niet helpen", "&1=3"
+"1=5", "Ok, fijn dat we je konden helpen!", "&0=1"
+
+"0=0", "*c15", "", "Wat ga je doen:", "&"
+
+"END"
 
 ' acties
-2 DATA "1=0", "Help?", "1=1"
-DATA "1=0", "Afsluiten", "0=1"
+"1=0", "Vraag om hulp", "1=1"
+"1=0", "Afsluiten", "0=1"
+
+"1=3", "Ik wil weten hoe avontuur werkt", "1=4"
+"1=3", "Hang op", "1=5"
+
 ```
