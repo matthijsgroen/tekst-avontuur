@@ -238,7 +238,7 @@ SUB Tekst (Kleur%, Regel$)
           IF INKEY$ = " " THEN
             Overslaan% = -1
           END IF
-        LOOP UNTIL TIMER > TijdStart + .05
+        LOOP UNTIL TIMER > TijdStart + .03
       END IF
     NEXT i%
     TIMER OFF
@@ -248,7 +248,7 @@ SUB Tekst (Kleur%, Regel$)
     TIMER ON
     TijdStart = TIMER
     DO
-    LOOP UNTIL TIMER > TijdStart + (.05 * LEN(Regel$))
+    LOOP UNTIL TIMER > TijdStart + (.03 * LEN(Regel$))
     TIMER OFF
   END IF
   COLOR 7
