@@ -296,7 +296,7 @@ DATA " 'vragen of je die mag lenen?'", "&4=0"
 
 DATA "1=11;2=0;11=2;24=4;25=3", "*c2", "Thorin staat op, en loopt de mijn in. Met nieuwe energie,"
 DATA "en een gerepareerde houweel, gaat hij op de edelstenen inhakken", ""
-DATA "*c9", "Thorin: 'Hei ho, Hei ho....", "*c2", "",
+DATA "*c9", "Thorin: 'Hei ho, Hei ho....", "*c2", ""
 DATA "Stukken edelsten vallen op de grond. Een stuk rolt naar je toe", "&11=3;4=0"
 
 DATA "1=11;2=0;11=3;4=1;26=0", "*c2"
@@ -372,6 +372,8 @@ DATA "1=16;16=2;2=0;4=1", "*c3"
 DATA "$n: 'Alstublieft, 2 geldstukken'", "", "*c9"
 DATA "Bakker: 'Alsjeblieft'", "", "*c2", "De bakker geeft een paar heerlijke koeken"
 DATA "&16=1;4=0;25=2;22-2"
+
+DATA "", "*c15", "", "Wat ga je doen:", "&"
 
 DATA "END"
 
@@ -730,9 +732,6 @@ SUB ToonActies
     END IF
   LOOP UNTIL Bewering$ = "END"
 
-  COLOR 15
-  PRINT
-  PRINT "Wat ga je doen:"
   COLOR 7
   FOR i% = 1 TO ActieTeller%
     PRINT i%; ") "; ActieTekst(i% - 1)

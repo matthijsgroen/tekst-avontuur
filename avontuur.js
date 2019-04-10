@@ -260,9 +260,6 @@ const toonActies = async () => {
     index += 2;
   } while (bewering !== "END");
 
-  print("\n");
-  color(15);
-  print("Wat ga je doen:\n");
   color(7);
   acties.forEach((actie, i) => console.log(`${i + 1} ) ${actie.naam}`));
 

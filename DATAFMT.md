@@ -139,10 +139,10 @@ Waardes uit de speltoestand in tekst gebruiken:
 ```basic
 ' beschrijving
 1 DATA "1=0", "*c15", "Welkom bij Avontuur", "", "*c2", "Ik ben het geautomatiseerde helpsysteem", "&"
-1 DATA "1=1", "*c2", "even geduld...", "*s3", "*c2", "Sorry, al onze medewerkers zijn in gesprek", "&1=0"
+DATA "1=1", "*c2", "even geduld...", "*s3", "*c2", "Sorry, al onze medewerkers zijn in gesprek", "&1=0"
 DATA "END"
 
 ' acties
 2 DATA "1=0", "Help?", "1=1"
-2 DATA "1=0", "Afsluiten", "0=1"
+DATA "1=0", "Afsluiten", "0=1"
 ```
