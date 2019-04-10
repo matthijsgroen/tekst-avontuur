@@ -1,0 +1,444 @@
+' Gebeurtenissen
+' 0 = Spel gewonnen (1), Bezig(0), Verloren(2)
+' 1 = Locatie
+'   0 = Proloog
+'   1 = Bos
+'   2 = Akkers
+'   3 = Heuvels
+'   4 = Moeras
+'   5 = Intro
+'   6 = Dorp
+'   7 = Donker woud
+'   8 = Rivier
+' 2 = Locatie toestand 0 = look, 1 = Open tas, 2 = leeg
+' 4 = Actie van speler
+' 5 = Tijdelijke lokatie teller
+
+' 10 = Lokatie status Proloog
+' 11 = Lokatie status Mijn
+' 12 = Lokatie status Hut
+' 13 = Lokatie status Boerderij
+' 14 = Lokatie status Molen
+' 15 = Lokatie status Smederij
+' 16 = Lokatie status Bakkerij
+' 17 = Lokatie status Toren
+
+' 20 = beschikbaarheid tas
+' 21 = tak
+' 22 = geld
+' 23 = proloog sleutel / vogelvoer
+' 24 = 1 = kapotte houweel, 2 = gerepareerde houweel
+
+' 0. Proloog
+
+"1=0;10=0;4=0"
+"*c2", "Er was eens, lang geleden een stoere koerier..."
+"$Z naam was $n", ""
+"$H was altijd super snel in het bezorgen van brieven en pakketjes."
+"Dingen bezorgen was dan ook $z lust en $z leven."
+"Op het moment dat ons avontuur begint, ligt $n rustig te slapen...", ""
+"*s2", "*c14", "<tik, tik, tik>", "*c3", "", "$n: 'huh?'"
+"&2=2"
+
+"1=0;10=0;4=1", "*c2"
+"Je probeert nog even verder te slapen.", ""
+"*c3", "$n: 'Gaaaaap..   ..zzzzzz'", ""
+"*s2", "*c14", "<tik, tik, tik>", "*c3", "", "$n: 'hmmmz?'"
+"&"
+
+"1=0;10=0;4=2", "*c3"
+"$n: 'Ja, ja, ik kom al!'", "", "*c2"
+"Met veel tegenzin klim je uit je bed."
+"Je strompelt naar de deur."
+"", "*c14", "<TIK, TIK, TIK!>", "*c3", ""
+"$n: 'Ik ben onderweg!'"
+"*c2", "", "Als je de deur van je kamer open doet, staat er niemand.", ""
+"*c3", "$n: 'Waar komt dat geluid dan vandaan?'"
+"&"
+
+"1=0;10=0;4=3", "*c2"
+"Je kijkt de hele kamer rond, op zoek naar de bron van het geluid"
+"", "*c3", "$n: 'Hey, er zit een raaf tegen het raam te tikken!'"
+"", "*c14", "<TIK, TIK, TIK!>"
+"&"
+
+"1=0;10=1;4=1", "*c2", "Je probeert de raaf weg te jagen.", "&"
+"1=0;10=1;4=2", "*c2", "Je probeert weer in bed te kruipen.", "&"
+"1=0;10=1;4=3", "*c2", "Je probeert het briefje van de raaf te pakken.", "&"
+"1=0;10=1;4>0;4<4", "*c2", "", "De raaf pikt naar je hand."
+"*c3", " ", "$n: 'Grrr!'", "&"
+
+"1=0;10=0;4=4", "*c2", "Je opent het raam. De raaf springt snel naar binnen."
+"Zo te zien heeft hij een brief aan zijn poot hangen."
+"&10=1"
+
+"1=0;10=2;2=0;4=4", "*c2", "Je geeft de raaf wat vogelvoer"
+"De raaf is je erg dankbaar!"
+"&23=4;"
+
+"1=0;10=2;2=0;4=1;23>2", "*c2", "De kast is al open, maar er zit niets interessants meer in", "&"
+"1=0;10=2;2=0;4=1;23<2", "*c2", "De kast zit op slot", "&"
+"1=0;10=2;2=0;4=1;23=2", "*c2", "Je opent de kast met de sleutel", ""
+"*c3", "$n: 'Hey, hier ligt vogelvoer!'"
+"", "*c2", "Je pakt het vogelvoer uit de kast", "&4=8;23=3"
+"1=0;10=2;2=0;4=2;23=0", "*c2", "Je pakt je tas van achter de deur", "&20=1;22=100;23=1"
+
+"1=0;10=2;2=0;4=0;", "*c2", "Je kijkt de kamer rond", "", "&"
+"1=0;10=2;2=0;4=0;20=0", "Je tas hangt aan de achterkant van de deur", "&"
+"1=0;10=2;2=0;4=0", "Je hebt een mooie kast tussen je bed en bureau in staan", "&"
+"1=0;10=2;2=0;4=0;23!4", "Een redelijk agressieve raaf zit op je bureau", "&"
+"1=0;10=2;2=0;4=0;23=4", "Een rustige raaf zit op je bureau", "&"
+
+"1=0;10=2;2=0;4=3;23!4", "*c2", "Je probeert het briefje van de raaf te pakken."
+"De raaf pikt naar je hand.", "*c3", "$n: 'Grrr!'"
+"&4=8"
+"1=0;10=2;2=0;4=3;23=4", "*c2", "Je probeert het briefje van de raaf te pakken."
+"De raaf blijft rustig.", "", "Je leest de brief:", "*c6", "*s1", ""
+"Beste $n,"
+"", "De koning is ernstig ziek."
+"Als beste koerier van het land smeken we je om ons te helpen"
+"", "Jij bent de enige die snel medicijnen naar ons kan brengen"
+"We hopen dat je dit bericht snel ontvangt en je snel de juiste medicijnen"
+"kan komen brengen", "", "Gegroet,", "  De dokter van de koning", "*s2", "*c2", ""
+"Je blijft een tijdje naar de brief staren.", "De koning?", "Heeft jouw hulp nodig?"
+"Je gaat snel de deur uit, richting een groot avontuur..."
+"&10=3;22=3;20=0;2=0"
+
+' 5. Intro
+"1=5", "*c2"
+"$n wist snel aan de juiste medicijnen te komen,"
+"in de vorm van een magische drank."
+"$H is nu onderweg naar de koning, om ze te bezorgen."
+""
+"*s3", ""
+"*c4", "Auw! Een laaghangende tak!", ""
+"*c2", "$n viel ineens hard van $z paard...", ""
+"*c3", "$n: 'Oh nee! De magische drank is stuk gevallen!'", " 'En mijn paard is er vandoor!'"
+"*c2", "", "Daar stond $n dan.. Alleen in het bos, zonder vervoer of medicijnen..."
+"&"
+
+' Reizen
+' 3 = Reis toestand
+'   1 = Arriveer te voet vanuit het noorden
+'   2 = Arriveer te voet vanuit het oosten
+'   3 = Arriveer te voet vanuit het zuiden
+'   4 = Arriveer te voet vanuit het westen
+'   5 = Arriveer vanuit sub-lokatie 1
+'   6 = Arriveer vanuit sub-lokatie 2
+"1=1;3=2", "*c2", "Je wandelt naar het oosten, richting het bos", "", "&3=0"
+"1=1;3=4", "*c2", "Je wandelt naar het westen, richting het bos", "", "&3=0"
+"1=2;3=2", "*c2", "Je wandelt naar het oosten, richting de akkers", "", "&3=0"
+"1=2;3=1", "*c2", "Je wandelt naar het noorden, richting de akkers", "", "&3=0"
+"1=3;3=4", "*c2", "Je wandelt naar het westen, richting de heuvels", "", "&3=0"
+"1=3;3=1", "*c2", "Je klimt omhoog, richting de heuvels", "", "&3=0"
+"1=3;3=5", "*c2", "Je groet de dwerg, en loopt weer richting de weg", "", "&3=0"
+"1=4;3=3", "*c2", "Je daalt af naar het zuiden, over een sompig pad, richting het moeras", "", "&3=0"
+"1=6;3=2", "*c2", "Je wandelt naar het zuiden, richting het dorp", "", "&3=0"
+"1=6;3=4", "*c2", "Je wandelt naar het westen, richting het dorp", "", "&3=0"
+"1=6;3=1", "*c2", "Je wandelt naar het noorden, richting het dorp", "", "&3=0"
+"1=7;3=2", "*c2", "Je wandelt over een smal kronkelig pad, richting het donkere woud", "", "&3=0"
+"1=8;3=3", "*c2", "Je wandelt naar het zuiden, richting de rivier", "", "&3=0"
+"1=11;3=5", "*c2", "Je loopt van de weg af, richting de ingang van de mijn.", "", "&3=0"
+"1=16;3=5", "*c2", "Uit de bakkerij komt een geur van heerlijke verse broodjes en taarten"
+"", "Je stapt watertandend de winkel binnen.", "", "&3=0"
+"1=6;3=5;16=1;25=0", "*c2", "Geen idee met wat je aanmoet met de situatie, loop je weer naar buiten", "", "&3=0;1=6"
+"1=6;3=5;16=1;25!0", "*c2", "Je loopt weer naar buiten", "", "&3=0;1=6"
+
+' Tas
+"2=1;4=1", "*c2", "Je verwijderd de oude heft van de houweel,"
+"en gebruikt de stok uit het bos om een nieuwe heft te maken."
+"", "Het past! De houweel is weer zo goed als nieuw.", "", "&24=2;21=3"
+
+"2=1;4=2", "*c2", "De koeken ruiken heerlijk,"
+"Maar toch besluit je ze voor later te bewaren.", "", "&"
+
+"2=1", "*c15", "Je hebt het volgende bij je:", "&"
+"2=1;22>1", "*c7", "-#22 geldstukken", "&"
+"2=1;22=1", "*c7", "- 1 geldstuk", "&"
+"2=1;21=2", "*c7", "- Een stok, opgeraapt in het bos", "&"
+"2=1;23>0;23<3", "*c7", "- De sleutel van je kast", "&23=2"
+"2=1;23=3", "*c7", "- Vogelvoer", "&"
+"2=1;24=1", "*c7", "- Houweel met gebroken heft", "&"
+"2=1;24=2", "*c7", "- Gerepareerde houweel", "&"
+"2=1;25=2", "*c7", "- Koeken, vers van de bakker", "&"
+"2=1;26=1", "*c7", "- Een fonkelende edelsteen", "&"
+
+' 1. Bos
+"1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
+"De wind laat de blaadjes ritselen.", ""
+"In het oosten zijn akkers", "In het westen zijn heuvels", "&"
+"1=1;2=0;20=0", "*c2", "Op de grond ligt je tas, en scherven van de fles medicijnen"
+"", "*c3", "$n: 'Verdorie, de medicijnen zijn echt verloren'"
+"*c2", "", "Je raapt de tas op", "&20=1;22=3"
+"1=1;2=0;4=0;21=0", "*c2", "Op de grond ligt een vers afgebroken tak", "&"
+"1=1;2=0;4=1", "*c2", "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd."
+"Deze tak heeft je best pijn gedaan.", "&21=2"
+
+' 2. Akkers
+"1=2;2=0", "*c2"
+"Je staat in een boerenlandschap."
+"Aan de rechterkant van de weg staat een boerderij."
+"Er komt rook achter de boerderij vandaan.", ""
+"In het westen ligt een bos"
+"In het zuiden loopt een weg richting een dorp", "&"
+
+' 3. Heuvels
+"1=3;2=0", "*c2"
+"Je staat in de heuvels. De zon schijnt heerlijk."
+"Er is een mooi uitzicht van de omgeving.", ""
+"Verder op het pad zie je een mijn"
+"Iets hoger op de heuvel staat een molen"
+"Naar het oosten loopt het pad naar het bos"
+"Naar het zuiden loopt een drassig pad een moeras in", "&"
+
+' 4. Moeras
+"1=4;2=0", "*c2"
+"Je bent aan de rand van het moeras"
+"Aan het eind van het pad blijf je staan.", ""
+"*c3", "$n: 'Ik ga niet zomaar verder hier heen.'"
+" 'Ik wil eerst een goed plan hebben om aan medicijnen te komen'"
+" 'Wie weet wat hier allemaal tegen kan komen'"
+"*c2", "", "In de verte klinken rare bubbelende geluiden."
+"", "Er loopt een pad naar het noorden, omhoog richting heuvels."
+
+"*c3", "$n: 'Ik ga niet zomaar verder hier heen.'"
+" 'Ik wil eerst een goed plan hebben om aan medicijnen te komen'"
+" 'Wie weet wat hier allemaal tegen kan komen'"
+"*c2", "", "In de verte klinken rare bubbelende geluiden."
+"", "Er loopt een pad naar het noorden, omhoog richting heuvels.", "&"
+
+' 6. Dorp
+"1=6;2=0;4=0", "*c2"
+"Je bent in het dorp", ""
+"Er hangt een rare stilte", ""
+"Aan de linkerkant van de weg zit een bakker"
+"Aan de rechterkant van de weg een grote smederij", ""
+"De weg loopt verder naar het zuiden, richting een rivier"
+"Een klein verborgen pad leid naar het oosten, richting een donker woud", "&"
+
+' 7. Donkere woud
+"1=7;2=0", "*c2"
+"Je staat aan de rand van een donker woud."
+"Het ziet er erg donker en gevaarlijk uit", ""
+"*c3", "$n: 'Brr.. hier heb ik niets te zoeken'", "&"
+
+' 8. Rivier
+"1=8;2=0", "*c2"
+"Je staat bij een ingestorte brug over de rivier"
+"Er lijkt geen mogelijkheid te zijn om over te steken"
+"De rivier stroomt snel en gevaarlijk", ""
+"*c3", "$n: 'Verdorie zo kan ik hier niet weg komen'"
+" 'Dit was de weg richting het kasteel van de koning'"
+" 'Hier moet ik een oplossing voor gaan vinden'", "&"
+
+' 11. Mijn
+"1=11;2=0;11<2;4=0", "*c2"
+"Je bent bij de mijn"
+"Er ligt een mijnkarretje. Voor de ingang zit een dwerg"
+"", "Hij ziet er niet al te vrolijk uit"
+"", "*c3", "$n: 'Hallo, kun je mij helpen?'"
+"", "*c2", "De dwerg kijkt een beetje boos je aan"
+"", "*c9", "Dwerg: 'Grr. Stom ding, stom ding!'"
+"&11=1"
+
+"1=11;2=0;11=2;4=0", "*c2"
+"Je bent bij de mijn"
+"Er ligt een mijnkarretje. Voor de ingang zit Thorin de dwerg"
+"", "Hij ziet er niet al te vrolijk uit", ""
+"*c9", "Thorin: 'Hallo $n'"
+"&"
+
+"1=11;2=0;11=3;4=0", "*c2"
+"Je bent bij de mijn"
+"Er ligt een mijnkarretje. Thorin de dwerg is in de mijn aan het werk"
+"", "Hij ziet er vrolijk uit", ""
+"*c9", "Thorin: 'Hallo $n'"
+"&"
+
+"1=11;2=0;11=2;4=3", "*c3"
+"$n: 'Ik heb je houweel kunnen repareren'"
+"", "*c9", "Thorin: 'Echt waar? Laat zien'", ""
+"*c3", "$n: 'Alsjeblieft'"
+"*c2", "", "Je geeft de gerepareerde houweel aan Thorin. Hij bekijkt hem grondig"
+"", "*c9", "Thorin: 'Wow hij is zo goed als nieuw! bedankt!'", "&4=0;24=4"
+
+"1=11;2=0;11=2;4=4", "*c2", "Je bied Thorin de koeken aan", "", "*c3"
+"$n: 'Hier, alsjeblieft'"
+"", "*c9", "Thorin: 'Whoa die ruiken lekker, bedankt!'", "", "*c2"
+"Thorin zit te smullen van de koeken"
+"", "*c9", "Thorin: 'Zo daar was ik echt aan toe!'", "&4=0;25=3"
+
+"1=11;2=0;11>1;4=5", "*c3", "$n: 'Thorin, zou jij weten hoe ik aan medicijnen kan komen?'", "", "*c2"
+"Thorin denkt even na.", "*c9", "", "Thorin: 'Geen idee, dat zou je het beste in het dorp kunnen vragen'"
+" 'Ze hebben daar van alles. Het dorp ligt in het zuid oosten vanaf hier'", "&4=0"
+
+"1=11;2=0;11>1;4=6", "*c3", "$n: 'Thorin, zou jij weten hoe ik aan vervoer kan komen?'", "", "*c2"
+"Thorin denkt even na.", "*c9", "", "Thorin: 'Hmm de boer verderop heeft een paard. Je zou kunnen'"
+" 'vragen of je die mag lenen?'", "&4=0"
+
+"1=11;2=0;11=2;24=4;25=3", "*c2", "Thorin staat op, en loopt de mijn in. Met nieuwe energie,"
+"en een gerepareerde houweel, gaat hij op de edelstenen inhakken", ""
+"*c9", "Thorin: 'Hei ho, Hei ho....", "*c2", ""
+"Stukken edelsten vallen op de grond. Een stuk rolt naar je toe", "&11=3;4=0"
+
+"1=11;2=0;11=3;4=1;26=0", "*c2"
+"Je raapt de edelsteen op. Hij fonkelt mooi in het zonlicht", "&26=1;4=0"
+
+"1=11;2=0;11=2;4=2", "*c3"
+"$n: 'Zou ik je houweel mogen hebben?'"
+"", "*c9", "Thorin: 'Tuurlijk. Alleen de bovenkant is nog heel.'"
+" 'Het heft is gebroken. Ik heb er niets meer aan'", "&4=0;24=1"
+
+"1=11;2=0;11=2;4=1;24!4;25!3", "*c3"
+"$n: 'Hoe kan ik je helpen?'"
+"", "*c9", "Thorin: 'Heb je iets te eten voor mij?'"
+" 'En een nieuwe houweel?'", "&4=0"
+
+"1=11;2=0;11=2;4=1;24=4;25!3", "*c3"
+"$n: 'Hoe kan ik je helpen?'"
+"", "*c9", "Thorin: 'Heb je iets te eten voor mij?'", "&4=0"
+
+"1=11;2=0;11=2;4=1;24!4;25=3", "*c3"
+"$n: 'Hoe kan ik je helpen?'"
+"", "*c9", "Thorin: 'Ik heb dringend een nieuwe houweel nodig'", "&4=0"
+
+"1=11;2=0;11=1;4=1", "*c3"
+"$n: 'Je bent zelf een stom ding!'"
+"", "*c9", "Dwerg: 'Ik heb het niet tegen jou!'", "&"
+"1=11;2=0;11=1;4=2", "*c3"
+"$n: 'Pardon? Wie is een stom ding?'"
+"", "*c9", "Dwerg: 'Sorry, ik heb het niet tegen jou..'", "&"
+"1=11;2=0;11=1;4>0;4<3", "*c9"
+" 'Sorry van mijn manieren, ik heb wat tegenslag!'"
+" 'Mijn naam is Thorin, en wie mag jij wezen?'",""
+"*c3", "$n: 'Mijn naam is $n'",""
+"*c9", "Thorin: 'Hallo $n. Sorry dat ik zo ruw deed'"
+" 'Mijn houweel is gebroken, en ik had net een ader van edelstenen ontdekt!'"
+" 'Ik heb zo hard mijn best gedaan om ze los te krijgen'"
+" 'Nu is mijn houweel gebroken. En ik heb honger!'"
+"*c2", "", "Thorin zucht diep"
+"&11=2;4=0"
+
+' 16. Bakkerij
+"1=16;16=1;2=0;4=0", "*c2"
+"Je staat in de bakkerij. De bakker ziet er verdrietig uit.", ""
+"Er hangt een geur van heerlijke verse broodjes en taarten", "&"
+
+"1=16;16=1;4=2;2=0", "*c3"
+"$n: 'Hallo? Kan ik iets te eten kopen?'", "", "*c2"
+"De bakker lijkt ineens door te hebben dat er iemand in zijn winkel staat"
+"", "*c9", "Bakker: 'Oh. Sorry, ik had het even niet in de gaten'"
+" 'Ja, we hebben nog wel wat koeken te koop. Ze kosten 2 geldstukken'"
+"&4=0;25=1"
+
+"1=16;16=0;4=0", "*c2"
+"Je had verwacht op een vriendelijke manier door de bakker begroet te worden,"
+"maar helaas. De bakker ziet er verdrietig uit.", "", "*c3", "$n: 'Hallo, mijn naam is $n'"
+" 'Ik ben dringend op zoek naar medicijnen voor de koning. Kunt u mij helpen?'"
+"", "*c2", "De bakker geeft geen antwoord, en staart voor zich uit.", "&16=1"
+
+"1=16;16=1;2=0;4=1", "*c3"
+"$n: 'Hallo? Is alles goed met u?'", "", "&4=0"
+
+"1=16;16=2;2=0;4=0", "*c3", "De bakker kijkt je afwachtend aan.", ""
+"*c9", "Bakker: 'De koeken kosten 2 geldstukken'", "&"
+
+"1=16;16=1;2=0;4=3", "*c3", "$n: 'Ik wil graag wat koeken kopen'", "", "*c9"
+"Bakker: 'Dat is dan 2 geldstukken'", "&16=2;4=0"
+
+"1=16;16=2;2=0;4=2", "*c3"
+"$n: 'Hmm, misschien toch een andere keer'", "", "*c9"
+"Bakker: 'Ok, prima'", "&16=1;4=0"
+
+"1=16;16=2;2=0;4=1", "*c3"
+"$n: 'Alstublieft, 2 geldstukken'", "", "*c9"
+"Bakker: 'Alsjeblieft'", "", "*c2", "De bakker geeft een paar heerlijke koeken"
+"&16=1;4=0;25=2;22-2"
+
+"", "*c15", "", "Wat ga je doen:", "&"
+
+"END"
+
+' Acties
+"20=1;2=0", "Bekijk inhoud van tas", "2=1;4=0"
+"1=0;10=0;4<2", "Word wakker", "4=2"
+"1=0;10=0;4<2", "Probeer nog even verder te slapen", "4=1"
+"1=0;10=0;4=2", "Kijk waar geluid vandaan komt", "4=3"
+"1=0;10=0;4=3", "Open raam", "4=4"
+"1=0;10=1", "Jaag de raaf weg", "4=1;5+1"
+"1=0;10=1", "Het tikken is weg! Probeer weer in bed te kruipen", "4=2;5+1"
+"1=0;10=1", "Pak briefje van de raaf", "4=3;5+1"
+"1=0;10=1;5>2", "Kijk de kamer rond", "2=0;4=0;10=2"
+
+"1=0;10=2;2!1;4!0", "Kijk de kamer rond", "2=0;4=0"
+"1=0;10=2;2=1", "Sluit tas", "2=0;4=0"
+"1=0;2=0;10=2", "Open de kast", "4=1"
+"1=0;2=0;10=2;20=0", "Pak je tas", "4=2"
+"1=0;2=0;10=2", "Pak briefje van de raaf", "4=3"
+"1=0;2=0;10=2;23=3", "Geef de raaf te eten", "4=4"
+"1=0;10=3", "Begin avontuur", "1=5;4=0"
+
+"1=5", "Bekijk omgeving", "1=1"
+"2=1;1!0", "Sluit tas", "2=0;4=0"
+
+' 1. Bos acties
+"2=0;1=1;21=0", "Raap de tak op", "4=1"
+"2=0;1=1", "Ga naar het oosten, richting de akkers", "1=2;3=2"
+"2=0;1=1", "Ga naar het westen, richting de heuvels", "1=3;3=4"
+
+' 2. Akker acties
+"2=0;1=2", "Ga naar het westen, richting het bos", "1=1;3=4"
+"2=0;1=2", "Ga naar het zuiden, richting het dorp", "1=6;3=3"
+
+' 3. Heuvel acties
+"2=0;1=3", "Volg het pad naar de mijn", "1=11;4=0;3=5"
+"2=0;1=3", "Ga naar het oosten, richting het bos", "1=1;3=2"
+"2=0;1=3", "Ga naar het zuiden, richting het moeras", "1=4;3=3"
+
+' 4. Moeras acties
+"2=0;1=4", "Ga naar het noorden, richting de heuvels", "1=3;3=1"
+
+' 6. Dorp Acties
+"2=0;1=6", "Wandel naar de bakkerij", "1=16;4=0;3=5"
+"2=0;1=6", "Ga naar het noorden, richting de akkers", "1=2;3=1"
+"2=0;1=6", "Ga naar het oosten, richting de het donkere woud", "1=7;3=2"
+"2=0;1=6", "Ga naar het zuiden, richting de rivier", "1=8;3=3"
+
+' 7. Donker woud acties
+"2=0;1=7", "Ga naar het westen, richting het dorp", "1=6;3=4"
+
+' 8. Rivier acties
+"2=0;1=8", "Ga naar het noorden, richting het dorp", "1=6;3=1"
+
+' 11. Mijn Acties
+"2=0;1=11;11=1;4=0", "Zeg: 'Je bent zelf een stom ding!'", "4=1"
+"2=0;1=11;11=1;4=0", "Zeg: 'Pardon?'", "4=2"
+"2=0;1=11;11=1;4=0", "Zeg: 'Ok ik ga weer.'", "1=3;3=5"
+
+"2=0;1=11;11=2;4=0", "Zeg: 'Hoe kan ik je helpen?'", "4=1"
+"2=0;1=11;11=2;4=0;24=0", "Zeg: 'Zou ik je houweel mogen hebben?'", "4=2"
+"2=0;1=11;11=2;4=0;24=2", "Geef gerepareerde houweel aan Thorin", "4=3"
+"2=0;1=11;11=2;4=0;25=2", "Geef koeken aan Thorin", "4=4"
+"2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan medicijnen kan komen?'", "4=5"
+"2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan vervoer kan komen?'", "4=6"
+"2=0;1=11;11=2;4=0", "Zeg: 'Sorry, ik moet er weer vandoor'", "1=3;3=5"
+
+"2=0;1=11;11=3;4=0;26=0", "Raap edelsteen op", "4=1"
+"2=0;1=11;11=3;4=0", "Zeg: 'Ok, ik ben er weer vandoor'", "1=3;3=5"
+
+' 16. Bakkerij
+' "2=0;1=16;16=1;4=0", "Zeg: 'Hallo? Is alles goed met u?'", "4=1"
+"2=0;1=16;16=1;4=0;25<1", "Zeg: 'Hallo? Kan ik iets te eten kopen?'", "4=2"
+"2=0;1=16;16=1;4=0;25<2;25>0", "Zeg: 'Ik wil graag koeken kopen'", "4=3"
+"2=0;1=16;16=1;4=0", "Verlaat de bakkerij", "1=6;3=5;4=0"
+
+' 16.2. Koeken kopen
+"2=0;1=16;16=2;4=0;22>1", "Zeg: 'Alstublieft, 2 geldstukken'", "4=1"
+"2=0;1=16;16=2;4=0;22>1", "Zeg: 'Hmm, misschien toch andere keer'", "4=2"
+"2=0;1=16;16=2;4=0;22<3", "Oei, ik heb niet genoeg geld", "4=2"
+
+' Generale inventory acties
+"2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
+"2=1;25=2", "Eet koeken", "4=2"
+
+' Duurt 15 seconden!

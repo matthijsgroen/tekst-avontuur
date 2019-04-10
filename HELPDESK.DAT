@@ -1,0 +1,28 @@
+' Mini avontuur met de helpdesk
+' 1 is status van het gesprek
+' 2 is de wachtrij
+
+"1=0", "*c15", "Welkom bij Avontuur", ""
+"*c2", "Ik ben een geautomatiseerd helpsysteem", "&2=3"
+
+"1=1", "*c2", "een moment geduld...", "*s2", "&"
+"1=1;2=0", "Hallo? Is daar iemand?", "&1=3"
+' Wachtrij
+"1=1;2>0", "Sorry, al onze medewerkers zijn in gesprek", "&"
+"1=1;2>1", "Er zijn nog#02 wachtenden voor u", "&2-1;1=0"
+"1=1;2=1", "Er is nog 1 wachtenden voor u", "&2-1;1=0"
+
+"1=4", "Sorry daarbij kan ik u niet helpen", "&1=3"
+"1=5", "Ok, fijn dat we je konden helpen!", "&0=1"
+
+"0=0", "*c15", "", "Wat ga je doen:", "&"
+
+"END"
+
+' acties
+"1=0", "Vraag om hulp", "1=1"
+"1=0", "Afsluiten", "0=1"
+
+"1=3", "Ik wil weten hoe avontuur werkt", "1=4"
+"1=3", "Hang op", "1=5"
+

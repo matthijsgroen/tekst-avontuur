@@ -78,29 +78,23 @@ let screenData = [];
 let actieData = [];
 
 const readBasicData = async () => {
-  const fileContents = await readFile("AVONTUUR.BAS", "utf8");
-  const lines = fileContents.replace(/\r/g, "").split("\n");
-  const dataRead = startToken => {
-    let data = "";
-    let started = false;
-    lines.forEach(line => {
-      if (line.startsWith(startToken) && !started) {
-        started = true;
-      }
-      if (started && !line.trim().startsWith("'") && line.includes('DATA "')) {
-        data += line.slice(line.indexOf('"'));
-        if (line.includes("END")) {
-          started = false;
-        } else {
-          data += ",";
-        }
+  const inhoud = await readFile("AVONTUUR.DAT", "utf8");
+  const regels = inhoud.split("\r\n");
+  let actieModus = false;
+
+  regels
+    .filter(regel => regel.startsWith('"'))
+    .forEach(regel => {
+      const elementen = JSON.parse(`[${regel}]`);
+
+      if (elementen.length === 1 && elementen[0] === "END") {
+        actieModus = true;
+      } else {
+        actieModus
+          ? actieData.push(...elementen)
+          : screenData.push(...elementen);
       }
     });
-    return JSON.parse(`[${data}]`);
-  };
-
-  screenData = dataRead("1 DATA");
-  actieData = dataRead("2 DATA");
 };
 
 const gameState = Array(100).fill(0);
@@ -159,13 +153,11 @@ const tekst = async (verteller, zin) => {
 };
 
 const toonGebeurtenis = async () => {
-  let index = -1;
   let verteller = 2;
   skip = false;
   cls();
 
-  do {
-    index++;
+  for (let index = 0; index < screenData.length; index++) {
     let bewering = screenData[index];
     if (toegestaan(bewering)) {
       do {
@@ -190,12 +182,12 @@ const toonGebeurtenis = async () => {
           await tekst(verteller, interpoleer(sentence));
         }
       } while (!screenData[index].startsWith("&"));
-    } else if (bewering !== "END") {
+    } else {
       do {
         index++;
       } while (!screenData[index].startsWith("&"));
     }
-  } while (screenData[index] !== "END");
+  }
   keyPressed = null;
 };
 
@@ -247,18 +239,16 @@ const keypress = () =>
 
 const toonActies = async () => {
   const acties = [];
-  let index = -1;
   let verteller = 2;
   let bewering;
 
-  do {
-    index++;
+  for (let index = 0; index < actieData.length; index++) {
     bewering = actieData[index];
     if (toegestaan(bewering)) {
       acties.push({ naam: actieData[index + 1], actie: actieData[index + 2] });
     }
     index += 2;
-  } while (bewering !== "END");
+  }
 
   color(7);
   acties.forEach((actie, i) => console.log(`${i + 1} ) ${actie.naam}`));
@@ -286,6 +276,7 @@ const spelLus = async () => {
   geslacht = toets === "j";
 
   await readBasicData();
+
   do {
     await toonGebeurtenis();
     await toonActies();
