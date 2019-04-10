@@ -144,46 +144,41 @@ FUNCTION Interpoleer$ (Zin$)
   FOR i% = 1 TO LEN(Zin$)
     Karakter$ = MID$(Zin$, i%, 1)
     IF Karakter$ = "$" THEN
-      SELECT CASE MID$(Zin$, i%, 2)
-      CASE "$n"
-        resultaat$ = resultaat$ + Naam$
-      CASE "$h"
-        IF Geslacht% THEN
+      IF Geslacht% THEN
+        SELECT CASE MID$(Zin$, i%, 2)
+        CASE "$n"
+          resultaat$ = resultaat$ + Naam$
+        CASE "$h"
           resultaat$ = resultaat$ + "hij"
-        ELSE
-          resultaat$ = resultaat$ + "zij"
-        END IF
-      CASE "$H"
-        IF Geslacht% THEN
+        CASE "$H"
           resultaat$ = resultaat$ + "Hij"
-        ELSE
-          resultaat$ = resultaat$ + "Zij"
-        END IF
-      CASE "$z"
-        IF Geslacht% THEN
+        CASE "$z"
           resultaat$ = resultaat$ + "zijn"
-        ELSE
-          resultaat$ = resultaat$ + "haar"
-        END IF
-      CASE "$Z"
-        IF Geslacht% THEN
+        CASE "$Z"
           resultaat$ = resultaat$ + "Zijn"
-        ELSE
-          resultaat$ = resultaat$ + "Haar"
-        END IF
-      CASE "$m"
-        IF Geslacht% THEN
+        CASE "$m"
           resultaat$ = resultaat$ + "meneer"
-        ELSE
-          resultaat$ = resultaat$ + "mevrouw"
-        END IF
-      CASE "$M"
-        IF Geslacht% THEN
+        CASE "$M"
           resultaat$ = resultaat$ + "Meneer"
-        ELSE
+        END SELECT
+      ELSE
+        SELECT CASE MID$(Zin$, i%, 2)
+        CASE "$n"
+          resultaat$ = resultaat$ + Naam$
+        CASE "$h"
+          resultaat$ = resultaat$ + "zij"
+        CASE "$H"
+          resultaat$ = resultaat$ + "Zij"
+        CASE "$z"
+          resultaat$ = resultaat$ + "haar"
+        CASE "$Z"
+          resultaat$ = resultaat$ + "Haar"
+        CASE "$m"
+          resultaat$ = resultaat$ + "mevrouw"
+        CASE "$M"
           resultaat$ = resultaat$ + "Mevrouw"
-        END IF
-      END SELECT
+        END SELECT
+      END IF
       i% = i% + 1
     ELSEIF Karakter$ = "#" THEN
       Plek% = VAL(MID$(Zin$, i% + 1, 2))
