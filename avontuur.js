@@ -141,6 +141,8 @@ const interpoleer = zin =>
     .replace(/\$H/g, geslacht ? "Hij" : "Zij")
     .replace(/\$z/g, geslacht ? "zijn" : "haar")
     .replace(/\$Z/g, geslacht ? "Zijn" : "Haar")
+    .replace(/\$m/g, geslacht ? "meneer" : "mevrouw")
+    .replace(/\$M/g, geslacht ? "Meneer" : "Mevrouw")
     .replace(/#\d{2}/g, num => ` ${gameState[parseInt(num.slice(1), 10)]}`);
 
 const tekst = async (verteller, zin) => {

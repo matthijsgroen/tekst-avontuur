@@ -171,6 +171,18 @@ FUNCTION Interpoleer$ (Zin$)
         ELSE
           resultaat$ = resultaat$ + "Haar"
         END IF
+      CASE "$m"
+        IF Geslacht% THEN
+          resultaat$ = resultaat$ + "meneer"
+        ELSE
+          resultaat$ = resultaat$ + "mevrouw"
+        END IF
+      CASE "$M"
+        IF Geslacht% THEN
+          resultaat$ = resultaat$ + "Meneer"
+        ELSE
+          resultaat$ = resultaat$ + "Mevrouw"
+        END IF
       END SELECT
       i% = i% + 1
     ELSEIF Karakter$ = "#" THEN
