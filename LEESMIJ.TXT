@@ -5,7 +5,7 @@ Een tekst avontuur, geschreven in QBasic, node.js en HTML
 
 De code, en het avontuur zijn zo nederlands mogelijk.
 
-QBASIC Versie
+QBASIC versie
 -------------
 
 Gebruik QuickBasic om er een `.exe` van te maken, en draai deze in DOSBox
@@ -14,11 +14,19 @@ Of draai het spel direct vanuit QBasic
 Systeem eisen: 8088 XT, 320KB geheugen, 9.8Mhz
 
 
-Node.js Versie
+Node.js versie
 --------------
 
 Als je een moderne computer hebt, waar alle grondstoffen gratis zijn
 kan je ook de node.js versie draaien in een terminal.
 
 Systeem eisen: Intel i3 of hoger, 30MB geheugen, 500Mhz
+
+
+Web versie
+----------
+
+Voor de mensen uit de toekomst die alles via cyberspace doen:
+
+https://matthijsgroen.github.io/tekst-avontuur/
 
