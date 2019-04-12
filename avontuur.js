@@ -77,9 +77,9 @@ let geslacht = null;
 let screenData = [];
 let actieData = [];
 
-const readBasicData = async () => {
+const leesAvontuur = async () => {
   const inhoud = await readFile("AVONTUUR.DAT", "utf8");
-  const regels = inhoud.split("\r\n");
+  const regels = inhoud.replace(/\r/g, "").split("\n");
   let actieModus = false;
 
   regels
@@ -277,7 +277,7 @@ const spelLus = async () => {
   } while (toets !== "j" && toets !== "m");
   geslacht = toets === "j";
 
-  await readBasicData();
+  await leesAvontuur();
 
   do {
     await toonGebeurtenis();

@@ -1,3 +1,4 @@
+// vim:set syntax=off ft=dos:
 const avontuur = `
 ' Gebeurtenissen
 ' 0 = Spel gewonnen (1), Bezig(0), Verloren(2)
