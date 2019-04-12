@@ -1,0 +1,45 @@
+body {
+    background: black;
+    font-family: 'Source Code Pro', monospace;
+    line-height: 1.2em;
+}
+a { text-decoration: none; }
+.color0 { color: #000000; }
+.color1 { color: #0414a7; }
+.color2 { color: #18a81b; }
+.color3 { color: #1aaaa9; }
+.color4 { color: #a8060e; }
+.color5 { color: #a817a8; }
+.color6 { color: #a85514; }
+.color7 { color: #aaaaaa; }
+.color8 { color: #555555; }
+.color9 { color: #565cfb; font-weight: bold; }
+.color10 { color: #5efd60; font-weight: bold; }
+.color11 { color: #5ffffe; font-weight: bold; }
+.color12 { color: #fc575a; font-weight: bold; }
+.color13 { color: #fd5dfc; font-weight: bold; }
+.color14 { color: #fffd64; font-weight: bold; }
+.color15 { color: #ffffff; font-weight: bold; }
+input {
+    background: black;
+    font-size: 1em;
+    line-height: 2em;
+    font-family: 'Source Code Pro', monospace;
+    border: 2px solid #aaaaaa;
+}
+#welkom {
+    padding-top: 1em;
+}
+.verberg { display: none; }
+.menu {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+button {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1em;
+    line-height: 1.5em;
+    background-color: #000000;
+    color: #aaaaaa;
+}

@@ -1,3 +1,4 @@
+const avontuur = `
 ' Gebeurtenissen
 ' 0 = Spel gewonnen (1), Bezig(0), Verloren(2)
 ' 1 = Locatie
@@ -31,6 +32,7 @@
 ' 25 = Koeken 1 = bestaan, 2 = kopen, 3 = geven
 ' 26 = Medicijn. 1 = kennis draak, 2 = kennis heks, 3 = prijs, 4 = Ingredientenlijst, 5 = medicijn
 ' 27 = Zwaard. 1 = motivatie
+' 28 = Edelsteen.
 
 ' 0. Proloog
 
@@ -151,6 +153,7 @@
 "1=8;3=3", "*c2", "Je wandelt naar het zuiden, richting de rivier", "", "&3=0"
 
 "1=11;3=5", "*c2", "Je loopt van de weg af, richting de ingang van de mijn.", "", "&3=0"
+"1=13;3=5", "*c2", "Je loopt het erf van een boerderij op.", "", "&3=0"
 "1=16;3=5", "*c2", "Uit de bakkerij komt een geur van heerlijke verse broodjes en taarten"
 "", "Je stapt watertandend de winkel binnen.", "", "&3=0"
 
@@ -175,7 +178,7 @@
 "2=1;24=1", "*c7", "- Houweel met gebroken heft", "&"
 "2=1;24=2", "*c7", "- Gerepareerde houweel", "&"
 "2=1;25=2", "*c7", "- Koeken, vers van de bakker", "&"
-"2=1;26=1", "*c7", "- Een fonkelende edelsteen", "&"
+"2=1;28=1", "*c7", "- Een fonkelende edelsteen", "&"
 
 ' 1. Bos
 "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -304,8 +307,8 @@
 "*c9", "Thorin: 'Hei ho, Hei ho....'", "*c2", ""
 "Stukken edelsten vallen op de grond. Een stuk rolt naar je toe", "&11=3;4=0"
 
-"1=11;2=0;11=3;4=1;26=0", "*c2"
-"Je raapt de edelsteen op. Hij fonkelt mooi in het zonlicht", "&26=1;4=0"
+"1=11;2=0;11=3;4=1;28=0", "*c2"
+"Je raapt de edelsteen op. Hij fonkelt mooi in het zonlicht", "&28=1;4=0"
 
 "1=11;2=0;11=2;4=2", "*c3"
 "$n: 'Zou ik je houweel mogen hebben?'"
@@ -367,6 +370,33 @@
 "", "In je ooghoek zie je een raaf wegvliegen uit het venster"
 "Je begint het vermoeden te krijgen dat ze een brief heeft gehad..."
 "&12=1;4=0;20=1"
+
+"1=12;12=1;2=0;4=0", "*c2", "Je bent bij de hut van Eucalypta, in het moeras"
+"", "*c5", "Eucalypta: 'Hallo $n, ben je daar weer?'", "&"
+
+"1=12;12=1;2=0;4=1", "*c2", "Eucalypta kijkt je aan. Er komt een grote glimlach op haar gezicht"
+"", "*c5", "Eucalypta: 'En waarom zou ik dat doen, lieve schat?"
+"  Als dit zo belangrijk voor je is, heb je er vast wel iets moois voor over!'"
+"", "Eucalypta: 'Als jij me weet te verassen met een mooi sieraad, dan kijk"
+"  Ik wel of ik je kan helpen'", "&4=0;26=2"
+
+"1=12;12=1;2=0;4=2", "*c2", "Eucalypta kijkt je aan. Er komt een grote glimlach op haar gezicht"
+"", "*c5", "Eucalypta: 'Die edelsteen is echt prachtig!"
+"  maar het is geen SIERAAD'", "&4=0"
+
+' 13. Boerderij
+"1=13;13=0;2=0;4=0", "*c2"
+"Grote rookpluimen komen van achter de boerderij vandaan."
+"Je loopt snel om de boerderij heen om te gaan kijken"
+"Er is duidelijk een brand geweest. De vlammen zijn wel al gedoofd"
+"Er staat een boer verslagen bij de verbrande resten van wat"
+"eerst een boomgaard zou zijn geweest.", ""
+"De boer en zijn vrouw staan verslagen naar de smeulende restantent"
+"te kijken...", "&"
+
+"1=13;13=0;2=0;4=1", "*c2", "Je loopt op de boer af", ""
+"*c3", "$n: 'Kan ik ergens mee helpen? Er zijn toch geen"
+"  gewonden?'", "&"
 
 ' 16. Bakkerij
 "1=16;16=1;2=0;4=0", "*c2"
@@ -469,8 +499,9 @@
 "2=0;1=1", "Ga naar het westen, richting de heuvels", "1=3;3=4"
 
 ' 2. Akker acties
-"2=0;1=2", "Ga naar het westen, richting het bos", "1=1;3=4"
-"2=0;1=2", "Ga naar het zuiden, richting het dorp", "1=6;3=3"
+'"2=0;1=2", "Loop naar de boerderij", "1=13;3=5;4=0"
+"2=0;1=2", "Ga naar het westen, richting het bos", "1=1;3=4;4=0"
+"2=0;1=2", "Ga naar het zuiden, richting het dorp", "1=6;3=3;4=0"
 
 ' 3. Heuvel acties
 "2=0;1=3", "Volg het pad naar de mijn", "1=11;4=0;3=5"
@@ -506,19 +537,23 @@
 "2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan vervoer kan komen?'", "4=6"
 "2=0;1=11;11=2;4=0", "Zeg: 'Sorry, ik moet er weer vandoor'", "1=3;3=5"
 
-"2=0;1=11;11=3;4=0;26=0", "Raap edelsteen op", "4=1"
+"2=0;1=11;11=3;4=0;28=0", "Raap edelsteen op", "4=1"
 "2=0;1=11;11=3;4=0", "Zeg: 'Ok, ik ben er weer vandoor'", "1=3;3=5"
 
 ' 12. Hut
-"2=0;1=12;12=0;4=0", "Zeg: 'euhm...'", "&4=1"
-"2=0;1=12;12=0;4=0", "Zeg: 'uh oh...'", "&4=1"
-"2=0;1=12;12=0;4=0", "Zeg: 'nou...'", "&4=1"
+"2=0;1=12;12=0;4=0", "Zeg: 'euhm...'", "4=1"
+"2=0;1=12;12=0;4=0", "Zeg: 'uh oh...'", "4=1"
+"2=0;1=12;12=0;4=0", "Zeg: 'nou...'", "4=1"
 
-"2=0;1=12;12=0;4=1", "Zeg: 'maar hoe...'", "&4=2"
-"2=0;1=12;12=0;4=1", "Zeg: 'dat kan toch niet...'", "&4=2"
+"2=0;1=12;12=0;4=1", "Zeg: 'maar hoe...'", "4=2"
+"2=0;1=12;12=0;4=1", "Zeg: 'dat kan toch niet...'", "4=2"
 
-'"2=0;1=12;12=1;4=0", "Zeg: 'Kunt u me helpen met een medicijn?'", "&4=1"
-"2=0;1=12;12=1;4=0", "Zeg: 'Tot ziens!'", "&1=4;3=5"
+"2=0;1=12;12=1;4=0", "Zeg: 'Kunt u me helpen met een medicijn?'", "4=1"
+"2=0;1=12;12=1;4=0;26=2;28=1", "Geef edelsteen aan Eucalypta", "4=2"
+"2=0;1=12;12=1;4=0", "Zeg: 'Tot ziens!'", "1=4;3=5"
+
+' 13. Boerderij
+"2=0;1=13;13=0;4=0", "Praat met de boer", "4=1"
 
 ' 16. Bakkerij
 "2=0;1=16;16=1;4=0;26=0", "Zeg: 'Hallo? Is alles goed met u?'", "4=1"
@@ -538,4 +573,4 @@
 ' Generale inventory acties
 "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
 "2=1;25=2", "Eet koeken", "4=2"
-
+`
