@@ -3,7 +3,6 @@ let screenData = [];
 let actieData = [];
 
 let naam = "";
-let geslacht = null;
 let gameState = Array(100).fill(0);
 
 const screenElement = document.getElementById("screen");
@@ -122,12 +121,6 @@ const toegestaan = bewering => {
 const interpoleer = zin =>
   zin
     .replace(/\$n/g, naam)
-    .replace(/\$h/g, geslacht ? "hij" : "zij")
-    .replace(/\$H/g, geslacht ? "Hij" : "Zij")
-    .replace(/\$z/g, geslacht ? "zijn" : "haar")
-    .replace(/\$Z/g, geslacht ? "Zijn" : "Haar")
-    .replace(/\$m/g, geslacht ? "meneer" : "mevrouw")
-    .replace(/\$M/g, geslacht ? "Meneer" : "Mevrouw")
     .replace(/#\d{2}/g, num => ` ${gameState[parseInt(num.slice(1), 10)]}`);
 
 const tekst = async (verteller, zin) => {
@@ -249,6 +242,8 @@ const toonActies = async () => {
     print("\n");
     print(`${i + 1} ) ${actie.naam}\n`, i + 1);
   });
+  // geen acties, dan is spel voorbij
+  if (acties.length === 0) return false;
 
   let toets;
   let keuze;
@@ -258,6 +253,7 @@ const toonActies = async () => {
   } while (!(keuze > 0 && keuze <= acties.length));
 
   voerActieUit(acties[keuze - 1].actie);
+  return true;
 };
 
 const laadAvontuur = async () => {
@@ -291,31 +287,12 @@ const krijgNaam = () =>
     document.addEventListener("keypress", toetsAfwachten);
   });
 
-const krijgGeslacht = async () => {
-  cls();
-  color(15);
-  print("Ben je een jongen of een meisje?\n\n");
-  color(7);
-  print("1 ) Een jongen\n", 1);
-  print("\n");
-  print("2 ) Een meisje\n", 2);
-
-  let toets;
-  let keuze;
-  do {
-    toets = await keypress();
-    keuze = toets && /\d/.test(toets) && parseInt(toets, 10);
-  } while (!(keuze > 0 && keuze <= 2));
-  return keuze == 1;
-};
-
 const laadSpel = async () => {
   try {
     const opgeslagen = localStorage.getItem("opslag");
     let data = JSON.parse(opgeslagen);
 
     naam = data.naam;
-    geslacht = data.geslacht;
     gameState = data.gameState;
     document.getElementById("welkom").remove();
     return true;
@@ -327,7 +304,6 @@ const bewaarSpel = () => {
   try {
     const opslag = {
       naam,
-      geslacht,
       gameState
     };
     localStorage.setItem("opslag", JSON.stringify(opslag));
@@ -339,17 +315,18 @@ const spelLus = async () => {
   const spelGeladen = await laadSpel();
   if (!spelGeladen) {
     naam = await krijgNaam();
-    geslacht = await krijgGeslacht();
     bewaarSpel();
   }
 
   const menu = document.querySelector(".menu");
   menu.classList.remove("verberg");
+  let heeftActies;
 
   do {
     await toonGebeurtenis();
-    await toonActies();
+    heeftActies = await toonActies();
     bewaarSpel();
-  } while (gameState[0] === 0);
+  } while (heeftActies);
+  // Spel afgelopen
 };
 spelLus();

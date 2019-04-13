@@ -1,7 +1,7 @@
 // vim:set syntax=off ff=dos fileencoding=default:
 const avontuur = `
 ' Gebeurtenissen
-' 0 = Spel gewonnen (1), Bezig(0), Verloren(2)
+' 0 = geslacht. 1 = jongen, 2 = meisje
 ' 1 = Locatie
 '   0 = Proloog
 '   1 = Bos
@@ -39,12 +39,21 @@ const avontuur = `
 ' 30 = locatie paard
 
 ' 0. Proloog
+"0=0"
+"Hoi $n, welkom bij Avontuur!"
+"", "Ben je een jongen of een meisje?", "&"
 
-"1=0;10=0;4=0"
-"*c2", "Er was eens, lang geleden een stoere koerier..."
-"$Z naam was $n", ""
-"$H was altijd super snel in het bezorgen van brieven en pakketjes."
-"Dingen bezorgen was dan ook $z lust en $z leven."
+"1=0;10=0;4=0;0=1", "*c2", "Er was eens, lang geleden een stoere koerier..."
+"Zijn naam was $n", ""
+"Hij was altijd super snel in het bezorgen van brieven en pakketjes."
+"Dingen bezorgen was dan ook zijn lust en zijn leven.", "&"
+
+"1=0;10=0;4=0;0=2", "*c2", "Er was eens, lang geleden een stoere koerier..."
+"Haar naam was $n", ""
+"Zij was altijd super snel in het bezorgen van brieven en pakketjes."
+"Dingen bezorgen was dan ook haar lust en haar leven.", "&"
+
+"1=0;10=0;4=0;0!0"
 "Op het moment dat ons avontuur begint, ligt $n rustig te slapen...", ""
 "*s2", "*c14", "<tik, tik, tik>", "*c3", "", "$n: 'huh?'"
 "&2=2"
@@ -116,13 +125,14 @@ const avontuur = `
 ' 5. Intro
 "1=5", "*c2"
 "$n wist snel aan de juiste medicijnen te komen,"
-"in de vorm van een magische drank."
-"$H is nu onderweg naar de koning, om ze te bezorgen."
-""
-"*s3", ""
-"*c4", "Auw! Een laaghangende tak!", ""
-"*c2", "$n viel ineens hard van $z paard...", ""
-"*c3", "$n: 'Oh nee! De magische drank is stuk gevallen!", "  En mijn paard is er vandoor!'"
+"in de vorm van een magische drank.", "&"
+"1=5;0=1", "Hij is nu onderweg naar de koning, om ze te bezorgen.", "&"
+"1=5;0=2", "Zij is nu onderweg naar de koning, om ze te bezorgen.", "&"
+"1=5", ""
+"*s3", "*c4", "Auw! Een laaghangende tak!", "", "&"
+"1=5;0=1", "*c2", "$n viel ineens hard van zijn paard...", "", "&"
+"1=5;0=2", "*c2", "$n viel ineens hard van haar paard...", "", "&"
+"1=5","*c3", "$n: 'Oh nee! De magische drank is stuk gevallen!", "  En mijn paard is er vandoor!'"
 "*c2", "", "Daar stond $n dan.. Alleen in het bos, zonder vervoer of medicijnen..."
 "&"
 
@@ -385,8 +395,12 @@ const avontuur = `
 "en dampen naar buiten. Je loopt voorzichtig naar de deur,"
 "en twijfelt nog of je wel moet aankloppen."
 "", "Veel tijd om erover na te denken krijg je echter niet"
-"Ineens zwaait de deur open:", "*c13", ""
-"Heks: 'Hallo knappe $m, wat kan ik voor je doen!?'"
+"Ineens zwaait de deur open:", "*c13", "", "&"
+"1=12;12=0;2=0;4=0;0=1"
+"Heks: 'Hallo knappe meneer, wat kan ik voor je doen!?'", "&"
+"1=12;12=0;2=0;4=0;0=2"
+"Heks: 'Hallo knappe mevrouw, wat kan ik voor je doen!?'", "&"
+"1=12;12=0;2=0;4=0"
 "", "*c2", "Je schrikt je te pletter.", "&20=0"
 
 "1=12;12=0;2=0;4=1", "*c2"
@@ -533,14 +547,17 @@ const avontuur = `
 "Bakker: 'Alsjeblieft'", "", "*c2", "De bakker geeft een paar heerlijke koeken"
 "&16=1;4=0;25=2;22-2"
 
-"", "*c15", "", "Wat ga je doen:", "&"
+"0!0", "*c15", "", "Wat ga je doen:", "&"
 
 "END"
 
 ' Acties
+"0=0", "Een jongen", "0=1"
+"0=0", "Een meisje", "0=2"
+
 "20=1;2=0", "Bekijk inhoud van tas", "2=1;4=0"
-"1=0;10=0;4<2", "Word wakker", "4=2"
-"1=0;10=0;4<2", "Probeer nog even verder te slapen", "4=1"
+"1=0;10=0;4<2;0!0", "Word wakker", "4=2"
+"1=0;10=0;4<2;0!0", "Probeer nog even verder te slapen", "4=1"
 "1=0;10=0;4=2", "Kijk waar geluid vandaan komt", "4=3"
 "1=0;10=0;4=3", "Open raam", "4=4"
 "1=0;10=1", "Jaag de raaf weg", "4=1;5+1"
