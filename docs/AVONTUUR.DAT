@@ -37,6 +37,7 @@ const avontuur = `
 ' 28 = Edelsteen.
 ' 29 = paard. 1 = kennis, 2 = gevonden, 3 = hoeven, 4 = kar
 ' 30 = locatie paard
+' 31 = touw
 
 ' 0. Proloog
 "0=0"
@@ -212,6 +213,7 @@ const avontuur = `
 "2=1;24=2", "*c7", "- Gerepareerde houweel", "&"
 "2=1;25=2", "*c7", "- Koeken, vers van de bakker", "&"
 "2=1;28=1", "*c7", "- Een fonkelende edelsteen", "&"
+"2=1;31=1", "*c7", "- Een lang stuk touw", "&"
 
 ' 1. Bos
 "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -445,8 +447,13 @@ const avontuur = `
 "Er is duidelijk een brand geweest. De vlammen zijn wel al gedoofd"
 "Er staat een boer verslagen bij de verbrande resten van wat"
 "eerst een boomgaard zou zijn geweest.", ""
-"De boer en zijn vrouw staan verslagen naar de smeulende restanten"
-"te kijken...", "&"
+"De boer staat verslagen naar de smeulende restanten te kijken...", "&"
+"1=13;2=0;19=1;31=0;4=0", "De stal is leeg. Er hangt een lang stuk touw aan de zijkant van de stal", "&"
+"1=13;2=0;19=1;31>0;4=0", "De stal is leeg.", "&"
+"1=13;2=0;30!13;31=0;4=0", "De stal is leeg. Er hangt een lang stuk touw aan de zijkant van de stal", "&"
+"1=13;2=0;30!13;31>0;4=0", "De stal is leeg.", "&"
+"1=13;2=0;19=0;30=13;31=0;4=0", "Teun staat in de stal. Er hangt een lang stuk touw aan de zijkant van de stal", "&"
+"1=13;2=0;19=0;30=13;31>0;4=0", "Teun staat in de stal.", "&"
 
 "1=13;13>0;2=0;4=1", "*c3", "$n: 'Kan ik helpen blussen?'", "*c9"
 "", "Boer: 'Nee dat heeft geen zin, we kunnen het het beste"
@@ -482,8 +489,8 @@ const avontuur = `
 "Er is duidelijk een brand geweest. De vlammen zijn wel al gedoofd"
 "Er staat een boer verslagen bij de verbrande resten van wat"
 "eerst een boomgaard zou zijn geweest.", ""
-"De boer en zijn vrouw staan verslagen naar de smeulende restantent"
-"te kijken...", "&"
+"De boer staat verslagen naar de smeulende restantent te kijken..."
+"De stal is leeg. Er hangt een lang stuk touw aan de zijkant van de stal", "&"
 
 "1=13;13=0;2=0;4=1", "*c2", "Je loopt op de boer af", ""
 "*c3", "$n: 'Kan ik ergens mee helpen? Er zijn toch geen"
@@ -501,6 +508,10 @@ const avontuur = `
 "  uit het dorp. Die kan vaak wel aan wat dingen komen."
 "  Vraag me alleen niet hoe!'"
 "", "&4=0;"
+
+"1=13;13>0;2=0;4=6;31=0"
+"*c2", "Je pakt het touw"
+"", "&4=0;31=1"
 
 ' 16. Bakkerij
 "1=16;16=1;2=0;4=0", "*c2"
@@ -667,9 +678,10 @@ const avontuur = `
 "2=0;1=13;13>0;4=0", "Zeg: 'Kan ik helpen blussen?'", "4=1"
 "2=0;1=13;13=1;4=0;29<2", "Zeg: 'Hoe zou ik uw paard kunnen vinden?'", "4=2"
 "2=0;1=13;13=1;4=0;29>1", "Zeg: 'Ik heb Teun teruggevonden!'", "4=2"
+"2=0;1=13;13>1;4=0;12=0", "Zeg: 'Weet u hoe ik aan medicijnen zou kunnen komen?'", "4=5"
 "2=0;1=13;13>0;4=0;30=13;19=1", "Breng Teun naar zijn stal", "4=3"
 "2=0;1=13;13>0;4=0;30=13;19=0", "Haal Teun van zijn stal", "4=4"
-"2=0;1=13;13>1;4=0;12=0", "Zeg: 'Weet u hoe ik aan medicijnen zou kunnen komen?'", "4=5"
+"2=0;1=13;13>0;4=0;31=0", "Pak touw", "4=6"
 "2=0;1=13;13>1;4=0", "Loop terug naar de weg", "1=2;3=5"
 
 ' 15. Smederij
