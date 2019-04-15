@@ -21,7 +21,7 @@ const avontuur = `
 ' 12 = Lokatie status Hut
 ' 13 = Lokatie status Boerderij
 ' 14 = Lokatie status Molen
-' 15 = Lokatie status Smederij
+' 15 = Lokatie status Smederij wapen=lucy(13), goud=luuk(11), hoef=luk(9)
 ' 16 = Lokatie status Bakkerij
 ' 17 = Lokatie status Toren
 
@@ -183,7 +183,7 @@ const avontuur = `
 "", "Je stapt watertandend de winkel binnen.", "", "&3=0"
 
 "1=15;3=6;19=1;29=2", "*c2", "Je knoopt Teun vast aan een paaltje bij de smederij,"
-"en loopt naar binnen", "", "&3=0"
+"en loopt naar binnen", "", "&3=0;30=15"
 "1=15;3=6;19=0", "*c2", "Je loopt de grote smederij binnen", "", "&3=0"
 
 "1=6;3=5;16=1;25=0;26=0", "*c2", "Geen idee met wat je aanmoet met de situatie, loop je weer naar buiten", "&"
@@ -540,6 +540,21 @@ const avontuur = `
 "*c13", "Lucy: 'Lopen is goed voor je!'"
 "&4=0;"
 
+"1=15;2=0;4=3", "*c2", "Luk komt op je aflopen.", ""
+"*c9", "Luk: 'Geen probleem, dat kost dan 2 geldstukken'", "&"
+
+"1=15;2=0;4=9", "*c3", "$n: 'Hmm, misschien een andere keer'", ""
+"*c9", "Luk: 'Ok, prima'", "*c2", "", "Luk loopt weer terug naar zijn werkplek"
+"&4=0"
+
+"1=15;2=0;4=8", "*c3", "$n: 'Alstublieft, 2 geldstukken'", ""
+"*c2", "Luk gaat aan het werk. Teun laat kalm zijn hoeven nakijken"
+"", "*c14", "<Ting, Ting, Ting>", "*c2", ""
+"Na een tijdje heeft Teun nieuwe hoefijzers gekregen", "*c9", ""
+"Luk: 'Zo, weer allemaal nieuw. Je kan nu zelfs op je paard rijden"
+"  als je dat zou willen'"
+"&4=0;29=3;22-2"
+
 ' 16. Bakkerij
 "1=16;16=1;2=0;4=0", "*c2"
 "Je staat in de bakkerij. De bakker ziet er verdrietig uit."
@@ -712,9 +727,13 @@ const avontuur = `
 "2=0;1=13;13>1;4=0", "Loop terug naar de weg", "1=2;3=5"
 
 ' 15. Smederij
+"2=0;1=15;4=3;22>1", "Zeg: 'Alstublieft, 2 geldstukken'", "4=8"
+"2=0;1=15;4=3;22>1", "Zeg: 'Hmm, misschien toch andere keer'", "4=9"
+"2=0;1=15;4=3;22<3", "Oei, ik heb niet genoeg geld", "4=9"
+
 "2=0;1=15;4=0", "Zeg: 'Weten jullie hoe ik aan medicijnen zou kunnen komen?'", "4=1"
 "2=0;1=15;4=0", "Zeg: 'Weten jullie hoe ik aan vervoer zou kunnen komen?'", "4=2"
-'"2=0;1=15;4=0", "Zeg: 'Mijn paard hier heeft nieuwe hoefijzers nodig'", "4=3"
+'"2=0;1=15;4=0;29<3;30=15", "Zeg: 'Mijn paard hier heeft nieuwe hoefijzers nodig'", "4=3"
 '"2=0;1=15;4=0", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=4"
 '"2=0;1=15;4=0", "Zeg: 'Kunnen jullie een wapen maken?'", "4=6"
 '"2=0;1=15;4=0", "Zeg: 'Wat weten jullie van het monster in het woud?'", "4=7"
