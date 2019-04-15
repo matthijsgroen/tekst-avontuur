@@ -513,6 +513,33 @@ const avontuur = `
 "*c2", "Je pakt het touw"
 "", "&4=0;31=1"
 
+' 15. Smederij
+"1=15;15=1;2=0;4=0", "*c2", "Je bent in de smederij", "", "*c13", "Lucy: 'Hey welkom!'"
+"*c9", "Luuk: 'Wat kunnen we voor je doen?'"
+"&15=1"
+
+"1=15;15=0;2=0;4=0", "*c13", "Smid1: 'Hey welkom nieuwe klant!'"
+"*c9", "Smid2: 'Ik Luk, de hoefsmid. Luuk hier is onze goudsmid'"
+"*c11", "Luuk: 'En en onze wapensmid hier is Lucy'"
+"", "*c13", "Lucy: 'Wat kunnen we voor je doen?'"
+"&15=1"
+
+"1=15;2=0;4=1"
+"*c3", "$n: 'Weten jullie hoe ik aan medicijnen zou kunnen komen?'", ""
+"*c9", "Luk: 'Ik zelf niet, Ik ben nooit ziek'"
+"*c13", "Lucy: 'Hah grote aansteller! Je bent vaak genoeg ziek'"
+"*c11", "Luuk: 'En dan smeek je als een baby aan de bakker voor medicijnen!'"
+"*c9", "Luk: 'Niet waar!'", "", "*c2", "Luk krijgt een rood hoofd"
+"&4=0;"
+
+"1=15;2=0;4=2"
+"*c3", "$n: 'Weten jullie hoe ik aan vervoer zou kunnen komen?'", ""
+"*c11", "Luuk: 'De boer heeft een paard?'"
+"*c13", "Lucy: 'Het is wel een werkpaard, ver zal je er niet mee komen'"
+"*c9", "Luk: 'Verder doen we hier alles te voet'"
+"*c13", "Lucy: 'Lopen is goed voor je!'"
+"&4=0;"
+
 ' 16. Bakkerij
 "1=16;16=1;2=0;4=0", "*c2"
 "Je staat in de bakkerij. De bakker ziet er verdrietig uit."
@@ -633,7 +660,7 @@ const avontuur = `
 
 ' 6. Dorp Acties
 "2=0;1=6", "Wandel naar de bakkerij", "1=16;4=0;3=5"
-'"2=0;1=6", "Wandel naar de smederij", "1=15;4=0;3=6"
+"2=0;1=6", "Wandel naar de smederij", "1=15;4=0;3=6"
 "2=0;1=6", "Ga naar het noorden, richting de akkers", "1=2;3=1"
 "2=0;1=6", "Ga naar het oosten, richting de het donkere woud", "1=7;3=2"
 "2=0;1=6", "Ga naar het zuiden, richting de rivier", "1=8;3=3"
@@ -685,6 +712,13 @@ const avontuur = `
 "2=0;1=13;13>1;4=0", "Loop terug naar de weg", "1=2;3=5"
 
 ' 15. Smederij
+"2=0;1=15;4=0", "Zeg: 'Weten jullie hoe ik aan medicijnen zou kunnen komen?'", "4=1"
+"2=0;1=15;4=0", "Zeg: 'Weten jullie hoe ik aan vervoer zou kunnen komen?'", "4=2"
+'"2=0;1=15;4=0", "Zeg: 'Mijn paard hier heeft nieuwe hoefijzers nodig'", "4=3"
+'"2=0;1=15;4=0", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=4"
+'"2=0;1=15;4=0", "Zeg: 'Kunnen jullie een wapen maken?'", "4=6"
+'"2=0;1=15;4=0", "Zeg: 'Wat weten jullie van het monster in het woud?'", "4=7"
+'"2=0;1=15;4=0", "Kijk rond in smederij", "4=5"
 "2=0;1=15;4=0", "Verlaat de smederij", "1=6;3=6;4=0"
 
 ' 16. Bakkerij
