@@ -3,7 +3,7 @@
 ##################################################
 
 styles[] {
-   finished : style {
+   finished:style {
       box_color  = #080
    }
 }
@@ -39,7 +39,7 @@ styles[] {
          depends_on []   = trek_tand_van_draak;
       }
 
-      breng_medicijnen_naar_koning : event {
+      breng_medicijnen_naar_koning:event {
          depends_on [] = zet_zadel_op_draak, krijg_medicijn_van_heks;
          end_state     = positive
       }
@@ -83,7 +83,7 @@ styles[] {
          depends_on []   = leg_molensteen_op_lift;
       }
 
-      knoop_touw_aan_molensteen : event {
+      knoop_touw_aan_molensteen:event {
          depends_on []   = pak_touw_op_boerderij, hijs_lift_met_molensteen;
       }
 
@@ -105,7 +105,7 @@ styles[] {
          depends_on []   = bezorg_meel_bij_bakker;
       }
 
-      krijg_appel_taart_van_bakker : event {
+      krijg_appel_taart_van_bakker:event {
          depends_on []   = breng_dochter_naar_bakker;
       }
 
@@ -118,7 +118,7 @@ styles[] {
          depends_on []   = maak_sieraad_bij_smid;
       }
 
-      krijg_ingredientenlijst_van_heks : event {
+      krijg_ingredientenlijst_van_heks:event {
         depends_on [] = praat_met_heks, geef_sieraad_aan_heks;
       }
 
@@ -127,7 +127,7 @@ styles[] {
          depends_on []   = praat_met_dwerg;
       }
 
-      krijg_medicijn_van_heks : event {
+      krijg_medicijn_van_heks:event {
          depends_on [] = pak_tand_van_draak, pluk_kruiden_in_bos, pluk_paddenstoelen_in_woud;
       }
 
@@ -147,7 +147,7 @@ styles[] {
          depends_on []   = krijg_schat_onderwerp;
       }
 
-      krijg_schat_onderwerp : event {
+      krijg_schat_onderwerp:event {
          depends_on []   = praat_met_smidsen;
       }
 
@@ -155,7 +155,7 @@ styles[] {
          depends_on []   = breng_molensteen_naar_toren, praat_met_dochter_van_bakker;
       }
 
-      maak_sieraad_bij_smid : event {
+      maak_sieraad_bij_smid:event {
          depends_on []   = krijg_edelsteen_van_dwerg, vind_goud_in_bos;
       }
 
@@ -164,7 +164,7 @@ styles[] {
          depends_on []   = ;
       }
 
-      pak_tand_van_draak : event {
+      pak_tand_van_draak:event {
          depends_on []   = krijg_ingredientenlijst_van_heks, trek_tand_van_draak;
       }
 
@@ -173,11 +173,11 @@ styles[] {
          depends_on []   = ;
       }
 
-      pluk_kruiden_in_bos : event {
+      pluk_kruiden_in_bos:event {
          depends_on []   = krijg_ingredientenlijst_van_heks;
       }
 
-      pluk_paddenstoelen_in_woud : event {
+      pluk_paddenstoelen_in_woud:event {
          depends_on [] = krijg_ingredientenlijst_van_heks;
       }
 
@@ -200,16 +200,16 @@ styles[] {
          depends_on []   = ;
       }
 
-      praat_met_heks : event {
+      praat_met_heks:event {
          style           = finished
          depends_on []   = ga_naar_hut_in_moeras;
       }
 
-      praat_met_molenaar : event {
+      praat_met_molenaar:event {
          depends_on []   = ;
       }
 
-      praat_met_smidsen : event {
+      praat_met_smidsen:event {
          depends_on []   = ;
       }
 
@@ -218,7 +218,7 @@ styles[] {
          depends_on []   = pak_hout_in_bos, krijg_kapotte_houweel_van_dwerg;
       }
 
-      repareer_molen_met_onderbroek : event {
+      repareer_molen_met_onderbroek:event {
         depends_on []   = vind_onderbroek_bij_rivier;
       }
 
@@ -238,19 +238,19 @@ styles[] {
          depends_on [] = volg_maansteen_route;
       }
 
-      vind_maansteen_in_moeras : event {
+      vind_maansteen_in_moeras:event {
          depends_on []   = krijg_plant_hint_van_bakker;
       }
 
       vind_onderbroek_bij_rivier: event {
       }
 
-      vind_paard_bij_rivier : event {
+      vind_paard_bij_rivier:event {
          style           = finished
          depends_on []   = praat_met_boer;
       }
 
-      volg_maansteen_route : event {
+      volg_maansteen_route:event {
          depends_on []   = vind_maansteen_in_moeras, schat_route_compleet;
       }
 
@@ -262,7 +262,7 @@ styles[] {
          depends_on []   = bezorg_meel_bij_bakker;
       }
 
-      zet_zadel_op_draak : event {
+      zet_zadel_op_draak:event {
          depends_on [] = trek_tand_van_draak, krijg_appel_taart_van_bakker;
       }
 
