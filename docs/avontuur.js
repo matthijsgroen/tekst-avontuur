@@ -31,12 +31,8 @@ const resizeFont = () => {
 window.addEventListener("resize", () => setTimeout(resizeFont, 100));
 resizeFont();
 
-window.addEventListener("mouseup", () => {
-  skip = true;
-});
-window.addEventListener("touchend", () => {
-  skip = true;
-});
+window.addEventListener("mouseup", () => (skip = true));
+window.addEventListener("touchend", () => (skip = true));
 
 const cls = () => (screenElement.innerHTML = "");
 const sleep = duration =>
@@ -62,6 +58,7 @@ const print = (tekst, actie) => {
 
   tekst.split("\n").forEach((element, index, list) => {
     if (element !== "") {
+      // Vervang spaties door niet-brekende spaties
       const textNode = document.createTextNode(
         element.replace(/\u0020/g, "\u00a0")
       );
@@ -95,8 +92,8 @@ const toegestaan = bewering => {
   let plek = "";
   let bewerking = "";
   let waarde = "";
-  for (let i = 0; i < bewering.length; i++) {
-    const karakter = bewering[i];
+
+  for (const karakter of bewering) {
     if (/\d/.test(karakter)) {
       bewerking === "" ? (plek += karakter) : (waarde += karakter);
     } else if (karakter === ";") {
@@ -110,12 +107,10 @@ const toegestaan = bewering => {
       bewerking += karakter;
     }
   }
-
-  if (bewerking !== "") {
-    return toets(parseInt(plek, 10), bewerking, parseInt(waarde, 10));
-  }
-
-  return true;
+  return (
+    bewerking === "" ||
+    toets(parseInt(plek, 10), bewerking, parseInt(waarde, 10))
+  );
 };
 
 const interpoleer = zin =>
@@ -125,8 +120,8 @@ const interpoleer = zin =>
 
 const tekst = async (verteller, zin) => {
   color(verteller);
-  for (let i = 0; i < zin.length; i++) {
-    print(zin[i]);
+  for (const letter of zin) {
+    print(letter);
     await sleep(0.04);
   }
   print("\n");
