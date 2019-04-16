@@ -1,5 +1,4 @@
-// vim:set syntax=off ff=dos fileencoding=default:
-const avontuur = `
+' vim:set syntax=off ff=dos fileencoding=default:
 ' Gebeurtenissen
 ' 0 = geslacht. 1 = jongen, 2 = meisje
 ' 1 = Locatie
@@ -93,7 +92,7 @@ const avontuur = `
 
 "1=0;10=2;2=0;4=4", "*c2", "Je geeft de raaf wat vogelvoer"
 "De raaf is je erg dankbaar!"
-"&23=4;"
+"&23=4"
 
 "1=0;10=2;2=0;4=1;23>2", "*c2", "De kast is al open, maar er zit niets interessants meer in", "&"
 "1=0;10=2;2=0;4=1;23<2", "*c2", "De kast zit op slot", "&"
@@ -102,7 +101,7 @@ const avontuur = `
 "", "*c2", "Je pakt het vogelvoer uit de kast", "&4=8;23=3"
 "1=0;10=2;2=0;4=2;23=0", "*c2", "Je pakt je tas van achter de deur", "&20=1;22=100;23=1"
 
-"1=0;10=2;2=0;4=0;", "*c2", "Je kijkt de kamer rond", "", "&"
+"1=0;10=2;2=0;4=0", "*c2", "Je kijkt de kamer rond", "", "&"
 "1=0;10=2;2=0;4=0;20=0", "Je tas hangt aan de achterkant van de deur", "&"
 "1=0;10=2;2=0;4=0", "Je hebt een mooie kast tussen je bed en bureau in staan", "&"
 "1=0;10=2;2=0;4=0;23!4", "Een redelijk agressieve raaf zit op je bureau", "&"
@@ -186,6 +185,10 @@ const avontuur = `
 "1=13;3=5;19=0", "*c2", "Je loopt het erf van een boerderij op.", "", "&3=0"
 "1=13;3=5;19=1;29>1", "*c2", "Je wandelt samen met Teun het erf van de boerderij op.", "", "&3=0;30=13"
 "1=13;3=5;19=2;29>2", "*c2", "Teun brengt je snel naar het erf van de boerderij", "", "&3=0;30=13;19=1"
+
+"1=14;3=6;19=0", "*c2", "Je loopt verder, naar de molen.", "", "&3=0"
+"1=14;3=6;19=1;29>1", "*c2", "Je loopt met Teun verder, naar de molen.", "", "&3=0;30=14"
+"1=14;3=6;19=2;29>2", "*c2", "Teun brengt je snel naar de molen", "", "&3=0;30=14;19=1"
 
 "1=16;3=5;19=1;29>1", "*c2", "Je knoopt Teun vast aan de winkel."
 "Je stapt watertandend de winkel binnen.", "", "&3=0"
@@ -401,7 +404,7 @@ const avontuur = `
 "1=11;2=0;11=1;4=2", "*c3", "$n: 'Pardon? Wie is een stom ding?'"
 "", "*c9", "Dwerg: 'Sorry, ik heb het niet tegen jou..", "&"
 "1=11;2=0;11=1;4>0;4<3", "*c9"
-"  Sorry van mijn manieren, ik heb wat tegenslag!"
+"  Sorry van mijn manieren, ik heb gewoon pech!"
 "  Mijn naam is Thorin, en wie mag jij wezen?'",""
 "*c3", "$n: 'Mijn naam is $n'",""
 "*c9", "Thorin: 'Hallo $n. Sorry dat ik zo ruw deed"
@@ -514,18 +517,21 @@ const avontuur = `
 "  Dat monster in die toren heeft alles afgebrand! Dat monster moet weg!'"
 "", "*c2", "Je wilt een vraag stellen over mogelijk vervoer, maar aangezien"
 "het paard weg is, is dat geen handige vraag om te stellen"
-"", "&13=1;4=0;"
+"", "&13=1;4=0"
 
 "1=13;13>0;2=0;4=5"
 "*c3", "$n: 'Weet u hoe ik aan medicijnen zou kunnen komen?", ""
 "*c9", "Boer: 'Ik zelf niet, meestal vraag ik hulp van de bakker"
 "  uit het dorp. Die kan vaak wel aan wat dingen komen."
 "  Vraag me alleen niet hoe!'"
-"", "&4=0;"
+"", "&4=0"
 
 "1=13;13>0;2=0;4=6;31=0"
 "*c2", "Je pakt het touw"
 "", "&4=0;31=1"
+
+' 14. Molen
+"1=14;14=0;2=0;4=0", "*c2", "Je bent bij de molen", "&"
 
 ' 15. Smederij
 "1=15;15=1;2=0;4=0", "*c2", "Je bent in de smederij", "", "*c13", "Lucy: 'Hey welkom!'"
@@ -647,8 +653,9 @@ const avontuur = `
 "&16=1;4=0;25=2;22-2"
 
 "0!0;2!2", "*c15", "", "Wat ga je doen:", "&"
+"1=0;2=2", "*c15", "", "Wat ga je doen:", "&"
 
-"2=2", "*c2", "Je springt op je paard."
+"2=2;19>0", "*c2", "Je springt op je paard."
 "Het paard is niet super snel (zeker niet voor een koerier)"
 "Maar om hier snel door het gebied te komen, gaat dat prima"
 "*c15", "", "Waar wil je heen:", "&"
@@ -663,7 +670,8 @@ const avontuur = `
 "2=2;11>0;1!11", "Mijn", "2=0;4=0;19=2;1=11;3=5"
 "2=2;16>0;1!6", "Bakkerij", "2=0;4=0;19=2;1=16;3=5"
 "2=2;15>0;1!6", "Smederij", "2=0;4=0;19=2;1=15;3=6"
-"2=2", "Afstappen", "2=0;4=0"
+"2=2;14>0;1!14", "Molen", "2=0;4=0;19=2;1=14;3=6"
+"2=2;19>0", "Afstappen", "2=0;4=0"
 
 "20=1;2=0", "Bekijk inhoud van tas", "2=1;4=0"
 "1=0;10=0;4<2;0!0", "Word wakker", "4=2"
@@ -701,6 +709,7 @@ const avontuur = `
 
 ' 3. Heuvel acties
 "2=0;1=3", "Volg het pad naar de mijn", "1=11;4=0;3=5"
+"2=0;1=3", "Wandel naar de molen", "1=14;4=0;3=6"
 "2=0;1=3", "Ga naar het oosten, richting het bos", "1=1;3=2"
 "2=0;1=3", "Ga naar het zuiden, richting het moeras", "1=4;3=3"
 
@@ -761,8 +770,18 @@ const avontuur = `
 "2=0;1=13;13>1;4=0;12=0", "Zeg: 'Weet u hoe ik aan medicijnen zou kunnen komen?'", "4=5"
 "2=0;1=13;13>0;4=0;30=13;19=1", "Breng Teun naar zijn stal", "4=3"
 "2=0;1=13;13>0;4=0;30=13;19=0", "Haal Teun van zijn stal", "4=4"
+' Monster ?
+' Geld ?
 "2=0;1=13;13>0;4=0;31=0", "Pak touw", "4=6"
 "2=0;1=13;13>1;4=0", "Loop terug naar de weg", "1=2;3=5"
+
+' 14. Molen
+' Vervoer?
+' Medicijn?
+' Schat?
+' Monster?
+' Molen? - Wieken / Molensteen
+' Geld?
 
 ' 15. Smederij
 "2=0;1=15;4=3;22>1", "Zeg: 'Alstublieft, 2 geldstukken'", "4=8"
@@ -774,8 +793,10 @@ const avontuur = `
 "2=0;1=15;4=0;29<3;30=15", "Zeg: 'Kunt u de hoefijzers van mijn paard maken?'", "4=3"
 '"2=0;1=15;4=0", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=4"
 '"2=0;1=15;4=0", "Zeg: 'Kunnen jullie een wapen maken?'", "4=6"
+' Armor?
 '"2=0;1=15;4=0", "Zeg: 'Wat weten jullie van het monster in het woud?'", "4=7"
 '"2=0;1=15;4=0", "Kijk rond in smederij", "4=5"
+' Geld?
 "2=0;1=15;4=0", "Verlaat de smederij", "1=6;3=6;4=0"
 
 ' 16. Bakkerij
@@ -796,5 +817,4 @@ const avontuur = `
 ' Generale inventory acties
 "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
 "2=1;25=2", "Eet koeken", "4=2"
-`;
 

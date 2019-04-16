@@ -1,7 +1,4 @@
 let skip = false;
-let screenData = [];
-let actieData = [];
-
 let naam = "";
 let gameState = Array(100).fill(0);
 
@@ -86,32 +83,11 @@ const toets = (plek, bewerking, waarde) =>
   (bewerking === ">" && gameState[plek] > waarde) ||
   (bewerking === "<" && gameState[plek] < waarde);
 
-const toegestaan = bewering => {
-  if (bewering === "END") return false;
-
-  let plek = "";
-  let bewerking = "";
-  let waarde = "";
-
-  for (const karakter of bewering) {
-    if (/\d/.test(karakter)) {
-      bewerking === "" ? (plek += karakter) : (waarde += karakter);
-    } else if (karakter === ";") {
-      if (!toets(parseInt(plek, 10), bewerking, parseInt(waarde, 10))) {
-        return false;
-      }
-      plek = "";
-      waarde = "";
-      bewerking = "";
-    } else {
-      bewerking += karakter;
-    }
-  }
-  return (
-    bewerking === "" ||
-    toets(parseInt(plek, 10), bewerking, parseInt(waarde, 10))
-  );
-};
+const toegestaan = beweringen =>
+  beweringen.every(bewering => {
+    const [, plek, bewerking, waarde] = bewering.match(/(\d+)([=!<>])(\d+)/);
+    return toets(parseInt(plek, 10), bewerking, parseInt(waarde, 10));
+  });
 
 const interpoleer = zin =>
   zin
@@ -128,39 +104,29 @@ const tekst = async (verteller, zin) => {
 };
 
 const toonGebeurtenis = async () => {
-  let verteller = 2;
+  let verteller = 7;
   skip = false;
   cls();
-
-  for (let index = 0; index < screenData.length; index++) {
-    let bewering = screenData[index];
-    if (toegestaan(bewering)) {
-      do {
-        index++;
-        const sentence = screenData[index];
-        if (sentence[0] === "&") {
-          // Einde en acties
-          if (sentence.slice(1).length > 0) {
-            voerActieUit(sentence.slice(1));
-          }
-        } else if (sentence[0] === "*") {
+  for (const teksten of avontuur.scherm) {
+    if (toegestaan(teksten.test)) {
+      for (const zin of teksten.schermData) {
+        if (zin[0] === "*") {
           // Opmaak
-          const command = sentence[1];
-          const data = sentence.slice(2);
-          if (command === "c") {
+          const commando = zin[1];
+          const data = zin.slice(2);
+          if (commando === "c") {
             verteller = parseInt(data, 10);
           }
-          if (command === "s") {
+          if (commando === "s") {
             await sleep(parseInt(data, 10));
           }
         } else {
-          await tekst(verteller, interpoleer(sentence));
+          await tekst(verteller, interpoleer(zin));
         }
-      } while (!screenData[index].startsWith("&"));
-    } else {
-      do {
-        index++;
-      } while (!screenData[index].startsWith("&"));
+      }
+      if (teksten.actie) {
+        voerActieUit(teksten.actie);
+      }
     }
   }
   keyPressed = null;
@@ -196,40 +162,20 @@ const keypress = () =>
     }, 100);
   });
 
-const voerActieUit = actie => {
-  let plek = "";
-  let bewerking = "";
-  let waarde = "";
-  for (let i = 0; i < actie.length; i++) {
-    const karakter = actie[i];
-    if (/\d/.test(karakter)) {
-      bewerking === "" ? (plek += karakter) : (waarde += karakter);
-    } else if (karakter === ";") {
-      muteer(parseInt(plek, 10), bewerking, parseInt(waarde, 10));
-      plek = "";
-      waarde = "";
-      bewerking = "";
-    } else {
-      bewerking += karakter;
-    }
-  }
-
-  if (bewerking !== "") {
+const voerActieUit = instructies => {
+  instructies.forEach(instructie => {
+    const [, plek, bewerking, waarde] = instructie.match(/(\d+)([=+-])(\d+)/);
     muteer(parseInt(plek, 10), bewerking, parseInt(waarde, 10));
-  }
+  });
 };
 
 const toonActies = async () => {
   const acties = [];
-  let verteller = 2;
-  let bewering;
 
-  for (let index = 0; index < actieData.length; index++) {
-    bewering = actieData[index];
-    if (toegestaan(bewering)) {
-      acties.push({ naam: actieData[index + 1], actie: actieData[index + 2] });
+  for (const actie of avontuur.acties) {
+    if (toegestaan(actie.test)) {
+      acties.push({ naam: actie.tekst, actie: actie.actie });
     }
-    index += 2;
   }
 
   color(7);
@@ -251,35 +197,14 @@ const toonActies = async () => {
   return true;
 };
 
-const laadAvontuur = async () => {
-  const regels = avontuur.split("\n").map(regel => regel.trim());
-  let actieModus = false;
-
-  regels
-    .filter(regel => regel.startsWith('"'))
-    .forEach(regel => {
-      const elementen = JSON.parse(`[${regel}]`);
-
-      if (elementen.length === 1 && elementen[0] === "END") {
-        actieModus = true;
-      } else {
-        actieModus
-          ? actieData.push(...elementen)
-          : screenData.push(...elementen);
-      }
-    });
-};
-
 const krijgNaam = () =>
   new Promise(resolve => {
-    const toetsAfwachten = event => {
-      if (event.key === "Enter") {
-        document.removeEventListener("keypress", toetsAfwachten);
-        resolve(document.getElementById("naam").value);
-        document.getElementById("welkom").remove();
-      }
-    };
-    document.addEventListener("keypress", toetsAfwachten);
+    const formulier = document.getElementById("welkom");
+    formulier.addEventListener("submit", event => {
+      event.preventDefault();
+      resolve(document.getElementById("naam").value);
+      formulier.remove();
+    });
   });
 
 const laadSpel = async () => {
@@ -306,7 +231,6 @@ const bewaarSpel = () => {
 };
 
 const spelLus = async () => {
-  await laadAvontuur();
   const spelGeladen = await laadSpel();
   if (!spelGeladen) {
     naam = await krijgNaam();
