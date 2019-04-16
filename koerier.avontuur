@@ -535,14 +535,28 @@
 ' 14. Molen
 "1=14;14=1;2=0;4=0", "*c2", "Je bent bij de molen", ""
 "De molen mist het doek op een van de wieken"
-"Een oude molensteen ligt naast de molen"
+"Een molensteen ligt naast de molen"
+"Een lege wagen staat naast de andere kant van de molen"
 "Een oude molenaar lijkt aan het werk om proberen de wieken te repareren"
 "", "*c9", "Molenaar: 'Hey hallo daar!'"
 "&"
 
+"1=14;14=1;2=0;4=1", "*c3", "$n: 'Weet u hoe ik aan vervoer kan komen?'", "", "*c2"
+"Een oude molenaar lijkt je aan"
+"", "*c9", "Molenaar: 'Ik heb geen paard meer, alleen een wagen"
+"  Als ik een paard nodig heb, dan leen ik Teun af en toe bij de boer."
+"  Dat is een heel goed en trouw beestje. Ideaal om een kar te trekken!'"
+"&4=0"
+
+"1=14;14=1;2=0;4=2", "*c3", "$n: 'Weet u hoe ik aan medicijnen kan komen?'", "", "*c2"
+"Een oude molenaar lijkt je aan", "", "*c9", "&"
+"0=1;1=14;2=0;4=2", "Molenaar: 'Sorry jongen, dat zou ik echt niet weten'", "&4=0"
+"0=2;1=14;2=0;4=2", "Molenaar: 'Sorry dame, dat zou ik echt niet weten'", "&4=0"
+
 "1=14;14=0;2=0;4=0", "*c2", "Je bent bij de molen", ""
 "De molen mist het doek op een van de wieken"
-"Een oude molensteen ligt naast de molen"
+"Een molensteen ligt naast de molen"
+"Een lege wagen staat naast de andere kant van de molen"
 "Een oude molenaar lijkt aan het werk om proberen de wieken te repareren"
 "", "*c9", "Molenaar: 'Hey hallo daar! Zou je me kunnen helpen?"
 "  Deze oude molen moet gerepareerd worden. Maar ik heb geen goed doek!'"
@@ -793,11 +807,12 @@
 "2=0;1=13;13>0;4=0", "Loop terug naar de weg", "1=2;3=5"
 
 ' 14. Molen
-' Vervoer?
-' Medicijn?
-' Schat?
-' Monster?
-' Geld?
+"2=0;1=14;4=0;19=1;29=3", "Spring op paard", "2=2"
+"2=0;1=14;19=0;4=0", "Zeg: 'Weet u hoe ik aan vervoer kan komen?'", "4=1"
+"2=0;1=14;4=0", "Zeg: 'Weet u hoe ik aan medicijnen kan komen?'", "4=2"
+' Indien schat: Schat?
+' Indien bakker: Monster?
+' Indien paard: Wagen?
 "2=0;1=14;14>0;4=0", "Loop terug naar de weg", "1=3;3=6"
 
 ' 15. Smederij
