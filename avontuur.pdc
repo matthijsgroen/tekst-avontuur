@@ -15,14 +15,16 @@ styles[] {
    events [] {
 
       beklim_toren:event {
-         depends_on []   = koop_zwaard_voor_99_bij_wapensmid;
+         depends_on []   = koop_zwaard_voor_99_bij_wapensmid, genoeg_info_over_monster;
       }
+      
       betaal_twee_geldstukken:event {
          style           = finished
          depends_on []   = ;
       }
 
       betaal_twee_goudstukken_aan_hoefsmid: event {
+         style           = finished
          logic_gate_type = or
          depends_on []   = betaal_twee_geldstukken, krijg_geldstuk_van_smid;
       }
@@ -49,6 +51,7 @@ styles[] {
       }
 
       breng_paard_naar_hoefsmid:event {
+         style           = finished
          depends_on []   = vind_paard_bij_rivier;
       }
 
@@ -68,11 +71,16 @@ styles[] {
       }
 
       geef_paard_nieuwe_hoefijzers:event {
+         style           = finished
          depends_on []   = breng_paard_naar_hoefsmid, betaal_twee_goudstukken_aan_hoefsmid;
       }
 
       geef_sieraad_aan_heks:event {
          depends_on []   = praat_met_heks, maak_sieraad_bij_smid;
+      }
+      
+      genoeg_info_over_monster:event {
+         depends_on []   = praat_met_bakker, praat_met_smidsen, praat_met_boer, praat_met_molenaar;
       }
 
       haal_wagen_bij_molenaar_met_paard:event {
@@ -210,6 +218,7 @@ styles[] {
       }
 
       praat_met_smidsen:event {
+         style           = finished
          depends_on []   = ;
       }
 
