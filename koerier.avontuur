@@ -39,9 +39,9 @@
 ' 31 = touw
 
 ' 0. Proloog
-"0=0"
+"0=0", "*c2"
 "Hoi $n, welkom bij Avontuur!"
-"", "Ben je een jongen of een meisje?", "&"
+"", "*c15", "Ben je een jongen of een meisje?", "&"
 
 "1=0;10=0;4=0;0=1", "*c2", "Er was eens, lang geleden een stoere koerier..."
 "Zijn naam was $n", ""
@@ -316,8 +316,7 @@
 "  Dit was de weg richting het kasteel van de koning"
 "  Hier moet ik een oplossing voor gaan vinden'", "&"
 "1=8;2=0;4=0;29=1;30=8", "*c2", ""
-"In je ooghoek langs het water, zie je een paard drinken"
-"aan de waterkant", "&"
+"In je ooghoek langs het water, zie je een paard drinken", "&"
 
 "1=8;2=0;4=1", "*c2"
 "Je probeert het paard voorzichtig te benaderen"
@@ -325,6 +324,7 @@
 "*c2", "", "Het paard blijft rustig, en loopt met je mee"
 "Het valt je op, dat ze wel erg lastig loopt"
 "", "*c3", "$n: 'Ok laten we dan gewoon gaan wandelen naar huis'"
+"*c2", "", "Teun volgt je nu!"
 "&19=1;29=2;4=0"
 
 ' 11. Mijn
@@ -655,9 +655,9 @@
 "0!0;2!2", "*c15", "", "Wat ga je doen:", "&"
 "1=0;2=2", "*c15", "", "Wat ga je doen:", "&"
 
-"2=2;19>0", "*c2", "Je springt op je paard."
-"Het paard is niet super snel (zeker niet voor een koerier)"
-"Maar om hier snel door het gebied te komen, gaat dat prima"
+"2=2;19>0", "*c2", "Je springt op je paard.", ""
+"Je kan met Teun nu snel naar plaatsen gaan waar je al een keer"
+"eerder bent geweest."
 "*c15", "", "Waar wil je heen:", "&"
 
 "END"
@@ -773,7 +773,7 @@
 ' Monster ?
 ' Geld ?
 "2=0;1=13;13>0;4=0;31=0", "Pak touw", "4=6"
-"2=0;1=13;13>1;4=0", "Loop terug naar de weg", "1=2;3=5"
+"2=0;1=13;13>0;4=0", "Loop terug naar de weg", "1=2;3=5"
 
 ' 14. Molen
 ' Vervoer?
