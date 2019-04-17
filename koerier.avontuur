@@ -515,6 +515,12 @@
 "  Zou je hem naar de smid kunnen brengen voor nieuwe hoefijzers?'"
 "&4=0;13=2"
 
+"1=13;13=1;2=0;4=2;29>2", "*c3", "$n: 'Ik heb Teun teruggevonden!'", "*c9"
+"", "Boer: 'Fantastisch!'", "", "*c2", "De boer gaat meteen naar Teun toe"
+"", "*c9", "Boer: 'Hoi lieve Teun, gaat het weer een beetje?'"
+"", "*c2", "De boer staat Teun te aaien.", "", "*c9"
+"&4=0;13=2"
+
 "1=13;13>0;2=0;4=3", "*c2", "Je brengt Teun naar zijn stal"
 "&4=0;19=0"
 
@@ -857,8 +863,8 @@
 "2=0;1=13;13=1;4=0;29<2", "Zeg: 'Hoe zou ik uw paard kunnen vinden?'", "4=2"
 "2=0;1=13;13=1;4=0;29>1", "Zeg: 'Ik heb Teun teruggevonden!'", "4=2"
 "2=0;1=13;13>1;4=0;12=0", "Zeg: 'Weet u hoe ik aan medicijnen zou kunnen komen?'", "4=5"
-"2=0;1=13;13>0;4=0;30=13;19=1", "Breng Teun naar zijn stal", "4=3"
-"2=0;1=13;13>0;4=0;30=13;19=0", "Haal Teun van zijn stal", "4=4"
+"2=0;1=13;13>0;4=0;30=13;19=1;29!4", "Breng Teun naar zijn stal", "4=3"
+"2=0;1=13;13>0;4=0;30=13;19=0;29!4", "Haal Teun van zijn stal", "4=4"
 ' Monster ?
 ' Geld ?
 "2=0;1=13;13>0;4=0;31=0", "Pak touw", "4=6"
