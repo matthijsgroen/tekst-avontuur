@@ -37,6 +37,7 @@
 ' 29 = paard. 1 = kennis, 2 = gevonden, 3 = hoeven, 4 = kar
 ' 30 = locatie paard
 ' 31 = touw
+' 32 = stof
 
 ' 0. Proloog
 "0=0", "*c2"
@@ -233,6 +234,7 @@
 "2=1;25=2", "*c7", "- Koeken, vers van de bakker", "&"
 "2=1;28=1", "*c7", "- Een fonkelende edelsteen", "&"
 "2=1;31=1", "*c7", "- Een lang stuk touw", "&"
+"2=1;32=1", "*c7", "- Een grote onderbroek, waarschijnlijk van een reus", "&"
 
 ' 1. Bos
 "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -317,8 +319,18 @@
 "*c3", "$n: 'Verdorie zo kan ik hier niet weg komen"
 "  Dit was de weg richting het kasteel van de koning"
 "  Hier moet ik een oplossing voor gaan vinden'", "&"
+"1=8;2=0;4=0;32=0", "*c2", "", "Langs de waterkant ligt een groot stuk"
+"witte stof, met rode stippen", "&"
 "1=8;2=0;4=0;29=1;30=8", "*c2", ""
 "In je ooghoek langs het water, zie je een paard drinken", "&"
+
+"1=8;2=0;4=2;32=0", "*c2"
+"Je klimt langzaam naar beneden naar de waterkant"
+"Wanneer je beneden bent pak je het grote stuk stof op"
+"", "Het lijkt wel een hele grote onderbroek! Wit met rode stippen!"
+"Ineens zie je een heel stuk verderop in de rivier een reus zwemmen"
+"Je klimt snel weer naar boven naar het pad, en neemt de onderbroek mee"
+"&4=0;32=1"
 
 "1=8;2=0;4=1", "*c2"
 "Je probeert het paard voorzichtig te benaderen"
@@ -761,6 +773,7 @@
 
 ' 8. Rivier acties
 "2=0;1=8;29=1", "Probeer paard te benaderen", "4=1"
+"2=0;1=8;32=0", "Probeer stof te pakken", "4=2"
 "2=0;1=8", "Ga naar het noorden, richting het dorp", "1=6;3=1"
 
 ' 11. Mijn Acties

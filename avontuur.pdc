@@ -214,6 +214,7 @@ styles[] {
       }
 
       praat_met_molenaar:event {
+         style           = finished
          depends_on []   = ;
       }
 
@@ -252,6 +253,7 @@ styles[] {
       }
 
       vind_onderbroek_bij_rivier: event {
+         style           = finished
       }
 
       vind_paard_bij_rivier:event {
