@@ -1,4 +1,3 @@
-' vim:set syntax=off ff=dos fileencoding=default:
 ' Gebeurtenissen
 ' 0 = geslacht. 1 = jongen, 2 = meisje
 ' 1 = Locatie
@@ -38,6 +37,7 @@
 ' 30 = locatie paard
 ' 31 = touw
 ' 32 = stof
+' 33 = graan 0=boerderij 1=kar 2=meel op kar 3=klaar
 
 ' 0. Proloog
 "0=0", "*c2"
@@ -263,13 +263,20 @@
 "  naar de boerderij brengen?'", "&"
 
 ' 3. Heuvels
-"1=3;2=0", "*c2"
+"1=3;2=0;4=0", "*c2"
 "Je staat in de heuvels. De zon schijnt heerlijk."
 "Er is een mooi uitzicht van de omgeving.", ""
 "Verder op het pad zie je een mijn"
 "Iets hoger op de heuvel staat een molen"
 "Naar het oosten loopt het pad naar het bos"
 "Naar het zuiden loopt een drassig pad een moeras in", "&"
+
+"1=3;2=0;4=1", "*c2"
+"Je wil naar het zuiden wandelen, richting het moeras", ""
+"*c3", "$n: 'Hmm het moeras in gaan met zo'n kar achter Teun is"
+"  geen goed idee'", "", "*c3"
+"$n: 'Straks zakt de kar nog weg in de drassigheid, en kom ik"
+"  vast te zitten", "&"
 
 ' 4. Moeras
 "1=4;2=0;26<2", "*c2"
@@ -474,10 +481,11 @@
 
 ' 13. Boerderij
 "1=13;13>0;2=0;4=0", "*c2"
+"Je bent bij een grote boerderij.", "Naast de boerderij ligt een voorraad graan", ""
 "Grote rookpluimen komen van achter de boerderij vandaan."
 "Er is duidelijk een brand geweest. De vlammen zijn wel al gedoofd"
 "Er staat een boer verslagen bij de verbrande resten van wat"
-"eerst een boomgaard zou zijn geweest.", ""
+"eerst een boomgaard lijkt te zijn geweest.", ""
 "De boer staat verslagen naar de smeulende restanten te kijken...", "&"
 "1=13;2=0;19=1;31=0;4=0", "De stal is leeg. Er hangt een lang stuk touw aan de zijkant van de stal", "&"
 "1=13;2=0;19=1;31>0;4=0", "De stal is leeg.", "&"
@@ -515,6 +523,7 @@
 "&4=0;19=1"
 
 "1=13;13=0;2=0;4=0", "*c2"
+"Je bent bij een grote boerderij.", "Naast de boerderij ligt een voorraad graan", ""
 "Grote rookpluimen komen van achter de boerderij vandaan."
 "Je loopt snel om de boerderij heen om te gaan kijken"
 "Er is duidelijk een brand geweest. De vlammen zijn wel al gedoofd"
@@ -553,15 +562,39 @@
 "", "*c9", "Molenaar: 'Hey hallo daar!'"
 "&"
 
+"1=14;14=2;2=0;4=0", "*c2", "Je bent bij de molen", ""
+"De molen draait rustig in de wind."
+"Een molensteen ligt naast de molen", "&"
+"1=14;14=2;2=0;4=0;29!4", "Een lege wagen staat naast de andere kant van de molen", "&"
+"1=14;14=2;2=0;4=0", "Een oude molenaar zit op een bankje voor de molen te genieten van de zon"
+"", "*c9", "Molenaar: 'Hey hallo daar!'"
+"&"
+
 "1=14;2=0;4=1", "*c3", "$n: 'Weet u hoe ik aan vervoer kan komen?'", "", "*c2"
-"Een oude molenaar lijkt je aan"
+"De oude molenaar lijkt je aan"
 "", "*c9", "Molenaar: 'Ik heb geen paard meer, alleen een wagen"
 "  Als ik een paard nodig heb, dan leen ik Teun af en toe bij de boer."
 "  Dat is een heel goed en trouw beestje. Ideaal om een kar te trekken!'"
 "&4=0"
 
+"1=14;14=1;2=0;4=5", "*c3", "$n: 'Zou ik de wagen mogen lenen?'", ""
+"*c9", "Molenaar: 'Mwa, liever niet. Misschien heb ik hem nog"
+"  nodig voor de reparaties van de molen'", "&4=0"
+
+"1=14;14=2;2=0;4=5", "*c3", "$n: 'Zou ik de wagen mogen lenen?'", ""
+"*c9", "Molenaar: 'Ja hoor, geen probleem! bedankt nog voor"
+"  het helpen repareren van mijn molen!'", "", "*c2"
+"Samen spannen jullie de wagen van de molenaar achter Teun"
+"", "*c9", "Molenaar: 'Bedenk wel, met de wagen achter Teun dan"
+"  kun je hem niet bereiden.'"
+"&4=0;29=4"
+
+"1=14;14=2;2=0;4=6", "*c3", "$n: 'Ik kom de wagen terugbrengen'", "", "*c2"
+"Samen halen jullie de wagen los van Teun en zet de wagen naast de molen"
+"&4=0;29=3"
+
 "1=14;2=0;4=2", "*c3", "$n: 'Weet u hoe ik aan medicijnen kan komen?'", "", "*c2"
-"Een oude molenaar lijkt je aan", "", "*c9", "&"
+"De oude molenaar lijkt je aan", "", "*c9", "&"
 "0=1;1=14;2=0;4=2", "Molenaar: 'Sorry jongen, dat zou ik echt niet weten'", "&4=0"
 "0=2;1=14;2=0;4=2", "Molenaar: 'Sorry dame, dat zou ik echt niet weten'", "&4=0"
 
@@ -569,14 +602,6 @@
 "", "*c9", "Molenaar: 'Er moet een nieuw doek op een van de wieken komen.'", ""
 "*c3", "$n: 'Ok, bedankt'"
 "&4=0"
-
-"1=14;14=2;2=0;4=0", "*c2", "Je bent bij de molen", ""
-"De molen draait rustig in de wind."
-"Een molensteen ligt naast de molen"
-"Een lege wagen staat naast de andere kant van de molen"
-"Een oude molenaar zit op een bankje voor de molen te genieten van de zon"
-"", "*c9", "Molenaar: 'Hey hallo daar!'"
-"&"
 
 "1=14;14=1;2=0;4=3;32=1", "*c2", "Je klimt samen met de molenaar in de wieken van de molen"
 "", "Na een hoop puzzelen en knopen blijft het doek zitten. Jullie klimmen naar beneden"
@@ -773,7 +798,8 @@
 "2=0;1=3", "Volg het pad naar de mijn", "1=11;4=0;3=5"
 "2=0;1=3", "Wandel naar de molen", "1=14;4=0;3=6"
 "2=0;1=3", "Ga naar het oosten, richting het bos", "1=1;3=2"
-"2=0;1=3", "Ga naar het zuiden, richting het moeras", "1=4;3=3"
+"2=0;1=3;29!4", "Ga naar het zuiden, richting het moeras", "1=4;3=3"
+"2=0;1=3;19=1;29=4", "Ga naar het zuiden, richting het moeras", "4=1"
 
 ' 4. Moeras acties
 "2=0;1=4;4=0;26>1", "Loop richting de hut", "1=12;3=1"
@@ -844,9 +870,10 @@
 "2=0;1=14;4=0", "Zeg: 'Weet u hoe ik aan medicijnen kan komen?'", "4=2"
 "2=0;1=14;14=1;4=0", "Zeg: 'Wat was er ook alweer nodig om de molen te maken?'", "4=4"
 "2=0;1=14;4=0;32=1", "Repareer molen met 'doek'", "4=3"
+"2=0;1=14;4=0;19=1;29=3", "Zeg: 'Kan ik de wagen lenen?'", "4=5"
+"2=0;1=14;4=0;19=1;29=4", "Breng de wagen terug", "4=6"
 ' Indien schat: Schat?
 ' Indien bakker: Monster?
-' Indien paard: Wagen?
 "2=0;1=14;14>0;4=0", "Loop terug naar de weg", "1=3;3=6"
 
 ' 15. Smederij
