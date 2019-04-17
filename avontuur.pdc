@@ -229,7 +229,8 @@ styles[] {
       }
 
       repareer_molen_met_onderbroek:event {
-        depends_on []   = vind_onderbroek_bij_rivier;
+         style           = finished
+         depends_on []   = vind_onderbroek_bij_rivier;
       }
 
       schat_route_compleet:event {
