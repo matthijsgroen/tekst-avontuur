@@ -57,15 +57,15 @@
 "1=0;10=0;4=0;0!0"
 "Op het moment dat ons avontuur begint, ligt $n rustig te slapen...", ""
 "*s2", "*c14", "<tik, tik, tik>", "*c3", "", "$n: 'huh?'"
-"&2=2"
+"&2=2;5=0"
 
 "1=0;10=0;4=1", "*c2"
 "Je probeert nog even verder te slapen.", ""
 "*c3", "$n: 'Gaaaaap..   ..zzzzzz'", ""
 "*s2", "*c14", "<tik, tik, tik>", "*c3", "", "$n: 'hmmmz?'"
-"&"
+"&5+1"
 
-"1=0;10=0;4=2", "*c3"
+"1=0;10=0;4>0;4<3;5>4", "*c3"
 "$n: 'Ja, ja, ik kom al!'", "", "*c2"
 "Met veel tegenzin klim je uit je bed."
 "Je strompelt naar de deur."
@@ -73,7 +73,7 @@
 "$n: 'Ik ben onderweg!'"
 "*c2", "", "Als je de deur van je kamer open doet, staat er niemand.", ""
 "*c3", "$n: 'Waar komt dat geluid dan vandaan?'"
-"&"
+"&4=2;5=0"
 
 "1=0;10=0;4=3", "*c2"
 "Je kijkt de hele kamer rond, op zoek naar de bron van het geluid"
@@ -767,7 +767,7 @@
 "2=2;19>0", "Afstappen", "2=0;4=0"
 
 "20=1;2=0", "Bekijk inhoud van tas", "2=1;4=0"
-"1=0;10=0;4<2;0!0", "Word wakker", "4=2"
+"1=0;10=0;4<2;0!0", "Word wakker", "4=2;5=6"
 "1=0;10=0;4<2;0!0", "Probeer nog even verder te slapen", "4=1"
 "1=0;10=0;4=2", "Kijk waar geluid vandaan komt", "4=3"
 "1=0;10=0;4=3", "Open raam", "4=4"
