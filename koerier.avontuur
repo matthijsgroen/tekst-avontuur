@@ -731,6 +731,10 @@
 "*c2", "Ineens barst de bakker in huilen uit.", "*c9", ""
 "Bakker: 'Mijn arme dochter! Ik zie haar nooit meer terug!"
 "  Dat smerige monster heeft haar te pakken! Ik weet het zeker!'"
+"", "*c9", "Bakker: 'Ik heb vanochtend nog wat koekjes gebakken, met het laatste"
+"  meel dat ik had. Ik kan ook niet aan meel komen want de molen is stuk."
+"  Als ik meel had kon ik taarten bakken, geld verdienen en hopelijk een"
+"  ridder huren om mijn dochter te laten redden!'"
 "&20=0"
 
 "1=16;16=1;4=4;2=0", "*c3"
@@ -742,6 +746,28 @@
 "  ... Eerst de brand bij de boer. En nu heeft hij ook"
 "  mijn dochter te pakken!'"
 "&26=1;20=1;4=0"
+
+"1=16;16=1;4=6;2=0", "*c3"
+"$n: 'Waarom is uw toonbank leeg?'", "", "*c9"
+"Bakker: 'Ik heb alleen nog wat koekjes. Mijn meel is op.'", ""
+"*c2", "De bakker blijft snikken.", "*c9", ""
+"Bakker: 'Mijn dochter is weg en mijn meel is op. Ik heb wel geld"
+"  maar er zijn geen dappere strijders beschikbaar om mijn"
+"  dochter te redden! Kon ik maar weer bakken, dan was dat"
+"  nog een fijne afleiding.'"
+"&4=0"
+
+"1=16;16=1;4=7;2=0", "*c3"
+"$n: 'Ik heb meel gehaald'", "", "*c9"
+"Bakker: 'Echt waar? Dank u! Dit brengt helaas niet mijn"
+"  dochter terug, maar dan kan ik in ieder geval weer wat bakken"
+"  ter afleiding.'", "", "*c2"
+"De bakker geeft je 100 geldstukken", "*c3", ""
+"$n: 'Dit is echt veel te veel!'", "", "*c9"
+"Bakker: 'Wat heb ik aan geld als ik niet eens mijn eigen dochter"
+"  kan redden?'", "*c2", ""
+"De bakker staat weer voor zich uit te staren..."
+"&4=0;33=3;22+100"
 
 "1=16;16=1;4=1;2=0;26=1", "*c3"
 "$n: 'Kunt u me meer vertellen over het monster?'", "", "*c9"
@@ -949,10 +975,11 @@
 ' 16. Bakkerij
 "2=0;1=16;16=1;4=0;26=0", "Zeg: 'Hallo? Is alles goed met u?'", "4=1"
 "2=0;1=16;16=1;4=0;26>0", "Zeg: 'Vertel me nog eens over het monster?'", "4=1"
-' -- actie om info voor zwaard te krijgen 27=1
 "2=0;1=16;16=1;4=0;26>0", "Zeg: 'Zijn er hier ook medicijnen te koop?'", "4=5"
 "2=0;1=16;16=1;4=0;25<1", "Zeg: 'Hallo? Kan ik iets te eten kopen?'", "4=2"
 "2=0;1=16;16=1;4=0;25<2;25>0", "Zeg: 'Ik wil graag koeken kopen'", "4=3"
+"2=0;1=16;16=1;4=0;33<3", "Zeg: 'Waarom is uw toonbank leeg?'", "4=6"
+"2=0;1=16;16=1;4=0;33=2", "Zeg: 'Ik heb meel gehaald'", "4=7"
 "2=0;1=16;16=1;4=0", "Verlaat de bakkerij", "1=6;3=5;4=0"
 "2=0;1=16;16=1;4=1;26=0", "Zeg: 'Monster? Waar heeft u het over?'", "4=4"
 

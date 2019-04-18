@@ -30,10 +30,12 @@ styles[] {
       }
 
       bezorg_graan_bij_molenaar:event {
+         style           = finished
          depends_on []   = zet_graan_op_wagen;
       }
 
       bezorg_meel_bij_bakker:event {
+         style           = finished
          depends_on []   = krijg_meel_bij_molenaar;
       }
 
@@ -111,6 +113,7 @@ styles[] {
       }
 
       krijg_100_geld_van_meel:event {
+         style           = finished
          depends_on []   = bezorg_meel_bij_bakker;
       }
 
@@ -141,6 +144,7 @@ styles[] {
       }
 
       krijg_meel_bij_molenaar:event {
+         style           = finished
          depends_on []   = bezorg_graan_bij_molenaar, repareer_molen_met_onderbroek;
       }
 
