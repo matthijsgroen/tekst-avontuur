@@ -519,7 +519,28 @@
 "", "Boer: 'Fantastisch!'", "", "*c2", "De boer gaat meteen naar Teun toe"
 "", "*c9", "Boer: 'Hoi lieve Teun, gaat het weer een beetje?'"
 "", "*c2", "De boer staat Teun te aaien.", "", "*c9"
-"&4=0;13=2"
+"Boer: 'Ik wou dat ik je kon bedanken. Helaas kan ik geen appels geven."
+"  Maar als je interesse hebt in wat graan, dan geef ik het graag.'"
+"&4=0;13=3"
+
+"1=13;13=2;2=0;4=2;29>2", "*c3", "$n: 'Teun heeft nieuew hoefijzers'", "*c9"
+"", "Boer: 'Fantastisch!'", "", "*c2", "De boer gaat meteen naar Teun toe"
+"", "*c9", "Boer: 'Hoi lieve Teun, gaat het weer een beetje?'"
+"", "*c2", "De boer staat Teun te aaien.", "", "*c9"
+"Boer: 'Ik wou dat ik je kon bedanken. Helaas kan ik geen appels geven."
+"  Maar als je interesse hebt in wat graan, dan geef ik het graag.'"
+"&4=0;13=3"
+
+"1=13;13=3;2=0;4=7;29=4", "*c3", "$n: 'Zou ik wat graan mogen hebben?'"
+"", "*c9", "Boer: 'Zeker geen probleem! Ik ben je zeer dankbaar voor je hulp!'"
+"", "*c2", "Samen tillen jullie een paar balen graan op de kar"
+"&4=0;33=1"
+
+"1=13;13=3;2=0;4=7;29!4", "*c3", "$n: 'Zou ik wat graan mogen hebben?'"
+"", "*c9", "Boer: 'Zeker geen probleem! Als je een kar hebt, help ik"
+"  je graag met opladen'"
+"", "*c3", "$n: 'Hmm, ik heb geen kar'"
+"&4=0"
 
 "1=13;13>0;2=0;4=3", "*c2", "Je brengt Teun naar zijn stal"
 "&4=0;19=0"
@@ -862,7 +883,9 @@
 "2=0;1=13;13>0;4=0", "Zeg: 'Kan ik helpen blussen?'", "4=1"
 "2=0;1=13;13=1;4=0;29<2", "Zeg: 'Hoe zou ik uw paard kunnen vinden?'", "4=2"
 "2=0;1=13;13=1;4=0;29>1", "Zeg: 'Ik heb Teun teruggevonden!'", "4=2"
+"2=0;1=13;13=2;4=0;29>2", "Zeg: 'Teun heeft nieuwe hoefijzers'", "4=2"
 "2=0;1=13;13>1;4=0;12=0", "Zeg: 'Weet u hoe ik aan medicijnen zou kunnen komen?'", "4=5"
+"2=0;1=13;13>2;4=0;33=0", "Zeg: 'Zou ik graan mogen hebben?'", "4=7"
 "2=0;1=13;13>0;4=0;30=13;19=1;29!4", "Breng Teun naar zijn stal", "4=3"
 "2=0;1=13;13>0;4=0;30=13;19=0;29!4", "Haal Teun van zijn stal", "4=4"
 ' Monster ?
@@ -875,7 +898,7 @@
 "2=0;1=14;19=0;4=0", "Zeg: 'Weet u hoe ik aan vervoer kan komen?'", "4=1"
 "2=0;1=14;4=0", "Zeg: 'Weet u hoe ik aan medicijnen kan komen?'", "4=2"
 "2=0;1=14;14=1;4=0", "Zeg: 'Wat was er ook alweer nodig om de molen te maken?'", "4=4"
-"2=0;1=14;4=0;32=1", "Repareer molen met 'doek'", "4=3"
+"2=0;1=14;4=0;32=1", "Repareer molen met onderbroek van reus", "4=3"
 "2=0;1=14;4=0;19=1;29=3", "Zeg: 'Kan ik de wagen lenen?'", "4=5"
 "2=0;1=14;4=0;19=1;29=4", "Breng de wagen terug", "4=6"
 ' Indien schat: Schat?
