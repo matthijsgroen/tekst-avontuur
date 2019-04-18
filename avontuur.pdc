@@ -84,7 +84,8 @@ styles[] {
       }
 
       haal_wagen_bij_molenaar_met_paard:event {
-         depends_on []   = geef_paard_nieuwe_hoefijzers, praat_met_molenaar;
+         style           = finished
+         depends_on []   = geef_paard_nieuwe_hoefijzers, repareer_molen_met_onderbroek;
       }
 
       hijs_lift_met_molensteen:event {
