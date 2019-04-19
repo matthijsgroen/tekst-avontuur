@@ -186,6 +186,10 @@
 "1=11;3=5;19=1;29>1", "*c2", "Je loopt met Teun weg af, richting de ingang van de mijn.", "", "&3=0;30=11"
 "1=11;3=5;19=2;29>2", "*c2", "Teun brengt je snel naar de mijn", "", "&3=0;30=11;19=1"
 
+"1=12;3=5;19=0", "*c2", "Je loopt richting de hut in het moeras", "", "&3=0"
+"1=12;3=5;19=1;29>1", "*c2", "Je wandelt samen met Teun naar de hut", "", "&3=0;30=13"
+"1=12;3=5;19=2;29>2", "*c2", "Teun brengt je snel naar de hut in het moeras", "", "&3=0;30=13;19=1"
+
 "1=13;3=5;19=0", "*c2", "Je loopt het erf van een boerderij op.", "", "&3=0"
 "1=13;3=5;19=1;29>1", "*c2", "Je wandelt samen met Teun het erf van de boerderij op.", "", "&3=0;30=13"
 "1=13;3=5;19=2;29>2", "*c2", "Teun brengt je snel naar het erf van de boerderij", "", "&3=0;30=13;19=1"
@@ -447,9 +451,11 @@
 "&11=2;4=0"
 
 ' 12. Hut
+"1=12;12=1;2=0;4=0", "*c2", "Je bent bij de hut van Eucalypta, in het moeras"
+"", "*c13", "Eucalypta: 'Hallo $n, ben je daar weer?'", "&"
+
 "1=12;12=0;2=0;4=0", "*c2"
-"Je loopt voorzichting richting de hut. Er komen rare geuren"
-"en dampen naar buiten. Je loopt voorzichtig naar de deur,"
+"Er komen rare geuren en dampen naar buiten. Je loopt voorzichtig naar de deur,"
 "en twijfelt nog of je wel moet aankloppen."
 "", "Veel tijd om erover na te denken krijg je echter niet"
 "Ineens zwaait de deur open:", "*c13", "", "&"
@@ -477,14 +483,11 @@
 "Je begint het vermoeden te krijgen dat ze een brief heeft gehad..."
 "&12=1;4=0;20=1"
 
-"1=12;12=1;2=0;4=0", "*c2", "Je bent bij de hut van Eucalypta, in het moeras"
-"", "*c13", "Eucalypta: 'Hallo $n, ben je daar weer?'", "&"
-
 "1=12;12=1;2=0;4=1", "*c2", "Eucalypta kijkt je aan. Er komt een grote glimlach op haar gezicht"
 "", "*c13", "Eucalypta: 'En waarom zou ik dat doen, lieve schat?"
 "  Als dit zo belangrijk voor je is, heb je er vast wel iets moois voor over!'"
 "", "Eucalypta: 'Als jij me weet te verassen met een mooi sieraad, dan kijk"
-"  Ik wel of ik je kan helpen'", "&4=0;26=2"
+"  Ik wel of ik je kan helpen'", "&4=0;26=3"
 
 "1=12;12=1;2=0;4=2", "*c2", "Eucalypta kijkt je aan. Er komt een grote glimlach op haar gezicht"
 "", "*c13", "Eucalypta: 'Die edelsteen is echt prachtig!"
@@ -671,7 +674,7 @@
 
 ' 15. Smederij
 "1=15;15=1;2=0;4=0", "*c2", "Je bent in de smederij", "", "*c13", "Lucy: 'Hey welkom!'"
-"*c9", "Luuk: 'Wat kunnen we voor je doen?'"
+"*c11", "Luuk: 'Wat kunnen we voor je doen?'"
 "&15=1"
 
 "1=15;15=0;2=0;4=0", "*c13", "Smid1: 'Hey welkom nieuwe klant!'"
@@ -706,6 +709,12 @@
 
 "1=15;2=0;4=3", "*c2", "Luk komt op je aflopen.", ""
 "*c9", "Luk: 'Geen probleem, dat kost dan 2 geldstukken'", "&"
+
+"1=15;2=0;4=4", "*c3", "$n: 'Kunnen jullie een sieraad maken?'", ""
+"*c2", "Luuk komt op je aflopen.", ""
+"*c11", "Luuk: 'Geen probleem, je moet alleen wel zelf voor het materiaal gaan zorgen"
+"  bijvoorbeeld met een edelsteen en goud zou ik een mooie halsketting kunnen"
+"  maken'", "&4=0"
 
 "1=15;2=0;4=9", "*c3", "$n: 'Hmm, misschien een andere keer'", ""
 "*c9", "Luk: 'Ok, prima'", "*c2", "", "Luk loopt weer terug naar zijn werkplek"
@@ -769,7 +778,7 @@
 "De bakker staat weer voor zich uit te staren..."
 "&4=0;33=3;22+100"
 
-"1=16;16=1;4=1;2=0;26=1", "*c3"
+"1=16;16=1;4=1;2=0;26>0", "*c3"
 "$n: 'Kunt u me meer vertellen over het monster?'", "", "*c9"
 "Bakker: 'Het beest leeft in het donkere woud, ten oosten van hier'", ""
 "*c2", "De bakker heeft moeite om niet in huilen uit te barsten", "*c9", ""
@@ -833,6 +842,7 @@
 "2=2;16>0;1!6", "Bakkerij", "2=0;4=0;19=2;1=16;3=5"
 "2=2;15>0;1!6", "Smederij", "2=0;4=0;19=2;1=15;3=6"
 "2=2;14>0;1!14", "Molen", "2=0;4=0;19=2;1=14;3=6"
+"2=2;12>0;1!12", "Hut van de Heks", "2=0;4=0;19=2;1=12;3=5"
 "2=2;19>0", "Afstappen", "2=0;4=0"
 
 "20=1;2=0", "Bekijk inhoud van tas", "2=1;4=0"
@@ -877,6 +887,7 @@
 "2=0;1=3;19=1;29=4", "Ga naar het zuiden, richting het moeras", "4=1"
 
 ' 4. Moeras acties
+"2=0;1=4;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=4;4=0;26>1", "Loop richting de hut", "1=12;3=1"
 "2=0;1=4;4=0", "Ga naar het noorden, richting de heuvels", "1=3;3=1"
 
@@ -922,7 +933,7 @@
 "2=0;1=12;12=0;4=1", "Zeg: 'dat kan toch niet...'", "4=2"
 
 "2=0;1=12;12=1;4=0", "Zeg: 'Kunt u me helpen met een medicijn?'", "4=1"
-"2=0;1=12;12=1;4=0;26=2;28=1", "Geef edelsteen aan Eucalypta", "4=2"
+"2=0;1=12;12=1;4=0;26=3;28=1", "Geef edelsteen aan Eucalypta", "4=2"
 "2=0;1=12;12=1;4=0", "Zeg: 'Tot ziens!'", "1=4;3=5"
 
 ' 13. Boerderij
@@ -963,8 +974,8 @@
 "2=0;1=15;4=0", "Zeg: 'Weten jullie hoe ik aan medicijnen zou kunnen komen?'", "4=1"
 "2=0;1=15;4=0", "Zeg: 'Weten jullie hoe ik aan vervoer zou kunnen komen?'", "4=2"
 "2=0;1=15;4=0;29<3;30=15", "Zeg: 'Kunt u de hoefijzers van mijn paard maken?'", "4=3"
+"2=0;1=15;4=0;26=3", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=4"
 ' TEDOEN
-'"2=0;1=15;4=0", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=4"
 '"2=0;1=15;4=0", "Zeg: 'Kunnen jullie een wapen maken?'", "4=6"
 ' Armor?
 '"2=0;1=15;4=0", "Zeg: 'Wat weten jullie van het monster in het woud?'", "4=7"
