@@ -109,6 +109,7 @@ styles[] {
       }
 
       koop_zwaard_voor_99_bij_wapensmid:event {
+         style           = finished
          depends_on []   = krijg_100_geld_van_meel, praat_met_bakker;
       }
 
@@ -161,6 +162,7 @@ styles[] {
       }
 
       krijg_schat_onderwerp:event {
+         style           = finished
          depends_on []   = praat_met_smidsen;
       }
 
