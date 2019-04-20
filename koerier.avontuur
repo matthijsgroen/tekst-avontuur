@@ -38,7 +38,7 @@
 ' 31 = touw
 ' 32 = stof
 ' 33 = graan 0=boerderij 1=graan-op-wagen 2=meel-op-wagen 3=klaar
-' 34 = schat 1=bestaan, 2=gestart, 3=gevonden
+' 34 = schat 1=bestaan, 2-4 clues 5=gestart, 3=gevonden
 ' 35 = hint rivier molenaar
 ' 36 = hint plant v bakker, 2=gevonden
 ' 37 = hint route v boer NNWNNOZ
@@ -233,6 +233,14 @@
 "2=1;4=2", "*c2", "De koeken ruiken heerlijk,"
 "Maar toch besluit je ze voor later te bewaren.", "", "&"
 
+"2=1;4=3", "*c2", "Je kijkt in de aantekeningen die je hebt verzameld voor de"
+"geruchten van de mysterieuze schat:", "", "&"
+
+"2=1;4=3;36>0", "*c2", "- Bij een plant in het moeras, met spitse bladeren"
+"  ligt een speciale steen. Als die gloeit start de route", "&"
+"2=1;4=3;36>0;37=0", "*c2", "", "Je hebt alleen geen idee wat deze route is", "&"
+"2=1;4=3", "", "&"
+
 "2=1", "*c15", "Je hebt het volgende bij je:", "&"
 "2=1;22>1", "*c7", "-#22 geldstukken", "&"
 "2=1;22=1", "*c7", "- 1 geldstuk", "&"
@@ -246,6 +254,7 @@
 "2=1;28=1", "*c7", "- Een fonkelende edelsteen", "&"
 "2=1;31=1", "*c7", "- Een lang stuk touw", "&"
 "2=1;32=1", "*c7", "- Een grote onderbroek, waarschijnlijk van een reus", "&"
+"2=1;34>1", "*c7", "- Aantekeningen voor schat", "&"
 
 ' 1. Bos
 "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -736,6 +745,7 @@
 "*c13", "Lucy: 'Ssst! niet zo hard praten, we hebben klanten in de winkel'"
 "*c2", "", "Ze praten fluisterend verder, maar daar kan je niet veel van verstaan."
 "&20=0"
+"1=15;2=0;4=5;34=0", "&34=1"
 
 "1=15;2=0;4=5;22=0", "Je kijkt even snel in je tas, maar je hebt geen geld bij je", "&"
 "1=15;2=0;4=5;22=1", "Je kijkt even snel in je tas, je hebt 1 geldstuk bij je", "&"
@@ -800,6 +810,14 @@
 "  ... Eerst de brand bij de boer. En nu heeft hij ook"
 "  mijn dochter te pakken!'"
 "&26=1;20=1;4=0"
+
+"1=16;16=1;4=8;2=0", "*c3"
+"$n: 'Heb jij ook gehoord dat er een schat ergens is?'", "", "*c9"
+"Bakker: 'Er gaan geruchten. Ik geloof er niets van hoor, maar wat ik gehoord had"
+"  was dat onder een speciale plant in het moeras een steen moet liggen. En als"
+"  die gloeit dat je dan een speciale route moet lopen. Het was een plant met"
+"  spitse bladeren.'", "*c2", "", "Je vindt het erg interessant, en maakt er een aantekening van"
+"&4=0;36=1;34+1"
 
 "1=16;16=1;4=6;2=0", "*c3"
 "$n: 'Waarom is uw toonbank leeg?'", "", "*c9"
@@ -1037,9 +1055,10 @@
 ' 16. Bakkerij
 "2=0;1=16;16=1;4=0;26=0", "Zeg: 'Hallo? Is alles goed met u?'", "4=1"
 "2=0;1=16;16=1;4=0;26>0", "Zeg: 'Vertel me nog eens over het monster?'", "4=1"
-"2=0;1=16;16=1;4=0;26>0", "Zeg: 'Zijn er hier ook medicijnen te koop?'", "4=5"
+"2=0;1=16;16=1;4=0;26>0;26<2", "Zeg: 'Zijn er hier ook medicijnen te koop?'", "4=5"
 "2=0;1=16;16=1;4=0;25<1", "Zeg: 'Hallo? Kan ik iets te eten kopen?'", "4=2"
 "2=0;1=16;16=1;4=0;25<2;25>0", "Zeg: 'Ik wil graag koeken kopen'", "4=3"
+"2=0;1=16;16=1;4=0;26>1;34>0;36=0", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
 "2=0;1=16;16=1;4=0;33<3", "Zeg: 'Waarom is uw toonbank leeg?'", "4=6"
 "2=0;1=16;16=1;4=0;33=2", "Zeg: 'Ik heb meel gehaald'", "4=7"
 "2=0;1=16;16=1;4=0", "Verlaat de bakkerij", "1=6;3=5;4=0"
@@ -1053,4 +1072,5 @@
 ' Generale inventory acties
 "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
 "2=1;25=2", "Eet koeken", "4=2"
+"2=1;34>1", "Bekijk schat aantekeningen", "4=3"
 
