@@ -43,7 +43,6 @@
 ' 36 = hint plant v bakker, 2=gevonden
 ' 37 = hint route v boer NNWNNOZ
 
-
 ' 0. Proloog
 "0=0", "*c2"
 "Hoi $n, welkom bij Avontuur!"
@@ -225,7 +224,7 @@
 "1=6;3=6;16=1;19=1;29>1", "Je maakt Teun weer los", "&"
 "1=6;3=6;16=1", "", "&3=0;1=6"
 
-' Tas
+'== Tas
 "2=1;4=1", "*c2", "Je verwijderd de oude heft van de houweel,"
 "en gebruikt de stok uit het bos om een nieuwe heft te maken."
 "", "Het past! De houweel is weer zo goed als nieuw.", "", "&24=2;21=3"
@@ -236,9 +235,12 @@
 "2=1;4=3", "*c2", "Je kijkt in de aantekeningen die je hebt verzameld voor de"
 "geruchten van de mysterieuze schat:", "", "&"
 
-"2=1;4=3;36>0", "*c2", "- Bij een plant in het moeras, met spitse bladeren"
+"2=1;4=3;36>0", "*c6", "- Bij een plant in het moeras, met spitse bladeren"
 "  ligt een speciale steen. Als die gloeit start de route", "&"
+"2=1;4=3;37>0", "*c6", "- De route om te lopen is N-N-W-N-N-O-Z", "&"
 "2=1;4=3;36>0;37=0", "*c2", "", "Je hebt alleen geen idee wat deze route is", "&"
+"2=1;4=3;37>0;35=0", "*c2", "", "Je hebt alleen geen idee waar deze route start", "&"
+"2=1;4=3;34<5", "*c2", "", "Je hebt het gevoel dat je nog niet alle informatie hebt verzameld", "&"
 "2=1;4=3", "", "&"
 
 "2=1", "*c15", "Je hebt het volgende bij je:", "&"
@@ -323,7 +325,7 @@
 "Onder wat krom hangende bomen"
 "", "Er loopt een pad naar het noorden, omhoog richting heuvels.", "&"
 
-' 6. Dorp
+'== 6. Dorp
 "1=6;2=0;4=0", "*c2"
 "Je bent in het dorp", ""
 "Er hangt een rare stilte", ""
@@ -332,7 +334,7 @@
 "De weg loopt verder naar het zuiden, richting een rivier"
 "Een klein verborgen pad leid naar het oosten, richting een donker woud", "&"
 
-' 7. Donkere woud
+'== 7. Donkere woud
 "1=7;2=0;26=0", "*c2"
 "Je staat aan de rand van een donker woud."
 "Het ziet er erg donker en gevaarlijk uit", ""
@@ -348,7 +350,7 @@
 "  en ik heb ook geen wapen om me te verdedigen mocht ik hem tegenkomen"
 "  '", "&"
 
-' 8. Rivier
+'== 8. Rivier
 "1=8;2=0;4=0", "*c2"
 "Je staat bij een ingestorte brug over de rivier"
 "Er lijkt geen mogelijkheid te zijn om over te steken"
@@ -373,12 +375,12 @@
 "Je probeert het paard voorzichtig te benaderen"
 "", "*c3", "$n: 'Kom maar Teun, dan breng ik je naar huis'"
 "*c2", "", "Het paard blijft rustig, en loopt met je mee"
-"Het valt je op, dat ze wel erg lastig loopt"
+"Het valt je op, dat hij wel erg lastig loopt"
 "", "*c3", "$n: 'Ok laten we dan gewoon gaan wandelen naar huis'"
 "*c2", "", "Teun volgt je nu!"
 "&19=1;29=2;4=0"
 
-' 11. Mijn
+'== 11. Mijn
 "1=11;2=0;11<2;4=0", "*c2"
 "Je bent bij de mijn"
 "Er ligt een mijnkarretje. Voor de ingang zit een dwerg"
@@ -508,7 +510,7 @@
 "", "*c13", "Eucalypta: 'Die edelsteen is echt prachtig!"
 "  maar het is geen SIERAAD'", "&4=0"
 
-' 13. Boerderij
+'== 13. Boerderij
 "1=13;13>0;2=0;4=0", "*c2"
 "Je bent bij een grote boerderij.", "Naast de boerderij ligt een voorraad graan", ""
 "Grote rookpluimen komen van achter de boerderij vandaan."
@@ -516,10 +518,20 @@
 "Er staat een boer verslagen bij de verbrande resten van wat"
 "eerst een boomgaard lijkt te zijn geweest.", ""
 "De boer staat verslagen naar de smeulende restanten te kijken...", "&"
+
+"1=13;13=0;2=0;4=0", "*c2"
+"Je bent bij een grote boerderij.", "Naast de boerderij ligt een voorraad graan", ""
+"Grote rookpluimen komen van achter de boerderij vandaan."
+"Je loopt snel om de boerderij heen om te gaan kijken"
+"Er is duidelijk een brand geweest. De vlammen zijn wel al gedoofd"
+"Er staat een boer verslagen bij de verbrande resten van wat"
+"eerst een boomgaard zou zijn geweest.", ""
+"De boer staat verslagen naar de smeulende restantent te kijken...", "&"
+
 "1=13;2=0;19=1;31=0;4=0", "De stal is leeg. Er hangt een lang stuk touw aan de zijkant van de stal", "&"
 "1=13;2=0;19=1;31>0;4=0", "De stal is leeg.", "&"
-"1=13;2=0;30!13;31=0;4=0", "De stal is leeg. Er hangt een lang stuk touw aan de zijkant van de stal", "&"
-"1=13;2=0;30!13;31>0;4=0", "De stal is leeg.", "&"
+"1=13;2=0;19=0;30!13;31=0;4=0", "De stal is leeg. Er hangt een lang stuk touw aan de zijkant van de stal", "&"
+"1=13;2=0;19=0;30!13;31>0;4=0", "De stal is leeg.", "&"
 "1=13;2=0;19=0;30=13;31=0;4=0", "Teun staat in de stal. Er hangt een lang stuk touw aan de zijkant van de stal", "&"
 "1=13;2=0;19=0;30=13;31>0;4=0", "Teun staat in de stal.", "&"
 
@@ -571,6 +583,13 @@
 "", "*c3", "$n: 'Hmm, ik heb geen wagen'"
 "&4=0"
 
+"1=13;13>0;2=0;4=8;26>0;37=0", "*c3", "$n: 'Heb jij ook gehoord dat er een schat ergens is?'"
+"", "*c9", "Boer: 'Haha zeker, maar geloof er maar niets van hoor! Dat is allemaal onzin."
+"  Iemand vertelde mij ooit dat je een route moest lopen. NNWNNOZ"
+"  Geen idee wat dat betekend'", ""
+"*c2", "Je vindt het erg interessant, en maakt er een aantekening van"
+"&4=0;37=1;34+1"
+
 "1=13;13>0;2=0;4=3", "*c2", "Je brengt Teun naar zijn stal"
 "&4=0;19=0"
 
@@ -578,15 +597,6 @@
 "", "*c3", "$n: 'Hoi Teun'"
 "&4=0;19=1"
 
-"1=13;13=0;2=0;4=0", "*c2"
-"Je bent bij een grote boerderij.", "Naast de boerderij ligt een voorraad graan", ""
-"Grote rookpluimen komen van achter de boerderij vandaan."
-"Je loopt snel om de boerderij heen om te gaan kijken"
-"Er is duidelijk een brand geweest. De vlammen zijn wel al gedoofd"
-"Er staat een boer verslagen bij de verbrande resten van wat"
-"eerst een boomgaard zou zijn geweest.", ""
-"De boer staat verslagen naar de smeulende restantent te kijken..."
-"De stal is leeg. Er hangt een lang stuk touw aan de zijkant van de stal", "&"
 
 "1=13;13=0;2=0;4=1", "*c2", "Je loopt op de boer af", ""
 "*c3", "$n: 'Kan ik ergens mee helpen? Er zijn toch geen"
@@ -595,8 +605,7 @@
 "  Mijn hele boomgaard is in vlammen opgegaan, en mijn paard is er vandoor"
 "  Dat monster in die toren heeft alles afgebrand! Dat monster moet weg!'"
 "", "*c2", "Je wilt een vraag stellen over mogelijk vervoer, maar aangezien"
-"het paard weg is, is dat geen handige vraag om te stellen"
-"", "&13=1;4=0"
+"het paard weg is, is dat geen handige vraag om te stellen", "&13=1;4=0"
 
 "1=13;13>0;2=0;4=5"
 "*c3", "$n: 'Weet u hoe ik aan medicijnen zou kunnen komen?", ""
@@ -609,7 +618,7 @@
 "*c2", "Je pakt het touw"
 "", "&4=0;31=1"
 
-' 14. Molen
+'== 14. Molen
 "1=14;14=1;2=0;4=0", "*c2", "Je bent bij de molen", ""
 "De molen mist het doek op een van de wieken"
 "Een molensteen ligt naast de molen"
@@ -687,7 +696,7 @@
 "", "*c9", "Molenaar: 'Bedankt!'"
 "&14=1"
 
-' 15. Smederij
+'== 15. Smederij
 "1=15;15=1;2=0;4=0", "*c2", "Je bent in de smederij", "", "*c13", "Lucy: 'Hey welkom!'"
 "*c11", "Luuk: 'Wat kunnen we voor je doen?'"
 "&15=1"
@@ -695,7 +704,7 @@
 "1=15;15=0;2=0;4=0", "*c13", "Smid1: 'Hey welkom nieuwe klant!'"
 "*c9", "Smid2: 'Ik Luk, de hoefsmid. Luuk hier is onze goudsmid'"
 "*c11", "Luuk: 'En en onze wapensmid hier is Lucy'"
-"", "*c13", "Lucy: 'Wat kunnen we voor je doen?'"
+"*c13", "Lucy: 'Wat kunnen we voor je doen?'"
 "&15=1"
 
 "1=15;2=0;4=1"
@@ -783,7 +792,7 @@
 "  als je dat zou willen'"
 "&4=0;29=3;22-2"
 
-' 16. Bakkerij
+'== 16. Bakkerij
 "1=16;16=1;2=0;4=0", "*c2"
 "Je staat in de bakkerij. De bakker ziet er verdrietig uit."
 "Er hangt een geur van heerlijke verse broodjes en taarten", "&"
@@ -942,19 +951,19 @@
 "2=0;1=2;19=0", "Ga naar het westen, richting het bos", "1=1;3=4;4=0"
 "2=0;1=2", "Ga naar het zuiden, richting het dorp", "1=6;3=3;4=0"
 
-' 3. Heuvel acties
+'== 3. Heuvel acties
 "2=0;1=3", "Volg het pad naar de mijn", "1=11;4=0;3=5"
 "2=0;1=3", "Wandel naar de molen", "1=14;4=0;3=6"
 "2=0;1=3", "Ga naar het oosten, richting het bos", "1=1;3=2"
 "2=0;1=3;29!4", "Ga naar het zuiden, richting het moeras", "1=4;3=3"
 "2=0;1=3;19=1;29=4", "Ga naar het zuiden, richting het moeras", "4=1"
 
-' 4. Moeras acties
+'== 4. Moeras acties
 "2=0;1=4;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=4;4=0;26>1", "Loop richting de hut", "1=12;3=1"
 "2=0;1=4;4=0", "Ga naar het noorden, richting de heuvels", "1=3;3=1"
 
-' 6. Dorp Acties
+'== 6. Dorp Acties
 "2=0;1=6;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=6", "Wandel naar de bakkerij", "1=16;4=0;3=5"
 "2=0;1=6", "Wandel naar de smederij", "1=15;4=0;3=6"
@@ -962,15 +971,15 @@
 "2=0;1=6", "Ga naar het oosten, richting de het donkere woud", "1=7;3=2"
 "2=0;1=6", "Ga naar het zuiden, richting de rivier", "1=8;3=3"
 
-' 7. Donker woud acties
+'== 7. Donker woud acties
 "2=0;1=7", "Ga naar het westen, richting het dorp", "1=6;3=4"
 
-' 8. Rivier acties
+'== 8. Rivier acties
 "2=0;1=8;29=1", "Probeer paard te benaderen", "4=1"
 "2=0;1=8;32=0", "Probeer stof te pakken", "4=2"
 "2=0;1=8", "Ga naar het noorden, richting het dorp", "1=6;3=1"
 
-' 11. Mijn Acties
+'== 11. Mijn Acties
 "2=0;1=11;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=11;11=1;4=0", "Zeg: 'Je bent zelf een stom ding!'", "4=1"
 "2=0;1=11;11=1;4=0", "Zeg: 'Pardon?'", "4=2"
@@ -987,7 +996,7 @@
 "2=0;1=11;11=3;4=0;28=0", "Raap edelsteen op", "4=1"
 "2=0;1=11;11=3;4=0", "Zeg: 'Ok, ik ben er weer vandoor'", "1=3;3=5"
 
-' 12. Hut
+'== 12. Hut
 "2=0;1=12;12=0;4=0", "Zeg: 'euhm...'", "4=1"
 "2=0;1=12;12=0;4=0", "Zeg: 'uh oh...'", "4=1"
 "2=0;1=12;12=0;4=0", "Zeg: 'nou...'", "4=1"
@@ -999,7 +1008,7 @@
 "2=0;1=12;12=1;4=0;26=3;28=1", "Geef edelsteen aan Eucalypta", "4=2"
 "2=0;1=12;12=1;4=0", "Zeg: 'Tot ziens!'", "1=4;3=5"
 
-' 13. Boerderij
+'== 13. Boerderij
 "2=0;1=13;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=13;13=0;4=0", "Praat met de boer", "4=1"
 "2=0;1=13;13>0;4=0", "Zeg: 'Kan ik helpen blussen?'", "4=1"
@@ -1008,6 +1017,7 @@
 "2=0;1=13;13=2;4=0;29>2", "Zeg: 'Teun heeft nieuwe hoefijzers'", "4=2"
 "2=0;1=13;13>1;4=0;12=0", "Zeg: 'Weet u hoe ik aan medicijnen zou kunnen komen?'", "4=5"
 "2=0;1=13;13>2;4=0;33=0", "Zeg: 'Zou ik graan mogen hebben?'", "4=7"
+"2=0;1=13;13>0;4=0;26>0;37=0", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
 "2=0;1=13;13>0;4=0;30=13;19=1;29!4", "Breng Teun naar zijn stal", "4=3"
 "2=0;1=13;13>0;4=0;30=13;19=0;29!4", "Haal Teun van zijn stal", "4=4"
 ' TEDOEN
@@ -1015,7 +1025,7 @@
 "2=0;1=13;13>0;4=0;31=0", "Pak touw", "4=6"
 "2=0;1=13;13>0;4=0", "Loop terug naar de weg", "1=2;3=5"
 
-' 14. Molen
+'== 14. Molen
 "2=0;1=14;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=14;19=0;4=0", "Zeg: 'Weet u hoe ik aan vervoer kan komen?'", "4=1"
 "2=0;1=14;4=0", "Zeg: 'Weet u hoe ik aan medicijnen kan komen?'", "4=2"
@@ -1052,13 +1062,13 @@
 "2=0;1=15;4=31", "Zeg: 'Alstublieft, 99 geldstukken'", "4=41"
 "2=0;1=15;4=31", "Zeg: 'Hmm, misschien toch andere keer'", "4=5"
 
-' 16. Bakkerij
+'== 16. Bakkerij
 "2=0;1=16;16=1;4=0;26=0", "Zeg: 'Hallo? Is alles goed met u?'", "4=1"
 "2=0;1=16;16=1;4=0;26>0", "Zeg: 'Vertel me nog eens over het monster?'", "4=1"
 "2=0;1=16;16=1;4=0;26>0;26<2", "Zeg: 'Zijn er hier ook medicijnen te koop?'", "4=5"
 "2=0;1=16;16=1;4=0;25<1", "Zeg: 'Hallo? Kan ik iets te eten kopen?'", "4=2"
 "2=0;1=16;16=1;4=0;25<2;25>0", "Zeg: 'Ik wil graag koeken kopen'", "4=3"
-"2=0;1=16;16=1;4=0;26>1;34>0;36=0", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
+"2=0;1=16;16=1;4=0;26>0;34>0;36=0", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
 "2=0;1=16;16=1;4=0;33<3", "Zeg: 'Waarom is uw toonbank leeg?'", "4=6"
 "2=0;1=16;16=1;4=0;33=2", "Zeg: 'Ik heb meel gehaald'", "4=7"
 "2=0;1=16;16=1;4=0", "Verlaat de bakkerij", "1=6;3=5;4=0"
@@ -1068,6 +1078,7 @@
 "2=0;1=16;16=2;4=0;22>1", "Zeg: 'Alstublieft, 2 geldstukken'", "4=1"
 "2=0;1=16;16=2;4=0;22>1", "Zeg: 'Hmm, misschien toch andere keer'", "4=2"
 "2=0;1=16;16=2;4=0;22<3", "Oei, ik heb niet genoeg geld", "4=2"
+
 
 ' Generale inventory acties
 "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
