@@ -4,6 +4,11 @@ body {
     line-height: 1.2em;
 }
 a { text-decoration: none; }
+#width {
+    white-space: nowrap;
+    display: inline-block;
+}
+#screen { transform-origin: top left; }
 .color0 { color: #000000; }
 .color1 { color: #0414a7; }
 .color2 { color: #18a81b; }

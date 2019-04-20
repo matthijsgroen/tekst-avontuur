@@ -19,10 +19,15 @@ saveButton.addEventListener("click", () => {
   }
 });
 
+const widthRuler = document.getElementById("width");
+widthRuler.textContent =
+  "This-is-a-long-sentence-of-exactly-eighty-characters,-it-looks-as-a-coincidence?";
+
 const resizeFont = () => {
-  let screenWidth = screenElement.getBoundingClientRect().width - 20;
-  const charWidth = screenWidth / 82;
-  document.body.setAttribute("style", `font-size: ${Math.floor(charWidth)}px;`);
+  let screenWidth = document.body.getBoundingClientRect().width - 20;
+  let lineWidth = widthRuler.getBoundingClientRect().width;
+  const scale = screenWidth / lineWidth;
+  screenElement.setAttribute("style", `transform: scale(${scale});`);
 };
 
 window.addEventListener("resize", () => setTimeout(resizeFont, 100));
