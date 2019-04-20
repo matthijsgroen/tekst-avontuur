@@ -10,10 +10,12 @@
 '   6 = Dorp
 '   7 = Donker woud
 '   8 = Rivier
+'   9 = Schattenjacht
 ' 2 = Locatie toestand 0 = look, 1 = Open tas, 2 = leeg
 ' 4 = Actie van speler
 ' 5 = Tijdelijke lokatie teller
 
+' 9 = Schattenjacht
 ' 10 = Lokatie status Proloog
 ' 11 = Lokatie status Mijn
 ' 12 = Lokatie status Hut
@@ -38,7 +40,7 @@
 ' 31 = touw
 ' 32 = stof
 ' 33 = graan 0=boerderij 1=graan-op-wagen 2=meel-op-wagen 3=klaar
-' 34 = schat 1=bestaan, 2-4 clues 5=gestart, 6=gevonden
+' 34 = schat 1=bestaan, 2-4 clues 5=gestart, 6=mislukt, 7=gelukt
 ' 35 = hint rivier molenaar
 ' 36 = hint plant v bakker, 2=gevonden
 ' 37 = hint route v boer NNWNNOZ
@@ -185,6 +187,7 @@
 
 "1=8;3=3;19=0", "*c2", "Je wandelt naar het zuiden, richting de rivier", "", "&3=0"
 "1=8;3=3;19=1;29>1", "*c2", "Je wandelt samen met Teun richting de rivier", "", "&3=0;30=8"
+"1=8;3=7", "*c2", "Het is weer licht geworden", "", "&3=0"
 
 "1=11;3=5;19=0", "*c2", "Je loopt van de weg af, richting de ingang van de mijn.", "", "&3=0"
 "1=11;3=5;19=1;29>1", "*c2", "Je loopt met Teun weg af, richting de ingang van de mijn.", "", "&3=0;30=11"
@@ -259,7 +262,10 @@
 "2=1;31=1", "*c7", "- Een lang stuk touw", "&"
 "2=1;32=1", "*c7", "- Een grote onderbroek, waarschijnlijk van een reus", "&"
 "2=1;34>1", "*c7", "- Aantekeningen voor schat", "&"
-"2=1;36=2", "*c7", "- Maansteen, hij ziet er dof uit", "&"
+"2=1;1!8;1!9;36=2", "*c7", "- Maansteen, hij ziet er dof uit", "&"
+"2=1;1=8;36=2", "*c7", "- Maansteen, hij lijkt licht te gloeien", "&"
+"2=1;1=9;36=2", "*c7", "- Maansteen, hij lijkt te gloeien in het maanlicht", "&"
+"2=1;34=7", "*c7", "- Stukken goud", "&"
 
 ' 1. Bos
 "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -412,6 +418,62 @@
 "", "*c3", "$n: 'Ok laten we dan gewoon gaan wandelen naar huis'"
 "*c2", "", "Teun volgt je nu!"
 "&19=1;29=2;4=0"
+
+'== Schat tocht:
+"1=8;2=0;36=2;4=4", "*c2", "Je gaat geduldig aan de waterkant zitten, wachten tot het donker is"
+"Hoe donkerder het wordt, hoe meer de steen gaat gloeien. Er staat een volle maan"
+"deze avond."
+"&34=5;1=9"
+
+"1=9;2=0;4=0;9=0", "*c2", "Het is donker, je bent bij de rivier.", "&"
+"1=9;2=0;4=1;9=0", "*c2", "Je loopt langs de rivier", "&34=6"
+"1=9;2=0;4=2;9=0", "*c2", "Je loopt langs de rivier", "&34=6"
+
+"1=9;2=0;4=0;9=1", "*c2", "Het is donker, je bent in het dorp. Alle winkels zijn gesloten."
+"Het is nu nog stiller dan dat het overdag al is.", "&"
+"1=9;2=0;4=1;9=1", "*c2", "Je loopt naar het oosten, richting het donkere woud", "&34=6"
+"1=9;2=0;4=2;9=1", "*c2", "Je loopt terug naar het zuiden, richting de rivier", "&34=6"
+"1=9;2=0;4=3;9=1", "*c2", "Je loopt naar het westen, ook al loopt er geen pad", "&34=6"
+
+"1=9;2=0;4=0;9=2", "*c2", "Het is donker, je bent in de akkers. Je ziet in het donker een gloed van vuur"
+"achter de boerderij vandaan komen", "&"
+"1=9;2=0;4=1;9=2", "*c2", "Je loopt naar het noorden, tussen de weilanden door", "&34=6"
+"1=9;2=0;4=2;9=2", "*c2", "Je loopt naar het oosten, achter de boerderij langs", "&34=6"
+"1=9;2=0;4=3;9=2", "*c2", "Je loopt naar het zuiden, terug naar het dorp", "&34=6"
+
+"1=9;2=0;4=0;9=3", "*c2", "Je bent in het bos, het is nu erg donker hier. Gelukkig heb je het licht van de"
+"Maansteen.", "&"
+"1=9;2=0;4=1;9=3", "*c2", "Je loopt naar het oosten, terug naar de akkers", "&34=6"
+"1=9;2=0;4=2;9=3", "*c2", "Je loopt naar het zuiden, tussen de bomen door", "&34=6"
+"1=9;2=0;4=3;9=3", "*c2", "Je loopt naar het westen, richting de heuvels", "&34=6"
+
+"1=9;2=0;4=0;9=4", "*c2", "Je loopt tussen de bomen door, tot je bij een open plek in het bos aankomt.", "&"
+"1=9;2=0;4=1;9=4", "*c2", "Je loopt naar het oosten, tussen de bomen door", "&34=6"
+"1=9;2=0;4=2;9=4", "*c2", "Je loopt naar het zuiden, tussen de bomen door", "&34=6"
+"1=9;2=0;4=3;9=4", "*c2", "Je loopt naar het westen, tussen de bomen door", "&34=6"
+
+"1=9;2=0;4=0;9=5", "*c2", "Je loopt tussen de bomen door, tot je bij een andere open plek in het bos"
+"aankomt.", "&"
+"1=9;2=0;4=1;9=5", "*c2", "Je loopt naar het oosten, tussen de bomen door", "&34=6"
+"1=9;2=0;4=2;9=5", "*c2", "Je loopt naar het zuiden, tussen de bomen door", "&34=6"
+"1=9;2=0;4=3;9=5", "*c2", "Je loopt naar het westen, tussen de bomen door", "&34=6"
+
+"1=9;2=0;4=0;9=6", "*c2", "Je loopt verder tussen de bomen door, tot je bij klein stroompje in het bos"
+"aankomt.", "&"
+"1=9;2=0;4=1;9=6", "*c2", "Je loopt naar het oosten, tussen de bomen door", "&34=6"
+"1=9;2=0;4=2;9=6", "*c2", "Je loopt naar het zuiden, tussen de bomen door", "&34=6"
+"1=9;2=0;4=3;9=6", "*c2", "Je loopt naar het westen, tussen de bomen door", "&34=6"
+
+"34=6", "*c2", "maar krijgt het gevoel dat de route niet klopt", ""
+"Je besluit maar terug te lopen naar het startpunt langs de rivier", "&9=20;20=0"
+
+"1=9;2=0;9=7", "*c2", "Je loopt naar het zuiden, tussen de bomen door je komt bij een omgevallen boom"
+"Na beter bestuderen van de boom, zie je dat de boom hol is.", "*s2"
+"Je ziet een kleine kist in de holle boom liggen. Je pakt het kistje eruit."
+"In het kistje zit goud! Je hebt een stuk goud gevonden! Je stopt het goud in je"
+"tas. Poe je bent moe! Je loopt weer terug naar het pad in het bos. Je ziet de"
+"zon weer opkomen."
+"&1=1;34=7"
 
 '== 11. Mijn
 "1=11;2=0;11<2;4=0", "*c2"
@@ -1028,6 +1090,41 @@
 "2=0;1=8;32=0", "Probeer stof te pakken", "4=2"
 "2=0;1=8", "Ga naar het noorden, richting het dorp", "1=6;3=1"
 
+'== 9. Schat tocht acties
+"2=0;1=9;9=0", "Ga naar het noorden, richting het dorp", "9=1;4=0"
+"2=0;1=9;9=0", "Ga naar het oosten, verder langs de waterkant", "4=1"
+"2=0;1=9;9=0", "Ga naar het westen, verder langs de waterkant", "4=2"
+
+"2=0;1=9;9=1", "Ga naar het noorden, richting de akkers", "9=2;4=0"
+"2=0;1=9;9=1", "Ga naar het oosten, richting het donkere woud", "4=1"
+"2=0;1=9;9=1", "Ga naar het zuiden, richting de rivier", "4=2"
+"2=0;1=9;9=1", "Ga naar het westen, tussen de winkels door", "4=3"
+
+"2=0;1=9;9=2", "Ga naar het noorden, tussen de weilanden door", "4=1"
+"2=0;1=9;9=2", "Ga naar het oosten, achter de boerderij langs", "4=2"
+"2=0;1=9;9=2", "Ga naar het zuiden, richting het dorp", "4=3"
+"2=0;1=9;9=2", "Ga naar het westen, richting het bos", "4=0;9=3"
+
+"2=0;1=9;9=3", "Ga naar het noorden, tussen de bomen door", "4=0;9=4"
+"2=0;1=9;9=3", "Ga naar het oosten, terug naar de akkers", "4=1"
+"2=0;1=9;9=3", "Ga naar het zuiden, tussen de bomen door", "4=2"
+"2=0;1=9;9=3", "Ga naar het westen, richting de heuvels", "4=3"
+
+"2=0;1=9;9=4", "Ga naar het noorden, tussen de bomen door", "4=0;9=5"
+"2=0;1=9;9=4", "Ga naar het oosten, tussen de bomen door", "4=1"
+"2=0;1=9;9=4", "Ga naar het zuiden, tussen de bomen door", "4=2"
+"2=0;1=9;9>3;9<7", "Ga naar het westen, tussen de bomen door", "4=3"
+
+"2=0;1=9;9=5", "Ga naar het noorden, tussen de bomen door", "4=1"
+"2=0;1=9;9=5", "Ga naar het oosten, tussen de bomen door", "4=0;9=6"
+"2=0;1=9;9=5", "Ga naar het zuiden, tussen de bomen door", "4=2"
+
+"2=0;1=9;9=6", "Ga naar het noorden, tussen de bomen door", "4=1"
+"2=0;1=9;9=6", "Ga naar het oosten, tussen de bomen door", "4=2"
+"2=0;1=9;9=6", "Ga naar het zuiden, tussen de bomen door", "4=0;9=7"
+
+"2=0;1=9;9=20", "Wacht tot het weer licht is", "1=8;4=0;34=4;9=0;20=1;3=7"
+
 '== 11. Mijn Acties
 "2=0;1=11;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=11;11=1;4=0", "Zeg: 'Je bent zelf een stom ding!'", "4=1"
@@ -1129,9 +1226,9 @@
 "2=0;1=16;16=2;4=0;22>1", "Zeg: 'Hmm, misschien toch andere keer'", "4=2"
 "2=0;1=16;16=2;4=0;22<3", "Oei, ik heb niet genoeg geld", "4=2"
 
-
 ' Generale inventory acties
 "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
 "2=1;25=2", "Eet koeken", "4=2"
 "2=1;34>1", "Bekijk schat aantekeningen", "4=3"
+"2=1;36=2;34=4;1=8", "Wacht tot het donker is", "4=4;2=0"
 
