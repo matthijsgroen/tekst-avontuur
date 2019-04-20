@@ -147,17 +147,20 @@ styles[] {
       krijg_meel_bij_molenaar:event {
          style           = finished
          depends_on []   = bezorg_graan_bij_molenaar, repareer_molen_met_onderbroek;
-      }
+      } 
 
       krijg_plant_hint_van_bakker:event {
+         style           = finished
          depends_on []   = krijg_schat_onderwerp;
       }
 
       krijg_rivier_hint_van_molenaar:event {
+         style           = finished
          depends_on []   = krijg_schat_onderwerp;
       }
 
       krijg_route_hint_van_boer: event {
+         style           = finished
          depends_on []   = krijg_schat_onderwerp;
       }
 
@@ -241,6 +244,7 @@ styles[] {
       }
 
       schat_route_compleet:event {
+         style           = finished
          depends_on []   = krijg_rivier_hint_van_molenaar, krijg_route_hint_van_boer;
       }
 
@@ -257,6 +261,7 @@ styles[] {
       }
 
       vind_maansteen_in_moeras:event {
+         style           = finished
          depends_on []   = krijg_plant_hint_van_bakker;
       }
 

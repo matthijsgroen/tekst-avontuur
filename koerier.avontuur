@@ -236,7 +236,7 @@
 "geruchten van de mysterieuze schat:", "", "&"
 
 "2=1;4=3;36>0", "*c6", "- Bij een plant in het moeras, met spitse bladeren"
-"  ligt een speciale steen. Als die gloeit kan de route gestart worden", "&"
+"  ligt een Maansteen. Als die gloeit kan de route gestart worden", "&"
 "2=1;4=3;37>0", "*c6", "- De route om te lopen is N-N-W-N-N-O-Z", "&"
 "2=1;4=3;35>0", "*c6", "- De route start bij de rivier", "&"
 "2=1;4=3;36>0;37=0", "*c2", "", "Je hebt alleen geen idee wat deze route is", "&"
@@ -259,6 +259,7 @@
 "2=1;31=1", "*c7", "- Een lang stuk touw", "&"
 "2=1;32=1", "*c7", "- Een grote onderbroek, waarschijnlijk van een reus", "&"
 "2=1;34>1", "*c7", "- Aantekeningen voor schat", "&"
+"2=1;36=2", "*c7", "- Maansteen, hij ziet er dof uit", "&"
 
 ' 1. Bos
 "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -286,7 +287,7 @@
 "$n: 'Misschien moet ik haar eerst"
 "  naar de boerderij brengen?'", "&4=0"
 
-' 3. Heuvels
+'== 3. Heuvels
 "1=3;2=0;4=0", "*c2"
 "Je staat in de heuvels. De zon schijnt heerlijk."
 "Er is een mooi uitzicht van de omgeving.", ""
@@ -302,8 +303,8 @@
 "$n: 'Straks zakt de wagen nog weg in de drassigheid, en kom ik"
 "  vast te zitten", "&"
 
-' 4. Moeras
-"1=4;2=0;26<2", "*c2"
+'== 4. Moeras
+"1=4;2=0;4=0;26<2", "*c2"
 "Je bent aan de rand van het moeras"
 "Aan het eind van het pad blijf je staan.", ""
 "*c3", "$n: 'Ik ga niet zomaar een moeras in lopen!"
@@ -311,21 +312,51 @@
 "*c2", "", "In de verte klinken rare bubbelende geluiden."
 "", "Er loopt een pad naar het noorden, omhoog richting heuvels.", "&"
 
-"1=4;2=0;26=2;12=0", "*c2"
+"1=4;2=0;4=0;26=2;12=0", "*c2"
 "Je bent aan de rand van het moeras"
 "Aan het eind van het pad blijf je staan.", ""
 "*c3", "$n: 'Nou daar gaan we dan, op zoek naar de heks'"
 "*c2", "", "In de verte klinken rare bubbelende geluiden."
 "", "Je loopt wat verder het moeras in. Je voeten zakken een beetje"
 "weg in de nattigheid. Je ziet een ineens een klein hutje, verscholen"
-"Onder wat krom hangende bomen"
+"Onder wat krom hangende bomen", ""
+"Overal groeien planten die je nog nooit eerder hebt gezien"
 "", "Er loopt een pad naar het noorden, omhoog richting heuvels.", "&"
 
-"1=4;2=0;26>1;12!0", "*c2"
+"1=4;2=0;4=0;26>1;12!0", "*c2"
 "Je staat in het moeras. Je voeten zakken een beetje"
 "weg in de nattigheid. Je ziet een een klein hutje, verscholen"
 "Onder wat krom hangende bomen"
+"", "Overal groeien planten die je nog nooit eerder hebt gezien"
 "", "Er loopt een pad naar het noorden, omhoog richting heuvels.", "&"
+
+"1=4;2=0;4=1", "*c2", "Je bekijkt eens rustig alle planten die hier in het moeras groeien."
+"Er staan planten met stekelige bladeren, ronde bladeren, spitse bladeren"
+"en vinger achtige bladeren."
+"&"
+
+"1=4;2=0;4=2", "*c2", "Je bukt om de plant met de stekelige bladeren te plukken"
+"", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
+"&4=1"
+
+"1=4;2=0;4=3", "*c2", "Je bukt om de plant met de ronde bladeren te plukken"
+"", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
+"&4=1"
+
+"1=4;2=0;4=4;36!1", "*c2", "Je bukt om de plant met de spitse bladeren te plukken"
+"", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
+"&4=1"
+
+"1=4;2=0;4=4;36=1", "*c2", "Je bukt om de plant met de spitse bladeren te plukken"
+"", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?", ""
+"Dan herinner je wat de bakker had gezegt over de Maansteen."
+"Je gaat graven bij de wortels van de plant, en vind een gladde kleine steen."
+"Hij is iets apart van kleur. Je stopt het in je tas."
+"&4=1;36=2"
+
+"1=4;2=0;4=5", "*c2", "Je bukt om de plant met de vinger achtige bladeren te plukken"
+"", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
+"&4=1"
 
 '== 6. Dorp
 "1=6;2=0;4=0", "*c2"
@@ -834,7 +865,7 @@
 "1=16;16=1;4=8;2=0", "*c3"
 "$n: 'Heb jij ook gehoord dat er een schat ergens is?'", "", "*c9"
 "Bakker: 'Er gaan geruchten. Ik geloof er niets van hoor, maar wat ik gehoord had"
-"  was dat onder een speciale plant in het moeras een steen moet liggen."
+"  was dat onder een speciale plant in het moeras een Maansteen moet liggen."
 "  En pas als die gloeit dat je dan een speciale route moet lopen."
 "  Het was een plant met spitse bladeren.'", "*c2", "", "Je vindt het erg interessant, en maakt er een aantekening van"
 "&4=0;36=1;34+1"
@@ -972,7 +1003,14 @@
 '== 4. Moeras acties
 "2=0;1=4;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=4;4=0;26>1", "Loop richting de hut", "1=12;3=1"
+"2=0;1=4;4=0;26>1", "Bekijk de planten", "4=1;20=0"
 "2=0;1=4;4=0", "Ga naar het noorden, richting de heuvels", "1=3;3=1"
+
+"2=0;1=4;4=1", "Pluk plant met stekelige bladeren", "4=2"
+"2=0;1=4;4=1", "Pluk plant met ronde bladeren", "4=3"
+"2=0;1=4;4=1", "Pluk plant met spitse bladeren", "4=4"
+"2=0;1=4;4=1", "Pluk plant met vinger achtige bladeren", "4=5"
+"2=0;1=4;4=1", "Stop met bestuderen van de planten", "4=0;20=1"
 
 '== 6. Dorp Acties
 "2=0;1=6;4=0;19=1;29=3", "Spring op paard", "2=2"
