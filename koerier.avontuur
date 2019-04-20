@@ -38,7 +38,7 @@
 ' 31 = touw
 ' 32 = stof
 ' 33 = graan 0=boerderij 1=graan-op-wagen 2=meel-op-wagen 3=klaar
-' 34 = schat 1=bestaan, 2-4 clues 5=gestart, 3=gevonden
+' 34 = schat 1=bestaan, 2-4 clues 5=gestart, 6=gevonden
 ' 35 = hint rivier molenaar
 ' 36 = hint plant v bakker, 2=gevonden
 ' 37 = hint route v boer NNWNNOZ
@@ -236,11 +236,13 @@
 "geruchten van de mysterieuze schat:", "", "&"
 
 "2=1;4=3;36>0", "*c6", "- Bij een plant in het moeras, met spitse bladeren"
-"  ligt een speciale steen. Als die gloeit start de route", "&"
+"  ligt een speciale steen. Als die gloeit kan de route gestart worden", "&"
 "2=1;4=3;37>0", "*c6", "- De route om te lopen is N-N-W-N-N-O-Z", "&"
+"2=1;4=3;35>0", "*c6", "- De route start bij de rivier", "&"
 "2=1;4=3;36>0;37=0", "*c2", "", "Je hebt alleen geen idee wat deze route is", "&"
 "2=1;4=3;37>0;35=0", "*c2", "", "Je hebt alleen geen idee waar deze route start", "&"
-"2=1;4=3;34<5", "*c2", "", "Je hebt het gevoel dat je nog niet alle informatie hebt verzameld", "&"
+"2=1;4=3;34<4", "*c2", "", "Je hebt het gevoel dat je nog niet alle informatie hebt verzameld", "&"
+"2=1;4=3;34>3", "*c2", "", "Je hebt het gevoel je alle informatie hebt verzameld", "&"
 "2=1;4=3", "", "&"
 
 "2=1", "*c15", "Je hebt het volgende bij je:", "&"
@@ -669,6 +671,15 @@
 "", "*c2", "Samen laden jullie het fijne meel weer op de wagen."
 "&4=0;33=2"
 
+"1=14;4=8;2=0;34>0;35=0", "*c3"
+"$n: 'Heb jij ook gehoord dat er een schat ergens is?'", "", "*c9"
+"Molenaar: 'Dat is echt de grootste onzin waar men over kletst tegenwoordig."
+"  Geloof er maar niets van hoor. Zeker van die smidsen in het dorp gehoord?"
+"  Volgens mij geloven zij alles! Een schat route die begint bij de rivier?"
+"  Ik ben vaak genoeg bij de rivier geweest, maar daar is echt niets'"
+"*c2", "", "Je vindt het erg interessant, en maakt er een aantekening van"
+"&4=0;35=1;34+1"
+
 "1=14;2=0;4=2", "*c3", "$n: 'Weet u hoe ik aan medicijnen kan komen?'", "", "*c2"
 "De oude molenaar lijkt je aan", "", "*c9", "&"
 "0=1;1=14;2=0;4=2", "Molenaar: 'Sorry jongen, dat zou ik echt niet weten'", "&4=0"
@@ -823,9 +834,9 @@
 "1=16;16=1;4=8;2=0", "*c3"
 "$n: 'Heb jij ook gehoord dat er een schat ergens is?'", "", "*c9"
 "Bakker: 'Er gaan geruchten. Ik geloof er niets van hoor, maar wat ik gehoord had"
-"  was dat onder een speciale plant in het moeras een steen moet liggen. En als"
-"  die gloeit dat je dan een speciale route moet lopen. Het was een plant met"
-"  spitse bladeren.'", "*c2", "", "Je vindt het erg interessant, en maakt er een aantekening van"
+"  was dat onder een speciale plant in het moeras een steen moet liggen."
+"  En pas als die gloeit dat je dan een speciale route moet lopen."
+"  Het was een plant met spitse bladeren.'", "*c2", "", "Je vindt het erg interessant, en maakt er een aantekening van"
 "&4=0;36=1;34+1"
 
 "1=16;16=1;4=6;2=0", "*c3"
@@ -1030,6 +1041,7 @@
 "2=0;1=14;19=0;4=0", "Zeg: 'Weet u hoe ik aan vervoer kan komen?'", "4=1"
 "2=0;1=14;4=0", "Zeg: 'Weet u hoe ik aan medicijnen kan komen?'", "4=2"
 "2=0;1=14;14=1;4=0", "Zeg: 'Wat was er ook alweer nodig om de molen te maken?'", "4=4"
+"2=0;1=14;14=1;4=0;34>0;35=0", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
 "2=0;1=14;4=0;32=1", "Repareer molen met onderbroek van reus", "4=3"
 "2=0;1=14;4=0;19=1;29=3", "Zeg: 'Kan ik de wagen lenen?'", "4=5"
 "2=0;1=14;4=0;19=1;29=4;33=1", "Zeg: 'Zou je dit graan willen malen?'", "4=7"
