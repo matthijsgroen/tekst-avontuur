@@ -24,10 +24,11 @@ widthRuler.textContent =
   "This-is-a-long-sentence-of-exactly-eighty-characters,-it-looks-as-a-coincidence?";
 
 const resizeFont = () => {
+  document.body.setAttribute("style", `font-size: 1rem;`);
   let screenWidth = document.body.getBoundingClientRect().width - 20;
   let lineWidth = widthRuler.getBoundingClientRect().width;
   const scale = screenWidth / lineWidth;
-  screenElement.setAttribute("style", `transform: scale(${scale});`);
+  document.body.setAttribute("style", `font-size: ${scale}rem;`);
 };
 
 window.addEventListener("resize", () => setTimeout(resizeFont, 100));
@@ -185,7 +186,6 @@ const toonActies = async () => {
 
   color(7);
   acties.forEach((actie, i) => {
-    print("\n");
     print(`${i + 1} ) ${actie.naam}\n`, i + 1);
   });
   // geen acties, dan is spel voorbij

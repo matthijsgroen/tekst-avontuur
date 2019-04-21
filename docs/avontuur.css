@@ -3,7 +3,12 @@ body {
     font-family: 'Source Code Pro', monospace;
     line-height: 1.2em;
 }
-a { text-decoration: none; }
+a {
+    vertical-align: 50%;
+    text-decoration: none;
+    display: block;
+    min-height: 32px;
+}
 #width {
     white-space: nowrap;
     display: inline-block;
@@ -18,13 +23,13 @@ a { text-decoration: none; }
 .color6 { color: #a85514; }
 .color7 { color: #aaaaaa; }
 .color8 { color: #555555; }
-.color9 { color: #565cfb; font-weight: bold; }
-.color10 { color: #5efd60; font-weight: bold; }
-.color11 { color: #5ffffe; font-weight: bold; }
-.color12 { color: #fc575a; font-weight: bold; }
-.color13 { color: #fd5dfc; font-weight: bold; }
-.color14 { color: #fffd64; font-weight: bold; }
-.color15 { color: #ffffff; font-weight: bold; }
+.color9 { color: #565cfb; }
+.color10 { color: #5efd60; }
+.color11 { color: #5ffffe; }
+.color12 { color: #fc575a; }
+.color13 { color: #fd5dfc; }
+.color14 { color: #fffd64; }
+.color15 { color: #ffffff; }
 input {
     background: black;
     font-size: 1em;

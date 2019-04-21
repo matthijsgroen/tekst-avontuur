@@ -40,10 +40,11 @@
 ' 31 = touw
 ' 32 = stof
 ' 33 = graan 0=boerderij 1=graan-op-wagen 2=meel-op-wagen 3=klaar
-' 34 = schat 1=bestaan, 2-4 clues 5=gestart, 6=mislukt, 7=gelukt
+' 34 = schat 1=bestaan, 2-4 clues 5=gestart, 6=mislukt, 7=gelukt, 8 = ketting
 ' 35 = hint rivier molenaar
 ' 36 = hint plant v bakker, 2=gevonden
 ' 37 = hint route v boer NNWNNOZ
+' 38 = rune steen
 
 ' 0. Proloog
 "0=0", "*c2"
@@ -266,6 +267,8 @@
 "2=1;1=8;36=2", "*c7", "- Maansteen, hij lijkt licht te gloeien", "&"
 "2=1;1=9;36=2", "*c7", "- Maansteen, hij lijkt te gloeien in het maanlicht", "&"
 "2=1;34=7", "*c7", "- Stukken goud", "&"
+"2=1;34=8", "*c7", "- Een prachtige halsketting met een edelsteen erin", "&"
+"2=1;38=1", "*c7", "- Rune steen met inscripties", "&"
 
 ' 1. Bos
 "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -469,11 +472,13 @@
 
 "1=9;2=0;9=7", "*c2", "Je loopt naar het zuiden, tussen de bomen door je komt bij een omgevallen boom"
 "Na beter bestuderen van de boom, zie je dat de boom hol is.", "*s2"
-"Je ziet een kleine kist in de holle boom liggen. Je pakt het kistje eruit."
-"In het kistje zit goud! Je hebt een stuk goud gevonden! Je stopt het goud in je"
-"tas. Poe je bent moe! Je loopt weer terug naar het pad in het bos. Je ziet de"
-"zon weer opkomen."
-"&1=1;34=7"
+"Je ziet een kleine kist in de holle boom liggen. Je pakt het kistje eruit.", ""
+"In het kistje zit goud! Je hebt een stuk goud gevonden!"
+"Er zit ook een steen met rare inscripties in het kistje.", ""
+"Je stopt het goud en de steen in je tas. Het goud lijkt licht net iets anders"
+"te reflecteren dan dat je van gewoon goud gewend bent."
+"Je loopt weer terug naar het pad in het bos. Je ziet de zon weer opkomen."
+"&1=1;34=7;38=1"
 
 '== 11. Mijn
 "1=11;2=0;11<2;4=0", "*c2"
@@ -519,6 +524,10 @@
 "1=11;2=0;11>1;4=6", "*c3", "$n: 'Thorin, zou jij weten hoe ik aan vervoer kan komen?'", "", "*c2"
 "Thorin denkt even na.", "*c9", "", "Thorin: 'Hmm de boer verderop heeft een paard. Je zou kunnen"
 "  vragen of je die mag lenen?'", "&4=0"
+
+"1=11;2=0;11>1;4=7", "*c3", "$n: 'Thorin, heb jij ook gehoord dat er een schat ergens is?'", ""
+"*c9", "Thorin: 'Mensen praten over mijn mijn! Zeker weten! Deze mijn is MIJN grote"
+"  schat.'", "", "*c2", "Thorin denkt duidelijk dat je het over iets anders hebt", "&4=0"
 
 "1=11;2=0;11=2;24=4;25=3", "*c2", "Thorin staat op, en loopt de mijn in. Met nieuwe energie,"
 "en een gerepareerde houweel, gaat hij op de edelstenen inhakken", ""
@@ -604,6 +613,11 @@
 "1=12;12=1;2=0;4=2", "*c2", "Eucalypta kijkt je aan. Er komt een grote glimlach op haar gezicht"
 "", "*c13", "Eucalypta: 'Die edelsteen is echt prachtig!"
 "  maar het is geen SIERAAD'", "&4=0"
+
+"1=12;12=1;2=0;4=3", "*c3", "$n: 'Heb jij ook gehoord dat er een schat ergens is?'", ""
+"*c13", "Eucalypta: 'Ach daar moet je niets om geven. De krachten van planten en magie"
+"  is vele malen groter dan de interesse van geld van de mensen'", ""
+"*c2", "Dit helpt je niet verder", "&4=0"
 
 '== 13. Boerderij
 "1=13;13>0;2=0;4=0", "*c2"
@@ -844,6 +858,12 @@
 "  bijvoorbeeld met een edelsteen en goud zou ik een mooie halsketting kunnen"
 "  maken'", "&4=0"
 
+"1=15;2=0;4=7", "*c3", "$n: 'Kunnen jullie een sieraad maken?'", ""
+"*c2", "Luuk komt op je aflopen.", ""
+"*c11", "Luuk: 'Geen probleem, je moet alleen wel zelf voor het materiaal gaan zorgen"
+"  bijvoorbeeld met een edelsteen en goud zou ik een mooie halsketting kunnen"
+"  maken'", "&20=0"
+
 "1=15;2=0;4=6", "*c3", "$n: 'Kunnen jullie een wapen maken?'", ""
 "*c2", "Lucy komt op je aflopen.", ""
 "*c13", "Lucy: 'Zeker! Maar we hebben al van alles liggen hier in de winkel. Kijk gerust"
@@ -888,6 +908,9 @@
 "1=15;2=0;4=9", "*c3", "$n: 'Hmm, misschien een andere keer'", ""
 "*c9", "Luk: 'Ok, prima'", "*c2", "", "Luk loopt weer terug naar zijn werkplek", "&4=0"
 
+"1=15;2=0;4=10", "*c3", "$n: 'Hmm, misschien een andere keer'", ""
+"*c11", "Luuk: 'Ok, prima'", "*c2", "", "Luuk loopt weer terug naar zijn werkplek", "&4=0"
+
 "1=15;2=0;4=8", "*c3", "$n: 'Alstublieft, 2 geldstukken'", ""
 "*c2", "Luk gaat aan het werk. Teun laat kalm zijn hoeven nakijken"
 "", "*c14", "<Ting, Ting, Ting>", "*c2", ""
@@ -895,6 +918,15 @@
 "Luk: 'Zo, weer allemaal nieuw. Je kan nu zelfs op je paard rijden"
 "  als je dat zou willen'"
 "&4=0;29=3;22-2"
+
+"1=15;2=0;4=11", "*c3", "$n: 'Alstublieft, goud en een edelsteen, om een sieraad te maken'", ""
+"*c2", "Luuk gaat aan het werk."
+"", "*c14", "<Ting, Ting, Ting>", "*c2", ""
+"Na een tijdje heeft heeft Luuk een prachtige halsketting gemaakt", "*c11", ""
+"Luuk: 'Zo, een mooie halsketting. Voor welke gelukkige dame gaat deze zijn?"
+"  Ohja, ik heb niet al het materiaal opgebruikt. Hier nog wat geldstukken ter"
+"  compensatie'"
+"&4=0;22+15;28=2;34=8"
 
 '== 16. Bakkerij
 "1=16;16=1;2=0;4=0", "*c2"
@@ -1137,6 +1169,7 @@
 "2=0;1=11;11=2;4=0;25=2", "Geef koeken aan Thorin", "4=4"
 "2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan medicijnen kan komen?'", "4=5"
 "2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan vervoer kan komen?'", "4=6"
+"2=0;1=11;11>1;4=0;34>0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=7"
 "2=0;1=11;11=2;4=0", "Zeg: 'Sorry, ik moet er weer vandoor'", "1=3;3=5"
 
 "2=0;1=11;11=3;4=0;28=0", "Raap edelsteen op", "4=1"
@@ -1152,6 +1185,7 @@
 
 "2=0;1=12;12=1;4=0", "Zeg: 'Kunt u me helpen met een medicijn?'", "4=1"
 "2=0;1=12;12=1;4=0;26=3;28=1", "Geef edelsteen aan Eucalypta", "4=2"
+"2=0;1=12;12=1;4=0;34>0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=3"
 "2=0;1=12;12=1;4=0", "Zeg: 'Tot ziens!'", "1=4;3=5"
 
 '== 13. Boerderij
@@ -1182,21 +1216,25 @@
 "2=0;1=14;4=0;19=1;29=4;33=1", "Zeg: 'Zou je dit graan willen malen?'", "4=7"
 "2=0;1=14;4=0;19=1;29=4;33!1;33!2", "Breng de wagen terug", "4=6"
 ' TEDOEN
-' Indien schat: Schat?
 ' Indien bakker: Monster?
 "2=0;1=14;14>0;4=0", "Loop terug naar de weg", "1=3;3=6"
 
-' 15. Smederij
+'== 15. Smederij
 "2=0;1=15;4=3;22>1", "Zeg: 'Alstublieft, 2 geldstukken'", "4=8"
 "2=0;1=15;4=3;22>1", "Zeg: 'Hmm, misschien toch andere keer'", "4=9"
 "2=0;1=15;4=3;22<3", "Oei, ik heb niet genoeg geld", "4=9"
 
+"2=0;1=15;4=7", "Zeg: 'Alstublieft, goud en een edelsteen'", "4=11;20=1"
+"2=0;1=15;4=7", "Zeg: 'Hmm, misschien toch andere keer'", "4=10;20=1"
+
 "2=0;1=15;4=0", "Zeg: 'Weten jullie hoe ik aan medicijnen zou kunnen komen?'", "4=1"
 "2=0;1=15;4=0", "Zeg: 'Weten jullie hoe ik aan vervoer zou kunnen komen?'", "4=2"
 "2=0;1=15;4=0;29<3;30=15", "Zeg: 'Kunt u de hoefijzers van mijn paard maken?'", "4=3"
-"2=0;1=15;4=0;26=3", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=4"
+"2=0;1=15;4=0;26=3;28!1;34<7", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=4"
+"2=0;1=15;4=0;26=3;28=1;34<7", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=4"
+"2=0;1=15;4=0;26=3;28=1;34=7", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=7"
 "2=0;1=15;4=0;26>0;27<2", "Zeg: 'Kunnen jullie een wapen maken?'", "4=6"
-'"2=0;1=15;4=0", "Zeg: 'Wat weten jullie van het monster in het woud?'", "4=7"
+'"2=0;1=15;4=0", "Zeg: 'Wat weten jullie van het monster in het woud?'", "4=10"
 "2=0;1=15;4=0", "Kijk rond in smederij", "4=5"
 "2=0;1=15;4=0", "Verlaat de smederij", "1=6;3=6;4=0"
 
@@ -1216,7 +1254,7 @@
 "2=0;1=16;16=1;4=0;25<1", "Zeg: 'Hallo? Kan ik iets te eten kopen?'", "4=2"
 "2=0;1=16;16=1;4=0;25<2;25>0", "Zeg: 'Ik wil graag koeken kopen'", "4=3"
 "2=0;1=16;16=1;4=0;26>0;34>0;36=0", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
-"2=0;1=16;16=1;4=0;33<3", "Zeg: 'Waarom is uw toonbank leeg?'", "4=6"
+"2=0;1=16;16=1;4=0;26>0;33<3", "Zeg: 'Waarom is uw toonbank leeg?'", "4=6"
 "2=0;1=16;16=1;4=0;33=2", "Zeg: 'Ik heb meel gehaald'", "4=7"
 "2=0;1=16;16=1;4=0", "Verlaat de bakkerij", "1=6;3=5;4=0"
 "2=0;1=16;16=1;4=1;26=0", "Zeg: 'Monster? Waar heeft u het over?'", "4=4"
