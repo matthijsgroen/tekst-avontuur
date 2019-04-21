@@ -212,6 +212,10 @@ styles[] {
       praat_met_dochter_van_bakker:event {
          depends_on []   = beklim_toren;
       }
+      
+      praat_met_draak : event {
+         depends_on []   = vind_runesteen_in_bos, praat_met_dochter_van_bakker;
+      }
 
       praat_met_dwerg:event {
          style           = finished
@@ -253,7 +257,7 @@ styles[] {
       }
 
       trek_tand_van_draak: event {
-         depends_on []   = snij_touw_van_lift;
+         depends_on []   = snij_touw_van_lift, praat_met_draak;
       }
 
       vind_goud_in_bos:event{
@@ -273,8 +277,13 @@ styles[] {
          style           = finished
          depends_on []   = praat_met_boer;
       }
+      
+      vind_runesteen_in_bos:event {
+         depends_on []   = volg_maansteen_route;
+      }
 
       volg_maansteen_route:event {
+         style           = finished
          depends_on []   = vind_maansteen_in_moeras, schat_route_compleet;
       }
 
