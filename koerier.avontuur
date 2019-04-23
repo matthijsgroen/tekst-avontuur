@@ -45,6 +45,7 @@
 ' 36 = hint plant v bakker, 2=gevonden
 ' 37 = hint route v boer NNWNNOZ
 ' 38 = rune steen
+' 39 = hint 'armor heeft geen zin' -- Boer
 
 ' 0. Proloog
 "0=0", "*c2"
@@ -221,10 +222,10 @@
 "1=6;3=5;16=1;25=0;26=0", "*c2", "Geen idee met wat je aanmoet met de situatie, loop je weer naar buiten.", "&"
 "1=6;3=5;16=1;25!0;26=0", "*c2", "Je loopt weer naar buiten.", "&"
 "1=6;3=5;16=1;26!0", "*c2", "Je loopt weer naar buiten.", "&"
-"1=6;3=5;16=1;19=1;29>1", "*c2", "Je maakt Teun weer los.", "&"
+"1=6;3=5;16=1;19=1;29>1", "*c2", "Je maakt Teun weer los.", "&30=6"
 "1=6;3=5;16=1", "", "&3=0;1=6"
 "1=6;3=6;16=1;19=0", "*c2", "Je loopt weer naar buiten.", "&"
-"1=6;3=6;16=1;19=1;29>1", "*c2", "Je maakt Teun weer los.", "&"
+"1=6;3=6;16=1;19=1;29>1", "*c2", "Je maakt Teun weer los.", "&30=6"
 "1=6;3=6;16=1", "", "&3=0;1=6"
 
 '== Tas
@@ -371,21 +372,47 @@
 "Een klein verborgen pad leid naar het oosten, richting een donker woud.", "&"
 
 '== 7. Donkere woud
-"1=7;2=0;26=0", "*c2"
+"1=7;2=0;26=0;7=0", "*c2"
 "Je staat aan de rand van een donker woud. Het ziet er erg donker en gevaarlijk"
 "uit. De takken van de bomen lijken haast te leven, de bomen zijn knoesterig en"
 "beschadigd.", ""
 "*c3", "$n: 'Brr.. hier heb ik niets te zoeken'", "&"
 
-"1=7;2=0;26>0", "*c2"
+"1=7;2=0;26>0;7=0", "*c2"
 "Je staat aan de rand van een donker woud. Het ziet er erg donker en gevaarlijk"
 "uit. De takken van de bomen lijken haast te leven, de bomen zijn knoesterig en"
 "beschadigd.", ""
 "*c3", "$n: 'Als hier echt een monster schuilhoud, dan moet ik me"
-"  eerst gaan voorbereiden voordat ik me hier ga wagen ik weet nog "
-"  niets over het monster. (mensen hier kunnen me misschien meer vertellen?)", "&"
-"1=7;2=0;26>0;27<2", "  en ik heb ook geen wapen om me te verdedigen mocht ik hem tegenkomen'", "&"
-"1=7;2=0;26>0;27=2", "  ik heb in ieder geval een wapen om me te verdedigen mocht ik hem tegenkomen'", "&"
+"  eerst gaan voorbereiden voordat ik me hier ga wagen.", "&"
+"1=7;2=0;26>0;39=1;7=0", "*c3", "  Ik weet genoeg over het monster, het klinkt als een vliegende,"
+"   vuurspuwende draak. Een harnas heeft dus geen zin.", "&"
+"1=7;2=0;26>0;39=0;7=0", "*c3", "  Ik weet nog niet genoeg over het monster."
+"  (andere mensen kunnen me misschien meer vertellen?)"
+"  Misschien moet ik een harnas kopen.", "&"
+"1=7;2=0;26>0;27<2;7=0", "  En ik heb ook geen wapen om me te verdedigen mocht ik hem tegenkomen'", "&"
+"1=7;2=0;26>0;27=2;7=0", "  Ik heb in ieder geval een wapen om me te verdedigen mocht ik hem tegenkomen'", "&"
+
+"1=7;2=0;7=1;4=0;19=0", "*c2"
+"Daar ging $n dan, helemaal alleen.", "&"
+"1=7;2=0;7=1;4=0;19=1;29=3", "*c2"
+"Daar ging $n dan, samen met Teun aan zijn zijde.", "&"
+"1=7;2=0;7=1;4=0;19=1;29=4", "*c2"
+"Daar ging $n dan, samen met Teun en de wagen aan zijn zijde.", "&"
+"1=7;2=0;7=1;4=0;0=1", "*c2"
+"Hij haalde diep adem, raapte al zijn moed bij elkaar."
+"Met alleen zijn zwaard om hem te beschermen, stapte hij het donkere woud in.", "&"
+"1=7;2=0;7=1;4=0;0=2", "*c2"
+"Ze haalde diep adem, raapte al haar moed bij elkaar."
+"Met alleen haar zwaard om haar te beschermen, stapte ze het donkere woud in.", "&"
+"1=7;2=0;7=1;4=0", "*c2"
+"*s2", "In de verte tussen de takken van de half dode bomen, begon zich een silhouette"
+"van een toren te vormen. De toren was erorm hoog en stak ver boven de bomen"
+"uit. Uit de top van de toren klonk een enorm gebrul."
+"", "*c3", "$n: 'O help waar ben ik aan begonnen'", "&"
+"1=7;2=0;7=1;4=0;0=2", "", "*c2", "$n liep verder totdat ze aan de voet van de toren was.", "&"
+"1=7;2=0;7=1;4=0;0=1", "", "*c2", "$n liep verder totdat hij aan de voet van de toren was.", "&"
+"1=7;2=0;7=1;4=0", "*c2"
+"*c14", "ONDER-CONSTRUCTIE!!", "&"
 
 '== 8. Rivier
 "1=8;2=0;4=0", "*c2"
@@ -708,7 +735,6 @@
 "", "*c3", "$n: 'Hoi Teun'"
 "&4=0;19=1"
 
-
 "1=13;13=0;2=0;4=1", "*c2", "Je loopt op de boer af", ""
 "*c3", "$n: 'Kan ik ergens mee helpen? Er zijn toch geen"
 "  gewonden?'", ""
@@ -728,6 +754,15 @@
 "1=13;13>0;2=0;4=6;31=0"
 "*c2", "Je pakt het touw"
 "", "&4=0;31=1"
+
+"1=13;4=9;2=0", "*c3"
+"$n: 'Wat kun je me vertellen over het monster in het woud?'", "", "*c9"
+"Boer: 'Het is een flink vuurspuwend monster! Dat is het! de hele appel oogst is"
+"  naar de knoppen! Die vlammen zijn zo heet, volgens mij kan geen harnas je daar"
+"  tegen beschermen. Kan je beter licht gekleed gaan zodat je snel van zijn"
+"  vlammen weg kan duiken!'"
+"*c2", "", "Je denkt bij jezelf dat een harnas kopen dus geen zin gaat hebben"
+"&4=0;39=1"
 
 '== 14. Molen
 "1=14;14=1;2=0;4=0", "*c2", "Je bent bij de molen", ""
@@ -788,6 +823,13 @@
 "  Ik ben vaak genoeg bij de rivier geweest, maar daar is echt niets'"
 "*c2", "", "Je vindt het erg interessant, en maakt er een aantekening van"
 "&4=0;35=1;34+1"
+
+"1=14;4=9;2=0", "*c3"
+"$n: 'Wat kun je me vertellen over het monster in het woud?'", "", "*c9"
+"Molenaar: 'Oei ja, dat is een flinke jongen, kan flink hard vliegen ook. Hele"
+"  grote vleugels. Laatst kwam hij rakelings langs over mijn molen, en ben ik een"
+"  doek van een wieken kwijtgeraakt.'"
+"&4=0"
 
 "1=14;2=0;4=2", "*c3", "$n: 'Weet u hoe ik aan medicijnen kan komen?'", "", "*c2"
 "De oude molenaar lijkt je aan", "", "*c9", "&"
@@ -865,6 +907,12 @@
 "*c11", "Luuk: 'Geen probleem, je moet alleen wel zelf voor het materiaal gaan zorgen"
 "  bijvoorbeeld met een edelsteen en goud zou ik een mooie halsketting kunnen"
 "  maken'", "&20=0"
+
+"1=15;2=0;4=10", "*c3", "$n: 'Wat weten jullie van het monster in het woud?'", ""
+"*c13", "Lucy: 'Oei dat is een gevaarlijke jongen. Hij heeft een lange staart'"
+"*c9", "Luk: 'Kan ontzettend hard brullen'"
+"*c11", "Luuk: 'En we hebben geen idee wat het eet, misschien moet hij nog eten, brrr.'"
+"&4=0"
 
 "1=15;2=0;4=6", "*c3", "$n: 'Kunnen jullie een wapen maken?'", ""
 "*c2", "Lucy komt op je aflopen.", ""
@@ -995,7 +1043,9 @@
 "Bakker: 'Sinds 2 dagen komt er wild gebrul uit het woud"
 "  En sinds 2 dagen is ook mijn dochter vermist!'"
 "", "*s1"
-"Bakker: 'We moeten dat beest verslaan! En mijn dochter redden!'"
+"Bakker: 'We moeten dat beest verslaan! En mijn dochter redden!"
+"  Je hebt toch niet toevallig een zwaard he? Je moet zeker een zwaard hebben om"
+"  je tegen het monster te kunnen verdedigen!'"
 "&4=0"
 
 "1=16;16=1;4=5;2=0;26=1", "*c3"
@@ -1118,6 +1168,7 @@
 
 '== 7. Donker woud acties
 "2=0;1=7", "Ga naar het westen, richting het dorp", "1=6;3=4"
+"2=0;1=7;39=1;27=2;7=0", "Ga toch verder, het donkere woud in", "7=1"
 
 '== 8. Rivier acties
 "2=0;1=8;4=0;19=1;29=3;30=8", "Spring op paard", "2=2"
@@ -1202,11 +1253,10 @@
 "2=0;1=13;13=2;4=0;29>2", "Zeg: 'Teun heeft nieuwe hoefijzers'", "4=2"
 "2=0;1=13;13>1;4=0;12=0", "Zeg: 'Weet u hoe ik aan medicijnen zou kunnen komen?'", "4=5"
 "2=0;1=13;13>2;4=0;33=0", "Zeg: 'Zou ik graan mogen hebben?'", "4=7"
+"2=0;1=13;13>0;4=0;26>0", "Zeg: 'Wat kun je me vertellen over het monster?'", "4=9"
 "2=0;1=13;13>0;4=0;26>0;37=0", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
 "2=0;1=13;13>0;4=0;30=13;19=1;29!4", "Breng Teun naar zijn stal", "4=3"
 "2=0;1=13;13>0;4=0;30=13;19=0;29!4", "Haal Teun van zijn stal", "4=4"
-' TEDOEN
-' Monster ?
 "2=0;1=13;13>0;4=0;31=0", "Pak touw", "4=6"
 "2=0;1=13;13>0;4=0", "Loop terug naar de weg", "1=2;3=5"
 
@@ -1220,8 +1270,7 @@
 "2=0;1=14;4=0;19=1;29=3", "Zeg: 'Kan ik de wagen lenen?'", "4=5"
 "2=0;1=14;4=0;19=1;29=4;33=1", "Zeg: 'Zou je dit graan willen malen?'", "4=7"
 "2=0;1=14;4=0;19=1;29=4;33!1;33!2", "Breng de wagen terug", "4=6"
-' TEDOEN
-' Indien bakker: Monster?
+"2=0;1=14;4=0;26>0", "Zeg: 'Wat kun je me vertellen over het monster?'", "4=9"
 "2=0;1=14;14>0;4=0", "Loop terug naar de weg", "1=3;3=6"
 
 '== 15. Smederij
@@ -1239,7 +1288,7 @@
 "2=0;1=15;4=0;26=3;28=1;34<7", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=4"
 "2=0;1=15;4=0;26=3;28=1;34=7", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=7"
 "2=0;1=15;4=0;26>0;27<2", "Zeg: 'Kunnen jullie een wapen maken?'", "4=6"
-'"2=0;1=15;4=0", "Zeg: 'Wat weten jullie van het monster in het woud?'", "4=10"
+"2=0;1=15;4=0", "Zeg: 'Wat weten jullie van het monster in het woud?'", "4=10"
 "2=0;1=15;4=0", "Kijk rond in smederij", "4=5"
 "2=0;1=15;4=0", "Verlaat de smederij", "1=6;3=6;4=0"
 

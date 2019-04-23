@@ -44,7 +44,7 @@ styles[] {
       }
 
       breng_medicijnen_naar_koning:event {
-         depends_on [] = zet_zadel_op_draak, krijg_medicijn_van_heks;
+         depends_on [] = zet_zadel_op_draak, maak_medicijn;
          end_state     = positive
       }
 
@@ -82,7 +82,8 @@ styles[] {
       }
       
       genoeg_info_over_monster:event {
-         depends_on []   = praat_met_bakker, praat_met_smidsen, praat_met_boer, praat_met_molenaar;
+         style           = finished
+         depends_on []   = praat_met_bakker, praat_met_boer;
       }
 
       haal_wagen_bij_molenaar_met_paard:event {
@@ -141,10 +142,6 @@ styles[] {
          depends_on []   = praat_met_dwerg;
       }
 
-      krijg_medicijn_van_heks:event {
-         depends_on [] = pak_tand_van_draak, pluk_kruiden_in_bos, pluk_paddenstoelen_in_woud;
-      }
-
       krijg_meel_bij_molenaar:event {
          style           = finished
          depends_on []   = bezorg_graan_bij_molenaar, repareer_molen_met_onderbroek;
@@ -170,8 +167,16 @@ styles[] {
          depends_on []   = praat_met_smidsen;
       }
 
+      krijg_toegang_tot_hut:event {
+         depends_on [] = pak_tand_van_draak, pluk_kruiden_in_bos, pluk_paddenstoelen_in_woud;
+      }
+
       leg_molensteen_op_lift:event {
          depends_on []   = breng_molensteen_naar_toren, praat_met_dochter_van_bakker;
+      }
+      
+      maak_medicijn : event {
+         depends_on []   = krijg_toegang_tot_hut;
       }
 
       maak_sieraad_bij_smid:event {
