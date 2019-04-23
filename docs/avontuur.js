@@ -21,7 +21,7 @@ saveButton.addEventListener("click", () => {
 
 const widthRuler = document.getElementById("width");
 widthRuler.textContent =
-  "This-is-a-long-sentence-of-exactly-eighty-characters,-it-looks-as-a-coincidence?";
+  "This-is-a-long-sentence-of-exactly-eighty-one-characters,-is-it-some-coincidence?";
 
 const resizeFont = () => {
   document.body.setAttribute("style", `font-size: 1rem;`);

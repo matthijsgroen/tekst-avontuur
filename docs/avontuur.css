@@ -12,6 +12,8 @@ a {
 #width {
     white-space: nowrap;
     display: inline-block;
+    pointer-events: none;
+    user-select: none;
 }
 #screen { transform-origin: top left; }
 .color0 { color: #000000; }
