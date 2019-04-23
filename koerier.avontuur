@@ -14,6 +14,8 @@
 ' 2 = Locatie toestand 0 = look, 1 = Open tas, 2 = leeg
 ' 4 = Actie van speler
 ' 5 = Tijdelijke lokatie teller
+' 6 = Tijdelijke lokatie teller 2
+' 7 = Tijdelijke lokatie teller 3
 
 ' 9 = Schattenjacht
 ' 10 = Lokatie status Proloog
@@ -385,7 +387,7 @@
 "*c3", "$n: 'Als hier echt een monster schuilhoud, dan moet ik me"
 "  eerst gaan voorbereiden voordat ik me hier ga wagen.", "&"
 "1=7;2=0;26>0;39=1;7=0", "*c3", "  Ik weet genoeg over het monster, het klinkt als een vliegende,"
-"   vuurspuwende draak. Een harnas heeft dus geen zin.", "&"
+"  vuurspuwende draak. Een harnas heeft dus geen zin.", "&"
 "1=7;2=0;26>0;39=0;7=0", "*c3", "  Ik weet nog niet genoeg over het monster."
 "  (andere mensen kunnen me misschien meer vertellen?)"
 "  Misschien moet ik een harnas kopen.", "&"
@@ -399,20 +401,18 @@
 "1=7;2=0;7=1;4=0;19=1;29=4", "*c2"
 "Daar ging $n dan, samen met Teun en de wagen aan zijn zijde.", "&"
 "1=7;2=0;7=1;4=0;0=1", "*c2"
-"Hij haalde diep adem, raapte al zijn moed bij elkaar."
+"Hij haalde diep adem en raapte al zijn moed bij elkaar."
 "Met alleen zijn zwaard om hem te beschermen, stapte hij het donkere woud in.", "&"
 "1=7;2=0;7=1;4=0;0=2", "*c2"
-"Ze haalde diep adem, raapte al haar moed bij elkaar."
+"Ze haalde diep adem en raapte al haar moed bij elkaar."
 "Met alleen haar zwaard om haar te beschermen, stapte ze het donkere woud in.", "&"
 "1=7;2=0;7=1;4=0", "*c2"
-"*s2", "In de verte tussen de takken van de half dode bomen, begon zich een silhouette"
+"*s2", "", "In de verte tussen de takken van de halfdode bomen, begon zich een silhouette"
 "van een toren te vormen. De toren was erorm hoog en stak ver boven de bomen"
 "uit. Uit de top van de toren klonk een enorm gebrul."
 "", "*c3", "$n: 'O help waar ben ik aan begonnen'", "&"
-"1=7;2=0;7=1;4=0;0=2", "", "*c2", "$n liep verder totdat ze aan de voet van de toren was.", "&"
-"1=7;2=0;7=1;4=0;0=1", "", "*c2", "$n liep verder totdat hij aan de voet van de toren was.", "&"
-"1=7;2=0;7=1;4=0", "*c2"
-"*c14", "ONDER-CONSTRUCTIE!!", "&"
+"1=7;2=0;7=1;4=0;0=2", "", "*c2", "$n liep verder totdat ze aan de voet van de toren was.", "&1=17;7=2"
+"1=7;2=0;7=1;4=0;0=1", "", "*c2", "$n liep verder totdat hij aan de voet van de toren was.", "&1=17;7=2"
 
 '== 8. Rivier
 "1=8;2=0;4=0", "*c2"
@@ -1003,7 +1003,7 @@
 "Bakker: 'Sinds 2 dagen komt er wild gebrul uit het woud"
 "  En sinds 2 dagen is ook mijn dochter vermist!"
 "  ... Eerst de brand bij de boer. En nu heeft hij ook"
-"  mijn dochter te pakken!'"
+"  mijn lieve Floor te pakken!'"
 "&26=1;20=1;4=0"
 
 "1=16;16=1;4=8;2=0", "*c3"
@@ -1020,14 +1020,14 @@
 "*c2", "De bakker blijft snikken.", "*c9", ""
 "Bakker: 'Mijn dochter is weg en mijn meel is op. Ik heb wel geld"
 "  maar er zijn geen dappere strijders beschikbaar om mijn"
-"  dochter te redden! Kon ik maar weer bakken, dan was dat"
+"  Floor te redden! Kon ik maar weer bakken, dan was dat"
 "  nog een fijne afleiding.'"
 "&4=0"
 
 "1=16;16=1;4=7;2=0", "*c3"
 "$n: 'Ik heb meel gehaald'", "", "*c9"
 "Bakker: 'Echt waar? Dank u! Dit brengt helaas niet mijn"
-"  dochter terug, maar dan kan ik in ieder geval weer wat bakken"
+"  Floor terug, maar dan kan ik in ieder geval weer wat bakken"
 "  ter afleiding.'", "", "*c2"
 "De bakker geeft je 100 geldstukken", "*c3", ""
 "$n: 'Dit is echt veel te veel!'", "", "*c9"
@@ -1082,6 +1082,59 @@
 "$n: 'Alstublieft, 2 geldstukken'", "", "*c9"
 "Bakker: 'Alsjeblieft'", "", "*c2", "De bakker geeft een paar heerlijke koeken"
 "&16=1;4=0;25=2;22-2"
+
+' == 17. Toren
+"1=17;2=0;17=0;4=0", "*c2", "", "Aan de rechterkant van de toren is een houten lift constructie"
+"aan de voorkant van de toren is een grote zware deur.", "&20=0"
+
+"1=17;2=0;17=0;4=1", "*c2", "Je loopt naar de lift constructie. Het ziet er naar uit dat het plateau van de"
+"lift boven is. Je kan er vanaf deze kan niet op. Ook zie je geen manier om hem"
+"vanaf beneden te laten zakken.", "&"
+
+"1=17;2=0;17=0;4=2", "*c2", "Je duwt tegen de deur. Hij piept en kraakt vreselijk. Er komt beweging in."
+"Je opent hem ver genoeg zodat je er tussendoor kan. Het is binnen in de toren"
+"erg donker.", "*s2", "", "*c12", "<Ggrrooaaaaarrrrh!!!!!>", "", "*c2"
+"Je schrikt en duikt opzij. Het geluid klinkt erg dichtbij. Toch lijkt het van"
+"boven in de toren te komen. Je ligt even stil in de duisternis en staat dan op."
+"Je ogen beginnen te wennen aan het donker. Langzaam ontwaard zich een"
+"wenteltrap naar boven.", "&"
+
+"1=17;2=0;17=0;4=3", "*c2", "Je trilt van angst. Je hebt geen idee wat je aan gaat treffen. Het monster"
+"klinkt niet vriendelijk. Je pakt je zwaard stevig vast en je sluipt langzaam"
+"trede voor trede de trap op, en tuurt omhoog om te zien of je wat kan zien."
+"Af en toe passeer je een raam waardoor een bundel licht naar binnen komt, zodat"
+"het niet helemaal donker is. Bovenaan de trap is een deur."
+"*s2", "*c12", "", "<GGGRROOAAAAARRGGGH!!!!>", "", "*c2"
+"Ineens hoor je onder het luide gebrul ook een vrouwenstem, maar je kan haar niet"
+"verstaan.", "", "Is dat Floor? De dochter van de bakker? Leeft ze nog!?"
+"&"
+
+"1=17;2=0;17=0;4=5", "*c2", "Met je zwaard in je hand probeer je zo stil mogelijk de deur open te krijgen..."
+"*s2", "Gelukkig, deze piept en kraakt niet!", "Je neemt voorzichtig een stap de kamer in."
+"Je ziet een gigantische draak op de vloer liggen. Hij heeft een enorme staart,"
+"enorme vleugels en grote tanden."
+"Aan de andere kant van de kamer zie je een jonge vrouw staan."
+"", "*c14", "<kraaaaak!>", "", "*c2", "Nee! een losliggende plank!"
+"&"
+
+"1=17;2=0;17=0;4=6", "*c2", "Je wil snel wegduiken achter wat spullen."
+"", "*c13", "Dame: 'He! Wie ben jij? En wat doe jij hier? Doe dat zwaard eens snel weg!"
+"  Straks bezeer je nog iemand!'", "", "*c2", "Je staat perplex", "", "*c13"
+"Floor: 'Ja jij! Wat kom je doen? Het is al moeilijk genoeg zo!'"
+"", "*c2", "Moeilijk genoeg? waar heeft ze het over?", "Je bergt je zwaard maar op."
+"&17=1;4=0;5=0;6=0;7=0"
+
+"1=17;2=0;17=0;4=4", "*c2", "Met je zwaard in je hand zet je je schrap. Je duwt hard de deur open en stormt"
+"de kamer in. Je ziet een gigantische draak op de vloer liggen. Hij heeft een"
+"enorme staart, enorme vleugels en grote tanden."
+"Aan de andere kant van de kamer zie je een jonge vrouw staan."
+"", "*c13", "Dame: 'He! Wie ben jij? En wat doe jij hier? Doe dat zwaard eens snel weg!"
+"  Straks bezeer je nog iemand!'", "", "*c2", "Je staat perplex", "", "*c13"
+"Floor: 'Ja jij! Wat kom je doen? Het is al moeilijk genoeg zo!'"
+"", "*c2", "Moeilijk genoeg? waar heeft ze het over?", "Je bergt je zwaard maar op."
+"&17=1;4=0;5=0;6=0;7=0"
+
+
 
 "0!0;2!2", "*c15", "", "Wat ga je doen:", "&"
 "1=0;2=2", "*c15", "", "Wat ga je doen:", "&"
@@ -1167,7 +1220,7 @@
 "2=0;1=6", "Ga naar het zuiden, richting de rivier", "1=8;3=3"
 
 '== 7. Donker woud acties
-"2=0;1=7", "Ga naar het westen, richting het dorp", "1=6;3=4"
+"2=0;1=7;7!1", "Ga naar het westen, richting het dorp", "1=6;3=4"
 "2=0;1=7;39=1;27=2;7=0", "Ga toch verder, het donkere woud in", "7=1"
 
 '== 8. Rivier acties
@@ -1317,6 +1370,20 @@
 "2=0;1=16;16=2;4=0;22>1", "Zeg: 'Alstublieft, 2 geldstukken'", "4=1"
 "2=0;1=16;16=2;4=0;22>1", "Zeg: 'Hmm, misschien toch andere keer'", "4=2"
 "2=0;1=16;16=2;4=0;22<3", "Oei, ik heb niet genoeg geld", "4=2"
+
+' == 17. Toren
+"2=0;1=17;17=0;4=0", "Neem de lift naar boven", "4=1"
+"2=0;1=17;17=0;4<2", "Open de deur", "4=2"
+"2=0;1=17;17=0;4=2", "Ga met de trap naar boven", "4=3"
+"2=0;1=17;17=0;4=3", "Open de deur, en storm naar binnen", "4=4"
+"2=0;1=17;17=0;4=3", "Open de deur, en sluip naar binnen", "4=5"
+
+"2=0;1=17;17=0;4=5", "Duik naar links, achter wat kisten", "4=6"
+"2=0;1=17;17=0;4=5", "Duik naar rechts, achter een stapel boeken", "4=6"
+
+"2=0;1=17;17=1;4=0;5=0", "Zeg: 'Ben jij Floor?'", "4=1"
+"2=0;1=17;17=1;4=0;6=0", "Zeg: 'Kijk uit! Er zit daar een draak!'", "4=2"
+"2=0;1=17;17=1;4=0;7=0", "Zeg: 'Ik kom je redden!'", "4=2"
 
 ' Generale inventory acties
 "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
