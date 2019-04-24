@@ -79,6 +79,7 @@ styles[] {
       }
 
       geef_sieraad_aan_heks:event {
+         style           = finished
          depends_on []   = praat_met_heks, maak_sieraad_bij_smid;
       }
 
@@ -135,7 +136,8 @@ styles[] {
       }
 
       krijg_ingredientenlijst_van_heks:event {
-        depends_on [] = geef_sieraad_aan_heks;
+        style           = finished
+        depends_on []   = geef_sieraad_aan_heks;
       }
 
       krijg_kapotte_houweel_van_dwerg:event {

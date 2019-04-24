@@ -185,9 +185,10 @@ const toonActies = async () => {
   }
 
   color(7);
-  acties.forEach((actie, i) => {
-    print(`${i + 1} ) ${actie.naam}\n`, i + 1);
-  });
+  for (let i = 0; i < acties.length; i++) {
+    await sleep(0.2);
+    print(`${i + 1} ) ${acties[i].naam}\n`, i + 1);
+  }
   // geen acties, dan is spel voorbij
   if (acties.length === 0) return false;
 
