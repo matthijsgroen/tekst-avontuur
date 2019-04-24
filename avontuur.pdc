@@ -15,6 +15,7 @@ styles[] {
    events [] {
 
       beklim_toren:event {
+         style           = finished
          depends_on []   = koop_zwaard_voor_99_bij_wapensmid, genoeg_info_over_monster;
       }
       
@@ -134,7 +135,7 @@ styles[] {
       }
 
       krijg_ingredientenlijst_van_heks:event {
-        depends_on [] = praat_met_heks, geef_sieraad_aan_heks;
+        depends_on [] = geef_sieraad_aan_heks;
       }
 
       krijg_kapotte_houweel_van_dwerg:event {
@@ -176,7 +177,7 @@ styles[] {
       }
       
       maak_medicijn : event {
-         depends_on []   = krijg_toegang_tot_hut;
+         depends_on []   = maak_drank_om_heks_bij_te_brengen;
       }
 
       maak_sieraad_bij_smid:event {
@@ -215,13 +216,17 @@ styles[] {
          style           = finished
          depends_on []   = ;
       }
+      
+      maak_drank_om_met_draak_te_praten : event {
+         depends_on []   = vind_runesteen_in_bos, krijg_toegang_tot_hut;
+      }
 
       praat_met_dochter_van_bakker:event {
          depends_on []   = beklim_toren;
       }
       
       praat_met_draak : event {
-         depends_on []   = vind_runesteen_in_bos, praat_met_dochter_van_bakker;
+         depends_on []   = maak_drank_om_met_draak_te_praten, praat_met_dochter_van_bakker;
       }
 
       praat_met_dwerg:event {
@@ -264,7 +269,7 @@ styles[] {
       }
 
       trek_tand_van_draak: event {
-         depends_on []   = snij_touw_van_lift, praat_met_draak;
+         depends_on []   = snij_touw_van_lift;
       }
 
       vind_goud_in_bos:event{
@@ -275,6 +280,10 @@ styles[] {
       vind_maansteen_in_moeras:event {
          style           = finished
          depends_on []   = krijg_plant_hint_van_bakker;
+      }
+      
+      maak_drank_om_heks_bij_te_brengen : event {
+         depends_on []   = krijg_toegang_tot_hut;
       }
 
       vind_onderbroek_bij_rivier: event {
@@ -306,7 +315,7 @@ styles[] {
       }
 
       zet_zadel_op_draak:event {
-         depends_on [] = trek_tand_van_draak, krijg_appel_taart_van_bakker;
+         depends_on [] = trek_tand_van_draak, krijg_appel_taart_van_bakker, praat_met_draak;
       }
 
    }
