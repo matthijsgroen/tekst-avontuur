@@ -1,13 +1,18 @@
 body {
     background: black;
     font-family: 'Source Code Pro', monospace;
-    line-height: 1.2em;
 }
 a {
     vertical-align: 50%;
     text-decoration: none;
     display: block;
     min-height: 32px;
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+}
+a + a {
+    margin-top: 0.5em;
 }
 #width {
     white-space: nowrap;
