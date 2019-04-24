@@ -171,7 +171,7 @@ styles[] {
       }
 
       krijg_toegang_tot_hut:event {
-         depends_on [] = pak_tand_van_draak, pluk_kruiden_in_bos, pluk_paddenstoelen_in_woud;
+         depends_on [] = pak_tand_van_draak, pluk_kruiden_in_moeras, pluk_paddenstoelen_in_woud;
       }
 
       leg_molensteen_op_lift:event {
@@ -201,7 +201,8 @@ styles[] {
          depends_on []   = ;
       }
 
-      pluk_kruiden_in_bos:event {
+      pluk_kruiden_in_moeras:event {
+         style           = finished
          depends_on []   = krijg_ingredientenlijst_van_heks;
       }
 

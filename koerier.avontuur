@@ -48,6 +48,9 @@
 ' 37 = hint route v boer NNWNNOZ
 ' 38 = rune steen
 ' 39 = hint 'armor heeft geen zin' -- Boer
+' 40 = plant ronde bladeren
+' 41 = plant puntige bladeren
+' 42 = lichtblauwe paddenstoelen
 
 ' 0. Proloog
 "0=0", "*c2"
@@ -258,6 +261,14 @@
 "2=1;4=3;34>3", "*c2", "", "Je hebt het gevoel dat je alle informatie hebt verzameld.", "&"
 "2=1;4=3", "", "&"
 
+"2=1;4=4", "*c2", "Je bekijkt de ingredientenlijst:"
+"*c6", "", "  Lieve $n, ik heb het volgende nodig:", ""
+"  - Plant met ronde bladeren"
+"  - Lichtblauwe paddenstoelen"
+"  - Plant met stekelige bladeren"
+"  - Tand van een draak"
+"", "&"
+
 "2=1", "*c15", "Je hebt het volgende bij je:", "&"
 "2=1;22>1", "*c7", "-#22 geldstukken", "&"
 "2=1;22=1", "*c7", "- 1 geldstuk", "&"
@@ -267,6 +278,7 @@
 "2=1;24=1", "*c7", "- Houweel met gebroken heft", "&"
 "2=1;24=2", "*c7", "- Gerepareerde houweel", "&"
 "2=1;25=2", "*c7", "- Koeken, vers van de bakker", "&"
+"2=1;26=4", "*c7", "- Ingredientenlijst voor medicijn", "&"
 "2=1;27=2", "*c7", "- Een mooi scherp zwaard", "&"
 "2=1;28=1", "*c7", "- Een fonkelende edelsteen", "&"
 "2=1;31=1", "*c7", "- Een lang stuk touw", "&"
@@ -278,6 +290,9 @@
 "2=1;34=7", "*c7", "- Stukken goud", "&"
 "2=1;34=8", "*c7", "- Een prachtige halsketting met een edelsteen erin", "&"
 "2=1;38=1", "*c7", "- Rune steen met inscripties", "&"
+"2=1;40=1", "*c7", "- Plant met ronde bladeren", "&"
+"2=1;41=1", "*c7", "- Plant met stekelige bladeren", "&"
+"2=1;42=1", "*c7", "- Lichtblauwe paddenstoelen", "&"
 
 ' 1. Bos
 "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -350,12 +365,26 @@
 "en vinger achtige bladeren."
 "&"
 
-"1=4;2=0;4=2", "*c2", "Je bukt om de plant met de stekelige bladeren te plukken"
+"1=4;2=0;4=2;26!4", "*c2", "Je bukt om de plant met de stekelige bladeren te plukken."
 "", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
 "&4=1"
 
-"1=4;2=0;4=3", "*c2", "Je bukt om de plant met de ronde bladeren te plukken"
+"1=4;2=0;4=2;26=4;41=0", "*c2", "Je bukt om de plant met de stekelige bladeren te plukken."
+"Je plukt er een aantal en stopt ze in je tas."
+"&4=1;41=1"
+
+"1=4;2=0;4=2;26=4;41=1", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
+"&4=1"
+
+"1=4;2=0;4=3;26!4", "*c2", "Je bukt om de plant met de ronde bladeren te plukken."
 "", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
+"&4=1"
+
+"1=4;2=0;4=3;26=4;40=0", "*c2", "Je bukt om de plant met de ronde bladeren te plukken."
+"Je plukt er een aantal en stopt ze in je tas."
+"&4=1;40=1"
+
+"1=4;2=0;4=3;26=4;40=1", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
 "&4=1"
 
 "1=4;2=0;4=4;36!1", "*c2", "Je bukt om de plant met de spitse bladeren te plukken"
@@ -630,9 +659,9 @@
 "", "Veel tijd om erover na te denken krijg je echter niet"
 "Ineens zwaait de deur open:", "*c13", "", "&"
 "1=12;12=0;2=0;4=0;0=1"
-"Heks: 'Hallo knappe meneer, wat kan ik voor je doen!?'", "&"
+"Eucalypta: 'Hallo knappe meneer, wat kan ik voor je doen!?'", "&"
 "1=12;12=0;2=0;4=0;0=2"
-"Heks: 'Hallo knappe mevrouw, wat kan ik voor je doen!?'", "&"
+"Eucalypta: 'Hallo knappe mevrouw, wat kan ik voor je doen!?'", "&"
 "1=12;12=0;2=0;4=0"
 "", "*c2", "Je schrikt je te pletter.", "&20=0"
 
@@ -640,12 +669,12 @@
 "Je staat te stamelen, en weet even niet wat je zeggen moet"
 "De vrouw komt best vriendelijk en enthousiast over."
 "", "... is dit nu een heks?", "Je had haar heel anders voorgesteld", ""
-"*c3", "$n: '...'", "", "*c13", "Heks: 'Ha! je hoeft niet te schrikken hoor"
+"*c3", "$n: '...'", "", "*c13", "Eucalypta: 'Ha! je hoeft niet te schrikken hoor"
 "  Ik verwachte je al!'", "&"
 
 "1=12;12=0;2=0;4=2", "*c3", "$n: '...'", "*c2", ""
 "Je kan echt even niet op woorden komen", ""
-"*c13", "Heks: 'Mijn naam is Eucalypta. En jij bent zeker $n"
+"*c13", "Eucalypta: 'Mijn naam is Eucalypta. En jij bent zeker $n"
 "  En laat me raden, je komt hier voor een genezingsdrankje'"
 "*c2", "", "Hoe weet ze al die dingen toch?", "", "*c13"
 "Eucalypta: 'Ja magie is een krachtig iets!'", "*c2"
@@ -663,9 +692,13 @@
 "", "*c13", "Eucalypta: 'Die edelsteen is echt prachtig! maar het is geen SIERAAD'", "&4=0"
 
 "1=12;12=1;2=0;4=2;34=8", "*c2", "Eucalypta kijkt je aan. Er komt een grote glimlach op haar gezicht"
-'TEDOEN
-"", "*c13", "Eucalypta: 'Die halsketting is te gek!"
-"  maar het is geen SIERAAD'", "&4=0"
+"", "*c13", "Eucalypta: 'Die halsketting is super! Dit gaat een geweldig kado voor mijn"
+"  dochter zijn! Momentje, dan schrijf ik een lijstje met benodigdheden.'"
+"*c2", "", "Eucalypta gaat naar binnen en doet de deur dicht. Even later komt ze terug en"
+"geeft ze je een lijstje met benodigheden.", ""
+"*c13", "Eucalypta: 'Hier, dit heb ik allemaal nodig. Er zitten wel een lastig ingredient", "&26=4;34=9"
+"1=12;12=1;2=0;4=2;34=8;0=2", "  bij, maar een sterke vrouw zoals jij krijgt dat wel voor elkaar.'", "&4=0"
+"1=12;12=1;2=0;4=2;34=8;0=1", "  bij, maar een sterke man zoals jij krijgt dat wel voor elkaar.'", "&4=0"
 
 "1=12;12=1;2=0;4=3", "*c3", "$n: 'Heb jij ook gehoord dat er een schat ergens is?'", ""
 "*c13", "Eucalypta: 'Ach daar moet je niets om geven. De krachten van planten en magie"
@@ -1029,7 +1062,7 @@
 "Bakker: 'Sinds 2 dagen komt er wild gebrul uit het woud"
 "  En sinds 2 dagen is ook mijn dochter vermist!"
 "  ... Eerst de brand bij de boer. En nu heeft hij ook"
-"  mijn lieve Floor te pakken!'"
+"  mijn lieve Bloem te pakken!'"
 "&26=1;20=1;4=0"
 
 "1=16;16=1;4=8;2=0", "*c3"
@@ -1046,14 +1079,14 @@
 "*c2", "De bakker blijft snikken.", "*c9", ""
 "Bakker: 'Mijn dochter is weg en mijn meel is op. Ik heb wel geld"
 "  maar er zijn geen dappere strijders beschikbaar om mijn"
-"  Floor te redden! Kon ik maar weer bakken, dan was dat"
+"  Bloem te redden! Kon ik maar weer bakken, dan was dat"
 "  nog een fijne afleiding.'"
 "&4=0"
 
 "1=16;16=1;4=7;2=0", "*c3"
 "$n: 'Ik heb meel gehaald'", "", "*c9"
 "Bakker: 'Echt waar? Dank u! Dit brengt helaas niet mijn"
-"  Floor terug, maar dan kan ik in ieder geval weer wat bakken"
+"  Bloem terug, maar dan kan ik in ieder geval weer wat bakken"
 "  ter afleiding.'", "", "*c2"
 "De bakker geeft je 100 geldstukken", "*c3", ""
 "$n: 'Dit is echt veel te veel!'", "", "*c9"
@@ -1132,7 +1165,7 @@
 "het niet helemaal donker is. Bovenaan de trap is een deur."
 "*s2", "*c12", "", "<GGGRROOAAAAARRGGGH!!!!>", "", "*c2"
 "Ineens hoor je onder het luide gebrul ook een vrouwenstem, maar je kan haar niet"
-"verstaan.", "", "Is dat Floor? De dochter van de bakker? Leeft ze nog!?"
+"verstaan.", "", "Is dat Bloem? De dochter van de bakker? Leeft ze nog!?"
 "&"
 
 "1=17;2=0;17=0;4=5", "*c2", "Met je zwaard in je hand probeer je zo stil mogelijk de deur open te krijgen..."
@@ -1146,7 +1179,7 @@
 "1=17;2=0;17=0;4=6", "*c2", "Je wil snel wegduiken achter wat spullen."
 "", "*c13", "Dame: 'He! Wie ben jij? En wat doe jij hier? Doe dat zwaard eens snel weg!"
 "  Straks bezeer je nog iemand!'", "", "*c2", "Je staat perplex", "", "*c13"
-"Floor: 'Ja jij! Wat kom je doen? Het is al moeilijk genoeg zo!'"
+"Bloem: 'Ja jij! Wat kom je doen? Het is al moeilijk genoeg zo!'"
 "", "*c2", "Moeilijk genoeg? waar heeft ze het over?", "Je bergt je zwaard maar op."
 "&17=1;4=0;5=0;6=0;7=0"
 
@@ -1156,38 +1189,38 @@
 "Aan de andere kant van de kamer zie je een jonge vrouw staan."
 "", "*c13", "Dame: 'He! Wie ben jij? En wat doe jij hier? Doe dat zwaard eens snel weg!"
 "  Straks bezeer je nog iemand!'", "", "*c2", "Je staat perplex", "", "*c13"
-"Floor: 'Ja jij! Wat kom je doen? Het is al moeilijk genoeg zo!'"
+"Bloem: 'Ja jij! Wat kom je doen? Het is al moeilijk genoeg zo!'"
 "", "*c2", "Moeilijk genoeg? waar heeft ze het over?", "Je bergt je zwaard maar op."
 "&17=1;4=0;5=0;6=0;7=0"
 
-"1=17;2=0;17=1;4=1", "*c3", "$n: 'Ben jij Floor? De dochter van de bakker?'"
-"", "*c13", "Floor: 'Ja dat ben ik. En wie ben jij?'", "*c3", "", "$n: 'Ik ben $n, ik kom je redden'"
-"*c13", "Floor: 'Mij redden? Waarom? Ik hoef niet gered te worden. Ik ben hier zelf naar"
+"1=17;2=0;17=1;4=1", "*c3", "$n: 'Ben jij Bloem? De dochter van de bakker?'"
+"", "*c13", "Bloem: 'Ja dat ben ik. En wie ben jij?'", "*c3", "", "$n: 'Ik ben $n, ik kom je redden'"
+"*c13", "Bloem: 'Mij redden? Waarom? Ik hoef niet gered te worden. Ik ben hier zelf naar"
 "  toe gegaan. We moeten de draak redden!'", "&"
 
-"1=17;2=0;17=2;4=1", "*c13", "Floor: 'Hoi $n, kom je me helpen met de kiespijn?'", "&20=0"
+"1=17;2=0;17=2;4=1", "*c13", "Bloem: 'Hoi $n, kom je me helpen met de kiespijn?'", "&20=0"
 
 "1=17;2=0;17=1;4=2", "*c3", "$n: 'Kijk uit! Er zit daar een draak!'"
-"", "*c13", "Floor: 'Ha dat weet ik ook wel, ik ben zelf naar hem toegegaan. Hij is echt niet"
+"", "*c13", "Bloem: 'Ha dat weet ik ook wel, ik ben zelf naar hem toegegaan. Hij is echt niet"
 "  gevaarlijk hoor. Wie ben jij eigenlijk?'", "", "*c3", "$n: 'Ik ben $n. Ik kom je redden!'", ""
-"*c13", "Floor: 'Mij redden? Waarom? Ik hoef niet gered te worden. We moeten de draak"
+"*c13", "Bloem: 'Mij redden? Waarom? Ik hoef niet gered te worden. We moeten de draak"
 "  redden!'", "&"
 
 "1=17;2=0;17=1;4=3", "*c3", "$n: 'Ik kom je redden!'"
-"", "*c13", "Floor: 'Mij redden? Ha! Ik red mijzelf wel hoor! Wie ben jij eigenlijk?"
-"", "*c3", "$n: 'Ik ben $n'", "", "*c13", "Floor: 'Als je iemand hier wil komen redden, dan kan je me mooi helpen met het"
+"", "*c13", "Bloem: 'Mij redden? Ha! Ik red mijzelf wel hoor! Wie ben jij eigenlijk?"
+"", "*c3", "$n: 'Ik ben $n'", "", "*c13", "Bloem: 'Als je iemand hier wil komen redden, dan kan je me mooi helpen met het"
 "  redden van de draak!'", "&"
 
 "1=17;2=0;17=1;4=4", "*c3", "$n: 'De draak moet gered worden?'"
-"", "*c13", "Floor: 'Ja hoor je dat vreselijke gebrul dan niet? Het arme dier heeft"
+"", "*c13", "Bloem: 'Ja hoor je dat vreselijke gebrul dan niet? Het arme dier heeft"
 "  vreselijke kiespijn. Zijn kies moet getrokken worden, maar het lukt me niet'"
 "&17=2;4=1"
 
 "1=17;2=0;17=2;4=5", "*c3", "$n: 'Ik ga kijken wat ik kan doen'"
-"", "*c13", "Floor: 'Ok'", "", "&4=0"
+"", "*c13", "Bloem: 'Ok'", "", "&4=0"
 
 "1=17;2=0;17=2;4=0", "*c2", "Je staat bovenin de toren. Je ziet een groot raam met een lift."
-"De dochter van de bakker, Floor, is hier.", "Een grote draak ligt op de grond te brullen van de pijn."
+"De dochter van de bakker, Bloem, is hier.", "Een grote draak ligt op de grond te brullen van de pijn."
 "", "*c12", "<GGGrrrroaaaaaarrrrgh!>", "&20=1"
 
 ' == 18. Onderkant toren
@@ -1240,10 +1273,10 @@
 "2=1;1!0", "Sluit tas", "2=0;4=0"
 
 '== 1. Bos acties
+"2=0;1=1;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=1;21=0", "Raap de tak op", "4=1"
 "2=0;1=1", "Ga naar het oosten, richting de akkers", "1=2;3=2"
 "2=0;1=1", "Ga naar het westen, richting de heuvels", "1=3;3=4"
-"2=0;1=1;4=0;19=1;29=3", "Spring op paard", "2=2"
 
 '== 2. Akker acties
 "2=0;1=2", "Loop naar de boerderij", "1=13;3=5;4=0"
@@ -1354,7 +1387,7 @@
 "2=0;1=12;12=0;4=1", "Zeg: 'maar hoe...'", "4=2"
 "2=0;1=12;12=0;4=1", "Zeg: 'dat kan toch niet...'", "4=2"
 
-"2=0;1=12;12=1;4=0", "Zeg: 'Kunt u me helpen met een medicijn?'", "4=1"
+"2=0;1=12;12=1;4=0;26<4", "Zeg: 'Kunt u me helpen met een medicijn?'", "4=1"
 "2=0;1=12;12=1;4=0;26=3;28=1", "Geef edelsteen aan Eucalypta", "4=2"
 "2=0;1=12;12=1;4=0;26=3;34=8", "Geef halsketting aan Eucalypta", "4=2"
 "2=0;1=12;12=1;4=0;34>0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=3"
@@ -1444,13 +1477,13 @@
 "2=0;1=17;17=0;4=5", "Duik naar links, achter wat kisten", "4=6"
 "2=0;1=17;17=0;4=5", "Duik naar rechts, achter een stapel boeken", "4=6"
 
-"2=0;1=17;17=1;4=0", "Zeg: 'Ben jij Floor?'", "4=1"
+"2=0;1=17;17=1;4=0", "Zeg: 'Ben jij Bloem?'", "4=1"
 "2=0;1=17;17=1;4=0", "Zeg: 'Kijk uit! Er zit daar een draak!'", "4=2"
 "2=0;1=17;17=1;4=0", "Zeg: 'Ik kom je redden!'", "4=3"
 "2=0;1=17;17=1;4>0;4<4", "Zeg: 'De draak moet gered worden?'", "4=4"
 
 '"2=0;1=17;17=2;4=0", "Ga naar de lift", "4=6"
-"2=0;1=17;17=2;4=0", "Praat met Floor", "4=1"
+"2=0;1=17;17=2;4=0", "Praat met Bloem", "4=1"
 '"2=0;1=17;17=2;4=0", "Ga naar de draak", "4=7"
 "2=0;1=17;17=2;4=0", "Ga met de trap naar beneden", "1=18;3=5"
 
@@ -1470,4 +1503,5 @@
 "2=1;25=2", "Eet koeken", "4=2"
 "2=1;34>1", "Bekijk schat aantekeningen", "4=3"
 "2=1;36=2;34=4;1=8", "Wacht tot het donker is", "4=4;2=0"
+"2=1;26=4", "Bekijk ingredientenlijst voor medicijn", "4=4"
 
