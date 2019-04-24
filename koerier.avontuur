@@ -579,7 +579,9 @@
 "1=11;2=0;11=2;24=4;25=3", "*c2", "Thorin staat op, en loopt de mijn in. Met nieuwe energie,"
 "en een gerepareerde houweel, gaat hij op de edelstenen inhakken", ""
 "*c9", "Thorin: 'Hei ho, Hei ho....'", "*c2", ""
-"Stukken edelsten vallen op de grond. Een stuk rolt naar je toe", "&11=3;4=0"
+"Stukken edelsten vallen op de grond. Een stuk rolt naar je toe.", ""
+"*c9", "Thorin: 'Neem maar mee. Ik heb nu genoeg! Nog bedankt voor alle hulp!'"
+"&11=3;4=0"
 
 "1=11;2=0;11=3;4=1;28=0", "*c2"
 "Je raapt de edelsteen op. Hij fonkelt mooi in het zonlicht", "&28=1;4=0"
@@ -618,7 +620,7 @@
 "*c2", "", "Thorin zucht diep"
 "&11=2;4=0"
 
-' 12. Hut
+'== 12. Hut
 "1=12;12=1;2=0;4=0", "*c2", "Je bent bij de hut van Eucalypta, in het moeras"
 "", "*c13", "Eucalypta: 'Hallo $n, ben je daar weer?'", "&"
 
@@ -657,8 +659,12 @@
 "", "Eucalypta: 'Als jij me weet te verassen met een mooi sieraad, dan kijk"
 "  Ik wel of ik je kan helpen'", "&4=0;26=3"
 
-"1=12;12=1;2=0;4=2", "*c2", "Eucalypta kijkt je aan. Er komt een grote glimlach op haar gezicht"
-"", "*c13", "Eucalypta: 'Die edelsteen is echt prachtig!"
+"1=12;12=1;2=0;4=2;28=1", "*c2", "Eucalypta kijkt je aan. Er komt een grote glimlach op haar gezicht"
+"", "*c13", "Eucalypta: 'Die edelsteen is echt prachtig! maar het is geen SIERAAD'", "&4=0"
+
+"1=12;12=1;2=0;4=2;34=8", "*c2", "Eucalypta kijkt je aan. Er komt een grote glimlach op haar gezicht"
+'TEDOEN
+"", "*c13", "Eucalypta: 'Die halsketting is te gek!"
 "  maar het is geen SIERAAD'", "&4=0"
 
 "1=12;12=1;2=0;4=3", "*c3", "$n: 'Heb jij ook gehoord dat er een schat ergens is?'", ""
@@ -717,7 +723,9 @@
 "", "*c9", "Boer: 'Hoi lieve Teun, gaat het weer een beetje?'"
 "", "*c2", "De boer staat Teun te aaien.", "", "*c9"
 "Boer: 'Ik wou dat ik je kon bedanken. Helaas kan ik geen appels geven."
-"  Maar als je interesse hebt in wat graan, dan geef ik het graag.'"
+"  Maar als je interesse hebt in wat graan, dan geef ik het graag."
+"  Als je Teun wilt lenen om je te helpen, ga vooral je gang."
+"  Het is een trouw en dankbaar dier.'"
 "&4=0;13=3"
 
 "1=13;13=2;2=0;4=2;29>2", "*c3", "$n: 'Teun heeft nieuew hoefijzers'", "*c9"
@@ -725,7 +733,9 @@
 "", "*c9", "Boer: 'Hoi lieve Teun, gaat het weer een beetje?'"
 "", "*c2", "De boer staat Teun te aaien.", "", "*c9"
 "Boer: 'Ik wou dat ik je kon bedanken. Helaas kan ik geen appels geven."
-"  Maar als je interesse hebt in wat graan, dan geef ik het graag.'"
+"  Maar als je interesse hebt in wat graan, dan geef ik het graag."
+"  Als je Teun wilt lenen om je te helpen, ga vooral je gang."
+"  Het is een trouw en dankbaar dier.'"
 "&4=0;13=3"
 
 "1=13;13=3;2=0;4=7;29=4", "*c3", "$n: 'Zou ik wat graan mogen hebben?'"
@@ -881,9 +891,9 @@
 "*c11", "Luuk: 'Wat kunnen we voor je doen?'"
 "&15=1"
 
-"1=15;15=0;2=0;4=0", "*c13", "Smid1: 'Hey welkom nieuwe klant!'"
-"*c9", "Smid2: 'Ik Luk, de hoefsmid. Luuk hier is onze goudsmid'"
-"*c11", "Luuk: 'En en onze wapensmid hier is Lucy'"
+"1=15;15=0;2=0;4=0", "*c13", "Lucy: 'Hey welkom nieuwe klant!'"
+"*c9", "Luk: 'Ik heet Luk, de hoefsmid. Luuk hier is onze goudsmid'"
+"*c11", "Luuk: 'En onze wapensmid hier heet Lucy'"
 "*c13", "Lucy: 'Wat kunnen we voor je doen?'"
 "&15=1"
 
@@ -1348,6 +1358,7 @@
 
 "2=0;1=12;12=1;4=0", "Zeg: 'Kunt u me helpen met een medicijn?'", "4=1"
 "2=0;1=12;12=1;4=0;26=3;28=1", "Geef edelsteen aan Eucalypta", "4=2"
+"2=0;1=12;12=1;4=0;26=3;34=8", "Geef halsketting aan Eucalypta", "4=2"
 "2=0;1=12;12=1;4=0;34>0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=3"
 "2=0;1=12;12=1;4=0", "Zeg: 'Tot ziens!'", "1=4;3=5"
 
