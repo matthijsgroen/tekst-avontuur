@@ -233,8 +233,10 @@
 
 "1=17;3=5", "*c2", "Je loopt de trap op, naar boven in de toren", "", "&4=0;3=0"
 
-"1=18;3=5", "*c2", "Je loopt naar beneden, de trap af", "", "&4=0;3=0"
-"1=18;3=6", "*c2", "Je loopt richtng de toren.", "", "&4=0;3=0"
+"1=18;3=5", "*c2", "Je loopt naar beneden, de trap af", "&"
+"1=18;3=5;17>1;19=1;29>1", "*c2", "Je maakt Teun weer los.", "&30=18"
+"1=18;3=5", "", "&4=0;3=0"
+"1=18;3=6", "*c2", "Je loopt richting de toren.", "&4=0;3=0"
 
 '== Tas
 "2=1;4=1", "*c2", "Je verwijderd de oude heft van de houweel,"
@@ -425,8 +427,10 @@
 "van een toren te vormen. De toren was erorm hoog en stak ver boven de bomen"
 "uit. Uit de top van de toren klonk een enorm gebrul."
 "", "*c3", "$n: 'O help waar ben ik aan begonnen'", "&"
-"1=7;2=0;7=1;4=0;0=2", "", "*c2", "$n liep verder totdat ze aan de voet van de toren was.", "&1=17;7=2"
-"1=7;2=0;7=1;4=0;0=1", "", "*c2", "$n liep verder totdat hij aan de voet van de toren was.", "&1=17;7=2"
+"1=7;2=0;7=1;4=0;0=2", "", "*c2", "$n liep verder totdat ze aan de voet van de toren was.", "&"
+"1=7;2=0;7=1;4=0;0=1", "", "*c2", "$n liep verder totdat hij aan de voet van de toren was.", "&"
+"1=7;2=0;7=1;4=0;19=1;29=3", "*c3","", "$n: 'Teun, ik maak je hier vast, wacht op mij jongen'", "&"
+"1=7;2=0;7=1;4=0", "&1=17;7=2"
 
 '== 8. Rivier
 "1=8;2=0;4=0", "*c2"
@@ -1180,7 +1184,8 @@
 
 ' == 18. Onderkant toren
 "1=18;18=0;2=0;4=0", "*c2", "Je bent in het woud, aan de voet van de toren."
-"&"
+"Er is een grote deur de toren in. Naast de toren is een lift."
+"Er loopt een pad vanaf de toren het woud in.", "&"
 
 "0!0;2!2", "*c15", "", "Wat ga je doen:", "&"
 "1=0;2=2", "*c15", "", "Wat ga je doen:", "&"
@@ -1267,6 +1272,7 @@
 "2=0;1=6", "Ga naar het zuiden, richting de rivier", "1=8;3=3"
 
 '== 7. Donker woud acties
+"2=0;1=7;7=2;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=7;7=2", "Ga naar de toren van de draak", "1=18;3=6"
 "2=0;1=7;7!1", "Ga naar het westen, richting het dorp", "1=6;3=4"
 "2=0;1=7;39=1;27=2;7=0", "Ga toch verder, het donkere woud in", "7=1"
