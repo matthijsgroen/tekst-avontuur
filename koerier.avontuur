@@ -12,6 +12,7 @@
 '   8 = Rivier
 '   9 = Schattenjacht
 ' 2 = Locatie toestand 0 = look, 1 = Open tas, 2 = leeg
+' 3 = Richting van reizen (oorsprong)
 ' 4 = Actie van speler
 ' 5 = Tijdelijke lokatie teller
 
@@ -25,7 +26,7 @@
 ' 15 = Lokatie status Smederij wapen=lucy(13), goud=luuk(11), hoef=luk(9)
 ' 16 = Lokatie status Bakkerij
 ' 17 = Lokatie status Bovenkant Toren
-' 18 = Lokatie statue Onderkant Toren
+' 18 = Lokatie status Onderkant Toren
 
 ' 19 = beschikbaarheid paard 0 = niet, 1 = lopen, 2 = bereiden
 ' 20 = beschikbaarheid tas
@@ -51,6 +52,8 @@
 ' 40 = plant ronde bladeren
 ' 41 = plant puntige bladeren
 ' 42 = lichtblauwe paddenstoelen 0=onbekend, 1=benodigd, 2=gevonden
+' 43 = status lift. 0 = boven, 1 = beneden
+' 44 = molensteen 0 = niet, 1 = nodig, 2 = op wagen, 3 = op lift
 
 ' 0. Proloog
 "0=0", "*c2"
@@ -191,7 +194,8 @@
 "1=6;3=4;19=1;29>1", "*c2", "Je wandelt samen met Teun naar het westen, richting het dorp.", "", "&3=0;30=6"
 "1=6;3=1;19=1;29>1", "*c2", "Je wandelt samen met Teun naar het noorden, richting het dorp.", "", "&3=0;30=6"
 
-"1=7;3=5", "*c2", "Je loopt van de toren het woud in.", "", "&4=0;3=0"
+"1=7;3=5;19=0", "*c2", "Je loopt het woud in.", "", "&4=0;3=0"
+"1=7;3=5;19=1", "*c2", "Je loopt samen met Teun het woud in.", "", "&4=0;3=0;30=7"
 "1=7;3=2;19=0", "*c2", "Je wandelt over een smal kronkelig pad, richting het donkere woud.", "", "&3=0"
 "1=7;3=2;19=1;29>1", "*c2", "Je wandelt met Teun over een smal kronkelig pad, richting het donkere woud.", "", "&3=0;30=7"
 
@@ -242,7 +246,8 @@
 "1=18;3=5", "*c2", "Je loopt naar beneden, de trap af", "&"
 "1=18;3=5;17>1;19=1;29>1", "*c2", "Je maakt Teun weer los.", "&30=18"
 "1=18;3=5", "", "&4=0;3=0"
-"1=18;3=6", "*c2", "Je loopt richting de toren.", "&4=0;3=0"
+"1=18;3=6;19=0", "*c2", "Je loopt richting de toren.", "", "&4=0;3=0"
+"1=18;3=6;19=1", "*c2", "Je loopt met Teun richting de toren.", "", "&4=0;3=0;30=18"
 
 '== Tas
 "2=1;4=1", "*c2", "Je verwijderd de oude heft van de houweel,"
@@ -873,33 +878,33 @@
 "Een molensteen ligt naast de molen"
 "Een lege wagen staat naast de andere kant van de molen"
 "Een oude molenaar lijkt aan het werk om proberen de wieken te repareren"
-"", "*c9", "Molenaar: 'Hey hallo daar!'"
+"", "*c9", "Tjasker: 'Hey hallo daar!'"
 "&"
 
 "1=14;14=2;2=0;4=0", "*c2", "Je bent bij de molen", ""
 "De molen draait rustig in de wind."
 "Een molensteen ligt naast de molen", "&"
 "1=14;14=2;2=0;4=0;29!4", "Een lege wagen staat naast de andere kant van de molen", "&"
-"1=14;14=2;2=0;4=0", "Een oude molenaar zit op een bankje voor de molen te genieten van de zon"
-"", "*c9", "Molenaar: 'Hey hallo daar!'"
+"1=14;14=2;2=0;4=0", "Tjasker zit op een bankje voor de molen te genieten van de zon"
+"", "*c9", "Tjasker: 'Hey hallo daar!'"
 "&"
 
 "1=14;2=0;4=1", "*c3", "$n: 'Weet u hoe ik aan vervoer kan komen?'", "", "*c2"
 "De oude molenaar lijkt je aan"
-"", "*c9", "Molenaar: 'Ik heb geen paard meer, alleen een wagen"
+"", "*c9", "Tjasker: 'Ik heb geen paard meer, alleen een wagen"
 "  Als ik een paard nodig heb, dan leen ik Teun af en toe bij de boer."
 "  Dat is een heel goed en trouw beestje. Ideaal om een wagen te trekken!'"
 "&4=0"
 
 "1=14;14=1;2=0;4=5", "*c3", "$n: 'Zou ik de wagen mogen lenen?'", ""
-"*c9", "Molenaar: 'Mwa, liever niet. Misschien heb ik hem nog"
+"*c9", "Tjasker: 'Mwa, liever niet. Misschien heb ik hem nog"
 "  nodig voor de reparaties van de molen'", "&4=0"
 
 "1=14;14=2;2=0;4=5", "*c3", "$n: 'Zou ik de wagen mogen lenen?'", ""
-"*c9", "Molenaar: 'Ja hoor, geen probleem! bedankt nog voor"
+"*c9", "Tjasker: 'Ja hoor, geen probleem! bedankt nog voor"
 "  het helpen repareren van mijn molen!'", "", "*c2"
 "Samen spannen jullie de wagen van de molenaar achter Teun"
-"", "*c9", "Molenaar: 'Bedenk wel, met de wagen achter Teun dan"
+"", "*c9", "Tjasker: 'Bedenk wel, met de wagen achter Teun dan"
 "  kun je hem niet bereiden.'"
 "&4=0;29=4"
 
@@ -909,18 +914,18 @@
 
 "1=14;14=2;2=0;4=7", "*c3", "$n: 'Hallo, ik heb graan van de boer gekregen."
 "  Zou je het kunnen malen voor mij?'", ""
-"*c9", "Molenaar: 'Tuurlijk! Dankzij jou werkt mijn molen weer! Dan kunnen"
+"*c9", "Tjasker: 'Tuurlijk! Dankzij jou werkt mijn molen weer! Dan kunnen"
 "  we hem meteen testen!'", ""
 "*c2", "Samen laden jullie het graan uit en sluiten een molensteen aan op de graan"
 "toevoer. Na een tijdje komt er super fijn meel uit de molen.", "", "*c9"
-"Molenaar: 'Geweldig! De molen doet het weer! Dit is echt super goed meel!"
+"Tjasker: 'Geweldig! De molen doet het weer! Dit is echt super goed meel!"
 "  De bakker zou hier goud geld voor willen betalen! Je bent echt een bofkont.'"
 "", "*c2", "Samen laden jullie het fijne meel weer op de wagen."
 "&4=0;33=2"
 
 "1=14;4=8;2=0;34>0;35=0", "*c3"
 "$n: 'Heb jij ook gehoord dat er een schat ergens is?'", "", "*c9"
-"Molenaar: 'Dat is echt de grootste onzin waar men over kletst tegenwoordig."
+"Tjasker: 'Dat is echt de grootste onzin waar men over kletst tegenwoordig."
 "  Geloof er maar niets van hoor. Zeker van die smidsen in het dorp gehoord?"
 "  Volgens mij geloven zij alles! Een schat route die begint bij de rivier?"
 "  Ik ben vaak genoeg bij de rivier geweest, maar daar is echt niets'"
@@ -929,25 +934,25 @@
 
 "1=14;4=9;2=0", "*c3"
 "$n: 'Wat kun je me vertellen over het monster in het woud?'", "", "*c9"
-"Molenaar: 'Oei ja, dat is een flinke jongen, kan flink hard vliegen ook. Hele"
+"Tjasker: 'Oei ja, dat is een flinke jongen, kan flink hard vliegen ook. Hele"
 "  grote vleugels. Laatst kwam hij rakelings langs over mijn molen, en ben ik een"
 "  doek van een wieken kwijtgeraakt.'"
 "&4=0"
 
 "1=14;2=0;4=2", "*c3", "$n: 'Weet u hoe ik aan medicijnen kan komen?'", "", "*c2"
 "De oude molenaar lijkt je aan", "", "*c9", "&"
-"0=1;1=14;2=0;4=2", "Molenaar: 'Sorry jongen, dat zou ik echt niet weten'", "&4=0"
-"0=2;1=14;2=0;4=2", "Molenaar: 'Sorry dame, dat zou ik echt niet weten'", "&4=0"
+"0=1;1=14;2=0;4=2", "Tjasker: 'Sorry jongen, dat zou ik echt niet weten'", "&4=0"
+"0=2;1=14;2=0;4=2", "Tjasker: 'Sorry dame, dat zou ik echt niet weten'", "&4=0"
 
 "1=14;14=1;2=0;4=4", "*c3", "$n: 'Wat was er ook alweer nodig om de molen te maken?'"
-"", "*c9", "Molenaar: 'Er moet een nieuw doek op een van de wieken komen.'", ""
+"", "*c9", "Tjasker: 'Er moet een nieuw doek op een van de wieken komen.'", ""
 "*c3", "$n: 'Ok, bedankt'"
 "&4=0"
 
 "1=14;14=1;2=0;4=3;32=1", "*c2", "Je klimt samen met de molenaar in de wieken van de molen"
 "", "Na een hoop puzzelen en knopen blijft het doek zitten.", "Jullie klimmen naar beneden"
-"", "*c9", "Molenaar: 'Nou kijken of het werkt!'", "*c2", "", "De molenaar draait de molen richting de wind"
-"De wieken beginnen te draaien", "", "*c9", "Molenaar: 'Goed gedaan!'"
+"", "*c9", "Tjasker: 'Nou kijken of het werkt!'", "*c2", "", "De molenaar draait de molen richting de wind"
+"De wieken beginnen te draaien", "", "*c9", "Tjasker: 'Goed gedaan!'"
 "&14=2;32=2;4=0"
 
 "1=14;14=0;2=0;4=0", "*c2", "Je bent bij de molen", ""
@@ -955,10 +960,10 @@
 "Een molensteen ligt naast de molen"
 "Een lege wagen staat naast de andere kant van de molen"
 "Een oude molenaar lijkt aan het werk om proberen de wieken te repareren"
-"", "*c9", "Molenaar: 'Hey hallo daar! Zou je me kunnen helpen?"
+"", "*c9", "Tjasker: 'Hey hallo daar! Zou je me kunnen helpen?"
 "  Deze oude molen moet gerepareerd worden. Maar ik heb geen goed doek!'"
 "", "*c3", "$n: 'Ik zal mijn ogen open houden of ik iets tegenkom voor u!'"
-"", "*c9", "Molenaar: 'Bedankt!'"
+"", "*c9", "Tjasker: 'Bedankt!'"
 "&14=1"
 
 '== 15. Smederij
@@ -1534,7 +1539,7 @@
 "2=0;1=17;17=1;4=0", "Zeg: 'Ik kom je redden!'", "4=3"
 "2=0;1=17;17=1;4>0;4<4", "Zeg: 'De draak moet gered worden?'", "4=4"
 
-'"2=0;1=17;17=2;4=0", "Ga naar de lift", "4=6"
+"2=0;1=17;17=2;4=0", "Ga naar de lift", "4=6"
 "2=0;1=17;17=2;4=0", "Praat met Bloem", "4=1"
 '"2=0;1=17;17=2;4=0", "Ga naar de draak", "4=7"
 "2=0;1=17;17=2;4=0", "Ga met de trap naar beneden", "1=18;3=5"
