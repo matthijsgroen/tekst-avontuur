@@ -248,6 +248,8 @@
 "1=18;3=5", "", "&4=0;3=0"
 "1=18;3=6;19=0", "*c2", "Je loopt richting de toren.", "", "&4=0;3=0"
 "1=18;3=6;19=1", "*c2", "Je loopt met Teun richting de toren.", "", "&4=0;3=0;30=18"
+"1=18;3=7", "*c2", "Je haalt de hendel om, en stapt snel op de lift. De lift zakt langzaam naar"
+"beneden", "", "&4=0;3=0"
 
 '== Tas
 "2=1;4=1", "*c2", "Je verwijderd de oude heft van de houweel,"
@@ -1268,7 +1270,21 @@
 "1=17;2=0;17=2;4=5", "*c3", "$n: 'Ik ga kijken wat ik kan doen'"
 "", "*c13", "Bloem: 'Ok'", "", "&4=0"
 
-"1=17;2=0;17=2;4=0", "*c2", "Je staat bovenin de toren. Je ziet een groot raam met een lift."
+"1=17;2=0;17=2;4=6", "*c2", "Je loopt naar de grote opening bovenin de toren. Dit moet zijn waar de draak"
+"binnen en naar buiten kan vliegen. Je kan ver over het woud kijken. In de verte"
+"kan je zelfs de molen op een heuvel zien. Aan de buitenkant van de toren is een"
+"lift.", "&"
+"1=17;2=0;17=2;4=6;43=0", "Op dit moment is de lift boven. Er is een hendel om de lift te bedienen.", "&"
+"1=17;2=0;17=2;4=6;43=1", "Op dit moment is de lift beneden. Er is een hendel om de lift te bedienen.", "&"
+"1=17;2=0;17=2;4=6;19=1;29=3", "", "Als je naar beneden kijkt, zie je Teun staan.", "&"
+"1=17;2=0;17=2;4=6;19=1;29=4", "", "Als je naar beneden kijkt, zie je Teun met de wagen staan.", "&"
+
+"1=17;2=0;17=2;4=7", "*c2", "Je haalt de hendel om. Een groot dik touw komt in beweging aan de buitenkant van"
+"de toren. De lift schuift langzaam omhoog."
+"&43=0;4=6"
+
+"1=17;2=0;17=2;4=0", "*c2", "Je staat bovenin de toren. Je ziet een grote opening in de buitenmuur met een "
+"lift."
 "De dochter van de bakker, Bloem, is hier.", "Een grote draak ligt op de grond te brullen van de pijn."
 "", "*c12", "<GGGrrrroaaaaaarrrrgh!>", "&20=1"
 
@@ -1549,6 +1565,10 @@
 '"2=0;1=17;17=2;4=1", "Zeg: 'Je moet meekomen, je vader is hardstikke ongerust!'", "4=3"
 '"2=0;1=17;17=2;4=1", "Zeg: 'Wat weet je van deze draak?'", "4=4"
 "2=0;1=17;17=2;4=1", "Zeg: 'Ik ga kijken wat ik kan doen'", "4=5"
+
+"2=0;1=17;17=2;4=6;43=0", "Ga met de lift naar beneden", "1=18;3=7;43=1;4=0"
+"2=0;1=17;17=2;4=6;43=1", "Breng lift omhoog", "4=7"
+"2=0;1=17;17=2;4=6", "Loop terug de kamer in", "4=0"
 
 ' == 18. Onderkant toren
 "2=0;1=18;4=0;19=1;29=3", "Spring op paard", "2=2"
