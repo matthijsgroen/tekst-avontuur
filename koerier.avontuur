@@ -54,7 +54,6 @@
 ' 42 = lichtblauwe paddenstoelen 0=onbekend, 1=benodigd, 2=gevonden
 ' 43 = status lift. 0 = boven, 1 = beneden
 ' 44 = molensteen 0 = niet, 1 = nodig, 2 = op wagen, 3 = op lift
-
 ' 0. Proloog
 "0=0", "*c2"
 "Hoi $n, welkom bij Avontuur!"
@@ -248,6 +247,7 @@
 "1=18;3=5", "", "&4=0;3=0"
 "1=18;3=6;19=0", "*c2", "Je loopt richting de toren.", "", "&4=0;3=0"
 "1=18;3=6;19=1", "*c2", "Je loopt met Teun richting de toren.", "", "&4=0;3=0;30=18"
+"1=18;3=6;19=2;29>2", "*c2", "Teun brengt je snel naar de toren.", "", "&3=0;30=18;19=1"
 "1=18;3=7", "*c2", "Je haalt de hendel om, en stapt snel op de lift. De lift zakt langzaam naar"
 "beneden", "", "&4=0;3=0"
 
@@ -1271,6 +1271,31 @@
 "  vreselijke kiespijn. Zijn kies moet getrokken worden, maar het lukt me niet'"
 "&17=2;4=1"
 
+"1=17;2=0;17=2;4=0", "*c2", "Je staat bovenin de toren. Je ziet een grote opening in de buitenmuur met een "
+"lift."
+"De dochter van de bakker, Bloem, is hier.", "Een grote draak ligt op de grond te brullen van de pijn."
+"", "*c12", "<GGGrrrroaaaaaarrrrgh!>", "&20=1"
+
+"1=17;2=0;17=2;4=2", "*c3", "$n: 'Hoe kan ik je helpen?'"
+"", "*c13", "Bloem: 'We moeten iets bedenken om zijn tand eruit te krijgen. Ik studeer voor"
+"  tandarts. Met zoveel mensen die taartjes eten bij mijn vader moet er werk"
+"  genoeg zijn voor mij. Nooit gedacht dat mijn eerste klant een draak zou zijn'"
+"", "Bloem: 'Probleem met een draak is dat alles groter en sterker is dan bij mensen'"
+"Bloem: 'Bij mensen kun je een tand eruit trekken met een touwtje aan een deur en"
+"  dan de deur dichtslaan. Wij moeten iets groters gaan bedenken hier'"
+"&4=1"
+
+"1=17;2=0;17=2;4=4", "*c3", "$n: 'Wat weet je van deze draak?'"
+"", "*c13", "Bloem: 'Ow best wel wat eigenlijk. Deze draak is een Dins.'"
+"", "*c3", "$n: 'Een Dins?'", "", "*c13", "Bloem: 'Ja, een Dins... Zo heet deze soort draak. Hij is gek op appels."
+"  Waarschijnlijk heeft hij appels proberen te eten bij de boer, en is hij toen"
+"  aangevallen'", "", "*c3", "$n: 'Aangevallen?? Deze draak?'", "", "&"
+"1=17;2=0;17=2;4=4;30=18", "*c13", "Bloem: 'Ja, en de dader staat beneden. Er zat een hoefijzer in de tand van de"
+"  Dins. Hij is door jouw paard getrapt.'", "&"
+"1=17;2=0;17=2;4=4;30!18", "*c13", "Bloem: 'Ja, en de dader is een paard. Er zat een hoefijzer in de tand van de"
+"  Dins.'", "&"
+"1=17;2=0;17=2;4=4", "Bloem: 'De hoefijzer en de tand moet eruit.'", "&4=1"
+
 "1=17;2=0;17=2;4=5", "*c3", "$n: 'Ik ga kijken wat ik kan doen'"
 "", "*c13", "Bloem: 'Ok'", "", "&4=0"
 
@@ -1286,11 +1311,6 @@
 "1=17;2=0;17=2;4=7", "*c2", "Je haalt de hendel om. Een groot dik touw komt in beweging aan de buitenkant van"
 "de toren. De lift schuift langzaam omhoog."
 "&43=0;4=6"
-
-"1=17;2=0;17=2;4=0", "*c2", "Je staat bovenin de toren. Je ziet een grote opening in de buitenmuur met een "
-"lift."
-"De dochter van de bakker, Bloem, is hier.", "Een grote draak ligt op de grond te brullen van de pijn."
-"", "*c12", "<GGGrrrroaaaaaarrrrgh!>", "&20=1"
 
 ' == 18. Onderkant toren
 "1=18;18=0;2=0;4=0", "*c2", "Je bent in het woud, aan de voet van de toren."
@@ -1316,8 +1336,8 @@
 "2=2;16>0;1!6", "Bakkerij", "2=0;4=0;19=2;1=16;3=5"
 "2=2;15>0;1!6", "Smederij", "2=0;4=0;19=2;1=15;3=6"
 "2=2;14>0;1!14", "Molen", "2=0;4=0;19=2;1=14;3=6"
-"2=2;12>0;1!12", "Hut van de Heks", "2=0;4=0;1=12;3=5"
-"2=2;17>1;1!18", "Toren van de draak", "2=0;4=0;1=18;3=6"
+"2=2;12>0;1!12", "Hut van de Heks", "2=0;4=0;19=2;1=12;3=5"
+"2=2;17>1;1!18", "Toren van de draak", "2=0;4=0;19=2;1=18;3=6"
 "2=2;19>0", "Afstappen", "2=0;4=0"
 
 "20=1;2=0", "Bekijk inhoud van tas", "2=1;4=0"
@@ -1565,10 +1585,9 @@
 '"2=0;1=17;17=2;4=0", "Ga naar de draak", "4=7"
 "2=0;1=17;17=2;4=0", "Ga met de trap naar beneden", "1=18;3=5"
 
-' TEDOEN:
-'"2=0;1=17;17=2;4=1", "Zeg: 'Hoe kan ik je helpen?'", "4=2"
+"2=0;1=17;17=2;4=1", "Zeg: 'Hoe kan ik je helpen?'", "4=2"
 '"2=0;1=17;17=2;4=1", "Zeg: 'Je moet meekomen, je vader is hardstikke ongerust!'", "4=3"
-'"2=0;1=17;17=2;4=1", "Zeg: 'Wat weet je van deze draak?'", "4=4"
+"2=0;1=17;17=2;4=1", "Zeg: 'Wat weet je van deze draak?'", "4=4"
 "2=0;1=17;17=2;4=1", "Zeg: 'Ik ga kijken wat ik kan doen'", "4=5"
 
 "2=0;1=17;17=2;4=6;43=0", "Ga met de lift naar beneden", "1=18;3=7;43=1;4=0"
