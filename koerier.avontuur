@@ -50,7 +50,7 @@
 ' 39 = hint 'armor heeft geen zin' -- Boer
 ' 40 = plant ronde bladeren
 ' 41 = plant puntige bladeren
-' 42 = lichtblauwe paddenstoelen
+' 42 = lichtblauwe paddenstoelen 0=onbekend, 1=benodigd, 2=gevonden
 
 ' 0. Proloog
 "0=0", "*c2"
@@ -268,6 +268,7 @@
 "  - Plant met stekelige bladeren"
 "  - Tand van een draak"
 "", "&"
+"2=1;4=4;42=0", "&42=1"
 
 "2=1", "*c15", "Je hebt het volgende bij je:", "&"
 "2=1;22>1", "*c7", "-#22 geldstukken", "&"
@@ -292,7 +293,7 @@
 "2=1;38=1", "*c7", "- Rune steen met inscripties", "&"
 "2=1;40=1", "*c7", "- Plant met ronde bladeren", "&"
 "2=1;41=1", "*c7", "- Plant met stekelige bladeren", "&"
-"2=1;42=1", "*c7", "- Lichtblauwe paddenstoelen", "&"
+"2=1;42=2", "*c7", "- Lichtblauwe paddenstoelen", "&"
 
 ' 1. Bos
 "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -500,9 +501,10 @@
 '== Schat tocht:
 "1=8;2=0;36=2;4=4", "*c2", "Je gaat geduldig aan de waterkant zitten, wachten tot het donker is"
 "Hoe donkerder het wordt, hoe meer de steen gaat gloeien. Er staat een volle maan"
-"deze avond.", "&34=5;1=9"
-"1=8;2=0;36=2;4=4;19>0", "*c3", "$n: 'Teun, wacht je hier op mij?'"
-"Teun gaat naar de waterkant, water drinken", "&19=0;30=8"
+"deze avond.", "&"
+"1=8;2=0;36=2;4=4;19>0", "", "*c3", "$n: 'Teun, wacht je hier op mij?'"
+"", "*c2", "Teun gaat naar de waterkant, water drinken", "&19=0;30=8"
+"1=8;2=0;36=2;4=4", "&34=5;1=9"
 
 "1=9;2=0;4=0;9=0", "*c2", "Het is donker, je bent bij de rivier.", "&"
 "1=9;2=0;4=1;9=0", "*c2", "Je loopt langs de rivier", "&34=6"
@@ -696,9 +698,9 @@
 "  dochter zijn! Momentje, dan schrijf ik een lijstje met benodigdheden.'"
 "*c2", "", "Eucalypta gaat naar binnen en doet de deur dicht. Even later komt ze terug en"
 "geeft ze je een lijstje met benodigheden.", ""
-"*c13", "Eucalypta: 'Hier, dit heb ik allemaal nodig. Er zitten wel een lastig ingredient", "&26=4;34=9"
-"1=12;12=1;2=0;4=2;34=8;0=2", "  bij, maar een sterke vrouw zoals jij krijgt dat wel voor elkaar.'", "&4=0"
-"1=12;12=1;2=0;4=2;34=8;0=1", "  bij, maar een sterke man zoals jij krijgt dat wel voor elkaar.'", "&4=0"
+"*c13", "Eucalypta: 'Hier, dit heb ik allemaal nodig. Er zitten wel een lastig ingredient", "&26=4"
+"1=12;12=1;2=0;4=2;34=8;0=2", "  bij, maar een sterke vrouw zoals jij krijgt dat wel voor elkaar.'", "&4=0;34=9"
+"1=12;12=1;2=0;4=2;34=8;0=1", "  bij, maar een sterke man zoals jij krijgt dat wel voor elkaar.'", "&4=0;34=9"
 
 "1=12;12=1;2=0;4=3", "*c3", "$n: 'Heb jij ook gehoord dat er een schat ergens is?'", ""
 "*c13", "Eucalypta: 'Ach daar moet je niets om geven. De krachten van planten en magie"
@@ -989,9 +991,9 @@
 "&20=0"
 "1=15;2=0;4=5;34=0", "&34=1"
 
-"1=15;2=0;4=5;22=0", "Je kijkt even snel in je tas, maar je hebt geen geld bij je", "&"
-"1=15;2=0;4=5;22=1", "Je kijkt even snel in je tas, je hebt 1 geldstuk bij je", "&"
-"1=15;2=0;4=5;22>1", "Je kijkt even snel in je tas, je hebt#22 geldstukken bij je", "&"
+"1=15;2=0;4=5;22=0", "Je kijkt even snel in je tas, maar je hebt geen geld bij je.", "&"
+"1=15;2=0;4=5;22=1", "Je kijkt even snel in je tas, je hebt 1 geldstuk bij je.", "&"
+"1=15;2=0;4=5;22>1", "Je kijkt even snel in je tas, je hebt#22 geldstukken bij je.", "&"
 
 "1=15;2=0;4=23", "*c2", "Je geeft bij Lucy aan interesse te hebben in het gigantische zwaard", "", "&"
 "1=15;2=0;4=22", "*c2", "Je geeft bij Lucy aan interesse te hebben in het stalen harnas", "", "&"
@@ -1293,7 +1295,7 @@
 "2=0;1=3;19=1;29=4", "Ga naar het zuiden, richting het moeras", "4=1"
 
 '== 4. Moeras acties
-"2=0;1=4;19=1;29=3", "Spring op paard", "2=2"
+"2=0;1=4;19=1;29=3;4!1", "Spring op paard", "2=2"
 "2=0;1=4;4=0;26>1", "Loop richting de hut", "1=12;3=1"
 "2=0;1=4;4=0;26>1", "Bekijk de planten", "4=1;20=0"
 "2=0;1=4;4=0", "Ga naar het noorden, richting de heuvels", "1=3;3=1"
