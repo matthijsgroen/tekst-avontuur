@@ -1285,16 +1285,21 @@
 "  dan de deur dichtslaan. Wij moeten iets groters gaan bedenken hier'"
 "&4=1"
 
+"1=17;2=0;17=2;4=3", "*c3", "$n: 'Je moet meekomen, je vader is hardstikke ongerust!'"
+"", "*c13", "Bloem: 'Mijn vader? Gerst kan alleen goed bakken en geeft alleen om geld. Ik"
+"  blijf hier totdat ik de draak heb kunnen helpen. Hij had toch ook zelf hier"
+"  naar toe kunnen komen? Daarom heeft hij jou waarschijnlijk gestuurd, omdat hij"
+"  niet een echte ridder kon betalen'", "&4=1"
+
 "1=17;2=0;17=2;4=4", "*c3", "$n: 'Wat weet je van deze draak?'"
 "", "*c13", "Bloem: 'Ow best wel wat eigenlijk. Deze draak is een Dins.'"
-"", "*c3", "$n: 'Een Dins?'", "", "*c13", "Bloem: 'Ja, een Dins... Zo heet deze soort draak. Hij is gek op appels."
+"", "*c3", "$n: 'Een Dins?'", "", "*c13", "Bloem: 'Ja, een Dins... Hij kan vliegen, vuur spuwen en is gek op appels."
 "  Waarschijnlijk heeft hij appels proberen te eten bij de boer, en is hij toen"
 "  aangevallen'", "", "*c3", "$n: 'Aangevallen?? Deze draak?'", "", "&"
 "1=17;2=0;17=2;4=4;30=18", "*c13", "Bloem: 'Ja, en de dader staat beneden. Er zat een hoefijzer in de tand van de"
-"  Dins. Hij is door jouw paard getrapt.'", "&"
+"  Dins. Hij is door jouw paard getrapt. De hoefijzer en de tand moeten eruit.'", "&4=1"
 "1=17;2=0;17=2;4=4;30!18", "*c13", "Bloem: 'Ja, en de dader is een paard. Er zat een hoefijzer in de tand van de"
-"  Dins.'", "&"
-"1=17;2=0;17=2;4=4", "Bloem: 'De hoefijzer en de tand moet eruit.'", "&4=1"
+"  Dins. De hoefijzer en de tand moeten eruit.'", "&4=1"
 
 "1=17;2=0;17=2;4=5", "*c3", "$n: 'Ik ga kijken wat ik kan doen'"
 "", "*c13", "Bloem: 'Ok'", "", "&4=0"
@@ -1582,11 +1587,12 @@
 
 "2=0;1=17;17=2;4=0", "Ga naar de lift", "4=6"
 "2=0;1=17;17=2;4=0", "Praat met Bloem", "4=1"
+' TEDOEN:
 '"2=0;1=17;17=2;4=0", "Ga naar de draak", "4=7"
 "2=0;1=17;17=2;4=0", "Ga met de trap naar beneden", "1=18;3=5"
 
 "2=0;1=17;17=2;4=1", "Zeg: 'Hoe kan ik je helpen?'", "4=2"
-'"2=0;1=17;17=2;4=1", "Zeg: 'Je moet meekomen, je vader is hardstikke ongerust!'", "4=3"
+"2=0;1=17;17=2;4=1", "Zeg: 'Je moet meekomen, je vader is hardstikke ongerust!'", "4=3"
 "2=0;1=17;17=2;4=1", "Zeg: 'Wat weet je van deze draak?'", "4=4"
 "2=0;1=17;17=2;4=1", "Zeg: 'Ik ga kijken wat ik kan doen'", "4=5"
 
