@@ -207,6 +207,7 @@ styles[] {
       }
 
       pluk_paddenstoelen_in_woud:event {
+         style           = finished
          depends_on [] = krijg_ingredientenlijst_van_heks;
       }
 
