@@ -55,6 +55,7 @@
 ' 0. Proloog
 "0=0", "*c2"
 "Hoi $n, welkom bij Avontuur!"
+' Voeg scherm met uitleg enzo toe
 "", "*c15", "Ben je een jongen of een meisje?", "&"
 
 "1=0;10=0;4=0;0=1", "*c2", "Er was eens, lang geleden een stoere koerier..."
@@ -88,7 +89,7 @@
 "&4=2;5=0"
 
 "1=0;10=0;4=3", "*c2"
-"Je kijkt de hele kamer rond, op zoek naar de bron van het geluid"
+"Je kijkt de hele kamer rond, op zoek naar de bron van het geluid."
 "", "*c3", "$n: 'Hey, er zit een raaf tegen het raam te tikken!'"
 "", "*c14", "<TIK, TIK, TIK!>"
 "&"
@@ -107,18 +108,18 @@
 "er flink van eten. De raaf is je erg dankbaar!"
 "&23=4"
 
-"1=0;10=2;2=0;4=1;23>2", "*c2", "De kast is al open, maar er zit niets interessants meer in", "&"
-"1=0;10=2;2=0;4=1;23<2", "*c2", "De kast zit op slot", "&"
-"1=0;10=2;2=0;4=1;23=2", "*c2", "Je opent de kast met de sleutel", ""
+"1=0;10=2;2=0;4=1;23>2", "*c2", "De kast is al open, maar er zit niets interessants meer in.", "&"
+"1=0;10=2;2=0;4=1;23<2", "*c2", "De kast zit op slot.", "&"
+"1=0;10=2;2=0;4=1;23=2", "*c2", "Je opent de kast met de sleutel.", ""
 "*c3", "$n: 'Hey, hier ligt vogelvoer!'"
-"", "*c2", "Je pakt het vogelvoer uit de kast", "&4=8;23=3"
-"1=0;10=2;2=0;4=2;23=0", "*c2", "Je pakt je tas van achter de deur", "&20=1;22=100;23=1"
+"", "*c2", "Je pakt het vogelvoer uit de kast.", "&4=8;23=3"
+"1=0;10=2;2=0;4=2;23=0", "*c2", "Je pakt je tas van achter de deur.", "&20=1;22=100;23=1"
 
-"1=0;10=2;2=0;4=0", "*c2", "Je kijkt de kamer rond", "", "&"
-"1=0;10=2;2=0;4=0;20=0", "Je tas hangt aan de achterkant van de deur", "&"
-"1=0;10=2;2=0;4=0", "Je hebt een mooie kast tussen je bed en bureau in staan", "&"
-"1=0;10=2;2=0;4=0;23!4", "Een redelijk agressieve raaf zit op je bureau", "&"
-"1=0;10=2;2=0;4=0;23=4", "Een rustige raaf zit op je bureau", "&"
+"1=0;10=2;2=0;4=0", "*c2", "Je kijkt de kamer rond.", "", "&"
+"1=0;10=2;2=0;4=0;20=0", "Je tas hangt aan de achterkant van de deur.", "&"
+"1=0;10=2;2=0;4=0", "Je hebt een mooie kast tussen je bed en bureau in staan.", "&"
+"1=0;10=2;2=0;4=0;23!4", "Een redelijk agressieve raaf zit op je bureau.", "&"
+"1=0;10=2;2=0;4=0;23=4", "Een rustige raaf zit op je bureau.", "&"
 
 "1=0;10=2;2=0;4=3;23!4", "*c2", "Je probeert het briefje van de raaf te pakken."
 "De raaf pikt naar je hand.", "*c3", "$n: 'Grrr!'"
@@ -127,13 +128,15 @@
 "De raaf blijft rustig.", "", "Je leest de brief:", "*c6", "*s1", ""
 "Beste $n,"
 "", "De koning is ernstig ziek."
-"Als beste koerier van het land smeken we je om ons te helpen"
-"", "Jij bent de enige die snel medicijnen naar ons kan brengen"
+"Als beste koerier van het land smeken we je om ons te helpen."
+"", "Jij bent de enige die snel medicijnen naar ons kan brengen."
 "We hopen dat je dit bericht snel ontvangt en je snel de juiste medicijnen"
 "kan komen brengen", "", "Gegroet,", "  De dokter van de koning", "*s2", "*c2", ""
 "Je blijft een tijdje naar de brief staren.", "De koning?", "Heeft jouw hulp nodig?"
 "Je gaat snel de deur uit, richting een groot avontuur..."
 "&10=3;22=3;20=0;2=0"
+
+' TEDOEN: VET ASCII Logo en startscherm hier
 
 ' 5. Intro
 "1=5", "*c2"
@@ -1288,6 +1291,7 @@
 "2=0;1=2", "Ga naar het zuiden, richting het dorp", "1=6;3=3;4=0"
 
 '== 3. Heuvel acties
+"2=0;1=3;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=3", "Volg het pad naar de mijn", "1=11;4=0;3=5"
 "2=0;1=3", "Wandel naar de molen", "1=14;4=0;3=6"
 "2=0;1=3", "Ga naar het oosten, richting het bos", "1=1;3=2"
@@ -1315,7 +1319,7 @@
 "2=0;1=6", "Ga naar het zuiden, richting de rivier", "1=8;3=3"
 
 '== 7. Donker woud acties
-"2=0;1=7;7=2;19=1;29=3", "Spring op paard", "2=2"
+"2=0;1=7;7!1;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=7;7=2", "Ga naar de toren van de draak", "1=18;3=6"
 "2=0;1=7;7!1", "Ga naar het westen, richting het dorp", "1=6;3=4"
 "2=0;1=7;39=1;27=2;7=0", "Ga toch verder, het donkere woud in", "7=1"
@@ -1324,7 +1328,7 @@
 "2=0;1=8;4=0;19=1;29=3;30=8", "Spring op paard", "2=2"
 "2=0;1=8;4=0;19=1;29>1;30=8", "Laat teun water drinken", "19=0"
 "2=0;1=8;29=1", "Probeer paard te benaderen", "4=1"
-"2=0;1=8;29>1;19=0", "Haal teun op", "4=3"
+"2=0;1=8;29>1;19=0;30=8", "Haal teun op", "4=3"
 "2=0;1=8;32=0", "Probeer stof te pakken", "4=2"
 "2=0;1=8", "Ga naar het noorden, richting het dorp", "1=6;3=1"
 
@@ -1405,7 +1409,7 @@
 "2=0;1=13;13>1;4=0;12=0", "Zeg: 'Weet u hoe ik aan medicijnen zou kunnen komen?'", "4=5"
 "2=0;1=13;13>2;4=0;33=0", "Zeg: 'Zou ik graan mogen hebben?'", "4=7"
 "2=0;1=13;13>0;4=0;26>0", "Zeg: 'Wat kun je me vertellen over het monster?'", "4=9"
-"2=0;1=13;13>0;4=0;26>0;37=0", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
+"2=0;1=13;13>0;4=0;26>0;37=0;34>0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
 "2=0;1=13;13>0;4=0;30=13;19=1;29!4", "Breng Teun naar zijn stal", "4=3"
 "2=0;1=13;13>0;4=0;30=13;19=0;29!4", "Haal Teun van zijn stal", "4=4"
 "2=0;1=13;13>0;4=0;31=0", "Pak touw", "4=6"
@@ -1416,7 +1420,7 @@
 "2=0;1=14;19=0;4=0", "Zeg: 'Weet u hoe ik aan vervoer kan komen?'", "4=1"
 "2=0;1=14;4=0", "Zeg: 'Weet u hoe ik aan medicijnen kan komen?'", "4=2"
 "2=0;1=14;14=1;4=0", "Zeg: 'Wat was er ook alweer nodig om de molen te maken?'", "4=4"
-"2=0;1=14;14>0;4=0;34>0;35=0", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
+"2=0;1=14;14>0;4=0;34>0;34<5;35=0", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
 "2=0;1=14;4=0;32=1", "Repareer molen met onderbroek van reus", "4=3"
 "2=0;1=14;4=0;19=1;29=3", "Zeg: 'Kan ik de wagen lenen?'", "4=5"
 "2=0;1=14;4=0;19=1;29=4;33=1", "Zeg: 'Zou je dit graan willen malen?'", "4=7"
@@ -1458,7 +1462,7 @@
 "2=0;1=16;16=1;4=0;26>0;26<2", "Zeg: 'Zijn er hier ook medicijnen te koop?'", "4=5"
 "2=0;1=16;16=1;4=0;25<1", "Zeg: 'Hallo? Kan ik iets te eten kopen?'", "4=2"
 "2=0;1=16;16=1;4=0;25<2;25>0", "Zeg: 'Ik wil graag koeken kopen'", "4=3"
-"2=0;1=16;16=1;4=0;26>0;34>0;36=0", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
+"2=0;1=16;16=1;4=0;26>0;34>0;36=0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
 "2=0;1=16;16=1;4=0;26>0;33<3", "Zeg: 'Waarom is uw toonbank leeg?'", "4=6"
 "2=0;1=16;16=1;4=0;33=2", "Zeg: 'Ik heb meel gehaald'", "4=7"
 "2=0;1=16;16=1;4=0", "Verlaat de bakkerij", "1=6;3=5;4=0"
