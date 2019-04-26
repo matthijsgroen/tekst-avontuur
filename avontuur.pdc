@@ -49,10 +49,6 @@ styles[] {
          end_state     = positive
       }
 
-      breng_molensteen_naar_toren:event {
-         depends_on []   = zet_molensteen_op_wagen;
-      }
-
       breng_paard_naar_hoefsmid:event {
          style           = finished
          depends_on []   = vind_paard_bij_rivier;
@@ -175,7 +171,8 @@ styles[] {
       }
 
       leg_molensteen_op_lift:event {
-         depends_on []   = breng_molensteen_naar_toren, praat_met_dochter_van_bakker;
+         style           = finished
+         depends_on []   = zet_molensteen_op_wagen, praat_met_dochter_van_bakker;
       }
 
       maak_medicijn :event {
@@ -226,6 +223,7 @@ styles[] {
       }
 
       praat_met_dochter_van_bakker:event {
+         style           = finished
          depends_on []   = beklim_toren;
       }
 
@@ -315,6 +313,7 @@ styles[] {
       }
 
       zet_molensteen_op_wagen:event {
+         style           = finished
          depends_on []   = bezorg_meel_bij_bakker;
       }
 

@@ -62,7 +62,7 @@
 ' 41 = plant puntige bladeren
 ' 42 = lichtblauwe paddenstoelen 0=onbekend, 1=benodigd, 2=gevonden
 ' 43 = status lift. 0 = boven, 1 = beneden
-' 44 = molensteen 0 = niet, 1 = nodig, 2 = op wagen, 3 = op lift
+' 44 = molensteen 0 = niet, 1 = nodig, 2 = op wagen, 3 = intentie tillen, 4 = op lift
 ' 0. Proloog
 "0=0", "*c2"
 "Hoi $n, welkom bij Avontuur!"
@@ -355,7 +355,7 @@
 "*c3", "$n: 'Hmm het moeras in gaan met zo'n wagen achter Teun is"
 "  geen goed idee'", "", "*c3"
 "$n: 'Straks zakt de wagen nog weg in de drassigheid, en kom ik"
-"  vast te zitten", "&"
+"  vast te zitten'", "&"
 
 '== 4. Moeras
 "1=4;2=0;4=0;26<2", "*c2"
@@ -892,20 +892,18 @@
 
 '== 14. Molen
 "1=14;14=1;2=0;4=0", "*c2", "Je bent bij de molen", ""
-"De molen mist het doek op een van de wieken"
-"Een molensteen ligt naast de molen"
-"Een lege wagen staat naast de andere kant van de molen"
+"De molen mist het doek op een van de wieken", "&"
+"1=14;14=1;2=0;4=0;44<2", "Een molensteen ligt naast de molen", "&"
+"1=14;14=1;2=0;4=0", "Een lege wagen staat naast de andere kant van de molen"
 "Een oude molenaar lijkt aan het werk om proberen de wieken te repareren"
-"", "*c9", "Tjasker: 'Hey hallo daar!'"
-"&"
+"", "*c9", "Tjasker: 'Hey hallo daar!'", "&"
 
 "1=14;14=2;2=0;4=0", "*c2", "Je bent bij de molen", ""
-"De molen draait rustig in de wind."
-"Een molensteen ligt naast de molen", "&"
+"De molen draait rustig in de wind.", "&"
+"1=14;14=2;2=0;4=0;44<2", "Een molensteen ligt naast de molen", "&"
 "1=14;14=2;2=0;4=0;29!4", "Een lege wagen staat naast de andere kant van de molen", "&"
 "1=14;14=2;2=0;4=0", "Tjasker zit op een bankje voor de molen te genieten van de zon"
-"", "*c9", "Tjasker: 'Hey hallo daar!'"
-"&"
+"", "*c9", "Tjasker: 'Hey hallo daar!'", "&"
 
 "1=14;2=0;4=1", "*c3", "$n: 'Weet u hoe ik aan vervoer kan komen?'", "", "*c2"
 "De oude molenaar lijkt je aan"
@@ -920,15 +918,23 @@
 
 "1=14;14=2;2=0;4=5", "*c3", "$n: 'Zou ik de wagen mogen lenen?'", ""
 "*c9", "Tjasker: 'Ja hoor, geen probleem! bedankt nog voor"
-"  het helpen repareren van mijn molen!'", "", "*c2"
-"Samen spannen jullie de wagen van de molenaar achter Teun"
-"", "*c9", "Tjasker: 'Bedenk wel, met de wagen achter Teun dan"
-"  kun je hem niet bereiden.'"
+"  het helpen repareren van mijn molen!'", "", "*c2", "&"
+
+"1=14;14=2;2=0;4=5;33!1;33!2;44!2","Samen spannen jullie de wagen van de molenaar achter Teun", "&"
+"1=14;14=2;2=0;4=5;33=1","Samen spannen jullie de wagen vol graan achter Teun", "&"
+"1=14;14=2;2=0;4=5;33=2","Samen spannen jullie de wagen vol meel achter Teun", "&"
+"1=14;14=2;2=0;4=5;44=2","Samen spannen jullie de wagen met de molensteen achter Teun", "&"
+
+"1=14;14=2;2=0;4=5","", "*c9", "Tjasker: 'Bedenk wel, met de wagen achter Teun dan"
+"  kun je hem niet berijden.'"
 "&4=0;29=4"
 
 "1=14;14=2;2=0;4=6", "*c3", "$n: 'Ik kom de wagen terugbrengen'", "", "*c2"
-"Samen halen jullie de wagen los van Teun en zet de wagen naast de molen"
-"&4=0;29=3"
+"Samen halen jullie de wagen los van Teun en zetten de wagen naast de molen", "&"
+"1=14;14=2;2=0;4=6;33=1", "*c9", "", "Tjasker: 'Vergeet je niet dat je nog graan op de wagen hebt liggen?'", "&"
+"1=14;14=2;2=0;4=6;33=2", "*c9", "", "Tjasker: 'Vergeet je niet dat je nog meel op de wagen hebt liggen?'", "&"
+"1=14;14=2;2=0;4=6;44=2", "*c9", "", "Tjasker: 'Vergeet je niet dat je nog een molensteen op de wagen hebt liggen?'", "&"
+"1=14;14=2;2=0;4=6", "&4=0;29=3"
 
 "1=14;14=2;2=0;4=7", "*c3", "$n: 'Hallo, ik heb graan van de boer gekregen."
 "  Zou je het kunnen malen voor mij?'", ""
@@ -983,6 +989,24 @@
 "", "*c3", "$n: 'Ik zal mijn ogen open houden of ik iets tegenkom voor u!'"
 "", "*c9", "Tjasker: 'Bedankt!'"
 "&14=1"
+
+"1=14;2=0;4=10;44=0", "*c2", "Je bekijkt de molensteen naast de molen. Het ziet er uit als een zware steen"
+"", "*c9", "Tjasker: 'Ach dat is een oudje, helemaal versleten'", "&4=0;44=1"
+
+"1=14;2=0;4=10;44=1;7!2", "*c3", "$n: 'Zou ik de molensteen mogen hebben?'"
+"", "*c9", "Tjasker: 'Wat zou je met deze steen moeten? Hij is alleen maar zwaar en"
+"  versleten'", "&4=0"
+
+"1=14;2=0;4=10;44=1;7=2", "*c3", "$n: 'Zou ik de molensteen mogen hebben?'"
+"", "*c9", "Tjasker: 'Wat zou je met deze steen moeten? Hij is alleen maar zwaar en"
+"  versleten'", "", "*c3", "$n: 'Ik heb wat creatieve ideen met deze steen'", "&"
+"1=14;2=0;4=10;44=1;7=2;19=0", "", "*c9", "Tjasker: 'Van mij mag je hem hebben hoor! Moet je wel met Teun en een wagen"
+"  zijn, want zo'n steen kan je niet zomaar verplaatsen'", "&4=0"
+"1=14;2=0;4=10;44=1;7=2;19=1;29!4", "", "*c9", "Tjasker: 'Van mij mag je hem hebben hoor! Moet je wel de wagen achter Teun"
+"  spannen, want zo'n steen kan je niet zomaar verplaatsen'", "&4=0"
+"1=14;2=0;4=10;44=1;7=2;19=1;29=4", "", "*c9", "Tjasker: 'Van mij mag je hem hebben hoor! We moeten hem wel even samen op de"
+"  wagen zetten, want die steen is heel erg zwaar'", "", "*c2"
+"Samen tillen jullie de versleten molensteen op de wagen.", "&44=2;4=0"
 
 '== 15. Smederij
 "1=15;15=1;2=0;4=0", "*c2", "Je bent in de smederij", "", "*c13", "Lucy: 'Hey welkom!'"
@@ -1283,7 +1307,7 @@
 "  vreselijke kiespijn. Zijn kies moet getrokken worden, maar het lukt me niet'"
 "&17=2;4=1"
 
-"1=17;2=0;17=2;4=0", "*c2", "Je staat bovenin de toren. Je ziet een grote opening in de buitenmuur met een "
+"1=17;2=0;17=2;4=0", "*c2", "Je staat bovenin de toren. Je ziet een grote opening in de buitenmuur met een"
 "lift."
 "De dochter van de bakker, Bloem, is hier.", "Een grote draak ligt op de grond te brullen van de pijn."
 "", "*c12", "<GGGrrrroaaaaaarrrrgh!>", "&20=1"
@@ -1295,6 +1319,7 @@
 "", "Bloem: 'Probleem met een draak is dat alles groter en sterker is dan bij mensen'"
 "Bloem: 'Bij mensen kun je een tand eruit trekken met een touwtje aan een deur en"
 "  dan de deur dichtslaan. Wij moeten iets groters gaan bedenken hier'"
+"Bloem: 'Kan jij een zware steen regelen?'"
 "&4=1"
 
 "1=17;2=0;17=2;4=3", "*c3", "$n: 'Je moet meekomen, je vader is hardstikke ongerust!'"
@@ -1314,25 +1339,46 @@
 "  Dins. De hoefijzer en de tand moeten eruit.'", "&4=1"
 
 "1=17;2=0;17=2;4=5", "*c3", "$n: 'Ik ga kijken wat ik kan doen'"
-"", "*c13", "Bloem: 'Ok'", "", "&4=0"
+"", "*c13", "Bloem: 'Ok'", "", "&4=0;20=1"
 
-"1=17;2=0;17=2;4=6", "*c2", "Je loopt naar de grote opening bovenin de toren. Dit moet zijn waar de draak"
+"1=17;2=0;17=2;4=8", "*c3", "$n: 'Zou je me kunnen helpen uitladen?'"
+"", "*c13", "Bloem: 'Tuurlijk, wat heb je meegenomen?'", "", "*c3"
+"$n: 'Ik heb een oude molensteen meegenomen, maar hij is te zwaar om alleen te"
+"  tillen.'", "*c13", "", "Bloem: 'Ok mooi! Volgens mij hebben we allebei het zelfde plan"
+"  Ik neem de lift wel. Zie ik je beneden?'"
+"&4=0;44=3;20=1"
+
+"1=17;2=0;44=3;17=2;4=6", "*c3", "$n: 'Bloem gaat zo met de lift naar beneden."
+"  Ik kan maar beter de trap nemen'", "&"
+
+"1=17;2=0;44!3;17=2;4=6", "*c2", "Je loopt naar de grote opening bovenin de toren. Dit moet zijn waar de draak"
 "binnen en naar buiten kan vliegen. Je kan ver over het woud kijken. In de verte"
 "kan je zelfs de molen op een heuvel zien. Aan de buitenkant van de toren is een"
 "lift.", "&"
-"1=17;2=0;17=2;4=6;43=0", "Op dit moment is de lift boven. Er is een hendel om de lift te bedienen.", "&"
-"1=17;2=0;17=2;4=6;43=1", "Op dit moment is de lift beneden. Er is een hendel om de lift te bedienen.", "&"
-"1=17;2=0;17=2;4=6;19=1;29=3", "", "Als je naar beneden kijkt, zie je Teun staan.", "&"
-"1=17;2=0;17=2;4=6;19=1;29=4", "", "Als je naar beneden kijkt, zie je Teun met de wagen staan.", "&"
+"1=17;2=0;44!3;17=2;4=6;43=0", "Op dit moment is de lift boven. Er is een hendel om de lift te bedienen.", "&"
+"1=17;2=0;44!3;17=2;4=6;43=1", "Op dit moment is de lift beneden. Er is een hendel om de lift te bedienen.", "&"
+"1=17;2=0;44!3;17=2;4=6;19=1;29=3", "", "Als je naar beneden kijkt, zie je Teun staan.", "&"
+"1=17;2=0;44!3;17=2;4=6;19=1;29=4", "", "Als je naar beneden kijkt, zie je Teun met de wagen staan.", "&"
 
 "1=17;2=0;17=2;4=7", "*c2", "Je haalt de hendel om. Een groot dik touw komt in beweging aan de buitenkant van"
 "de toren. De lift schuift langzaam omhoog."
 "&43=0;4=6"
 
 ' == 18. Onderkant toren
-"1=18;18=0;2=0;4=0", "*c2", "Je bent in het woud, aan de voet van de toren."
-"Er is een grote deur de toren in. Naast de toren is een lift."
-"Er loopt een pad vanaf de toren het woud in.", "&"
+"1=18;18=0;2=0;4=0;44!3", "*c2", "Je bent in het woud, aan de voet van de toren."
+"Er is een grote deur de toren in. Naast de toren is een lift.", "&"
+"1=18;18=0;2=0;4=0;43=0;44!3", "Als je omhoog kijkt, zie je het platform van de lift bovenaan de toren.", "&"
+"1=18;18=0;2=0;4=0;43=1;44!3", "Het platform van de lift is beneden", "&"
+"1=18;18=0;2=0;4=0;44!3","Er loopt een pad vanaf de toren het woud in.", "&"
+
+"1=18;18=0;2=0;4=0;44=3", "*c2", "Je leid Teun met de wagen richting de lift. Bloem komt net met de lift naar"
+"beneden.", "", "*c3", "$n: 'Kom dan tillen we samen de molensteen op de lift'"
+"", "*c2", "Zelfs met zijn tweeen is het nog een hele klus om de steen op de lift te"
+"krijgen."
+"*s1", "Na een tijdje is het toch gelukt.", "", "*c13", "Bloem: 'Nou ik ga vast naar boven!'"
+"*c2", "", "Bloem rent de trap op.", "&44=4;43=1"
+
+"1=18;18=0;2=0;4=1", "*c2", "Je wilt de steen van de wagen tillen, maar hij is veel te zwaar.", "&4=0"
 
 "0!0;2!2", "*c15", "", "Wat ga je doen:", "&"
 "1=0;2=2", "*c15", "", "Wat ga je doen:", "&"
@@ -1602,20 +1648,22 @@
 "2=0;1=17;17=2;4=0", "Ga naar de lift", "4=6"
 "2=0;1=17;17=2;4=0", "Praat met Bloem", "4=1"
 ' TEDOEN:
-'"2=0;1=17;17=2;4=0", "Ga naar de draak", "4=7"
+'"2=0;1=17;17=2;4=0", "Ga naar de draak", "4=9"
 "2=0;1=17;17=2;4=0", "Ga met de trap naar beneden", "1=18;3=5"
 
 "2=0;1=17;17=2;4=1", "Zeg: 'Hoe kan ik je helpen?'", "4=2"
 "2=0;1=17;17=2;4=1", "Zeg: 'Je moet meekomen, je vader is hardstikke ongerust!'", "4=3"
 "2=0;1=17;17=2;4=1", "Zeg: 'Wat weet je van deze draak?'", "4=4"
+"2=0;1=17;17=2;4=1;30=18;44=2;29=4", "Zeg: 'Zou je me kunnen helpen uitladen?'", "4=8"
 "2=0;1=17;17=2;4=1", "Zeg: 'Ik ga kijken wat ik kan doen'", "4=5"
 
-"2=0;1=17;17=2;4=6;43=0", "Ga met de lift naar beneden", "1=18;3=7;43=1;4=0"
-"2=0;1=17;17=2;4=6;43=1", "Breng lift omhoog", "4=7"
+"2=0;1=17;17=2;4=6;44!3;43=0", "Ga met de lift naar beneden", "1=18;3=7;43=1;4=0"
+"2=0;1=17;17=2;4=6;44!3;43=1", "Breng lift omhoog", "4=7"
 "2=0;1=17;17=2;4=6", "Loop terug de kamer in", "4=0"
 
 ' == 18. Onderkant toren
 "2=0;1=18;4=0;19=1;29=3", "Spring op paard", "2=2"
+"2=0;1=18;4=0;19=1;29=4;44=2", "Til molensteen op de lift", "4=1"
 "2=0;1=18;4=0", "Ga de toren in", "1=17;3=5"
 "2=0;1=18;4=0", "Ga het woud in", "1=7;3=5"
 
