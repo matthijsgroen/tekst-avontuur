@@ -25,6 +25,7 @@
 ' 4 = Actie van speler
 ' 5 = Tijdelijke lokatie teller
 
+' 7 = status woud
 ' 9 = Schattenjacht
 ' 10 = Lokatie status Proloog
 ' 11 = Lokatie status Mijn
@@ -128,7 +129,7 @@
 "1=0;10=2;2=0;4=1;23=2", "*c2", "Je opent de kast met de sleutel.", ""
 "*c3", "$n: 'Hey, hier ligt vogelvoer!'"
 "", "*c2", "Je pakt het vogelvoer uit de kast.", "&4=8;23=3"
-"1=0;10=2;2=0;4=2;23=0", "*c2", "Je pakt je tas van achter de deur.", "&20=1;22=100;23=1"
+"1=0;10=2;2=0;4=2;23=0", "*c2", "Je pakt je tas van achter de deur.", "&20=1;22=3;23=1"
 
 "1=0;10=2;2=0;4=0", "*c2", "Je kijkt de kamer rond.", "", "&"
 "1=0;10=2;2=0;4=0;20=0", "Je tas hangt aan de achterkant van de deur.", "&"
@@ -150,8 +151,6 @@
 "Je blijft een tijdje naar de brief staren.", "De koning?", "Heeft jouw hulp nodig?"
 "Je gaat snel de deur uit, richting een groot avontuur..."
 "&10=3;22=3;20=0;2=0"
-
-' TEDOEN: VET ASCII Logo en startscherm hier
 
 ' 5. Intro
 "1=5", "*c2"
@@ -522,7 +521,7 @@
 "1=7;2=0;7=1;4=0;0=2", "", "*c2", "$n liep verder totdat ze aan de voet van de toren was.", "&"
 "1=7;2=0;7=1;4=0;0=1", "", "*c2", "$n liep verder totdat hij aan de voet van de toren was.", "&"
 "1=7;2=0;7=1;4=0;19=1;29=3", "*c3","", "$n: 'Teun, ik maak je hier vast, wacht op mij jongen'", "&"
-"1=7;2=0;7=1;4=0", "&1=17;7=2"
+"1=7;2=0;7=1;4=0", "&1=17"
 
 '== 8. Rivier
 "1=8;2=0;4=0", "*c2"
@@ -1249,7 +1248,7 @@
 "  Straks bezeer je nog iemand!'", "", "*c2", "Je staat perplex", "", "*c13"
 "Bloem: 'Ja jij! Wat kom je doen? Het is al moeilijk genoeg zo!'"
 "", "*c2", "Moeilijk genoeg? waar heeft ze het over?", "Je bergt je zwaard maar op."
-"&17=1;4=0;5=0;6=0"
+"&17=1;4=0;5=0;7=2"
 
 "1=17;2=0;17=0;4=4", "*c2", "Met je zwaard in je hand zet je je schrap. Je duwt hard de deur open en stormt"
 "de kamer in. Je ziet een gigantische draak op de vloer liggen. Hij heeft een"
@@ -1259,7 +1258,7 @@
 "  Straks bezeer je nog iemand!'", "", "*c2", "Je staat perplex", "", "*c13"
 "Bloem: 'Ja jij! Wat kom je doen? Het is al moeilijk genoeg zo!'"
 "", "*c2", "Moeilijk genoeg? waar heeft ze het over?", "Je bergt je zwaard maar op."
-"&17=1;4=0;5=0;6=0;7=0"
+"&17=1;4=0;5=0;7=2"
 
 "1=17;2=0;17=1;4=1", "*c3", "$n: 'Ben jij Bloem? De dochter van de bakker?'"
 "", "*c13", "Bloem: 'Ja dat ben ik. En wie ben jij?'", "*c3", "", "$n: 'Ik ben $n, ik kom je redden'"
@@ -1518,7 +1517,7 @@
 "2=0;1=13;13=2;4=0;29>2", "Zeg: 'Teun heeft nieuwe hoefijzers'", "4=2"
 "2=0;1=13;13>1;4=0;12=0", "Zeg: 'Weet u hoe ik aan medicijnen zou kunnen komen?'", "4=5"
 "2=0;1=13;13>2;4=0;33=0", "Zeg: 'Zou ik graan mogen hebben?'", "4=7"
-"2=0;1=13;13>0;4=0;26>0", "Zeg: 'Wat kun je me vertellen over het monster?'", "4=9"
+"2=0;1=13;13>0;4=0;26>0;17<2", "Zeg: 'Wat kun je me vertellen over het monster?'", "4=9"
 "2=0;1=13;13>0;4=0;26>0;37=0;34>0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
 "2=0;1=13;13>0;4=0;30=13;19=1", "Breng Teun naar zijn stal", "4=3"
 "2=0;1=13;13>0;4=0;30=13;19=0;29!4", "Haal Teun van zijn stal", "4=4"
@@ -1535,7 +1534,9 @@
 "2=0;1=14;4=0;19=1;29=3", "Zeg: 'Kan ik de wagen lenen?'", "4=5"
 "2=0;1=14;4=0;19=1;29=4;33=1", "Zeg: 'Zou je dit graan willen malen?'", "4=7"
 "2=0;1=14;4=0;19=1;29=4;33!1;33!2", "Breng de wagen terug", "4=6"
-"2=0;1=14;4=0;26>0", "Zeg: 'Wat kun je me vertellen over het monster?'", "4=9"
+"2=0;1=14;4=0;26>0;17<2", "Zeg: 'Wat kun je me vertellen over het monster?'", "4=9"
+"2=0;1=14;4=0;44=0", "Bekijk molensteen naast de molen", "4=10"
+"2=0;1=14;4=0;44=1", "Zeg: 'Zou ik de molensteen mogen hebben?'", "4=10"
 "2=0;1=14;14>0;4=0", "Loop terug naar de weg", "1=3;3=6"
 
 '== 15. Smederij
@@ -1568,7 +1569,7 @@
 
 '== 16. Bakkerij
 "2=0;1=16;16=1;4=0;26=0", "Zeg: 'Hallo? Is alles goed met u?'", "4=1"
-"2=0;1=16;16=1;4=0;26>0", "Zeg: 'Vertel me nog eens over het monster?'", "4=1"
+"2=0;1=16;16=1;4=0;26>0;17<2", "Zeg: 'Vertel me nog eens over het monster?'", "4=1"
 "2=0;1=16;16=1;4=0;26>0;26<2", "Zeg: 'Zijn er hier ook medicijnen te koop?'", "4=5"
 "2=0;1=16;16=1;4=0;25<1", "Zeg: 'Hallo? Kan ik iets te eten kopen?'", "4=2"
 "2=0;1=16;16=1;4=0;25<2;25>0", "Zeg: 'Ik wil graag koeken kopen'", "4=3"
