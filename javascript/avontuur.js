@@ -8,7 +8,7 @@ const eerste = commandos[0];
 if (eerste === "--version" || eerste === "--versie" || eerste === "-V") {
   console.log("Avontuur, versie 1.0");
   process.exit(0);
-} else if (eerste === "--help") {
+} else if (eerste === "--help" || !eerste) {
   [
     "Avontuur, versie 1.0",
     "",

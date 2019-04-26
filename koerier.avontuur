@@ -65,7 +65,12 @@
 ' 0. Proloog
 "0=0", "*c2"
 "Hoi $n, welkom bij Avontuur!"
-' Voeg scherm met uitleg enzo toe
+"", "Dit avontuur kan je zien als een interactief boek, waarin jij keuzes moet maken,"
+"puzzels oplossen en allerlei personages tegenkomt die je nieuwe informatie"
+"kunnen geven.", ""
+"Elke keer kan je een keuze maken door de knop in te drukken die voor de keuze"
+"is afgebeeld."
+"", "Laten we meteen met de eerste keuze beginnen!"
 "", "*c15", "Ben je een jongen of een meisje?", "&"
 
 "1=0;10=0;4=0;0=1", "*c2", "Er was eens, lang geleden een stoere koerier..."
