@@ -11,12 +11,20 @@
 '   7 = Donker woud
 '   8 = Rivier
 '   9 = Schattenjacht
+'   10 = Mijn
+'   12 = Hut
+'   13 = Boerderij
+'   14 = Molen
+'   15 = Smederij
+'   16 = Bakkerij
+'   17 = Bovenkant Toren
+'   18 = Onderkant Toren
+
 ' 2 = Locatie toestand 0 = look, 1 = Open tas, 2 = leeg
 ' 3 = Richting van reizen (oorsprong)
 ' 4 = Actie van speler
 ' 5 = Tijdelijke lokatie teller
 
-' 8 = Status Lift 0 = boven, 1 = beneden
 ' 9 = Schattenjacht
 ' 10 = Lokatie status Proloog
 ' 11 = Lokatie status Mijn
@@ -28,7 +36,7 @@
 ' 17 = Lokatie status Bovenkant Toren
 ' 18 = Lokatie status Onderkant Toren
 
-' 19 = beschikbaarheid paard 0 = niet, 1 = lopen, 2 = bereiden
+' 19 = beschikbaarheid paard 0 = niet, 1 = lopen, 2 = berijden
 ' 20 = beschikbaarheid tas
 ' 21 = tak
 ' 22 = geld
