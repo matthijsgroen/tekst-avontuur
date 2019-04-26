@@ -90,6 +90,7 @@ styles[] {
       }
 
       hijs_lift_met_molensteen:event {
+         style           = finished
          depends_on []   = leg_molensteen_op_lift;
       }
 

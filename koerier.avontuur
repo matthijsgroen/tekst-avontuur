@@ -1357,12 +1357,19 @@
 "lift.", "&"
 "1=17;2=0;44!3;17=2;4=6;43=0", "Op dit moment is de lift boven. Er is een hendel om de lift te bedienen.", "&"
 "1=17;2=0;44!3;17=2;4=6;43=1", "Op dit moment is de lift beneden. Er is een hendel om de lift te bedienen.", "&"
+"1=17;2=0;44!3;17=2;4=6;44=4", "Een zwaren molensteen ligt op de lift.", "&"
 "1=17;2=0;44!3;17=2;4=6;19=1;29=3", "", "Als je naar beneden kijkt, zie je Teun staan.", "&"
 "1=17;2=0;44!3;17=2;4=6;19=1;29=4", "", "Als je naar beneden kijkt, zie je Teun met de wagen staan.", "&"
 
-"1=17;2=0;17=2;4=7", "*c2", "Je haalt de hendel om. Een groot dik touw komt in beweging aan de buitenkant van"
-"de toren. De lift schuift langzaam omhoog."
-"&43=0;4=6"
+"1=17;2=0;44=4;17=2;4=9", "*c3", "$n: 'Het touw staat zo onder spanning, ik denk niet dat het"
+"  verstandig is als ik er ook op ga staan, straks val ik nog naar beneden.'", "&4=6"
+
+"1=17;2=0;17=2;4=7", "*c2", "Je haalt de hendel om. Een groot dik touw komt in beweging aan de buitenkant van", "&"
+"1=17;2=0;17=2;4=7;44=4", "de toren. De lift schuift langzaam met de molensteen omhoog."
+"De lift heeft er veel moeite mee. Het touw van de lift staat heel duidelijk"
+"onder spanning.", "&"
+"1=17;2=0;17=2;4=7;44!4", "de toren. De lift schuift langzaam omhoog.", "&"
+"1=17;2=0;17=2;4=7","&43=0;4=6"
 
 ' == 18. Onderkant toren
 "1=18;18=0;2=0;4=0;44!3", "*c2", "Je bent in het woud, aan de voet van de toren."
@@ -1648,7 +1655,7 @@
 "2=0;1=17;17=2;4=0", "Ga naar de lift", "4=6"
 "2=0;1=17;17=2;4=0", "Praat met Bloem", "4=1"
 ' TEDOEN:
-'"2=0;1=17;17=2;4=0", "Ga naar de draak", "4=9"
+'"2=0;1=17;17=2;4=0", "Ga naar de draak", "4=10"
 "2=0;1=17;17=2;4=0", "Ga met de trap naar beneden", "1=18;3=5"
 
 "2=0;1=17;17=2;4=1", "Zeg: 'Hoe kan ik je helpen?'", "4=2"
@@ -1657,7 +1664,8 @@
 "2=0;1=17;17=2;4=1;30=18;44=2;29=4", "Zeg: 'Zou je me kunnen helpen uitladen?'", "4=8"
 "2=0;1=17;17=2;4=1", "Zeg: 'Ik ga kijken wat ik kan doen'", "4=5"
 
-"2=0;1=17;17=2;4=6;44!3;43=0", "Ga met de lift naar beneden", "1=18;3=7;43=1;4=0"
+"2=0;1=17;17=2;4=6;44!3;43=0;44!4", "Ga met de lift naar beneden", "1=18;3=7;43=1;4=0"
+"2=0;1=17;17=2;4=6;44!3;43=0;44=4", "Ga met de lift naar beneden", "4=9"
 "2=0;1=17;17=2;4=6;44!3;43=1", "Breng lift omhoog", "4=7"
 "2=0;1=17;17=2;4=6", "Loop terug de kamer in", "4=0"
 
