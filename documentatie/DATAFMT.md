@@ -1,10 +1,9 @@
 # Data formaat voor 'Avontuur'
 
-Het hele spel heeft 3 variabelen voor de status van het spel
+Het hele spel heeft 2 variabelen voor de status van het spel
 
 1. Naam van de speler
-2. Geslacht van de speler
-3. Lijst van 100 getallen, voor de speltoestand
+2. Lijst van 100 getallen, voor de speltoestand
 
 In het begin van het spel zijn deze allemaal ingevuld, waarbij de spel toestand
 bestaat uit 100 nullen ('0')
@@ -120,11 +119,7 @@ Ondersteunde instructie typen:
 Tekst elementen beginnen niet met een `*` of een `&`. Deze kunnen gewoon tekst
 bevatten. 1 element tekst staat voor 1 regel op het scherm.
 
-Bepaalde karakter reeksen worden in tekst automatisch vervangen:
-
 - `$n` wordt vervangen door de naam van de speler
-- `$H`/`$h` wordt vervangen door respectievelijk Hij/Zij of hij/zij
-- `$Z`/`$z` wordt vervangen door respectievelijk Zijn/Haar of zijn/haar
 
 Waardes uit de speltoestand in tekst gebruiken:
 
