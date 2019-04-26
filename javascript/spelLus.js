@@ -1,5 +1,6 @@
 const { sleep, cls, color, print } = require("./basic");
 const { voerActieUit, toegestaan } = require("./spelToestand");
+const { bewaarSpel, laadSpel, basisNaam } = require("./bewaarSpel");
 const leesAvontuur = require("./leesAvontuur");
 const stdin = process.stdin;
 
@@ -22,8 +23,7 @@ const input = prompt =>
 let skip = false;
 let keyPressed = null;
 let naam = "";
-
-const spelToestand = Array(100).fill(0);
+let spelToestand = Array(100).fill(0);
 
 const interpoleer = zin =>
   zin
@@ -89,6 +89,8 @@ const keypress = () =>
     }, 100);
   });
 
+const toetsen = "123456789abcdefghijklmnop";
+
 const toonActies = async actieData => {
   const acties = [];
   let verteller = 2;
@@ -97,29 +99,40 @@ const toonActies = async actieData => {
   for (let index = 0; index < actieData.length; index++) {
     bewering = actieData[index];
     if (toegestaan(spelToestand, bewering)) {
-      acties.push({ naam: actieData[index + 1], actie: actieData[index + 2] });
+      acties.push({
+        naam: actieData[index + 1],
+        actie: actieData[index + 2],
+        toets: toetsen[acties.length]
+      });
     }
     index += 2;
   }
 
   color(7);
-  acties.forEach((actie, i) => console.log(`${i + 1} ) ${actie.naam}`));
+  for (const actie of acties) {
+    await sleep(skip ? 0 : 0.2);
+    console.log(`${actie.toets} ) ${actie.naam}`);
+  }
   if (acties.length === 0) {
     return false;
   }
 
   let toets;
-  let keuze;
+  let gekozen = null;
   do {
     toets = await keypress();
-    keuze = toets && /\d/.test(toets) && parseInt(toets, 10);
-  } while (!(keuze > 0 && keuze <= acties.length));
+    gekozen = acties.find(actie => actie.toets === toets);
+  } while (!gekozen);
 
-  voerActieUit(spelToestand, acties[keuze - 1].actie);
+  voerActieUit(spelToestand, gekozen.actie);
   return true;
 };
 
 const spelLus = async bestandsNaam => {
+  const data = await leesAvontuur(bestandsNaam);
+  const opslagBestandsNaam = `.${basisNaam(bestandsNaam)}.opslag`;
+  const eerderSpel = await laadSpel(opslagBestandsNaam);
+
   stdin.resume();
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
@@ -139,18 +152,25 @@ const spelLus = async bestandsNaam => {
     keyPressed = key;
   });
 
-  cls();
-  print("Hallo avonturier!\n");
-  print("\n");
-  naam = await input("Wat is je naam");
-
-  const data = await leesAvontuur(bestandsNaam);
+  if (eerderSpel) {
+    naam = eerderSpel.naam;
+    spelToestand = eerderSpel.spelToestand;
+  } else {
+    cls();
+    print("Hallo avonturier!\n");
+    print("\n");
+    naam = await input("Wat is je naam");
+    await bewaarSpel(opslagBestandsNaam, { naam, spelToestand });
+  }
 
   let heeftActies = true;
 
   do {
     await toonGebeurtenis(data.schermData);
     heeftActies = await toonActies(data.actieData);
+    if (heeftActies) {
+      await bewaarSpel(opslagBestandsNaam, { naam, spelToestand });
+    }
   } while (heeftActies);
   process.exit(0);
 };

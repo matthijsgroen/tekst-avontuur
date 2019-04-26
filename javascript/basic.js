@@ -5,22 +5,22 @@ const sleep = duration =>
 const color = index =>
   process.stdout.write(
     [
-      "\u001b[30m", // 0 = black
-      "\u001b[34m", // 1 = blue
-      "\u001b[32m", // 2 = green
-      "\u001b[36m", // 3 = cyan
-      "\u001b[31m", // 4 = red
+      "\u001b[30m", // 0 = zwart
+      "\u001b[34m", // 1 = blauw
+      "\u001b[32m", // 2 = groen
+      "\u001b[36m", // 3 = cyaan
+      "\u001b[31m", // 4 = rood
       "\u001b[35m", // 5 = magenta
-      "\u001b[33m", // 6 = yellow
-      "\u001b[37m", // 7 = white
-      "\u001b[90m", // 8 = grey
-      "\u001b[94m", // 9 = bright blue
-      "\u001b[92m", // 10 = bright green
-      "\u001b[96m", // 11 = bright cyan
-      "\u001b[91m", // 12 = bright red
-      "\u001b[95m", // 13 = bright magenta
-      "\u001b[93m", // 14 = bright yellow
-      "\u001b[97m" // 15 = bright white
+      "\u001b[38;5;202m", // 6 = yellow, de DOS versie (oranje)
+      "\u001b[37m", // 7 = wit
+      "\u001b[90m", // 8 = grijs
+      "\u001b[94m", // 9 = fel blauw
+      "\u001b[92m", // 10 = fel groen
+      "\u001b[96m", // 11 = fel cyaan
+      "\u001b[91m", // 12 = fel rood
+      "\u001b[95m", // 13 = fel magenta
+      "\u001b[93m", // 14 = fel geel
+      "\u001b[97m" // 15 = fel wit
     ][index]
   );
 
