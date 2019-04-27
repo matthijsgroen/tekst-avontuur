@@ -1,3 +1,4 @@
+'$DYNAMIC
 DECLARE SUB LeesAvontuur (BestandsNaam$)
 DECLARE SUB Muteer (Plek%, Bewerking$, Waarde%)
 DECLARE SUB VoerActieUit (Actie$)
@@ -19,18 +20,18 @@ ON ERROR GOTO Foutafhandeling
 
 Fout = 0
 DIM SHARED Naam$
-DIM SHARED Geslacht%
 DIM SHARED Gebeurtenissen(100) AS INTEGER
 DIM SHARED HuidigSpel%
 DIM SHARED Overslaan%
 
-DIM SHARED TekstLengte%
-DIM SHARED StartActies%
-DIM SHARED Teksten(3000) AS STRING
+DIM SHARED TekstLengte
+DIM SHARED StartActies
+DIM SHARED Teksten(20000) AS STRING
 
 PRINT "Laden..."
 LeesAvontuur "AVONTUUR.DAT"
-CLS
+
+'CLS
 LOCATE 5, 20
 PRINT "Avontuur!"
 
@@ -95,16 +96,6 @@ INPUT "Wat is je naam"; Naam$
 IF LTRIM$(Naam$) = "" THEN
   GOTO NaamInvoer
 END IF
-PRINT "Ben je een jongen of een meisje? (j/m)"
-DO
-  Keuze$ = INKEY$
-LOOP UNTIL Keuze$ = "j" OR Keuze$ = "m"
-
-IF Keuze$ = "j" THEN
-  Geslacht% = 1
-ELSE
-  Geslacht% = 0
-END IF
 
 SpelLus:
 KEY(16) ON
@@ -114,10 +105,14 @@ DO
   CALL ToonGebeurtenis
   CALL ToonActies
 LOOP UNTIL Gebeurtenissen(0) <> 0
+ERASE Teksten
+ERASE Gebeurtenissen
 
 END
 
 Stoppen:
+ERASE Teksten
+ERASE Gebeurtenissen
 COLOR 7
 CLS
 PRINT "Bedankt voor het spelen!"
@@ -125,6 +120,7 @@ END
 
 Foutafhandeling:
   Fout = ERR
+  PRINT "ERROR"; Fout
 RESUME NEXT
 
 Opslaan:
@@ -138,46 +134,15 @@ Opslaan:
   CLOSE 1
 RETURN
 
+REM $STATIC
 FUNCTION Interpoleer$ (Zin$)
   resultaat$ = ""
 
   FOR i% = 1 TO LEN(Zin$)
     Karakter$ = MID$(Zin$, i%, 1)
     IF Karakter$ = "$" THEN
-      IF Geslacht% THEN
-        SELECT CASE MID$(Zin$, i%, 2)
-        CASE "$n"
-          resultaat$ = resultaat$ + Naam$
-        CASE "$h"
-          resultaat$ = resultaat$ + "hij"
-        CASE "$H"
-          resultaat$ = resultaat$ + "Hij"
-        CASE "$z"
-          resultaat$ = resultaat$ + "zijn"
-        CASE "$Z"
-          resultaat$ = resultaat$ + "Zijn"
-        CASE "$m"
-          resultaat$ = resultaat$ + "meneer"
-        CASE "$M"
-          resultaat$ = resultaat$ + "Meneer"
-        END SELECT
-      ELSE
-        SELECT CASE MID$(Zin$, i%, 2)
-        CASE "$n"
-          resultaat$ = resultaat$ + Naam$
-        CASE "$h"
-          resultaat$ = resultaat$ + "zij"
-        CASE "$H"
-          resultaat$ = resultaat$ + "Zij"
-        CASE "$z"
-          resultaat$ = resultaat$ + "haar"
-        CASE "$Z"
-          resultaat$ = resultaat$ + "Haar"
-        CASE "$m"
-          resultaat$ = resultaat$ + "mevrouw"
-        CASE "$M"
-          resultaat$ = resultaat$ + "Mevrouw"
-        END SELECT
+      IF MID$(Zin$, i%, 2) = "$n" THEN
+        resultaat$ = resultaat$ + Naam$
       END IF
       i% = i% + 1
     ELSEIF Karakter$ = "#" THEN
@@ -193,31 +158,20 @@ FUNCTION Interpoleer$ (Zin$)
 END FUNCTION
 
 SUB LeesAvontuur (BestandsNaam$)
-  TekstLengte% = 0
-  pb% = 0
-  pe% = 0
+  TekstLengte = 0
+  Regel = 0
 
-  OPEN BestandsNaam$ FOR INPUT AS 1
+  OPEN BestandsNaam$ FOR INPUT AS #1
   WHILE NOT EOF(1)
-    pb% = SEEK(1)
-    LINE INPUT #1, Line$
-
-    IF LEFT$(Line$, 1) = CHR$(34) THEN
-      LINE INPUT #1, Line$
-      pe% = SEEK(1)
-      SEEK #1, pb%
-      WHILE SEEK(1) < pe% - 2
-        INPUT #1, Element$
-        IF Element$ = "END" THEN
-          StartActies% = TekstLengte% + 1
-        ELSE
-          TekstLengte% = TekstLengte% + 1
-          Teksten(TekstLengte%) = Element$
-        END IF
-      WEND
+    LINE INPUT #1, Element$
+    IF Element$ = "END" THEN
+      StartActies = TekstLengte + 1
+    ELSE
+      TekstLengte = TekstLengte + 1
+      Teksten(TekstLengte) = Element$
     END IF
   WEND
-
+  PRINT Regel%; TekstLengte%; StartActies%
   CLOSE 1
 END SUB
 
