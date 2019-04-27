@@ -41,6 +41,7 @@ styles[] {
       }
 
       breng_dochter_naar_bakker:event {
+         style           = finished
          depends_on []   = trek_tand_van_draak;
       }
 
@@ -270,10 +271,12 @@ styles[] {
       }
 
       snij_touw_van_lift:event {
+         style           = finished
          depends_on []   = koop_zwaard_voor_99_bij_wapensmid, knoop_touw_aan_molensteen, knoop_touw_aan_tand, hijs_lift_met_molensteen;
       }
 
       trek_tand_van_draak:event {
+         style           = finished
          depends_on []   = snij_touw_van_lift;
       }
 

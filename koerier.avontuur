@@ -49,7 +49,7 @@
 ' 28 = Edelsteen.
 ' 29 = paard. 1 = kennis, 2 = gevonden, 3 = hoeven, 4 = wagen
 ' 30 = locatie paard
-' 31 = touw 0 = niet, 1 = tas, 2 = draak, 3 = lift, 4 = beide
+' 31 = touw 0 = niet, 1 = tas, 2 = draak, 3 = lift, 4 = beide, 5 = klaar
 ' 32 = stof
 ' 33 = graan 0=boerderij 1=graan-op-wagen 2=meel-op-wagen 3=klaar
 ' 34 = schat 1=bestaan, 2-4 clues 5=gestart, 6=mislukt, 7=gelukt, 8 = ketting
@@ -61,8 +61,10 @@
 ' 40 = plant ronde bladeren
 ' 41 = plant puntige bladeren
 ' 42 = lichtblauwe paddenstoelen 0=onbekend, 1=benodigd, 2=gevonden
-' 43 = status lift. 0 = boven, 1 = beneden
+' 43 = status lift. 0 = boven, 1 = beneden, 2 = kapot
 ' 44 = molensteen 0 = niet, 1 = nodig, 2 = op wagen, 3 = intentie tillen, 4 = op lift
+' 45 = Tand 0=niet, 1 = getrokken
+' 46 = status bloem 0 = toren, 1 = bakkerij
 ' 0. Proloog
 "0=0", "*c2"
 "Hoi $n, welkom bij Avontuur!"
@@ -237,8 +239,7 @@
 "1=16;3=5;19=2;29>2", "*c2", "Teun brengt je snel naar de bakkerij."
 "Je knoopt hem vast, en loopt de winkel binnen", "", "&3=0;30=16;19=1"
 
-"1=15;3=6;19=1;29>1", "*c2", "Je knoopt Teun vast aan een paaltje bij de smederij,"
-"en loopt naar binnen.", "", "&3=0;30=15"
+"1=15;3=6;19=1;29>1", "*c2", "Je knoopt Teun vast aan een paaltje bij de smederij, en loopt naar binnen.", "", "&3=0;30=15"
 "1=15;3=6;19=0", "*c2", "Je loopt de grote smederij binnen.", "", "&3=0"
 "1=15;3=6;19=2;29>2", "*c2", "Teun brengt je snel naar de smederij."
 "Je knoopt hem vast, en loopt naar binnen.", "", "&3=0;30=15;19=1"
@@ -426,8 +427,18 @@
 "&4=1"
 
 '== 6. Dorp
+"1=6;2=0;4=0;45=0", "*c2"
+"Je bent in het dorp. Er hangt een rare stilte.", "", "&"
+
+"1=6;2=0;4=0;45>0", "*c2"
+"Je bent in het dorp. Waar het eerst heel stil en somber was, heerst er nu een"
+"feeststemming. Mensen hebben hun vlaggen uitgehangen."
+"Een bewoner die je niet kent komt op je af.", "", "*c10"
+"Bewoner: 'Hoera voor $n! De grote draken doder!"
+"  we hoorden de brul wel! Je bent een held!'"
+"", "&"
+
 "1=6;2=0;4=0", "*c2"
-"Je bent in het dorp. Er hangt een rare stilte.", ""
 "Aan de linkerkant van de weg zit een bakker."
 "Aan de rechterkant van de weg een grote smederij.", ""
 "De weg loopt verder naar het zuiden, richting een rivier."
@@ -1009,8 +1020,12 @@
 "Samen tillen jullie de versleten molensteen op de wagen.", "&44=2;4=0"
 
 '== 15. Smederij
-"1=15;15=1;2=0;4=0", "*c2", "Je bent in de smederij", "", "*c13", "Lucy: 'Hey welkom!'"
+"1=15;15=1;2=0;4=0;45=0", "*c2", "Je bent in de smederij", "", "*c13", "Lucy: 'Hey welkom!'"
 "*c11", "Luuk: 'Wat kunnen we voor je doen?'"
+"&15=1"
+
+"1=15;15=1;2=0;4=0;45>0", "*c2", "Je bent in de smederij", "", "*c13", "Lucy: 'Hey welkom drakendoder!'"
+"*c11", "Luuk: 'Wat kunnen we voor onze held doen vandaag?'"
 "&15=1"
 
 "1=15;15=0;2=0;4=0", "*c13", "Lucy: 'Hey welkom nieuwe klant!'"
@@ -1129,9 +1144,17 @@
 "&4=0;22+15;28=2;34=8"
 
 '== 16. Bakkerij
-"1=16;16=1;2=0;4=0", "*c2"
+"1=16;16=1;2=0;4=0;45=0", "*c2"
 "Je staat in de bakkerij. De bakker ziet er verdrietig uit."
 "Er hangt een geur van heerlijke verse broodjes en taarten", "&"
+
+"1=16;16=1;2=0;4=0;46=1", "*c2"
+"Je staat in de bakkerij. Gerst, de bakker, kijkt ontzettend blij."
+"Er hangt een geur van heerlijke verse broodjes en taarten."
+"De dochter van de bakker, Bloem, is er ook."
+"", "*c9", "Gerst: 'Nog super bedankt voor het doden van de draak en het redden van mijn"
+"  dochter! Ik dacht dat ik haar nooit meer zou zien!'"
+"", "*c2", "Bloem geeft je een knipoog.", "&"
 
 "1=16;16=1;4=1;2=0;26=0", "*c3"
 "$n: 'Hallo? Is alles goed met u?'", "", "*c2"
@@ -1289,7 +1312,8 @@
 "*c13", "Bloem: 'Mij redden? Waarom? Ik hoef niet gered te worden. Ik ben hier zelf naar"
 "  toe gegaan. We moeten de draak redden!'", "&"
 
-"1=17;2=0;17=2;4=1", "*c13", "Bloem: 'Hoi $n, kom je me helpen met de kiespijn?'", "&20=0"
+"1=17;2=0;17=2;4=1;45=0", "*c13", "Bloem: 'Hoi $n, kom je me helpen met de kiespijn?'", "&20=0"
+"1=17;2=0;17=2;4=1;45!0", "*c13", "Bloem: 'Woohoo dat was ongeloofelijk!'", "&20=0"
 
 "1=17;2=0;17=1;4=2", "*c3", "$n: 'Kijk uit! Er zit daar een draak!'"
 "", "*c13", "Bloem: 'Ha dat weet ik ook wel, ik ben zelf naar hem toegegaan. Hij is echt niet"
@@ -1308,9 +1332,12 @@
 "&17=2;4=1"
 
 "1=17;2=0;17=2;4=0;6=0", "*c2", "Je staat bovenin de toren. Je ziet een grote opening in de buitenmuur met een"
-"lift."
-"De dochter van de bakker, Bloem, is hier.", "Een grote draak ligt op de grond te brullen van de pijn."
+"lift.", "&"
+"1=17;2=0;17=2;4=0;6=0;46=0", "De dochter van de bakker, Bloem, is hier.", "&"
+"1=17;2=0;17=2;4=0;6=0;45=0", "Een grote draak ligt op de grond te brullen van de pijn."
 "", "*c12", "<GGGrrrroaaaaaarrrrgh!>", "&20=1"
+"1=17;2=0;17=2;4=0;6=0;45!0", "Een grote draak ligt op de grond te suffen.", "&"
+
 "1=17;2=0;17=2;4=0;6=0;31=2", "", "*c2", "Een touw loopt van de tand van de draak naar het midden van de kamer.", "&"
 "1=17;2=0;17=2;4=0;6=0;31=3", "", "*c2", "Een touw loopt van de molensteen naar het midden van de kamer.", "&"
 "1=17;2=0;17=2;4=0;6=0;31=4", "", "*c2", "Een touw loopt van de molensteen naar de zere tand van de draak.", "&"
@@ -1325,29 +1352,40 @@
 "Bloem: 'Kan jij een zware steen regelen?'"
 "&4=1"
 
-"1=17;2=0;17=2;4=3", "*c3", "$n: 'Je moet meekomen, je vader is hardstikke ongerust!'"
+"1=17;2=0;17=2;4=3;45=0", "*c3", "$n: 'Je moet meekomen, je vader is hardstikke ongerust!'"
 "", "*c13", "Bloem: 'Mijn vader? Gerst kan alleen goed bakken en geeft alleen om geld. Ik"
 "  blijf hier totdat ik de draak heb kunnen helpen. Hij had toch ook zelf hier"
 "  naar toe kunnen komen? Daarom heeft hij jou waarschijnlijk gestuurd, omdat hij"
 "  niet een echte ridder kon betalen'", "&4=1"
+
+"1=17;2=0;17=2;4=3;45!0", "*c3", "$n: 'Je moet meekomen, je vader is hardstikke ongerust!'"
+"", "*c13", "Bloem: 'Ja, je hebt gelijk. Die tand trekken was echt super! Mijn carriere voor"
+"  tandarts maakt zo wel een geweldige start, denk je niet?'"
+"", "Bloem: 'Nou dan ga ik nu wel naar de bakkerij. Zie ik je later misschien daar"
+"  weer?'", "", "*c2", "Bloem geeft je jou en de draak een  knuffel en gaat de toren uit richting"
+"de bakkerij.", "&4=0;46=1;20=1"
 
 "1=17;2=0;17=2;4=4", "*c3", "$n: 'Wat weet je van deze draak?'"
 "", "*c13", "Bloem: 'Ow best wel wat eigenlijk. Deze draak is een Dins.'"
 "", "*c3", "$n: 'Een Dins?'", "", "*c13", "Bloem: 'Ja, een Dins... Hij kan vliegen, vuur spuwen en is gek op appels."
 "  Waarschijnlijk heeft hij appels proberen te eten bij de boer, en is hij toen"
 "  aangevallen'", "", "*c3", "$n: 'Aangevallen?? Deze draak?'", "", "&"
-"1=17;2=0;17=2;4=4;30=18", "*c13", "Bloem: 'Ja, en de dader staat beneden. Er zat een hoefijzer in de tand van de"
+"1=17;2=0;17=2;4=4;30=18;45=0", "*c13", "Bloem: 'Ja, en de dader staat beneden. Er zat een hoefijzer in de tand van de"
 "  Dins. Hij is door jouw paard getrapt. De hoefijzer en de tand moeten eruit.'", "&4=1"
-"1=17;2=0;17=2;4=4;30!18", "*c13", "Bloem: 'Ja, en de dader is een paard. Er zat een hoefijzer in de tand van de"
+"1=17;2=0;17=2;4=4;30!18;45=0", "*c13", "Bloem: 'Ja, en de dader is een paard. Er zat een hoefijzer in de tand van de"
 "  Dins. De hoefijzer en de tand moeten eruit.'", "&4=1"
+"1=17;2=0;17=2;4=4;45!0", "*c13", "Bloem: 'Ja, maar gelukkig hebben we de tand er nu uitgetrokken!'", "&4=1"
 
-"1=17;2=0;17=2;4=10", "*c2", "Je loopt voorzictig naar de draak. Hij ziet er verdrietig uit. Dikke tranen"
+"1=17;2=0;17=2;4=10;45=1", "*c2", "Je loopt naar de draak. Hij ziet er tevreden uit."
+"", "*c14", "<Prrrrr.......>", "&6=1"
+
+"1=17;2=0;17=2;4=10;45=0", "*c2", "Je loopt voorzictig naar de draak. Hij ziet er verdrietig uit. Dikke tranen"
 "staan op zijn wangen.", "", "*c12", "<GGgrrroaaaarrrrggh!>", "", "*c2"
 "De draak ligt met zijn mond open. Je ziet een kapotte tand waar een stuk van"
 "een hoefijzer in steekt. Dat moet ook wel erg veel pijn doen."
 "&6=1"
 
-"1=17;2=0;17=2;4=0;6=1", "*c2", "Je staat bij draak. Hij ziet er verdrietig uit. Dikke tranen"
+"1=17;2=0;17=2;4=0;6=1;45=0", "*c2", "Je staat bij draak. Hij ziet er verdrietig uit. Dikke tranen"
 "staan op zijn wangen.", "", "*c12", "<GGgrrroaaaarrrrggh!>", "", "*c2"
 "De draak ligt met zijn mond open. Je ziet een kapotte tand waar een stuk van"
 "een hoefijzer in steekt. Dat moet ook wel erg veel pijn doen."
@@ -1378,7 +1416,8 @@
 "lift.", "&6=2;4=0"
 "1=17;2=0;44!3;17=2;4=0;6=2;43=0", "Op dit moment is de lift boven. Er is een hendel om de lift te bedienen.", "&"
 "1=17;2=0;44!3;17=2;4=0;6=2;43=1", "Op dit moment is de lift beneden. Er is een hendel om de lift te bedienen.", "&"
-"1=17;2=0;44!3;17=2;4=0;6=2;44=4", "Een zware molensteen ligt op de lift.", "&"
+"1=17;2=0;44!3;17=2;4=0;6=2;44=4;43!2", "Een zware molensteen ligt op de lift.", "&"
+"1=17;2=0;44!3;17=2;4=0;6=2;43=2", "De lift is kapot. Beneden liggen allerlei stukken verspreid op de grond.", "&"
 "1=17;2=0;44!3;17=2;4=0;6=2;44=4;31=3", "Een touw loopt van de molensteen de kamer in.", "&"
 "1=17;2=0;44!3;17=2;4=0;6=2;44=4;31=4", "Een touw loopt van de molensteen naar de zere tand van de draak.", "&"
 "1=17;2=0;44!3;17=2;4=0;6=2;19=1;29=3", "", "Als je naar beneden kijkt, zie je Teun staan.", "&"
@@ -1411,11 +1450,21 @@
 "Je knoopt het touw stevig vast aan de molensteen. De lift kraakt een beetje"
 "onder het zware gewicht van de steen.", "&31=4;6=2"
 
+"1=17;2=0;17=2;4=15;6=2;44=4;27=2", "Je pakt je zwaard en in een vloeiende beweging hak je het dikke touw van de"
+"lift door. Met een hoop kabaal stort de lift en de molensteen naar beneden."
+"Het touw aan de molensteen staat meteen strak. Met een harde ruk vliegt de"
+"tand van de draak door het raam naar buiten.", "", "*c12"
+"<Gggrrrrrooaaaaaaaaaaaargggggggggghhh!!!!!!!>", "", "*c2"
+"De draak geeft een enorme brul, die in de wijde omgeving te horen is."
+"Dan ineens is het stil."
+"&43=2;31=5;45=1"
+
 ' == 18. Onderkant toren
 "1=18;18=0;2=0;4=0;44!3", "*c2", "Je bent in het woud, aan de voet van de toren."
 "Er is een grote deur de toren in. Naast de toren is een lift.", "&"
 "1=18;18=0;2=0;4=0;43=0;44!3", "Als je omhoog kijkt, zie je het platform van de lift bovenaan de toren.", "&"
-"1=18;18=0;2=0;4=0;43=1;44!3", "Het platform van de lift is beneden", "&"
+"1=18;18=0;2=0;4=0;43=1;44!3", "Het platform van de lift is beneden.", "&"
+"1=18;18=0;2=0;4=0;43=2", "De lift ligt helemaal in puin.", "&"
 "1=18;18=0;2=0;4=0;44!3","Er loopt een pad vanaf de toren het woud in.", "&"
 
 "1=18;18=0;2=0;4=0;44=3", "*c2", "Je leid Teun met de wagen richting de lift. Bloem komt net met de lift naar"
@@ -1647,7 +1696,7 @@
 "2=0;1=15;4=0;26=3;28=1;34<7", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=4"
 "2=0;1=15;4=0;26=3;28=1;34=7", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=7"
 "2=0;1=15;4=0;26>0;27<2", "Zeg: 'Kunnen jullie een wapen maken?'", "4=6"
-"2=0;1=15;4=0", "Zeg: 'Wat weten jullie van het monster in het woud?'", "4=10"
+"2=0;1=15;4=0;17<2", "Zeg: 'Wat weten jullie van het monster in het woud?'", "4=10"
 "2=0;1=15;4=0", "Kijk rond in smederij", "4=5"
 "2=0;1=15;4=0", "Verlaat de smederij", "1=6;3=6;4=0"
 
@@ -1693,13 +1742,13 @@
 "2=0;1=17;17=1;4>0;4<4", "Zeg: 'De draak moet gered worden?'", "4=4"
 
 "2=0;1=17;17=2;4=0;6=0", "Ga naar de lift", "4=6"
-"2=0;1=17;17=2;4=0;6=0", "Praat met Bloem", "4=1"
+"2=0;1=17;17=2;4=0;6=0;46=0", "Praat met Bloem", "4=1"
 "2=0;1=17;17=2;4=0;6=0", "Ga naar de draak", "4=10"
 "2=0;1=17;17=2;4=0;6=0;31=3", "Knoop touw aan tand van de draak", "4=13"
 "2=0;1=17;17=2;4=0;6=0;31=2;44=4", "Knoop touw aan molensteen", "4=14"
 "2=0;1=17;17=2;4=0;6=0", "Ga met de trap naar beneden", "1=18;3=5"
 
-"2=0;1=17;17=2;4=1", "Zeg: 'Hoe kan ik je helpen?'", "4=2"
+"2=0;1=17;17=2;4=1;45=0", "Zeg: 'Hoe kan ik je helpen?'", "4=2"
 "2=0;1=17;17=2;4=1", "Zeg: 'Je moet meekomen, je vader is hardstikke ongerust!'", "4=3"
 "2=0;1=17;17=2;4=1", "Zeg: 'Wat weet je van deze draak?'", "4=4"
 "2=0;1=17;17=2;4=1;30=18;44=2;29=4", "Zeg: 'Zou je me kunnen helpen uitladen?'", "4=8"
@@ -1708,6 +1757,7 @@
 "2=0;1=17;17=2;6=2;44!3;43=0;44!4", "Ga met de lift naar beneden", "1=18;3=7;43=1;4=0;6=0"
 "2=0;1=17;17=2;6=2;44!3;43=0;44=4", "Ga met de lift naar beneden", "4=9"
 "2=0;1=17;17=2;6=2;44!3;43=1", "Breng lift omhoog", "4=7"
+"2=0;1=17;17=2;6=2;44=4;31=4;27=2", "Snij het touw van de lift door", "4=15"
 "2=0;1=17;17=2;6=2", "Loop terug de kamer in", "4=0;6=0"
 
 "2=0;1=17;17=2;6=1", "Loop terug de kamer in", "4=0;6=0"
@@ -1718,6 +1768,7 @@
 "2=0;1=18;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=18;4=0;19=1;29=4;44=2", "Til molensteen op de lift", "4=1"
 "2=0;1=18;4=0", "Ga de toren in", "1=17;3=5"
+'"2=0;1=18;4=0;43=3;45=1;26=4", "Bekijk het puin van de lift", "4=2"
 "2=0;1=18;4=0", "Ga het woud in", "1=7;3=5"
 
 ' Generale inventory acties
