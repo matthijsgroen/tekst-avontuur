@@ -24,7 +24,7 @@
 ' 3 = Richting van reizen (oorsprong)
 ' 4 = Actie van speler
 ' 5 = Tijdelijke lokatie teller
-
+' 6 = sublocatie
 ' 7 = status woud
 ' 9 = Schattenjacht
 ' 10 = Lokatie status Proloog
@@ -49,7 +49,7 @@
 ' 28 = Edelsteen.
 ' 29 = paard. 1 = kennis, 2 = gevonden, 3 = hoeven, 4 = wagen
 ' 30 = locatie paard
-' 31 = touw
+' 31 = touw 0 = niet, 1 = tas, 2 = draak, 3 = lift, 4 = beide
 ' 32 = stof
 ' 33 = graan 0=boerderij 1=graan-op-wagen 2=meel-op-wagen 3=klaar
 ' 34 = schat 1=bestaan, 2-4 clues 5=gestart, 6=mislukt, 7=gelukt, 8 = ketting
@@ -1307,10 +1307,13 @@
 "  vreselijke kiespijn. Zijn kies moet getrokken worden, maar het lukt me niet'"
 "&17=2;4=1"
 
-"1=17;2=0;17=2;4=0", "*c2", "Je staat bovenin de toren. Je ziet een grote opening in de buitenmuur met een"
+"1=17;2=0;17=2;4=0;6=0", "*c2", "Je staat bovenin de toren. Je ziet een grote opening in de buitenmuur met een"
 "lift."
 "De dochter van de bakker, Bloem, is hier.", "Een grote draak ligt op de grond te brullen van de pijn."
 "", "*c12", "<GGGrrrroaaaaaarrrrgh!>", "&20=1"
+"1=17;2=0;17=2;4=0;6=0;31=2", "", "*c2", "Een touw loopt van de tand van de draak naar het midden van de kamer.", "&"
+"1=17;2=0;17=2;4=0;6=0;31=3", "", "*c2", "Een touw loopt van de molensteen naar het midden van de kamer.", "&"
+"1=17;2=0;17=2;4=0;6=0;31=4", "", "*c2", "Een touw loopt van de molensteen naar de zere tand van de draak.", "&"
 
 "1=17;2=0;17=2;4=2", "*c3", "$n: 'Hoe kan ik je helpen?'"
 "", "*c13", "Bloem: 'We moeten iets bedenken om zijn tand eruit te krijgen. Ik studeer voor"
@@ -1338,8 +1341,22 @@
 "1=17;2=0;17=2;4=4;30!18", "*c13", "Bloem: 'Ja, en de dader is een paard. Er zat een hoefijzer in de tand van de"
 "  Dins. De hoefijzer en de tand moeten eruit.'", "&4=1"
 
+"1=17;2=0;17=2;4=10", "*c2", "Je loopt voorzictig naar de draak. Hij ziet er verdrietig uit. Dikke tranen"
+"staan op zijn wangen.", "", "*c12", "<GGgrrroaaaarrrrggh!>", "", "*c2"
+"De draak ligt met zijn mond open. Je ziet een kapotte tand waar een stuk van"
+"een hoefijzer in steekt. Dat moet ook wel erg veel pijn doen."
+"&6=1"
+
+"1=17;2=0;17=2;4=0;6=1", "*c2", "Je staat bij draak. Hij ziet er verdrietig uit. Dikke tranen"
+"staan op zijn wangen.", "", "*c12", "<GGgrrroaaaarrrrggh!>", "", "*c2"
+"De draak ligt met zijn mond open. Je ziet een kapotte tand waar een stuk van"
+"een hoefijzer in steekt. Dat moet ook wel erg veel pijn doen."
+"&6=1"
+"1=17;2=0;17=2;6=1;31=4", "*c2", "Een touw loopt van de tand van de draak naar de molensteen op de lift.", "&"
+"1=17;2=0;17=2;6=1;31=2", "*c2", "Een touw loopt van de tand van de draak de kamer in", "&"
+
 "1=17;2=0;17=2;4=5", "*c3", "$n: 'Ik ga kijken wat ik kan doen'"
-"", "*c13", "Bloem: 'Ok'", "", "&4=0;20=1"
+"", "*c13", "Bloem: 'Ok'", "&4=0;20=1"
 
 "1=17;2=0;17=2;4=8", "*c3", "$n: 'Zou je me kunnen helpen uitladen?'"
 "", "*c13", "Bloem: 'Tuurlijk, wat heb je meegenomen?'", "", "*c3"
@@ -1351,15 +1368,21 @@
 "1=17;2=0;44=3;17=2;4=6", "*c3", "$n: 'Bloem gaat zo met de lift naar beneden."
 "  Ik kan maar beter de trap nemen'", "&"
 
-"1=17;2=0;44!3;17=2;4=6", "*c2", "Je loopt naar de grote opening bovenin de toren. Dit moet zijn waar de draak"
+"1=17;2=0;44!3;17=2;4=0;6=2", "*c2", "Je staat bij de grote opening bovenin de toren. Dit moet zijn waar de draak"
 "binnen en naar buiten kan vliegen. Je kan ver over het woud kijken. In de verte"
 "kan je zelfs de molen op een heuvel zien. Aan de buitenkant van de toren is een"
 "lift.", "&"
-"1=17;2=0;44!3;17=2;4=6;43=0", "Op dit moment is de lift boven. Er is een hendel om de lift te bedienen.", "&"
-"1=17;2=0;44!3;17=2;4=6;43=1", "Op dit moment is de lift beneden. Er is een hendel om de lift te bedienen.", "&"
-"1=17;2=0;44!3;17=2;4=6;44=4", "Een zwaren molensteen ligt op de lift.", "&"
-"1=17;2=0;44!3;17=2;4=6;19=1;29=3", "", "Als je naar beneden kijkt, zie je Teun staan.", "&"
-"1=17;2=0;44!3;17=2;4=6;19=1;29=4", "", "Als je naar beneden kijkt, zie je Teun met de wagen staan.", "&"
+"1=17;2=0;44!3;17=2;4=6", "*c2", "Je loopt naar de grote opening bovenin de toren. Dit moet zijn waar de draak"
+"binnen en naar buiten kan vliegen. Je kan ver over het woud kijken. In de verte"
+"kan je zelfs de molen op een heuvel zien. Aan de buitenkant van de toren is een"
+"lift.", "&6=2;4=0"
+"1=17;2=0;44!3;17=2;4=0;6=2;43=0", "Op dit moment is de lift boven. Er is een hendel om de lift te bedienen.", "&"
+"1=17;2=0;44!3;17=2;4=0;6=2;43=1", "Op dit moment is de lift beneden. Er is een hendel om de lift te bedienen.", "&"
+"1=17;2=0;44!3;17=2;4=0;6=2;44=4", "Een zware molensteen ligt op de lift.", "&"
+"1=17;2=0;44!3;17=2;4=0;6=2;44=4;31=3", "Een touw loopt van de molensteen de kamer in.", "&"
+"1=17;2=0;44!3;17=2;4=0;6=2;44=4;31=4", "Een touw loopt van de molensteen naar de zere tand van de draak.", "&"
+"1=17;2=0;44!3;17=2;4=0;6=2;19=1;29=3", "", "Als je naar beneden kijkt, zie je Teun staan.", "&"
+"1=17;2=0;44!3;17=2;4=0;6=2;19=1;29=4", "", "Als je naar beneden kijkt, zie je Teun met de wagen staan.", "&"
 
 "1=17;2=0;44=4;17=2;4=9", "*c3", "$n: 'Het touw staat zo onder spanning, ik denk niet dat het"
 "  verstandig is als ik er ook op ga staan, straks val ik nog naar beneden.'", "&4=6"
@@ -1370,6 +1393,23 @@
 "onder spanning.", "&"
 "1=17;2=0;17=2;4=7;44!4", "de toren. De lift schuift langzaam omhoog.", "&"
 "1=17;2=0;17=2;4=7","&43=0;4=6"
+
+"1=17;2=0;17=2;4=12;6=2", "Je knoopt het touw stevig vast aan de molensteen."
+"De andere kant van het touw werp je de kamer in"
+"&31=3"
+
+"1=17;2=0;17=2;4=11;6=1", "Je knoopt het touw voorzichtig maar stevig vast aan de tand van de draak."
+"De andere kant van het touw werp je de kamer in"
+"&31=2"
+
+"1=17;2=0;17=2;4=13;6=0", "Je loopt met de andere kant van touw voorzichtig naar de draak"
+"Hij heeft zijn ogen dicht van de pijn, dus je kan rustig dichterbij sluipen."
+"", "Eenmaal bij de tand knoop je voorzichtig maar wel stevig het touw om de zere"
+"tand van de draak.", "&31=4;6=1"
+
+"1=17;2=0;17=2;4=14;6=0", "Je loopt met de andere kant van touw voorzichtig naar de lift."
+"Je knoopt het touw stevig vast aan de molensteen. De lift kraakt een beetje"
+"onder het zware gewicht van de steen.", "&31=4;6=2"
 
 ' == 18. Onderkant toren
 "1=18;18=0;2=0;4=0;44!3", "*c2", "Je bent in het woud, aan de voet van de toren."
@@ -1652,11 +1692,12 @@
 "2=0;1=17;17=1;4=0", "Zeg: 'Ik kom je redden!'", "4=3"
 "2=0;1=17;17=1;4>0;4<4", "Zeg: 'De draak moet gered worden?'", "4=4"
 
-"2=0;1=17;17=2;4=0", "Ga naar de lift", "4=6"
-"2=0;1=17;17=2;4=0", "Praat met Bloem", "4=1"
-' TEDOEN:
-'"2=0;1=17;17=2;4=0", "Ga naar de draak", "4=10"
-"2=0;1=17;17=2;4=0", "Ga met de trap naar beneden", "1=18;3=5"
+"2=0;1=17;17=2;4=0;6=0", "Ga naar de lift", "4=6"
+"2=0;1=17;17=2;4=0;6=0", "Praat met Bloem", "4=1"
+"2=0;1=17;17=2;4=0;6=0", "Ga naar de draak", "4=10"
+"2=0;1=17;17=2;4=0;6=0;31=3", "Knoop touw aan tand van de draak", "4=13"
+"2=0;1=17;17=2;4=0;6=0;31=2;44=4", "Knoop touw aan molensteen", "4=14"
+"2=0;1=17;17=2;4=0;6=0", "Ga met de trap naar beneden", "1=18;3=5"
 
 "2=0;1=17;17=2;4=1", "Zeg: 'Hoe kan ik je helpen?'", "4=2"
 "2=0;1=17;17=2;4=1", "Zeg: 'Je moet meekomen, je vader is hardstikke ongerust!'", "4=3"
@@ -1664,10 +1705,14 @@
 "2=0;1=17;17=2;4=1;30=18;44=2;29=4", "Zeg: 'Zou je me kunnen helpen uitladen?'", "4=8"
 "2=0;1=17;17=2;4=1", "Zeg: 'Ik ga kijken wat ik kan doen'", "4=5"
 
-"2=0;1=17;17=2;4=6;44!3;43=0;44!4", "Ga met de lift naar beneden", "1=18;3=7;43=1;4=0"
-"2=0;1=17;17=2;4=6;44!3;43=0;44=4", "Ga met de lift naar beneden", "4=9"
-"2=0;1=17;17=2;4=6;44!3;43=1", "Breng lift omhoog", "4=7"
-"2=0;1=17;17=2;4=6", "Loop terug de kamer in", "4=0"
+"2=0;1=17;17=2;6=2;44!3;43=0;44!4", "Ga met de lift naar beneden", "1=18;3=7;43=1;4=0;6=0"
+"2=0;1=17;17=2;6=2;44!3;43=0;44=4", "Ga met de lift naar beneden", "4=9"
+"2=0;1=17;17=2;6=2;44!3;43=1", "Breng lift omhoog", "4=7"
+"2=0;1=17;17=2;6=2", "Loop terug de kamer in", "4=0;6=0"
+
+"2=0;1=17;17=2;6=1", "Loop terug de kamer in", "4=0;6=0"
+"2=1;1=17;17=2;31=1;6=1", "Knoop touw aan tand van de draak", "4=11;2=0"
+"2=1;1=17;17=2;31=1;6=2;44=4", "Knoop touw aan molensteen", "4=12;2=0"
 
 ' == 18. Onderkant toren
 "2=0;1=18;4=0;19=1;29=3", "Spring op paard", "2=2"

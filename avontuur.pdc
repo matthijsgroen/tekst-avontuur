@@ -95,10 +95,12 @@ styles[] {
       }
 
       knoop_touw_aan_molensteen:event {
+         style           = finished
          depends_on []   = pak_touw_op_boerderij, hijs_lift_met_molensteen;
       }
 
       knoop_touw_aan_tand:event {
+         style           = finished
          depends_on []   = pak_touw_op_boerderij;
       }
 
