@@ -57,7 +57,7 @@
 ' 36 = hint plant v bakker, 2=gevonden
 ' 37 = hint route v boer NNWNNOZ
 ' 38 = rune steen
-' 39 = hint 'armor heeft geen zin' -- Boer
+' 39 = hint 'harnas heeft geen zin' -- Boer
 ' 40 = plant ronde bladeren
 ' 41 = plant puntige bladeren
 ' 42 = lichtblauwe paddenstoelen 0=onbekend, 1=benodigd, 2=gevonden
@@ -77,12 +77,12 @@
 "", "*c15", "Ben je een jongen of een meisje?", "&"
 
 "1=0;10=0;4=0;0=1", "*c2", "Er was eens, lang geleden een stoere koerier..."
-"Zijn naam was $n", ""
+"Zijn naam was $n.", ""
 "Hij was altijd super snel in het bezorgen van brieven en pakketjes."
 "Dingen bezorgen was dan ook zijn lust en zijn leven.", "&"
 
 "1=0;10=0;4=0;0=2", "*c2", "Er was eens, lang geleden een stoere koerier..."
-"Haar naam was $n", ""
+"Haar naam was $n.", ""
 "Zij was altijd super snel in het bezorgen van brieven en pakketjes."
 "Dingen bezorgen was dan ook haar lust en haar leven.", "&"
 
@@ -180,7 +180,7 @@
 "1=1;3=2;19=0", "*c2", "Je wandelt naar het oosten, richting het bos.", "", "&3=0"
 "1=1;3=4;19=0", "*c2", "Je wandelt naar het westen, richting het bos.", "", "&3=0"
 "1=1;3=2;19=1;29>1", "*c2", "Je wandelt samen met Teun naar het oosten, naar het bos.", "", "&3=0;30=1"
-"1=1;3=4;19=1;29>1", "*c2", "Je wandelt samen met teun naar het westen, naar het bos.", "", "&3=0;30=1"
+"1=1;3=4;19=1;29>1", "*c2", "Je wandelt samen met Teun naar het westen, naar het bos.", "", "&3=0;30=1"
 
 "1=2;3=2;19=0", "*c2", "Je wandelt naar het oosten, richting de akkers.", "", "&3=0"
 "1=2;3=1;19=0", "*c2", "Je wandelt naar het noorden, richting de akkers.", "", "&3=0"
@@ -284,7 +284,7 @@
 "2=1;4=3;34>3", "*c2", "", "Je hebt het gevoel dat je alle informatie hebt verzameld.", "&"
 "2=1;4=3", "", "&"
 
-"2=1;4=4", "*c2", "Je bekijkt de ingredientenlijst:"
+"2=1;4=4", "*c2", "Je bekijkt de ingrediëntenlijst:"
 "*c6", "", "  Lieve $n, ik heb het volgende nodig:", ""
 "  - Plant met ronde bladeren"
 "  - Lichtblauwe paddenstoelen"
@@ -302,7 +302,7 @@
 "2=1;24=1", "*c7", "- Houweel met gebroken heft", "&"
 "2=1;24=2", "*c7", "- Gerepareerde houweel", "&"
 "2=1;25=2", "*c7", "- Koeken, vers van de bakker", "&"
-"2=1;26=4", "*c7", "- Ingredientenlijst voor medicijn", "&"
+"2=1;26=4", "*c7", "- Ingrediëntenlijst voor medicijn", "&"
 "2=1;27=2", "*c7", "- Een mooi scherp zwaard", "&"
 "2=1;28=1", "*c7", "- Een fonkelende edelsteen", "&"
 "2=1;31=1", "*c7", "- Een lang stuk touw", "&"
@@ -531,7 +531,7 @@
 "", "*c3", "$n: 'O help waar ben ik aan begonnen'", "&"
 "1=7;2=0;7=1;4=0;0=2", "", "*c2", "$n liep verder totdat ze aan de voet van de toren was.", "&"
 "1=7;2=0;7=1;4=0;0=1", "", "*c2", "$n liep verder totdat hij aan de voet van de toren was.", "&"
-"1=7;2=0;7=1;4=0;19=1;29=3", "*c3","", "$n: 'Teun, ik maak je hier vast, wacht op mij jongen'", "&"
+"1=7;2=0;7=1;4=0;19=1;29=3", "*c3","", "$n: 'Teun, ik maak je hier vast, wacht op mij jongen'", "&30=18"
 "1=7;2=0;7=1;4=0", "&1=17"
 
 '== 8. Rivier
@@ -1257,11 +1257,11 @@
 "&16=1;4=0;25=2;22-2"
 
 ' == 17. Toren
-"1=17;2=0;17=0;4=0", "*c2", "", "Aan de rechterkant van de toren is een houten lift constructie"
-"aan de voorkant van de toren is een grote zware deur.", "&20=0"
+"1=17;2=0;17=0;4=0", "*c2", "", "Aan de rechterkant van de toren is een houten lift constructie."
+"Aan de voorkant van de toren is een grote zware deur.", "&20=0"
 
 "1=17;2=0;17=0;4=1", "*c2", "Je loopt naar de lift constructie. Het ziet er naar uit dat het plateau van de"
-"lift boven is. Je kan er vanaf deze kan niet op. Ook zie je geen manier om hem"
+"lift boven is. Je kan er vanaf deze kant niet op. Ook zie je geen manier om hem"
 "vanaf beneden te laten zakken.", "&"
 
 "1=17;2=0;17=0;4=2", "*c2", "Je duwt tegen de deur. Hij piept en kraakt vreselijk. Er komt beweging in."
@@ -1274,7 +1274,7 @@
 
 "1=17;2=0;17=0;4=3", "*c2", "Je trilt van angst. Je hebt geen idee wat je aan gaat treffen. Het monster"
 "klinkt niet vriendelijk. Je pakt je zwaard stevig vast en je sluipt langzaam"
-"trede voor trede de trap op, en tuurt omhoog om te zien of je wat kan zien."
+"trede voor trede de trap op. Je tuurt omhoog om iets zien."
 "Af en toe passeer je een raam waardoor een bundel licht naar binnen komt, zodat"
 "het niet helemaal donker is. Bovenaan de trap is een deur."
 "*s2", "*c12", "", "<GGGRROOAAAAARRGGGH!!!!>", "", "*c2"
@@ -1294,7 +1294,7 @@
 "", "*c13", "Bloem: 'He! Wie ben jij? En wat doe jij hier? Doe dat zwaard eens snel weg!"
 "  Straks bezeer je nog iemand!'", "", "*c2", "Je staat perplex", "", "*c13"
 "Bloem: 'Ja jij! Wat kom je doen? Het is al moeilijk genoeg zo!'"
-"", "*c2", "Moeilijk genoeg? waar heeft ze het over?", "Je bergt je zwaard maar op."
+"", "*c2", "Moeilijk genoeg? Waar heeft ze het over?", "Je bergt je zwaard maar op."
 "&17=1;4=0;5=0;7=2"
 
 "1=17;2=0;17=0;4=4", "*c2", "Met je zwaard in je hand zet je je schrap. Je duwt hard de deur open en stormt"
@@ -1313,22 +1313,23 @@
 "  toe gegaan. We moeten de draak redden!'", "&"
 
 "1=17;2=0;17=2;4=1;45=0", "*c13", "Bloem: 'Hoi $n, kom je me helpen met de kiespijn?'", "&20=0"
-"1=17;2=0;17=2;4=1;45!0", "*c13", "Bloem: 'Woohoo dat was ongeloofelijk!'", "&20=0"
+"1=17;2=0;17=2;4=1;45!0", "*c13", "Bloem: 'Woohoo! Dat was ongeloofelijk!'", "&20=0"
 
 "1=17;2=0;17=1;4=2", "*c3", "$n: 'Kijk uit! Er zit daar een draak!'"
-"", "*c13", "Bloem: 'Ha dat weet ik ook wel, ik ben zelf naar hem toegegaan. Hij is echt niet"
-"  gevaarlijk hoor. Wie ben jij eigenlijk?'", "", "*c3", "$n: 'Ik ben $n. Ik kom je redden!'", ""
+"", "*c13", "Bloem: 'Ha, dat weet ik ook wel, ik ben zelf naar hem toegegaan. Hij is echt"
+"  niet gevaarlijk hoor. Wie ben jij eigenlijk?'", "", "*c3", "$n: 'Ik ben $n. Ik kom je redden!'", ""
 "*c13", "Bloem: 'Mij redden? Waarom? Ik hoef niet gered te worden. We moeten de draak"
 "  redden!'", "&"
 
 "1=17;2=0;17=1;4=3", "*c3", "$n: 'Ik kom je redden!'"
 "", "*c13", "Bloem: 'Mij redden? Ha! Ik red mijzelf wel hoor! Wie ben jij eigenlijk?"
-"", "*c3", "$n: 'Ik ben $n'", "", "*c13", "Bloem: 'Als je iemand hier wil komen redden, dan kan je me mooi helpen met het"
-"  redden van de draak!'", "&"
+"", "*c3", "$n: 'Ik ben $n'", "", "*c13"
+"Bloem: 'Als je iemand hier wil komen redden, dan kan je me mooi helpen met het"
+"  redden van deze draak!'", "&"
 
 "1=17;2=0;17=1;4=4", "*c3", "$n: 'De draak moet gered worden?'"
-"", "*c13", "Bloem: 'Ja hoor je dat vreselijke gebrul dan niet? Het arme dier heeft"
-"  vreselijke kiespijn. Zijn kies moet getrokken worden, maar het lukt me niet'"
+"", "*c13", "Bloem: 'Ja, hoor je dat vreselijke gebrul dan niet? Het arme dier heeft"
+"  vreselijke tandpijn. Zijn tand moet getrokken worden, maar het lukt me niet'"
 "&17=2;4=1"
 
 "1=17;2=0;17=2;4=0;6=0", "*c2", "Je staat bovenin de toren. Je ziet een grote opening in de buitenmuur met een"
@@ -1345,20 +1346,20 @@
 "1=17;2=0;17=2;4=2", "*c3", "$n: 'Hoe kan ik je helpen?'"
 "", "*c13", "Bloem: 'We moeten iets bedenken om zijn tand eruit te krijgen. Ik studeer voor"
 "  tandarts. Met zoveel mensen die taartjes eten bij mijn vader moet er werk"
-"  genoeg zijn voor mij. Nooit gedacht dat mijn eerste klant een draak zou zijn'"
-"", "Bloem: 'Probleem met een draak is dat alles groter en sterker is dan bij mensen'"
-"Bloem: 'Bij mensen kun je een tand eruit trekken met een touwtje aan een deur en"
-"  dan de deur dichtslaan. Wij moeten iets groters gaan bedenken hier'"
-"Bloem: 'Kan jij een zware steen regelen?'"
+"  genoeg zijn voor mij. Nooit gedacht dat mijn eerste klant een draak zou zijn."
+"", "  Het probleem met een draak is dat alles groter en sterker is dan bij mensen."
+"  Bij mensen kun je een tand eruit trekken met een touwtje aan een deur en"
+"  dan de deur dichtslaan. Wij moeten iets groters gaan bedenken hier."
+"  Kan jij een zware steen regelen?'"
 "&4=1"
 
-"1=17;2=0;17=2;4=3;45=0", "*c3", "$n: 'Je moet meekomen, je vader is hardstikke ongerust!'"
+"1=17;2=0;17=2;4=3;45=0", "*c3", "$n: 'Je moet meekomen, je vader is hartstikke ongerust!'"
 "", "*c13", "Bloem: 'Mijn vader? Gerst kan alleen goed bakken en geeft alleen om geld. Ik"
 "  blijf hier totdat ik de draak heb kunnen helpen. Hij had toch ook zelf hier"
 "  naar toe kunnen komen? Daarom heeft hij jou waarschijnlijk gestuurd, omdat hij"
 "  niet een echte ridder kon betalen'", "&4=1"
 
-"1=17;2=0;17=2;4=3;45!0", "*c3", "$n: 'Je moet meekomen, je vader is hardstikke ongerust!'"
+"1=17;2=0;17=2;4=3;45!0", "*c3", "$n: 'Je moet meekomen, je vader is hartstikke ongerust!'"
 "", "*c13", "Bloem: 'Ja, je hebt gelijk. Die tand trekken was echt super! Mijn carriere voor"
 "  tandarts maakt zo wel een geweldige start, denk je niet?'"
 "", "Bloem: 'Nou dan ga ik nu wel naar de bakkerij. Zie ik je later misschien daar"
@@ -1749,7 +1750,7 @@
 "2=0;1=17;17=2;4=0;6=0", "Ga met de trap naar beneden", "1=18;3=5"
 
 "2=0;1=17;17=2;4=1;45=0", "Zeg: 'Hoe kan ik je helpen?'", "4=2"
-"2=0;1=17;17=2;4=1", "Zeg: 'Je moet meekomen, je vader is hardstikke ongerust!'", "4=3"
+"2=0;1=17;17=2;4=1", "Zeg: 'Je moet meekomen, je vader is hartstikke ongerust!'", "4=3"
 "2=0;1=17;17=2;4=1", "Zeg: 'Wat weet je van deze draak?'", "4=4"
 "2=0;1=17;17=2;4=1;30=18;44=2;29=4", "Zeg: 'Zou je me kunnen helpen uitladen?'", "4=8"
 "2=0;1=17;17=2;4=1", "Zeg: 'Ik ga kijken wat ik kan doen'", "4=5"
@@ -1777,4 +1778,3 @@
 "2=1;34>1", "Bekijk schat aantekeningen", "4=3"
 "2=1;36=2;34=4;1=8", "Wacht tot het donker is", "4=4;2=0"
 "2=1;26=4", "Bekijk ingredientenlijst voor medicijn", "4=4"
-
