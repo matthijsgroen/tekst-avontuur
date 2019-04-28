@@ -1,19 +1,26 @@
 #!/usr/bin/env node
 const spelLus = require("./spelLus");
 const maakHtml = require("./maakHtml");
+const pakket = require("./package.json");
 
-const commandos = process.argv.slice(2);
+const commandos = process.argv
+  .slice(2)
+  .filter(parameter => !parameter.startsWith("--"));
+
+const vlaggen = process.argv
+  .slice(2)
+  .filter(parameter => parameter.startsWith("--"))
+  .reduce((resultaat, vlag) => ({ ...resultaat, [vlag.slice(2)]: true }), {});
+
 const eerste = commandos[0];
-
-if (eerste === "--version" || eerste === "--versie" || eerste === "-V") {
-  console.log("Avontuur, versie 1.0");
-  process.exit(0);
-} else if (eerste === "--help" || !eerste) {
+if (vlaggen.versie || vlaggen.version || eerste === "-V") {
+  console.log(`Avontuur, versie ${pakket.version}`);
+} else if (vlaggen.help || !eerste) {
   [
-    "Avontuur, versie 1.0",
+    `Avontuur, versie ${pakket.version}`,
     "",
     "Gebruik:",
-    "  - spelen: avontuur.js bestand.avontuur",
+    "  - spelen: avontuur.js bestand.avontuur [--herstarten]",
 
     "  - html versie maken: avontuur.js html bronbestand.avontuur [doelbestand.html]",
     "",
@@ -34,5 +41,6 @@ if (eerste === "--version" || eerste === "--versie" || eerste === "-V") {
   const doel = commandos[2] || `${basisNaam(bron)}.html`;
   maakHtml(bron, doel);
 } else {
-  spelLus(eerste);
+  const herstarten = vlaggen.restart || vlaggen.herstart || vlaggen.herstarten;
+  spelLus(eerste, herstarten);
 }

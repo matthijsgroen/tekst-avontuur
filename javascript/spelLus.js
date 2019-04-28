@@ -128,10 +128,10 @@ const toonActies = async actieData => {
   return true;
 };
 
-const spelLus = async bestandsNaam => {
+const spelLus = async (bestandsNaam, herstarten = false) => {
   const data = await leesAvontuur(bestandsNaam);
   const opslagBestandsNaam = `.${basisNaam(bestandsNaam)}.opslag`;
-  const eerderSpel = await laadSpel(opslagBestandsNaam);
+  const eerderSpel = herstarten ? null : await laadSpel(opslagBestandsNaam);
 
   stdin.resume();
   stdin.setRawMode(true);

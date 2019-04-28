@@ -2,47 +2,15 @@ const { promisify } = require("util");
 const leesBestand = promisify(require("fs").readFile);
 const schrijfBestand = promisify(require("fs").writeFile);
 const leesAvontuur = require("./leesAvontuur");
+const converteerStructuur = require("./converteerStructuur");
 
 const maakHtml = async (bron, doel) => {
   console.log(`${bron} -> ${doel}`);
-  const { actieData, schermData } = await leesAvontuur(bron);
-
-  const nieuweSchermData = [];
-  let actiefScherm = { schermData: [] };
-  schermData.forEach(element => {
-    if (!actiefScherm.hasOwnProperty("test")) {
-      actiefScherm.test = element.split(";");
-    } else {
-      if (element.startsWith("&")) {
-        if (element.length > 1) {
-          actiefScherm.actie = element.slice(1).split(";");
-        }
-        nieuweSchermData.push(actiefScherm);
-        actiefScherm = { schermData: [] };
-      } else {
-        actiefScherm.schermData.push(element);
-      }
-    }
-  });
-  const nieuweActieData = [];
-  let actieveActie = {};
-
-  actieData.forEach((element, i) => {
-    if (i % 3 === 0) {
-      actieveActie.test = element.split(";");
-    } else if (i % 3 === 1) {
-      actieveActie.tekst = element;
-    } else {
-      actieveActie.actie = element.split(";");
-      nieuweActieData.push(actieveActie);
-      actieveActie = {};
-    }
-  });
-
-  const jsonData = JSON.stringify({
-    scherm: nieuweSchermData,
-    acties: nieuweActieData
-  });
+  const avontuur = await leesAvontuur(bron);
+  const { actieData: acties, schermData: scherm } = converteerStructuur(
+    avontuur
+  );
+  const jsonData = JSON.stringify({ scherm, acties });
 
   const htmlBasis = await leesBestand(
     `${__dirname}/sjablonen/index.html`,
