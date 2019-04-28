@@ -1202,13 +1202,11 @@
 
 "1=16;16=1;4=7;2=0", "*c3"
 "$n: 'Ik heb meel gehaald.'", "", "*c9"
-"Gerst: 'Echt waar? Dank u! Dit brengt helaas niet mijn"
-"  Bloem terug, maar dan kan ik in ieder geval weer wat bakken"
-"  ter afleiding.'", "", "*c2"
+"Gerst: 'Echt waar? Dank u! Dit brengt helaas niet mijn Bloem terug, maar dan kan"
+"  ik in ieder geval weer wat bakken ter afleiding.'", "", "*c2"
 "De bakker geeft je 100 geldstukken.", "*c3", ""
 "$n: 'Dit is echt veel te veel!'", "", "*c9"
-"Gerst: 'Wat heb ik aan geld als ik niet eens mijn eigen dochter"
-"  kan redden?'", "*c2", ""
+"Gerst: 'Wat heb ik aan geld als ik niet eens mijn eigen dochter kan redden?'", "*c2", ""
 "De bakker staat weer voor zich uit te staren..."
 "&4=0;33=3;22+100"
 
@@ -1271,7 +1269,9 @@
 
 "1=17;2=0;17=0;4=1", "*c2", "Je loopt naar de lift constructie. Het ziet er naar uit dat het plateau van de"
 "lift boven is. Je kan er vanaf deze kant niet op. Ook zie je geen manier om hem"
-"vanaf beneden te laten zakken.", "&"
+"vanaf beneden te laten zakken.", ""
+"Achter de lift constructie zie je ineens een luik richting een kelder."
+"Maar die zit op slot.", "&"
 
 "1=17;2=0;17=0;4=2", "*c2", "Je duwt tegen de deur. Hij piept en kraakt vreselijk. Er komt beweging in."
 "Je opent hem ver genoeg zodat je er tussendoor kan. Het is binnen in de toren"
@@ -1472,10 +1472,11 @@
 ' == 18. Onderkant toren
 "1=18;18=0;2=0;4=0;44!3", "*c2", "Je bent in het woud, aan de voet van de toren."
 "Er is een grote deur de toren in. Naast de toren is een lift.", "&"
-"1=18;18=0;2=0;4=0;43=0;44!3", "Als je omhoog kijkt, zie je het platform van de lift bovenaan de toren.", "&"
-"1=18;18=0;2=0;4=0;43=1;44!3", "Het platform van de lift is beneden.", "&"
-"1=18;18=0;2=0;4=0;43=2", "De lift ligt helemaal in puin.", "&"
-"1=18;18=0;2=0;4=0;44!3","Er loopt een pad vanaf de toren het woud in.", "&"
+"1=18;18=0;2=0;4=0;43!2", "", "Achter de lift is een luik richting een kelder.", "&"
+"1=18;18=0;2=0;4=0;43=0;44!3", "", "Als je omhoog kijkt, zie je het platform van de lift bovenaan de toren.", "&"
+"1=18;18=0;2=0;4=0;43=1;44!3", "", "Het platform van de lift is beneden.", "&"
+"1=18;18=0;2=0;4=0;43=2", "", "De lift ligt helemaal in puin.", "&"
+"1=18;18=0;2=0;4=0;44!3", "", "Er loopt een pad vanaf de toren het woud in.", "&"
 
 "1=18;18=0;2=0;4=0;44=3", "*c2", "Je leid Teun met de wagen richting de lift. Bloem komt net met de lift naar"
 "beneden.", "", "*c3", "$n: 'Kom dan tillen we samen de molensteen op de lift.'"
@@ -1485,6 +1486,8 @@
 "*c2", "", "Bloem rent de trap op.", "&44=4;43=1"
 
 "1=18;18=0;2=0;4=1", "*c2", "Je wilt de steen van de wagen tillen, maar hij is veel te zwaar.", "&4=0"
+"1=18;18=0;2=0;4=2", "*c2", "Je probeert het luik richting de kelder te openen, maar het luik lijkt op slot"
+"te zitten.", "&4=0"
 
 "0!0;2!2", "*c15", "", "Wat ga je doen:", "&"
 "1=0;2=2", "*c15", "", "Wat ga je doen:", "&"
@@ -1778,7 +1781,8 @@
 "2=0;1=18;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=18;4=0;19=1;29=4;44=2", "Til molensteen op de lift", "4=1"
 "2=0;1=18;4=0", "Ga de toren in", "1=17;3=5"
-'"2=0;1=18;4=0;43=3;45=1;26=4", "Bekijk het puin van de lift", "4=2"
+'"2=0;1=18;4=0;43=3;45=1;26=4", "Bekijk het puin van de lift", "4=3"
+"2=0;1=18;4=0", "Open kelderdeur", "4=2"
 "2=0;1=18;4=0", "Ga het woud in", "1=7;3=5"
 
 ' Generale inventory acties
