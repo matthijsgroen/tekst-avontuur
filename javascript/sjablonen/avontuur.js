@@ -175,31 +175,37 @@ const voerActieUit = instructies => {
   });
 };
 
+const toetsen = "123456789abcdefghijklmnop";
+
 const toonActies = async () => {
   const acties = [];
 
   for (const actie of avontuur.acties) {
     if (toegestaan(actie.test)) {
-      acties.push({ naam: actie.tekst, actie: actie.actie });
+      acties.push({
+        naam: actie.tekst,
+        actie: actie.actie,
+        toets: toetsen[acties.length]
+      });
     }
   }
 
   color(7);
-  for (let i = 0; i < acties.length; i++) {
+  for (const actie of acties) {
     await sleep(0.2);
-    print(`${i + 1} ) ${acties[i].naam}\n`, i + 1);
+    print(`${actie.toets} ) ${actie.naam}\n`, actie.toets);
   }
   // geen acties, dan is spel voorbij
   if (acties.length === 0) return false;
 
   let toets;
-  let keuze;
+  let gekozen = null;
   do {
     toets = await keypress();
-    keuze = toets && /\d/.test(toets) && parseInt(toets, 10);
-  } while (!(keuze > 0 && keuze <= acties.length));
+    gekozen = acties.find(actie => actie.toets === toets);
+  } while (!gekozen);
 
-  voerActieUit(acties[keuze - 1].actie);
+  voerActieUit(gekozen.actie);
   return true;
 };
 
