@@ -649,7 +649,8 @@
 
 "1=11;2=0;11=3;4=0", "*c2"
 "Je bent bij de mijn."
-"Er ligt een mijnkarretje op zijn kant. Thorin de dwerg is in de mijn aan het werk."
+"Er ligt een mijnkarretje op zijn kant. Thorin de dwerg is in de mijn aan het"
+"werk."
 "", "Hij ziet er vrolijk uit.", ""
 "*c9", "Thorin: 'Hallo $n.'"
 "&"
@@ -962,7 +963,7 @@
 "1=14;4=8;2=0;34>0;35=0", "*c3"
 "$n: 'Heb jij ook gehoord dat er een schat ergens is?'", "", "*c9"
 "Tjasker: 'Dat is echt de grootste onzin waar men over kletst tegenwoordig."
-"  Geloof er maar niets van hoor. Zeker van die smidsen in het dorp gehoord?"
+"  Geloof er maar niets van hoor. Zeker van die smeden in het dorp gehoord?"
 "  Volgens mij geloven zij alles! Een schat route die begint bij de rivier?"
 "  Ik ben vaak genoeg bij de rivier geweest, maar daar is echt niets.'"
 "*c2", "", "Je vindt het erg interessant, en maakt er een aantekening van."
@@ -1087,7 +1088,7 @@
 "  hebt gezien dat je wilt kopen.'", "&4=0"
 
 "1=15;2=0;4=5", "*c2", "Je kijkt rond in de smederij. Overal staan spullen met een prijskaartje. Je"
-"besluit om ze van dichter bij te bekijken. Ondertussen beginnen de smidsen met"
+"besluit om ze van dichter bij te bekijken. Ondertussen beginnen de smeden met"
 "elkaar te praten.", "", "*c13", "Lucy: 'Nee daar geloof ik echt niets van.'"
 "*c9", "Luk: 'Het is echt waar. Er ligt een schat verborgen hier in de buurt.'"
 "*c13", "Lucy: 'Van wie dan?'", "*c11", "Luuk: 'Ik heb het ook gehoord. Er moet daar goud verborgen zijn.'"
