@@ -328,6 +328,7 @@
 "2=1;40=1", "*c7", "- Plant met ronde bladeren", "&"
 "2=1;41=1", "*c7", "- Plant met stekelige bladeren", "&"
 "2=1;42=2", "*c7", "- Lichtblauwe paddenstoelen", "&"
+"2=1;45=2", "*c7", "- Tand van een draak", "&"
 
 ' 1. Bos
 "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
