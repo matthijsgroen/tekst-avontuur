@@ -59,13 +59,19 @@
 ' 37 = hint route v boer NNWNNOZ
 ' 38 = rune steen
 ' 39 = hint 'harnas heeft geen zin' -- Boer
-' 40 = plant ronde bladeren
-' 41 = plant puntige bladeren
+'
+' 40 = plant ronde bladeren = getal == aantal
+' 41 = plant puntige bladeren = getal == aantal
+'
 ' 42 = lichtblauwe paddenstoelen 0=onbekend, 1=benodigd, 2=gevonden
 ' 43 = status lift. 0 = boven, 1 = beneden, 2 = kapot
 ' 44 = molensteen 0 = niet, 1 = nodig, 2 = op wagen, 3 = intentie tillen, 4 = op lift
-' 45 = Tand 0=niet, 1 = getrokken
+' 45 = Tand 0 = niet, 1 = getrokken, 2 = gepakt, 3 = gegeven
 ' 46 = status bloem 0 = toren, 1 = bakkerij
+' 47 = Toegang kelder 0 = nee, 1 = ja
+' 48 = Wijn = 0, 1 = lege beker, 2 = wijn
+' 49 = Zadel. 0 = nee, 1 = ja
+'
 ' 0. Proloog
 "0=0", "*c2"
 "Hoi $n, welkom bij dit interactieve avontuur!"
@@ -1157,6 +1163,13 @@
 "Je staat in de bakkerij. De bakker ziet er verdrietig uit."
 "Er hangt een geur van heerlijke verse broodjes en taarten.", "&"
 
+"1=16;16=1;2=0;4=0;45!0;46=0", "*c2"
+"Je staat in de bakkerij. De bakker ziet er verdrietig uit."
+"Er hangt een geur van heerlijke verse broodjes en taarten.", ""
+"*c9", "Gerst: 'Ik hoor mensen zeggen dat de draak gedood is. Ik hoorde ook de mega brul"
+"  Heb je Bloem gezien? is ze nog in leven?'", "", "*c2"
+"De bakker is heel erg somber en verdrietig.", "&"
+
 "1=16;16=1;2=0;4=0;46=1", "*c2"
 "Je staat in de bakkerij. Gerst, de bakker, kijkt ontzettend blij."
 "Er hangt een geur van heerlijke verse broodjes en taarten."
@@ -1477,11 +1490,11 @@
 ' == 18. Onderkant toren
 "1=18;18=0;2=0;4=0;44!3", "*c2", "Je bent in het woud, aan de voet van de toren."
 "Er is een grote deur de toren in. Naast de toren is een lift.", "&"
-"1=18;18=0;2=0;4=0;43!2", "", "Achter de lift is een luik richting een kelder.", "&"
-"1=18;18=0;2=0;4=0;43=0;44!3", "", "Als je omhoog kijkt, zie je het platform van de lift bovenaan de toren.", "&"
-"1=18;18=0;2=0;4=0;43=1;44!3", "", "Het platform van de lift is beneden.", "&"
-"1=18;18=0;2=0;4=0;43>1", "", "De lift ligt helemaal in puin.", "&"
-"1=18;18=0;2=0;4=0;44!3", "", "Er loopt een pad vanaf de toren het woud in.", "&"
+"1=18;18=0;2=0;4=0;43=0;44!3", "Als je omhoog kijkt, zie je het platform van de lift bovenaan de toren.", "&"
+"1=18;18=0;2=0;4=0;43=1;44!3", "Het platform van de lift is beneden.", "&"
+"1=18;18=0;2=0;4=0;43>1;44!3", "De lift ligt helemaal in puin.", "&"
+"1=18;18=0;2=0;4=0;44!3", "", "Achter de lift is een luik richting een kelder."
+"", "Er loopt een pad vanaf de toren het woud in.", "&"
 
 "1=18;18=0;2=0;4=0;44=3", "*c2", "Je leid Teun met de wagen richting de lift. Bloem komt net met de lift naar"
 "beneden.", "", "*c3", "$n: 'Kom dan tillen we samen de molensteen op de lift.'"
@@ -1494,8 +1507,9 @@
 "1=18;18=0;2=0;4=2", "*c2", "Je probeert het luik richting de kelder te openen, maar het luik lijkt op slot"
 "te zitten.", "&4=0"
 
-"1=18;18=0;2=0;4=3", "*c2", "Je kijkt naar het puin van de lift. Overal liggen brokstukken. Je ziet dat de"
-"molensteen dwars door het luik naar de kelder is gevallen.", "&4=0;43=3"
+"1=18;18=0;2=0;4=3", "*c2", "Je kijkt naar het puin van de lift. Overal liggen brokstukken."
+"Na een tijdje zoeken vind je de getrokken tand van de draak terug."
+"", "Je raapt de tand op.", "&4=0;45=2"
 
 ' == 19. Kelder van toren
 "1=19;4=0;2=0", "*c2", "Je staat in de kelder van de toren. Het is hier erg donker en muffig."
@@ -1510,8 +1524,8 @@
 "1=0;2=2", "*c15", "", "Wat ga je doen:", "&"
 
 "2=2;19>0", "*c2", "Je springt op je paard.", ""
-"Je kan met Teun nu snel naar plaatsen gaan waar je al een keer"
-"eerder bent geweest."
+"Je kan met Teun nu snel naar plaatsen gaan waar je al een keer eerder bent"
+"geweest."
 "*c15", "", "Waar wil je heen:", "&"
 
 "END"
@@ -1798,9 +1812,9 @@
 "2=0;1=18;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=18;4=0;19=1;29=4;44=2", "Til molensteen op de lift", "4=1"
 "2=0;1=18;4=0", "Ga de toren in", "1=17;3=5"
-"2=0;1=18;4=0;43=2", "Bekijk het puin van de lift", "4=3"
-"2=0;1=18;4=0;43=3", "Ga de kelder in", "1=19;3=1"
-"2=0;1=18;4=0;43<2", "Open kelderdeur", "4=2"
+"2=0;1=18;4=0;45<2;43=2;26=4", "Bekijk het puin van de lift", "4=3"
+"2=0;1=18;4=0;47=1", "Ga de kelder in", "1=19;3=1"
+"2=0;1=18;4=0;47=0", "Open kelderdeur", "4=2"
 "2=0;1=18;4=0", "Ga het woud in", "1=7;3=5"
 
 ' == 19. Kelder toren

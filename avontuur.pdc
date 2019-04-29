@@ -214,7 +214,7 @@ styles[] {
       }
 
       pak_tand_van_draak:event {
-         depends_on []   = toegang_tot_kelder;
+         depends_on []   = trek_tand_van_draak, krijg_ingredientenlijst_van_heks;
       }
 
       pak_touw_op_boerderij:event {
@@ -290,9 +290,13 @@ styles[] {
          depends_on []   = knoop_touw_aan_molensteen, knoop_touw_aan_tand, hijs_lift_met_molensteen;
       }
 
+      oplos_drankje:event {
+         depends_on []   = krijg_toegang_tot_hut;
+      }
+
       toegang_tot_kelder:event {
          style           = finished
-         depends_on []   = trek_tand_van_draak;
+         depends_on []   = beklim_toren, oplos_drankje;
       }
 
       trek_tand_van_draak:event {
