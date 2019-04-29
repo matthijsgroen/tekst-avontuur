@@ -200,6 +200,10 @@ styles[] {
          depends_on []   = krijg_edelsteen_van_dwerg, vind_goud_in_bos, praat_met_heks;
       }
 
+      pak_beker:event {
+         depends_on []   = krijg_toegang_tot_hut;
+      }
+
       pak_hout_in_bos:event {
          style           = finished
          depends_on []   = ;
@@ -210,7 +214,7 @@ styles[] {
       }
 
       pak_tand_van_draak:event {
-         depends_on []   = krijg_ingredientenlijst_van_heks, toegang_tot_kelder;
+         depends_on []   = toegang_tot_kelder;
       }
 
       pak_touw_op_boerderij:event {
@@ -219,7 +223,7 @@ styles[] {
       }
 
       pak_wijn_uit_kelder:event {
-         depends_on []   = toegang_tot_kelder, praat_met_dochter_van_bakker;
+         depends_on []   = toegang_tot_kelder, pak_beker;
       }
 
       pluk_kruiden_in_moeras:event {
@@ -287,6 +291,7 @@ styles[] {
       }
 
       toegang_tot_kelder:event {
+         style           = finished
          depends_on []   = trek_tand_van_draak;
       }
 
