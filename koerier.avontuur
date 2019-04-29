@@ -19,6 +19,7 @@
 '   16 = Bakkerij
 '   17 = Bovenkant Toren
 '   18 = Onderkant Toren
+'   19 = Kelder Toren
 
 ' 2 = Locatie toestand 0 = look, 1 = Open tas, 2 = leeg
 ' 3 = Richting van reizen (oorsprong)
@@ -263,6 +264,10 @@
 "1=18;3=6;19=2;29>2", "*c2", "Teun brengt je snel naar de toren.", "", "&3=0;30=18;19=1"
 "1=18;3=7", "*c2", "Je haalt de hendel om, en stapt snel op de lift. De lift zakt langzaam naar"
 "beneden.", "", "&4=0;3=0"
+"1=18;3=8", "*c2", "Je klautert tussen het puin door de trap op, naar buiten toe.", "", "&4=0;3=0"
+
+"1=19;3=1", "*c2", "Je stapt voorzichtig over alle brokstukken van de lift en daalt de trap af"
+"richting de kelder","", "&4=0;3=0"
 
 '== Tas
 "2=1;4=1", "*c2", "Je verwijdert het oude heft van de houweel,"
@@ -1427,7 +1432,7 @@
 "1=17;2=0;44!3;17=2;4=0;6=2;43=0", "Op dit moment is de lift boven. Er is een hendel om de lift te bedienen.", "&"
 "1=17;2=0;44!3;17=2;4=0;6=2;43=1", "Op dit moment is de lift beneden. Er is een hendel om de lift te bedienen.", "&"
 "1=17;2=0;44!3;17=2;4=0;6=2;44=4;43!2", "Een zware molensteen ligt op de lift.", "&"
-"1=17;2=0;44!3;17=2;4=0;6=2;43=2", "De lift is kapot. Beneden liggen allerlei stukken verspreid op de grond.", "&"
+"1=17;2=0;44!3;17=2;4=0;6=2;43>1", "De lift is kapot. Beneden liggen allerlei stukken verspreid op de grond.", "&"
 "1=17;2=0;44!3;17=2;4=0;6=2;44=4;31=3", "Een touw loopt van de molensteen de kamer in.", "&"
 "1=17;2=0;44!3;17=2;4=0;6=2;44=4;31=4", "Een touw loopt van de molensteen naar de zere tand van de draak.", "&"
 "1=17;2=0;44!3;17=2;4=0;6=2;19=1;29=3", "", "Als je naar beneden kijkt, zie je Teun staan.", "&"
@@ -1475,7 +1480,7 @@
 "1=18;18=0;2=0;4=0;43!2", "", "Achter de lift is een luik richting een kelder.", "&"
 "1=18;18=0;2=0;4=0;43=0;44!3", "", "Als je omhoog kijkt, zie je het platform van de lift bovenaan de toren.", "&"
 "1=18;18=0;2=0;4=0;43=1;44!3", "", "Het platform van de lift is beneden.", "&"
-"1=18;18=0;2=0;4=0;43=2", "", "De lift ligt helemaal in puin.", "&"
+"1=18;18=0;2=0;4=0;43>1", "", "De lift ligt helemaal in puin.", "&"
 "1=18;18=0;2=0;4=0;44!3", "", "Er loopt een pad vanaf de toren het woud in.", "&"
 
 "1=18;18=0;2=0;4=0;44=3", "*c2", "Je leid Teun met de wagen richting de lift. Bloem komt net met de lift naar"
@@ -1489,6 +1494,18 @@
 "1=18;18=0;2=0;4=2", "*c2", "Je probeert het luik richting de kelder te openen, maar het luik lijkt op slot"
 "te zitten.", "&4=0"
 
+"1=18;18=0;2=0;4=3", "*c2", "Je kijkt naar het puin van de lift. Overal liggen brokstukken. Je ziet dat de"
+"molensteen dwars door het luik naar de kelder is gevallen.", "&4=0;43=3"
+
+' == 19. Kelder van toren
+"1=19;4=0;2=0", "*c2", "Je staat in de kelder van de toren. Het is hier erg donker en muffig."
+"In de hoek van de kelder zie je wat lijkt op een paardenstal. Aan de wand is een"
+"stelling met vaten wijn."
+"Er hangt een oud zadel aan de muur."
+"Op de grond van de kelder liggen stukken van de molensteen, stukken hout en"
+"ander puin.", "&"
+
+' == Prompts
 "0!0;2!2", "*c15", "", "Wat ga je doen:", "&"
 "1=0;2=2", "*c15", "", "Wat ga je doen:", "&"
 
@@ -1781,9 +1798,13 @@
 "2=0;1=18;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=18;4=0;19=1;29=4;44=2", "Til molensteen op de lift", "4=1"
 "2=0;1=18;4=0", "Ga de toren in", "1=17;3=5"
-'"2=0;1=18;4=0;43=3;45=1;26=4", "Bekijk het puin van de lift", "4=3"
-"2=0;1=18;4=0", "Open kelderdeur", "4=2"
+"2=0;1=18;4=0;43=2", "Bekijk het puin van de lift", "4=3"
+"2=0;1=18;4=0;43=3", "Ga de kelder in", "1=19;3=1"
+"2=0;1=18;4=0;43<2", "Open kelderdeur", "4=2"
 "2=0;1=18;4=0", "Ga het woud in", "1=7;3=5"
+
+' == 19. Kelder toren
+"2=0;1=19;4=0", "Ga naar buiten", "1=18;3=8"
 
 ' Generale inventory acties
 "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
