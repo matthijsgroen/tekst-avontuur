@@ -285,7 +285,7 @@
 "2=1;4=3", "*c2", "Je kijkt in de aantekeningen die je hebt verzameld over de"
 "geruchten van de mysterieuze schat:", "", "&"
 
-"2=1;4=3;36>0", "*c6", "- Bij een plant in het moeras, met spitse bladeren"
+"2=1;4=3;36>0", "*c6", "- Bij een plant in het moeras, met ruitvormige bladeren"
 "  ligt een Maansteen. Zodra de steen gloeit kan de route gestart worden", "&"
 "2=1;4=3;37>0", "*c6", "- De route om te lopen is N-N-W-N-N-O-Z", "&"
 "2=1;4=3;35>0", "*c6", "- De route start bij de rivier", "&"
@@ -1206,7 +1206,7 @@
 "Gerst: 'Er gaan geruchten. Ik geloof er niets van hoor, maar wat ik gehoord had"
 "  was dat onder een speciale plant in het moeras een Maansteen moet liggen."
 "  En pas als die gloeit dat je dan een speciale route moet lopen."
-"  Het was een plant met spitse bladeren.'", "*c2", "", "Je vindt het erg interessant, en maakt er een aantekening van."
+"  Het was een plant met ruitvormige bladeren.'", "*c2", "", "Je vindt het erg interessant, en maakt er een aantekening van."
 "&4=0;36=1;34+1"
 
 "1=16;16=1;4=6;2=0", "*c3"
@@ -1595,8 +1595,8 @@
 
 "2=0;1=4;4=1", "Pluk plant met stekelige bladeren", "4=2"
 "2=0;1=4;4=1", "Pluk plant met ronde bladeren", "4=3"
-"2=0;1=4;4=1", "Pluk plant met spitse bladeren", "4=4"
-"2=0;1=4;4=1", "Pluk plant met vinger achtige bladeren", "4=5"
+"2=0;1=4;4=1", "Pluk plant met ruitvormige bladeren", "4=4"
+"2=0;1=4;4=1", "Pluk plant met hartvormige bladeren", "4=5"
 "2=0;1=4;4=1", "Stop met bestuderen van de planten", "4=0;20=1"
 
 '== 6. Dorp Acties
