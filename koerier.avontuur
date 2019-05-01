@@ -206,6 +206,8 @@
 
 "1=4;3=3;19=0", "*c2", "Je daalt af naar het zuiden, over een sompig pad, richting het moeras.", "", "&3=0"
 "1=4;3=5;19=0", "*c2", "Je loopt van de hut terug naar het kronkelige pad in het moeras.", "", "&3=0"
+"1=4;3=3;19=1", "*c2", "Je daalt met Teun af naar het zuiden, over een sompig pad, richting het moeras.", "", "&3=0"
+"1=4;3=5;19=1", "*c2", "Je loopt met Teun van de hut terug naar het kronkelige pad in het moeras.", "", "&3=0"
 
 "1=6;3=3;19=0", "*c2", "Je wandelt naar het zuiden, richting het dorp.", "", "&3=0"
 "1=6;3=4;19=0", "*c2", "Je wandelt naar het westen, richting het dorp.", "", "&3=0"
@@ -228,8 +230,8 @@
 "1=11;3=5;19=2;29>2", "*c2", "Teun brengt je snel naar de mijn.", "", "&3=0;30=11;19=1"
 
 "1=12;3=5;19=0", "*c2", "Je loopt richting de hut in het moeras.", "", "&3=0"
-"1=12;3=5;19=1;29>1", "*c2", "Je wandelt samen met Teun naar de hut.", "", "&3=0;30=13"
-"1=12;3=5;19=2;29>2", "*c2", "Teun brengt je snel naar de hut in het moeras.", "", "&3=0;30=13;19=1"
+"1=12;3=5;19=1;29>1", "*c2", "Je wandelt samen met Teun naar de hut.", "", "&3=0;30=12"
+"1=12;3=5;19=2;29>2", "*c2", "Teun brengt je snel naar de hut in het moeras.", "", "&3=0;30=12;19=1"
 
 "1=13;3=5;19=0", "*c2", "Je loopt het erf van een boerderij op.", "", "&3=0"
 "1=13;3=5;19=1;29>1", "*c2", "Je wandelt samen met Teun het erf van de boerderij op.", "", "&3=0;30=13"
@@ -822,6 +824,16 @@
 "1=12;12=2;5=3;4=1", "*c3", "$n: 'Gaat alles goed?'"
 "*c2", "", "Je krijgt geen reactie. De geur uit de hut lijkt bedwelmend."
 "", "*c3", "$n: 'Hmm, ergens lijkt me iets niet in de haak.'", "&5=4;4=0"
+
+"1=12;12=2;5=4;4=1", "*c2", "Je besluit de deur open te maken."
+"", "Je duwt de deur open. Een grote walm rare damp komt door de deur naar buiten."
+"Je gaat snel naar binnen en zet alle ramen open, zodat de damp wegtrekt.", ""
+"&12=3;4=0;5=0"
+
+"1=12;12=3;4=0", "*c2", "Je bent in de hut van Eucalypta. In het midden van de hut staat een grote"
+"kookpot te borrelen.", "Overal liggen boeken, potten en spullen waarvan je geen idee hebt wat het is."
+"Eucalypta ligt op de grond van de hut. Het lijkt wel alsof ze slaapt."
+"&"
 
 '== 13. Boerderij
 "1=13;13>0;2=0;4=0", "*c2"
@@ -1617,7 +1629,7 @@
 
 '== 4. Moeras acties
 "2=0;1=4;19=1;29=3;4!1", "Spring op paard", "2=2"
-"2=0;1=4;4=0;26>1", "Loop richting de hut", "1=12;3=1"
+"2=0;1=4;4=0;26>1", "Loop richting de hut", "1=12;3=5"
 "2=0;1=4;4=0;26>1", "Bekijk de planten", "4=1;20=0"
 "2=0;1=4;4=0", "Ga naar het noorden, richting de heuvels", "1=3;3=1"
 
@@ -1729,6 +1741,8 @@
 "2=0;1=12;12=2;4=0;5=2", "Wacht nog iets langer", "4=1"
 "2=0;1=12;12=2;4=0;5=3", "Zeg: 'Gaat alles goed?'", "4=1"
 "2=0;1=12;12=2;4=0;5=4", "Open de deur van de hut", "4=1"
+
+"2=0;1=12;12=3;4=0", "Ga naar buiten", "1=4;3=5"
 
 '== 13. Boerderij
 "2=0;1=13;4=0;19=1;29=3", "Spring op paard", "2=2"
