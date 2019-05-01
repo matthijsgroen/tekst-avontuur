@@ -875,6 +875,7 @@
 "  '100 dingen die je altijd al wilde weten over mossen, kruiden"
 "   en paddenstoelen, maar nooit durfde te vragen'", "", "*c2", "en een opengeslagen boek, genaamd:", "*c6"
 "  'Toverdank recepten 101. Voor beginners tot meester-heksen'"
+"*c2", "", "In elk boek zijn boekenleggers gestoken."
 "&20=0"
 
 "2=0;1=12;12=3;4=3;6=0", "*c2", "Je loopt naar de ketel in het midden van de hut.", "", "&6=1;4=0"
@@ -887,12 +888,58 @@
 "2=0;1=12;12=3;4=0;6=1;59=0", "*c2", "De drank in de ketel heeft een heldere doorzichtige kleur.", ""
 "Het lijkt erop alsof de ketel klaar is om een drankje in te brouwen.", "&"
 
-"2=0;1=12;12=3;6=2;4=3;5=0", "*c6", "Bladzijde 10.", ""
-"Lastige sloten opener."
+"2=0;1=12;12=3;4=2;6=2", "*c2", "Je slaat de hele dikke almanak open", "", "&6=3;4=0"
+"2=0;1=12;12=3;4=3;6=2", "*c2", "Je slaat het receptenboek open", "", "&6=4;4=0"
+
+"2=0;1=12;12=3;6=4;4=0;5=0", "*c6", "Bladzijde 1. -- Introductie --"
+"", "Heb je een toverketel 3000 aangeschaft maar je weet niet wat je er mee kunt?"
+"Dankzij dit boek wordt het maken van een toverdrank is kinderlijk eenvoudig."
+"Alle recepten werken als volgt:", ""
+"  - Plaats alle ingredienten beschreven in het recept in de ketel. De volgorde"
+"    doet er niet toe."
+"  - Zodra alle ingredienten erin zitten, steek je beide handen hoog in de lucht."
+"  - Met een geheimzinnige stem zeg je dan hardop de toverspreuk die bij het"
+"    recept hoort."
+"  - Indien het recept gelukt is, dan is de ketel gevult met de toverdrank."
+"  - Indien de spreuk mislukt omdat de ingredienten niet kloppen, wordt de ketel"
+"    automatisch schoongemaakt en kun je het nog eens proberen."
+"", "Veel plezier!", "&"
+
+"2=0;1=12;12=3;6=4;4=0;5=1", "*c6", "Bladzijde 10. -- Alleshelende medicinale drank --"
+"", "Last van ochtendhumeur? Pukkeltjes? Ben je een ernstig zieke koning?", "Deze drank is niet alleen erg leuk om te maken, hij helpt ook nog eens tegen"
+"alle kwaaltjes!", ""
+"Benodigdheden:"
+"  - 1 Plant met ronde bladeren"
+"  - 2 Lichtblauwe paddenstoelen"
+"  - 4 Planten met stekelige bladeren"
+"  - 1 Tand van een draak"
+"", "Spreuk: &##%$#@"
+"", "*c2", "Hmm, er zit een vlek over de spreuk. Het valt je ook op dat de lijst"
+"ingrediënten anders is dan Eucalypta je had gegeven"
 "&"
 
-"2=0;1=12;12=3;6=2;4=2;5=0", "*c6", "Bladzijde 18.", ""
+"2=0;1=12;12=3;6=4;4=0;5=2", "*c6", "Bladzijde 37. -- Wakker worden na een feestnacht --"
+""
+"&"
+
+"2=0;1=12;12=3;6=4;4=0;5=3", "*c6", "Bladzijde 85. -- Vreemde talen vertaler --"
+""
+"&"
+
+"2=0;1=12;12=3;6=4;4=0;5=4", "*c6", "Bladzijde 114. -- De deur 'klemt' --"
+""
+"&"
+
+"2=0;1=12;12=3;6=3;4=0;5=0", "*c6", "Bladzijde 42.", ""
 "Mossen en grassen."
+"&"
+
+"2=0;1=12;12=3;6=3;4=0;5=1", "*c6", "Bladzijde 1012.", ""
+"Paddenstoelen en ander gezwam."
+"&"
+
+"2=0;1=12;12=3;6=3;4=0;5=2", "*c6", "Bladzijde 6510.", ""
+"Planten en kruiden."
 "&"
 
 '== 13. Boerderij
@@ -1816,9 +1863,13 @@
 "2=0;1=12;12=3;6=2;4=0", "Lees het recepten boek", "4=3;5=0;20=1"
 "2=0;1=12;12=3;6=2;4=0", "Stap weg bij de boeken", "4=1;20=1"
 
-"2=0;1=12;12=3;6=2;4=2", "Sluit het boek", "4=0;5=0;20=0"
+"2=0;1=12;12=3;6=3;5>0", "Vorige boekenlegger", "5-1"
+"2=0;1=12;12=3;6=3;5<2", "Volgende boekenlegger", "5+1"
+"2=0;1=12;12=3;6=3", "Sluit het boek", "4=0;5=0;20=0;6=2"
 
-"2=0;1=12;12=3;6=2;4=3", "Sluit het boek", "4=0;5=0;20=0"
+"2=0;1=12;12=3;6=4;5>0", "Vorige boekenlegger", "5-1"
+"2=0;1=12;12=3;6=4;5<4", "Volgende boekenlegger", "5+1"
+"2=0;1=12;12=3;6=4", "Sluit het boek", "4=0;5=0;20=0;6=2"
 
 '== 13. Boerderij
 "2=0;1=13;4=0;19=1;29=3", "Spring op paard", "2=2"
