@@ -7,6 +7,13 @@ const leesAvontuur = async bestandsNaam => {
   let actieModus = false;
   const actieData = [];
   const schermData = [];
+  const gegevens = {};
+
+  regels.forEach(regel => {
+    const match = regel.match(/^'\s*@(?<veld>\w+):\s*(?<waarde>[^\s]+.*)$/);
+    if (!match) return;
+    gegevens[match.groups.veld] = match.groups.waarde;
+  });
 
   regels
     .map((regel, nr) => ({ regel, nr }))
@@ -27,7 +34,7 @@ const leesAvontuur = async bestandsNaam => {
       }
     });
 
-  return { actieData, schermData };
+  return { actieData, schermData, gegevens };
 };
 
 module.exports = leesAvontuur;

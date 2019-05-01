@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const spelLus = require("./spelLus");
 const maakHtml = require("./maakHtml");
+const statistieken = require("./statistieken");
 const pakket = require("./package.json");
 
 const commandos = process.argv
@@ -21,7 +22,6 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
     "",
     "Gebruik:",
     "  - spelen: avontuur.js bestand.avontuur [--herstarten]",
-
     "  - html versie maken: avontuur.js html bronbestand.avontuur [doelbestand.html]",
     "",
     "Foutjes, suggesties, vragen?",
@@ -30,6 +30,9 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
     "- Twitter: @matthijsgroen"
   ].forEach(regel => console.log(regel));
   process.exit(0);
+} else if (eerste === "stats") {
+  const bron = commandos[1];
+  statistieken(bron);
 } else if (eerste === "html") {
   const basisNaam = name =>
     name
