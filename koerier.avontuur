@@ -76,10 +76,26 @@
 ' 43 = status lift. 0 = boven, 1 = beneden, 2 = kapot
 ' 44 = molensteen 0 = niet, 1 = nodig, 2 = op wagen, 3 = intentie tillen, 4 = op lift
 ' 45 = Tand 0 = niet, 1 = getrokken, 2 = gepakt, 3 = gegeven
-' 46 = status bloem 0 = toren, 1 = bakkerij
+' 46 = lokatie Bloem 0 = toren, 1 = bakkerij
 ' 47 = Toegang kelder 0 = nee, 1 = ja
 ' 48 = Wijn = 0, 1 = lege beker, 2 = wijn
 ' 49 = Zadel. 0 = nee, 1 = ja
+'
+' 50 = kennis spreuk oplos
+' 51 = kennis spreuk draak praten
+' 52 = kennis spreuk bijbrengen
+' 53 = eucalypta wakker
+'
+' 54 = kennis mossen
+' 55 = kennis paddestoelen
+' 56 = kennis planten
+'
+' 59 = Status ketel. 0 = schoon, 1 = gevuld
+' 60 = # ronde bladeren in ketel
+' 61 = # puntige bladeren in ketel
+' 62 = # lichtblauwe paddenstoelen in ketel
+'
+
 '
 ' 0. Proloog
 "0=0", "*c2"
@@ -336,6 +352,7 @@
 "2=1;34=7", "*c7", "- Stukken goud", "&"
 "2=1;34=8", "*c7", "- Een prachtige halsketting met een edelsteen erin", "&"
 "2=1;38=1", "*c7", "- Rune steen met inscripties", "&"
+"2=1;48=1", "*c7", "- Een lege beker", "&"
 "2=1;40=1", "*c7", "- 1 Plant met ronde bladeren", "&"
 "2=1;41=1", "*c7", "- 1 Plant met stekelige bladeren", "&"
 "2=1;42=1", "*c7", "- 1 Lichtblauwe paddenstoel", "&"
@@ -814,33 +831,68 @@
 "*c2", "Eucalypta gaat naar binnen, en sluit de deur."
 "&4=0;45=3;40=0;41=0;42=0;12=2;20=0;5=0"
 
-"1=12;12=2;5=0;4=1", "*c2", "Je staat even te wachten. Je hoort allerlei geluiden uit de hut komen."
+"2=0;1=12;12=2;5=0;4=1", "*c2", "Je staat even te wachten. Je hoort allerlei geluiden uit de hut komen."
 "Er worden spullen gepakt, er wordt heen en weer gelopen, je hoort potjes, en"
 "je hoort iets branden. Er komt rook uit de schoorsteen van de hut."
 "", "*c3", "$n: 'Zo te horen wordt het medicijn gemaakt.'", "&5=1;4=0"
 
-"1=12;12=2;5=1;4=1", "*c2", "Je loopt wat heen en weer terwijl je wacht."
+"2=0;1=12;12=2;5=1;4=1", "*c2", "Je loopt wat heen en weer terwijl je wacht."
 "Je hoort dat er in de hut een ketel begint te borrelen. Af en toe hoor je een"
 "kleine plons. Blijkbaar wordt er nu echt gebrouwen."
 "", "Je hoopt maar dat je geduld beloond wordt."
 "", "*c3", "$n: 'Nog eventjes wachten dan maar.'", "&5=2;4=0"
 
-"1=12;12=2;5=2;4=1", "*c2", "Je hoort de ketel borrelen. Er komt een rare geur uit de hut."
+"2=0;1=12;12=2;5=2;4=1", "*c2", "Je hoort de ketel borrelen. Er komt een rare geur uit de hut."
 "", "Je hoort geen voetstappen meer in de hut zelf."
 "", "*c3", "$n: 'Hmm dit duurt langer dan ik dacht...'", "&5=3;4=0"
 
-"1=12;12=2;5=3;4=1", "*c3", "$n: 'Gaat alles goed?'"
+"2=0;1=12;12=2;5=3;4=1", "*c3", "$n: 'Gaat alles goed?'"
 "*c2", "", "Je krijgt geen reactie. De geur uit de hut lijkt bedwelmend."
 "", "*c3", "$n: 'Hmm, ergens lijkt me iets niet in de haak.'", "&5=4;4=0"
 
-"1=12;12=2;5=4;4=1", "*c2", "Je besluit de deur open te maken."
+"2=0;1=12;12=2;5=4;4=1", "*c2", "Je besluit de deur open te maken."
 "", "Je duwt de deur open. Een grote walm rare damp komt door de deur naar buiten."
 "Je gaat snel naar binnen en zet alle ramen open, zodat de damp wegtrekt.", ""
-"&12=3;4=0;5=0"
+"&12=3;4=0;5=0;20=1"
 
-"1=12;12=3;4=0", "*c2", "Je bent in de hut van Eucalypta. In het midden van de hut staat een grote"
-"kookpot te borrelen.", "Overal liggen boeken, potten en spullen waarvan je geen idee hebt wat het is."
-"Eucalypta ligt op de grond van de hut. Het lijkt wel alsof ze slaapt."
+"2=0;1=12;12=3;4=1;6=1", "*c2", "Je stapt weg bij de ketel.", "", "&6=0;4=0"
+"2=0;1=12;12=3;4=1;6=2", "*c2", "Je stapt weg bij de boeken.", "", "&6=0;4=0"
+"2=0;1=12;12=3;4=0;6=0", "*c2", "Je bent in de hut van Eucalypta. In het midden van de hut staat een grote"
+"kookpot te borrelen.", "Overal liggen boeken, bekers, potten en spullen waarvan je geen idee hebt wat"
+"het is.", "&"
+"2=0;1=12;12=3;4=0;6=0", "*c2", "Eucalypta ligt op de grond van de hut. Het lijkt wel alsof ze slaapt.", "&"
+"2=0;1=12;12=3;4=0;6=0;45=3", "*c2", "De getrokken tand van de draak ligt op een werktafel.", "&"
+
+"2=0;1=12;12=3;4=1;6=0", "*c2", "Je loopt naar Eucalypta. Ze ligt op de grond bij de ketel. Je probeert haar"
+"wakker te maken."
+"*c3", "", "$n: 'Eucalypta, wakker worden.'", "", "*c2", "Je schud haar een beetje heen en weer. Ze lijkt nergens op te reageren.", "&4=0"
+
+"2=0;1=12;12=3;4=0;6=2", "*c2", "Je bent bij aantal boeken die op de werktafel liggen. Er ligt een dikke", "&"
+"2=0;1=12;12=3;4=2;6=0", "*c2", "Je loopt naar een aantal boeken die op de werktafel liggen. Er ligt een dikke", "&6=2;4=0"
+
+"2=0;1=12;12=3;4=0;6=2", "*c2"
+"almanak genaamd: ", "*c6"
+"  '100 dingen die je altijd al wilde weten over mossen, kruiden"
+"   en paddenstoelen, maar nooit durfde te vragen'", "", "*c2", "en een opengeslagen boek, genaamd:", "*c6"
+"  'Toverdank recepten 101. Voor beginners tot meester-heksen'"
+"&20=0"
+
+"2=0;1=12;12=3;4=3;6=0", "*c2", "Je loopt naar de ketel in het midden van de hut.", "", "&6=1;4=0"
+"2=0;1=12;12=3;4=4;6=0", "*c2", "Je pakt een lege beker.", "&48=1;4=0"
+"2=0;1=12;12=3;4=5;6=0", "*c2", "Je pakt de tand van de draak.", "&45=2;4=0"
+
+"2=0;1=12;12=3;4=2;6=1", "*c2", "Je steekt je armen hoog in de lucht."
+"", "*c3", "$n: 'Sim sala bim!'", "", "*c2", "Er gebeurt niets.", "", "&4=0"
+
+"2=0;1=12;12=3;4=0;6=1;59=0", "*c2", "De drank in de ketel heeft een heldere doorzichtige kleur.", ""
+"Het lijkt erop alsof de ketel klaar is om een drankje in te brouwen.", "&"
+
+"2=0;1=12;12=3;6=2;4=3;5=0", "*c6", "Bladzijde 10.", ""
+"Lastige sloten opener."
+"&"
+
+"2=0;1=12;12=3;6=2;4=2;5=0", "*c6", "Bladzijde 18.", ""
+"Mossen en grassen."
 "&"
 
 '== 13. Boerderij
@@ -1750,7 +1802,23 @@
 "2=0;1=12;12=2;4=0;5=3", "Zeg: 'Gaat alles goed?'", "4=1"
 "2=0;1=12;12=2;4=0;5=4", "Open de deur van de hut", "4=1"
 
-"2=0;1=12;12=3;4=0", "Ga naar buiten", "1=4;3=5"
+"2=0;1=12;12=3;6=0;4=0", "Maak eucalypta wakker", "4=1"
+"2=0;1=12;12=3;6=0;4=0", "Bekijk boeken", "4=2"
+"2=0;1=12;12=3;6=0;4=0", "Ga naar de ketel", "4=3"
+"2=0;1=12;12=3;6=0;4=0;45=3", "Pak tand van de draak", "4=5"
+"2=0;1=12;12=3;6=0;4=0;48=0", "Pak een beker", "4=4"
+"2=0;1=12;12=3;6=0;4=0", "Ga naar buiten", "1=4;3=5"
+
+"2=0;1=12;12=3;6=1;4=0", "Zeg: `Sim sala bim!'", "4=2"
+"2=0;1=12;12=3;6=1;4=0", "Stap weg bij de ketel", "4=1"
+
+"2=0;1=12;12=3;6=2;4=0", "Lees de almanak", "4=2;5=0"
+"2=0;1=12;12=3;6=2;4=0", "Lees het recepten boek", "4=3;5=0;20=1"
+"2=0;1=12;12=3;6=2;4=0", "Stap weg bij de boeken", "4=1;20=1"
+
+"2=0;1=12;12=3;6=2;4=2", "Sluit het boek", "4=0;5=0;20=0"
+
+"2=0;1=12;12=3;6=2;4=3", "Sluit het boek", "4=0;5=0;20=0"
 
 '== 13. Boerderij
 "2=0;1=13;4=0;19=1;29=3", "Spring op paard", "2=2"
