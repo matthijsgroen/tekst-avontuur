@@ -70,7 +70,7 @@
 
 ' ==== Brouw ingrediënten
 ' 40 = plant ronde bladeren = getal == aantal
-' 41 = plant puntige bladeren = getal == aantal
+' 41 = plant stekelige bladeren = getal == aantal
 ' 42 = lichtblauwe paddenstoelen 0=onbekend, #amount
 
 ' 43 = status lift. 0 = boven, 1 = beneden, 2 = kapot
@@ -92,7 +92,7 @@
 '
 ' 59 = Status ketel. 0 = schoon, 1 = gevuld
 ' 60 = # ronde bladeren in ketel
-' 61 = # puntige bladeren in ketel
+' 61 = # stekelige bladeren in ketel
 ' 62 = # lichtblauwe paddenstoelen in ketel
 '
 
@@ -884,12 +884,16 @@
 
 "2=0;1=12;12=3;4=2;6=1", "*c2", "Je steekt je armen hoog in de lucht."
 "", "*c3", "$n: 'Sim sala bim!'", "", "*c2", "Er gebeurt niets.", "", "&4=0"
+"2=0;1=12;12=3;4=3;6=1", "*c2", "Je steekt je armen hoog in de lucht."
+"", "*c3", "$n: 'Hocus pokus!'", "", "*c2", "Er gebeurt niets.", "", "&4=0"
+"2=0;1=12;12=3;4=4;6=1", "*c2", "Je steekt je armen hoog in de lucht."
+"", "*c3", "$n: 'Adacadabra poef!'", "", "*c2", "Er gebeurt niets.", "", "&4=0"
 
 "2=0;1=12;12=3;4=0;6=1;59=0", "*c2", "De drank in de ketel heeft een heldere doorzichtige kleur.", ""
 "Het lijkt erop alsof de ketel klaar is om een drankje in te brouwen.", "&"
 
-"2=0;1=12;12=3;4=2;6=2", "*c2", "Je slaat de hele dikke almanak open", "", "&6=3;4=0"
-"2=0;1=12;12=3;4=3;6=2", "*c2", "Je slaat het receptenboek open", "", "&6=4;4=0"
+"2=0;1=12;12=3;4=2;6=2", "*c2", "Je slaat de hele dikke almanak open.", "", "&6=3;4=0"
+"2=0;1=12;12=3;4=3;6=2", "*c2", "Je slaat het receptenboek open.", "", "&6=4;4=0"
 
 "2=0;1=12;12=3;6=4;4=0;5=0", "*c6", "Bladzijde 1. -- Introductie --"
 "", "Heb je een toverketel 3000 aangeschaft maar je weet niet wat je er mee kunt?"
@@ -903,11 +907,14 @@
 "  - Indien het recept gelukt is, dan is de ketel gevult met de toverdrank."
 "  - Indien de spreuk mislukt omdat de ingredienten niet kloppen, wordt de ketel"
 "    automatisch schoongemaakt en kun je het nog eens proberen."
+"  - Voor de 'meester-heks' recepten is een runesteen nodig om de ingrediënten"
+"    toonbaar te maken"
 "", "Veel plezier!", "&"
 
 "2=0;1=12;12=3;6=4;4=0;5=1", "*c6", "Bladzijde 10. -- Alleshelende medicinale drank --"
 "", "Last van ochtendhumeur? Pukkeltjes? Ben je een ernstig zieke koning?", "Deze drank is niet alleen erg leuk om te maken, hij helpt ook nog eens tegen"
 "alle kwaaltjes!", ""
+"Niveau: Gemiddeld", ""
 "Benodigdheden:"
 "  - 1 Plant met ronde bladeren"
 "  - 2 Lichtblauwe paddenstoelen"
@@ -915,19 +922,45 @@
 "  - 1 Tand van een draak"
 "", "Spreuk: &##%$#@"
 "", "*c2", "Hmm, er zit een vlek over de spreuk. Het valt je ook op dat de lijst"
-"ingrediënten anders is dan Eucalypta je had gegeven"
+"ingrediënten anders is dan Eucalypta je had gegeven."
 "&"
 
 "2=0;1=12;12=3;6=4;4=0;5=2", "*c6", "Bladzijde 37. -- Wakker worden na een feestnacht --"
-""
+"", "Iets te lang wezen feesten? Je kan maar niet je bed uit komen? Dit drankje maakt"
+"je zo wakker!", ""
+"Niveau: Beginner", ""
+"Benodigdheden:"
+"  - 4 Planten met hartvormige bladeren"
+"  - 2 Lichtbruine boomzwammen"
+"  - 1 pluk Sterrenmos"
+"  - 1 Beker rode wijn"
+"", "Spreuk: 'Adacadabra hastaklap'"
 "&"
 
 "2=0;1=12;12=3;6=4;4=0;5=3", "*c6", "Bladzijde 85. -- Vreemde talen vertaler --"
-""
+"", "Op vakantie in Limburg of Friesland? Praat iemand in drie-letterige afkortingen?"
+"Met deze drank kan je iedereen verstaan!", ""
+"Niveau: Meester-heks", ""
+"Benodigdheden:"
+"  - ??????????"
+"  - ??????????"
+"  - ??????????"
+"  - ??????????"
+"", "Spreuk: ??????????"
+"", "p.s. De drank helpt niet voor wetterlijk taalgebruik in"
+"  gebruikersovereenkomsten."
 "&"
 
 "2=0;1=12;12=3;6=4;4=0;5=4", "*c6", "Bladzijde 114. -- De deur 'klemt' --"
-""
+"", "Je kent het wel. Je kelderdeur klemt ontzettend. Je weet niet eens of hij nu op"
+"slot zat of niet. Je wil gewoon die deur openkrijgen.", ""
+"Niveau: Beginner", ""
+"Benodigdheden:"
+"  - 4 Planten met stekelige bladeren"
+"  - 1 Lichtblauwe paddenstoel"
+"  - 2 Oranje zwammen"
+"  - 3 plukken Maanmos"
+"", "Spreuk: 'Hocus pilates!'"
 "&"
 
 "2=0;1=12;12=3;6=3;4=0;5=0", "*c6", "Bladzijde 42.", ""
@@ -1857,6 +1890,8 @@
 "2=0;1=12;12=3;6=0;4=0", "Ga naar buiten", "1=4;3=5"
 
 "2=0;1=12;12=3;6=1;4=0", "Zeg: `Sim sala bim!'", "4=2"
+"2=0;1=12;12=3;6=1;4=0", "Zeg: `Hocus pokus!'", "4=3"
+"2=0;1=12;12=3;6=1;4=0", "Zeg: `Adacadabra poef!'", "4=4"
 "2=0;1=12;12=3;6=1;4=0", "Stap weg bij de ketel", "4=1"
 
 "2=0;1=12;12=3;6=2;4=0", "Lees de almanak", "4=2;5=0"
