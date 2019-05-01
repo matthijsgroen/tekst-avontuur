@@ -214,6 +214,7 @@ styles[] {
       }
 
       pak_tand_van_draak:event {
+         style           = finished
          depends_on []   = trek_tand_van_draak, krijg_ingredientenlijst_van_heks;
       }
 
@@ -296,7 +297,7 @@ styles[] {
 
       toegang_tot_kelder:event {
          style           = finished
-         depends_on []   = beklim_toren, oplos_drankje;
+         depends_on []   = oplos_drankje;
       }
 
       trek_tand_van_draak:event {
@@ -305,7 +306,7 @@ styles[] {
       }
 
       vind_goud_in_bos:event{
-         style           = finished
+         style         = finished
          depends_on [] = volg_maansteen_route;
       }
 

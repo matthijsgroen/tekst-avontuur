@@ -45,7 +45,7 @@
 ' 23 = proloog sleutel / vogelvoer
 ' 24 = 1 = kapotte houweel, 2 = gerepareerde houweel
 ' 25 = Koeken 1 = bestaan, 2 = kopen, 3 = geven
-' 26 = Medicijn. 1 = kennis draak, 2 = kennis heks, 3 = prijs, 4 = Ingredientenlijst, 5 = ingredienten gezien, 6 = medicijn
+' 26 = Medicijn. 1 = kennis draak, 2 = kennis heks, 3 = prijs, 4 = Ingrediëntenlijst, 5 = ingredienten gezien, 6 = medicijn
 ' 27 = Zwaard. 1 = motivatie, 2 = in bezit
 ' 28 = Edelsteen.
 ' 29 = paard. 1 = kennis, 2 = gevonden, 3 = hoeven, 4 = wagen
@@ -60,7 +60,7 @@
 ' 38 = rune steen
 ' 39 = hint 'harnas heeft geen zin' -- Boer
 
-' ==== Brouw ingredienten
+' ==== Brouw ingrediënten
 ' 40 = plant ronde bladeren = getal == aantal
 ' 41 = plant puntige bladeren = getal == aantal
 ' 42 = lichtblauwe paddenstoelen 0=onbekend, #amount
@@ -790,7 +790,7 @@
 "  dochter zijn! Momentje, dan schrijf ik een lijstje met benodigdheden.'"
 "*c2", "", "Eucalypta gaat naar binnen en doet de deur dicht. Even later komt ze terug en"
 "geeft ze je een lijstje met benodigheden.", ""
-"*c13", "Eucalypta: 'Hier, dit heb ik allemaal nodig. Er zitten wel een lastig ingredient", "&26=4"
+"*c13", "Eucalypta: 'Hier, dit heb ik allemaal nodig. Er zitten wel een lastig ingrediënt", "&26=4"
 "1=12;12=1;2=0;4=2;34=8;0=2", "  bij, maar een sterke vrouw zoals jij krijgt dat wel voor elkaar.'", "&4=0;34=9"
 "1=12;12=1;2=0;4=2;34=8;0=1", "  bij, maar een sterke man zoals jij krijgt dat wel voor elkaar.'", "&4=0;34=9"
 
@@ -799,7 +799,7 @@
 "  is vele malen groter dan dat van geld.'", ""
 "*c2", "Dit helpt je niet verder.", "&4=0"
 
-"1=12;12=1;2=0;4=4", "*c2", "Je geeft alle ingredienten aan Eucalupta.", ""
+"1=12;12=1;2=0;4=4", "*c2", "Je geeft alle ingrediënten aan Eucalupta.", ""
 "*c13", "Eucalypta: 'Dank je! Wacht hier maar even, dan ga ik aan de slag'"
 "*c2", "Dit helpt je niet verder.", "&4=0;45=3;40=0;41=0;42=0"
 
@@ -1701,7 +1701,7 @@
 "2=0;1=12;12=1;4=0;26=3;28=1", "Geef edelsteen aan Eucalypta", "4=2"
 "2=0;1=12;12=1;4=0;26=3;34=8", "Geef halsketting aan Eucalypta", "4=2"
 "2=0;1=12;12=1;4=0;34>0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=3"
-"2=0;1=12;12=1;4=0;40>0;41>0;42>0;45=2", "Zeg: 'Ik heb alle ingredienten verzameld'", "4=4"
+"2=0;1=12;12=1;4=0;40>0;41>0;42>0;45=2", "Zeg: 'Ik heb alle ingrediënten verzameld'", "4=4"
 "2=0;1=12;12=1;4=0", "Zeg: 'Tot ziens!'", "1=4;3=5"
 
 '== 13. Boerderij
@@ -1835,4 +1835,4 @@
 "2=1;25=2", "Eet koeken", "4=2"
 "2=1;34>1", "Bekijk schat aantekeningen", "4=3"
 "2=1;36=2;34=4;1=8", "Wacht tot het donker is", "4=4;2=0"
-"2=1;26>3", "Bekijk ingredientenlijst voor medicijn", "4=4"
+"2=1;26>3", "Bekijk ingrediëntenlijst voor medicijn", "4=4"
