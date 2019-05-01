@@ -800,8 +800,28 @@
 "*c2", "Dit helpt je niet verder.", "&4=0"
 
 "1=12;12=1;2=0;4=4", "*c2", "Je geeft alle ingrediënten aan Eucalupta.", ""
-"*c13", "Eucalypta: 'Dank je! Wacht hier maar even, dan ga ik aan de slag'"
-"*c2", "Dit helpt je niet verder.", "&4=0;45=3;40=0;41=0;42=0"
+"*c13", "Eucalypta: 'Dank je! Wacht hier maar even, dan ga ik aan de slag'", ""
+"*c2", "Eucalypta gaat naar binnen, en sluit de deur."
+"&4=0;45=3;40=0;41=0;42=0;12=2;20=0;5=0"
+
+"1=12;12=2;5=0;4=1", "*c2", "Je staat even te wachten. Je hoort allerlei geluiden uit de hut komen."
+"Er worden spullen gepakt, er wordt heen en weer gelopen, je hoort potjes, en"
+"je hoort iets branden. Er komt rook uit de schoorsteen van de hut."
+"", "*c3", "$n: 'Zo te horen wordt het medicijn gemaakt.'", "&5=1;4=0"
+
+"1=12;12=2;5=1;4=1", "*c2", "Je loopt wat heen en weer terwijl je wacht."
+"Je hoort dat er in de hut een ketel begint te borrelen. Af en toe hoor je een"
+"kleine plons. Blijkbaar wordt er nu echt gebrouwen."
+"", "Je hoopt maar dat je geduld beloond wordt."
+"", "*c3", "$n: 'Nog eventjes wachten dan maar.'", "&5=2;4=0"
+
+"1=12;12=2;5=2;4=1", "*c2", "Je hoort de ketel borrelen. Er komt een rare geur uit de hut."
+"", "Je hoort geen voetstappen meer in de hut zelf."
+"", "*c3", "$n: 'Hmm dit duurt langer dan ik dacht...'", "&5=3;4=0"
+
+"1=12;12=2;5=3;4=1", "*c3", "$n: 'Gaat alles goed?'"
+"*c2", "", "Je krijgt geen reactie. De geur uit de hut lijkt bedwelmend."
+"", "*c3", "$n: 'Hmm, ergens lijkt me iets niet in de haak.'", "&5=4;4=0"
 
 '== 13. Boerderij
 "1=13;13>0;2=0;4=0", "*c2"
@@ -1704,6 +1724,12 @@
 "2=0;1=12;12=1;4=0;40>0;41>0;42>0;45=2", "Zeg: 'Ik heb alle ingrediënten verzameld'", "4=4"
 "2=0;1=12;12=1;4=0", "Zeg: 'Tot ziens!'", "1=4;3=5"
 
+"2=0;1=12;12=2;4=0;5=0", "Wacht eventjes", "4=1"
+"2=0;1=12;12=2;4=0;5=1", "Wacht nog eventjes", "4=1"
+"2=0;1=12;12=2;4=0;5=2", "Wacht nog iets langer", "4=1"
+"2=0;1=12;12=2;4=0;5=3", "Zeg: 'Gaat alles goed?'", "4=1"
+"2=0;1=12;12=2;4=0;5=4", "Open de deur van de hut", "4=1"
+
 '== 13. Boerderij
 "2=0;1=13;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=13;13=0;4=0", "Praat met de boer", "4=1"
@@ -1822,7 +1848,7 @@
 "2=0;1=18;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=18;4=0;19=1;29=4;44=2", "Til molensteen op de lift", "4=1"
 "2=0;1=18;4=0", "Ga de toren in", "1=17;3=5"
-"2=0;1=18;4=0;45<2;43=2;26=4", "Bekijk het puin van de lift", "4=3"
+"2=0;1=18;4=0;45<2;43=2;26>4", "Bekijk het puin van de lift", "4=3"
 "2=0;1=18;4=0;47=1", "Ga de kelder in", "1=19;3=1"
 "2=0;1=18;4=0;47=0", "Open kelderdeur", "4=2"
 "2=0;1=18;4=0", "Ga het woud in", "1=7;3=5"
