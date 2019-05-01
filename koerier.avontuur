@@ -45,7 +45,7 @@
 ' 23 = proloog sleutel / vogelvoer
 ' 24 = 1 = kapotte houweel, 2 = gerepareerde houweel
 ' 25 = Koeken 1 = bestaan, 2 = kopen, 3 = geven
-' 26 = Medicijn. 1 = kennis draak, 2 = kennis heks, 3 = prijs, 4 = Ingredientenlijst, 5 = medicijn
+' 26 = Medicijn. 1 = kennis draak, 2 = kennis heks, 3 = prijs, 4 = Ingredientenlijst, 5 = ingredienten gezien, 6 = medicijn
 ' 27 = Zwaard. 1 = motivatie, 2 = in bezit
 ' 28 = Edelsteen.
 ' 29 = paard. 1 = kennis, 2 = gevonden, 3 = hoeven, 4 = wagen
@@ -59,11 +59,12 @@
 ' 37 = hint route v boer NNWNNOZ
 ' 38 = rune steen
 ' 39 = hint 'harnas heeft geen zin' -- Boer
-'
+
+' ==== Brouw ingredienten
 ' 40 = plant ronde bladeren = getal == aantal
 ' 41 = plant puntige bladeren = getal == aantal
-'
-' 42 = lichtblauwe paddenstoelen 0=onbekend, 1=benodigd, 2=gevonden
+' 42 = lichtblauwe paddenstoelen 0=onbekend, #amount
+
 ' 43 = status lift. 0 = boven, 1 = beneden, 2 = kapot
 ' 44 = molensteen 0 = niet, 1 = nodig, 2 = op wagen, 3 = intentie tillen, 4 = op lift
 ' 45 = Tand 0 = niet, 1 = getrokken, 2 = gepakt, 3 = gegeven
@@ -297,12 +298,12 @@
 
 "2=1;4=4", "*c2", "Je bekijkt de ingrediëntenlijst:"
 "*c6", "", "  Lieve $n, ik heb het volgende nodig:", ""
-"  - Plant met ronde bladeren"
-"  - Lichtblauwe paddenstoelen"
-"  - Plant met stekelige bladeren"
+"  - 2 Planten met ronde bladeren"
+"  - 2 Lichtblauwe paddenstoelen"
+"  - 3 Planten met stekelige bladeren"
 "  - 1 Tand van een draak"
 "", "&"
-"2=1;4=4;42=0", "&42=1"
+"2=1;4=4;42=0", "&26=5"
 
 "2=1", "*c15", "Je hebt het volgende bij je:", "&"
 "2=1;22>1", "*c7", "-#22 geldstukken", "&"
@@ -313,7 +314,7 @@
 "2=1;24=1", "*c7", "- Houweel met gebroken heft", "&"
 "2=1;24=2", "*c7", "- Gerepareerde houweel", "&"
 "2=1;25=2", "*c7", "- Koeken, vers van de bakker", "&"
-"2=1;26=4", "*c7", "- Ingrediëntenlijst voor medicijn", "&"
+"2=1;26>3", "*c7", "- Ingrediëntenlijst voor medicijn", "&"
 "2=1;27=2", "*c7", "- Een mooi scherp zwaard", "&"
 "2=1;28=1", "*c7", "- Een fonkelende edelsteen", "&"
 "2=1;31=1", "*c7", "- Een lang stuk touw", "&"
@@ -325,9 +326,12 @@
 "2=1;34=7", "*c7", "- Stukken goud", "&"
 "2=1;34=8", "*c7", "- Een prachtige halsketting met een edelsteen erin", "&"
 "2=1;38=1", "*c7", "- Rune steen met inscripties", "&"
-"2=1;40=1", "*c7", "- Plant met ronde bladeren", "&"
-"2=1;41=1", "*c7", "- Plant met stekelige bladeren", "&"
-"2=1;42=2", "*c7", "- Lichtblauwe paddenstoelen", "&"
+"2=1;40=1", "*c7", "- 1 Plant met ronde bladeren", "&"
+"2=1;41=1", "*c7", "- 1 Plant met stekelige bladeren", "&"
+"2=1;42=1", "*c7", "- 1 Lichtblauwe paddenstoel", "&"
+"2=1;40>1", "*c7", "-#40 Planten met ronde bladeren", "&"
+"2=1;41>1", "*c7", "-#41 Planten met stekelige bladeren", "&"
+"2=1;42>1", "*c7", "-#42 Lichtblauwe paddenstoelen", "&"
 "2=1;45=2", "*c7", "- Tand van een draak", "&"
 
 ' 1. Bos
@@ -401,26 +405,26 @@
 "en hartvormige bladeren."
 "&"
 
-"1=4;2=0;4=2;26!4", "*c2", "Je bukt om de plant met de stekelige bladeren te plukken."
+"1=4;2=0;4=2;26<5", "*c2", "Je bukt om de plant met de stekelige bladeren te plukken."
 "", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
 "&4=1"
 
-"1=4;2=0;4=2;26=4;41=0", "*c2", "Je bukt om de plant met de stekelige bladeren te plukken."
+"1=4;2=0;4=2;26>4;41=0", "*c2", "Je bukt om de plant met de stekelige bladeren te plukken."
 "Je plukt er een aantal en stopt ze in je tas."
-"&4=1;41=1"
+"&4=1;41=5"
 
-"1=4;2=0;4=2;26=4;41=1", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
+"1=4;2=0;4=2;26>4;41>0", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
 "&4=1"
 
-"1=4;2=0;4=3;26!4", "*c2", "Je bukt om de plant met de ronde bladeren te plukken."
+"1=4;2=0;4=3;26<5", "*c2", "Je bukt om de plant met de ronde bladeren te plukken."
 "", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
 "&4=1"
 
-"1=4;2=0;4=3;26=4;40=0", "*c2", "Je bukt om de plant met de ronde bladeren te plukken."
+"1=4;2=0;4=3;26>4;40=0", "*c2", "Je bukt om de plant met de ronde bladeren te plukken."
 "Je plukt er een aantal en stopt ze in je tas."
-"&4=1;40=1"
+"&4=1;40=5"
 
-"1=4;2=0;4=3;26=4;40=1", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
+"1=4;2=0;4=3;26>4;40>0", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
 "&4=1"
 
 "1=4;2=0;4=4;36!1", "*c2", "Je bukt om de plant met de ruitvormige bladeren te plukken."
@@ -507,18 +511,18 @@
 "  Ik heb geen idee of ik de lichtbruine boomzwammen wel nodig ga hebben.'"
 "&4=1"
 
-"1=7;4=4;2=0;26>0;7=2;42=0", "*c3"
+"1=7;4=4;2=0;26<4;7=2;42=0", "*c3"
 "$n: 'Hmm paddenstoelen kunnen ook giftig zijn."
 "  Goed uitkijken welke ik ga plukken."
 "  Ik heb geen idee of ik de lichtblauwe paddenstoelen wel nodig ga hebben.'"
 "&4=1"
 
-"1=7;4=4;2=0;26>0;7=2;42=2", "*c3"
+"1=7;4=4;2=0;26>3;7=2;42>0", "*c3"
 "$n: 'Volgens mij heb ik die al in mijn tas zitten.'"
 "&4=1"
 
-"1=7;4=4;2=0;26>0;7=2;42=1", "*c2"
-"Je bukt om de lichtblauwe paddenstoelen te plukken. Je doet het heel"
+"1=7;4=4;2=0;26>3;7=2;42=0", "*c2"
+"Je bukt om een paar lichtblauwe paddenstoelen te plukken. Je doet het heel"
 "voorzichtig."
 "&42=2;4=1"
 
@@ -794,6 +798,10 @@
 "*c13", "Eucalypta: 'Ach daar moet je niets om geven. De krachten van planten en magie"
 "  is vele malen groter dan dat van geld.'", ""
 "*c2", "Dit helpt je niet verder.", "&4=0"
+
+"1=12;12=1;2=0;4=4", "*c2", "Je geeft alle ingredienten aan Eucalupta.", ""
+"*c13", "Eucalypta: 'Dank je! Wacht hier maar even, dan ga ik aan de slag'"
+"*c2", "Dit helpt je niet verder.", "&4=0;45=3;40=0;41=0;42=0"
 
 '== 13. Boerderij
 "1=13;13>0;2=0;4=0", "*c2"
@@ -1609,7 +1617,7 @@
 
 '== 7. Donker woud acties
 "2=0;1=7;4=0;7!1;19=1;29=3", "Spring op paard", "2=2"
-"2=0;1=7;4=0;7=2;42>0", "Ga op zoek naar paddestoelen", "4=1"
+"2=0;1=7;4=0;7=2;26>3", "Ga op zoek naar paddestoelen", "4=1"
 "2=0;1=7;4=0;7=2", "Ga naar de toren van de draak", "1=18;3=6"
 "2=0;1=7;4=0;7!1", "Ga naar het westen, richting het dorp", "1=6;3=4"
 "2=0;1=7;4=0;39=1;27=2;7=0", "Ga toch verder, het donkere woud in", "7=1"
@@ -1693,6 +1701,7 @@
 "2=0;1=12;12=1;4=0;26=3;28=1", "Geef edelsteen aan Eucalypta", "4=2"
 "2=0;1=12;12=1;4=0;26=3;34=8", "Geef halsketting aan Eucalypta", "4=2"
 "2=0;1=12;12=1;4=0;34>0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=3"
+"2=0;1=12;12=1;4=0;40>0;41>0;42>0;45=2", "Zeg: 'Ik heb alle ingredienten verzameld'", "4=4"
 "2=0;1=12;12=1;4=0", "Zeg: 'Tot ziens!'", "1=4;3=5"
 
 '== 13. Boerderij
@@ -1826,4 +1835,4 @@
 "2=1;25=2", "Eet koeken", "4=2"
 "2=1;34>1", "Bekijk schat aantekeningen", "4=3"
 "2=1;36=2;34=4;1=8", "Wacht tot het donker is", "4=4;2=0"
-"2=1;26=4", "Bekijk ingredientenlijst voor medicijn", "4=4"
+"2=1;26>3", "Bekijk ingredientenlijst voor medicijn", "4=4"
