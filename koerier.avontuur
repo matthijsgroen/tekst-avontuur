@@ -5,6 +5,7 @@
 ' @Datum: April 2019
 ' @Email: matthijs.groen@gmail.com
 ' @Twitter: @matthijsgroen
+' @Versie: 0.8-alpha
 
 ' Gebeurtenissen
 ' 0 = geslacht. 1 = jongen, 2 = meisje
@@ -71,7 +72,14 @@
 ' ==== Brouw ingrediënten
 ' 40 = plant ronde bladeren = getal == aantal
 ' 41 = plant stekelige bladeren = getal == aantal
+' 57 = plant hartvormige bladeren
+
 ' 42 = lichtblauwe paddenstoelen 0=onbekend, #amount
+' 58 = oranje zwammen
+' 63 = lichtbruine bospaddenstoelen
+' 64 = sterrenmos
+' 65 = maanmos
+' 66 = kosmos
 
 ' 43 = status lift. 0 = boven, 1 = beneden, 2 = kapot
 ' 44 = molensteen 0 = niet, 1 = nodig, 2 = op wagen, 3 = intentie tillen, 4 = op lift
@@ -90,12 +98,17 @@
 ' 55 = kennis paddestoelen
 ' 56 = kennis planten
 '
-' 59 = Status ketel. 0 = schoon, 1 = gevuld
+' 59 = Status ketel. 0 = schoon, 1-5 = random mislukking 10 = gevuld, 11 = gelukt
 ' 60 = # ronde bladeren in ketel
 ' 61 = # stekelige bladeren in ketel
-' 62 = # lichtblauwe paddenstoelen in ketel
+' 67 = # hartvormige bladeren in ketel
 '
-
+' 62 = # lichtblauwe paddenstoelen in ketel
+' 68 = # oranje zwammen
+' 69 = # lichtbruine paddenstoelen
+' 70 = # sterrenmos
+' 71 = # maanmos
+' 72 = # kosmos
 '
 ' 0. Proloog
 "0=0", "*c2"
@@ -897,7 +910,7 @@
 
 "2=0;1=12;12=3;6=4;4=0;5=0", "*c6", "Bladzijde 1. -- Introductie --"
 "", "Heb je een toverketel 3000 aangeschaft maar je weet niet wat je er mee kunt?"
-"Dankzij dit boek wordt het maken van een toverdrank is kinderlijk eenvoudig."
+"Dankzij dit boek wordt het maken van een toverdrank kinderlijk eenvoudig."
 "Alle recepten werken als volgt:", ""
 "  - Plaats alle ingredienten beschreven in het recept in de ketel. De volgorde"
 "    doet er niet toe."
@@ -947,7 +960,7 @@
 "  - ??????????"
 "  - ??????????"
 "", "Spreuk: ??????????"
-"", "p.s. De drank helpt niet voor wetterlijk taalgebruik in"
+"", "p.s. De drank helpt niet voor wettelijk taalgebruik in"
 "  gebruikersovereenkomsten."
 "&"
 
@@ -980,31 +993,49 @@
 
 "2=0;1=12;12=3;6=3;4=0;5=0", "*c6", "Bladzijde 42. -- Mossen en grassen. --"
 ""
-"Mossen groeien vooral in een zonnige bosrijke omgeving. De onderstaande mossen"
-"zijn krachtig om te gebruiken."
+"Tip nummer 30: Welke mossen zijn giftig of gevaarlijk?"
 ""
-"  - Sterrenmos, bevat elementen voor meer energie."
-"  - Maanmos, bevat elementen die gevaarlijk zijn indien gemengt."
-"  - Kosmos, bevat elementen die ruimdenkend werken."
-"  - Atmos, zeer giftig! niet aanraken!"
+"Deze mossen zijn gevaarlijk:"
+"  - Atmos"
+"  - Dondermos"
+""
+"Deze mossen zijn niet gevaarlijk:"
+"  - Sterrenmos"
+"  - Maanmos"
+"  - Kosmos"
 "&"
+
+"2=0;1=12;12=3;6=3;4=0;5=0;54=0", "", "*c2", "Mooi! je weet nu alles over mossen!"
+"&54=1"
 
 "2=0;1=12;12=3;6=3;4=0;5=1", "*c6", "Bladzijde 1012. -- Paddenstoelen en ander gezwam. --"
 ""
+"Tip nummer 45: Welke paddenstoelen zijn gevaarlijk?"
+""
+"Deze paddenstoelen zijn gevaarlijk:"
 "  - Rode paddenstoelen met witte stippen, Niet plukken! Dit kunnen huizen van"
 "    zeer gevaarlijke boskabouters zijn."
+"  - Zwarte paddestoel"
+""
+"Deze paddenstoelen zijn niet gevaarlijk:"
 "  - Oranje zwammen, zorgt voor goede hechting van ingredienten."
 "  - Lichtbruine boomzwammen, heerlijk op een broodje kaas."
 "  - Lichtblauwe paddenstoelen, hebben een geneeskrachtige werking."
 "&"
 
+"2=0;1=12;12=3;6=3;4=0;5=1;55=0", "", "*c2", "Mooi! je weet nu alles over paddenstoelen!"
+"&55=1"
+
 "2=0;1=12;12=3;6=3;4=0;5=2", "*c6", "Bladzijde 6510. -- Planten en kruiden. --"
 ""
-"  - Plant met stekelige bladeren"
-"  - Plant met ronde bladeren"
-"  - Plant met ruitvormige bladeren * Giftig!"
-"  - Plant met hartvormige bladeren"
+"Tip nummer 72: Welke planten of kruiden zijn gevaarlijk?"
+""
+"Let vooral of de plant ruitvormige bladeren heeft. Als de plant dit heeft, zijn"
+"ze zeer giftig en gevaarlijk! Niet aanraken!"
 "&"
+
+"2=0;1=12;12=3;6=3;4=0;5=2;56=0", "", "*c2", "Mooi! je weet nu alles over kruiden en planten!"
+"&56=1"
 
 '== 13. Boerderij
 "1=13;13>0;2=0;4=0", "*c2"
