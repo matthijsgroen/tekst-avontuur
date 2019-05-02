@@ -896,11 +896,14 @@
 "2=0;1=12;12=3;4=5;6=0", "*c2", "Je pakt de tand van de draak.", "&45=2;4=0"
 
 "2=0;1=12;12=3;4=2;6=1", "*c2", "Je steekt je armen hoog in de lucht."
-"", "*c3", "$n: 'Sim sala bim!'", "", "*c2", "Er gebeurt niets.", "", "&4=0"
+"", "*c3", "$n: 'Sim sala...'", "&20=0"
 "2=0;1=12;12=3;4=3;6=1", "*c2", "Je steekt je armen hoog in de lucht."
-"", "*c3", "$n: 'Hocus pokus!'", "", "*c2", "Er gebeurt niets.", "", "&4=0"
+"", "*c3", "$n: 'Hocus...'", "&20=0"
 "2=0;1=12;12=3;4=4;6=1", "*c2", "Je steekt je armen hoog in de lucht."
-"", "*c3", "$n: 'Adacadabra poef!'", "", "*c2", "Er gebeurt niets.", "", "&4=0"
+"", "*c3", "$n: 'Adacadabra...'", "&20=0"
+
+"2=0;1=12;12=3;4=5;6=1;59=0", "*c2", "Er gebeurt niets.", "", "&20=1;4=0"
+"2=0;1=12;12=3;4=6;6=1;59=0", "*c2", "Er gebeurt niets.", "", "&20=1;4=0"
 
 "2=0;1=12;12=3;4=0;6=1;59=0", "*c2", "De drank in de ketel heeft een heldere doorzichtige kleur.", ""
 "Het lijkt erop alsof de ketel klaar is om een drankje in te brouwen.", "&"
@@ -948,7 +951,7 @@
 "  - 1 pluk Sterrenmos"
 "  - 1 beker rode wijn"
 "", "Spreuk: 'Adacadabra hastaklap'"
-"&"
+"&52=1"
 
 "2=0;1=12;12=3;6=4;4=0;5=3", "*c6", "Bladzijde 85. -- Vreemde talen vertaler --"
 "", "Op vakantie in Limburg of Friesland? Praat iemand in drie-letterige afkortingen?"
@@ -989,7 +992,7 @@
 "  - 2 oranje zwammen"
 "  - 3 plukken Maanmos"
 "", "Spreuk: 'Hocus pilates!'"
-"&"
+"&50=1"
 
 "2=0;1=12;12=3;6=3;4=0;5=0", "*c6", "Bladzijde 42. -- Mossen en grassen. --"
 ""
@@ -1951,10 +1954,22 @@
 "2=0;1=12;12=3;6=0;4=0;48=0", "Pak een beker", "4=4"
 "2=0;1=12;12=3;6=0;4=0", "Ga naar buiten", "1=4;3=5"
 
-"2=0;1=12;12=3;6=1;4=0", "Zeg: `Sim sala bim!'", "4=2"
-"2=0;1=12;12=3;6=1;4=0", "Zeg: `Hocus pokus!'", "4=3"
-"2=0;1=12;12=3;6=1;4=0", "Zeg: `Adacadabra poef!'", "4=4"
+"2=0;1=12;12=3;6=1;4=0", "Zeg: `Sim sala...'", "4=2"
+"2=0;1=12;12=3;6=1;4=0", "Zeg: `Hocus...'", "4=3"
+"2=0;1=12;12=3;6=1;4=0", "Zeg: `Adacadabra...'", "4=4"
 "2=0;1=12;12=3;6=1;4=0", "Stap weg bij de ketel", "4=1"
+
+"2=0;1=12;12=3;6=1;4=2", "Zeg: `...Bim!'", "4=5"
+"2=0;1=12;12=3;6=1;4=2", "Zeg: `...Bam!'", "4=5"
+"2=0;1=12;12=3;6=1;4=2", "Zeg: `...Bom!'", "4=5"
+
+"2=0;1=12;12=3;6=1;4=3", "Zeg: `...pokus!'", "4=5"
+"2=0;1=12;12=3;6=1;4=3", "Zeg: `...poef!'", "4=5"
+"2=0;1=12;12=3;6=1;4=3;50=1", "Zeg: `...pilates!'", "4=6"
+"2=0;1=12;12=3;6=1;4=3", "Zeg: `...krokus!'", "4=5"
+
+"2=0;1=12;12=3;6=1;4=4", "Zeg: `...poef!'", "4=5"
+"2=0;1=12;12=3;6=1;4=4;52=1", "Zeg: `...hastaklap!'", "4=7"
 
 "2=0;1=12;12=3;6=2;4=0", "Lees de almanak", "4=2;5=0"
 "2=0;1=12;12=3;6=2;4=0", "Lees het recepten boek", "4=3;5=0;20=1"
