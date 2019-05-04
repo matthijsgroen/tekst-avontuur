@@ -369,11 +369,13 @@
 "2=1;34=8", "*c7", "- Een prachtige halsketting met een edelsteen erin", "&"
 "2=1;38=1", "*c7", "- Rune steen met inscripties", "&"
 "2=1;48=1", "*c7", "- Een lege beker", "&"
-"2=1;40=1", "*c7", "- 1 Plant met ronde bladeren", "&"
-"2=1;41=1", "*c7", "- 1 Plant met stekelige bladeren", "&"
-"2=1;42=1", "*c7", "- 1 Lichtblauwe paddenstoel", "&"
+"2=1;40=1", "*c7", "- 1 plant met ronde bladeren", "&"
 "2=1;40>1", "*c7", "-#40 Planten met ronde bladeren", "&"
+"2=1;41=1", "*c7", "- 1 plant met stekelige bladeren", "&"
 "2=1;41>1", "*c7", "-#41 Planten met stekelige bladeren", "&"
+"2=1;57=1", "*c7", "- 1 plant met hartvormige bladeren", "&"
+"2=1;57>1", "*c7", "-#57 plant met hartvormige bladeren", "&"
+"2=1;42=1", "*c7", "- 1 Lichtblauwe paddenstoel", "&"
 "2=1;42>1", "*c7", "-#42 Lichtblauwe paddenstoelen", "&"
 "2=1;45=2", "*c7", "- Tand van een draak", "&"
 
@@ -445,8 +447,8 @@
 
 "1=4;2=0;4=1", "*c2", "Je bekijkt eens rustig alle planten die hier in het moeras groeien."
 "Er staan planten met stekelige bladeren, ronde bladeren, ruitvormige bladeren"
-"en hartvormige bladeren."
-"&"
+"en hartvormige bladeren.", "&"
+"1=4;2=0;4=1;56=1", "*c3", "", "$n: 'Handig dat ik nu alles over deze planten weet!'", "&"
 
 "1=4;2=0;4=2;26<5", "*c2", "Je bukt om de plant met de stekelige bladeren te plukken."
 "", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
@@ -470,8 +472,12 @@
 "1=4;2=0;4=3;26>4;40>0", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
 "&4=1"
 
-"1=4;2=0;4=4;36!1", "*c2", "Je bukt om de plant met de ruitvormige bladeren te plukken."
+"1=4;2=0;4=4;36!1;56=0", "*c2", "Je bukt om de plant met de ruitvormige bladeren te plukken."
 "", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
+"&4=1"
+
+"1=4;2=0;4=4;36!1;56=1", "*c2", "Je bekijkt de plant nog eens goed.", "*c3"
+"", "$n: 'Deze moet ik niet plukken. Deze plant is erg giftig.'"
 "&4=1"
 
 "1=4;2=0;4=4;36=1", "*c2", "Je bukt om de plant met de ruitvormige bladeren te plukken."
@@ -481,8 +487,15 @@
 "Hij is iets apart van kleur. Je stopt hem in je tas."
 "&4=1;36=2"
 
-"1=4;2=0;4=5", "*c2", "Je bukt om de plant met de hartvormige bladeren te plukken."
+"1=4;2=0;4=5;56=0", "*c2", "Je bukt om de plant met de hartvormige bladeren te plukken."
 "", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
+"&4=1"
+
+"1=4;2=0;4=5;56=1;57=0", "*c2", "Je bukt om de plant met de hartvormige bladeren te plukken."
+"Je plukt er een aantal en stopt ze in je tas."
+"&4=1;57=5"
+
+"1=4;2=0;4=3;56=1;57>0", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
 "&4=1"
 
 '== 6. Dorp
@@ -903,7 +916,7 @@
 "2=0;1=12;12=3;4=3;6=1", "*c2", "Je steekt je armen hoog in de lucht."
 "", "*c3", "$n: 'Hocus...'", "&20=0"
 "2=0;1=12;12=3;4=4;6=1", "*c2", "Je steekt je armen hoog in de lucht."
-"", "*c3", "$n: 'Adacadabra...'", "&20=0"
+"", "*c3", "$n: 'Abracadabra...'", "&20=0"
 
 "2=0;1=12;12=3;4=5;6=1;59=0", "*c2", "Er gebeurt niets.", "", "&20=1;4=0"
 "2=0;1=12;12=3;4=6;6=1;59=0", "*c2", "Er gebeurt niets.", "", "&20=1;4=0"
@@ -953,7 +966,7 @@
 "  - 2 lichtbruine boomzwammen"
 "  - 1 pluk Sterrenmos"
 "  - 1 beker rode wijn"
-"", "Spreuk: 'Adacadabra hastaklap'"
+"", "Spreuk: 'Abracadabra hastaklap'"
 "&52=1"
 
 "2=0;1=12;12=3;6=4;4=0;5=3", "*c6", "Bladzijde 85. -- Vreemde talen vertaler --"
@@ -1959,7 +1972,7 @@
 
 "2=0;1=12;12=3;6=1;4=0", "Zeg: `Sim sala...'", "4=2"
 "2=0;1=12;12=3;6=1;4=0", "Zeg: `Hocus...'", "4=3"
-"2=0;1=12;12=3;6=1;4=0", "Zeg: `Adacadabra...'", "4=4"
+"2=0;1=12;12=3;6=1;4=0", "Zeg: `Abracadabra...'", "4=4"
 "2=0;1=12;12=3;6=1;4=0", "Stap weg bij de ketel", "4=1"
 
 "2=0;1=12;12=3;6=1;4=2", "Zeg: `...Bim!'", "4=5"
@@ -1971,6 +1984,8 @@
 "2=0;1=12;12=3;6=1;4=3;50=1", "Zeg: `...pilates!'", "4=6"
 "2=0;1=12;12=3;6=1;4=3", "Zeg: `...krokus!'", "4=5"
 
+"2=0;1=12;12=3;6=1;4=4", "Zeg: `...poef!'", "4=5"
+"2=0;1=12;12=3;6=1;4=4", "Zeg: `...knal!'", "4=5"
 "2=0;1=12;12=3;6=1;4=4", "Zeg: `...poef!'", "4=5"
 "2=0;1=12;12=3;6=1;4=4;52=1", "Zeg: `...hastaklap!'", "4=7"
 
