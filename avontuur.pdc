@@ -295,6 +295,7 @@ styles[] {
       }
 
       oplos_drankje:event {
+         style           = finished
          depends_on []   = krijg_toegang_tot_hut;
       }
 
