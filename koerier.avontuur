@@ -101,7 +101,7 @@
 ' 55 = kennis paddestoelen
 ' 56 = kennis planten
 '
-' 59 = Status ketel. 0 = schoon, 1-5 = random mislukking 10 = gevuld, 11 = gelukt
+' 59 = Status ketel. 0 = schoon, 1=gevuld, 2-6 = random mislukking
 ' 60 = # ronde bladeren in ketel
 ' 61 = # stekelige bladeren in ketel
 ' 67 = # hartvormige bladeren in ketel
@@ -920,9 +920,27 @@
 
 "2=0;1=12;12=3;4=5;6=1;59=0", "*c2", "Er gebeurt niets.", "", "&20=1;4=0"
 "2=0;1=12;12=3;4=6;6=1;59=0", "*c2", "Er gebeurt niets.", "", "&20=1;4=0"
+"2=0;1=12;12=3;4=7;6=1;59=0", "*c2", "Er gebeurt niets.", "", "&20=1;4=0"
 
 "2=0;1=12;12=3;4=0;6=1;59=0", "*c2", "De drank in de ketel heeft een heldere doorzichtige kleur.", ""
 "Het lijkt erop alsof de ketel klaar is om een drankje in te brouwen.", "&"
+
+"2=0;1=12;12=3;4=0;6=1;59=1", "*c2", "De drank in de ketel heeft een doffe kleur, die van tint wisselt.", ""
+"Er zit duidelijk een brouwsel in.", "&"
+
+' Mislukt!
+"2=0;1=12;12=3;4=5;6=1;59=1", "&59r4;59+1"
+"2=0;1=12;12=3;4=5;6=1;59=2", "Mislukt 1; Heel oud?", "&59=0;4=0;6=0"
+"2=0;1=12;12=3;4=5;6=1;59=3", "Mislukt 2; Teleportatie? pinguins?", "&59=0;4=0;6=0"
+"2=0;1=12;12=3;4=5;6=1;59=4", "Mislukt 3; Geitje?", "&59=0;4=0;6=0"
+"2=0;1=12;12=3;4=5;6=1;59=5", "De ketel begint te borrelen. De kleuren in de ketel verschieten steeds"
+"sneller. Er komen paarse dampen uit de ketel."
+"Ineens begint alles om je heen heel groot te worden.", ""
+"*c3", "$n: 'Oh nee! Ik ben aan het krimpen!'", "*c2", ""
+"Je probeert de tafel op te klimmen richting de ketel, maar de poten van de tafel"
+"zijn te glad om tegenop te klimmen."
+"*c7", "", "Tien minuten later...", "", "*s3", "*c2", "Je verandert weer naar normale lengte."
+"Oef je hebt geluk!", "&59=0;4=0;6=0"
 
 "2=0;1=12;12=3;4=2;6=2", "*c2", "Je slaat de hele dikke almanak open.", "", "&6=3;4=0"
 "2=0;1=12;12=3;4=3;6=2", "*c2", "Je slaat het receptenboek open.", "", "&6=4;4=0"
@@ -1055,6 +1073,13 @@
 
 "2=0;1=12;12=3;6=3;4=0;5=2;56=0", "", "*c2", "Mooi! je weet nu alles over kruiden en planten!"
 "&56=1"
+
+"2=0;1=12;12=3;6=1;4=10", "*c2", "Je staat bij de grote ketel, en doet je tas open.", "&2=3"
+
+' TEDOEN: Andere ingredienten
+"2=3;4=1", "*c2", "Je voegt een plant met ronde bladeren toe aan de ketel", "&40-1;60+1;59=1"
+"2=3;4=2", "*c2", "Je voegt een plant met stekelige bladeren toe aan de ketel", "&41-1;61+1;59=1"
+"2=3;4=3", "*c2", "Je voegt een plant met hartvormige bladeren toe aan de ketel", "&57-1;67+1;59=1"
 
 '== 13. Boerderij
 "1=13;13>0;2=0;4=0", "*c2"
@@ -1782,8 +1807,9 @@
 "ander puin.", "&"
 
 ' == Prompts
-"0!0;2!2", "*c15", "", "Wat ga je doen:", "&"
+"0!0;2!2;2!3", "*c15", "", "Wat ga je doen:", "&"
 "1=0;2=2", "*c15", "", "Wat ga je doen:", "&"
+"2=3", "*c15", "", "Wat wil je toevoegen:", "&"
 
 "2=2;19>0", "*c2", "Je springt op je paard.", ""
 "Je kan met Teun nu snel naar plaatsen gaan waar je al een keer eerder bent"
@@ -1970,10 +1996,16 @@
 "2=0;1=12;12=3;6=0;4=0;48=0", "Pak een beker", "4=4"
 "2=0;1=12;12=3;6=0;4=0", "Ga naar buiten", "1=4;3=5"
 
+"2=0;1=12;12=3;6=1;4=0", "Voeg ingrediënt toe aan ketel", "4=10"
 "2=0;1=12;12=3;6=1;4=0", "Zeg: `Sim sala...'", "4=2"
 "2=0;1=12;12=3;6=1;4=0", "Zeg: `Hocus...'", "4=3"
 "2=0;1=12;12=3;6=1;4=0", "Zeg: `Abracadabra...'", "4=4"
 "2=0;1=12;12=3;6=1;4=0", "Stap weg bij de ketel", "4=1"
+
+"2=3;40>0", "plant met ronde bladeren", "4=1"
+"2=3;41>0", "plant met stekelige bladeren", "4=2"
+"2=3;57>0", "plant met hartvormige bladeren", "4=3"
+"2=3", "Genoeg ingrediënten voor nu", "4=0;6=1;2=0"
 
 "2=0;1=12;12=3;6=1;4=2", "Zeg: `...Bim!'", "4=5"
 "2=0;1=12;12=3;6=1;4=2", "Zeg: `...Bam!'", "4=5"

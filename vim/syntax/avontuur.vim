@@ -9,7 +9,7 @@ endif
 
 syn keyword advTodo contained TODO FIXME XXX NOTE TEDOEN NOTITIE AANPASSEN
 syn match advComment /^'.*$/ contains=advTodo
-syn match advPredicate /\d\+[=><!+-]/ contained display nextgroup=advValue
+syn match advPredicate /\d\+[=><!+-r]/ contained display nextgroup=advValue
 syn match advValue /\d\+/ contained display
 syn match advInterpolateState /[#]\d\{2}/ contained display
 syn match advInterpolateName /[$]n/ contained display

@@ -1,6 +1,6 @@
 let skip = false;
 let naam = "";
-let gameState = Array(100).fill(0);
+let spelToestand = Array(100).fill(0);
 
 const screenElement = document.getElementById("screen");
 const saveButton = document.getElementById("save");
@@ -84,10 +84,10 @@ const print = (tekst, actie) => {
 };
 
 const toets = (plek, bewerking, waarde) =>
-  (bewerking === "=" && gameState[plek] === waarde) ||
-  (bewerking === "!" && gameState[plek] !== waarde) ||
-  (bewerking === ">" && gameState[plek] > waarde) ||
-  (bewerking === "<" && gameState[plek] < waarde);
+  (bewerking === "=" && spelToestand[plek] === waarde) ||
+  (bewerking === "!" && spelToestand[plek] !== waarde) ||
+  (bewerking === ">" && spelToestand[plek] > waarde) ||
+  (bewerking === "<" && spelToestand[plek] < waarde);
 
 const toegestaan = beweringen =>
   beweringen.every(bewering => {
@@ -98,7 +98,7 @@ const toegestaan = beweringen =>
 const interpoleer = zin =>
   zin
     .replace(/\$n/g, naam)
-    .replace(/#\d{2}/g, num => ` ${gameState[parseInt(num.slice(1), 10)]}`);
+    .replace(/#\d{2}/g, num => ` ${spelToestand[parseInt(num.slice(1), 10)]}`);
 
 const tekst = async (verteller, zin) => {
   color(verteller);
@@ -140,13 +140,16 @@ const toonGebeurtenis = async () => {
 
 const muteer = (plek, bewerking, waarde) => {
   if (bewerking === "=") {
-    gameState[plek] = waarde;
+    spelToestand[plek] = waarde;
   }
   if (bewerking === "+") {
-    gameState[plek] += waarde;
+    spelToestand[plek] += waarde;
   }
   if (bewerking === "-") {
-    gameState[plek] -= waarde;
+    spelToestand[plek] -= waarde;
+  }
+  if (bewerking === "r") {
+    spelToestand[plek] = Math.ceil(Math.random() * waarde);
   }
 };
 
@@ -225,7 +228,7 @@ const laadSpel = async () => {
     let data = JSON.parse(opgeslagen);
 
     naam = data.naam;
-    gameState = data.gameState;
+    spelToestand = data.spelToestand;
     document.getElementById("welkom").remove();
     return true;
   } catch (e) {}
@@ -236,7 +239,7 @@ const bewaarSpel = () => {
   try {
     const opslag = {
       naam,
-      gameState
+      spelToestand
     };
     localStorage.setItem("opslag", JSON.stringify(opslag));
   } catch (e) {}

@@ -55,6 +55,9 @@ const muteer = (spelToestand, plek, bewerking, waarde) => {
   if (bewerking === "-") {
     spelToestand[plek] -= waarde;
   }
+  if (bewerking === "r") {
+    spelToestand[plek] = Math.ceil(Math.random() * waarde);
+  }
 };
 
 const voerActieUit = (spelToestand, actie) => {
