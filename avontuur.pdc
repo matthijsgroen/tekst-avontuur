@@ -212,6 +212,7 @@ styles[] {
       }
 
       pak_mos_in_bos:event {
+         style           = finished
          depends_on []   = krijg_toegang_tot_hut;
       }
 
