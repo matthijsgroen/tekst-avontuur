@@ -1189,7 +1189,19 @@
 "2=0;1=12;12=3;6=3;4=0;5=2;56=0", "", "*c2", "Mooi! je weet nu alles over kruiden en planten!"
 "&56=1"
 
+' TEDOEN: Andere ingredienten
 "2=0;1=12;12=3;6=1;4=10", "*c2", "Je staat bij de grote ketel, en doet je tas open.", "&2=3"
+
+"2=3;4=1", "*c2", "Je voegt een plant met ronde bladeren toe aan de ketel", "", "&40-1;60+1;59=1"
+"2=3;4=2", "*c2", "Je voegt een plant met stekelige bladeren toe aan de ketel", "", "&41-1;61+1;59=1"
+"2=3;4=3", "*c2", "Je voegt een plant met hartvormige bladeren toe aan de ketel", "", "&57-1;67+1;59=1"
+"2=3;4=4", "*c2", "Je voegt een pluk sterrenmos toe aan de ketel", "", "&64-1;70+1;59=1"
+"2=3;4=5", "*c2", "Je voegt een pluk maanmos toe aan de ketel", "", "&65-1;71+1;59=1"
+"2=3;4=6", "*c2", "Je voegt een pluk kosmos toe aan de ketel", "", "&66-1;72+1;59=1"
+"2=3;4=7", "*c2", "Je voegt een lichtblauwe paddenstoel toe aan de ketel", "", "&42-1;62+1;59=1"
+"2=3;4=8", "*c2", "Je voegt een oranje zwam toe aan de ketel", "", "&58-1;68+1;59=1"
+"2=3;4=9", "*c2", "Je voegt een lichtbruine bospaddenstoel toe aan de ketel", "", "&63-1;69+1;59=1"
+
 "2=3;51=4", "*c2", "Vanuit een ooghoek gluur je naar het receptenboek:", "", "*c6"
 "Benodigdheden:"
 "  - 4 planten met stekelige bladeren"
@@ -1198,17 +1210,6 @@
 "  - 3 plukken Maanmos"
 "", "Spreuk: 'Hocus pilates!'"
 "&"
-
-' TEDOEN: Andere ingredienten
-"2=3;4=1", "*c2", "Je voegt een plant met ronde bladeren toe aan de ketel", "&40-1;60+1;59=1"
-"2=3;4=2", "*c2", "Je voegt een plant met stekelige bladeren toe aan de ketel", "&41-1;61+1;59=1"
-"2=3;4=3", "*c2", "Je voegt een plant met hartvormige bladeren toe aan de ketel", "&57-1;67+1;59=1"
-"2=3;4=4", "*c2", "Je voegt een pluk sterrenmos toe aan de ketel", "&64-1;70+1;59=1"
-"2=3;4=5", "*c2", "Je voegt een pluk maanmos toe aan de ketel", "&65-1;71+1;59=1"
-"2=3;4=6", "*c2", "Je voegt een pluk kosmos toe aan de ketel", "&66-1;72+1;59=1"
-"2=3;4=7", "*c2", "Je voegt een lichtblauwe paddenstoel toe aan de ketel", "&42-1;62+1;59=1"
-"2=3;4=8", "*c2", "Je voegt een oranje zwam toe aan de ketel", "&58-1;68+1;59=1"
-"2=3;4=9", "*c2", "Je voegt een lichtbruine bospaddenstoel toe aan de ketel", "&63-1;69+1;59=1"
 
 '== 13. Boerderij
 "1=13;13>0;2=0;4=0", "*c2"
@@ -2200,7 +2201,7 @@
 
 "2=0;1=12;12=3;6=4;51>0", "Vorige boekenlegger", "51-1"
 "2=0;1=12;12=3;6=4;51<4", "Volgende boekenlegger", "51+1"
-"2=0;1=12;12=3;6=4", "Houd het boek op deze bladzijde open.", "4=0;20=0;6=2;51=4"
+"2=0;1=12;12=3;6=4", "Houd het boek op deze bladzijde open.", "4=0;20=0;6=2"
 "2=0;1=12;12=3;6=4", "Sluit het boek", "4=0;51=0;20=0;6=2"
 
 '== 13. Boerderij
