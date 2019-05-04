@@ -227,6 +227,7 @@ styles[] {
       }
 
       pak_wijn_uit_kelder:event {
+         style           = finished
          depends_on []   = toegang_tot_kelder, pak_beker;
       }
 
@@ -334,6 +335,7 @@ styles[] {
       }
 
       vind_zadel_in_kelder:event {
+         style           = finished
          depends_on []   = toegang_tot_kelder;
       }
 

@@ -368,9 +368,11 @@
 "2=1;1=9;36=2", "*c7", "- Maansteen, hij lijkt te gloeien in het maanlicht", "&"
 "2=1;34=7", "*c7", "- Stukken goud", "&"
 "2=1;34=8", "*c7", "- Een prachtige halsketting met een edelsteen erin", "&"
+"2=1;49=1", "*c7", "- Een heel groot zadel", "&"
 "2=1;38=1", "*c7", "- Rune steen met inscripties", "&"
 "2=1;47=1", "*c7", "- Een flesje 'deur klemt'", "&"
 "2=1;48=1", "*c7", "- Een lege beker", "&"
+"2=1;48=2", "*c7", "- Een beker met wijn", "&"
 "2=1;40=1", "*c7", "- 1 plant met ronde bladeren", "&"
 "2=1;40>1", "*c7", "-#40 planten met ronde bladeren", "&"
 "2=1;41=1", "*c7", "- 1 plant met stekelige bladeren", "&"
@@ -1937,6 +1939,28 @@
 "stelling met vaten wijn."
 "Er hangt een oud zadel aan een haak aan de muur.", "Er staan allerlei oude schilderijen op de grond.", "&"
 
+"1=19;4=1;2=0", "*c2", "Je loopt naar de schilderijen die op de grond in een hoekje staan. Ze zitten"
+"helemaal onder het stof. Je bekijkt ze.", "", "Op het eerste schilderij zie je een mooie zonnige hemel, met een draak die"
+"tussen de wolken doorvliegt. Er lijkt een vlektje op het schilderij te zitten."
+"Je drukt je neus dichter tegen het schilderij.", "Het is geen vlekje, maar er lijkt een man op de rug van de draak te zitten."
+"", "Je zet het schilderij weer terug op de grond. Je pakt het tweede schilderij.", ""
+"Op dit schilderij staat een tafel vol spullen. Je ziet ineens op de tafel een"
+"runesteen liggen die je erg bekend voorkomt.", "Je zet het schilderij weer terug."
+"&4=0"
+
+"1=19;4=2;2=0", "*c2", "Je loopt naar het zadel dat aan de muur hangt. Als je dichterbij komt, lijkt het"
+"zadel eigenlijk absurd groot. Zou dit voor een olifant zijn? Het is in ieder"
+"geval te groot voor een paard.", "", "Je besluit het grote zadel maar mee te nemen."
+"&4=0;49=1"
+
+"1=19;4=3;2=0;48=0", "*c2", "Loopt naar het wijnvat om er wat wijn uit te halen."
+"", "*c3", "$n: 'Hmm ik heb niets om het in te doen.'"
+"&4=0"
+
+"1=19;4=3;2=0;48=1", "*c2", "Loopt naar het wijnvat om er wat wijn uit te halen."
+"Je gebruikt je beker en vult het met wijn."
+"&4=0;48=2"
+
 ' == Prompts
 "0!0;2!2;2!3", "*c15", "", "Wat ga je doen:", "&"
 "1=0;2=2", "*c15", "", "Wat ga je doen:", "&"
@@ -2303,6 +2327,9 @@
 "2=0;1=18;4=0", "Ga het woud in", "1=7;3=5"
 
 ' == 19. Kelder toren
+"2=0;1=19;4=0", "Bekijk schilderijen", "4=1"
+"2=0;1=19;4=0;49=0", "Pak zadel", "4=2"
+"2=0;1=19;4=0;48<2", "Pak wijn", "4=3"
 "2=0;1=19;4=0", "Ga naar buiten", "1=18;3=8"
 
 ' Generale inventory acties
