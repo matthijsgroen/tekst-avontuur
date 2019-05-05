@@ -185,6 +185,7 @@ styles[] {
       }
 
       maak_drank_om_heks_bij_te_brengen :event {
+         style           = finished
          depends_on []   = krijg_toegang_tot_hut, pak_wijn_uit_kelder;
       }
 
