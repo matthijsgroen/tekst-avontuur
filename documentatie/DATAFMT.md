@@ -94,6 +94,8 @@ Soorten bewerkingen:
 - `=` waarde op speltoestand lokatie wordt gelijk gezet aan gegeven getal waarde
 - `+` waarde op speltoestand lokatie wordt verhoogd met gegeven getal waarde
 - `-` waarde op speltoestand lokatie wordt verlaagd met gegeven getal waarde
+- `r` waarde op speltoestand lokatie krijgt willekeurige waarde tussen 1 en
+  'waarde'. Bijv `10r4` levert een willekeurige waarde op van 1 t/m 4
 
 # Opmaak
 
