@@ -189,6 +189,7 @@ styles[] {
       }
 
       maak_drank_om_met_draak_te_praten :event {
+         style           = finished
          depends_on []   = vind_runesteen_in_bos, krijg_toegang_tot_hut, pak_mos_in_bos;
       }
 
