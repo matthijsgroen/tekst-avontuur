@@ -228,7 +228,7 @@ const laadSpel = async () => {
     let data = JSON.parse(opgeslagen);
 
     naam = data.naam;
-    spelToestand = data.spelToestand;
+    spelToestand = data.gameState;
     document.getElementById("welkom").remove();
     return true;
   } catch (e) {}
@@ -239,7 +239,7 @@ const bewaarSpel = () => {
   try {
     const opslag = {
       naam,
-      spelToestand
+      gameState: spelToestand
     };
     localStorage.setItem("opslag", JSON.stringify(opslag));
   } catch (e) {}
