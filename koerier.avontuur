@@ -1,7 +1,7 @@
 ' @Titel: Koerier voor de koning
 ' @Omschrijving:
-' De koning is ziek. Het land hoopt dat jij als koerier op tijd de medicijnen
-' kan brengen die de koning nodig heeft. In dit avontuur maak jij de keuzes!
+' De koning is ziek. Kan jij op tijd de medicijnen naar de koning brengen?
+' In dit tekst-avontuur maak jij de keuzes!
 
 ' @Auteur: Matthijs Groen
 '
@@ -65,9 +65,10 @@
 ' 31 = touw 0 = niet, 1 = tas, 2 = draak, 3 = lift, 4 = beide, 5 = klaar
 ' 32 = stof
 ' 33 = graan 0=boerderij 1=graan-op-wagen 2=meel-op-wagen 3=klaar
+' 33 = talendrank 4 = gebrouwen, 5 = gebruikt
 ' 34 = schat 1=bestaan, 2-4 clues 5=gestart, 6=mislukt, 7=gelukt, 8 = ketting
 ' 35 = hint rivier molenaar
-' 36 = hint plant v bakker, 2=gevonden
+' 36 = hint plant v bakker/maansteen 1=hint, 2=gevonden, 3=in ketel, 4=op tafel 5=gelukt
 ' 37 = hint route v boer NNWNNOZ
 ' 38 = runesteen, 1 = gevonden 2 = gebruikt
 ' 39 = hint 'harnas heeft geen zin' -- Boer
@@ -371,6 +372,7 @@
 "2=1;49=1", "*c7", "- Een heel groot zadel", "&"
 "2=1;38=1", "*c7", "- Runesteen met inscripties", "&"
 "2=1;47=1", "*c7", "- Een flesje 'deur klemt'", "&"
+"2=1;33=4", "*c7", "- Een flesje 'vertaler'", "&"
 "2=1;48=1", "*c7", "- Een lege beker", "&"
 "2=1;48=2", "*c7", "- Een beker met wijn", "&"
 "2=1;40=1", "*c7", "- 1 plant met ronde bladeren", "&"
@@ -953,7 +955,6 @@
 "Je gaat snel naar binnen en zet alle ramen open, zodat de damp wegtrekt.", ""
 "&12=3;4=0;5=0;20=1"
 
-
 "2=0;1=12;12=3;51!3;38=2", "*c2", "Je haalt de runesteen weer van de bladzijde en stopt hem terug in je tas."
 "", "&38=1"
 
@@ -983,6 +984,7 @@
 "2=0;1=12;12=3;4=3;6=0", "*c2", "Je loopt naar de ketel in het midden van de hut.", "", "&6=1;4=0"
 "2=0;1=12;12=3;4=4;6=0", "*c2", "Je pakt een lege beker.", "&48=1;4=0"
 "2=0;1=12;12=3;4=5;6=0", "*c2", "Je pakt de tand van de draak.", "&45=2;4=0"
+"2=0;1=12;12=3;4=6;6=0", "*c2", "Je pakt de maansteen.", "&36=2;4=0"
 
 "2=0;1=12;12=3;4=2;6=1", "*c2", "Je steekt je armen hoog in de lucht."
 "", "*c3", "$n: 'Sim sala...'", "&20=0"
@@ -1001,6 +1003,16 @@
 "2=0;1=12;12=3;4=0;6=1;59=1", "*c2", "De drank in de ketel heeft een doffe kleur, die van tint wisselt.", ""
 "Er zit duidelijk een brouwsel in.", "&"
 
+' Praat drank
+"2=0;1=12;12=3;4=8;6=1;59=1;36=3;70=2;67=1;71=1"
+"Het water in de ketel gaat dansen. Buiten lijken ineens allerlei wolken zich"
+"samen te pakken. Het begint ineens erg hard te regenen buiten."
+"Opeens klaart het weer op en veranderd de kleur van de vloeistof in helder geel."
+"Je pakt een flesje van een schap en vult het met de inhoud van de ketel."
+""
+"Je hebt net het flesje vol en dan zie je ineens de hele ketel weer verkleuren"
+"naar helder doorzichtig.", "Je plakt er maar het labeltje 'vertaler' op."
+"&33=4;59=10;36=5"
 
 ' Oplosdrank
 "2=0;1=12;12=3;4=6;6=1;59=1;61=4;62=1;68=2;71=3"
@@ -1013,8 +1025,7 @@
 "&47=1;59=10"
 
 ' Mislukt!
-"2=0;1=12;12=3;4=6;6=1;59=1", "&59r4;59+1"
-"2=0;1=12;12=3;4=5;6=1;59=1", "&59r4;59+1"
+"2=0;1=12;12=3;4>4;6=1;59=1", "&59r4;59+1"
 
 ' Ketel reset
 "2=0;1=12;12=3;4>4;6=1;59>0", "&60=0;61=0;67=0;70=0;71=0;72=0;68=0;62=0;69=0"
@@ -1030,7 +1041,7 @@
 "2=0;1=12;12=3;6=1;59=2"
 "Oh nee, je bent ineens heel erg oud geworden!"
 "*c7", "", "...Tien minuten later...", "", "*s3", "*c2", "Je voelt jezelf ineens weer jonger worden."
-"Oef je hebt geluk!", "&59=0;4=0;6=0;20=1"
+"Oef je hebt geluk!", "&"
 
 "2=0;1=12;12=3;6=1;59=3"
 "De ketel begint te borrelen. Er ontstaan kleine draaikolken in de ketel."
@@ -1040,7 +1051,7 @@
 "", "Overal om je heen zie je sneeuw en ijs. Op enige afstand lopen pinguïns."
 "Waar ben je nu weer beland?"
 "*c7", "", "...Tien minuten later...", "", "*s3", "*c2", "Je staat ineens weer in de hut."
-"Oef je hebt geluk!", "&59=0;4=0;6=0;20=1"
+"Oef je hebt geluk!", "&"
 
 "2=0;1=12;12=3;6=1;59=4"
 "De ketel begint te borrelen. De kleuren in de ketel wisselen elkaar steeds"
@@ -1048,7 +1059,7 @@
 "Je voelt je ineens heel raar. Je wilt wat zeggen.", "", "*c3"
 "$n: 'Bêêêh'", "", "*c2", "Je loopt naar een spiegel. Oh, nee!! Je bent in een geit veranderd!"
 "*c7", "", "...Tien minuten later...", "", "*s3", "*c2", "Je verandert weer naar een mens."
-"Oef je hebt geluk!", "&59=0;4=0;6=0;20=1"
+"Oef je hebt geluk!", "&"
 
 "2=0;1=12;12=3;6=1;59=5"
 "De ketel begint te borrelen. De kleuren in de ketel verschieten steeds"
@@ -1058,7 +1069,11 @@
 "Je probeert de tafel op te klimmen richting de ketel, maar de poten van de tafel"
 "zijn te glad om tegenop te klimmen."
 "*c7", "", "...Tien minuten later...", "", "*s3", "*c2", "Je verandert weer naar normale lengte."
-"Oef je hebt geluk!", "&59=0;4=0;6=0;20=1"
+"Oef je hebt geluk!", "&"
+
+"2=0;1=12;12=3;4>4;6=1;59>0;36=3", "", "De maansteen springt ineens uit de ketel en land op tafel.", "&36=4"
+
+"2=0;1=12;12=3;4>4;6=1;59>0", "&59=0;4=0;6=0;20=1"
 
 "2=0;1=12;12=3;4=2;6=2", "*c2", "Je slaat de hele dikke almanak open.", "", "&6=3;4=0"
 "2=0;1=12;12=3;4=3;6=2;51=0", "*c2", "Je slaat het receptenboek open.", "", "&6=4;4=0"
@@ -1195,8 +1210,7 @@
 "2=0;1=12;12=3;6=3;4=0;5=2;56=0", "", "*c2", "Mooi! je weet nu alles over kruiden en planten!"
 "&56=1"
 
-' TEDOEN: Andere ingredienten
-"2=0;1=12;12=3;6=1;4=10", "*c2", "Je staat bij de grote ketel, en doet je tas open.", "&2=3"
+"2=0;1=12;12=3;6=1;4=10", "*c2", "Je staat bij de grote ketel, en doet je tas open.", "&2=3;4=0"
 
 "2=3;4=1", "*c2", "Je voegt een plant met ronde bladeren toe aan de ketel", "", "&40-1;60+1;59=1"
 "2=3;4=2", "*c2", "Je voegt een plant met stekelige bladeren toe aan de ketel", "", "&41-1;61+1;59=1"
@@ -1207,6 +1221,7 @@
 "2=3;4=7", "*c2", "Je voegt een lichtblauwe paddenstoel toe aan de ketel", "", "&42-1;62+1;59=1"
 "2=3;4=8", "*c2", "Je voegt een oranje zwam toe aan de ketel", "", "&58-1;68+1;59=1"
 "2=3;4=9", "*c2", "Je voegt een lichtbruine bospaddenstoel toe aan de ketel", "", "&63-1;69+1;59=1"
+"2=3;4=10", "*c2", "Je voegt de maansteen toe aan de ketel", "", "&36=3;59=1"
 
 "2=3;51=4", "*c2", "Vanuit een ooghoek gluur je naar het receptenboek:", "", "*c6"
 "Benodigdheden:"
@@ -2181,6 +2196,7 @@
 "2=0;1=12;12=3;6=0;4=0", "Bekijk boeken", "4=2"
 "2=0;1=12;12=3;6=0;4=0", "Ga naar de ketel", "4=3"
 "2=0;1=12;12=3;6=0;4=0;45=3", "Pak tand van de draak", "4=5"
+"2=0;1=12;12=3;6=0;4=0;36=4", "Pak maansteen", "4=6"
 "2=0;1=12;12=3;6=0;4=0;48=0", "Pak een beker", "4=4"
 "2=0;1=12;12=3;6=0;4=0", "Ga naar buiten", "1=4;3=5"
 
@@ -2199,9 +2215,11 @@
 "2=3;42>0", "lichtblauwe paddenstoel", "4=7"
 "2=3;58>0", "oranje zwam", "4=8"
 "2=3;63>0", "lichtbruine bospaddenstoel", "4=9"
+"2=3;36=2", "maansteen", "4=10"
 "2=3", "Genoeg ingrediënten voor nu", "4=0;6=1;2=0"
 
 "2=0;1=12;12=3;6=1;4=2", "Zeg: `...Bim!'", "4=5"
+"2=0;1=12;12=3;6=1;4=2;50>2;33<4", "Zeg: `...Baklava!'", "4=8"
 "2=0;1=12;12=3;6=1;4=2", "Zeg: `...Bam!'", "4=5"
 "2=0;1=12;12=3;6=1;4=2", "Zeg: `...Bom!'", "4=5"
 
