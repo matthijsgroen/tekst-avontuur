@@ -12,9 +12,9 @@ const leesAvontuur = async bestandsNaam => {
   let inMeerRegeligeData = false;
   regels.forEach(regel => {
     const enkeleRegelData = regel.match(
-      /^'\s*@(?<veld>\w+):\s*(?<waarde>[^\s]+.*)$/
+      /^'\s*@(?<veld>[\w.]+):\s*(?<waarde>[^\s]+.*)$/
     );
-    const meerdereRegelData = regel.match(/^'\s*@(?<veld>\w+):\s*$/);
+    const meerdereRegelData = regel.match(/^'\s*@(?<veld>[\w.]+):\s*$/);
     if (meerdereRegelData) {
       const veld = meerdereRegelData.groups.veld;
       gegevens[veld] = "";

@@ -65,7 +65,17 @@ const maakHtml = async (bron, doel) => {
   const bovenkant =
     metagegevens.join("\n") + `<style type="text/css">${css}</style>`;
   const jsData = `const avontuur = ${jsonData};`;
-  const onderkant = `<script type="text/javascript">${jsData}${js}</script>`;
+
+  const stats =
+    gegevens["StatHat.Gebruiker"] && gegevens["StatHat.Teller"]
+      ? `<img src="http://api.stathat.com/c?ukey=${
+          gegevens["StatHat.Gebruiker"]
+        }&key=${
+          gegevens["StatHat.Teller"]
+        }&count=1" style="display:none;" width="1" height="1">`
+      : "";
+
+  const onderkant = `<script type="text/javascript">${jsData}${js}</script>${stats}`;
 
   const resultaat = htmlBasis
     .replace("<!-- HEAD -->", bovenkant)
