@@ -61,7 +61,7 @@
 ' 24 = 1 = kapotte houweel, 2 = gerepareerde houweel
 ' 25 = Koeken 1 = bestaan, 2 = kopen, 3 = geven
 ' 26 = Medicijn. 1 = kennis draak, 2 = kennis heks, 3 = prijs, 4 = Ingrediëntenlijst
-' 26 =    5 = ingredienten gezien, 6 = wakker drank, 7 = eucalypta wakker, 8 = medicijn
+' 26 =    5 = ingredienten gezien, 6 = wakker drank, 7 = eucalypta wakker, 8 = spreuk medicijn, 9 = medicijn
 ' 27 = Zwaard. 1 = motivatie, 2 = in bezit
 ' 28 = Edelsteen.
 ' 29 = paard. 1 = kennis, 2 = gevonden, 3 = hoeven, 4 = wagen
@@ -418,14 +418,14 @@
 
 "1=1;2=0;4=3;64=0", "*c2", "Je bukt om wat sterrenmos te verzamelen."
 "Je verzamelt een aantal plukken en stopt ze in je tas."
-"&4=2;64=3"
+"&4=2;64=6"
 
 "1=1;2=0;4=3;64>0", "*c2", "Hmm, volgens mij heb ik deze mossoort al in mijn tas zitten."
 "&4=2"
 
 "1=1;2=0;4=4;66=0", "*c2", "Je bukt om wat kosmos te verzamelen."
 "Je verzamelt een aantal plukken en stopt ze in je tas."
-"&4=2;66=3"
+"&4=2;66=6"
 
 "1=1;2=0;4=4;66>0", "*c2", "Hmm, volgens mij heb ik deze mossoort al in mijn tas zitten."
 "&4=2"
@@ -437,7 +437,7 @@
 
 "1=1;2=0;4=6;65=0", "*c2", "Je bukt om wat maanmos te verzamelen."
 "Je verzamelt een aantal plukken en stopt ze in je tas."
-"&4=2;65=3"
+"&4=2;65=6"
 
 "1=1;2=0;4=6;65>0", "*c2", "Hmm, volgens mij heb ik deze mossoort al in mijn tas zitten."
 "&4=2"
@@ -513,7 +513,7 @@
 
 "1=4;2=0;4=2;26>4;41=0", "*c2", "Je bukt om de plant met de stekelige bladeren te plukken."
 "Je plukt er een aantal en stopt ze in je tas."
-"&4=1;41=5"
+"&4=1;41=10"
 
 "1=4;2=0;4=2;26>4;41>0", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
 "&4=1"
@@ -524,7 +524,7 @@
 
 "1=4;2=0;4=3;26>4;40=0", "*c2", "Je bukt om de plant met de ronde bladeren te plukken."
 "Je plukt er een aantal en stopt ze in je tas."
-"&4=1;40=5"
+"&4=1;40=10"
 
 "1=4;2=0;4=3;26>4;40>0", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
 "&4=1"
@@ -550,7 +550,7 @@
 
 "1=4;2=0;4=5;56=1;57=0", "*c2", "Je bukt om de plant met de hartvormige bladeren te plukken."
 "Je plukt er een aantal en stopt ze in je tas."
-"&4=1;57=5"
+"&4=1;57=10"
 
 "1=4;2=0;4=5;56=1;57>0", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
 "&4=1"
@@ -634,7 +634,7 @@
 
 "1=7;4=3;2=0;7=2;55=1;63=0", "*c2"
 "Je plukt een paar lichtbruine boomzwammen. Je doet het heel voorzichtig."
-"&63=2;4=1"
+"&63=5;4=1"
 
 "1=7;4=4;2=0;26<4;7=2;42=0", "*c3"
 "$n: 'Hmm paddenstoelen kunnen ook giftig zijn."
@@ -649,7 +649,7 @@
 "1=7;4=4;2=0;26>3;7=2;42=0", "*c2"
 "Je bukt om een paar lichtblauwe paddenstoelen te plukken. Je doet het heel"
 "voorzichtig."
-"&42=2;4=1"
+"&42=5;4=1"
 
 "1=7;4=5;2=0;7=2;55=0", "*c3"
 "$n: 'Hmm paddenstoelen kunnen ook giftig zijn."
@@ -662,7 +662,7 @@
 
 "1=7;4=5;2=0;55=1;7=2;58=0", "*c2"
 "Je bukt om een paar oranje zwammen te plukken. Je doet het heel voorzichtig."
-"&58=2;4=1"
+"&58=5;4=1"
 
 "1=7;2=0;7=1;4=0;19=0", "*c2"
 "Daar ging $n dan, helemaal alleen.", "&"
@@ -984,12 +984,26 @@
 "*c2", "Ze krabbelt overeind en gaat in een stoel zitten."
 "&4=0;26=7"
 
-"2=0;1=12;12=3;4=1;6=0;26=7", "*c3", "$n: 'Hoe gaat het met je?'"
+"2=0;1=12;12=3;4=1;6=0;26>6", "*c3", "$n: 'Hoe gaat het met je?'"
 "", "*c13", "Eucalypta: 'Ja het gaat wel een beetje, ik ben vooral moe en draaierig.'"
 "&20=0"
 
-"2=0;1=12;12=3;4=7;6=0;26=7", "*c3", "$n: 'Toen je het medicijn ging maken, wat ging er mis?'"
-"", "*c13", "Eucalypta: 'Ja het gaat wel een beetje, ik ben vooral moe en draaierig.'"
+"2=0;1=12;12=3;4=7;6=0;26>6", "*c3", "$n: 'Toen je het medicijn ging maken, wat ging er mis?'"
+"", "*c13", "Eucalypta: 'Geen idee. Ik dacht dat ik alles goed had gedaan. Misschien heb ik"
+"  de ingrediënten verkeerd gelezen?'"
+"&4=1"
+
+"2=0;1=12;12=3;4=8;6=0;26<8", "*c2", "Je vertelt dat je Eucalypta op de grond aantrof, en dat je met haar ketel een"
+"drankje hebt gemaakt om haar wakker te krijgen."
+"", "*c13", "Eucalypta: 'Dank je wel voor alles dat je hebt gedaan. Kan ik je nog helpen?'"
+"*c2", "", "Je legt uit dat je graag het medicijn wilt maken, maar dat er een vlek op het"
+"recept zit en je daardoor de spreuk niet weet die bij het recept hoort."
+"", "*c13", "Eucalypta: 'Goed dat ik die dan nog uit mijn hoofd weet! De spreuk is:"
+"  Abracadabra ratjetoe!'"
+"&4=1;26=8"
+
+"2=0;1=12;12=3;4=8;6=0;26=8", "*c3", "$n: 'Sorry, wat is de spreuk ook alweer?'"
+"", "*c13", "Eucalypta: 'De spreuk is: Abracadabra ratjetoe!'"
 "&4=1"
 
 "2=0;1=12;12=3;4=0;6=2", "*c2", "Je bent bij aantal boeken die op de werktafel liggen. Er ligt een dikke", "&"
@@ -2247,6 +2261,7 @@
 "2=0;1=12;12=3;6=0;4=0", "Ga naar buiten", "1=4;3=5"
 
 "2=0;1=12;12=3;6=0;26>6;4=1", "Zeg: 'Wat ging er mis?'", "4=7"
+"2=0;1=12;12=3;6=0;26>6;4=1", "Vraag naar spreuk voor medicijn", "4=8"
 "2=0;1=12;12=3;6=0;26>6;4=1", "Ga weer verder", "4=0;20=1"
 
 "2=0;1=12;12=3;6=1;4=0", "Voeg ingrediënt toe aan ketel", "4=10"
@@ -2268,20 +2283,24 @@
 "2=3;48=2", "Wijn", "4=11"
 "2=3", "Genoeg ingrediënten voor nu", "4=0;6=1;2=0"
 
+' Sim sala...
 "2=0;1=12;12=3;6=1;4=2", "Zeg: `...Bim!'", "4=5"
 "2=0;1=12;12=3;6=1;4=2;50>2;33<4", "Zeg: `...Baklava!'", "4=8"
 "2=0;1=12;12=3;6=1;4=2", "Zeg: `...Bam!'", "4=5"
 "2=0;1=12;12=3;6=1;4=2", "Zeg: `...Bom!'", "4=5"
 
+' Hocus...
 "2=0;1=12;12=3;6=1;4=3", "Zeg: `...pokus!'", "4=5"
 "2=0;1=12;12=3;6=1;4=3", "Zeg: `...poef!'", "4=5"
 "2=0;1=12;12=3;6=1;4=3;50>3;47=0", "Zeg: `...pilates!'", "4=6"
 "2=0;1=12;12=3;6=1;4=3", "Zeg: `...krokus!'", "4=5"
 
+' Abracadabra
 "2=0;1=12;12=3;6=1;4=4", "Zeg: `...poef!'", "4=5"
 "2=0;1=12;12=3;6=1;4=4", "Zeg: `...knal!'", "4=5"
 "2=0;1=12;12=3;6=1;4=4", "Zeg: `...kletter!'", "4=5"
 "2=0;1=12;12=3;6=1;4=4;50>3;26<6", "Zeg: `...hastaklap!'", "4=7"
+"2=0;1=12;12=3;6=1;4=4;26=8", "Zeg: `...ratjetoe!'", "4=9"
 
 "2=0;1=12;12=3;6=2;4=0", "Lees de almanak", "4=2;5=0"
 "2=0;1=12;12=3;6=2;4=0", "Lees het recepten boek", "4=3;5=0;20=1"
