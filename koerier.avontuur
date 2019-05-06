@@ -619,8 +619,8 @@
 "  ga hebben.'", "&4=1"
 
 "1=7;4=2;2=0;26>0;7=2;55=1", "*c3"
-"$n: 'Deze paddenstoelen ga ik echt niet plukken! Straks wordt ik nog aangevallen"
-"  door kabouters!'", "&4=1"
+"$n: 'Deze paddenstoelen ga ik echt niet plukken! Straks wordt ik"
+"  nog aangevallen door kabouters!'", "&4=1"
 
 "1=7;4=3;2=0;26>0;7=2;55=0", "*c3"
 "$n: 'Hmm paddenstoelen kunnen ook giftig zijn."
@@ -983,6 +983,14 @@
 "druppeltjes in haar mond. Langzaam gaan haar ogen open.", "", "*c13", "Eucalypta: 'Huh, waar ben ik?'", ""
 "*c2", "Ze krabbelt overeind en gaat in een stoel zitten."
 "&4=0;26=7"
+
+"2=0;1=12;12=3;4=1;6=0;26=7", "*c3", "$n: 'Hoe gaat het met je?'"
+"", "*c13", "Eucalypta: 'Ja het gaat wel een beetje, ik ben vooral moe en draaierig.'"
+"&20=0"
+
+"2=0;1=12;12=3;4=7;6=0;26=7", "*c3", "$n: 'Toen je het medicijn ging maken, wat ging er mis?'"
+"", "*c13", "Eucalypta: 'Ja het gaat wel een beetje, ik ben vooral moe en draaierig.'"
+"&4=1"
 
 "2=0;1=12;12=3;4=0;6=2", "*c2", "Je bent bij aantal boeken die op de werktafel liggen. Er ligt een dikke", "&"
 "2=0;1=12;12=3;4=2;6=0", "*c2", "Je loopt naar een aantal boeken die op de werktafel liggen. Er ligt een dikke", "&6=2;4=0"
@@ -1919,8 +1927,8 @@
 
 "1=17;2=0;17=2;4=8", "*c3", "$n: 'Zou je me kunnen helpen uitladen?'"
 "", "*c13", "Bloem: 'Tuurlijk, wat heb je meegenomen?'", "", "*c3"
-"$n: 'Ik heb een oude molensteen meegenomen, maar hij is te zwaar om alleen te"
-"  tillen.'", "*c13", "", "Bloem: 'Ok mooi! Volgens mij hebben we allebei het zelfde plan."
+"$n: 'Ik heb een oude molensteen meegenomen, maar hij is te zwaar"
+"  om alleen te tillen.'", "*c13", "", "Bloem: 'Ok mooi! Volgens mij hebben we allebei het zelfde plan."
 "  Ik neem de lift wel. Zie ik je beneden?'"
 "&4=0;44=3;20=1"
 
@@ -2237,6 +2245,9 @@
 "2=0;1=12;12=3;6=0;4=0;36=4", "Pak maansteen", "4=6"
 "2=0;1=12;12=3;6=0;4=0;48=0", "Pak een beker", "4=4"
 "2=0;1=12;12=3;6=0;4=0", "Ga naar buiten", "1=4;3=5"
+
+"2=0;1=12;12=3;6=0;26>6;4=1", "Zeg: 'Wat ging er mis?'", "4=7"
+"2=0;1=12;12=3;6=0;26>6;4=1", "Ga weer verder", "4=0;20=1"
 
 "2=0;1=12;12=3;6=1;4=0", "Voeg ingrediënt toe aan ketel", "4=10"
 "2=0;1=12;12=3;6=1;4=0", "Zeg: `Sim sala...'", "4=2"

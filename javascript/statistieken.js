@@ -22,7 +22,7 @@ const statistieken = async bron => {
       totaal +
       element.schermData
         .filter(item => !item.startsWith("*"))
-        .reduce((woorden, zin) => woorden + zin.split(/s+/).length, 0),
+        .reduce((woorden, zin) => woorden + zin.split(/\s+/).length, 0),
     0
   );
   const aantalActies = acties.length;

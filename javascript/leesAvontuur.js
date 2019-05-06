@@ -41,6 +41,10 @@ const leesAvontuur = async bestandsNaam => {
     .forEach(regel => {
       try {
         const elementen = JSON.parse(`[${regel.regel}]`);
+        elementen.forEach(element => {
+          if (element.replace(/\$n/g, "123456789abc").length > 80)
+            throw new Error("Line too long!");
+        });
 
         if (elementen.length === 1 && elementen[0] === "END") {
           actieModus = true;
