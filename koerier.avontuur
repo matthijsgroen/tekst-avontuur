@@ -61,7 +61,7 @@
 ' 24 = 1 = kapotte houweel, 2 = gerepareerde houweel
 ' 25 = Koeken 1 = bestaan, 2 = kopen, 3 = geven
 ' 26 = Medicijn. 1 = kennis draak, 2 = kennis heks, 3 = prijs, 4 = Ingrediëntenlijst
-' 26 =    5 = ingredienten gezien, 6 = wakker drank, 7 = eucalypta wakker 8 = medicijn
+' 26 =    5 = ingredienten gezien, 6 = wakker drank, 7 = eucalypta wakker, 8 = medicijn
 ' 27 = Zwaard. 1 = motivatie, 2 = in bezit
 ' 28 = Edelsteen.
 ' 29 = paard. 1 = kennis, 2 = gevonden, 3 = hoeven, 4 = wagen
@@ -969,12 +969,20 @@
 "2=0;1=12;12=3;4=0;6=0", "*c2", "Je bent in de hut van Eucalypta. In het midden van de hut staat een grote"
 "kookpot te borrelen.", "Overal liggen boeken, bekers, potten en spullen waarvan je geen idee hebt wat"
 "het is.", "&"
-"2=0;1=12;12=3;4=0;6=0", "*c2", "Eucalypta ligt op de grond van de hut. Het lijkt wel alsof ze slaapt.", "&"
+"2=0;1=12;12=3;4=0;6=0;26<7", "*c2", "Eucalypta ligt op de grond van de hut. Het lijkt wel alsof ze slaapt.", "&"
+"2=0;1=12;12=3;4=0;6=0;26>6", "*c2", "Eucalypta zit in een stoel en kijkt suf en verward.", "&"
 "2=0;1=12;12=3;4=0;6=0;45=3", "*c2", "De getrokken tand van de draak ligt op een werktafel.", "&"
 
-"2=0;1=12;12=3;4=1;6=0", "*c2", "Je loopt naar Eucalypta. Ze ligt op de grond bij de ketel. Je probeert haar"
+"2=0;1=12;12=3;4=1;6=0;26<6", "*c2", "Je loopt naar Eucalypta. Ze ligt op de grond bij de ketel. Je probeert haar"
 "wakker te maken."
 "*c3", "", "$n: 'Eucalypta, wakker worden.'", "", "*c2", "Je schud haar een beetje heen en weer. Ze lijkt nergens op te reageren.", "&4=0"
+
+"2=0;1=12;12=3;4=1;6=0;26=6", "*c2", "Je loopt naar Eucalypta. Ze ligt op de grond bij de ketel. Je probeert haar"
+"wakker te maken."
+"*c3", "", "$n: 'Eucalypta, wakker worden.'", "", "*c2", "Ze reageert niet. Je pakt het flesje 'wakker worden' en giet voorzichtig wat"
+"druppeltjes in haar mond. Langzaam gaan haar ogen open.", "", "*c13", "Eucalypta: 'Huh, waar ben ik?'", ""
+"*c2", "Ze krabbelt overeind en gaat in een stoel zitten."
+"&4=0;26=7"
 
 "2=0;1=12;12=3;4=0;6=2", "*c2", "Je bent bij aantal boeken die op de werktafel liggen. Er ligt een dikke", "&"
 "2=0;1=12;12=3;4=2;6=0", "*c2", "Je loopt naar een aantal boeken die op de werktafel liggen. Er ligt een dikke", "&6=2;4=0"
@@ -2221,7 +2229,8 @@
 "2=0;1=12;12=2;4=0;5=3", "Zeg: 'Gaat alles goed?'", "4=1"
 "2=0;1=12;12=2;4=0;5=4", "Open de deur van de hut", "4=1"
 
-"2=0;1=12;12=3;6=0;4=0", "Maak eucalypta wakker", "4=1"
+"2=0;1=12;12=3;6=0;4=0;26<7", "Maak Eucalypta wakker", "4=1"
+"2=0;1=12;12=3;6=0;4=0;26>6", "Praat met Eucalypta", "4=1"
 "2=0;1=12;12=3;6=0;4=0", "Bekijk boeken", "4=2"
 "2=0;1=12;12=3;6=0;4=0", "Ga naar de ketel", "4=3"
 "2=0;1=12;12=3;6=0;4=0;45=3", "Pak tand van de draak", "4=5"
