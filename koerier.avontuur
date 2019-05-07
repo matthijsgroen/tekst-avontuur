@@ -96,7 +96,7 @@
 ' 46 = lokatie Bloem 0 = toren, 1 = bakkerij
 ' 47 = Toegang kelder 0 = nee, 1 = drank, 2 = ja
 ' 48 = Wijn = 0, 1 = lege beker, 2 = wijn, 3 = in ketel
-' 49 = Zadel. 0 = nee, 1 = ja
+' 49 = Zadel. 0 = nee, 1 = ja, 2 = op draak
 '
 ' 50 = kennis spreuken: 1 = medicijn, 2 = wakker, 3 = talen, 4 = oplos
 ' 51 = bladzijde open: 1 = med, 2 wak, 3 = taal, 4 = oplos
@@ -1937,8 +1937,17 @@
 "  Dins. De hoefijzer en de tand moeten eruit.'", "&4=1"
 "1=17;2=0;17=2;4=4;45!0", "*c13", "Bloem: 'Ja, maar gelukkig hebben we de tand er nu uitgetrokken!'", "&4=1"
 
-"1=17;2=0;17=2;4=10;45=1", "*c2", "Je loopt naar de draak. Hij ziet er tevreden uit."
-"", "*c14", "<Prrrrr.......>", "&6=1"
+"1=17;2=0;17=2;4=0;45>0;6=1", "*c2", "Je bent bij de draak.", "", "&"
+"1=17;2=0;17=2;4=10;45>0;6=0", "*c2", "Je loopt naar de draak.", "", "&6=1;4=0"
+
+"1=17;2=0;17=2;4=0;45>0;6=1"
+"Hij ziet er tevreden uit."
+"", "*c14", "<Prrrrr.......>", "&"
+
+"1=17;2=0;17=2;4=0;45>0;6=1;52<2", ""
+"*c2", "Je hoort de maag van de draak zachtjes rommelen."
+"", "*c3", "$n: 'Je hebt natuurlijk al een paar dagen niets gegeten.'"
+"&"
 
 "1=17;2=0;17=2;4=10;45=0", "*c2", "Je loopt voorzictig naar de draak. Hij ziet er verdrietig uit. Dikke tranen"
 "staan op zijn wangen.", "", "*c12", "<GGgrrroaaaarrrrggh!>", "", "*c2"
@@ -1997,24 +2006,24 @@
 "1=17;2=0;17=2;4=7;44!4", "de toren. De lift schuift langzaam omhoog.", "&"
 "1=17;2=0;17=2;4=7","&43=0;4=6"
 
-"1=17;2=0;17=2;4=12;6=2", "Je knoopt het touw stevig vast aan de molensteen."
+"1=17;2=0;17=2;4=12;6=2", "*c2", "Je knoopt het touw stevig vast aan de molensteen."
 "De andere kant van het touw werp je de kamer in."
 "&31=3"
 
-"1=17;2=0;17=2;4=11;6=1", "Je knoopt het touw voorzichtig maar stevig vast aan de tand van de draak."
+"1=17;2=0;17=2;4=11;6=1", "*c2", "Je knoopt het touw voorzichtig maar stevig vast aan de tand van de draak."
 "De andere kant van het touw werp je de kamer in."
 "&31=2"
 
-"1=17;2=0;17=2;4=13;6=0", "Je loopt met de andere kant van touw voorzichtig naar de draak"
+"1=17;2=0;17=2;4=13;6=0", "*c2", "Je loopt met de andere kant van touw voorzichtig naar de draak"
 "Hij heeft zijn ogen dicht van de pijn, dus je kan rustig dichterbij sluipen."
 "", "Eenmaal bij de tand knoop je voorzichtig maar wel stevig het touw om de zere"
 "tand van de draak.", "&31=4;6=1"
 
-"1=17;2=0;17=2;4=14;6=0", "Je loopt met de andere kant van touw voorzichtig naar de lift."
+"1=17;2=0;17=2;4=14;6=0", "*c2", "Je loopt met de andere kant van touw voorzichtig naar de lift."
 "Je knoopt het touw stevig vast aan de molensteen. De lift kraakt een beetje"
 "onder het zware gewicht van de steen.", "&31=4;6=2"
 
-"1=17;2=0;17=2;4=15;6=2;44=4;27=2", "Je pakt je zwaard en in een vloeiende beweging hak je het dikke touw van de"
+"1=17;2=0;17=2;4=15;6=2;44=4;27=2", "*c2", "Je pakt je zwaard en in een vloeiende beweging hak je het dikke touw van de"
 "lift door. Met een hoop kabaal stort de lift en de molensteen naar beneden."
 "Het touw aan de molensteen staat meteen strak. Met een harde ruk vliegt de"
 "tand van de draak door het raam naar buiten.", "", "*c12"
@@ -2022,6 +2031,16 @@
 "De draak geeft een enorme brul, die in de wijde omgeving te horen is."
 "Dan ineens is het stil."
 "&43=2;31=5;45=1"
+
+"1=17;2=0;17=2;4=16;6=1", "*c2", "Je pakt de appeltaart uit je tas."
+"De draak ruikt het meteen. Hij kijkt je heel hongerig aan. Je bied de taart aan."
+"", "*c14", "<slobber!>", "*c2", ""
+"De draak eet zo de taart op.", "&4=0;52=2"
+
+"1=17;2=0;17=2;4=17;6=1", "*c2", "Je haalt het grote zadel uit je tas. De draak kijkt naar het zadel, en geeft een"
+"blik van herkenning. Als je het zadel op hem wil leggen, dan briest hij licht"
+"en draait zich een beetje."
+"", "Hij het zadel niet dragen.", "&4=0"
 
 ' == 18. Onderkant toren
 "1=18;18=0;2=0;4=0;44!3", "*c2", "Je bent in het woud, aan de voet van de toren."
@@ -2448,8 +2467,10 @@
 "2=0;1=17;17=2;6=2;44=4;31=4;27=2", "Snij het touw van de lift door", "4=15"
 "2=0;1=17;17=2;6=2", "Loop terug de kamer in", "4=0;6=0"
 
-"2=0;1=17;17=2;6=1", "Loop terug de kamer in", "4=0;6=0"
 "2=1;1=17;17=2;31=1;6=1", "Knoop touw aan tand van de draak", "4=11;2=0"
+"2=1;1=17;17=2;6=1;52=1", "Geef appeltaart aan de draak", "4=16;2=0"
+"2=1;1=17;17=2;6=1;49=1", "Zet zadel op de draak", "4=17;2=0"
+"2=0;1=17;17=2;6=1", "Loop terug de kamer in", "4=0;6=0"
 "2=1;1=17;17=2;31=1;6=2;44=4", "Knoop touw aan molensteen", "4=12;2=0"
 
 ' == 18. Onderkant toren

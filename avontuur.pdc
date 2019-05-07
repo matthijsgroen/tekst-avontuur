@@ -61,6 +61,7 @@ styles[] {
       }
 
       geef_appeltaart_aan_draak:event {
+         style           = finished
          depends_on []   = krijg_appeltaart_van_bakker;
       }
 
@@ -126,6 +127,7 @@ styles[] {
       }
 
       krijg_appeltaart_van_bakker:event {
+         style           = finished
          depends_on []   = breng_dochter_naar_bakker;
       }
 
