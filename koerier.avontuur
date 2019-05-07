@@ -100,7 +100,7 @@
 '
 ' 50 = kennis spreuken: 1 = medicijn, 2 = wakker, 3 = talen, 4 = oplos
 ' 51 = bladzijde open: 1 = med, 2 wak, 3 = taal, 4 = oplos
-' 52 =
+' 52 = Appeltaart. 1 = inventory, 2 = draak
 ' 53 =
 '
 ' 54 = kennis mossen
@@ -400,6 +400,7 @@
 "2=1;66=1", "*c7", "- 1 pluk Kosmos", "&"
 "2=1;66>1", "*c7", "-#66 plukken Kosmos", "&"
 "2=1;45=2", "*c7", "- Tand van een draak", "&"
+"2=1;52=1", "*c7", "- Een heerlijke appeltaart", "&"
 
 ' 1. Bos
 "1=1;2=0;4=0", "*c2", "Je staat in het bos. Het is een stralende dag."
@@ -1796,6 +1797,23 @@
 "Gerst: 'Alsjeblieft.'", "", "*c2", "De bakker geeft een paar heerlijke koeken."
 "&16=1;4=0;25=2;22-2"
 
+"1=16;16=1;2=0;4=9;52=2", "*c13"
+"Bloem: 'Hey, hoe gaat het met onze vriend?'", ""
+"*c3", "$n: 'Goed, hij is heel goed opgeknapt.'"
+"", "*c13", "Bloem: 'Dat is fijn om te horen!'", "&"
+
+"1=16;16=1;2=0;4=9;52<2", "*c13"
+"Bloem: 'Hey, hoe gaat het met onze vriend?'", ""
+"*c3", "$n: 'Goed, hij is alleen een beetje suf op moment.'"
+"", "*c13", "Bloem: 'Misschien heeft hij wel honger.'", "&"
+
+"1=16;16=1;2=0;4=9;52=0", "*c13"
+"", "*c2", "Als Gerst niet kijkt, schuift Bloem snel een appeltaart naar je toe."
+"", "*c13", "Bloem: 'Alsjeblieft.'"
+"&52=1"
+
+"1=16;16=1;2=0;4=9", "&4=0"
+
 ' == 17. Toren
 "1=17;2=0;17=0;4=0", "*c2", "", "Aan de rechterkant van de toren is een houten lift constructie."
 "Aan de voorkant van de toren is een grote zware deur.", "&20=0"
@@ -1936,7 +1954,10 @@
 "1=17;2=0;17=2;6=1;31=4", "*c2", "Een touw loopt van de tand van de draak naar de molensteen op de lift.", "&"
 "1=17;2=0;17=2;6=1;31=2", "*c2", "Een touw loopt van de tand van de draak de kamer in.", "&"
 
-"1=17;2=0;17=2;4=5", "*c3", "$n: 'Ik ga kijken wat ik kan doen.'"
+"1=17;2=0;17=2;4=5;45=0", "*c3", "$n: 'Ik ga kijken wat ik kan doen.'"
+"", "*c13", "Bloem: 'Ok.'", "&4=0;20=1"
+
+"1=17;2=0;17=2;4=5;45!0", "*c3", "$n: 'Tot later'"
 "", "*c13", "Bloem: 'Ok.'", "&4=0;20=1"
 
 "1=17;2=0;17=2;4=8", "*c3", "$n: 'Zou je me kunnen helpen uitladen?'"
@@ -2382,6 +2403,7 @@
 "2=0;1=16;16=1;4=0;25<2;25>0", "Zeg: 'Ik wil graag koeken kopen'", "4=3"
 "2=0;1=16;16=1;4=0;26>0;34>0;36=0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
 "2=0;1=16;16=1;4=0;26>0;33<3", "Zeg: 'Waarom is uw toonbank leeg?'", "4=6"
+"2=0;1=16;16=1;4=0;46=1", "Praat met bloem", "4=9"
 "2=0;1=16;16=1;4=0;33=2", "Zeg: 'Ik heb meel gehaald'", "4=7"
 "2=0;1=16;16=1;4=0", "Verlaat de bakkerij", "1=6;3=5;4=0"
 "2=0;1=16;16=1;4=1;26=0", "Zeg: 'Monster? Waar heeft u het over?'", "4=4"
@@ -2417,7 +2439,8 @@
 "2=0;1=17;17=2;4=1", "Zeg: 'Je moet meekomen, je vader is hartstikke ongerust!'", "4=3"
 "2=0;1=17;17=2;4=1", "Zeg: 'Wat weet je van deze draak?'", "4=4"
 "2=0;1=17;17=2;4=1;30=18;44=2;29=4", "Zeg: 'Zou je me kunnen helpen uitladen?'", "4=8"
-"2=0;1=17;17=2;4=1", "Zeg: 'Ik ga kijken wat ik kan doen'", "4=5"
+"2=0;1=17;17=2;4=1;45=0", "Zeg: 'Ik ga kijken wat ik kan doen'", "4=5"
+"2=0;1=17;17=2;4=1;45!0", "Zeg: 'Tot later'", "4=5"
 
 "2=0;1=17;17=2;6=2;44!3;43=0;44!4", "Ga met de lift naar beneden", "1=18;3=7;43=1;4=0;6=0"
 "2=0;1=17;17=2;6=2;44!3;43=0;44=4", "Ga met de lift naar beneden", "4=9"
