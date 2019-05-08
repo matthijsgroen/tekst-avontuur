@@ -186,7 +186,7 @@ const toonActies = async () => {
   for (const actie of avontuur.acties) {
     if (toegestaan(actie.test)) {
       acties.push({
-        naam: actie.tekst,
+        naam: interpoleer(actie.tekst),
         actie: actie.actie,
         toets: toetsen[acties.length]
       });

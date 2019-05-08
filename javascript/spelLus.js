@@ -100,7 +100,7 @@ const toonActies = async actieData => {
     bewering = actieData[index];
     if (toegestaan(spelToestand, bewering)) {
       acties.push({
-        naam: actieData[index + 1],
+        naam: interpoleer(actieData[index + 1]),
         actie: actieData[index + 2],
         toets: toetsen[acties.length]
       });
