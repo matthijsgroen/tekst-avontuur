@@ -1011,9 +1011,10 @@
 "2=0;1=12;12=3;4=2;6=0", "*c2", "Je loopt naar een aantal boeken die op de werktafel liggen. Er ligt een dikke", "&6=2;4=0"
 
 "2=0;1=12;12=3;4=0;6=2", "*c2"
-"almanak genaamd: ", "*c6"
+"almanak genaamd: ", "", "*c6"
 "  '100 dingen die je altijd al wilde weten over mossen, kruiden"
-"   en paddenstoelen, maar nooit durfde te vragen'", "", "*c2", "en een opengeslagen boek, genaamd:", "*c6"
+"   en paddenstoelen, maar nooit durfde te vragen'", ""
+"*c2", "en een opengeslagen boek, genaamd:", "*c6", ""
 "  'Toverdank recepten 101. Voor beginners tot meester-heksen'"
 "*c2", "", "In elk boek zijn boekenleggers gestoken."
 "&20=0"
@@ -1156,8 +1157,8 @@
 "  - 1 tand van een draak"
 "", "Spreuk: &##%$#@"
 "", "*c2", "Hmm, er zit een vlek over de spreuk. Het valt je ook op dat de lijst"
-"ingrediënten anders is dan Eucalypta je had gegeven."
-"&"
+"ingrediënten anders is dan Eucalypta je had gegeven. Maar misschien weet"
+"Eucalypta wel de spreuk?", "&"
 
 "2=0;1=12;12=3;6=4;4=0;51=2", "*c6", "Bladzijde 37. -- Wakker worden na een feestnacht --"
 "", "Iets te lang wezen feesten? Je kan maar niet je bed uit komen? Dit drankje maakt"
@@ -1273,6 +1274,13 @@
 "2=3;4=9", "*c2", "Je voegt een lichtbruine boomzwam toe aan de ketel", "", "&63-1;69+1;59=1"
 "2=3;4=10", "*c2", "Je voegt de maansteen toe aan de ketel", "", "&36=3;59=1"
 "2=3;4=11", "*c2", "Je voegt een beker wijn toe aan de ketel", "", "&48=3;59=1"
+
+"2=3;51=1", "*c2", "Vanuit een ooghoek gluur je naar het receptenboek:", "", "*c6"
+"  - 1 plant met ronde bladeren"
+"  - 2 lichtblauwe paddenstoelen"
+"  - 4 planten met stekelige bladeren"
+"  - 1 tand van een draak"
+"&"
 
 "2=3;51=4", "*c2", "Vanuit een ooghoek gluur je naar het receptenboek:", "", "*c6"
 "Benodigdheden:"
