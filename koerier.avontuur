@@ -417,18 +417,18 @@
 "Na een tijdje heb je er al een aantal verschillende soorten gezien:"
 "Sterrenmos, Kosmos, Atmos, Maanmos en Dondermos", "&20=0"
 
-"1=1;2=0;4=3;64=0", "*c2", "Je bukt om wat sterrenmos te verzamelen."
+"1=1;2=0;4=3;64<6", "*c2", "Je bukt om wat sterrenmos te verzamelen."
 "Je verzamelt een aantal plukken en stopt ze in je tas."
 "&4=2;64=6"
 
-"1=1;2=0;4=3;64>0", "*c2", "Hmm, volgens mij heb ik deze mossoort al in mijn tas zitten."
+"1=1;2=0;4=3;64=6", "*c2", "Hmm, volgens mij heb ik deze mossoort al in mijn tas zitten."
 "&4=2"
 
-"1=1;2=0;4=4;66=0", "*c2", "Je bukt om wat kosmos te verzamelen."
+"1=1;2=0;4=4;66<6", "*c2", "Je bukt om wat kosmos te verzamelen."
 "Je verzamelt een aantal plukken en stopt ze in je tas."
 "&4=2;66=6"
 
-"1=1;2=0;4=4;66>0", "*c2", "Hmm, volgens mij heb ik deze mossoort al in mijn tas zitten."
+"1=1;2=0;4=4;66=6", "*c2", "Hmm, volgens mij heb ik deze mossoort al in mijn tas zitten."
 "&4=2"
 
 "1=1;2=0;4=5", "*c2", "Je bukt om wat kosmos te verzamelen.", ""
@@ -436,11 +436,11 @@
 "giftig is. Je besluit om deze soort niet te verzamelen."
 "&4=2"
 
-"1=1;2=0;4=6;65=0", "*c2", "Je bukt om wat maanmos te verzamelen."
+"1=1;2=0;4=6;65<6", "*c2", "Je bukt om wat maanmos te verzamelen."
 "Je verzamelt een aantal plukken en stopt ze in je tas."
 "&4=2;65=6"
 
-"1=1;2=0;4=6;65>0", "*c2", "Hmm, volgens mij heb ik deze mossoort al in mijn tas zitten."
+"1=1;2=0;4=6;65=6", "*c2", "Hmm, volgens mij heb ik deze mossoort al in mijn tas zitten."
 "&4=2"
 
 "1=1;2=0;4=7", "*c2", "Je bukt om wat dondermos te verzamelen.", ""
@@ -512,22 +512,22 @@
 "", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
 "&4=1"
 
-"1=4;2=0;4=2;26>4;41=0", "*c2", "Je bukt om de plant met de stekelige bladeren te plukken."
+"1=4;2=0;4=2;26>4;41<10", "*c2", "Je bukt om de plant met de stekelige bladeren te plukken."
 "Je plukt er een aantal en stopt ze in je tas."
 "&4=1;41=10"
 
-"1=4;2=0;4=2;26>4;41>0", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
+"1=4;2=0;4=2;26>4;41=10", "*c2", "Hmm, volgens mij heb ik genoeg van deze plant in mijn tas zitten."
 "&4=1"
 
 "1=4;2=0;4=3;26<5", "*c2", "Je bukt om de plant met de ronde bladeren te plukken."
 "", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
 "&4=1"
 
-"1=4;2=0;4=3;26>4;40=0", "*c2", "Je bukt om de plant met de ronde bladeren te plukken."
+"1=4;2=0;4=3;26>4;40<10", "*c2", "Je bukt om de plant met de ronde bladeren te plukken."
 "Je plukt er een aantal en stopt ze in je tas."
 "&4=1;40=10"
 
-"1=4;2=0;4=3;26>4;40>0", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
+"1=4;2=0;4=3;26>4;40=10", "*c2", "Hmm, volgens mij heb ik al genoeg van deze plant in mijn tas zitten."
 "&4=1"
 
 "1=4;2=0;4=4;36!1;56=0", "*c2", "Je bukt om de plant met de ruitvormige bladeren te plukken."
@@ -549,11 +549,11 @@
 "", "Vlak voordat je hem aanraakt, stop je.", "Misschien is de plant wel giftig?"
 "&4=1"
 
-"1=4;2=0;4=5;56=1;57=0", "*c2", "Je bukt om de plant met de hartvormige bladeren te plukken."
+"1=4;2=0;4=5;56=1;57<10", "*c2", "Je bukt om de plant met de hartvormige bladeren te plukken."
 "Je plukt er een aantal en stopt ze in je tas."
 "&4=1;57=10"
 
-"1=4;2=0;4=5;56=1;57>0", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
+"1=4;2=0;4=5;56=1;57=10", "*c2", "Hmm, volgens mij heb ik deze plant al in mijn tas zitten."
 "&4=1"
 
 '== 6. Dorp
@@ -629,11 +629,12 @@
 "  Ik heb geen idee of ik de lichtbruine boomzwammen wel nodig ga hebben.'"
 "&4=1"
 
-"1=7;4=3;2=0;7=2;55=1;63>0", "*c3"
-"$n: 'Volgens mij heb ik die al in mijn tas zitten.'"
+"1=7;4=3;2=0;7=2;55=1;63=5", "*c3"
+"$n: 'Volgens mij heb ik genoeg lichtbruine boomzwammen in"
+"  mijn tas zitten.'"
 "&4=1"
 
-"1=7;4=3;2=0;7=2;55=1;63=0", "*c2"
+"1=7;4=3;2=0;7=2;55=1;63<5", "*c2"
 "Je plukt een paar lichtbruine boomzwammen. Je doet het heel voorzichtig."
 "&63=5;4=1"
 
@@ -643,11 +644,12 @@
 "  Ik heb geen idee of ik de lichtblauwe paddenstoelen wel nodig ga hebben.'"
 "&4=1"
 
-"1=7;4=4;2=0;26>3;7=2;42>0", "*c3"
-"$n: 'Volgens mij heb ik die al in mijn tas zitten.'"
+"1=7;4=4;2=0;26>3;7=2;42=5", "*c3"
+"$n: 'Volgens mij heb ik al genoeg van deze paddenstoelen"
+"  in mijn tas zitten.'"
 "&4=1"
 
-"1=7;4=4;2=0;26>3;7=2;42=0", "*c2"
+"1=7;4=4;2=0;26>3;7=2;42<5", "*c2"
 "Je bukt om een paar lichtblauwe paddenstoelen te plukken. Je doet het heel"
 "voorzichtig."
 "&42=5;4=1"
@@ -657,11 +659,11 @@
 "  Goed uitkijken welke ik ga plukken."
 "  Ik heb geen idee of ik de oranje zwammen wel nodig ga hebben.'", "&4=1"
 
-"1=7;4=5;2=0;55=1;7=2;58>0", "*c3"
+"1=7;4=5;2=0;55=1;7=2;58=5", "*c3"
 "$n: 'Volgens mij heb ik die al in mijn tas zitten.'"
 "&4=1"
 
-"1=7;4=5;2=0;55=1;7=2;58=0", "*c2"
+"1=7;4=5;2=0;55=1;7=2;58<5", "*c2"
 "Je bukt om een paar oranje zwammen te plukken. Je doet het heel voorzichtig."
 "&58=5;4=1"
 
@@ -968,8 +970,8 @@
 "2=0;1=12;12=3;4=1;6=1", "*c2", "Je stapt weg bij de ketel.", "", "&6=0;4=0"
 "2=0;1=12;12=3;4=1;6=2", "*c2", "Je stapt weg bij de boeken.", "", "&6=0;4=0"
 "2=0;1=12;12=3;4=0;6=0", "*c2", "Je bent in de hut van Eucalypta. In het midden van de hut staat een grote"
-"kookpot te borrelen.", "Overal liggen boeken, bekers, potten en spullen waarvan je geen idee hebt wat"
-"het is.", "&"
+"kookpot te borrelen. Overal liggen boeken, bekers, potten en spullen waarvan je"
+"geen idee hebt wat het is.", "", "&"
 "2=0;1=12;12=3;4=0;6=0;26<7", "*c2", "Eucalypta ligt op de grond van de hut. Het lijkt wel alsof ze slaapt.", "&"
 "2=0;1=12;12=3;4=0;6=0;26>6", "*c2", "Eucalypta zit in een stoel en kijkt suf en verward.", "&"
 "2=0;1=12;12=3;4=0;6=0;45=3", "*c2", "De getrokken tand van de draak ligt op een werktafel.", "&"
@@ -1266,9 +1268,9 @@
 "2=3;4=1", "*c2", "Je voegt een plant met ronde bladeren toe aan de ketel", "", "&40-1;60+1;59=1"
 "2=3;4=2", "*c2", "Je voegt een plant met stekelige bladeren toe aan de ketel", "", "&41-1;61+1;59=1"
 "2=3;4=3", "*c2", "Je voegt een plant met hartvormige bladeren toe aan de ketel", "", "&57-1;67+1;59=1"
-"2=3;4=4", "*c2", "Je voegt een pluk sterrenmos toe aan de ketel", "", "&64-1;70+1;59=1"
-"2=3;4=5", "*c2", "Je voegt een pluk maanmos toe aan de ketel", "", "&65-1;71+1;59=1"
-"2=3;4=6", "*c2", "Je voegt een pluk kosmos toe aan de ketel", "", "&66-1;72+1;59=1"
+"2=3;4=4", "*c2", "Je voegt een pluk Sterrenmos toe aan de ketel", "", "&64-1;70+1;59=1"
+"2=3;4=5", "*c2", "Je voegt een pluk Maanmos toe aan de ketel", "", "&65-1;71+1;59=1"
+"2=3;4=6", "*c2", "Je voegt een pluk Kosmos toe aan de ketel", "", "&66-1;72+1;59=1"
 "2=3;4=7", "*c2", "Je voegt een lichtblauwe paddenstoel toe aan de ketel", "", "&42-1;62+1;59=1"
 "2=3;4=8", "*c2", "Je voegt een oranje zwam toe aan de ketel", "", "&58-1;68+1;59=1"
 "2=3;4=9", "*c2", "Je voegt een lichtbruine boomzwam toe aan de ketel", "", "&63-1;69+1;59=1"
@@ -2318,15 +2320,15 @@
 "2=0;1=12;12=3;6=1;4=0", "Zeg: `Abracadabra...'", "4=4"
 "2=0;1=12;12=3;6=1;4=0", "Stap weg bij de ketel", "4=1"
 
-"2=3;40>0", "Plant met ronde bladeren", "4=1"
-"2=3;41>0", "Plant met stekelige bladeren", "4=2"
-"2=3;57>0", "Plant met hartvormige bladeren", "4=3"
-"2=3;64>0", "Pluk sterrenmos", "4=4"
-"2=3;65>0", "Pluk maanmos", "4=5"
-"2=3;66>0", "Pluk kosmos", "4=6"
-"2=3;42>0", "Lichtblauwe paddenstoel", "4=7"
-"2=3;58>0", "Oranje zwam", "4=8"
-"2=3;63>0", "Lichtbruine boomzwam", "4=9"
+"2=3;40>0", "Plant met ronde bladeren (nog#40)", "4=1"
+"2=3;41>0", "Plant met stekelige bladeren (nog#41)", "4=2"
+"2=3;57>0", "Plant met hartvormige bladeren (nog#57)", "4=3"
+"2=3;64>0", "Pluk sterrenmos (nog#64)", "4=4"
+"2=3;65>0", "Pluk maanmos (nog#65)", "4=5"
+"2=3;66>0", "Pluk kosmos (nog#66)", "4=6"
+"2=3;42>0", "Lichtblauwe paddenstoel (nog#42)", "4=7"
+"2=3;58>0", "Oranje zwam (nog#58)", "4=8"
+"2=3;63>0", "Lichtbruine boomzwam (nog#63)", "4=9"
 "2=3;36=2", "Maansteen", "4=10"
 "2=3;48=2", "Wijn", "4=11"
 "2=3", "Genoeg ingrediënten voor nu", "4=0;6=1;2=0"
