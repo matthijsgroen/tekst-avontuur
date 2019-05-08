@@ -352,7 +352,7 @@
 "  - 3 Planten met stekelige bladeren"
 "  - 1 Tand van een draak"
 "", "&"
-"2=1;4=4;42=0", "&26=5"
+"2=1;4=4;26=4", "&26=5"
 
 "2=1", "*c15", "Je hebt het volgende bij je:", "&"
 "2=1;22>1", "*c7", "-#22 geldstukken", "&"
