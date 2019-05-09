@@ -30,14 +30,16 @@ const interpoleer = zin =>
     .replace(/\$n/g, naam)
     .replace(/#\d{2}/g, num => ` ${spelToestand[parseInt(num.slice(1), 10)]}`);
 
-const tekst = async (verteller, zin) => {
+const tekst = async (verteller, zin, eerderGelezen) => {
   color(verteller);
   for (let i = 0; i < zin.length; i++) {
     print(zin[i]);
-    await sleep(skip ? 0 : 0.04);
+    await sleep(skip || eerderGelezen ? 0 : 0.03);
   }
   print("\n");
 };
+
+const gelezen = [];
 
 const toonGebeurtenis = async schermData => {
   let verteller = 2;
@@ -47,6 +49,8 @@ const toonGebeurtenis = async schermData => {
   for (let index = 0; index < schermData.length; index++) {
     let bewering = schermData[index];
     if (toegestaan(spelToestand, bewering)) {
+      const eerderGelezen = gelezen.includes(index);
+      if (!eerderGelezen) gelezen.push(index);
       do {
         index++;
         const sentence = schermData[index];
@@ -66,7 +70,8 @@ const toonGebeurtenis = async schermData => {
             await sleep(skip ? 0 : parseInt(data, 10));
           }
         } else {
-          await tekst(verteller, interpoleer(sentence));
+          await tekst(verteller, interpoleer(sentence), eerderGelezen);
+          await sleep(eerderGelezen ? 0.1 : 0);
         }
       } while (!schermData[index].startsWith("&"));
     } else {
