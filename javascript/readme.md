@@ -8,3 +8,4 @@ Gebruik:
 - `avontuur.js verhaal.avontuur` Om een verhaal te spelen.
 - `avontuur.js html verhaal.avontuur` Om bestand om te zetten naar een speelbare
   html file
+- `avontuur.js stats verhaal.avontuur` Om meta gegevens van avontuur te bekijken

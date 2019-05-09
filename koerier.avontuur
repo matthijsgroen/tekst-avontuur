@@ -92,7 +92,7 @@
 
 ' 43 = status lift. 0 = boven, 1 = beneden, 2 = kapot
 ' 44 = molensteen 0 = niet, 1 = nodig, 2 = op wagen, 3 = intentie tillen, 4 = op lift
-' 45 = Tand 0 = niet, 1 = getrokken, 2 = gepakt, 3 = gegeven
+' 45 = Tand 0 = niet, 1 = getrokken, 2 = gepakt, 3 = gegeven/tafel, 4 = in ketel, 5 = gelukt
 ' 46 = lokatie Bloem 0 = toren, 1 = bakkerij
 ' 47 = Toegang kelder 0 = nee, 1 = drank, 2 = ja
 ' 48 = Wijn = 0, 1 = lege beker, 2 = wijn, 3 = in ketel
@@ -379,6 +379,7 @@
 "2=1;47=1", "*c7", "- Een flesje 'deur klemt'", "&"
 "2=1;33=4", "*c7", "- Een flesje 'vertaler'", "&"
 "2=1;26=6", "*c7", "- Een flesje 'wakker worden'", "&"
+"2=1;26=9", "*c7", "- Een flesje 'medicijn'", "&"
 "2=1;48=1", "*c7", "- Een lege beker", "&"
 "2=1;48=2", "*c7", "- Een beker met wijn", "&"
 "2=1;40=1", "*c7", "- 1 plant met ronde bladeren", "&"
@@ -1043,6 +1044,17 @@
 "2=0;1=12;12=3;4=0;6=1;59=1", "*c2", "De drank in de ketel heeft een doffe kleur, die van tint wisselt.", ""
 "Er zit duidelijk een brouwsel in.", "&"
 
+' Medicijn
+"2=0;1=12;12=3;4=9;6=1;59=1;60=1;62=2;61=4;45=4"
+"Het water in de ketel bruist! Er komen ineens allemaal rare geluiden uit de"
+"ketel. Het lijkt wel muziek!"
+"Opeens wordt het stil en veranderd de kleur van de vloeistof in helder paars."
+"Je pakt een flesje van een schap en vult het met de inhoud van de ketel."
+""
+"Je hebt net het flesje vol en dan zie je ineens de hele ketel weer verkleuren"
+"naar helder doorzichtig.", "Je plakt er het labeltje 'medicijn' op."
+"&45=5;59=10;26=9"
+
 ' Praat drank
 "2=0;1=12;12=3;4=8;6=1;59=1;36=3;70=2;67=1;71=1"
 "Het water in de ketel gaat dansen. Buiten lijken ineens allerlei wolken zich"
@@ -1123,6 +1135,7 @@
 "Oef je hebt geluk!", "&"
 
 "2=0;1=12;12=3;4>4;4<10;6=1;59>0;36=3", "", "De maansteen springt ineens uit de ketel en land op tafel.", "&36=4"
+"2=0;1=12;12=3;4>4;4<10;6=1;59>0;45=4", "", "De tand van de draak springt ineens uit de ketel en land op tafel.", "&45=3"
 
 ' Reset wijn
 "2=0;1=12;12=3;4>4;4<10;6=1;59>0;48=3", "&48=0"
@@ -1276,6 +1289,7 @@
 "2=3;4=9", "*c2", "Je voegt een lichtbruine boomzwam toe aan de ketel", "", "&63-1;69+1;59=1"
 "2=3;4=10", "*c2", "Je voegt de maansteen toe aan de ketel", "", "&36=3;59=1"
 "2=3;4=11", "*c2", "Je voegt een beker wijn toe aan de ketel", "", "&48=3;59=1"
+"2=3;4=12", "*c2", "Je voegt de tand van de draak toe aan de ketel", "", "&45=4;59=1"
 
 "2=3;51=1", "*c2", "Vanuit een ooghoek gluur je naar het receptenboek:", "", "*c6"
 "  - 1 plant met ronde bladeren"
@@ -2331,6 +2345,7 @@
 "2=3;63>0", "Lichtbruine boomzwam (nog#63)", "4=9"
 "2=3;36=2", "Maansteen", "4=10"
 "2=3;48=2", "Wijn", "4=11"
+"2=3;45=2", "Tand van de draak", "4=12"
 "2=3", "Genoeg ingrediënten voor nu", "4=0;6=1;2=0"
 
 ' Sim sala...

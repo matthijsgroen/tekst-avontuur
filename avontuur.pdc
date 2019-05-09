@@ -197,6 +197,7 @@ styles[] {
       }
 
       maak_medicijn:event {
+         style           = finished
          depends_on []   = maak_drank_om_heks_bij_te_brengen;
       }
 

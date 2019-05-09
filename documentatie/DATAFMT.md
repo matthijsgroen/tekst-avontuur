@@ -132,7 +132,7 @@ Waardes uit de speltoestand in tekst gebruiken:
 
 # Voorbeeld
 
-```basic
+```
 ' Mini avontuur met de helpdesk
 ' 1 is status van het gesprek
 ' 2 is de wachtrij
