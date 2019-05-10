@@ -775,15 +775,17 @@
 "34=6", "*c2", "Je krijgt het gevoel dat de route niet klopt.", ""
 "Je besluit terug te lopen naar het startpunt langs de rivier.", "&9=20;20=0"
 
-"1=9;2=0;9=7", "*c2", "Je loopt naar het zuiden, tussen de bomen door. Je komt bij een omgevallen boom."
-"Na beter bestuderen van de boom, zie je dat de boom hol is.", "*s2"
-"Je ziet een kleine kist in de holle boom liggen. Je pakt het kistje eruit.", ""
-"In het kistje zit goud! Je hebt een stuk goud gevonden!"
+"1=9;2=0;9=7;5=0", "*c2", "Je loopt naar het zuiden, tussen de bomen door. Je komt bij een omgevallen boom.", "&"
+"1=9;2=0;9=7;5=1", "*c2", "Na beter bestuderen van de boom, zie je dat de boom hol is.", "*s2"
+"Je ziet een kleine kist in de holle boom liggen. Je pakt het kistje eruit."
+
+"1=9;2=0;9=7;5=2", "*c2", "Je opent het kistje."
+"In het kistje zit goud!"
 "Er zit ook een steen met rare inscripties in het kistje.", ""
 "Je stopt het goud en de steen in je tas. Het goud lijkt licht net iets anders"
 "te reflecteren dan dat je van gewoon goud gewend bent."
 "Je loopt weer terug naar het pad in het bos. Je ziet de zon weer opkomen."
-"&1=1;34=7;38=1"
+"&1=1;34=7;38=1;5=0"
 
 '== 11. Mijn
 "1=11;2=0;11<2;4=0", "*c2"
@@ -2272,7 +2274,9 @@
 
 "2=0;1=9;9=6", "Ga naar het noorden, tussen de bomen door", "4=1"
 "2=0;1=9;9=6", "Ga naar het oosten, tussen de bomen door", "4=2"
-"2=0;1=9;9=6", "Ga naar het zuiden, tussen de bomen door", "4=0;9=7"
+"2=0;1=9;9=6", "Ga naar het zuiden, tussen de bomen door", "4=0;9=7;5=0"
+"2=0;1=9;9=7;5=0", "Inspecteer boom", "5=1"
+"2=0;1=9;9=7;5=1", "Open kistje", "5=2"
 
 "2=0;1=9;9=20", "Wacht tot het weer licht is", "1=8;4=0;34=4;9=0;20=1;3=7"
 
