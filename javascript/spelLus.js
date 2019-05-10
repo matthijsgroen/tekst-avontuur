@@ -34,15 +34,14 @@ const tekst = async (verteller, zin, eerderGelezen) => {
   color(verteller);
   for (let i = 0; i < zin.length; i++) {
     print(zin[i]);
-    await sleep(skip || eerderGelezen ? 0 : 0.03);
+    await sleep(skip || eerderGelezen ? 0 : 0.04);
   }
   print("\n");
 };
 
 const gelezen = [];
-
 const toonGebeurtenis = async schermData => {
-  let verteller = 2;
+  let verteller = 7;
   skip = false;
   cls();
 

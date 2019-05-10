@@ -100,11 +100,11 @@ const interpoleer = zin =>
     .replace(/\$n/g, naam)
     .replace(/#\d{2}/g, num => ` ${spelToestand[parseInt(num.slice(1), 10)]}`);
 
-const tekst = async (verteller, zin) => {
+const tekst = async (verteller, zin, eerderGelezen) => {
   color(verteller);
   for (const letter of zin) {
     print(letter);
-    await sleep(0.04);
+    await sleep(eerderGelezen ? 0 : 0.04);
   }
   print("\n");
 };
@@ -115,6 +115,8 @@ const toonGebeurtenis = async () => {
   cls();
   for (const teksten of avontuur.scherm) {
     if (toegestaan(teksten.test)) {
+      const eerderGelezen = teksten.gelezen === true;
+      if (!eerderGelezen) teksten.gelezen = true;
       for (const zin of teksten.schermData) {
         if (zin[0] === "*") {
           // Opmaak
@@ -127,7 +129,8 @@ const toonGebeurtenis = async () => {
             await sleep(parseInt(data, 10));
           }
         } else {
-          await tekst(verteller, interpoleer(zin));
+          await tekst(verteller, interpoleer(zin), eerderGelezen);
+          await sleep(eerderGelezen ? 0.1 : 0);
         }
       }
       if (teksten.actie) {
