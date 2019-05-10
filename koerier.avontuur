@@ -2066,7 +2066,12 @@
 "1=17;2=0;17=2;4=17;6=1", "*c2", "Je haalt het grote zadel uit je tas. De draak kijkt naar het zadel, en geeft een"
 "blik van herkenning. Als je het zadel op hem wil leggen, dan briest hij licht"
 "en draait zich een beetje."
-"", "Hij het zadel niet dragen.", "&4=0"
+"", "Hij wil het zadel niet dragen.", "&4=0"
+
+"1=17;2=0;17=2;4=18;6=1", "*c2", "Je pakt het flesje 'vertaler' en giet de inhoud in de bek van de draak."
+"", "*c14", "<Gulp>", "", "*c2", "...", "*s2", "*c3"
+"", "$n: 'Hee, kan je mij verstaan?'", "", "*c2", "De draak kijkt ineens verbaast op."
+"", "*c9", "Dins: 'Whooaa ik kan jou verstaan!'", "&4=0;33=5"
 
 ' == 18. Onderkant toren
 "1=18;18=0;2=0;4=0;44!3", "*c2", "Je bent in het woud, aan de voet van de toren."
@@ -2499,6 +2504,12 @@
 "2=1;1=17;17=2;31=1;6=1", "Knoop touw aan tand van de draak", "4=11;2=0"
 "2=1;1=17;17=2;6=1;52=1", "Geef appeltaart aan de draak", "4=16;2=0"
 "2=1;1=17;17=2;6=1;49=1", "Zet zadel op de draak", "4=17;2=0"
+"2=1;1=17;17=2;6=1;33=4", "Gebruik 'vertaler' op de draak", "4=18;2=0"
+
+"2=0;1=17;17=2;6=1;33=5", "Zeg: 'Hey hoe gaat het?'", "4=19"
+"2=0;1=17;17=2;6=1;33=5", "Zeg: 'Wie ben je?'", "4=20"
+"2=0;1=17;17=2;6=1;33=5", "Zeg: 'Hoe gaat het met je tand?'", "4=21"
+
 "2=0;1=17;17=2;6=1", "Loop terug de kamer in", "4=0;6=0"
 "2=1;1=17;17=2;31=1;6=2;44=4", "Knoop touw aan molensteen", "4=12;2=0"
 
