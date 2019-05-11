@@ -201,6 +201,10 @@ styles[] {
          depends_on []   = maak_drank_om_heks_bij_te_brengen;
       }
 
+      pak_schilderij_uit_kelder:event {
+         depends_on []   = praat_met_draak;
+      }
+
       maak_sieraad_bij_smid:event {
          style           = finished
          depends_on []   = krijg_edelsteen_van_dwerg, vind_goud_in_bos, praat_met_heks;
@@ -360,7 +364,7 @@ styles[] {
       }
 
       zet_zadel_op_draak:event {
-         depends_on [] = geef_appeltaart_aan_draak, praat_met_draak, vind_zadel_in_kelder;
+         depends_on [] = geef_appeltaart_aan_draak, pak_schilderij_uit_kelder, vind_zadel_in_kelder;
       }
 
    }
