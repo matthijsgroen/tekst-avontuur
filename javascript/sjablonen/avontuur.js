@@ -176,7 +176,7 @@ const keypress = () =>
 
 const voerActieUit = instructies => {
   instructies.forEach(instructie => {
-    const [, plek, bewerking, waarde] = instructie.match(/(\d+)([=+-])(\d+)/);
+    const [, plek, bewerking, waarde] = instructie.match(/(\d+)([=+-r])(\d+)/);
     muteer(parseInt(plek, 10), bewerking, parseInt(waarde, 10));
   });
 };

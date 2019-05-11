@@ -23,6 +23,7 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
     "Gebruik:",
     "  - spelen: avontuur.js bestand.avontuur [--herstarten]",
     "  - html versie maken: avontuur.js html bronbestand.avontuur [doelbestand.html]",
+    "  - informatie: avontuur.js info bronbestand.avontuur",
     "",
     "Foutjes, suggesties, vragen?",
     "- Github: https://github.com/matthijsgroen/tekst-avontuur",
@@ -30,7 +31,7 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
     "- Twitter: @matthijsgroen"
   ].forEach(regel => console.log(regel));
   process.exit(0);
-} else if (eerste === "stats") {
+} else if (eerste === "info") {
   const bron = commandos[1];
   statistieken(bron);
 } else if (eerste === "html") {

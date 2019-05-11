@@ -101,7 +101,7 @@
 ' 50 = kennis spreuken: 1 = medicijn, 2 = wakker, 3 = talen, 4 = oplos
 ' 51 = bladzijde open: 1 = med, 2 wak, 3 = taal, 4 = oplos
 ' 52 = Appeltaart. 1 = inventory, 2 = draak
-' 53 =
+' 53 = 1 Schilderijen bekeken
 '
 ' 54 = kennis mossen
 ' 55 = kennis paddestoelen
@@ -2116,7 +2116,7 @@
 "", "Je zet het schilderij weer terug op de grond. Je pakt het tweede schilderij.", ""
 "Op dit schilderij staat een tafel vol spullen. Je ziet ineens op de tafel een"
 "runesteen liggen die je erg bekend voorkomt.", "Je zet het schilderij weer terug."
-"&4=0"
+"&4=0;53=1"
 
 "1=19;4=2;2=0", "*c2", "Je loopt naar het zadel dat aan de muur hangt. Als je dichterbij komt, lijkt het"
 "zadel eigenlijk absurd groot. Zou dit voor een olifant zijn? Het is in ieder"
