@@ -68,7 +68,7 @@ const maakHtml = async (bron, doel) => {
 
   const stats =
     gegevens["StatHat.Gebruiker"] && gegevens["StatHat.Teller"]
-      ? `<img src="http://api.stathat.com/c?ukey=${
+      ? `<img src="https://api.stathat.com/c?ukey=${
           gegevens["StatHat.Gebruiker"]
         }&key=${
           gegevens["StatHat.Teller"]
