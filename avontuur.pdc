@@ -202,6 +202,7 @@ styles[] {
       }
 
       pak_schilderij_uit_kelder:event {
+         style           = finished
          depends_on []   = praat_met_draak;
       }
 
@@ -266,6 +267,7 @@ styles[] {
       }
 
       praat_met_draak :event {
+         style           = finished
          depends_on []   = maak_drank_om_met_draak_te_praten;
       }
 

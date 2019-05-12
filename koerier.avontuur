@@ -61,7 +61,7 @@
 ' 24 = 1 = kapotte houweel, 2 = gerepareerde houweel
 ' 25 = Koeken 1 = bestaan, 2 = kopen, 3 = geven
 ' 26 = Medicijn. 1 = kennis draak, 2 = kennis heks, 3 = prijs, 4 = Ingrediëntenlijst
-' 26 =    5 = ingredienten gezien, 6 = wakker drank, 7 = eucalypta wakker, 8 = spreuk medicijn, 9 = medicijn
+' 26 =    5 = ingrediënten gezien, 6 = wakker drank, 7 = eucalypta wakker, 8 = spreuk medicijn, 9 = medicijn
 ' 27 = Zwaard. 1 = motivatie, 2 = in bezit
 ' 28 = Edelsteen.
 ' 29 = paard. 1 = kennis, 2 = gevonden, 3 = hoeven, 4 = wagen
@@ -101,7 +101,9 @@
 ' 50 = kennis spreuken: 1 = medicijn, 2 = wakker, 3 = talen, 4 = oplos
 ' 51 = bladzijde open: 1 = med, 2 wak, 3 = taal, 4 = oplos
 ' 52 = Appeltaart. 1 = inventory, 2 = draak
-' 53 = 1 Schilderijen bekeken
+' 53 = Overtuigen draak.
+'      1 = uitleg samen, 2 = reden nodig, 3 = schilderij pakken
+'      4 = schilderij tonen
 '
 ' 54 = kennis mossen
 ' 55 = kennis paddestoelen
@@ -382,6 +384,7 @@
 "2=1;26=9", "*c7", "- Een flesje 'medicijn'", "&"
 "2=1;48=1", "*c7", "- Een lege beker", "&"
 "2=1;48=2", "*c7", "- Een beker met wijn", "&"
+"2=1;53=4", "*c7", "- Een schilderij van een man op een draak", "&"
 "2=1;40=1", "*c7", "- 1 plant met ronde bladeren", "&"
 "2=1;40>1", "*c7", "-#40 planten met ronde bladeren", "&"
 "2=1;41=1", "*c7", "- 1 plant met stekelige bladeren", "&"
@@ -777,7 +780,7 @@
 
 "1=9;2=0;9=7;5=0", "*c2", "Je loopt naar het zuiden, tussen de bomen door. Je komt bij een omgevallen boom.", "&"
 "1=9;2=0;9=7;5=1", "*c2", "Na beter bestuderen van de boom, zie je dat de boom hol is.", "*s2"
-"Je ziet een kleine kist in de holle boom liggen. Je pakt het kistje eruit."
+"Je ziet een kleine kist in de holle boom liggen. Je pakt het kistje eruit.", "&"
 
 "1=9;2=0;9=7;5=2", "*c2", "Je opent het kistje."
 "In het kistje zit goud!"
@@ -1046,28 +1049,6 @@
 "2=0;1=12;12=3;4=0;6=1;59=1", "*c2", "De drank in de ketel heeft een doffe kleur, die van tint wisselt.", ""
 "Er zit duidelijk een brouwsel in.", "&"
 
-' Medicijn
-"2=0;1=12;12=3;4=9;6=1;59=1;60=1;62=2;61=4;45=4", "*c2"
-"Het water in de ketel bruist! Er komen ineens allemaal rare geluiden uit de"
-"ketel. Het lijkt wel muziek!"
-"Opeens wordt het stil en veranderd de kleur van de vloeistof in helder paars."
-"Je pakt een flesje van een schap en vult het met de inhoud van de ketel."
-""
-"Je hebt net het flesje vol en dan zie je ineens de hele ketel weer verkleuren"
-"naar helder doorzichtig.", "Je plakt er het labeltje 'medicijn' op."
-"&45=5;59=10;26=9"
-
-' Praat drank
-"2=0;1=12;12=3;4=8;6=1;59=1;36=3;70=2;67=1;71=1", "*c2"
-"Het water in de ketel gaat dansen. Buiten lijken ineens allerlei wolken zich"
-"samen te pakken. Het begint ineens erg hard te regenen buiten."
-"Opeens klaart het weer op en veranderd de kleur van de vloeistof in helder geel."
-"Je pakt een flesje van een schap en vult het met de inhoud van de ketel."
-""
-"Je hebt net het flesje vol en dan zie je ineens de hele ketel weer verkleuren"
-"naar helder doorzichtig.", "Je plakt er maar het labeltje 'vertaler' op."
-"&33=4;59=10;36=5"
-
 ' Oplosdrank
 "2=0;1=12;12=3;4=6;6=1;59=1;61=4;62=1;68=2;71=3", "*c2"
 "De ketel begint te borrelen. Er ontstaan kleine draaikolken in de ketel."
@@ -1089,6 +1070,28 @@
 "naar helder doorzichtig.", "Je plakt er maar het labeltje 'wakker worden' op."
 "&26=6;59=10"
 
+' Praat drank
+"2=0;1=12;12=3;4=8;6=1;59=1;36=3;70=2;67=1;71=1", "*c2"
+"Het water in de ketel gaat dansen. Buiten lijken ineens allerlei wolken zich"
+"samen te pakken. Het begint ineens erg hard te regenen buiten."
+"Opeens klaart het weer op en veranderd de kleur van de vloeistof in helder geel."
+"Je pakt een flesje van een schap en vult het met de inhoud van de ketel."
+""
+"Je hebt net het flesje vol en dan zie je ineens de hele ketel weer verkleuren"
+"naar helder doorzichtig.", "Je plakt er maar het labeltje 'vertaler' op."
+"&33=4;59=10;36=5"
+
+' Medicijn
+"2=0;1=12;12=3;4=9;6=1;59=1;60=1;62=2;61=4;45=4", "*c2"
+"Het water in de ketel bruist! Er komen ineens allemaal rare geluiden uit de"
+"ketel. Het lijkt wel muziek!"
+"Opeens wordt het stil en veranderd de kleur van de vloeistof in helder paars."
+"Je pakt een flesje van een schap en vult het met de inhoud van de ketel."
+""
+"Je hebt net het flesje vol en dan zie je ineens de hele ketel weer verkleuren"
+"naar helder doorzichtig.", "Je plakt er het labeltje 'medicijn' op."
+"&45=5;59=10;26=9"
+
 ' Mislukt!
 "2=0;1=12;12=3;4>4;4<10;6=1;59=1", "&59r4;59+1"
 
@@ -1106,7 +1109,7 @@
 "2=0;1=12;12=3;6=1;59=2"
 "Oh nee, je bent ineens heel erg oud geworden!"
 "*c7", "", "...Tien minuten later...", "", "*s3", "*c2", "Je voelt jezelf ineens weer jonger worden."
-"Oef je hebt geluk!", "&"
+"Oef, je hebt geluk!", "&"
 
 "2=0;1=12;12=3;6=1;59=3", "*c2"
 "De ketel begint te borrelen. Er ontstaan kleine draaikolken in de ketel."
@@ -1116,7 +1119,7 @@
 "", "Overal om je heen zie je sneeuw en ijs. Op enige afstand lopen pinguïns."
 "Waar ben je nu weer beland?"
 "*c7", "", "...Tien minuten later...", "", "*s3", "*c2", "Je staat ineens weer in de hut."
-"Oef je hebt geluk!", "&"
+"Oef, je hebt geluk!", "&"
 
 "2=0;1=12;12=3;6=1;59=4", "*c2"
 "De ketel begint te borrelen. De kleuren in de ketel wisselen elkaar steeds"
@@ -1124,7 +1127,7 @@
 "Je voelt je ineens heel raar. Je wilt wat zeggen.", "", "*c3"
 "$n: 'Bêêêh'", "", "*c2", "Je loopt naar een spiegel. Oh, nee!! Je bent in een geit veranderd!"
 "*c7", "", "...Tien minuten later...", "", "*s3", "*c2", "Je verandert weer naar een mens."
-"Oef je hebt geluk!", "&"
+"Oef, je hebt geluk!", "&"
 
 "2=0;1=12;12=3;6=1;59=5", "*c2"
 "De ketel begint te borrelen. De kleuren in de ketel verschieten steeds"
@@ -1134,7 +1137,7 @@
 "Je probeert de tafel op te klimmen richting de ketel, maar de poten van de tafel"
 "zijn te glad om tegenop te klimmen."
 "*c7", "", "...Tien minuten later...", "", "*s3", "*c2", "Je verandert weer naar normale lengte."
-"Oef je hebt geluk!", "&"
+"Oef, je hebt geluk!", "&"
 
 "2=0;1=12;12=3;4>4;4<10;6=1;59>0;36=3", "", "De maansteen springt ineens uit de ketel en land op tafel.", "&36=4"
 "2=0;1=12;12=3;4>4;4<10;6=1;59>0;45=4", "", "De tand van de draak springt ineens uit de ketel en land op tafel.", "&45=3"
@@ -1151,13 +1154,13 @@
 "", "Heb je een toverketel 3000 aangeschaft maar je weet niet wat je er mee kunt?"
 "Dankzij dit boek wordt het maken van een toverdrank kinderlijk eenvoudig."
 "Alle recepten werken als volgt:", ""
-"  - Plaats alle ingredienten beschreven in het recept in de ketel. De volgorde"
+"  - Plaats alle ingrediënten beschreven in het recept in de ketel. De volgorde"
 "    doet er niet toe."
-"  - Zodra alle ingredienten erin zitten, steek je beide handen hoog in de lucht."
+"  - Zodra alle ingrediënten erin zitten, steek je beide handen hoog in de lucht."
 "  - Met een geheimzinnige stem zeg je dan hardop de toverspreuk die bij het"
 "    recept hoort."
 "  - Indien het recept gelukt is, dan is de ketel gevult met de toverdrank."
-"  - Indien de spreuk mislukt omdat de ingredienten niet kloppen, wordt de ketel"
+"  - Indien de spreuk mislukt omdat de ingrediënten niet kloppen, wordt de ketel"
 "    automatisch schoongemaakt en kun je het nog eens proberen."
 "  - Voor de 'meester-heks' recepten is een runesteen nodig om de ingrediënten"
 "    toonbaar te maken"
@@ -1259,7 +1262,7 @@
 "  - Zwarte paddestoel"
 ""
 "Deze paddenstoelen zijn niet gevaarlijk:"
-"  - Oranje zwammen, zorgt voor goede hechting van ingredienten."
+"  - Oranje zwammen, zorgt voor goede hechting van ingrediënten."
 "  - Lichtbruine boomzwammen, heerlijk op een broodje kaas."
 "  - Lichtblauwe paddenstoelen, hebben een geneeskrachtige werking."
 "&"
@@ -2073,6 +2076,40 @@
 "", "$n: 'Hee, kan je mij verstaan?'", "", "*c2", "De draak kijkt ineens verbaast op."
 "", "*c9", "Dins: 'Whooaa ik kan jou verstaan!'", "&4=0;33=5"
 
+"1=17;2=0;17=2;4=19;6=1", "*c3", "$n: 'Hoe gaat het?'"
+"", "*c9", "Dins: 'Ja gaat wel. Bedankt dat je me geholpen hebt met de tand!", "&"
+"1=17;2=0;17=2;4=19;6=1;52=2", "  De appeltaart die je gegeven hebt was ook super lekker.'", "&"
+"1=17;2=0;17=2;4=19;6=1;52<2", "  Ik heb alleen best honger, ik heb al een tijdje niet gegeten.'", "&"
+
+"1=17;2=0;17=2;4=20;6=1;5=0", "*c3", "$n: 'Wie ben je?'"
+"", "*c9", "Dins: 'Ik ben een Dins. Ik kom uit een ver land. Ik ben hier om een tussenstop"
+"  van mijn reis te maken. Ik had erg honger en de boer hier in de"
+"  buurt had zulke lekkere appels! Helaas schrok het paard daar van mij en raakte"
+"  mij ongelukkig met zijn hoef! Zo dat deed echt heel erg veel pijn!'"
+"&"
+"1=17;2=0;17=2;4=20;6=1;5=0;53=0", "&53=1"
+
+"1=17;2=0;17=2;4=20;6=1;5=1", "*c3", "$n: 'Waar ga je naar toe?'"
+"", "*c9", "Dins: 'Ik ben op zoek naar iemand om mij te helpen.'"
+"", "*c3", "$n: 'Wat voor hulp heb je nodig?'"
+"", "*c9", "Dins: 'Dat kan ik niet vertellen...'"
+"*s2", "*c9", "Dins: '... toch zou het wel fijn zijn als je met mij meeging.'"
+"&"
+"1=17;2=0;17=2;4=20;6=1;5=1;53=1", "&53=2"
+
+"1=17;2=0;17=2;4=20;6=1;5=2", "*c3", "$n: 'Je wil mij mee op reis?'"
+"", "*c9", "Dins: 'Ja dat zou mooi zijn... Helaas kan je niet op mijn rug mee.'"
+"", "*c2", "Misschien kan je de draak overtuigen dat je mee kan?"
+"&"
+"1=17;2=0;17=2;4=20;6=1;5=2;53=2", "&53=3"
+
+
+'"1=17;2=0;17=2;4=20;6=1;5=2;26<9"
+'"", "*c3", "$n: 'Ik moet ook eerst een medicijn krijgen en dat naar"
+'"  de koning gaan brengen.'"
+'"&"
+
+
 ' == 18. Onderkant toren
 "1=18;18=0;2=0;4=0;44!3", "*c2", "Je bent in het woud, aan de voet van de toren."
 "Er is een grote deur de toren in. Naast de toren is een lift.", "&"
@@ -2110,13 +2147,28 @@
 "Er hangt een oud zadel aan een haak aan de muur.", "Er staan allerlei oude schilderijen op de grond.", "&"
 
 "1=19;4=1;2=0", "*c2", "Je loopt naar de schilderijen die op de grond in een hoekje staan. Ze zitten"
-"helemaal onder het stof. Je bekijkt ze.", "", "Op het eerste schilderij zie je een mooie zonnige hemel, met een draak die"
+"helemaal onder het stof. Je bekijkt ze.", "", "&"
+
+"1=19;4=1;2=0;53<4"
+"Op het eerste schilderij zie je een mooie zonnige hemel, met een draak die"
 "tussen de wolken doorvliegt. Er lijkt een vlektje op het schilderij te zitten."
 "Je drukt je neus dichter tegen het schilderij.", "Het is geen vlekje, maar er lijkt een man op de rug van de draak te zitten."
+"&"
+
+"1=19;4=1;2=0;53=3", ""
+"*c3", "$n: 'Dit moet ik aan de Dins laten zien.'", "*c2"
+"", "Je stopt het schilderij in je tas."
+"Je pakt het tweede schilderij.", ""
+"&53=4"
+
+"1=19;4=1;2=0;53<3"
 "", "Je zet het schilderij weer terug op de grond. Je pakt het tweede schilderij.", ""
+"&"
+
+"1=19;4=1;2=0"
 "Op dit schilderij staat een tafel vol spullen. Je ziet ineens op de tafel een"
 "runesteen liggen die je erg bekend voorkomt.", "Je zet het schilderij weer terug."
-"&4=0;53=1"
+"&4=0"
 
 "1=19;4=2;2=0", "*c2", "Je loopt naar het zadel dat aan de muur hangt. Als je dichterbij komt, lijkt het"
 "zadel eigenlijk absurd groot. Zou dit voor een olifant zijn? Het is in ieder"
@@ -2506,9 +2558,10 @@
 "2=1;1=17;17=2;6=1;49=1", "Zet zadel op de draak", "4=17;2=0"
 "2=1;1=17;17=2;6=1;33=4", "Gebruik 'vertaler' op de draak", "4=18;2=0"
 
-"2=0;1=17;17=2;6=1;33=5", "Zeg: 'Hey hoe gaat het?'", "4=19"
-"2=0;1=17;17=2;6=1;33=5", "Zeg: 'Wie ben je?'", "4=20"
-"2=0;1=17;17=2;6=1;33=5", "Zeg: 'Hoe gaat het met je tand?'", "4=21"
+"2=0;1=17;17=2;6=1;33=5", "Zeg: 'Hoe gaat het?'", "4=19"
+"2=0;1=17;17=2;6=1;33=5", "Zeg: 'Wie ben je?'", "4=20;5=0"
+"2=0;1=17;17=2;6=1;33=5;53>0", "Zeg: 'Waar ga je naar toe?'", "4=20;5=1"
+"2=0;1=17;17=2;6=1;33=5;53>1", "Zeg: 'Je wil mij mee op reis?'", "4=20;5=2"
 
 "2=0;1=17;17=2;6=1", "Loop terug de kamer in", "4=0;6=0"
 "2=1;1=17;17=2;31=1;6=2;44=4", "Knoop touw aan molensteen", "4=12;2=0"
