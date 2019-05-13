@@ -152,7 +152,10 @@ const muteer = (plek, bewerking, waarde) => {
     spelToestand[plek] -= waarde;
   }
   if (bewerking === "r") {
-    spelToestand[plek] = Math.ceil(Math.random() * waarde);
+    spelToestand[plek] = Math.min(
+      waarde,
+      Math.max(1, Math.ceil(Math.random() * waarde))
+    );
   }
 };
 
