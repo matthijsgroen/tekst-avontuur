@@ -43,7 +43,7 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
 
   const bron = commandos[1];
   const doel = commandos[2] || `${basisNaam(bron)}.html`;
-  maakHtml(bron, doel);
+  maakHtml(bron, doel, basisNaam(bron));
 } else {
   const herstarten = vlaggen.restart || vlaggen.herstart || vlaggen.herstarten;
   spelLus(eerste, herstarten);

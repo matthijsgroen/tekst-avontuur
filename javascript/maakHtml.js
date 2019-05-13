@@ -9,7 +9,7 @@ const maakMetaTag = eigenschappen =>
     .map(([sleutel, waarde]) => `${sleutel}="${waarde}"`)
     .join(" ")} />`;
 
-const maakHtml = async (bron, doel) => {
+const maakHtml = async (bron, doel, basisNaam) => {
   console.log(`${bron} -> ${doel}`);
   const avontuur = await leesAvontuur(bron);
   const { actieData: acties, schermData: scherm } = converteerStructuur(
@@ -64,7 +64,7 @@ const maakHtml = async (bron, doel) => {
 
   const bovenkant =
     metagegevens.join("\n") + `<style type="text/css">${css}</style>`;
-  const jsData = `const avontuur = ${jsonData};`;
+  const jsData = `const bewaarSleutel = "${basisNaam}"; const avontuur = ${jsonData};`;
 
   const stats =
     gegevens["StatHat.Gebruiker"] && gegevens["StatHat.Teller"]

@@ -230,7 +230,9 @@ const krijgNaam = () =>
 
 const laadSpel = async () => {
   try {
-    const opgeslagen = localStorage.getItem("opslag");
+    const opgeslagen =
+      localStorage.getItem(`opslag-${bewaarSleutel}`) ||
+      (bewaarSleutel === "koerier" && localStorage.getItem("opslag"));
     let data = JSON.parse(opgeslagen);
 
     naam = data.naam;
@@ -247,7 +249,7 @@ const bewaarSpel = () => {
       naam,
       gameState: spelToestand
     };
-    localStorage.setItem("opslag", JSON.stringify(opslag));
+    localStorage.setItem(`opslag-${bewaarSleutel}`, JSON.stringify(opslag));
   } catch (e) {}
 };
 
