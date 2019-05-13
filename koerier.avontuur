@@ -43,15 +43,15 @@
 ' 6 = sublocatie
 ' 7 = status woud
 ' 9 = Schattenjacht
-' 10 = Lokatie status Proloog
-' 11 = Lokatie status Mijn
-' 12 = Lokatie status Hut
-' 13 = Lokatie status Boerderij
-' 14 = Lokatie status Molen
-' 15 = Lokatie status Smederij wapen=lucy(13), goud=luuk(11), hoef=luk(9)
-' 16 = Lokatie status Bakkerij
-' 17 = Lokatie status Bovenkant Toren
-' 18 = Lokatie status Onderkant Toren
+' 10 = Locatie status Proloog
+' 11 = Locatie status Mijn
+' 12 = Locatie status Hut
+' 13 = Locatie status Boerderij
+' 14 = Locatie status Molen
+' 15 = Locatie status Smederij wapen=lucy(13), goud=luuk(11), hoef=luk(9)
+' 16 = Locatie status Bakkerij
+' 17 = Locatie status Bovenkant Toren
+' 18 = Locatie status Onderkant Toren
 
 ' 19 = beschikbaarheid paard 0 = niet, 1 = lopen, 2 = berijden
 ' 20 = beschikbaarheid tas
