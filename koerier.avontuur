@@ -1483,7 +1483,7 @@
 "", "*c9", "Tjasker: 'Hey hallo daar!'", "&"
 
 "1=14;2=0;4=1", "*c3", "$n: 'Weet u hoe ik aan vervoer kan komen?'", "", "*c2"
-"De oude molenaar lijkt je aan."
+"De oude molenaar kijkt je aan."
 "", "*c9", "Tjasker: 'Ik heb geen paard meer, alleen een wagen."
 "  Als ik een paard nodig heb, dan leen ik Teun af en toe bij de boer."
 "  Dat is een heel goed en trouw beestje. Ideaal om een wagen te trekken!'"
@@ -2213,7 +2213,7 @@
 
 "1=19;4=1;2=0;53<4"
 "Op het eerste schilderij zie je een mooie zonnige hemel, met een draak die"
-"tussen de wolken doorvliegt. Er lijkt een vlektje op het schilderij te zitten."
+"tussen de wolken doorvliegt. Er lijkt een vlekje op het schilderij te zitten."
 "Je drukt je neus dichter tegen het schilderij.", "Het is geen vlekje, maar er lijkt een man op de rug van de draak te zitten."
 "&"
 
