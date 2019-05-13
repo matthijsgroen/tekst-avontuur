@@ -2011,7 +2011,7 @@
 "&4=0;44=3;20=1"
 
 "1=17;2=0;44=3;17=2;4=6", "*c3", "$n: 'Bloem gaat zo met de lift naar beneden."
-"  Ik kan maar beter de trap nemen.'", "&"
+"  Ik kan maar beter de trap nemen.'", "&4=0"
 
 "1=17;2=0;44!3;17=2;4=0;6=2", "*c2", "Je staat bij de grote opening bovenin de toren. Dit moet zijn waar de draak"
 "binnen en naar buiten kan vliegen. Je kan ver over het woud kijken. In de verte"
