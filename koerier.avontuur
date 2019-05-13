@@ -1235,22 +1235,17 @@
 "", "Spreuk: 'Hocus pilates!'"
 "&50=4"
 
-"2=0;1=12;12=3;6=3;4=0;5=0", "*c6", "Bladzijde 42. -- Mossen en grassen. --"
+"2=0;1=12;12=3;6=3;4=0;5=0", "*c6", "Bladzijde 42. -- Planten en kruiden. --"
 ""
-"Tip nummer 30: Welke mossen zijn giftig of gevaarlijk?"
+"Tip nummer 30: Welke planten of kruiden zijn gevaarlijk?"
 ""
-"Deze mossen zijn gevaarlijk:"
-"  - Atmos"
-"  - Dondermos"
+"Let vooral of de plant ruitvormige bladeren heeft. Als de plant dit heeft, zijn"
+"ze zeer giftig en gevaarlijk! Niet aanraken!"
 ""
-"Deze mossen zijn niet gevaarlijk:"
-"  - Sterrenmos"
-"  - Maanmos"
-"  - Kosmos"
+"Locatie: Kruiden en planten groeien goed in een moeras achtige omgeving."
 "&"
-
-"2=0;1=12;12=3;6=3;4=0;5=0;54=0", "", "*c2", "Mooi! je weet nu alles over mossen!"
-"&54=1"
+"2=0;1=12;12=3;6=3;4=0;5=0;56=0", "", "*c2", "Mooi! je weet nu alles over kruiden en planten!"
+"&56=1"
 
 "2=0;1=12;12=3;6=3;4=0;5=1", "*c6", "Bladzijde 1012. -- Paddenstoelen en ander gezwam. --"
 ""
@@ -1265,21 +1260,31 @@
 "  - Oranje zwammen, zorgt voor goede hechting van ingrediënten."
 "  - Lichtbruine boomzwammen, heerlijk op een broodje kaas."
 "  - Lichtblauwe paddenstoelen, hebben een geneeskrachtige werking."
+""
+"Locatie: Paddenstoelen en zwammen groeien goed in donkere wouden."
 "&"
 
 "2=0;1=12;12=3;6=3;4=0;5=1;55=0", "", "*c2", "Mooi! je weet nu alles over paddenstoelen!"
 "&55=1"
 
-"2=0;1=12;12=3;6=3;4=0;5=2", "*c6", "Bladzijde 6510. -- Planten en kruiden. --"
+"2=0;1=12;12=3;6=3;4=0;5=2", "*c6", "Bladzijde 6510. -- Mossen en grassen. --"
 ""
-"Tip nummer 72: Welke planten of kruiden zijn gevaarlijk?"
+"Tip nummer 72: Welke mossen zijn giftig of gevaarlijk?"
 ""
-"Let vooral of de plant ruitvormige bladeren heeft. Als de plant dit heeft, zijn"
-"ze zeer giftig en gevaarlijk! Niet aanraken!"
+"Deze mossen zijn gevaarlijk:"
+"  - Atmos"
+"  - Dondermos"
+""
+"Deze mossen zijn niet gevaarlijk:"
+"  - Sterrenmos"
+"  - Maanmos"
+"  - Kosmos"
+""
+"Locatie: Mossen groeien goed in groene bossen."
 "&"
 
-"2=0;1=12;12=3;6=3;4=0;5=2;56=0", "", "*c2", "Mooi! je weet nu alles over kruiden en planten!"
-"&56=1"
+"2=0;1=12;12=3;6=3;4=0;5=2;54=0", "", "*c2", "Mooi! je weet nu alles over mossen!"
+"&54=1"
 
 "2=0;1=12;12=3;6=1;4=10", "*c2", "Je staat bij de grote ketel, en doet je tas open.", "&2=3;4=0"
 
@@ -2250,7 +2255,7 @@
 "1=5", "Bekijk omgeving", "1=1"
 "2=1;1!0", "Sluit tas", "2=0;4=0"
 
-'== 1. Bos acties
+'== 1. Groene Bos acties
 "2=0;1=1;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=1;4=0;21=0", "Raap de tak op", "4=1"
 "2=0;1=1;4=0;54=1", "Ga op zoek naar mossen", "4=2"
@@ -2267,16 +2272,16 @@
 '== 2. Akker acties
 "2=0;1=2;4=0;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=2", "Loop naar de boerderij", "1=13;3=5;4=0"
-"2=0;1=2;19=1;29=2", "Ga naar het westen, richting het bos", "4=1"
-"2=0;1=2;19=1;29>2", "Ga naar het westen, richting het bos", "1=1;3=4;4=0"
-"2=0;1=2;19=0", "Ga naar het westen, richting het bos", "1=1;3=4;4=0"
+"2=0;1=2;19=1;29=2", "Ga naar het westen, richting het groene bos", "4=1"
+"2=0;1=2;19=1;29>2", "Ga naar het westen, richting het groene bos", "1=1;3=4;4=0"
+"2=0;1=2;19=0", "Ga naar het westen, richting het groene bos", "1=1;3=4;4=0"
 "2=0;1=2", "Ga naar het zuiden, richting het dorp", "1=6;3=3;4=0"
 
 '== 3. Heuvel acties
 "2=0;1=3;19=1;29=3", "Spring op paard", "2=2"
 "2=0;1=3", "Volg het pad naar de mijn", "1=11;4=0;3=5"
 "2=0;1=3", "Wandel naar de molen", "1=14;4=0;3=6"
-"2=0;1=3", "Ga naar het oosten, richting het bos", "1=1;3=2"
+"2=0;1=3", "Ga naar het oosten, richting het groene bos", "1=1;3=2"
 "2=0;1=3;29!4", "Ga naar het zuiden, richting het moeras", "1=4;3=3"
 "2=0;1=3;19=1;29=4", "Ga naar het zuiden, richting het moeras", "4=1"
 
