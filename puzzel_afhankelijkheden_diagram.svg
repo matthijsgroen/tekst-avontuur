@@ -39,7 +39,7 @@
 <text text-anchor="middle" x="1444.4811" y="-1181.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Praat Met Bakker</text>
 </g>
 <!-- START&#45;&gt;praat_met_bakker -->
-<g id="edge73" class="edge">
+<g id="edge74" class="edge">
 <title>START&#45;&gt;praat_met_bakker</title>
 <path fill="none" stroke="#999999" d="M1290.6791,-1912.3021C1367.9746,-1907.1687 1511.2282,-1893.4618 1549.4811,-1861 1582.3294,-1833.1246 1581.4811,-1812.5819 1581.4811,-1769.5 1581.4811,-1769.5 1581.4811,-1769.5 1581.4811,-1477.5 1581.4811,-1369.2004 1503.288,-1257.8778 1465.0487,-1209.9121"/>
 <polygon fill="#999999" stroke="#999999" points="1467.1341,-1208.0376 1459.9304,-1203.5713 1462.7765,-1211.5551 1467.1341,-1208.0376"/>
@@ -51,7 +51,7 @@
 <text text-anchor="middle" x="1024.4811" y="-1838.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Praat Met Dwerg</text>
 </g>
 <!-- START&#45;&gt;praat_met_dwerg -->
-<g id="edge77" class="edge">
+<g id="edge78" class="edge">
 <title>START&#45;&gt;praat_met_dwerg</title>
 <path fill="none" stroke="#999999" d="M1212.2429,-1905.5219C1180.3773,-1894.8263 1127.5808,-1877.1052 1086.0756,-1863.1741"/>
 <polygon fill="#999999" stroke="#999999" points="1086.9398,-1860.5107 1078.4646,-1860.6195 1085.1578,-1865.8196 1086.9398,-1860.5107"/>
@@ -63,7 +63,7 @@
 <text text-anchor="middle" x="1489.4811" y="-1838.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Praat Met Boer</text>
 </g>
 <!-- START&#45;&gt;praat_met_boer -->
-<g id="edge74" class="edge">
+<g id="edge75" class="edge">
 <title>START&#45;&gt;praat_met_boer</title>
 <path fill="none" stroke="#999999" d="M1271.0134,-1906.1101C1310.5827,-1894.5889 1380.4285,-1874.2523 1430.5008,-1859.673"/>
 <polygon fill="#999999" stroke="#999999" points="1431.4614,-1862.3096 1438.3596,-1857.3848 1429.8958,-1856.9329 1431.4614,-1862.3096"/>
@@ -75,7 +75,7 @@
 <text text-anchor="middle" x="1517.4811" y="-816.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Pak Touw Op Boerderij</text>
 </g>
 <!-- START&#45;&gt;pak_touw_op_boerderij -->
-<g id="edge68" class="edge">
+<g id="edge69" class="edge">
 <title>START&#45;&gt;pak_touw_op_boerderij</title>
 <path fill="none" stroke="#999999" d="M1287.7794,-1911.4033C1368.2436,-1904.6301 1527.79,-1888.1697 1576.4811,-1861 1623.3979,-1834.8203 1655.4811,-1823.2268 1655.4811,-1769.5 1655.4811,-1769.5 1655.4811,-1769.5 1655.4811,-966.5 1655.4811,-910.4011 1601.0055,-867.1615 1560.5074,-842.7676"/>
 <polygon fill="#999999" stroke="#999999" points="1561.6947,-840.2176 1553.3787,-838.5787 1558.8576,-845.0458 1561.6947,-840.2176"/>
@@ -87,13 +87,13 @@
 <text text-anchor="middle" x="420.4811" y="-1473.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Praat Met Smidsen</text>
 </g>
 <!-- START&#45;&gt;praat_met_smidsen -->
-<g id="edge79" class="edge">
+<g id="edge80" class="edge">
 <title>START&#45;&gt;praat_met_smidsen</title>
 <path fill="none" stroke="#999999" d="M1189.3868,-1912.663C1045.8146,-1905.8288 645.6825,-1884.8502 591.4811,-1861 536.6408,-1836.8687 492.4811,-1829.4148 492.4811,-1769.5 492.4811,-1769.5 492.4811,-1769.5 492.4811,-1623.5 492.4811,-1577.1241 462.8985,-1530.2143 441.6576,-1502.5095"/>
 <polygon fill="#999999" stroke="#999999" points="443.6036,-1500.4539 436.4602,-1495.8917 439.1994,-1503.9128 443.6036,-1500.4539"/>
 </g>
 <!-- pak_hout_in_bos -->
-<g id="node66" class="node">
+<g id="node65" class="node">
 <title>pak_hout_in_bos</title>
 <path fill="#008800" stroke="#008800" d="M1162.013,-1751.5C1162.013,-1751.5 1246.9492,-1751.5 1246.9492,-1751.5 1252.9492,-1751.5 1258.9492,-1757.5 1258.9492,-1763.5 1258.9492,-1763.5 1258.9492,-1775.5 1258.9492,-1775.5 1258.9492,-1781.5 1252.9492,-1787.5 1246.9492,-1787.5 1246.9492,-1787.5 1162.013,-1787.5 1162.013,-1787.5 1156.013,-1787.5 1150.013,-1781.5 1150.013,-1775.5 1150.013,-1775.5 1150.013,-1763.5 1150.013,-1763.5 1150.013,-1757.5 1156.013,-1751.5 1162.013,-1751.5"/>
 <text text-anchor="middle" x="1204.4811" y="-1765.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Pak Hout In Bos</text>
@@ -105,7 +105,7 @@
 <polygon fill="#999999" stroke="#999999" points="1202.3019,-1795.8526 1200.7277,-1787.5242 1196.7647,-1795.0165 1202.3019,-1795.8526"/>
 </g>
 <!-- vind_onderbroek_bij_rivier -->
-<g id="node68" class="node">
+<g id="node69" class="node">
 <title>vind_onderbroek_bij_rivier</title>
 <path fill="#008800" stroke="#008800" d="M1223.7486,-1824.5C1223.7486,-1824.5 1373.2136,-1824.5 1373.2136,-1824.5 1379.2136,-1824.5 1385.2136,-1830.5 1385.2136,-1836.5 1385.2136,-1836.5 1385.2136,-1848.5 1385.2136,-1848.5 1385.2136,-1854.5 1379.2136,-1860.5 1373.2136,-1860.5 1373.2136,-1860.5 1223.7486,-1860.5 1223.7486,-1860.5 1217.7486,-1860.5 1211.7486,-1854.5 1211.7486,-1848.5 1211.7486,-1848.5 1211.7486,-1836.5 1211.7486,-1836.5 1211.7486,-1830.5 1217.7486,-1824.5 1223.7486,-1824.5"/>
 <text text-anchor="middle" x="1298.4811" y="-1838.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Vind Onderbroek Bij Rivier</text>
@@ -129,7 +129,7 @@
 <text text-anchor="middle" x="1338.4811" y="-962.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Praat Met Dochter Van Bakker</text>
 </g>
 <!-- beklim_toren&#45;&gt;praat_met_dochter_van_bakker -->
-<g id="edge75" class="edge">
+<g id="edge76" class="edge">
 <title>beklim_toren&#45;&gt;praat_met_dochter_van_bakker</title>
 <path fill="none" stroke="#999999" d="M1338.4811,-1021.4551C1338.4811,-1012.7686 1338.4811,-1002.1898 1338.4811,-992.642"/>
 <polygon fill="#999999" stroke="#999999" points="1341.2812,-992.5903 1338.4811,-984.5904 1335.6812,-992.5904 1341.2812,-992.5903"/>
@@ -329,7 +329,7 @@
 <text text-anchor="middle" x="1057.4811" y="-524.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Pak Tand Van Draak</text>
 </g>
 <!-- trek_tand_van_draak&#45;&gt;pak_tand_van_draak -->
-<g id="edge66" class="edge">
+<g id="edge67" class="edge">
 <title>trek_tand_van_draak&#45;&gt;pak_tand_van_draak</title>
 <path fill="none" stroke="#999999" d="M1186.9642,-583.4551C1162.9832,-573.277 1132.8805,-560.5009 1107.7367,-549.8294"/>
 <polygon fill="#999999" stroke="#999999" points="1108.5631,-547.1384 1100.105,-546.5904 1106.3752,-552.2934 1108.5631,-547.1384"/>
@@ -347,7 +347,7 @@
 <!-- zet_zadel_op_draak -->
 <g id="node16" class="node">
 <title>zet_zadel_op_draak</title>
-<path fill="#3333aa" stroke="#3333aa" d="M862.3145,-72.5C862.3145,-72.5 966.6477,-72.5 966.6477,-72.5 972.6477,-72.5 978.6477,-78.5 978.6477,-84.5 978.6477,-84.5 978.6477,-96.5 978.6477,-96.5 978.6477,-102.5 972.6477,-108.5 966.6477,-108.5 966.6477,-108.5 862.3145,-108.5 862.3145,-108.5 856.3145,-108.5 850.3145,-102.5 850.3145,-96.5 850.3145,-96.5 850.3145,-84.5 850.3145,-84.5 850.3145,-78.5 856.3145,-72.5 862.3145,-72.5"/>
+<path fill="#008800" stroke="#008800" d="M862.3145,-72.5C862.3145,-72.5 966.6477,-72.5 966.6477,-72.5 972.6477,-72.5 978.6477,-78.5 978.6477,-84.5 978.6477,-84.5 978.6477,-96.5 978.6477,-96.5 978.6477,-102.5 972.6477,-108.5 966.6477,-108.5 966.6477,-108.5 862.3145,-108.5 862.3145,-108.5 856.3145,-108.5 850.3145,-102.5 850.3145,-96.5 850.3145,-96.5 850.3145,-84.5 850.3145,-84.5 850.3145,-78.5 856.3145,-72.5 862.3145,-72.5"/>
 <text text-anchor="middle" x="914.4811" y="-86.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Zet Zadel Op Draak</text>
 </g>
 <!-- zet_zadel_op_draak&#45;&gt;breng_medicijnen_naar_koning -->
@@ -405,7 +405,7 @@
 <text text-anchor="middle" x="974.4811" y="-889.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Praat Met Heks</text>
 </g>
 <!-- ga_naar_hut_in_moeras&#45;&gt;praat_met_heks -->
-<g id="edge78" class="edge">
+<g id="edge79" class="edge">
 <title>ga_naar_hut_in_moeras&#45;&gt;praat_met_heks</title>
 <path fill="none" stroke="#999999" d="M1031.3802,-1021.3042C1019.9463,-995.6218 999.0173,-948.6122 985.9782,-919.3243"/>
 <polygon fill="#999999" stroke="#999999" points="988.4958,-918.0947 982.6841,-911.9251 983.3799,-920.3724 988.4958,-918.0947"/>
@@ -561,7 +561,7 @@
 <text text-anchor="middle" x="819.4811" y="-816.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Maak Sieraad Bij Smid</text>
 </g>
 <!-- praat_met_heks&#45;&gt;maak_sieraad_bij_smid -->
-<g id="edge62" class="edge">
+<g id="edge61" class="edge">
 <title>praat_met_heks&#45;&gt;maak_sieraad_bij_smid</title>
 <path fill="none" stroke="#999999" d="M936.1665,-875.4551C914.7419,-865.3648 887.8956,-852.721 865.3566,-842.1059"/>
 <polygon fill="#999999" stroke="#999999" points="866.3227,-839.4659 857.8921,-838.5904 863.9366,-844.5322 866.3227,-839.4659"/>
@@ -639,13 +639,13 @@
 <polygon fill="#999999" stroke="#999999" points="1316.2339,-773.7308 1318.5948,-765.5904 1311.6727,-770.4817 1316.2339,-773.7308"/>
 </g>
 <!-- snij_touw_van_lift -->
-<g id="node70" class="node">
+<g id="node71" class="node">
 <title>snij_touw_van_lift</title>
 <path fill="#008800" stroke="#008800" d="M1220.4618,-656.5C1220.4618,-656.5 1322.5004,-656.5 1322.5004,-656.5 1328.5004,-656.5 1334.5004,-662.5 1334.5004,-668.5 1334.5004,-668.5 1334.5004,-680.5 1334.5004,-680.5 1334.5004,-686.5 1328.5004,-692.5 1322.5004,-692.5 1322.5004,-692.5 1220.4618,-692.5 1220.4618,-692.5 1214.4618,-692.5 1208.4618,-686.5 1208.4618,-680.5 1208.4618,-680.5 1208.4618,-668.5 1208.4618,-668.5 1208.4618,-662.5 1214.4618,-656.5 1220.4618,-656.5"/>
 <text text-anchor="middle" x="1271.4811" y="-670.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Snij Touw Van Lift</text>
 </g>
 <!-- hijs_lift_met_molensteen&#45;&gt;snij_touw_van_lift -->
-<g id="edge87" class="edge">
+<g id="edge88" class="edge">
 <title>hijs_lift_met_molensteen&#45;&gt;snij_touw_van_lift</title>
 <path fill="none" stroke="#999999" d="M1256.3484,-802.3724C1246.0294,-792.8023 1234.9769,-780.1199 1229.4811,-766 1223.5164,-750.6754 1224.179,-744.5662 1229.4811,-729 1233.1641,-718.1872 1239.9559,-707.848 1247.02,-699.1373"/>
 <polygon fill="#999999" stroke="#999999" points="1249.357,-700.7127 1252.4281,-692.8127 1245.1009,-697.0732 1249.357,-700.7127"/>
@@ -663,7 +663,7 @@
 <polygon fill="#999999" stroke="#999999" points="1282.2812,-846.5903 1279.4811,-838.5904 1276.6812,-846.5904 1282.2812,-846.5903"/>
 </g>
 <!-- knoop_touw_aan_molensteen&#45;&gt;snij_touw_van_lift -->
-<g id="edge85" class="edge">
+<g id="edge86" class="edge">
 <title>knoop_touw_aan_molensteen&#45;&gt;snij_touw_van_lift</title>
 <path fill="none" stroke="#999999" d="M1316.6496,-729.4551C1309.0774,-720.2422 1299.7556,-708.9006 1291.5507,-698.918"/>
 <polygon fill="#999999" stroke="#999999" points="1293.5928,-696.9928 1286.3499,-692.5904 1289.2665,-700.5486 1293.5928,-696.9928"/>
@@ -687,7 +687,7 @@
 <polygon fill="#999999" stroke="#999999" points="1520.2812,-773.5903 1517.4811,-765.5904 1514.6812,-773.5904 1520.2812,-773.5903"/>
 </g>
 <!-- knoop_touw_aan_tand&#45;&gt;snij_touw_van_lift -->
-<g id="edge86" class="edge">
+<g id="edge87" class="edge">
 <title>knoop_touw_aan_tand&#45;&gt;snij_touw_van_lift</title>
 <path fill="none" stroke="#999999" d="M1456.6721,-729.4551C1421.3387,-718.9699 1376.7138,-705.7276 1340.123,-694.8694"/>
 <polygon fill="#999999" stroke="#999999" points="1340.9092,-692.182 1332.4431,-692.5904 1339.316,-697.5506 1340.9092,-692.182"/>
@@ -711,13 +711,13 @@
 <polygon fill="#999999" stroke="#999999" points="833.6517,-1114.9052 825.3055,-1116.3821 832.751,-1120.4323 833.6517,-1114.9052"/>
 </g>
 <!-- krijg_edelsteen_van_dwerg&#45;&gt;maak_sieraad_bij_smid -->
-<g id="edge60" class="edge">
+<g id="edge59" class="edge">
 <title>krijg_edelsteen_van_dwerg&#45;&gt;maak_sieraad_bij_smid</title>
 <path fill="none" stroke="#999999" d="M819.4811,-875.4551C819.4811,-866.7686 819.4811,-856.1898 819.4811,-846.642"/>
 <polygon fill="#999999" stroke="#999999" points="822.2812,-846.5903 819.4811,-838.5904 816.6812,-846.5904 822.2812,-846.5903"/>
 </g>
 <!-- krijg_ingredientenlijst_van_heks&#45;&gt;pak_tand_van_draak -->
-<g id="edge67" class="edge">
+<g id="edge68" class="edge">
 <title>krijg_ingredientenlijst_van_heks&#45;&gt;pak_tand_van_draak</title>
 <path fill="none" stroke="#999999" d="M936.2789,-583.4551C958.6295,-573.3209 986.6609,-560.611 1010.1349,-549.9675"/>
 <polygon fill="#999999" stroke="#999999" points="1011.4534,-552.4441 1017.5832,-546.5904 1009.1409,-547.3439 1011.4534,-552.4441"/>
@@ -729,7 +729,7 @@
 <text text-anchor="middle" x="896.4811" y="-524.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Pluk Kruiden In Moeras</text>
 </g>
 <!-- krijg_ingredientenlijst_van_heks&#45;&gt;pluk_kruiden_in_moeras -->
-<g id="edge71" class="edge">
+<g id="edge72" class="edge">
 <title>krijg_ingredientenlijst_van_heks&#45;&gt;pluk_kruiden_in_moeras</title>
 <path fill="none" stroke="#999999" d="M896.4811,-583.4551C896.4811,-574.7686 896.4811,-564.1898 896.4811,-554.642"/>
 <polygon fill="#999999" stroke="#999999" points="899.2812,-554.5903 896.4811,-546.5904 893.6812,-554.5904 899.2812,-554.5903"/>
@@ -741,13 +741,13 @@
 <text text-anchor="middle" x="713.4811" y="-524.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Pluk Paddenstoelen In Woud</text>
 </g>
 <!-- krijg_ingredientenlijst_van_heks&#45;&gt;pluk_paddenstoelen_in_woud -->
-<g id="edge72" class="edge">
+<g id="edge73" class="edge">
 <title>krijg_ingredientenlijst_van_heks&#45;&gt;pluk_paddenstoelen_in_woud</title>
 <path fill="none" stroke="#999999" d="M851.2451,-583.4551C825.6204,-573.2332 793.4264,-560.3907 766.6051,-549.6916"/>
 <polygon fill="#999999" stroke="#999999" points="767.299,-546.9538 758.8309,-546.5904 765.2241,-552.1553 767.299,-546.9538"/>
 </g>
 <!-- krijg_kapotte_houweel_van_dwerg&#45;&gt;repareer_houweel -->
-<g id="edge81" class="edge">
+<g id="edge82" class="edge">
 <title>krijg_kapotte_houweel_van_dwerg&#45;&gt;repareer_houweel</title>
 <path fill="none" stroke="#999999" d="M1024.4811,-1751.4551C1024.4811,-1742.7686 1024.4811,-1732.1898 1024.4811,-1722.642"/>
 <polygon fill="#999999" stroke="#999999" points="1027.2812,-1722.5903 1024.4811,-1714.5904 1021.6812,-1722.5904 1027.2812,-1722.5903"/>
@@ -807,19 +807,19 @@
 <polygon fill="#999999" stroke="#999999" points="440.4482,-1136.0963 446.8922,-1130.5904 438.4212,-1130.876 440.4482,-1136.0963"/>
 </g>
 <!-- schat_route_compleet -->
-<g id="node69" class="node">
+<g id="node70" class="node">
 <title>schat_route_compleet</title>
 <path fill="#008800" stroke="#008800" d="M370.4902,-1021.5C370.4902,-1021.5 488.472,-1021.5 488.472,-1021.5 494.472,-1021.5 500.472,-1027.5 500.472,-1033.5 500.472,-1033.5 500.472,-1045.5 500.472,-1045.5 500.472,-1051.5 494.472,-1057.5 488.472,-1057.5 488.472,-1057.5 370.4902,-1057.5 370.4902,-1057.5 364.4902,-1057.5 358.4902,-1051.5 358.4902,-1045.5 358.4902,-1045.5 358.4902,-1033.5 358.4902,-1033.5 358.4902,-1027.5 364.4902,-1021.5 370.4902,-1021.5"/>
 <text text-anchor="middle" x="429.4811" y="-1035.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Schat Route Compleet</text>
 </g>
 <!-- krijg_rivier_hint_van_molenaar&#45;&gt;schat_route_compleet -->
-<g id="edge83" class="edge">
+<g id="edge84" class="edge">
 <title>krijg_rivier_hint_van_molenaar&#45;&gt;schat_route_compleet</title>
 <path fill="none" stroke="#999999" d="M327.0991,-1094.4551C345.7339,-1084.4525 369.0436,-1071.9407 388.7123,-1061.3833"/>
 <polygon fill="#999999" stroke="#999999" points="390.054,-1063.841 395.7785,-1057.5904 387.4055,-1058.9069 390.054,-1063.841"/>
 </g>
 <!-- krijg_route_hint_van_boer&#45;&gt;schat_route_compleet -->
-<g id="edge84" class="edge">
+<g id="edge85" class="edge">
 <title>krijg_route_hint_van_boer&#45;&gt;schat_route_compleet</title>
 <path fill="none" stroke="#999999" d="M477.6609,-1094.4551C469.5069,-1085.1545 459.451,-1073.6844 450.639,-1063.6332"/>
 <polygon fill="#999999" stroke="#999999" points="452.7205,-1061.76 445.3411,-1057.5904 448.5096,-1065.4518 452.7205,-1061.76"/>
@@ -872,8 +872,20 @@
 <path fill="none" stroke="#999999" d="M851.9867,-437.4551C826.7821,-427.2332 795.1158,-414.3907 768.7342,-403.6916"/>
 <polygon fill="#999999" stroke="#999999" points="769.5533,-401.0023 761.0875,-400.5904 767.4487,-406.1918 769.5533,-401.0023"/>
 </g>
+<!-- oplos_drankje -->
+<g id="node63" class="node">
+<title>oplos_drankje</title>
+<path fill="#008800" stroke="#008800" d="M859.4667,-364.5C859.4667,-364.5 933.4955,-364.5 933.4955,-364.5 939.4955,-364.5 945.4955,-370.5 945.4955,-376.5 945.4955,-376.5 945.4955,-388.5 945.4955,-388.5 945.4955,-394.5 939.4955,-400.5 933.4955,-400.5 933.4955,-400.5 859.4667,-400.5 859.4667,-400.5 853.4667,-400.5 847.4667,-394.5 847.4667,-388.5 847.4667,-388.5 847.4667,-376.5 847.4667,-376.5 847.4667,-370.5 853.4667,-364.5 859.4667,-364.5"/>
+<text text-anchor="middle" x="896.4811" y="-378.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Oplos Drankje</text>
+</g>
+<!-- krijg_toegang_tot_hut&#45;&gt;oplos_drankje -->
+<g id="edge62" class="edge">
+<title>krijg_toegang_tot_hut&#45;&gt;oplos_drankje</title>
+<path fill="none" stroke="#999999" d="M896.4811,-437.4551C896.4811,-428.7686 896.4811,-418.1898 896.4811,-408.642"/>
+<polygon fill="#999999" stroke="#999999" points="899.2812,-408.5903 896.4811,-400.5904 893.6812,-408.5904 899.2812,-408.5903"/>
+</g>
 <!-- pak_beker -->
-<g id="node65" class="node">
+<g id="node64" class="node">
 <title>pak_beker</title>
 <path fill="#008800" stroke="#008800" d="M975.5193,-364.5C975.5193,-364.5 1025.4429,-364.5 1025.4429,-364.5 1031.4429,-364.5 1037.4429,-370.5 1037.4429,-376.5 1037.4429,-376.5 1037.4429,-388.5 1037.4429,-388.5 1037.4429,-394.5 1031.4429,-400.5 1025.4429,-400.5 1025.4429,-400.5 975.5193,-400.5 975.5193,-400.5 969.5193,-400.5 963.5193,-394.5 963.5193,-388.5 963.5193,-388.5 963.5193,-376.5 963.5193,-376.5 963.5193,-370.5 969.5193,-364.5 975.5193,-364.5"/>
 <text text-anchor="middle" x="1000.4811" y="-378.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Pak Beker</text>
@@ -883,18 +895,6 @@
 <title>krijg_toegang_tot_hut&#45;&gt;pak_beker</title>
 <path fill="none" stroke="#999999" d="M922.189,-437.4551C936.0641,-427.7157 953.3285,-415.5975 968.1119,-405.2207"/>
 <polygon fill="#999999" stroke="#999999" points="969.7692,-407.4783 974.7085,-400.5904 966.5519,-402.8948 969.7692,-407.4783"/>
-</g>
-<!-- oplos_drankje -->
-<g id="node71" class="node">
-<title>oplos_drankje</title>
-<path fill="#008800" stroke="#008800" d="M859.4667,-364.5C859.4667,-364.5 933.4955,-364.5 933.4955,-364.5 939.4955,-364.5 945.4955,-370.5 945.4955,-376.5 945.4955,-376.5 945.4955,-388.5 945.4955,-388.5 945.4955,-394.5 939.4955,-400.5 933.4955,-400.5 933.4955,-400.5 859.4667,-400.5 859.4667,-400.5 853.4667,-400.5 847.4667,-394.5 847.4667,-388.5 847.4667,-388.5 847.4667,-376.5 847.4667,-376.5 847.4667,-370.5 853.4667,-364.5 859.4667,-364.5"/>
-<text text-anchor="middle" x="896.4811" y="-378.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Oplos Drankje</text>
-</g>
-<!-- krijg_toegang_tot_hut&#45;&gt;oplos_drankje -->
-<g id="edge88" class="edge">
-<title>krijg_toegang_tot_hut&#45;&gt;oplos_drankje</title>
-<path fill="none" stroke="#999999" d="M896.4811,-437.4551C896.4811,-428.7686 896.4811,-418.1898 896.4811,-408.642"/>
-<polygon fill="#999999" stroke="#999999" points="899.2812,-408.5903 896.4811,-400.5904 893.6812,-408.5904 899.2812,-408.5903"/>
 </g>
 <!-- pak_tand_van_draak&#45;&gt;krijg_toegang_tot_hut -->
 <g id="edge48" class="edge">
@@ -945,13 +945,13 @@
 <polygon fill="#999999" stroke="#999999" points="1054.5856,-188.7087 1059.1867,-181.5904 1051.1508,-184.2858 1054.5856,-188.7087"/>
 </g>
 <!-- praat_met_draak -->
-<g id="node63" class="node">
+<g id="node67" class="node">
 <title>praat_met_draak</title>
 <path fill="#008800" stroke="#008800" d="M668.2265,-218.5C668.2265,-218.5 752.7357,-218.5 752.7357,-218.5 758.7357,-218.5 764.7357,-224.5 764.7357,-230.5 764.7357,-230.5 764.7357,-242.5 764.7357,-242.5 764.7357,-248.5 758.7357,-254.5 752.7357,-254.5 752.7357,-254.5 668.2265,-254.5 668.2265,-254.5 662.2265,-254.5 656.2265,-248.5 656.2265,-242.5 656.2265,-242.5 656.2265,-230.5 656.2265,-230.5 656.2265,-224.5 662.2265,-218.5 668.2265,-218.5"/>
 <text text-anchor="middle" x="710.4811" y="-232.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Praat Met Draak</text>
 </g>
 <!-- maak_drank_om_met_draak_te_praten&#45;&gt;praat_met_draak -->
-<g id="edge76" class="edge">
+<g id="edge77" class="edge">
 <title>maak_drank_om_met_draak_te_praten&#45;&gt;praat_met_draak</title>
 <path fill="none" stroke="#999999" d="M708.9755,-291.4551C709.2135,-282.7686 709.5033,-272.1898 709.7649,-262.642"/>
 <polygon fill="#999999" stroke="#999999" points="712.5652,-262.6641 709.9855,-254.5904 706.9673,-262.5106 712.5652,-262.6641"/>
@@ -974,8 +974,44 @@
 <path fill="none" stroke="#999999" d="M714.5036,-364.4551C713.5516,-355.7686 712.3923,-345.1898 711.346,-335.642"/>
 <polygon fill="#999999" stroke="#999999" points="714.1185,-335.2377 710.4636,-327.5904 708.5519,-335.8478 714.1185,-335.2377"/>
 </g>
-<!-- pak_schilderij_uit_kelder -->
+<!-- vind_goud_in_bos -->
 <g id="node62" class="node">
+<title>vind_goud_in_bos</title>
+<path fill="#008800" stroke="#008800" d="M469.9583,-875.5C469.9583,-875.5 565.0039,-875.5 565.0039,-875.5 571.0039,-875.5 577.0039,-881.5 577.0039,-887.5 577.0039,-887.5 577.0039,-899.5 577.0039,-899.5 577.0039,-905.5 571.0039,-911.5 565.0039,-911.5 565.0039,-911.5 469.9583,-911.5 469.9583,-911.5 463.9583,-911.5 457.9583,-905.5 457.9583,-899.5 457.9583,-899.5 457.9583,-887.5 457.9583,-887.5 457.9583,-881.5 463.9583,-875.5 469.9583,-875.5"/>
+<text text-anchor="middle" x="517.4811" y="-889.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Vind Goud In Bos</text>
+</g>
+<!-- vind_goud_in_bos&#45;&gt;maak_sieraad_bij_smid -->
+<g id="edge60" class="edge">
+<title>vind_goud_in_bos&#45;&gt;maak_sieraad_bij_smid</title>
+<path fill="none" stroke="#999999" d="M577.1466,-879.0775C623.0787,-867.9747 687.0715,-852.5063 737.7634,-840.2529"/>
+<polygon fill="#999999" stroke="#999999" points="738.662,-842.9165 745.7802,-838.3151 737.3462,-837.4732 738.662,-842.9165"/>
+</g>
+<!-- toegang_tot_kelder -->
+<g id="node68" class="node">
+<title>toegang_tot_kelder</title>
+<path fill="#008800" stroke="#008800" d="M854.7251,-291.5C854.7251,-291.5 960.2371,-291.5 960.2371,-291.5 966.2371,-291.5 972.2371,-297.5 972.2371,-303.5 972.2371,-303.5 972.2371,-315.5 972.2371,-315.5 972.2371,-321.5 966.2371,-327.5 960.2371,-327.5 960.2371,-327.5 854.7251,-327.5 854.7251,-327.5 848.7251,-327.5 842.7251,-321.5 842.7251,-315.5 842.7251,-315.5 842.7251,-303.5 842.7251,-303.5 842.7251,-297.5 848.7251,-291.5 854.7251,-291.5"/>
+<text text-anchor="middle" x="907.4811" y="-305.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Toegang Tot Kelder</text>
+</g>
+<!-- oplos_drankje&#45;&gt;toegang_tot_kelder -->
+<g id="edge89" class="edge">
+<title>oplos_drankje&#45;&gt;toegang_tot_kelder</title>
+<path fill="none" stroke="#999999" d="M899.2002,-364.4551C900.5091,-355.7686 902.1032,-345.1898 903.5419,-335.642"/>
+<polygon fill="#999999" stroke="#999999" points="906.3318,-335.9183 904.7552,-327.5904 900.7943,-335.0838 906.3318,-335.9183"/>
+</g>
+<!-- pak_beker&#45;&gt;pak_wijn_uit_kelder -->
+<g id="edge71" class="edge">
+<title>pak_beker&#45;&gt;pak_wijn_uit_kelder</title>
+<path fill="none" stroke="#999999" d="M998.9856,-364.3042C996.8926,-338.8403 993.0765,-292.4108 990.6654,-263.0759"/>
+<polygon fill="#999999" stroke="#999999" points="993.4415,-262.6688 989.9955,-254.9251 987.8603,-263.1276 993.4415,-262.6688"/>
+</g>
+<!-- pak_hout_in_bos&#45;&gt;repareer_houweel -->
+<g id="edge81" class="edge">
+<title>pak_hout_in_bos&#45;&gt;repareer_houweel</title>
+<path fill="none" stroke="#999999" d="M1159.9867,-1751.4551C1134.7821,-1741.2332 1103.1158,-1728.3907 1076.7342,-1717.6916"/>
+<polygon fill="#999999" stroke="#999999" points="1077.5533,-1715.0023 1069.0875,-1714.5904 1075.4487,-1720.1918 1077.5533,-1715.0023"/>
+</g>
+<!-- pak_schilderij_uit_kelder -->
+<g id="node66" class="node">
 <title>pak_schilderij_uit_kelder</title>
 <path fill="#008800" stroke="#008800" d="M647.5277,-145.5C647.5277,-145.5 781.4345,-145.5 781.4345,-145.5 787.4345,-145.5 793.4345,-151.5 793.4345,-157.5 793.4345,-157.5 793.4345,-169.5 793.4345,-169.5 793.4345,-175.5 787.4345,-181.5 781.4345,-181.5 781.4345,-181.5 647.5277,-181.5 647.5277,-181.5 641.5277,-181.5 635.5277,-175.5 635.5277,-169.5 635.5277,-169.5 635.5277,-157.5 635.5277,-157.5 635.5277,-151.5 641.5277,-145.5 647.5277,-145.5"/>
 <text text-anchor="middle" x="714.4811" y="-159.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Pak Schilderij Uit Kelder</text>
@@ -987,43 +1023,13 @@
 <polygon fill="#999999" stroke="#999999" points="858.3635,-113.9637 864.9185,-108.5904 856.4433,-108.7031 858.3635,-113.9637"/>
 </g>
 <!-- praat_met_draak&#45;&gt;pak_schilderij_uit_kelder -->
-<g id="edge59" class="edge">
+<g id="edge66" class="edge">
 <title>praat_met_draak&#45;&gt;pak_schilderij_uit_kelder</title>
 <path fill="none" stroke="#999999" d="M711.4699,-218.4551C711.9458,-209.7686 712.5255,-199.1898 713.0487,-189.642"/>
 <polygon fill="#999999" stroke="#999999" points="715.8479,-189.7316 713.4898,-181.5904 710.2562,-189.4251 715.8479,-189.7316"/>
 </g>
-<!-- vind_goud_in_bos -->
-<g id="node64" class="node">
-<title>vind_goud_in_bos</title>
-<path fill="#008800" stroke="#008800" d="M469.9583,-875.5C469.9583,-875.5 565.0039,-875.5 565.0039,-875.5 571.0039,-875.5 577.0039,-881.5 577.0039,-887.5 577.0039,-887.5 577.0039,-899.5 577.0039,-899.5 577.0039,-905.5 571.0039,-911.5 565.0039,-911.5 565.0039,-911.5 469.9583,-911.5 469.9583,-911.5 463.9583,-911.5 457.9583,-905.5 457.9583,-899.5 457.9583,-899.5 457.9583,-887.5 457.9583,-887.5 457.9583,-881.5 463.9583,-875.5 469.9583,-875.5"/>
-<text text-anchor="middle" x="517.4811" y="-889.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Vind Goud In Bos</text>
-</g>
-<!-- vind_goud_in_bos&#45;&gt;maak_sieraad_bij_smid -->
-<g id="edge61" class="edge">
-<title>vind_goud_in_bos&#45;&gt;maak_sieraad_bij_smid</title>
-<path fill="none" stroke="#999999" d="M577.1466,-879.0775C623.0787,-867.9747 687.0715,-852.5063 737.7634,-840.2529"/>
-<polygon fill="#999999" stroke="#999999" points="738.662,-842.9165 745.7802,-838.3151 737.3462,-837.4732 738.662,-842.9165"/>
-</g>
-<!-- pak_beker&#45;&gt;pak_wijn_uit_kelder -->
-<g id="edge70" class="edge">
-<title>pak_beker&#45;&gt;pak_wijn_uit_kelder</title>
-<path fill="none" stroke="#999999" d="M998.9856,-364.3042C996.8926,-338.8403 993.0765,-292.4108 990.6654,-263.0759"/>
-<polygon fill="#999999" stroke="#999999" points="993.4415,-262.6688 989.9955,-254.9251 987.8603,-263.1276 993.4415,-262.6688"/>
-</g>
-<!-- pak_hout_in_bos&#45;&gt;repareer_houweel -->
-<g id="edge80" class="edge">
-<title>pak_hout_in_bos&#45;&gt;repareer_houweel</title>
-<path fill="none" stroke="#999999" d="M1159.9867,-1751.4551C1134.7821,-1741.2332 1103.1158,-1728.3907 1076.7342,-1717.6916"/>
-<polygon fill="#999999" stroke="#999999" points="1077.5533,-1715.0023 1069.0875,-1714.5904 1075.4487,-1720.1918 1077.5533,-1715.0023"/>
-</g>
-<!-- toegang_tot_kelder -->
-<g id="node67" class="node">
-<title>toegang_tot_kelder</title>
-<path fill="#008800" stroke="#008800" d="M854.7251,-291.5C854.7251,-291.5 960.2371,-291.5 960.2371,-291.5 966.2371,-291.5 972.2371,-297.5 972.2371,-303.5 972.2371,-303.5 972.2371,-315.5 972.2371,-315.5 972.2371,-321.5 966.2371,-327.5 960.2371,-327.5 960.2371,-327.5 854.7251,-327.5 854.7251,-327.5 848.7251,-327.5 842.7251,-321.5 842.7251,-315.5 842.7251,-315.5 842.7251,-303.5 842.7251,-303.5 842.7251,-297.5 848.7251,-291.5 854.7251,-291.5"/>
-<text text-anchor="middle" x="907.4811" y="-305.3" font-family="lato, roboto, helvetica" font-size="14.00" fill="#eeeeee">Toegang Tot Kelder</text>
-</g>
 <!-- toegang_tot_kelder&#45;&gt;pak_wijn_uit_kelder -->
-<g id="edge69" class="edge">
+<g id="edge70" class="edge">
 <title>toegang_tot_kelder&#45;&gt;pak_wijn_uit_kelder</title>
 <path fill="none" stroke="#999999" d="M927.5036,-291.4551C938.0181,-281.979 951.0316,-270.2508 962.3327,-260.0658"/>
 <polygon fill="#999999" stroke="#999999" points="964.34,-262.0261 968.4082,-254.5904 960.591,-257.8662 964.34,-262.0261"/>
@@ -1041,7 +1047,7 @@
 <polygon fill="#999999" stroke="#999999" points="887.2714,-189.2545 883.0147,-181.9251 881.7717,-190.3093 887.2714,-189.2545"/>
 </g>
 <!-- vind_onderbroek_bij_rivier&#45;&gt;repareer_molen_met_onderbroek -->
-<g id="edge82" class="edge">
+<g id="edge83" class="edge">
 <title>vind_onderbroek_bij_rivier&#45;&gt;repareer_molen_met_onderbroek</title>
 <path fill="none" stroke="#999999" d="M1294.1695,-1824.2545C1289.2597,-1805.2612 1280.2329,-1774.993 1267.4811,-1751 1246.7516,-1711.9968 1214.4126,-1672.3188 1192.8452,-1647.8128"/>
 <polygon fill="#999999" stroke="#999999" points="1194.7455,-1645.7361 1187.3374,-1641.6179 1190.5605,-1649.4571 1194.7455,-1645.7361"/>
@@ -1063,12 +1069,6 @@
 <title>snij_touw_van_lift&#45;&gt;trek_tand_van_draak</title>
 <path fill="none" stroke="#999999" d="M1261.0991,-656.4551C1255.95,-647.5054 1249.6451,-636.547 1244.024,-626.7769"/>
 <polygon fill="#999999" stroke="#999999" points="1246.3058,-625.1282 1239.8893,-619.5904 1241.4519,-627.921 1246.3058,-625.1282"/>
-</g>
-<!-- oplos_drankje&#45;&gt;toegang_tot_kelder -->
-<g id="edge89" class="edge">
-<title>oplos_drankje&#45;&gt;toegang_tot_kelder</title>
-<path fill="none" stroke="#999999" d="M899.2002,-364.4551C900.5091,-355.7686 902.1032,-345.1898 903.5419,-335.642"/>
-<polygon fill="#999999" stroke="#999999" points="906.3318,-335.9183 904.7552,-327.5904 900.7943,-335.0838 906.3318,-335.9183"/>
 </g>
 <!-- volg_maansteen_route&#45;&gt;vind_runesteen_in_bos -->
 <g id="edge95" class="edge">

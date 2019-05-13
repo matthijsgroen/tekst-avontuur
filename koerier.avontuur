@@ -35,6 +35,7 @@
 '   17 = Bovenkant Toren
 '   18 = Onderkant Toren
 '   19 = Kelder Toren
+'   20 = Einde
 
 ' 2 = Locatie toestand 0 = look, 1 = Open tas, 2 = Snelreizen, 3 = toverketel
 ' 3 = Richting van reizen (oorsprong)
@@ -2085,14 +2086,16 @@
 "Ik moet eerst het medicijn hebben voordat ik dit ga proberen."
 "&4=0"
 
-' TEDOEN
 "1=17;2=0;17=2;4=17;6=1;33=5;53=5;26=9", "*c2"
-"NOG NIET AF!"
-"&4=0"
+"Je legt het zadel op de draak en maakt het stevig vast. Vliegen op een draak..."
+"...dat zou echt fantastisch zijn! En veel sneller dan een paard!"
+"&4=0;49=2"
 
 "1=17;2=0;17=2;4=18;6=1", "*c2", "Je pakt het flesje 'vertaler' en giet de inhoud in de bek van de draak."
-"", "*c14", "<Gulp>", "", "*c2", "...", "*s2", "*c3"
-"", "$n: 'Hee, kan je mij verstaan?'", "", "*c2", "De draak kijkt ineens verbaast op."
+"", "*c14", "<Gulp>", "", "*c2", "...", "*s2"
+"*c9", "Dins: 'Getver dat is vies!!'"
+"", "*c3", "$n: 'Hee, kan je mij verstaan?'"
+"", "*c2", "De draak kijkt ineens verbaast op."
 "", "*c9", "Dins: 'Whooaa ik kan jou verstaan!'", "&4=0;33=5"
 
 "1=17;2=0;17=2;4=19;6=1", "*c3", "$n: 'Hoe gaat het?'"
@@ -2116,11 +2119,19 @@
 "&"
 "1=17;2=0;17=2;4=20;6=1;5=1;53=1", "&53=2"
 
-"1=17;2=0;17=2;4=20;6=1;5=2;53<4", "*c3", "$n: 'Je wil mij mee op reis?'"
+"1=17;2=0;17=2;4=20;6=1;5=2;53<4;52<2", "*c3", "$n: 'Je wil mij mee op reis?'"
+"", "*c9", "Dins: 'Ja dat zou mooi zijn... Helaas kan je niet op mijn rug mee."
+"  Ik moet ook echt wat gaan eten voordat ik kan vertrekken.'"
+"&"
+
+"1=17;2=0;17=2;4=20;6=1;5=2;53<4;52=2", "*c3", "$n: 'Je wil mij mee op reis?'"
 "", "*c9", "Dins: 'Ja dat zou mooi zijn... Helaas kan je niet op mijn rug mee.'"
 "", "*c2", "Misschien kan je de draak overtuigen dat je mee kan?"
 "&"
-"1=17;2=0;17=2;4=20;6=1;5=2;53=2", "&53=3"
+"1=17;2=0;17=2;4=20;6=1;5=2;53=2;52=2", "&53=3"
+
+"1=17;2=0;17=2;4=20;6=1;5=2;53=5", "*c3", "$n: 'Je wil mij mee op reis?'"
+"", "*c9", "Dins: 'Ja dat zou mooi zijn! Heb je een zadel?'", "&"
 
 "1=17;2=0;17=2;4=20;6=1;5=2;53=4", "*c3", "$n: 'Je wil mij mee op reis?'"
 "", "*c9", "Dins: 'Ja dat zou mooi zijn... Helaas kan je niet op mijn rug mee.'"
@@ -2132,9 +2143,34 @@
 "1=17;2=0;17=2;4=20;6=1;5=2;53=4", "&53=5"
 
 "1=17;2=0;17=2;4=20;6=1;5=3"
-"*c3", "$n: 'Ik moet eerst medicijnen bezorgen.'"
+"*c3", "$n: 'Ik moet eerst medicijnen bezorgen bij de koning.'"
 "", "*c9", "Dins: 'Ok geen probleem, dan doen we dat toch even?'"
 "&"
+
+"1=17;2=0;17=2;4=20;6=1;5=3;26<9", "", "*c3"
+"$n: 'Ik moet alleen wel eerst dat medicijn gaan maken.'", "&"
+
+"1=17;2=0;17=2;4=20;6=1;5=4;49=2", "*c2", "Je springt op de draak. Hij krabbelt rustig overeind."
+"Hij rekt zich even goed uit.", "", "*c9", "Dins: 'Daar gaan we dan!'", ""
+"*c2", "Met grote stappen gaat hij richting de grote opening waar ook ooit de lift zat."
+"Je merkt dat je begint te vallen en doet snel je ogen dicht.", "", "*c3"
+"$n: 'Heeeeeelp!!!'", "", "*c2", "Dan voel je ineens dat je stapje voor stapje omhoog de lucht in getrokken wordt."
+"Je hoort ook de grote slagen die de vleugels maken in de lucht."
+"&2=0;1=20;20=0;4=0"
+
+"1=20;4=1", "*c2"
+"Langzaam open je weer je ogen."
+"", "Wow! Het uitzicht is prachtig! Onder je zie je het woud, de rivier en het dorp."
+"Dit is echt gaaf! De draak maakt een duikvlucht richting het dorp. Overal zie je"
+"bewoners snel wegrennen.", "", "Behalve bij de bakker.", "", "Je ziet Bloem met een grote"
+"glimlach buiten staan en naar je zwaaien."
+"", "*c13", "Bloem: 'Heel veel success!'", ""
+"*c2", "Je zwaait terug. De draak begint snel weer hoger te vliegen.", ""
+"Samen verdwijnen jullie langzaam aan de horizon, richting het kasteel van"
+"de koning."
+"", "...", ""
+"Einde van dit deel."
+"&2=0;1=20;20=0;2=4"
 
 ' == 18. Onderkant toren
 "1=18;18=0;2=0;4=0;44!3", "*c2", "Je bent in het woud, aan de voet van de toren."
@@ -2210,7 +2246,7 @@
 "&4=0;48=2"
 
 ' == Prompts
-"0!0;2!2;2!3", "*c15", "", "Wat ga je doen:", "&"
+"0!0;2!2;2!3;2!4", "*c15", "", "Wat ga je doen:", "&"
 "1=0;2=2", "*c15", "", "Wat ga je doen:", "&"
 "2=3", "*c15", "", "Wat wil je toevoegen:", "&"
 
@@ -2589,6 +2625,7 @@
 "2=0;1=17;17=2;6=1;33=5;53>0", "Zeg: 'Waar ga je naar toe?'", "4=20;5=1"
 "2=0;1=17;17=2;6=1;33=5;53>1", "Zeg: 'Je wil mij mee op reis?'", "4=20;5=2"
 "2=0;1=17;17=2;6=1;33=5;53>4", "Zeg: 'Ik moet eerst medicijnen bezorgen'", "4=20;5=3"
+"2=0;1=17;17=2;6=1;33=5;49=2", "Zeg: 'Ik ben klaar om te vertrekken!'", "4=20;5=4"
 
 "2=0;1=17;17=2;6=1", "Loop terug de kamer in", "4=0;6=0"
 "2=1;1=17;17=2;31=1;6=2;44=4", "Knoop touw aan molensteen", "4=12;2=0"
@@ -2607,6 +2644,9 @@
 "2=0;1=19;4=0;49=0", "Pak zadel", "4=2"
 "2=0;1=19;4=0;48<2", "Pak wijn", "4=3"
 "2=0;1=19;4=0", "Ga naar buiten", "1=18;3=8"
+
+' == 20. Einde
+"2=0;1=20;4=0", "Open je ogen", "4=1"
 
 ' Generale inventory acties
 "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
