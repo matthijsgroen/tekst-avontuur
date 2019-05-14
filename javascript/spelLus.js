@@ -95,27 +95,47 @@ const keypress = () =>
 
 const toetsen = "123456789abcdefghijklmnop";
 
+const heeftWaardeVoorSleutel = (sleutel, standaard) => bewering =>
+  bewering
+    .split(";")
+    .filter(item => item.startsWith(`${sleutel}=`))
+    .map(item => item.split("=")[1])[0] || standaard;
+
+const heeftToets = heeftWaardeVoorSleutel("k", null);
+const heeftKleur = heeftWaardeVoorSleutel("c", 7);
+
 const toonActies = async actieData => {
   const acties = [];
   let verteller = 2;
   let bewering;
+  let geteldeActies = 0;
 
   for (let index = 0; index < actieData.length; index++) {
     bewering = actieData[index];
     if (toegestaan(spelToestand, bewering)) {
-      acties.push({
-        naam: interpoleer(actieData[index + 1]),
-        actie: actieData[index + 2],
-        toets: toetsen[acties.length]
-      });
+      const toets = heeftToets(bewering);
+      const kleur = heeftKleur(bewering);
+      toets
+        ? acties.push({
+            naam: interpoleer(actieData[index + 1]),
+            actie: actieData[index + 2],
+            kleur,
+            toets
+          })
+        : acties.push({
+            naam: interpoleer(actieData[index + 1]),
+            actie: actieData[index + 2],
+            kleur,
+            toets: `${++geteldeActies}`
+          });
     }
     index += 2;
   }
 
-  color(7);
   for (const actie of acties) {
     await sleep(skip ? 0 : 0.2);
-    console.log(`${actie.toets} ) ${actie.naam}`);
+    color(actie.kleur);
+    console.log(`${actie.toets.toString().toUpperCase()} ) ${actie.naam}`);
   }
   if (acties.length === 0) {
     return false;

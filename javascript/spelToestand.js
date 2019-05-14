@@ -4,6 +4,7 @@ const toets = (spelToestand, plek, bewerking, waarde) =>
   (bewerking === ">" && spelToestand[plek] > waarde) ||
   (bewerking === "<" && spelToestand[plek] < waarde);
 
+const specialeCondities = ["k", "c"];
 const toegestaan = (spelToestand, bewering) => {
   if (bewering === "END") return false;
 
@@ -12,7 +13,7 @@ const toegestaan = (spelToestand, bewering) => {
   let waarde = "";
   for (let i = 0; i < bewering.length; i++) {
     const karakter = bewering[i];
-    if (/\d/.test(karakter)) {
+    if (/\d/.test(karakter) || specialeCondities.includes(karakter)) {
       bewerking === "" ? (plek += karakter) : (waarde += karakter);
     } else if (karakter === ";") {
       if (
@@ -23,7 +24,7 @@ const toegestaan = (spelToestand, bewering) => {
           parseInt(waarde, 10)
         )
       ) {
-        return false;
+        if (!specialeCondities.includes(plek)) return false;
       }
       plek = "";
       waarde = "";
@@ -34,6 +35,7 @@ const toegestaan = (spelToestand, bewering) => {
   }
 
   if (bewerking !== "") {
+    if (specialeCondities.includes(plek)) return true;
     return toets(
       spelToestand,
       parseInt(plek, 10),
