@@ -50,7 +50,7 @@ const converteerStructuur = ({ actieData, schermData }) => {
   actieData.forEach((element, i) => {
     if (i % 3 === 0) {
       const elementen = element.split(";");
-      actieveActie.test = elementen.filter(e => /^\d+=/.test(e));
+      actieveActie.test = elementen.filter(e => !/^[^0123456789]+=/.test(e));
       actieveActie.toets = heeftToets(elementen);
       actieveActie.kleur = heeftKleur(elementen);
     } else if (i % 3 === 1) {
