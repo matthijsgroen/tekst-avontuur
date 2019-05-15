@@ -39,9 +39,11 @@ window.addEventListener("touchend", () => (skip = true));
 
 const cls = () => (screenElement.innerHTML = "");
 const sleep = duration =>
-  new Promise(resolve =>
-    skip ? resolve() : setTimeout(resolve, duration * 1e3)
-  );
+  duration === 0 || skip
+    ? true
+    : new Promise(resolve =>
+        skip ? resolve() : setTimeout(resolve, duration * 1e3)
+      );
 
 let actieveKleur = "color7";
 const color = index => (actieveKleur = `color${index}`);
@@ -104,7 +106,7 @@ const tekst = async (verteller, zin, eerderGelezen) => {
   color(verteller);
   for (const letter of zin) {
     print(letter);
-    await sleep(eerderGelezen ? 0 : 0.04);
+    await sleep(eerderGelezen ? 0 : 0.02);
   }
   print("\n");
 };
