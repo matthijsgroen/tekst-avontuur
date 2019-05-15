@@ -113,21 +113,14 @@ const toonActies = async actieData => {
   for (let index = 0; index < actieData.length; index++) {
     bewering = actieData[index];
     if (toegestaan(spelToestand, bewering)) {
-      const toets = heeftToets(bewering);
+      const toets = heeftToets(bewering) || `${++geteldeActies}`;
       const kleur = heeftKleur(bewering);
-      toets
-        ? acties.push({
-            naam: interpoleer(actieData[index + 1]),
-            actie: actieData[index + 2],
-            kleur,
-            toets
-          })
-        : acties.push({
-            naam: interpoleer(actieData[index + 1]),
-            actie: actieData[index + 2],
-            kleur,
-            toets: `${++geteldeActies}`
-          });
+      acties.push({
+        naam: interpoleer(actieData[index + 1]),
+        actie: actieData[index + 2],
+        kleur,
+        toets
+      });
     }
     index += 2;
   }

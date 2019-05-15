@@ -188,20 +188,24 @@ const toetsen = "123456789abcdefghijklmnop";
 
 const toonActies = async () => {
   const acties = [];
+  let geteldeActies = 0;
 
   for (const actie of avontuur.acties) {
     if (toegestaan(actie.test)) {
+      const toets = actie.toets || `${++geteldeActies}`;
       acties.push({
         naam: interpoleer(actie.tekst),
         actie: actie.actie,
-        toets: toetsen[acties.length]
+        kleur: actie.kleur,
+        toets
       });
     }
   }
 
-  color(7);
   for (const actie of acties) {
     await sleep(0.2);
+    console.log(actie.kleur);
+    color(actie.kleur);
     print(`${actie.toets} ) ${actie.naam}\n`, actie.toets);
   }
   // geen acties, dan is spel voorbij

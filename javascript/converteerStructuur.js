@@ -1,3 +1,17 @@
+const heeftWaardeVoorSleutel = (
+  sleutel,
+  standaard,
+  converteer = x => x
+) => bewering => {
+  const value = bewering
+    .filter(item => item.startsWith(`${sleutel}=`))
+    .map(item => item.split("=")[1])[0];
+  return value === undefined ? standaard : converteer(value);
+};
+
+const heeftToets = heeftWaardeVoorSleutel("k", null);
+const heeftKleur = heeftWaardeVoorSleutel("c", 7, x => parseInt(x, 10));
+
 const converteerStructuur = ({ actieData, schermData }) => {
   const nieuweSchermData = [];
   let actiefScherm = { schermData: [] };
@@ -35,7 +49,10 @@ const converteerStructuur = ({ actieData, schermData }) => {
 
   actieData.forEach((element, i) => {
     if (i % 3 === 0) {
-      actieveActie.test = element.split(";");
+      const elementen = element.split(";");
+      actieveActie.test = elementen.filter(e => /^\d+=/.test(e));
+      actieveActie.toets = heeftToets(elementen);
+      actieveActie.kleur = heeftKleur(elementen);
     } else if (i % 3 === 1) {
       actieveActie.tekst = element;
     } else {
