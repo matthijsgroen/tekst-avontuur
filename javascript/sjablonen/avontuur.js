@@ -21,8 +21,7 @@ saveButton.addEventListener("click", () => {
 });
 
 const widthRuler = document.getElementById("width");
-widthRuler.textContent =
-  "This-is-a-long-sentence-of-exactly-eighty-one-characters,-is-it-some-coincidence?";
+widthRuler.textContent = "?".repeat(81);
 
 const resizeFont = () => {
   document.body.setAttribute("style", `font-size: 1rem;`);
@@ -39,12 +38,10 @@ window.addEventListener("mouseup", () => (skip = true));
 window.addEventListener("touchend", () => (skip = true));
 
 const cls = async () => {
-  console.log("turning the page");
   const pageElement = screenElement.parentElement;
   pageElement.classList.add("turn");
 
   await sleep(0.6);
-  console.log("schone lei");
   screenElement.innerHTML = "";
   pageElement.classList.remove("turn");
 };
