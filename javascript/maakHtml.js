@@ -80,7 +80,8 @@ const maakHtml = async (bron, doel, basisNaam) => {
   const resultaat = htmlBasis
     .replace("<!-- HEAD -->", bovenkant)
     .replace("<!-- BODY -->", onderkant)
-    .replace("<!-- TITEL -->", gegevens.Titel);
+    .replace("<!-- TITEL -->", gegevens.Titel)
+    .replace("<!-- AUTEUR -->", gegevens.Auteur);
 
   await schrijfBestand(doel, resultaat, "utf8");
 };

@@ -89,6 +89,10 @@ table, input, textarea, button {
 }
 .kaft h1 {
     text-align: center;
+    color: gold;
+}
+.kaft p {
+    text-align: center;
     padding-top: 10%;
     color: gold;
 }
@@ -191,9 +195,10 @@ input {
 }
 #welkom {
     padding-top: 1em;
-    width: 300px;
+    width: 350px;
     margin-left: auto;
 }
+#welkom p { text-align: left; }
 .verberg { display: none; }
 .menu {
     position: fixed;

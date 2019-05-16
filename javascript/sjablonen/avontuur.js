@@ -21,7 +21,7 @@ saveButton.addEventListener("click", () => {
 });
 
 const widthRuler = document.getElementById("width");
-widthRuler.textContent = "?".repeat(81);
+widthRuler.textContent = "?".repeat(83);
 
 const resizeFont = () => {
   document.body.setAttribute("style", `font-size: 1rem;`);
