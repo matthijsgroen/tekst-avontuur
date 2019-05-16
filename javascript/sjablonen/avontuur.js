@@ -243,8 +243,8 @@ const krijgNaam = () =>
     const formulier = document.getElementById("welkom");
     formulier.addEventListener("submit", event => {
       event.preventDefault();
+      document.getElementsByClassName("kaft")[0].classList.add("open");
       resolve(document.getElementById("naam").value);
-      formulier.remove();
     });
   });
 
@@ -257,7 +257,7 @@ const laadSpel = async () => {
 
     naam = data.naam;
     spelToestand = data.gameState;
-    document.getElementById("welkom").remove();
+    document.getElementsByClassName("kaft")[0].classList.add("open");
     return true;
   } catch (e) {}
   return false;
@@ -277,8 +277,10 @@ const spelLus = async () => {
   const spelGeladen = await laadSpel();
   if (!spelGeladen) {
     naam = await krijgNaam();
+    skip = false;
     bewaarSpel();
   }
+  await sleep(2);
 
   const menu = document.querySelector(".menu");
   menu.classList.remove("verberg");

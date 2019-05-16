@@ -12,21 +12,10 @@
 }
 @keyframes turn-page {
     from {
-        max-width: 850px;
+        transform: rotateY(0deg);
     }
-
     to {
-        max-width: 0px;
-        padding: 20px 0;
-    }
-}
-@keyframes turn-over {
-    from {
-        width: 30px;
-    }
-
-    to {
-        width: 630px;
+        transform: rotateY(180deg);
     }
 }
 html {
@@ -50,39 +39,90 @@ table, input, textarea, button {
 }
 .page-locator {
     margin: 0 auto;
-    max-width: 830px;
-    height: calc(100% - 40px);
+    max-width: 870px;
+    height: 100%;
     background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
 }
+.kaft {
+    width: 100%;
+    max-width: 870px;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    transform-origin: top left;
+    transition: transform 3s;
+    transform: rotateY(0deg);
+    perspective: 100px;
+    background: linear-gradient(to right, #e73827 0%,#e73827 0%,#f85032 4%,#e73827 7%,#e73827 10%,#f85032 13%,#f85032 97%,#e73827 100%);
+    backface-visibility: hidden;
+}
+.binnen-pagina {
+    width: 100%;
+    max-width: 870px;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    transform-origin: top left;
+    transition: transform 3s;
+    transform: rotateY(0deg);
+    perspective: 100px;
+    background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
+}
+.kaft h1 {
+    text-align: center;
+    padding-top: 10%;
+    color: gold;
+}
+.kaft form {
+    opacity: 1.0;
+    transition: opacity 1s;
+}
+.kaft.open {
+    transform: rotateY(180deg);
+}
+.kaft.open + .binnen-pagina {
+    transform: rotateY(180deg);
+}
+.kaft.open form {
+    opacity: 0;
+}
+
 .page {
     max-width: 830px;
+    width: 100%;
     height: calc(100% - 40px);
     padding: 20px 10px 20px 30px;
     overflow-y: scroll;
     background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
-    position: relative;
+    transform-origin: top left;
+    transform: rotateY(0deg);
+    perspective: 100px;
+    position: absolute;
+    backface-visibility: hidden;
 }
 .page.turn {
-    animation-duration: .5s;
+    animation-duration: 0.5s;
     animation-timing-function: ease-in;
     animation-name: turn-page;
     animation-fill-mode: forwards;
     overflow: hidden;
 }
-.page.turn::after {
-    content: ' ';
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
+.page + .achter-pagina {
+    max-width: 870px;
+    width: 100%;
     height: 100%;
-    width: 30px;
-    box-shadow: rgba(0,0,0,.2) -20px 0px 6px, rgba(0,0,0,.2) 10px 0px 6px;
-    animation-duration: .5s;
-    animation-fill-mode: forwards;
-    animation-name: turn-over;
+    position: absolute;
+    z-index: -1;
+    transform-origin: top left;
+    transform: rotateY(0deg);
+    perspective: 100px;
+    background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
+}
+.page.turn + .achter-pagina {
+    animation-duration: 0.5s;
     animation-timing-function: ease-in;
-    background: linear-gradient(to left, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
+    animation-name: turn-page;
+    animation-fill-mode: forwards;
 }
 #screen span {
     animation-duration: .7s;
@@ -132,6 +172,8 @@ input {
 }
 #welkom {
     padding-top: 1em;
+    width: 300px;
+    margin-left: auto;
 }
 .verberg { display: none; }
 .menu {
@@ -144,12 +186,4 @@ button {
     line-height: 1.5em;
     background-color: #000000;
     color: #aaaaaa;
-}
-.attribution {
-    position: fixed;
-    bottom: 0;
-}
-
-.attribution a {
-    color: inherit;
 }
