@@ -43,6 +43,25 @@ table, input, textarea, button {
     height: 100%;
     background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
 }
+.page-stack {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    width: 460px;
+    height: 100%;
+    z-index: -1;
+    background: #e73827;
+}
+.page-stack::after {
+    content: ' ';
+    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-10px);
+    background: repeating-linear-gradient(90deg, #a8a6a3 2px, #a8a6a3 2px, #dbc8b3 5px, #dbc8b3 5px);
+}
 .kaft {
     width: 100%;
     max-width: 870px;

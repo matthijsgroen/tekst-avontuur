@@ -129,7 +129,6 @@ const tekst = async (verteller, zin, eerderGelezen) => {
 const toonGebeurtenis = async () => {
   let verteller = 7;
   skip = false;
-  await cls();
   for (const teksten of avontuur.scherm) {
     if (toegestaan(teksten.test)) {
       const eerderGelezen = teksten.gelezen === true;
@@ -280,7 +279,6 @@ const spelLus = async () => {
     skip = false;
     bewaarSpel();
   }
-  await sleep(2);
 
   const menu = document.querySelector(".menu");
   menu.classList.remove("verberg");
@@ -290,6 +288,8 @@ const spelLus = async () => {
     await toonGebeurtenis();
     heeftActies = await toonActies();
     bewaarSpel();
+    skip = false;
+    await cls();
   } while (heeftActies);
   // Spel afgelopen
 };
