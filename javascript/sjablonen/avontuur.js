@@ -8,6 +8,7 @@ confirming = false;
 saveButton.addEventListener("click", () => {
   if (confirming) {
     localStorage.removeItem("opslag");
+    localStorage.removeItem(`opslag-${bewaarSleutel}`);
     document.location.reload();
   } else {
     saveButton.textContent = "Druk om reset te bevestigen";
@@ -25,7 +26,7 @@ widthRuler.textContent =
 
 const resizeFont = () => {
   document.body.setAttribute("style", `font-size: 1rem;`);
-  let screenWidth = document.body.getBoundingClientRect().width - 20;
+  let screenWidth = screenElement.getBoundingClientRect().width;
   let lineWidth = widthRuler.getBoundingClientRect().width;
   const scale = screenWidth / lineWidth;
   document.body.setAttribute("style", `font-size: ${scale}rem;`);
@@ -49,15 +50,19 @@ let actieveKleur = "color7";
 const color = index => (actieveKleur = `color${index}`);
 const print = (tekst, actie) => {
   let parent = screenElement;
-  let linkTag = null;
+  let container = null;
   if (actie) {
-    linkTag = document.createElement("a");
+    container = document.createElement("div");
+    container.setAttribute("class", "actie");
+
+    let linkTag = document.createElement("a");
     linkTag.setAttribute("href", "#");
     linkTag.addEventListener("click", e => {
       e.preventDefault();
       keyPressed = `${actie}`;
       return false;
     });
+    container.appendChild(linkTag);
     parent = linkTag;
   }
 
@@ -77,11 +82,14 @@ const print = (tekst, actie) => {
       parent.appendChild(tag);
     }
   });
-  if (linkTag) {
-    screenElement.appendChild(linkTag);
+  if (container) {
+    screenElement.appendChild(container);
   }
   if (tekst.includes("\n")) {
-    window.scrollTo(0, document.body.scrollHeight);
+    screenElement.parentElement.scroll({
+      top: screenElement.scrollHeight,
+      behavior: "smooth"
+    });
   }
 };
 
@@ -206,9 +214,8 @@ const toonActies = async () => {
 
   for (const actie of acties) {
     await sleep(0.2);
-    console.log(actie.kleur);
     color(actie.kleur);
-    print(`${actie.toets} ) ${actie.naam}\n`, actie.toets);
+    print(`${actie.toets}. ${actie.naam}\n`, actie.toets);
   }
   // geen acties, dan is spel voorbij
   if (acties.length === 0) return false;

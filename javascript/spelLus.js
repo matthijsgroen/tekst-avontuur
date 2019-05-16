@@ -34,7 +34,7 @@ const tekst = async (verteller, zin, eerderGelezen) => {
   color(verteller);
   for (let i = 0; i < zin.length; i++) {
     print(zin[i]);
-    await sleep(skip || eerderGelezen ? 0 : 0.04);
+    await sleep(skip || eerderGelezen ? 0 : 0.02);
   }
   print("\n");
 };
@@ -128,7 +128,7 @@ const toonActies = async actieData => {
   for (const actie of acties) {
     await sleep(skip ? 0 : 0.2);
     color(actie.kleur);
-    console.log(`${actie.toets.toString().toUpperCase()} ) ${actie.naam}`);
+    console.log(`${actie.toets.toString().toUpperCase()}. ${actie.naam}`);
   }
   if (acties.length === 0) {
     return false;
