@@ -38,7 +38,17 @@ resizeFont();
 window.addEventListener("mouseup", () => (skip = true));
 window.addEventListener("touchend", () => (skip = true));
 
-const cls = () => (screenElement.innerHTML = "");
+const cls = async () => {
+  console.log("turning the page");
+  const pageElement = screenElement.parentElement;
+  pageElement.classList.add("turn");
+
+  await sleep(0.6);
+  console.log("schone lei");
+  screenElement.innerHTML = "";
+  pageElement.classList.remove("turn");
+};
+
 const sleep = duration =>
   duration === 0 || skip
     ? true
@@ -122,7 +132,7 @@ const tekst = async (verteller, zin, eerderGelezen) => {
 const toonGebeurtenis = async () => {
   let verteller = 7;
   skip = false;
-  cls();
+  await cls();
   for (const teksten of avontuur.scherm) {
     if (toegestaan(teksten.test)) {
       const eerderGelezen = teksten.gelezen === true;

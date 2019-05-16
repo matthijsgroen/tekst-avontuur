@@ -13,6 +13,25 @@
         opacity: 1;
     }
 }
+@keyframes turn-page {
+    from {
+        max-width: 850px;
+    }
+
+    to {
+        max-width: 0px;
+        padding: 20px 0;
+    }
+}
+@keyframes turn-over {
+    from {
+        width: 30px;
+    }
+
+    to {
+        width: 630px;
+    }
+}
 html {
     -webkit-text-size-adjust: 100%
     margin: 0;
@@ -32,16 +51,44 @@ table, input, textarea, button {
     height: 100%;
     overflow: hidden;
 }
-.page {
+.page-locator {
     margin: 0 auto;
     max-width: 830px;
-    height: calc(100% - 50px);
+    height: calc(100% - 40px);
+    background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
+}
+.page {
+    max-width: 830px;
+    height: calc(100% - 40px);
     padding: 20px 10px 20px 30px;
     overflow-y: scroll;
     background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
+    position: relative;
+}
+.page.turn {
+    animation-duration: .5s;
+    animation-timing-function: ease-in;
+    animation-name: turn-page;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+.page.turn::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 30px;
+    box-shadow: rgba(0,0,0,.2) -20px 0px 6px, rgba(0,0,0,.2) 10px 0px 6px;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    animation-name: turn-over;
+    animation-timing-function: ease-in;
+    background: linear-gradient(to left, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
 }
 #screen span {
-    animation-duration: 1s;
+    animation-duration: .7s;
     animation-name: inkblot;
 }
 .actie a {
