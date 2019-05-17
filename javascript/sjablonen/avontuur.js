@@ -21,7 +21,8 @@ saveButton.addEventListener("click", () => {
 });
 
 const widthRuler = document.getElementById("width");
-widthRuler.textContent = "?".repeat(83);
+widthRuler.textContent =
+  'A Quick brown fox jumps. It jumps fast and HIGH over the "Lazy", sleeping, dog!?';
 
 const resizeFont = () => {
   document.body.setAttribute("style", `font-size: 1rem;`);
@@ -36,15 +37,6 @@ resizeFont();
 
 window.addEventListener("mouseup", () => (skip = true));
 window.addEventListener("touchend", () => (skip = true));
-
-const cls = async () => {
-  const pageElement = screenElement.parentElement;
-  pageElement.classList.add("turn");
-
-  await sleep(0.6);
-  screenElement.innerHTML = "";
-  pageElement.classList.remove("turn");
-};
 
 const sleep = duration =>
   duration === 0 || skip
@@ -242,7 +234,7 @@ const krijgNaam = () =>
     const formulier = document.getElementById("welkom");
     formulier.addEventListener("submit", event => {
       event.preventDefault();
-      document.getElementsByClassName("kaft")[0].classList.add("open");
+      // -- template:startSpel
       resolve(document.getElementById("naam").value);
     });
   });
@@ -256,7 +248,7 @@ const laadSpel = async () => {
 
     naam = data.naam;
     spelToestand = data.gameState;
-    document.getElementsByClassName("kaft")[0].classList.add("open");
+    // -- template:startSpel
     return true;
   } catch (e) {}
   return false;
@@ -285,11 +277,12 @@ const spelLus = async () => {
   let heeftActies;
 
   do {
+    // -- template:beforeLoop
     await toonGebeurtenis();
     heeftActies = await toonActies();
     bewaarSpel();
     skip = false;
-    await cls();
+    // -- template:endLoop
   } while (heeftActies);
   // Spel afgelopen
 };
