@@ -232,7 +232,7 @@ const toonActies = async () => {
 const krijgNaam = () =>
   new Promise(resolve => {
     const formulier = document.getElementById("welkom");
-    formulier.addEventListener("submit", event => {
+    formulier.addEventListener("submit", async event => {
       event.preventDefault();
       // -- template:startSpel
       resolve(document.getElementById("naam").value);
@@ -277,12 +277,12 @@ const spelLus = async () => {
   let heeftActies;
 
   do {
-    // -- template:beforeLoop
+    // -- template:startLus
     await toonGebeurtenis();
     heeftActies = await toonActies();
     bewaarSpel();
     skip = false;
-    // -- template:endLoop
+    // -- template:eindLus
   } while (heeftActies);
   // Spel afgelopen
 };

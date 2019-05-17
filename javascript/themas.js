@@ -2,6 +2,12 @@ const boekThema = {
   css: "thema/boek.css",
   html: "thema/boek.html",
   javascript: "thema/boek.js",
-  startSpel: "startSpel",
-  endLoop: "cls"
+  haken: {
+    startSpel: "startSpel",
+    eindLus: "cls"
+  }
+};
+
+module.exports = {
+  boek: boekThema
 };

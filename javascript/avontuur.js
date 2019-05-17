@@ -11,7 +11,11 @@ const commandos = process.argv
 const vlaggen = process.argv
   .slice(2)
   .filter(parameter => parameter.startsWith("--"))
-  .reduce((resultaat, vlag) => ({ ...resultaat, [vlag.slice(2)]: true }), {});
+  .map(vlag => vlag.slice(2).split("="))
+  .reduce(
+    (resultaat, vlag) => ({ ...resultaat, [vlag[0]]: vlag[1] || true }),
+    {}
+  );
 
 const eerste = commandos[0];
 if (vlaggen.versie || vlaggen.version || eerste === "-V") {
@@ -35,6 +39,7 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   const bron = commandos[1];
   statistieken(bron);
 } else if (eerste === "html") {
+  const standaardThema = "boek";
   const basisNaam = name =>
     name
       .split(".")
@@ -43,7 +48,9 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
 
   const bron = commandos[1];
   const doel = commandos[2] || `${basisNaam(bron)}.html`;
-  maakHtml(bron, doel, basisNaam(bron));
+  maakHtml(bron, doel, basisNaam(bron), {
+    thema: vlaggen["thema"] || standaardThema
+  });
 } else {
   const herstarten = vlaggen.restart || vlaggen.herstart || vlaggen.herstarten;
   spelLus(eerste, herstarten);

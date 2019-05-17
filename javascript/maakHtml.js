@@ -3,26 +3,43 @@ const leesBestand = promisify(require("fs").readFile);
 const schrijfBestand = promisify(require("fs").writeFile);
 const leesAvontuur = require("./leesAvontuur");
 const converteerStructuur = require("./converteerStructuur");
+const themas = require("./themas");
 
 const maakMetaTag = eigenschappen =>
   `<meta ${Object.entries(eigenschappen)
     .map(([sleutel, waarde]) => `${sleutel}="${waarde}"`)
     .join(" ")} />`;
 
-const maakHtml = async (bron, doel, basisNaam) => {
-  console.log(`${bron} -> ${doel}`);
+const maakHtml = async (bron, doel, basisNaam, { thema }) => {
+  console.log(`${bron} -> ${doel} thema: ${thema}`);
+  const themaData = themas[thema];
+  if (!themaData) {
+    console.log(`Thema ${thema} niet gevonden!`);
+    process.exit(1);
+  }
+
   const avontuur = await leesAvontuur(bron);
   const { actieData: acties, schermData: scherm } = converteerStructuur(
     avontuur
   );
   const jsonData = JSON.stringify({ scherm, acties });
 
-  const htmlBasis = await leesBestand(
-    `${__dirname}/sjablonen/index.html`,
-    "utf8"
+  const htmlBasis = await leesBestand(`${__dirname}/${themaData.html}`, "utf8");
+  const css = await leesBestand(`${__dirname}/${themaData.css}`, "utf8");
+  const code = await leesBestand(`${__dirname}/sjablonen/avontuur.js`, "utf8");
+  const themaJs = themaData.javascript
+    ? await leesBestand(`${__dirname}/${themaData.javascript}`)
+    : "";
+
+  const js = Object.entries(themaData.haken || {}).reduce(
+    (code, [haak, functieNaam]) =>
+      code.replace(
+        new RegExp(`//\\s+--\\s+template:${haak}`, "g"),
+        `await ${functieNaam}();`
+      ),
+    code
   );
-  const css = await leesBestand(`${__dirname}/sjablonen/avontuur.css`, "utf8");
-  const js = await leesBestand(`${__dirname}/sjablonen/avontuur.js`, "utf8");
+
   const gegevens = avontuur.gegevens;
   const metagegevens = [];
   metagegevens.push(maakMetaTag({ property: "og:type", content: "article" }));
@@ -64,7 +81,11 @@ const maakHtml = async (bron, doel, basisNaam) => {
 
   const bovenkant =
     metagegevens.join("\n") + `<style type="text/css">${css}</style>`;
-  const jsData = `const bewaarSleutel = "${basisNaam}"; const avontuur = ${jsonData};`;
+  const jsData = [
+    `const bewaarSleutel = "${basisNaam}";`,
+    `const avontuur = ${jsonData};`,
+    themaJs
+  ].join("\n");
 
   const stats =
     gegevens["StatHat.Gebruiker"] && gegevens["StatHat.Teller"]
