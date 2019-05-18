@@ -17,10 +17,14 @@ In dit tekst-avontuur maak jij de keuzes!" />
 }
 html {
   -webkit-text-size-adjust: 100%
+  margin: 0;
+  height: 100%;
 }
 body {
     background: black;
     font-family: computerletters, 'Source Code Pro', monospace;
+    margin: 0;
+    height: 100%;
 }
 table, input, textarea, button {
     font-family: inherit;
@@ -89,17 +93,25 @@ button {
 .attribution a {
     color: inherit;
 }
+.pagina {
+    margin: 0 auto;
+    max-width: 870px;
+    height: 100%;
+}
 </style>
   </head>
   <body>
-    <form id="welkom">
-      <p class="color7">Welkom avonturier!</p>
-      <p class="color7">Wat is je naam?</p>
-      <input class="color7" type="text" id="naam" autofocus /><br />
-      <button type="submit">Ok</button>
-      <p class="attribution color8">Lettertypes van <a href="https://int10h.org/oldschool-pc-fonts/">The Oldschool PC Font Resource</a></p>
-    </form>
-    <div id="screen"></div>
+    <div class="pagina">
+      <form id="welkom">
+        <p class="color14">Koerier voor de koning, gescreven door Matthijs Groen</p>
+        <p class="color7">Welkom avonturier!</p>
+        <p class="color7">Wat is je naam?</p>
+        <input class="color7" type="text" id="naam" autofocus /><br />
+        <button type="submit">Ok</button>
+        <p class="attribution color8">Lettertypes van <a href="https://int10h.org/oldschool-pc-fonts/">The Oldschool PC Font Resource</a></p>
+      </form>
+      <div id="screen"></div>
+    </div>
     <div class="menu verberg">
       <button id="save">Spel herstarten</button>
     </div>

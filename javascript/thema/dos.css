@@ -4,10 +4,14 @@
 }
 html {
   -webkit-text-size-adjust: 100%
+  margin: 0;
+  height: 100%;
 }
 body {
     background: black;
     font-family: computerletters, 'Source Code Pro', monospace;
+    margin: 0;
+    height: 100%;
 }
 table, input, textarea, button {
     font-family: inherit;
@@ -75,4 +79,9 @@ button {
 
 .attribution a {
     color: inherit;
+}
+.pagina {
+    margin: 0 auto;
+    max-width: 870px;
+    height: 100%;
 }
