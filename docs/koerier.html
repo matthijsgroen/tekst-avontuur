@@ -20,6 +20,17 @@ In dit tekst-avontuur maak jij de keuzes!" />
 }
 
 @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i');
+@-webkit-keyframes inkblot {
+    from {
+        text-shadow: 2px 2px 0px, -2px -2px 0px;
+        opacity: 0.2;
+    }
+
+    to {
+        text-shadow: 0px 0px 0px, 0px 0px 0px;
+        opacity: 1;
+    }
+}
 @keyframes inkblot {
     from {
         text-shadow: 2px 2px 0px, -2px -2px 0px;
@@ -31,16 +42,31 @@ In dit tekst-avontuur maak jij de keuzes!" />
         opacity: 1;
     }
 }
-@keyframes turn-page {
+@-webkit-keyframes turn-page {
     from {
-        transform: rotateY(0deg);
+        -webkit-transform: rotateY(0deg);
+                transform: rotateY(0deg);
     }
     to {
-        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+                transform: rotateY(180deg);
+    }
+}
+@keyframes turn-page {
+    from {
+        -webkit-transform: rotateY(0deg);
+                transform: rotateY(0deg);
+    }
+    to {
+        -webkit-transform: rotateY(180deg);
+                transform: rotateY(180deg);
     }
 }
 html {
-    -webkit-text-size-adjust: 100%
+    -webkit-text-size-adjust: 100%;
+       -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
     margin: 0;
     height: 100%;
 }
@@ -85,7 +111,8 @@ table, input, textarea, button {
     display: block;
     width: 100%;
     height: 100%;
-    transform: translateX(-10px);
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
     background: repeating-linear-gradient(90deg, #a8a6a3 2px, #a8a6a3 2px, #dbc8b3 5px, #dbc8b3 5px);
 }
 .kaft {
@@ -94,10 +121,15 @@ table, input, textarea, button {
     height: 100%;
     position: absolute;
     z-index: 1;
-    transform-origin: top left;
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    transition: -webkit-transform 3s;
     transition: transform 3s;
-    transform: rotateY(0deg);
-    perspective: 100px;
+    transition: transform 3s, -webkit-transform 3s;
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-perspective: 100px;
+            perspective: 100px;
     background: linear-gradient(to right,
         var(--kaft-rug) 0%,
         var(--kaft-kleur) 2%,
@@ -109,7 +141,8 @@ table, input, textarea, button {
         var(--kaft-kleur2) 100%
     );
     box-shadow: rgba(0,0,0,0.2) 7px 0px 2px;
-    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
 }
 .binnen-pagina {
     width: 100%;
@@ -117,10 +150,15 @@ table, input, textarea, button {
     height: 100%;
     position: absolute;
     z-index: -1;
-    transform-origin: top left;
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    transition: -webkit-transform 3s;
     transition: transform 3s;
-    transform: rotateY(0deg);
-    perspective: 100px;
+    transition: transform 3s, -webkit-transform 3s;
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-perspective: 100px;
+            perspective: 100px;
     background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
 }
 .kaft h1 {
@@ -137,10 +175,12 @@ table, input, textarea, button {
     transition: opacity 1s;
 }
 .kaft.open {
-    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
 }
 .kaft.open + .binnen-pagina {
-    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
 }
 .kaft.open form {
     opacity: 0;
@@ -153,13 +193,21 @@ table, input, textarea, button {
     padding: 20px 10px 20px 30px;
     overflow-y: scroll;
     background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
-    transform-origin: top left;
-    transform: rotateY(0deg);
-    perspective: 100px;
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-perspective: 100px;
+            perspective: 100px;
     position: absolute;
-    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
 }
 .page.turn {
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-name: turn-page;
+    -webkit-animation-fill-mode: forwards;
     animation-duration: 0.5s;
     animation-timing-function: ease-in;
     animation-name: turn-page;
@@ -172,20 +220,29 @@ table, input, textarea, button {
     height: 100%;
     position: absolute;
     z-index: -1;
-    transform-origin: top left;
-    transform: rotateY(0deg);
-    perspective: 100px;
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-perspective: 100px;
+            perspective: 100px;
     background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
 }
 .page.turn + .achter-pagina {
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in;
-    animation-name: turn-page;
-    animation-fill-mode: forwards;
+    -webkit-animation-duration: 0.5s;
+            animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    -webkit-animation-name: turn-page;
+            animation-name: turn-page;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
 }
 #screen span {
-    animation-duration: .7s;
-    animation-name: inkblot;
+    -webkit-animation-duration: .7s;
+            animation-duration: .7s;
+    -webkit-animation-name: inkblot;
+            animation-name: inkblot;
 }
 .actie a {
     text-decoration: none;
@@ -204,9 +261,12 @@ table, input, textarea, button {
     white-space: nowrap;
     display: inline-block;
     pointer-events: none;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
-#screen { transform-origin: top left; }
+#screen { -webkit-transform-origin: top left; transform-origin: top left; }
 .color0 { color: #000000; }
 .color1 { color: #0414a7; }
 .color2 { color: #18a81b; }

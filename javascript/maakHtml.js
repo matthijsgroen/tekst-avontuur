@@ -1,3 +1,6 @@
+const postcss = require("postcss");
+const autoprefixer = require("autoprefixer");
+
 const { promisify } = require("util");
 const leesBestand = promisify(require("fs").readFile);
 const schrijfBestand = promisify(require("fs").writeFile);
@@ -44,9 +47,10 @@ const maakHtml = async (
   const jsonData = JSON.stringify({ scherm, acties });
 
   const htmlBasis = await leesBestand(`${__dirname}/${themaData.html}`, "utf8");
+  const cssPath = `${__dirname}/${themaData.css}`;
   const css = verwerkAanpassingen(
     themaAanpassingen.css,
-    await leesBestand(`${__dirname}/${themaData.css}`, "utf8")
+    await leesBestand(cssPath, "utf8")
   );
   const code = await leesBestand(`${__dirname}/sjablonen/avontuur.js`, "utf8");
   const themaJs = verwerkAanpassingen(
@@ -104,8 +108,12 @@ const maakHtml = async (
     );
   }
 
+  const processor = postcss([autoprefixer]);
+  const processedCss = await processor.process(css, { from: cssPath });
+
   const bovenkant =
-    metagegevens.join("\n") + `<style type="text/css">${css}</style>`;
+    metagegevens.join("\n") +
+    `<style type="text/css">${processedCss.css}</style>`;
   const jsData = [
     `const bewaarSleutel = "${basisNaam}";`,
     `const avontuur = ${jsonData};`,
