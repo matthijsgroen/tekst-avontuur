@@ -82,6 +82,7 @@ button {
 }
 .pagina {
     margin: 0 auto;
-    max-width: 870px;
+    max-width: 830px;
+    padding: 1em;
     height: 100%;
 }
