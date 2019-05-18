@@ -8,6 +8,17 @@ const boekThema = {
   }
 };
 
+const dosThema = {
+  css: "thema/dos.css",
+  html: "thema/dos.html",
+  javascript: "thema/dos.js",
+  haken: {
+    startSpel: "startSpel",
+    startLus: "cls"
+  }
+};
+
 module.exports = {
-  boek: boekThema
+  boek: boekThema,
+  dos: dosThema
 };

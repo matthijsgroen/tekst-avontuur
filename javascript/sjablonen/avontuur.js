@@ -216,7 +216,10 @@ const toonActies = async () => {
     print(`${actie.toets}. ${actie.naam}\n`, actie.toets);
   }
   // geen acties, dan is spel voorbij
-  if (acties.length === 0) return false;
+  if (acties.length === 0) {
+    // TODO: Template moet hier in kunnen haken om af te sluiten
+    return false;
+  }
 
   let toets;
   let gekozen = null;
@@ -234,8 +237,9 @@ const krijgNaam = () =>
     const formulier = document.getElementById("welkom");
     formulier.addEventListener("submit", async event => {
       event.preventDefault();
+      const naam = document.getElementById("naam").value;
       // -- template:startSpel
-      resolve(document.getElementById("naam").value);
+      resolve(naam);
     });
   });
 

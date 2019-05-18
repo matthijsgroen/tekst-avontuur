@@ -39,7 +39,7 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   const bron = commandos[1];
   statistieken(bron);
 } else if (eerste === "html") {
-  const standaardThema = "boek";
+  const standaardThema = "dos";
   const basisNaam = name =>
     name
       .split(".")
