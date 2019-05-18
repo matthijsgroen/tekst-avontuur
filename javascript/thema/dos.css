@@ -16,16 +16,17 @@ body {
 table, input, textarea, button {
     font-family: inherit;
 }
-#screen a {
+#screen .actie {
     vertical-align: 50%;
-    text-decoration: none;
-    display: block;
     min-height: 32px;
     display: flex;
     align-items: center;
     margin-top: 1em;
 }
-#screen a + a {
+.actie a {
+    text-decoration: none;
+}
+#screen .actie + .actie {
     margin-top: 0.5em;
 }
 #width {
@@ -84,5 +85,5 @@ button {
     margin: 0 auto;
     max-width: 830px;
     padding: 1em;
-    height: 100%;
+    height: calc(100% - 2em);
 }
