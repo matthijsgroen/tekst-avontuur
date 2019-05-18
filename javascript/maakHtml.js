@@ -10,8 +10,8 @@ const maakMetaTag = eigenschappen =>
     .map(([sleutel, waarde]) => `${sleutel}="${waarde}"`)
     .join(" ")} />`;
 
-const maakHtml = async (bron, doel, basisNaam, { thema }) => {
-  console.log(`${bron} -> ${doel} thema: ${thema}`);
+const maakHtml = async (bron, doel, basisNaam, { thema, analytics }) => {
+  console.log(`${bron} -> ${doel}`);
   const themaData = themas[thema];
   if (!themaData) {
     console.log(`Thema ${thema} niet gevonden!`);
@@ -88,7 +88,7 @@ const maakHtml = async (bron, doel, basisNaam, { thema }) => {
   ].join("\n");
 
   const stats =
-    gegevens["StatHat.Gebruiker"] && gegevens["StatHat.Teller"]
+    gegevens["StatHat.Gebruiker"] && gegevens["StatHat.Teller"] && analytics
       ? `<img src="https://api.stathat.com/c?ukey=${
           gegevens["StatHat.Gebruiker"]
         }&key=${

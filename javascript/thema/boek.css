@@ -1,3 +1,31 @@
+:root {
+    /* rood */
+    --kaft-tint: 0;
+    --kaft-saturatie: 80%;
+    --kaft-helder: 50%;
+
+    /* groen *
+    --kaft-tint: 120;
+    --kaft-saturatie: 50%;
+    --kaft-helder: 30%;
+
+    /* blauw *
+    --kaft-tint: 240;
+    --kaft-saturatie: 30%;
+    --kaft-helder: 40%;
+
+    /* paars *
+    --kaft-tint: 300;
+    --kaft-saturatie: 60%;
+    --kaft-helder: 30%;
+
+    /* tinten */
+    --kaft-kleur: hsl(var(--kaft-tint), var(--kaft-saturatie), var(--kaft-helder));
+    --kaft-kleur2: hsl(var(--kaft-tint), var(--kaft-saturatie), calc(var(--kaft-helder) - 10%));
+    --kaft-donker: hsl(var(--kaft-tint), var(--kaft-saturatie), calc(var(--kaft-helder) - 15%));
+    --kaft-rug: hsl(var(--kaft-tint), var(--kaft-saturatie), calc(var(--kaft-helder) - 25%));
+}
+
 @import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i');
 @keyframes inkblot {
     from {
@@ -51,7 +79,11 @@ table, input, textarea, button {
     width: 460px;
     height: 100%;
     z-index: -1;
-    background: #e73827;
+    background: linear-gradient(to right,
+        var(--kaft-kleur2) 0%,
+        var(--kaft-kleur2) 99%,
+        var(--kaft-donker) 100%
+    )
 }
 .page-stack::after {
     content: ' ';
@@ -72,7 +104,17 @@ table, input, textarea, button {
     transition: transform 3s;
     transform: rotateY(0deg);
     perspective: 100px;
-    background: linear-gradient(to right, #e73827 0%,#e73827 0%,#f85032 4%,#e73827 7%,#e73827 10%,#f85032 13%,#f85032 97%,#e73827 100%);
+    background: linear-gradient(to right,
+        var(--kaft-rug) 0%,
+        var(--kaft-kleur) 2%,
+        var(--kaft-kleur) 5%,
+        var(--kaft-donker) 6%,
+        var(--kaft-donker) 8%,
+        var(--kaft-kleur) 9%,
+        var(--kaft-kleur) 99%,
+        var(--kaft-kleur2) 100%
+    );
+    box-shadow: rgba(0,0,0,0.2) 7px 0px 2px;
     backface-visibility: hidden;
 }
 .binnen-pagina {

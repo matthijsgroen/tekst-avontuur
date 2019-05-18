@@ -8,14 +8,33 @@ const commandos = process.argv
   .slice(2)
   .filter(parameter => !parameter.startsWith("--"));
 
+const negatieveUitkomst = ["geen", "no"];
+
 const vlaggen = process.argv
   .slice(2)
   .filter(parameter => parameter.startsWith("--"))
   .map(vlag => vlag.slice(2).split("="))
+  .map(vlag =>
+    negatieveUitkomst.reduce(
+      (vlag, negatief) =>
+        vlag[0].startsWith(`${negatief}-`)
+          ? [vlag[0].slice(negatief.length + 1), false]
+          : vlag,
+      vlag
+    )
+  )
   .reduce(
-    (resultaat, vlag) => ({ ...resultaat, [vlag[0]]: vlag[1] || true }),
+    (resultaat, vlag) => ({
+      ...resultaat,
+      [vlag[0]]: vlag[1] === undefined ? true : vlag[1]
+    }),
     {}
   );
+
+const standaarConfiguratie = {
+  thema: "dos",
+  analytics: true
+};
 
 const eerste = commandos[0];
 if (vlaggen.versie || vlaggen.version || eerste === "-V") {
@@ -39,7 +58,6 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   const bron = commandos[1];
   statistieken(bron);
 } else if (eerste === "html") {
-  const standaardThema = "dos";
   const basisNaam = name =>
     name
       .split(".")
@@ -49,7 +67,8 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   const bron = commandos[1];
   const doel = commandos[2] || `${basisNaam(bron)}.html`;
   maakHtml(bron, doel, basisNaam(bron), {
-    thema: vlaggen["thema"] || standaardThema
+    ...standaarConfiguratie,
+    ...vlaggen
   });
 } else {
   const herstarten = vlaggen.restart || vlaggen.herstart || vlaggen.herstarten;
