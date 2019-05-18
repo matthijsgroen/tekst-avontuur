@@ -22,7 +22,7 @@
         transform: rotateY(0deg);
     }
     to {
-        transform: rotateY(180deg);
+        transform: rotateY(-180deg);
     }
 }
 html {
@@ -125,10 +125,10 @@ table, input, textarea, button {
     transition: opacity 1s;
 }
 .kaft.open {
-    transform: rotateY(180deg);
+    transform: rotateY(-180deg);
 }
 .kaft.open + .binnen-pagina {
-    transform: rotateY(180deg);
+    transform: rotateY(-180deg);
 }
 .kaft.open form {
     opacity: 0;

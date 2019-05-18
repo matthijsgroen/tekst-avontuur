@@ -45,9 +45,12 @@ table, input, textarea, button {
     white-space: nowrap;
     display: inline-block;
     pointer-events: none;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
-#screen { transform-origin: top left; }
+#screen { -webkit-transform-origin: top left; transform-origin: top left; }
 .color0 { color: #000000; }
 .color1 { color: #0414a7; }
 .color2 { color: #18a81b; }

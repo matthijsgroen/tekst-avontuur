@@ -48,8 +48,8 @@ In dit tekst-avontuur maak jij de keuzes!" />
                 transform: rotateY(0deg);
     }
     to {
-        -webkit-transform: rotateY(180deg);
-                transform: rotateY(180deg);
+        -webkit-transform: rotateY(-180deg);
+                transform: rotateY(-180deg);
     }
 }
 @keyframes turn-page {
@@ -58,8 +58,8 @@ In dit tekst-avontuur maak jij de keuzes!" />
                 transform: rotateY(0deg);
     }
     to {
-        -webkit-transform: rotateY(180deg);
-                transform: rotateY(180deg);
+        -webkit-transform: rotateY(-180deg);
+                transform: rotateY(-180deg);
     }
 }
 html {
@@ -179,12 +179,12 @@ table, input, textarea, button {
     transition: opacity 1s;
 }
 .kaft.open {
-    -webkit-transform: rotateY(180deg);
-            transform: rotateY(180deg);
+    -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
 }
 .kaft.open + .binnen-pagina {
-    -webkit-transform: rotateY(180deg);
-            transform: rotateY(180deg);
+    -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
 }
 .kaft.open form {
     opacity: 0;
