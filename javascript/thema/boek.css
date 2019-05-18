@@ -55,6 +55,7 @@ table, input, textarea, button {
     top: 0;
     left: 50%;
 
+    max-width: 50%;
     width: 460px;
     height: 100%;
     z-index: -1;
@@ -133,7 +134,7 @@ table, input, textarea, button {
 
 .page {
     max-width: 830px;
-    width: 100%;
+    width: calc(100% - 40px);
     height: calc(100% - 40px);
     padding: 20px 10px 20px 30px;
     overflow-y: scroll;
@@ -216,7 +217,7 @@ input {
 }
 #welkom {
     padding-top: 1em;
-    width: 350px;
+    width: 50%;
     margin-left: auto;
 }
 #welkom p { text-align: left; }
