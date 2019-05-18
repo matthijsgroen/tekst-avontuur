@@ -130,6 +130,8 @@ table, input, textarea, button {
             transform: rotateY(0deg);
     -webkit-perspective: 100px;
             perspective: 100px;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
     background: linear-gradient(to right,
         var(--kaft-rug) 0%,
         var(--kaft-kleur) 2%,
@@ -159,6 +161,8 @@ table, input, textarea, button {
             transform: rotateY(0deg);
     -webkit-perspective: 100px;
             perspective: 100px;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
     background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
 }
 .kaft h1 {
@@ -199,19 +203,21 @@ table, input, textarea, button {
             transform: rotateY(0deg);
     -webkit-perspective: 100px;
             perspective: 100px;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
     position: absolute;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
 }
 .page.turn {
     -webkit-animation-duration: 0.5s;
+            animation-duration: 0.5s;
     -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
     -webkit-animation-name: turn-page;
+            animation-name: turn-page;
     -webkit-animation-fill-mode: forwards;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in;
-    animation-name: turn-page;
-    animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
     overflow: hidden;
 }
 .page + .achter-pagina {
@@ -226,6 +232,8 @@ table, input, textarea, button {
             transform: rotateY(0deg);
     -webkit-perspective: 100px;
             perspective: 100px;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
     background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
 }
 .page.turn + .achter-pagina {
