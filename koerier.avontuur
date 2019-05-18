@@ -197,7 +197,7 @@
 "1=0;10=2;2=0;4=0;23=4", "Een rustige raaf zit op je bureau.", "&"
 
 "1=0;10=2;2=0;4=3;23!4", "*c2", "Je probeert het briefje van de raaf te pakken."
-"De raaf pikt naar je hand.", "*c3", "$n: 'Grrr!'"
+"De raaf pikt naar je hand.", "", "*c3", "$n: 'Grrr!'"
 "&4=8"
 "1=0;10=2;2=0;4=3;23=4", "*c2", "Je probeert het briefje van de raaf te pakken."
 "De raaf blijft rustig.", "", "Je leest de brief:", "*c6", "*s1", ""

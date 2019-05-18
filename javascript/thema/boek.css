@@ -13,8 +13,7 @@
     }
 
     to {
-        text-shadow: 0px 0px 0px, 0px 0px 0px;
-        opacity: 1;
+        opacity: 1.0;
     }
 }
 @keyframes turn-page {
@@ -174,7 +173,7 @@ table, input, textarea, button {
     animation-fill-mode: forwards;
 }
 #screen span {
-    animation-duration: .7s;
+    animation-duration: 0.7s;
     animation-name: inkblot;
 }
 .actie a {
