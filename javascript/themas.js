@@ -1,3 +1,13 @@
+const kaftKleuren = {
+  rood: ["0", "80%", "50%"],
+  groen: ["120", "50%", "30%"],
+  blauw: ["240", "30%", "40%"],
+  paars: ["300", "60%", "30%"]
+};
+
+const kaftKleur = ([tint, saturatie, helderheid]) =>
+  `:root { --kaft-tint: ${tint}; --kaft-saturatie: ${saturatie}; --kaft-helder: ${helderheid}; }`;
+
 const boekThema = {
   css: "thema/boek.css",
   html: "thema/boek.html",
@@ -5,7 +15,10 @@ const boekThema = {
   haken: {
     startSpel: "startSpel",
     eindLus: "cls"
-  }
+  },
+  opties: ({ kaft = "rood" }) => ({
+    css: kaftKleur(kaftKleuren[kaft])
+  })
 };
 
 const dosThema = {
@@ -15,7 +28,8 @@ const dosThema = {
   haken: {
     startSpel: "startSpel",
     startLus: "cls"
-  }
+  },
+  opties: () => ({})
 };
 
 module.exports = {

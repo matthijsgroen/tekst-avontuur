@@ -10,13 +10,32 @@ const maakMetaTag = eigenschappen =>
     .map(([sleutel, waarde]) => `${sleutel}="${waarde}"`)
     .join(" ")} />`;
 
-const maakHtml = async (bron, doel, basisNaam, { thema, analytics }) => {
+const verwerkAanpassingen = (aanpassing, resultaat) =>
+  aanpassing ? `${aanpassing}\n${resultaat}` : resultaat;
+
+const maakHtml = async (
+  bron,
+  doel,
+  basisNaam,
+  { thema, analytics, ...vlaggen }
+) => {
   console.log(`${bron} -> ${doel}`);
   const themaData = themas[thema];
   if (!themaData) {
     console.log(`Thema ${thema} niet gevonden!`);
     process.exit(1);
   }
+  const themaOpties = Object.entries(vlaggen)
+    .filter(([vlag, waarde]) => vlag.startsWith("thema."))
+    .reduce(
+      (opties, [vlag, waarde]) => ({
+        ...opties,
+        [vlag.slice(6)]: waarde
+      }),
+      {}
+    );
+
+  const themaAanpassingen = themaData.opties(themaOpties);
 
   const avontuur = await leesAvontuur(bron);
   const { actieData: acties, schermData: scherm } = converteerStructuur(
@@ -25,11 +44,17 @@ const maakHtml = async (bron, doel, basisNaam, { thema, analytics }) => {
   const jsonData = JSON.stringify({ scherm, acties });
 
   const htmlBasis = await leesBestand(`${__dirname}/${themaData.html}`, "utf8");
-  const css = await leesBestand(`${__dirname}/${themaData.css}`, "utf8");
+  const css = verwerkAanpassingen(
+    themaAanpassingen.css,
+    await leesBestand(`${__dirname}/${themaData.css}`, "utf8")
+  );
   const code = await leesBestand(`${__dirname}/sjablonen/avontuur.js`, "utf8");
-  const themaJs = themaData.javascript
-    ? await leesBestand(`${__dirname}/${themaData.javascript}`)
-    : "";
+  const themaJs = verwerkAanpassingen(
+    themaAanpassingen.javascript,
+    themaData.javascript
+      ? await leesBestand(`${__dirname}/${themaData.javascript}`)
+      : ""
+  );
 
   const js = Object.entries(themaData.haken || {}).reduce(
     (code, [haak, functieNaam]) =>
