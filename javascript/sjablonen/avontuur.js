@@ -248,6 +248,7 @@ const laadSpel = async () => {
     const opgeslagen =
       localStorage.getItem(`opslag-${bewaarSleutel}`) ||
       (bewaarSleutel === "koerier" && localStorage.getItem("opslag"));
+    if (!opgeslagen) return false;
     let data = JSON.parse(opgeslagen);
 
     naam = data.naam;

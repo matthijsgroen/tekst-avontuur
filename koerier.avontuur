@@ -254,9 +254,9 @@
 "1=3;3=5;19=1;29>1", "*c2", "Je groet de dwerg en loopt met Teun naar de weg.", "", "&3=0;30=3"
 "1=3;3=6;19=1;29>1", "*c2", "Je groet de molenaar en loopt met Teun naar de weg.", "", "&3=0;30=3"
 
-"1=4;3=3;19=0", "*c2", "Je daalt af naar het zuiden, over een sompig pad, richting het moeras.", "", "&3=0"
+"1=4;3=3;19=0", "*c2", "Je daalt af naar het zuiden, over een zompig pad, richting het moeras.", "", "&3=0"
 "1=4;3=5;19=0", "*c2", "Je loopt van de hut terug naar het kronkelige pad in het moeras.", "", "&3=0"
-"1=4;3=3;19=1", "*c2", "Je daalt met Teun af naar het zuiden, over een sompig pad, richting het moeras.", "", "&3=0"
+"1=4;3=3;19=1", "*c2", "Je daalt met Teun af naar het zuiden, over een zompig pad, richting het moeras.", "", "&3=0"
 "1=4;3=5;19=1", "*c2", "Je loopt met Teun van de hut terug naar het kronkelige pad in het moeras.", "", "&3=0"
 
 "1=6;3=3;19=0", "*c2", "Je wandelt naar het zuiden, richting het dorp.", "", "&3=0"
