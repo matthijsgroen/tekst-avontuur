@@ -5,7 +5,18 @@ documentatie is in het nederlands.
 
 Gebruik:
 
-- `avontuur.js verhaal.avontuur` Om een verhaal te spelen.
-- `avontuur.js html verhaal.avontuur` Om bestand om te zetten naar een speelbare
-  html file
-- `avontuur.js stats verhaal.avontuur` Om meta gegevens van avontuur te bekijken
+```
+Avontuur, versie 1.0.0
+
+Gebruik:
+  - spelen: avontuur.js bestand.avontuur [--herstarten]
+  - html versie maken: avontuur.js html bronbestand.avontuur
+    [doelbestand.html]
+    [--thema=dos|boek]
+  - informatie: avontuur.js info bronbestand.avontuur
+
+Foutjes, suggesties, vragen?
+- Github: https://github.com/matthijsgroen/tekst-avontuur
+- E-mail: matthijs.groen@gmail.com
+- Twitter: @matthijsgroen
+```

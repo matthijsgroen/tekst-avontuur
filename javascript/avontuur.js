@@ -39,13 +39,14 @@ const standaarConfiguratie = {
 const eerste = commandos[0];
 if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   console.log(`Avontuur, versie ${pakket.version}`);
-} else if (vlaggen.help || !eerste) {
+} else if (vlaggen.help || !eerste || eerste === "help") {
   [
     `Avontuur, versie ${pakket.version}`,
     "",
     "Gebruik:",
     "  - spelen: avontuur.js bestand.avontuur [--herstarten]",
     "  - html versie maken: avontuur.js html bronbestand.avontuur [doelbestand.html]",
+    "    [--thema=dos|boek]",
     "  - informatie: avontuur.js info bronbestand.avontuur",
     "",
     "Foutjes, suggesties, vragen?",
