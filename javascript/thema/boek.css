@@ -5,7 +5,6 @@
     --kaft-rug: hsl(var(--kaft-tint), var(--kaft-saturatie), calc(var(--kaft-helder) - 25%));
 }
 
-@import url('https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i');
 @keyframes inkblot {
     from {
         text-shadow: 2px 2px 0px, -2px -2px 0px;
@@ -80,7 +79,7 @@ table, input, textarea, button {
     position: absolute;
     z-index: 2;
     transform-origin: top left;
-    transition: transform 3s;
+    transition: transform 4s ease-in-out 1s;
     transform: rotateY(0deg);
     perspective: 100px;
     transform-style: preserve-3d;
@@ -88,7 +87,8 @@ table, input, textarea, button {
         var(--kaft-rug) 0%,
         var(--kaft-kleur) 2%,
         var(--kaft-kleur) 5%,
-        var(--kaft-donker) 6%,
+        var(--kaft-kleur2) 6%,
+        var(--kaft-kleur2) 7%,
         var(--kaft-donker) 8%,
         var(--kaft-kleur) 9%,
         var(--kaft-kleur) 99%,
@@ -104,7 +104,7 @@ table, input, textarea, button {
     position: absolute;
     z-index: -1;
     transform-origin: top left;
-    transition: transform 3s;
+    transition: transform 4s ease-in-out 1s;
     transform: rotateY(0deg);
     perspective: 100px;
     transform-style: preserve-3d;
@@ -113,15 +113,18 @@ table, input, textarea, button {
 .kaft h1 {
     text-align: center;
     color: gold;
+    text-shadow: var(--kaft-kleur2) 1px -1px;
 }
 .kaft p {
     text-align: center;
-    padding-top: 10%;
     color: gold;
 }
 .kaft form {
     opacity: 1.0;
     transition: opacity 1s;
+}
+.kaft form p {
+    display: none;
 }
 .kaft.open {
     transform: rotateY(-180deg);
@@ -214,15 +217,40 @@ table, input, textarea, button {
 .color14 { color: #fffd64; }
 .color15 { color: #ffffff; }
 input {
-    background: black;
+    background: brown;
     font-size: 1em;
+    padding: 0.2em;
     line-height: 2em;
-    border: 2px solid #aaaaaa;
+    border: 2px solid black;
+    color: gold;
+    border-radius: 0.4em;
+    transition: border-color 0.5s;
+}
+input::placeholder {
+    color: rgba(0,0,0,0.6);
+}
+input:focus {
+    outline: none;
+    border-color: gold;
+}
+#welkom::before {
+    content: ' ';
+    display: block;
+    background: lime;
+
 }
 #welkom {
-    padding-top: 1em;
-    width: 50%;
-    margin-left: auto;
+    position: absolute;
+    top: calc(50% - 3em);
+    right: 0em;
+    padding: 1em 1em 1em 2em;
+    background: brown;
+    border-top-left-radius: 1.5em;
+    border-bottom-left-radius: 1.5em;
+    box-shadow: rgba(0, 0, 0, 0.3) -2px 3px 2px, brown 5px 1px 6px, #832121 28px 1px 1px;
+    border-width: 3px;
+    border-color: rgba(0,0,0,0.2);
+    border-style: dashed none dashed dashed;
 }
 #welkom p { text-align: left; }
 .verberg { display: none; }
@@ -235,6 +263,19 @@ input {
 button {
     font-size: 1em;
     line-height: 1.5em;
-    background-color: #000000;
-    color: #aaaaaa;
+    background-color: darkred;
+    color: gold;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    margin-left: 0.5em;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 8px;
+    transition: box-shadow 0.2s;
+}
+button:hover {
+    background-color: #881717;
+}
+button:focus {
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 2px;
 }

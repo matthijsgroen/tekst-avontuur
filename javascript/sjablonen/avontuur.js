@@ -238,6 +238,7 @@ const krijgNaam = () =>
     formulier.addEventListener("submit", async event => {
       event.preventDefault();
       const naam = document.getElementById("naam").value;
+      if (naam.trim() === "") return;
       // -- template:startSpel
       resolve(naam);
     });
