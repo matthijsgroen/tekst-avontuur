@@ -133,6 +133,9 @@ Waardes uit de speltoestand in tekst gebruiken:
 # Voorbeeld
 
 ```
+' @Titel: De helpdesk
+' @Auteur: Jij!
+'
 ' Mini avontuur met de helpdesk
 ' 1 is status van het gesprek
 ' 2 is de wachtrij
