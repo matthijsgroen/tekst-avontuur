@@ -673,11 +673,11 @@
 "&58=5;4=1"
 
 "1=7;2=0;7=1;4=0;19=0", "*c2"
-"Daar ging $n dan, helemaal alleen.", "&"
+"Daar ging $n, helemaal alleen.", "&"
 "1=7;2=0;7=1;4=0;19=1;29=3", "*c2"
-"Daar ging $n dan met Teun aan zijn zijde.", "&"
+"Daar ging $n, samen met Teun aan zijn zijde.", "&"
 "1=7;2=0;7=1;4=0;19=1;29=4", "*c2"
-"Daar ging $n dan met Teun die de wagen voorttrok.", "&"
+"Daar ging $n, samen met Teun en de wagen.", "&"
 "1=7;2=0;7=1;4=0;0=1", "*c2"
 "Hij haalde diep adem en raapte al zijn moed bij elkaar."
 "Met alleen zijn zwaard om hem te beschermen, stapte hij het donkere woud in.", "&"
@@ -690,7 +690,7 @@
 "uit. Uit de top van de toren klonk luid gebrul."
 "", "*c3", "$n: 'O help, waar ben ik aan begonnen.'", "&"
 "1=7;2=0;7=1;4=0", "", "*c2", "$n liep tot aan de voet van de toren.", "&"
-"1=7;2=0;7=1;4=0;19=1;29=3", "*c3","", "$n: 'Teun, ik maak je hier vast, hopelijk ben ik snel weer terug.'", "&30=18"
+"1=7;2=0;7=1;4=0;19=1;29>2", "*c3","", "$n: 'Teun, ik maak je hier vast, hopelijk ben ik snel weer terug.'", "&30=18"
 "1=7;2=0;7=1;4=0", "&1=17"
 
 '== 8. Rivier
@@ -709,7 +709,7 @@
 "je het grote stuk stof op."
 "", "Het lijkt wel een hele grote onderbroek! Wit met rode stippen!"
 "Ineens zie je een heel stuk verderop in de rivier een reus zwemmen."
-"*c3", "$n: 'Oei! wegwezen!'", "*c2"
+"", "*c3", "$n: 'Oei! wegwezen!'", "*c2", ""
 "Je klimt snel weer naar boven naar het pad en neemt de onderbroek mee."
 "&4=0;32=1"
 
@@ -787,8 +787,10 @@
 "In het kistje zit goud!"
 "Er zit ook een steen met rare inscripties in het kistje.", ""
 "Je stopt het goud en de steen in je tas. Het goud lijkt licht net iets anders"
-"te reflecteren dan dat je van gewoon goud gewend bent."
-"Je loopt weer terug naar het pad in het bos. Je ziet de zon weer opkomen."
+"te reflecteren dan dat je van gewoon goud gewend bent.", "&"
+
+"1=9;2=0;9=7;5=2", "*c2"
+"Je loopt weer terug naar het pad in het bos. Je ziet de zon weer opkomen.", ""
 "&1=1;34=7;38=1;5=0"
 
 '== 11. Mijn
@@ -826,7 +828,7 @@
 "1=11;2=0;11=2;4=4", "*c2", "Je bied Thorin de koeken aan.", "", "*c3"
 "$n: 'Hier, alsjeblieft.'"
 "", "*c9", "Thorin: 'Whoa die ruiken lekker, bedankt!'", "", "*c2"
-"Thorin zit te smullen van de koeken."
+"Thorin zit te smullen van de koeken.", ""
 "", "*c9", "Thorin: 'Zo daar was ik echt aan toe!'", "&4=0;25=3"
 
 "1=11;2=0;11>1;4=5", "*c3", "$n: 'Thorin, zou jij weten hoe ik aan medicijnen kan komen?'", "", "*c2"
@@ -855,7 +857,8 @@
 "1=11;2=0;11=2;4=2", "*c3"
 "$n: 'Zou ik je houweel mogen hebben?'"
 "", "*c9", "Thorin: 'Tuurlijk. Alleen de bovenkant is nog heel."
-"  Het heft is gebroken. Ik heb er niets meer aan.'", "&4=0;24=1"
+"  Het heft is gebroken. Ik heb er niets meer aan.'", ""
+"*c2", "Je stopt de bovenkant van de houweel in je tas.", "&4=0;24=1"
 
 "1=11;2=0;11=2;4=1;24!4;25!3", "*c3"
 "$n: 'Hoe kan ik je helpen?'"
@@ -1360,8 +1363,7 @@
 "Je loopt snel om de boerderij heen om te gaan kijken."
 "Er is duidelijk een brand geweest. De vlammen zijn wel al gedoofd."
 "Er staat een boer verslagen bij de verbrande resten van wat"
-"eerst een boomgaard zou zijn geweest.", ""
-"De boer staat verslagen naar de smeulende restantent te kijken...", "&"
+"eerst een boomgaard zou zijn geweest.", "&"
 
 "1=13;2=0;19=1;31=0;4=0", "De stal is leeg. Er hangt een lang stuk touw aan de zijkant van de stal.", "&"
 "1=13;2=0;19=1;31>0;4=0", "De stal is leeg.", "&"
@@ -1706,7 +1708,8 @@
 "Na een tijdje heeft heeft Luuk een prachtige halsketting gemaakt.", "*c11", ""
 "Luuk: 'Zo, een mooie halsketting. Voor welke gelukkige dame gaat deze zijn?"
 "  Ohja, ik heb niet al het materiaal opgebruikt. Hier nog wat geldstukken ter"
-"  compensatie.'"
+"  compensatie.'", ""
+"*c2", "Je stopt de halsketting en 15 geldstukken in je tas"
 "&4=0;22+15;28=2;34=8"
 
 '== 16. Bakkerij
@@ -1729,9 +1732,10 @@
 "  dochter! Ik dacht dat ik haar nooit meer zou zien!'"
 "", "*c2", "Bloem geeft je een knipoog.", "&"
 
-"1=16;16=1;4=1;2=0;26=0", "*c3"
-"$n: 'Hallo? Is alles goed met u?'", "", "*c2"
-"De bakker lijkt ineens door te hebben dat er iemand in zijn winkel staat"
+"1=16;16=1;4=1;2=0;26=0"
+"De bakker staat voor zich uit te staren."
+"*c3", "$n: 'Hallo? Is alles goed met u?'", "", "*c2"
+"De bakker schrikt op. Hij had blijkbaar niet door dat je in zijn winkel stond."
 "", "*c9", "Gerst: 'Oh. Sorry, ik had het even niet in de gaten'", ""
 "*c2", "Ineens barst de bakker in huilen uit.", "*c9", ""
 "Gerst: 'Mijn arme dochter! Ik zie haar nooit meer terug!"
@@ -2399,6 +2403,7 @@
 "2=0;1=9;9=6;k=z", "Ga naar het zuiden, tussen de bomen door", "4=0;9=7;5=0"
 "2=0;1=9;9=7;5=0", "Inspecteer boom", "5=1"
 "2=0;1=9;9=7;5=1", "Open kistje", "5=2"
+"2=0;1=9;9=7;5=2", "Ga terug naar de weg", "5=3"
 
 "2=0;1=9;9=20", "Wacht tot het weer licht is", "1=8;4=0;34=4;9=0;20=1;3=7"
 
