@@ -7,11 +7,17 @@
 
 @keyframes inkblot {
     from {
-        text-shadow: 2px 2px 0px, -2px -2px 0px;
+        text-shadow: 0px 0px 0px, 0px 0px 0px;
         opacity: 0.2;
     }
 
+    50% {
+        text-shadow: 1px 1px 0px, -1px -1px 0px;
+        opacity: 0.4;
+    }
+
     to {
+        text-shadow: 0px 0px 0px, 0px 0px 0px;
         opacity: 1.0;
     }
 }
@@ -79,7 +85,7 @@ table, input, textarea, button {
     position: absolute;
     z-index: 2;
     transform-origin: top left;
-    transition: transform 4s ease-in-out 1s;
+    transition: transform 3s ease-in-out 0s;
     transform: rotateY(0deg);
     perspective: 100px;
     transform-style: preserve-3d;
@@ -104,7 +110,7 @@ table, input, textarea, button {
     position: absolute;
     z-index: -1;
     transform-origin: top left;
-    transition: transform 4s ease-in-out 1s;
+    transition: transform 3s ease-in-out 0s;
     transform: rotateY(0deg);
     perspective: 100px;
     transform-style: preserve-3d;
@@ -177,7 +183,7 @@ table, input, textarea, button {
     animation-fill-mode: forwards;
 }
 #screen span {
-    animation-duration: 0.7s;
+    animation-duration: 0.2s;
     animation-name: inkblot;
 }
 .actie a {
@@ -200,22 +206,23 @@ table, input, textarea, button {
     user-select: none;
 }
 #screen { transform-origin: top left; }
-.color0 { color: #000000; }
-.color1 { color: #0414a7; }
-.color2 { color: #18a81b; }
-.color3 { color: #1aaaa9; }
-.color4 { color: #a8060e; }
-.color5 { color: #a817a8; }
+
+.color0 { color: #ffffff; }
+.color1 { color: #565cfb; }
+.color2 { color: rgb(0, 80, 0); }
+.color3 { color: rgb(0,128,128); }
+.color4 { color: #fc575a; }
+.color5 { color: #fd5dfc; }
 .color6 { color: #a85514; }
-.color7 { color: #aaaaaa; }
-.color8 { color: #555555; }
-.color9 { color: #565cfb; }
-.color10 { color: #5efd60; }
-.color11 { color: #5ffffe; }
-.color12 { color: #fc575a; }
-.color13 { color: #fd5dfc; }
-.color14 { color: #fffd64; }
-.color15 { color: #ffffff; }
+.color7 { color: #555555; }
+.color8 { color: #aaaaaa; }
+.color9 { color: #0414a7; }
+.color10 { color: rgb(57,181,74); }
+.color11 { color: #1aaaa9; }
+.color12 { color: #a8060e; }
+.color13 { color: #a817a8; }
+.color14 { color: rgb(255,199,6); }
+.color15 { color: #000000; }
 input {
     background: brown;
     font-size: 1em;
