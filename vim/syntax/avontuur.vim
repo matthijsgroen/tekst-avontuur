@@ -13,9 +13,7 @@ syn match advPredicate /\d\+[=><!+-r]/ contained display nextgroup=advValue
 syn match advValue /\d\+/ contained display
 syn match advInterpolateState /[#]\d\{2}/ contained display
 syn match advInterpolateName /[$]n/ contained display
-syn match advTooLong /[^"]\+/ contained display
-syn match advLength /[^"]\{80}/ contained display nextgroup=advTooLong
-syn region advString start='"' end='"' contains=advInterpolateName,advInterpolateState,advLength
+syn region advString start='"' end='"' contains=advInterpolateName,advInterpolateState
 syn region advState start=/"\(\d\|&\)\@=/ end='"' contains=advPredicate
 syn region advMarkup start=/"[*]\@=/ end='"' contains=advCol1,advCol2,advCol3,advCol4,advCol5,advCol6,advCol7,advCol8,advCol9,advCol10,advCol11,advCol12,advCol13,advCol14,advCol15
 syn match advTrailing /,$/ display

@@ -31,9 +31,27 @@ const interpoleer = zin =>
     .replace(/#\d{2}/g, num => ` ${spelToestand[parseInt(num.slice(1), 10)]}`);
 
 const tekst = async (verteller, zin, eerderGelezen) => {
+  const MAX_LENGTH = 80;
   color(verteller);
-  for (let i = 0; i < zin.length; i++) {
-    print(zin[i]);
+  const indent = zin.match(/^\s*/)[0].length;
+  const regels =
+    " ".repeat(indent) +
+    zin
+      .slice(indent)
+      .split(" ")
+      .reduce(
+        (regels, woord) => {
+          const laatsteRegel = regels.slice(-1)[0];
+          return (laatsteRegel + " " + woord).length > MAX_LENGTH
+            ? [...regels, woord]
+            : [...regels.slice(0, -1), (laatsteRegel + " " + woord).trim()];
+        },
+        [""]
+      )
+      .join(`\n${" ".repeat(indent)}`);
+
+  for (let i = 0; i < regels.length; i++) {
+    print(regels[i]);
     await sleep(skip || eerderGelezen ? 0 : 0.02);
   }
   print("\n");
