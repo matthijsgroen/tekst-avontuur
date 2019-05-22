@@ -213,7 +213,7 @@ table, input, textarea, button {
 .color3 { color: rgb(0,128,128); }
 .color4 { color: #fc575a; }
 .color5 { color: #fd5dfc; }
-.color6 { color: #a85514; }
+.color6 { color: rgb(170,85,0); }
 .color7 { color: #555555; }
 .color8 { color: #aaaaaa; }
 .color9 { color: #0414a7; }
@@ -221,7 +221,7 @@ table, input, textarea, button {
 .color11 { color: #1aaaa9; }
 .color12 { color: #a8060e; }
 .color13 { color: #a817a8; }
-.color14 { color: rgb(255,199,6); }
+.color14 { color: rgb(128,128,0); }
 .color15 { color: #000000; }
 input {
     background: brown;
