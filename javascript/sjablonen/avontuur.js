@@ -48,7 +48,9 @@ const sleep = duration =>
 let actieveKleur = "color7";
 const color = index => (actieveKleur = `color${index}`);
 const print = (tekst, actie) => {
-  let parent = screenElement;
+  const paragrafen = screenElement.getElementsByTagName("p");
+  let parent = paragrafen.item(paragrafen.length - 1);
+
   let container = null;
   if (actie) {
     container = document.createElement("div");
@@ -67,10 +69,7 @@ const print = (tekst, actie) => {
 
   tekst.split("\n").forEach((element, index, list) => {
     if (element !== "") {
-      // Vervang spaties door niet-brekende spaties
-      const textNode = document.createTextNode(
-        element.replace(/\u0020/g, "\u00a0")
-      );
+      const textNode = document.createTextNode(element);
       const tag = document.createElement("span");
       tag.appendChild(textNode);
       tag.setAttribute("class", actieveKleur);
@@ -111,7 +110,13 @@ const interpoleer = zin =>
 
 const tekst = async (verteller, zin, eerderGelezen) => {
   color(verteller);
-  for (const letter of zin) {
+  if (zin === "") {
+    const paragraaf = document.createElement("p");
+    screenElement.appendChild(paragraaf);
+    return;
+  }
+  const inspringZin = zin; //.replace(/^\u0020+/, r => "\u00a0".repeat(r.length));
+  for (const letter of inspringZin) {
     print(letter);
     await sleep(eerderGelezen ? 0 : 0.02);
   }
@@ -120,6 +125,9 @@ const tekst = async (verteller, zin, eerderGelezen) => {
 
 const toonGebeurtenis = async () => {
   let verteller = 7;
+  const paragraaf = document.createElement("p");
+  screenElement.appendChild(paragraaf);
+
   skip = false;
   for (const teksten of avontuur.scherm) {
     if (toegestaan(teksten.test)) {
