@@ -31,7 +31,7 @@ const interpoleer = zin =>
     .replace(/#\d{2}/g, num => ` ${spelToestand[parseInt(num.slice(1), 10)]}`);
 
 const tekst = async (verteller, zin, eerderGelezen) => {
-  const MAX_LENGTH = 80;
+  const MAX_LENGTH = Math.min(process.stdout.columns, 80);
   color(verteller);
   const indent = zin.match(/^\s*/)[0].length;
   const regels =
