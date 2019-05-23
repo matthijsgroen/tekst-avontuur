@@ -205,7 +205,7 @@ table, input, textarea, button {
     pointer-events: none;
     user-select: none;
 }
-#screen { transform-origin: top left; }
+#screen { padding: 1em; }
 
 .color0 { color: #ffffff; }
 .color1 { color: #565cfb; }

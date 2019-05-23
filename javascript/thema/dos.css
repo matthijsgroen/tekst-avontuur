@@ -86,4 +86,5 @@ button {
     max-width: 830px;
     padding: 1em;
     height: calc(100% - 2em);
+    overflow-y: scroll;
 }
