@@ -115,8 +115,14 @@ const tekst = async (verteller, zin, eerderGelezen) => {
     screenElement.appendChild(paragraaf);
     return;
   }
-  const inspringZin = zin; //.replace(/^\u0020+/, r => "\u00a0".repeat(r.length));
-  for (const letter of inspringZin) {
+  const isGesprek = /^.*: '/.test(zin);
+  if (isGesprek) {
+    const paragrafen = screenElement.getElementsByTagName("p");
+    const huidigeParagraaf = paragrafen.item(paragrafen.length - 1);
+    huidigeParagraaf.classList.add("gesprek");
+  }
+
+  for (const letter of zin) {
     print(letter);
     await sleep(eerderGelezen ? 0 : 0.02);
   }
