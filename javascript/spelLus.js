@@ -32,8 +32,10 @@ const interpoleer = zin =>
 
 const tekst = async (verteller, zin, eerderGelezen) => {
   const MAX_LENGTH = Math.min(process.stdout.columns, 80);
+  const inGesprek = /^.*: '/.test(zin);
   color(verteller);
   const indent = zin.match(/^\s*/)[0].length;
+  const plakIndent = inGesprek ? 2 : indent;
   const regels =
     " ".repeat(indent) +
     zin
@@ -42,13 +44,13 @@ const tekst = async (verteller, zin, eerderGelezen) => {
       .reduce(
         (regels, woord) => {
           const laatsteRegel = regels.slice(-1)[0];
-          return (laatsteRegel + " " + woord).length > MAX_LENGTH
+          return (laatsteRegel + " " + woord + plakIndent).length > MAX_LENGTH
             ? [...regels, woord]
             : [...regels.slice(0, -1), (laatsteRegel + " " + woord).trim()];
         },
         [""]
       )
-      .join(`\n${" ".repeat(indent)}`);
+      .join(`\n${" ".repeat(plakIndent)}`);
 
   for (let i = 0; i < regels.length; i++) {
     print(regels[i]);
