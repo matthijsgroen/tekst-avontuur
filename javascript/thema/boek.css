@@ -120,10 +120,16 @@ table, input, textarea, button {
     text-align: center;
     color: gold;
     text-shadow: var(--kaft-kleur2) 1px -1px;
+    height: calc(50% - 4em);
+    padding-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .kaft p {
     text-align: center;
     color: gold;
+    padding-left: 10%;
 }
 .kaft form {
     opacity: 1.0;

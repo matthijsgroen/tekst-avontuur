@@ -28,7 +28,7 @@ const resizeFont = () => {
   document.body.setAttribute("style", `font-size: 1rem;`);
   let screenWidth = screenElement.getBoundingClientRect().width;
   let lineWidth = widthRuler.getBoundingClientRect().width;
-  const scale = screenWidth / lineWidth;
+  const scale = Math.max(screenWidth / lineWidth, 1);
   document.body.setAttribute("style", `font-size: ${scale}rem;`);
 };
 
