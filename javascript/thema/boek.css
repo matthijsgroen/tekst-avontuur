@@ -207,6 +207,11 @@ table, input, textarea, button {
 }
 #screen { padding: 1em; }
 
+p.gesprek {
+    --inspring: 1em;
+    padding-left: var(--inspring);
+    text-indent: calc(-1 * var(--inspring));
+}
 .color0 { color: #ffffff; }
 .color1 { color: #565cfb; }
 .color2 { color: rgb(0, 80, 0); }

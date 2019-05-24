@@ -36,6 +36,12 @@ table, input, textarea, button {
     user-select: none;
 }
 #screen { transform-origin: top left; }
+
+p.gesprek {
+    --inspring: calc(0.54526em * 2);
+    padding-left: var(--inspring);
+    text-indent: calc(-1 * var(--inspring));
+}
 .color0 { color: #000000; }
 .color1 { color: #0414a7; }
 .color2 { color: #18a81b; }
