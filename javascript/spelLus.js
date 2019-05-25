@@ -34,10 +34,15 @@ let vorigeZin = "";
 const tekst = async (verteller, zin, eerderGelezen) => {
   const MAX_LENGTH = Math.min(process.stdout.columns, 80);
   const inGesprek = /^.*: '/.test(zin);
+  const inLijst = /^\s*-\s/.test(zin);
 
   color(verteller);
   const indent = zin.match(/^\s*/)[0].length;
-  const plakIndent = inGesprek ? 2 : indent;
+  const plakIndent = inGesprek ? 2 : inLijst ? indent + 2 : indent;
+  if (inLijst) {
+    vorigeZin = "";
+    print("\n");
+  }
   const regels =
     (vorigeZin.length === 0 ? " ".repeat(indent) : " ") +
     zin
