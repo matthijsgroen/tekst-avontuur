@@ -125,13 +125,14 @@
 
 ' 0. Proloog
 "0=0", "*c2"
-"Hoi $n, welkom bij dit interactieve avontuur!"
-"In dit avontuur maak jij de keuzes. Ga je het moeras in of knoop je een gesprek aan met de bakker? Je gaat het beleven."
+"Hoi $n, welkom bij dit interactieve avontuur!", ""
+"In dit avontuur maak jij de keuzes. Ga je het moeras in of knoop"
+"je een gesprek aan met de bakker? Je gaat het beleven.", ""
 "Elke keer kan je een keuze maken door de knop in te drukken die voor de keuze is afgebeeld."
 "", "Laten we meteen met de eerste keuze beginnen!"
 "", "*c15", "Ben je een jongen of een meisje?", "&"
 
-"1=0;10=0;4=0;0=1", "*c2", "Er was eens, lang geleden een stoere koerier..."
+"1=0;10=0;4=0;0=1", "*c2", "Er was eens, lang geleden een stoere koerier...", ""
 "Zijn naam was $n.", ""
 "Hij was altijd super snel in het bezorgen van brieven en pakketjes."
 "Dingen bezorgen was dan ook zijn lust en zijn leven.", "&"
