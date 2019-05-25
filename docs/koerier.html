@@ -278,10 +278,7 @@ table, input, textarea, button {
     text-decoration: none;
 }
 #screen .actie {
-    vertical-align: 50%;
     min-height: 32px;
-    display: flex;
-    align-items: center;
     margin-top: 1em;
 }
 #screen .actie + .actie {
@@ -487,27 +484,39 @@ const sleep = duration =>
 
 let actieveKleur = "color7";
 const color = index => (actieveKleur = `color${index}`);
-const print = (tekst, actie) => {
+const printActie = (tekst, actie, parent) => {
+  const lijstItem = document.createElement("li");
+  lijstItem.classList.add("actie", actieveKleur);
+  if (/^[a-z]$/.test(actie)) {
+    lijstItem.setAttribute("style", "list-style-type: lower-alpha;");
+    lijstItem.setAttribute("value", `${actie.charCodeAt(0) - 96}`);
+  }
+  if (/^[0-9]$/.test(actie)) {
+    lijstItem.setAttribute("style", "list-style-type: decimal;");
+    lijstItem.setAttribute("value", `${actie.charCodeAt(0) - 48}`);
+  }
+
+  const linkTag = document.createElement("a");
+  linkTag.setAttribute("href", "#");
+  linkTag.addEventListener("click", e => {
+    e.preventDefault();
+    keyPressed = `${actie}`;
+    return false;
+  });
+  lijstItem.appendChild(linkTag);
+  const textNode = document.createTextNode(tekst);
+  const tag = document.createElement("span");
+  tag.appendChild(textNode);
+  tag.setAttribute("class", actieveKleur);
+  linkTag.appendChild(tag);
+  parent.appendChild(lijstItem);
+};
+
+const print = tekst => {
   let parent = screenElement.children[screenElement.children.length - 1];
   if (parent.tagName === "UL") {
     const items = parent.getElementsByTagName("li");
     parent = items.item(items.length - 1);
-  }
-
-  let container = null;
-  if (actie) {
-    container = document.createElement("div");
-    container.setAttribute("class", "actie");
-
-    let linkTag = document.createElement("a");
-    linkTag.setAttribute("href", "#");
-    linkTag.addEventListener("click", e => {
-      e.preventDefault();
-      keyPressed = `${actie}`;
-      return false;
-    });
-    container.appendChild(linkTag);
-    parent = linkTag;
   }
 
   tekst.split("\n").forEach((element, index, list) => {
@@ -523,9 +532,6 @@ const print = (tekst, actie) => {
       parent.appendChild(tag);
     }
   });
-  if (container) {
-    screenElement.appendChild(container);
-  }
   if (tekst.includes("\n")) {
     screenElement.parentElement.scroll({
       top: screenElement.scrollHeight,
@@ -686,10 +692,13 @@ const toonActies = async () => {
     }
   }
 
+  const actieLijst = document.createElement("ul");
+  actieLijst.classList.add("acties");
+  screenElement.appendChild(actieLijst);
   for (const actie of acties) {
     await sleep(0.2);
     color(actie.kleur);
-    print(`${actie.toets}. ${actie.naam}\n`, actie.toets);
+    printActie(actie.naam, actie.toets, actieLijst);
   }
   // geen acties, dan is spel voorbij
   if (acties.length === 0) {

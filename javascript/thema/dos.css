@@ -1,5 +1,6 @@
 :root {
     --inspring: calc(0.54526em * 2);
+    --inspring-lijst: calc(0.54526em * 3);
 }
 @font-face {
     font-family: computerletters;
@@ -20,10 +21,7 @@ table, input, textarea, button {
     font-family: inherit;
 }
 #screen .actie {
-    vertical-align: 50%;
     min-height: 32px;
-    display: flex;
-    align-items: center;
     margin-top: 1em;
 }
 .actie a {
@@ -40,16 +38,19 @@ table, input, textarea, button {
 }
 #screen { transform-origin: top left; }
 
-#screen ul {
+#screen ul:not(.acties) {
     list-style-type: none;
     padding-left: 0;
 }
-#screen ul li {
+#screen ul:not(.acties) li {
     padding-left: var(--inspring);
     text-indent: calc(-1 * var(--inspring));
 }
-#screen ul li::before {
+#screen ul:not(.acties) li::before {
     content: '- '
+}
+#screen ul.acties {
+    padding-left: var(--inspring-lijst);
 }
 p.gesprek {
     padding-left: var(--inspring);
