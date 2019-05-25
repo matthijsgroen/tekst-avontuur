@@ -30,23 +30,36 @@ const interpoleer = zin =>
     .replace(/\$n/g, naam)
     .replace(/#\d{2}/g, num => ` ${spelToestand[parseInt(num.slice(1), 10)]}`);
 
+let vorigeZin = "";
 const tekst = async (verteller, zin, eerderGelezen) => {
   const MAX_LENGTH = Math.min(process.stdout.columns, 80);
   const inGesprek = /^.*: '/.test(zin);
+
   color(verteller);
   const indent = zin.match(/^\s*/)[0].length;
   const plakIndent = inGesprek ? 2 : indent;
   const regels =
-    " ".repeat(indent) +
+    (vorigeZin.length === 0 ? " ".repeat(indent) : " ") +
     zin
       .slice(indent)
       .split(" ")
       .reduce(
         (regels, woord) => {
           const laatsteRegel = regels.slice(-1)[0];
-          return (laatsteRegel + " " + woord + plakIndent).length > MAX_LENGTH
-            ? [...regels, woord]
-            : [...regels.slice(0, -1), (laatsteRegel + " " + woord).trim()];
+          if (
+            (laatsteRegel + " " + woord).length +
+              plakIndent +
+              vorigeZin.length >=
+            MAX_LENGTH
+          ) {
+            vorigeZin = "";
+            return [...regels, woord];
+          } else {
+            return [
+              ...regels.slice(0, -1),
+              (laatsteRegel + " " + woord).trim()
+            ];
+          }
         },
         [""]
       )
@@ -56,13 +69,18 @@ const tekst = async (verteller, zin, eerderGelezen) => {
     print(regels[i]);
     await sleep(skip || eerderGelezen ? 0 : 0.02);
   }
-  print("\n");
+  vorigeZin = regels.split("\n").slice(-1)[0];
+  if (zin === "") {
+    print("\n\n");
+    vorigeZin = "";
+  }
 };
 
 const gelezen = [];
 const toonGebeurtenis = async schermData => {
   let verteller = 7;
   skip = false;
+  vorigeZin = "";
   cls();
 
   for (let index = 0; index < schermData.length; index++) {
@@ -204,6 +222,7 @@ const spelLus = async (bestandsNaam, herstarten = false) => {
 
   do {
     await toonGebeurtenis(data.schermData);
+    await print("\n");
     heeftActies = await toonActies(data.actieData);
     if (heeftActies) {
       await bewaarSpel(opslagBestandsNaam, { naam, spelToestand });
