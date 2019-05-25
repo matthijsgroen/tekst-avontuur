@@ -212,6 +212,9 @@ table, input, textarea, button {
     user-select: none;
 }
 #screen { padding: 1em; }
+#screen ul {
+    padding-left: 1.2em;
+}
 
 p.gesprek {
     --inspring: 1em;

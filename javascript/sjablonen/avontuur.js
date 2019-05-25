@@ -48,8 +48,11 @@ const sleep = duration =>
 let actieveKleur = "color7";
 const color = index => (actieveKleur = `color${index}`);
 const print = (tekst, actie) => {
-  const paragrafen = screenElement.getElementsByTagName("p");
-  let parent = paragrafen.item(paragrafen.length - 1);
+  let parent = screenElement.children[screenElement.children.length - 1];
+  if (parent.tagName === "UL") {
+    const items = parent.getElementsByTagName("li");
+    parent = items.item(items.length - 1);
+  }
 
   let container = null;
   if (actie) {
@@ -76,7 +79,7 @@ const print = (tekst, actie) => {
       parent.appendChild(tag);
     }
     if (index < list.length - 1) {
-      const tag = document.createElement("br");
+      const tag = document.createTextNode(" ");
       parent.appendChild(tag);
     }
   });
@@ -115,6 +118,25 @@ const tekst = async (verteller, zin, eerderGelezen) => {
     screenElement.appendChild(paragraaf);
     return;
   }
+  const isLijstItem = zin.match(/^\s*-\s(\S.*)$/);
+  if (isLijstItem) {
+    const parent = screenElement.children[screenElement.children.length - 1];
+    if (parent.tagName === "UL") {
+      const item = document.createElement("li");
+      parent.appendChild(item);
+    } else {
+      const lijst = document.createElement("ul");
+      lijst.setAttribute("class", actieveKleur);
+      const item = document.createElement("li");
+      lijst.appendChild(item);
+      screenElement.appendChild(lijst);
+    }
+    if (parent.tagName === "P" && parent.children.length === 0) {
+      parent.remove();
+    }
+    zin = isLijstItem[1];
+  }
+
   const isGesprek = /^.*: '/.test(zin);
   if (isGesprek) {
     const paragrafen = screenElement.getElementsByTagName("p");
