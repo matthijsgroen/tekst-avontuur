@@ -1592,9 +1592,11 @@
 "*c2", "Lucy komt naar je toe.", ""
 "*c13", "Lucy: 'Zeker! Maar we hebben al van alles liggen hier in de winkel. Kijk gerust eens rond. De prijskaartjes staan er bij. Laat maar weten als je iets moois hebt gezien dat je wilt kopen.'", "&4=0"
 
-"1=15;2=0;4=5", "*c2", "Je kijkt rond in de smederij. Overal staan spullen met een prijskaartje. Je besluit om ze van dichter bij te bekijken. Ondertussen beginnen de smeden met elkaar te praten.", "", "*c13", "Lucy: 'Nee daar geloof ik echt niets van.'"
+"1=15;2=0;4=5", "*c2", "Je kijkt rond in de smederij. Overal staan spullen met een prijskaartje."
+"Je besluit om ze van dichter bij te bekijken. Ondertussen beginnen de smeden met elkaar te praten.", ""
+"*c13", "Lucy: 'Nee daar geloof ik echt niets van.'", ""
 "*c9", "Luk: 'Het is echt waar. Er ligt een schat verborgen hier in de buurt.'", ""
-"*c13", "Lucy: 'Van wie dan?'", "*c11", "Luuk: 'Ik heb het ook gehoord. Er moet daar goud verborgen zijn.'", ""
+"*c13", "Lucy: 'Van wie dan?'", "", "*c11", "Luuk: 'Ik heb het ook gehoord. Er moet daar goud verborgen zijn.'", ""
 "*c13", "Lucy: 'Ssst! Niet zo hard praten, we hebben klanten in de winkel.'", ""
 "*c2", "", "Ze praten fluisterend verder, maar daar kan je niet veel van verstaan."
 "&20=0"
