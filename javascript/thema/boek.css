@@ -196,11 +196,7 @@ table, input, textarea, button {
     text-decoration: none;
 }
 #screen .actie {
-    min-height: 32px;
     margin-top: 1em;
-}
-#screen .actie + .actie {
-    margin-top: 0.5em;
 }
 #width {
     white-space: nowrap;

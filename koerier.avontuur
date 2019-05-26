@@ -688,8 +688,8 @@
 "  Dit was de weg richting het kasteel van de koning, ook al moet ik dan nog een aantal dagen reizen per paard."
 "Hier moet ik een oplossing voor gaan vinden.'", "&"
 "1=8;2=0;4=0;32=0", "*c2", "", "Langs de waterkant ligt een groot stuk witte stof, met rode stippen.", "&"
-"1=8;2=0;4=0;29=1;30=8", "*c2", "", "In je ooghoek langs het water, zie je een paard drinken.", "&"
-"1=8;2=0;4=0;29>1;30=8", "*c2", "", "In je ooghoek langs het water, zie je Teun water drinken.", "&"
+"1=8;2=0;4=0;29=1;30=8;19=0", "*c2", "", "In je ooghoek langs het water, zie je een paard drinken.", "&"
+"1=8;2=0;4=0;29>1;30=8;19=0", "*c2", "", "In je ooghoek langs het water, zie je Teun water drinken.", "&"
 
 "1=8;2=0;4=2;32=0", "*c2"
 "Je klimt langzaam naar beneden naar de waterkant. Wanneer je beneden bent, pak je het grote stuk stof op."
