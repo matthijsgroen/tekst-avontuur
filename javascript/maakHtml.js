@@ -134,8 +134,8 @@ const maakHtml = async (
   const resultaat = htmlBasis
     .replace("<!-- HEAD -->", bovenkant)
     .replace("<!-- BODY -->", onderkant)
-    .replace("<!-- TITEL -->", gegevens.Titel)
-    .replace("<!-- AUTEUR -->", gegevens.Auteur);
+    .replace(new RegExp("<!-- TITEL -->", "g"), gegevens.Titel)
+    .replace(new RegExp("<!-- AUTEUR -->", "g"), gegevens.Auteur);
 
   await schrijfBestand(doel, resultaat, "utf8");
 };

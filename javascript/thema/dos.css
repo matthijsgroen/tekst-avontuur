@@ -48,6 +48,27 @@ table, input, textarea, button {
 #screen ul.acties {
     padding-left: var(--inspring-lijst);
 }
+#opties {
+    padding: 1em;
+    position: absolute;
+    top: calc(30%);
+    left: calc(50% - 10em);
+    width: 20em;
+    border: 6px double white;
+    box-shadow: -2em 2em rgba(0,0,0,0.5);
+    background: black;
+}
+#opties h1 {
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+#opties ul {
+    padding: 0;
+}
+#opties ul li {
+    padding-top: 1em;
+}
+
 p.gesprek {
     padding-left: var(--inspring);
     text-indent: calc(-1 * var(--inspring));

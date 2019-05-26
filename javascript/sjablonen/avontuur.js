@@ -3,21 +3,21 @@ let naam = "";
 let spelToestand = Array(100).fill(0);
 
 const screenElement = document.getElementById("screen");
-const saveButton = document.getElementById("save");
+const menuKnop = document.getElementById("menu");
 confirming = false;
-saveButton.addEventListener("click", () => {
-  if (confirming) {
-    localStorage.removeItem("opslag");
-    localStorage.removeItem(`opslag-${bewaarSleutel}`);
-    document.location.reload();
-  } else {
-    saveButton.textContent = "Druk om reset te bevestigen";
-    confirming = true;
-    setTimeout(() => {
-      saveButton.textContent = "Spel herstarten";
-      confirming = false;
-    }, 10000);
-  }
+menuKnop.addEventListener("click", () => {
+  //if (confirming) {
+  //localStorage.removeItem("opslag");
+  //localStorage.removeItem(`opslag-${bewaarSleutel}`);
+  //document.location.reload();
+  //} else {
+  //menuKnop.textContent = "Druk om reset te bevestigen";
+  //confirming = true;
+  //setTimeout(() => {
+  //menuKnop.textContent = "Spel herstarten";
+  //confirming = false;
+  //}, 10000);
+  //}
 });
 
 const widthRuler = document.getElementById("width");
