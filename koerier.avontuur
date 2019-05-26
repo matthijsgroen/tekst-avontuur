@@ -826,7 +826,7 @@
 "*c9", "Thorin: 'Mensen praten over mijn mijn! Zeker weten! Deze mijn is MIJN grote schat.'"
 "", "*c2", "Thorin heeft duidelijk het idee dat je iets anders bedoeld.", "&4=0"
 
-"1=11;2=0;11=2;24=4;25=3", "*c2", "Thorin staat op, en loopt de mijn in."
+"1=11;2=0;11=2;24=4;25=3", "", "*c2", "Thorin staat op, en loopt de mijn in."
 "Met nieuwe energie en een gerepareerde houweel, gaat hij op de edelstenen inhakken.", ""
 "*c9", "Thorin: 'Hei ho, Hei ho....'", "*c2", ""
 "Stukken edelsteen vallen op de grond. Een stuk rolt naar je toe.", ""
@@ -2163,7 +2163,7 @@
 "2=1;1!0", "Sluit tas", "2=0;4=0"
 
 '== 1. Groene Bos acties
-"2=0;1=1;4=0;19=1;29=3", "Spring op paard", "2=2"
+"2=0;1=1;4=0;19=1;29=3;k=p;c=8", "Spring op paard", "2=2"
 "2=0;1=1;4=0;21=0", "Raap de tak op", "4=1"
 "2=0;1=1;4=0;54=1", "Ga op zoek naar mossen", "4=2"
 "2=0;1=1;4=0;k=o", "Ga naar het oosten, richting de akkers", "1=2;3=2"
@@ -2177,7 +2177,7 @@
 "2=0;1=1;4=2", "Stop met bestuderen van de mossen", "4=0;20=1"
 
 '== 2. Akker acties
-"2=0;1=2;4=0;19=1;29=3", "Spring op paard", "2=2"
+"2=0;1=2;4=0;19=1;29=3;k=p;c=8", "Spring op paard", "2=2"
 "2=0;1=2", "Loop naar de boerderij", "1=13;3=5;4=0"
 "2=0;1=2;19=1;29=2;k=w", "Ga naar het westen, richting het groene bos", "4=1"
 "2=0;1=2;19=1;29>2;k=w", "Ga naar het westen, richting het groene bos", "1=1;3=4;4=0"
@@ -2185,7 +2185,7 @@
 "2=0;1=2;k=z", "Ga naar het zuiden, richting het dorp", "1=6;3=3;4=0"
 
 '== 3. Heuvel acties
-"2=0;1=3;19=1;29=3", "Spring op paard", "2=2"
+"2=0;1=3;19=1;29=3;k=p;c=8", "Spring op paard", "2=2"
 "2=0;1=3", "Volg het pad naar de mijn", "1=11;4=0;3=5"
 "2=0;1=3", "Wandel naar de molen", "1=14;4=0;3=6"
 "2=0;1=3;k=o", "Ga naar het oosten, richting het groene bos", "1=1;3=2"
@@ -2193,7 +2193,7 @@
 "2=0;1=3;19=1;29=4;k=z", "Ga naar het zuiden, richting het moeras", "4=1"
 
 '== 4. Moeras acties
-"2=0;1=4;19=1;29=3;4!1", "Spring op paard", "2=2"
+"2=0;1=4;19=1;29=3;4!1;k=p;c=8", "Spring op paard", "2=2"
 "2=0;1=4;4=0;26>1", "Loop richting de hut", "1=12;3=5"
 "2=0;1=4;4=0;26>1", "Bekijk de planten", "4=1;20=0"
 "2=0;1=4;4=0;k=n", "Ga naar het noorden, richting de heuvels", "1=3;3=1"
@@ -2205,7 +2205,7 @@
 "2=0;1=4;4=1", "Stop met bestuderen van de planten", "4=0;20=1"
 
 '== 6. Dorp Acties
-"2=0;1=6;4=0;19=1;29=3;30=6", "Spring op paard", "2=2"
+"2=0;1=6;4=0;19=1;29=3;30=6;k=p;c=8", "Spring op paard", "2=2"
 "2=0;1=6", "Wandel naar de bakkerij", "1=16;4=0;3=5"
 "2=0;1=6", "Wandel naar de smederij", "1=15;4=0;3=6"
 "2=0;1=6;k=n", "Ga naar het noorden, richting de akkers", "1=2;3=1"
@@ -2213,7 +2213,7 @@
 "2=0;1=6;k=z", "Ga naar het zuiden, richting de rivier", "1=8;3=3"
 
 '== 7. Donker woud acties
-"2=0;1=7;4=0;7!1;19=1;29=3", "Spring op paard", "2=2"
+"2=0;1=7;4=0;7!1;19=1;29=3;k=p;c=8", "Spring op paard", "2=2"
 "2=0;1=7;4=0;7=2;26>3", "Ga op zoek naar paddestoelen", "4=1"
 "2=0;1=7;4=0;7=2", "Ga naar de toren van de draak", "1=18;3=6"
 "2=0;1=7;4=0;7!1;k=w", "Ga naar het westen, richting het dorp", "1=6;3=4"
@@ -2226,7 +2226,7 @@
 "2=0;1=7;4=1;7=2", "Loop terug naar het pad", "4=0;20=1"
 
 '== 8. Rivier acties
-"2=0;1=8;4=0;19=1;29=3;30=8", "Spring op paard", "2=2"
+"2=0;1=8;4=0;19=1;29=3;30=8;k=p;c=8", "Spring op paard", "2=2"
 "2=0;1=8;4=0;19=1;29>1;30=8", "Laat teun water drinken", "19=0"
 "2=0;1=8;29=1", "Probeer paard te benaderen", "4=1"
 "2=0;1=8;29>1;19=0;30=8", "Haal teun op", "4=3"
@@ -2272,7 +2272,7 @@
 "2=0;1=9;9=20", "Wacht tot het weer licht is", "1=8;4=0;34=4;9=0;20=1;3=7"
 
 '== 11. Mijn Acties
-"2=0;1=11;4=0;19=1;29=3", "Spring op paard", "2=2"
+"2=0;1=11;4=0;19=1;29=3;k=p;c=8", "Spring op paard", "2=2"
 "2=0;1=11;11=1;4=0", "Zeg: 'Je bent zelf een stom ding!'", "4=1"
 "2=0;1=11;11=1;4=0", "Zeg: 'Pardon?'", "4=2"
 "2=0;1=11;11=1;4=0", "Zeg: 'Ok ik ga weer.'", "1=3;3=5"
@@ -2376,7 +2376,7 @@
 "2=0;1=12;12=3;6=4", "Sluit het boek", "4=0;51=0;20=0;6=2"
 
 '== 13. Boerderij
-"2=0;1=13;4=0;19=1;29=3", "Spring op paard", "2=2"
+"2=0;1=13;4=0;19=1;29=3;k=p;c=8", "Spring op paard", "2=2"
 "2=0;1=13;13=0;4=0", "Praat met de boer", "4=1"
 "2=0;1=13;13>0;4=0", "Zeg: 'Kan ik helpen blussen?'", "4=1"
 "2=0;1=13;13=1;4=0;29<2", "Zeg: 'Hoe zou ik uw paard kunnen vinden?'", "4=2"
@@ -2392,7 +2392,7 @@
 "2=0;1=13;13>0;4=0", "Loop terug naar de weg", "1=2;3=5"
 
 '== 14. Molen
-"2=0;1=14;4=0;19=1;29=3", "Spring op paard", "2=2"
+"2=0;1=14;4=0;19=1;29=3;k=p;c=8", "Spring op paard", "2=2"
 "2=0;1=14;19=0;4=0", "Zeg: 'Weet u hoe ik aan vervoer kan komen?'", "4=1"
 "2=0;1=14;4=0", "Zeg: 'Weet u hoe ik aan medicijnen kan komen?'", "4=2"
 "2=0;1=14;14=1;4=0", "Zeg: 'Wat was er ook alweer nodig om de molen te maken?'", "4=4"
@@ -2503,7 +2503,7 @@
 "2=1;1=17;17=2;31=1;6=2;44=4", "Knoop touw aan molensteen", "4=12;2=0"
 
 ' == 18. Onderkant toren
-"2=0;1=18;4=0;19=1;29=3", "Spring op paard", "2=2"
+"2=0;1=18;4=0;19=1;29=3;k=p;c=8", "Spring op paard", "2=2"
 "2=0;1=18;4=0;19=1;29=4;44=2", "Til molensteen op de lift", "4=1"
 "2=0;1=18;4=0", "Ga de toren in", "1=17;3=5"
 "2=0;1=18;4=0;45<2;43=2;26>4", "Bekijk het puin van de lift", "4=3"
