@@ -338,8 +338,11 @@ const spelLus = async () => {
     heeftActies = await toonActies();
     bewaarSpel();
     skip = false;
-    // -- template:eindLus
+    if (heeftActies) {
+      // -- template:eindLus
+    }
   } while (heeftActies);
   // Spel afgelopen
+  // -- template:eindSpel
 };
 spelLus();

@@ -915,12 +915,13 @@
 "", "*c13", "Eucalypta: 'Die halsketting is super! Dit gaat een geweldig kado voor mijn dochter zijn!"
 "  Momentje, dan schrijf ik een lijstje met benodigdheden.'"
 "*c2", "", "Eucalypta gaat naar binnen en doet de deur dicht."
-"Even later komt ze terug en geeft ze je een lijstje met benodigheden.", ""
+"Even later komt ze terug en geeft ze je een lijstje met benodigheden.", "", "&"
 
 "1=12;12=1;2=0;4=2;34=8;0=2", "*c13"
 "Eucalypta: 'Hier, dit heb ik allemaal nodig."
 "  Er zit wel een lastig ingrediënt bij, maar een sterke vrouw zoals jij krijgt dat wel voor elkaar.'"
 "&4=0;34=9;26=4"
+
 "1=12;12=1;2=0;4=2;34=8;0=1", "*c13"
 "Eucalypta: 'Hier, dit heb ik allemaal nodig."
 "  Er zit wel een lastig ingrediënt bij, maar een sterke man zoals jij krijgt dat wel voor elkaar.'"
@@ -1959,7 +1960,7 @@
 "", "*c14", "<slobber!>", "*c2", ""
 "De draak eet zo de taart op.", "&4=0;52=2"
 
-"1=17;2=0;17=2;4=17;6=1;33!5", "*c2", "Je haalt het grote zadel uit je tas. De draak kijkt naar het zadel, en geeft een blik van herkenning. Als je het zadel op hem wil leggen, dan briest hij licht en draait zich een beetje."
+"1=17;2=0;17=2;4=17;6=1;33!5", "*c2", "Je haalt het grote zadel uit je tas. De draak kijkt naar het zadel en geeft een blik van herkenning. Als je het zadel op hem wil leggen, dan briest hij licht en draait zich een beetje."
 "", "Hij wil het zadel niet dragen.", "&4=0"
 
 "1=17;2=0;17=2;4=17;6=1;33=5;53<5", "*c2", "Je haalt het grote zadel uit je tas. De draak kijkt naar het zadel, en geeft een blik van herkenning."
@@ -1995,7 +1996,7 @@
 "1=17;2=0;17=2;4=20;6=1;5=1", "*c3", "$n: 'Waar ga je naar toe?'"
 "", "*c9", "Dins: 'Ik ben op zoek naar iemand om mij te helpen.'"
 "", "*c3", "$n: 'Wat voor hulp heb je nodig?'"
-"", "*c9", "Dins: 'Dat kan ik niet vertellen...'"
+"", "*c9", "Dins: 'Dat kan ik niet vertellen...'", ""
 "*s2", "*c9", "Dins: '... toch zou het wel fijn zijn als je met mij meeging.'"
 "&"
 "1=17;2=0;17=2;4=20;6=1;5=1;53=1", "&53=2"
@@ -2049,7 +2050,7 @@
 "Einde van dit deel."
 ""
 ""
-"Gemaakt voor Hiddo en Jinte"
+"Gemaakt voor Hiddo en Jinte."
 "&2=0;1=20;20=0;2=4"
 
 ' == 18. Onderkant toren
@@ -2442,7 +2443,7 @@
 "2=0;1=16;16=1;4=0;25<2;25>0", "Zeg: 'Ik wil graag koeken kopen'", "4=3"
 "2=0;1=16;16=1;4=0;26>0;34>0;36=0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
 "2=0;1=16;16=1;4=0;26>0;33<3", "Zeg: 'Waarom is uw toonbank leeg?'", "4=6"
-"2=0;1=16;16=1;4=0;46=1", "Praat met bloem", "4=9"
+"2=0;1=16;16=1;4=0;46=1", "Praat met Bloem", "4=9"
 "2=0;1=16;16=1;4=0;33=2", "Zeg: 'Ik heb meel gehaald'", "4=7"
 "2=0;1=16;16=1;4=0", "Verlaat de bakkerij", "1=6;3=5;4=0"
 "2=0;1=16;16=1;4=1;26=0", "Zeg: 'Monster? Waar heeft u het over?'", "4=4"
