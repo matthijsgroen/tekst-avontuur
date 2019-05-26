@@ -85,7 +85,7 @@ table, input, textarea, button {
     position: absolute;
     z-index: 2;
     transform-origin: top left;
-    transition: transform 3s ease-in-out 0s;
+    transition: transform 3s ease-in-out 1s;
     transform: rotateY(0deg);
     perspective: 100px;
     transform-style: preserve-3d;
@@ -110,7 +110,7 @@ table, input, textarea, button {
     position: absolute;
     z-index: -1;
     transform-origin: top left;
-    transition: transform 3s ease-in-out 0s;
+    transition: transform 3s ease-in-out 1s;
     transform: rotateY(0deg);
     perspective: 100px;
     transform-style: preserve-3d;
@@ -125,6 +125,20 @@ table, input, textarea, button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.kaft h2.bedankt {
+    opacity: 0;
+    color: gold;
+    height: calc(50% - 4em);
+    margin-top: 4em;
+    padding-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 5s 4s;
+}
+.kaft h2.bedankt.zichtbaar {
+    opacity: 1;
 }
 .kaft p {
     text-align: center;
@@ -144,7 +158,7 @@ table, input, textarea, button {
 .kaft.open + .binnen-pagina {
     transform: rotateY(-180deg);
 }
-.kaft.open form {
+.kaft.ingevuld form {
     opacity: 0;
 }
 
@@ -213,6 +227,20 @@ p.gesprek {
     --inspring: 1em;
     padding-left: var(--inspring);
     text-indent: calc(-1 * var(--inspring));
+}
+p.einde {
+    text-align: center;
+    color: #555;
+}
+p.einde a.verberg {
+    opacity: 0;
+    display: inline;
+}
+p.einde a {
+    text-decoration: none;
+    color: #555;
+    opacity: 1;
+    transition: opacity 1s 0s;
 }
 .color0 { color: #ffffff; }
 .color1 { color: #565cfb; }

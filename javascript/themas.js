@@ -14,7 +14,8 @@ const boekThema = {
   javascript: "thema/boek.js",
   haken: {
     startSpel: "startSpel",
-    eindLus: "cls"
+    eindLus: "cls",
+    eindSpel: "eindSpel"
   },
   opties: ({ kaft = "rood" }) => ({
     css: kaftKleur(kaftKleuren[kaft])

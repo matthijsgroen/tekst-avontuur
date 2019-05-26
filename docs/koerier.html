@@ -134,9 +134,9 @@ table, input, textarea, button {
     z-index: 2;
     -webkit-transform-origin: top left;
             transform-origin: top left;
-    transition: -webkit-transform 3s ease-in-out 0s;
-    transition: transform 3s ease-in-out 0s;
-    transition: transform 3s ease-in-out 0s, -webkit-transform 3s ease-in-out 0s;
+    transition: -webkit-transform 3s ease-in-out 1s;
+    transition: transform 3s ease-in-out 1s;
+    transition: transform 3s ease-in-out 1s, -webkit-transform 3s ease-in-out 1s;
     -webkit-transform: rotateY(0deg);
             transform: rotateY(0deg);
     -webkit-perspective: 100px;
@@ -166,9 +166,9 @@ table, input, textarea, button {
     z-index: -1;
     -webkit-transform-origin: top left;
             transform-origin: top left;
-    transition: -webkit-transform 3s ease-in-out 0s;
-    transition: transform 3s ease-in-out 0s;
-    transition: transform 3s ease-in-out 0s, -webkit-transform 3s ease-in-out 0s;
+    transition: -webkit-transform 3s ease-in-out 1s;
+    transition: transform 3s ease-in-out 1s;
+    transition: transform 3s ease-in-out 1s, -webkit-transform 3s ease-in-out 1s;
     -webkit-transform: rotateY(0deg);
             transform: rotateY(0deg);
     -webkit-perspective: 100px;
@@ -186,6 +186,20 @@ table, input, textarea, button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.kaft h2.bedankt {
+    opacity: 0;
+    color: gold;
+    height: calc(50% - 4em);
+    margin-top: 4em;
+    padding-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 5s 4s;
+}
+.kaft h2.bedankt.zichtbaar {
+    opacity: 1;
 }
 .kaft p {
     text-align: center;
@@ -207,7 +221,7 @@ table, input, textarea, button {
     -webkit-transform: rotateY(-180deg);
             transform: rotateY(-180deg);
 }
-.kaft.open form {
+.kaft.ingevuld form {
     opacity: 0;
 }
 
@@ -298,6 +312,20 @@ p.gesprek {
     --inspring: 1em;
     padding-left: var(--inspring);
     text-indent: calc(-1 * var(--inspring));
+}
+p.einde {
+    text-align: center;
+    color: #555;
+}
+p.einde a.verberg {
+    opacity: 0;
+    display: inline;
+}
+p.einde a {
+    text-decoration: none;
+    color: #555;
+    opacity: 1;
+    transition: opacity 1s 0s;
 }
 .color0 { color: #ffffff; }
 .color1 { color: #565cfb; }
@@ -403,6 +431,7 @@ button:focus {
               <input type="text" id="naam" autofocus placeholder="Wat is je naam?" autocomplete="off" />
               <button type="submit">Ok</button>
           </form>
+          <h2 class="bedankt">Bedankt voor het spelen!</h2>
       </div>
       <div class="binnen-pagina">
       </div>
@@ -429,7 +458,25 @@ const cls = async () => {
 };
 
 const startSpel = () => {
-  document.getElementsByClassName("kaft")[0].classList.add("open");
+  document.getElementsByClassName("kaft")[0].classList.add("open", "ingevuld");
+};
+
+const eindSpel = () => {
+  const paragraaf = document.createElement("p");
+  paragraaf.classList.add("einde");
+  const linkTag = document.createElement("a");
+  const textNode = document.createTextNode("Sluit boek");
+  linkTag.appendChild(textNode);
+  linkTag.setAttribute("href", "#");
+  linkTag.addEventListener("click", e => {
+    e.preventDefault();
+    linkTag.classList.add("verberg");
+    document.getElementsByClassName("kaft")[0].classList.remove("open");
+    document.getElementsByClassName("bedankt")[0].classList.add("zichtbaar");
+    return false;
+  });
+  paragraaf.appendChild(linkTag);
+  screenElement.appendChild(paragraaf);
 };
 let skip = false;
 let naam = "";
@@ -776,7 +823,7 @@ const spelLus = async () => {
     }
   } while (heeftActies);
   // Spel afgelopen
-  // -- template:eindSpel
+  await eindSpel();
 };
 spelLus();
 </script><img src="https://api.stathat.com/c?ukey=MTYzNDIglcA9CQJd4iuFZ02UI1NeFQ~~&key=0votUCE7GFkhPw8ZrSAGdCBDdFhz&count=1" style="display:none;" width="1" height="1">
