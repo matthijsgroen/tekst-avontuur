@@ -26,10 +26,12 @@ widthRuler.textContent =
 
 const resizeFont = () => {
   document.body.setAttribute("style", `font-size: 1rem;`);
+  widthRuler.setAttribute("style", "display: block;");
   let screenWidth = screenElement.getBoundingClientRect().width;
   let lineWidth = widthRuler.getBoundingClientRect().width;
   const scale = Math.max(screenWidth / lineWidth, 1);
   document.body.setAttribute("style", `font-size: ${scale}rem;`);
+  widthRuler.setAttribute("style", "display: none;");
 };
 
 window.addEventListener("resize", () => setTimeout(resizeFont, 100));
