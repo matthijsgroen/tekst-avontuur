@@ -1814,14 +1814,14 @@
 
 "1=17;2=0;17=0;4=4", "*c2", "Met je zwaard in je hand zet je je schrap. Je duwt hard de deur open en stormtde kamer in. Je ziet een gigantische draak op de vloer liggen. Hij heeft een enorme staart, enorme vleugels en grote tanden."
 "Aan de andere kant van de kamer zie je een jonge vrouw staan."
-"", "*c13", "Dame: 'He! Wie ben jij? En wat doe jij hier? Doe dat zwaard eens snel weg!"
+"", "*c13", "Bloem: 'He! Wie ben jij? En wat doe jij hier? Doe dat zwaard eens snel weg!"
 "  Straks bezeer je nog iemand!'", "", "*c2", "Je staat perplex", "", "*c13"
 "Bloem: 'Ja jij! Wat kom je doen? Het is al moeilijk genoeg zo!'"
 "", "*c2", "Moeilijk genoeg? waar heeft ze het over?", "Je bergt je zwaard maar op."
 "&17=1;4=0;5=0;7=2"
 
 "1=17;2=0;17=1;4=1", "*c3", "$n: 'Ben jij Bloem? De dochter van de bakker?'"
-"", "*c13", "Bloem: 'Ja dat ben ik. En wie ben jij?'", "*c3", "", "$n: 'Ik ben $n, ik kom je redden!'"
+"", "*c13", "Bloem: 'Ja dat ben ik. En wie ben jij?'", "*c3", "", "$n: 'Ik ben $n, ik kom je redden!'", ""
 "*c13", "Bloem: 'Mij redden? Waarom? Ik hoef niet gered te worden. Ik ben hier zelf naar toe gegaan. We moeten de draak redden!'", "&"
 
 "1=17;2=0;17=2;4=1;45=0", "*c13", "Bloem: 'Hoi $n, kom je me helpen met de kiespijn?'", "&20=0"
@@ -1838,10 +1838,12 @@
 "Bloem: 'Als je iemand hier wil komen redden, dan kan je me mooi helpen met het redden van deze draak!'", "&"
 
 "1=17;2=0;17=1;4=4", "*c3", "$n: 'De draak moet gered worden?'"
-"", "*c13", "Bloem: 'Ja, hoor je dat vreselijke gebrul dan niet? Het arme dier heeft vreselijke tandpijn. Zijn tand moet getrokken worden, maar het lukt me niet.'"
+"", "*c13", "Bloem: 'Ja, hoor je dat vreselijke gebrul dan niet? Het arme dier heeft vreselijke"
+"tandpijn. Zijn tand moet getrokken worden, maar het lukt me niet.'"
 "&17=2;4=1"
 
-"1=17;2=0;17=2;4=0;6=0", "*c2", "Je staat bovenin de toren. Je ziet een grote opening in de buitenmuur met een lift.", "&"
+"1=17;2=0;17=2;4=0;6=0", "*c2", "Je staat bovenin de toren. Je ziet een grote opening in de"
+"buitenmuur met een lift.", "&"
 "1=17;2=0;17=2;4=0;6=0;46=0", "De dochter van de bakker, Bloem, is hier.", "&"
 "1=17;2=0;17=2;4=0;6=0;45=0", "Een grote draak ligt op de grond te brullen van de pijn."
 "", "*c12", "<GGGrrrroaaaaaarrrrgh!>", "&20=1"
@@ -1852,17 +1854,24 @@
 "1=17;2=0;17=2;4=0;6=0;31=4", "", "*c2", "Een touw loopt van de molensteen naar de zere tand van de draak.", "&"
 
 "1=17;2=0;17=2;4=2", "*c3", "$n: 'Hoe kan ik je helpen?'"
-"", "*c13", "Bloem: 'We moeten iets bedenken om zijn tand eruit te krijgen. Ik studeer voor tandarts. Met zoveel mensen die taartjes eten bij mijn vader moet er werk genoeg zijn voor mij. Nooit gedacht dat mijn eerste klant een draak zou zijn."
-"", "  Het probleem met een draak is dat alles groter en sterker is dan bij mensen."
-"  Bij mensen kun je een tand eruit trekken met een touwtje aan een deur en dan de deur dichtslaan. Wij moeten iets groters gaan bedenken hier."
+"", "*c13", "Bloem: 'We moeten iets bedenken om zijn tand eruit te krijgen. Ik studeer"
+"  voor tandarts. Met zoveel mensen die taartjes eten bij mijn vader moet er"
+"  werk genoeg zijn voor mij. Nooit gedacht dat mijn eerste klant een draak zou zijn.'"
+"", "Bloem: 'Het probleem met een draak is dat alles groter en sterker is dan bij mensen."
+"  Bij mensen kun je een tand eruit trekken met een touwtje aan een deur en dan"
+"  de deur dichtslaan. Wij moeten iets groters gaan bedenken hier."
 "  Kan jij een zware steen regelen?'"
 "&4=1"
 
 "1=17;2=0;17=2;4=3;45=0", "*c3", "$n: 'Je moet meekomen, je vader is hartstikke ongerust!'"
-"", "*c13", "Bloem: 'Mijn vader? Gerst kan alleen goed bakken en geeft alleen om geld. Ik blijf hier totdat ik de draak heb kunnen helpen. Hij had toch ook zelf hier naar toe kunnen komen? Daarom heeft hij jou waarschijnlijk gestuurd, omdat hij niet een echte ridder kon betalen.'", "&4=1"
+"", "*c13", "Bloem: 'Mijn vader? Gerst kan alleen goed bakken en geeft alleen om geld."
+"  Ik blijf hier totdat ik de draak heb kunnen helpen. Hij had toch ook zelf hier"
+"  naar toe kunnen komen? Daarom heeft hij jou waarschijnlijk gestuurd, omdat hij niet"
+"  een echte ridder kon betalen.'", "&4=1"
 
 "1=17;2=0;17=2;4=3;45!0", "*c3", "$n: 'Je moet meekomen, je vader is hartstikke ongerust!'"
-"", "*c13", "Bloem: 'Ja, je hebt gelijk. Die tand trekken was echt super! Mijn carriere voor tandarts maakt zo wel een geweldige start, denk je niet?'"
+"", "*c13", "Bloem: 'Ja, je hebt gelijk. Die tand trekken was echt super! Mijn carriere"
+"  voor tandarts maakt zo wel een geweldige start, denk je niet?'"
 "", "Bloem: 'Nou dan ga ik nu wel naar de bakkerij. Zie ik je later misschien daar weer?'"
 "", "*c2", "Bloem geeft je jou en de draak een knuffel en gaat de toren uit richting de bakkerij.", "&4=0;46=1;20=1"
 
