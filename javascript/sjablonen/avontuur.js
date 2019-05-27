@@ -12,6 +12,7 @@ const h = (tagName, attributes = {}, children = []) => {
   const element = document.createElement(tagName);
   []
     .concat(children)
+    .filter(Boolean)
     .forEach(child =>
       typeof child === "string"
         ? element.appendChild(document.createTextNode(child))
@@ -336,8 +337,6 @@ const spelLus = async () => {
     bewaarSpel();
   }
 
-  const menu = document.querySelector(".menu");
-  menu.classList.remove("verberg");
   let heeftActies;
 
   do {

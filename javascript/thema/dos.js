@@ -1,67 +1,54 @@
 const cls = () => (screenElement.innerHTML = "");
-const startSpel = () => document.getElementById("welkom").remove();
+const startSpel = () => {
+  document.getElementById("welkom").remove();
+  setTimeout(() => {
+    const menu = document.querySelector(".menu");
+    menu && menu.classList.remove("verberg");
+  }, 0);
+};
 
 document.addEventListener("DOMContentLoaded", function() {
-  const menuKnop = document.getElementById("menu");
-  const opties = document.getElementById("opties");
-  const [
-    infoLink,
-    herstartenLink,
-    sluitenLink,
-    resetLink,
-    annuleerResetLink,
-    sluitInfoLink
-  ] = opties.getElementsByTagName("A");
+  let menuRef = null;
+  const menu = () => menuRef;
 
+  const sluitMenu = () => menu().classList.remove("zichtbaar");
   const maakMenuActief = index => {
-    for (let i = 0; i < opties.children.length; i++) {
-      const child = opties.children[i];
+    for (let i = 0; i < menu().children.length; i++) {
+      const child = menu().children[i];
       i == index
         ? child.classList.add("actief")
         : child.classList.remove("actief");
     }
   };
 
-  menuKnop.addEventListener("click", () => {
-    opties.classList.add("zichtbaar");
-    maakMenuActief(0);
-  });
-  sluitenLink.addEventListener("click", () => {
-    opties.classList.remove("zichtbaar");
-  });
+  const optie = (naam, handler) => {
+    const onClick = e => {
+      e.preventDefault();
+      handler();
+    };
+    return h("li", {}, h("a", { href: "#", class: "color7", onClick }, naam));
+  };
 
-  herstartenLink.addEventListener("click", () => {
-    maakMenuActief(1);
-  });
-  annuleerResetLink.addEventListener("click", () => {
-    maakMenuActief(0);
-  });
-  resetLink.addEventListener("click", () => {
-    resetSpel();
-  });
+  const hoofdMenu = h("div", { class: "actief" }, [
+    h("h1", { class: "color14" }, gegevens.Titel),
+    h("p", { class: "color7" }, `Geschreven door ${gegevens.Auteur}`),
+    h("ul", {}, [
+      optie("Info", () => {
+        maakMenuActief(1);
+      }),
+      optie("Herstarten", () => {
+        maakMenuActief(2);
+      }),
+      optie("Sluiten", () => sluitMenu())
+    ])
+  ]);
 
-  infoLink.addEventListener("click", () => {
-    maakMenuActief(2);
-  });
-  sluitInfoLink.addEventListener("click", () => {
-    maakMenuActief(0);
-  });
-
-  const info = document.getElementById("spelInfo");
-  if (gegevens.Titel) {
-    info.appendChild(h("h1", { class: "color14" }, gegevens.Titel));
-  }
-  if (gegevens.Omschrijving) {
-    info.appendChild(h("p", {}, gegevens.Omschrijving));
-  }
-  if (gegevens.Versie) {
-    info.appendChild(h("p", {}, `Versie: ${gegevens.Versie}`));
-  }
-  if (gegevens.Datum) {
-    info.appendChild(h("p", {}, `Datum: ${gegevens.Datum}`));
-  }
-  if (gegevens.Email) {
-    info.appendChild(
+  const infoMenu = h("div", {}, [
+    gegevens.Titel && h("h1", { class: "color14" }, gegevens.Titel),
+    gegevens.Omschrijving && h("p", {}, gegevens.Omschrijving),
+    gegevens.Versie && h("p", {}, `Versie: ${gegevens.Versie}`),
+    gegevens.Datum && h("p", {}, `Datum: ${gegevens.Datum}`),
+    gegevens.Email &&
       h("p", {}, [
         "Email: ",
         h(
@@ -69,11 +56,8 @@ document.addEventListener("DOMContentLoaded", function() {
           { class: "color9", href: `mailto:${gegevens.Email}` },
           gegevens.Email
         )
-      ])
-    );
-  }
-  if (gegevens.Twitter) {
-    info.appendChild(
+      ]),
+    gegevens.Twitter &&
       h("p", {}, [
         "Twitter: ",
         h(
@@ -81,8 +65,45 @@ document.addEventListener("DOMContentLoaded", function() {
           { class: "color9", href: `https://twitter.com/${gegevens.Twitter}` },
           gegevens.Twitter
         )
-      ])
-    );
-  }
+      ]),
+    h("ul", {}, [optie("Terug", () => maakMenuActief(0))])
+  ]);
+
+  const herstartMenu = h("div", {}, [
+    h(
+      "p",
+      { class: "color12" },
+      "Dit herstart het spel en verwijderd alle voortgang!"
+    ),
+    h("p", { class: "color7" }, "Weet je het zeker?"),
+    h("ul", {}, [
+      optie("Herstarten", () => {
+        resetSpel();
+      }),
+      optie("Terug", () => maakMenuActief(0))
+    ])
+  ]);
+
+  const opties = h("div", { id: "opties", class: "opties" }, [
+    hoofdMenu,
+    infoMenu,
+    herstartMenu
+  ]);
+  menuRef = opties;
+
   console.log(gegevens);
+
+  const openMenu = e => {
+    e.preventDefault();
+    opties.classList.add("zichtbaar");
+    maakMenuActief(0);
+  };
+
+  const menuKnop = h(
+    "div",
+    { class: "menu verberg" },
+    h("button", { id: "menu", onClick: openMenu }, "Menu")
+  );
+  document.body.appendChild(menuKnop);
+  document.body.appendChild(opties);
 });
