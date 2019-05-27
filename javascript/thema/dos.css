@@ -51,12 +51,26 @@ table, input, textarea, button {
 #opties {
     padding: 1em;
     position: absolute;
-    top: calc(30%);
+    top: 2em;
     left: calc(50% - 10em);
-    width: 20em;
-    border: 6px double white;
-    box-shadow: -2em 2em rgba(0,0,0,0.5);
+    max-width: 20em;
+    overflow-y: scroll;
+    max-height: calc(100% - 6em);
+    width: calc(100% - 6em);
+    border: 6px double #aaaaaa;
+    box-shadow: calc(var(--inspring) * -1) 1.5em rgba(0,0,0,0.5);
     background: black;
+    display: none;
+    color: #aaaaaa;
+}
+#opties.zichtbaar {
+    display: block;
+}
+#opties > div {
+    display: none;
+}
+#opties > div.actief {
+    display: block;
 }
 #opties h1 {
     font-size: 1em;
@@ -64,6 +78,7 @@ table, input, textarea, button {
 }
 #opties ul {
     padding: 0;
+    list-style-type: none;
 }
 #opties ul li {
     padding-top: 1em;

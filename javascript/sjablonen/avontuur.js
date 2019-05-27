@@ -2,23 +2,34 @@ let skip = false;
 let naam = "";
 let spelToestand = Array(100).fill(0);
 
+const resetSpel = () => {
+  localStorage.removeItem("opslag");
+  localStorage.removeItem(`opslag-${bewaarSleutel}`);
+  document.location.reload();
+};
+
+const h = (tagName, attributes = {}, children = []) => {
+  const element = document.createElement(tagName);
+  []
+    .concat(children)
+    .forEach(child =>
+      typeof child === "string"
+        ? element.appendChild(document.createTextNode(child))
+        : element.appendChild(child)
+    );
+
+  Object.entries(attributes).forEach(([key, value]) => {
+    const handler = key.match(/^on(.*)$/);
+    if (handler) {
+      element.addEventListener(handler[1].toLowerCase(), value);
+    } else {
+      element.setAttribute(key, value);
+    }
+  });
+  return element;
+};
+
 const screenElement = document.getElementById("screen");
-const menuKnop = document.getElementById("menu");
-confirming = false;
-menuKnop.addEventListener("click", () => {
-  //if (confirming) {
-  //localStorage.removeItem("opslag");
-  //localStorage.removeItem(`opslag-${bewaarSleutel}`);
-  //document.location.reload();
-  //} else {
-  //menuKnop.textContent = "Druk om reset te bevestigen";
-  //confirming = true;
-  //setTimeout(() => {
-  //menuKnop.textContent = "Spel herstarten";
-  //confirming = false;
-  //}, 10000);
-  //}
-});
 
 const widthRuler = document.getElementById("width");
 widthRuler.textContent =
@@ -50,30 +61,33 @@ const sleep = duration =>
 let actieveKleur = "color7";
 const color = index => (actieveKleur = `color${index}`);
 const printActie = (tekst, actie, parent) => {
-  const lijstItem = document.createElement("li");
-  lijstItem.classList.add("actie", actieveKleur);
+  const props = { class: `actie ${actieveKleur}` };
   if (/^[a-z]$/.test(actie)) {
-    lijstItem.setAttribute("style", "list-style-type: lower-alpha;");
-    lijstItem.setAttribute("value", `${actie.charCodeAt(0) - 96}`);
+    props.style = "list-style-type: lower-alpha;";
+    props.value = `${actie.charCodeAt(0) - 96}`;
   }
   if (/^[0-9]$/.test(actie)) {
-    lijstItem.setAttribute("style", "list-style-type: decimal;");
-    lijstItem.setAttribute("value", `${actie.charCodeAt(0) - 48}`);
+    props.style = "list-style-type: decimal;";
+    props.value = `${actie.charCodeAt(0) - 48}`;
   }
-
-  const linkTag = document.createElement("a");
-  linkTag.setAttribute("href", "#");
-  linkTag.addEventListener("click", e => {
+  const onClick = e => {
     e.preventDefault();
     keyPressed = `${actie}`;
     return false;
-  });
-  lijstItem.appendChild(linkTag);
-  const textNode = document.createTextNode(tekst);
-  const tag = document.createElement("span");
-  tag.appendChild(textNode);
-  tag.setAttribute("class", actieveKleur);
-  linkTag.appendChild(tag);
+  };
+  const lijstItem = h(
+    "li",
+    props,
+    h(
+      "a",
+      {
+        href: "#",
+        onClick
+      },
+      h("span", { class: actieveKleur }, tekst)
+    )
+  );
+
   parent.appendChild(lijstItem);
 };
 
@@ -86,11 +100,7 @@ const print = tekst => {
 
   tekst.split("\n").forEach((element, index, list) => {
     if (element !== "") {
-      const textNode = document.createTextNode(element);
-      const tag = document.createElement("span");
-      tag.appendChild(textNode);
-      tag.setAttribute("class", actieveKleur);
-      parent.appendChild(tag);
+      parent.appendChild(h("span", { class: actieveKleur }, element));
     }
     if (index < list.length - 1) {
       const tag = document.createTextNode(" ");
@@ -133,14 +143,9 @@ const tekst = async (verteller, zin, eerderGelezen) => {
   if (isLijstItem) {
     const parent = screenElement.children[screenElement.children.length - 1];
     if (parent.tagName === "UL") {
-      const item = document.createElement("li");
-      parent.appendChild(item);
+      parent.appendChild(h("li"));
     } else {
-      const lijst = document.createElement("ul");
-      lijst.setAttribute("class", actieveKleur);
-      const item = document.createElement("li");
-      lijst.appendChild(item);
-      screenElement.appendChild(lijst);
+      screenElement.appendChild(h("ul", { class: actieveKleur }, h("li")));
     }
     if (parent.tagName === "P" && parent.children.length === 0) {
       parent.remove();
@@ -155,9 +160,13 @@ const tekst = async (verteller, zin, eerderGelezen) => {
     huidigeParagraaf.classList.add("gesprek");
   }
 
-  for (const letter of zin) {
-    print(letter);
-    await sleep(eerderGelezen ? 0 : 0.02);
+  if (eerderGelezen) {
+    print(zin);
+  } else {
+    for (const letter of zin) {
+      print(letter);
+      await sleep(0.02);
+    }
   }
   print("\n");
 };
@@ -267,7 +276,6 @@ const toonActies = async () => {
   }
   // geen acties, dan is spel voorbij
   if (acties.length === 0) {
-    // TODO: Template moet hier in kunnen haken om af te sluiten
     return false;
   }
 

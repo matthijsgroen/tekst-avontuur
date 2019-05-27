@@ -117,6 +117,7 @@ const maakHtml = async (
   const jsData = [
     `const bewaarSleutel = "${basisNaam}";`,
     `const avontuur = ${jsonData};`,
+    `const gegevens = ${JSON.stringify(gegevens)};`,
     themaJs
   ].join("\n");
 
