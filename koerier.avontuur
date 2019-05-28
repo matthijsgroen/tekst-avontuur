@@ -478,8 +478,8 @@
 
 "1=3;2=0;4=1", "*c2"
 "Je wilt naar het zuiden wandelen, richting het moeras.", ""
-"*c3", "$n: 'Hmm het moeras in gaan met zo'n wagen achter Teun is geen goed idee.'"
-"", "*c3", "$n: 'Straks zakt de wagen nog weg in de drassigheid en kom ik vast te zitten.'", "&"
+"*c3", "$n: 'Hmm het moeras in gaan met de wagen achter Teun is geen goed idee.'"
+"", "*c3", "$n: 'Straks zakt de wagen nog weg in de drassigheid en kom ik vast te zitten.'", "&4=0"
 
 '== 4. Moeras
 "1=4;2=0;4=0;26<2", "*c2"
