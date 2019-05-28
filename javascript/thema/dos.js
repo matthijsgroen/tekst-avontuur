@@ -29,41 +29,54 @@ document.addEventListener("DOMContentLoaded", function() {
     return h("li", {}, h("a", { href: "#", class: "color7", onClick }, naam));
   };
 
+  const extraOpties = gegevens.menulink
+    ? []
+        .concat(gegevens.menulink)
+        .map(link => link.match(/^\[([^\]]+)]\(([^)]+)\)$/))
+        .filter(item => item && !location.href.endsWith(item[2]))
+        .map(([, naam, link]) =>
+          h("li", {}, h("a", { href: link, class: "color7" }, naam))
+        )
+    : [];
+
+  const menuOpties = [
+    optie("Info", () => {
+      maakMenuActief(1);
+    }),
+    optie("Herstarten", () => {
+      maakMenuActief(2);
+    }),
+    ...extraOpties,
+    optie("Sluiten", () => sluitMenu())
+  ];
+
   const hoofdMenu = h("div", { class: "actief" }, [
-    h("h1", { class: "color14" }, gegevens.Titel),
-    h("p", { class: "color7" }, `Geschreven door ${gegevens.Auteur}`),
-    h("ul", {}, [
-      optie("Info", () => {
-        maakMenuActief(1);
-      }),
-      optie("Herstarten", () => {
-        maakMenuActief(2);
-      }),
-      optie("Sluiten", () => sluitMenu())
-    ])
+    h("h1", { class: "color14" }, gegevens.titel),
+    h("p", { class: "color7" }, `Geschreven door ${gegevens.auteur}`),
+    h("ul", {}, menuOpties)
   ]);
 
   const infoMenu = h("div", {}, [
-    gegevens.Titel && h("h1", { class: "color14" }, gegevens.Titel),
-    gegevens.Omschrijving && h("p", {}, gegevens.Omschrijving),
-    gegevens.Versie && h("p", {}, `Versie: ${gegevens.Versie}`),
-    gegevens.Datum && h("p", {}, `Datum: ${gegevens.Datum}`),
-    gegevens.Email &&
+    gegevens.titel && h("h1", { class: "color14" }, gegevens.titel),
+    gegevens.omschrijving && h("p", {}, gegevens.omschrijving),
+    gegevens.versie && h("p", {}, `Versie: ${gegevens.versie}`),
+    gegevens.datum && h("p", {}, `Datum: ${gegevens.datum}`),
+    gegevens.email &&
       h("p", {}, [
         "Email: ",
         h(
           "a",
-          { class: "color9", href: `mailto:${gegevens.Email}` },
-          gegevens.Email
+          { class: "color9", href: `mailto:${gegevens.email}` },
+          gegevens.email
         )
       ]),
-    gegevens.Twitter &&
+    gegevens.twitter &&
       h("p", {}, [
         "Twitter: ",
         h(
           "a",
-          { class: "color9", href: `https://twitter.com/${gegevens.Twitter}` },
-          gegevens.Twitter
+          { class: "color9", href: `https://twitter.com/${gegevens.twitter}` },
+          gegevens.twitter
         )
       ]),
     h("ul", {}, [optie("Terug", () => maakMenuActief(0))])
@@ -90,8 +103,6 @@ document.addEventListener("DOMContentLoaded", function() {
     herstartMenu
   ]);
   menuRef = opties;
-
-  console.log(gegevens);
 
   const openMenu = e => {
     e.preventDefault();

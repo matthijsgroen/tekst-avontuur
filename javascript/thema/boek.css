@@ -321,3 +321,42 @@ button:focus {
     outline: none;
     box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 2px;
 }
+
+#opties {
+    padding: 1em;
+    position: absolute;
+    z-index: 2;
+    top: 2em;
+    left: calc(50% - 10em);
+    max-width: 20em;
+    overflow-y: scroll;
+    max-height: calc(100% - 6em);
+    width: calc(100% - 6em);
+    border: 6px var(--kaft-kleur) solid;
+    border-radius: 2em;
+    box-shadow: 1.5em 1.5em 1em rgba(0,0,0,0.3);
+    background: #efebe6;
+    display: none;
+    color: rgb(0, 80, 0);
+}
+#opties.zichtbaar {
+    display: block;
+}
+#opties > div {
+    display: none;
+}
+#opties > div.actief {
+    display: block;
+}
+#opties h1 {
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+#opties ul {
+    padding: 0;
+    list-style-type: none;
+}
+#opties ul li {
+    padding-top: 1em;
+}
+

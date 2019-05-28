@@ -67,10 +67,16 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
 
   const bron = commandos[1];
   const doel = commandos[2] || `${basisNaam(bron)}.html`;
-  maakHtml(bron, doel, basisNaam(bron), {
-    ...standaarConfiguratie,
-    ...vlaggen
-  });
+  maakHtml(
+    bron,
+    doel,
+    basisNaam(bron),
+    {
+      ...standaarConfiguratie,
+      ...vlaggen
+    },
+    vlaggen
+  );
 } else {
   const herstarten = vlaggen.restart || vlaggen.herstart || vlaggen.herstarten;
   spelLus(eerste, herstarten);

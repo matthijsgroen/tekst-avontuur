@@ -16,19 +16,18 @@ const maakMetaTag = eigenschappen =>
 const verwerkAanpassingen = (aanpassing, resultaat) =>
   aanpassing ? `${aanpassing}\n${resultaat}` : resultaat;
 
-const maakHtml = async (
-  bron,
-  doel,
-  basisNaam,
-  { thema, analytics, ...vlaggen }
-) => {
-  console.log(`${bron} -> ${doel}`);
+const maakHtml = async (bron, doel, basisNaam, configuratie, vlaggen) => {
+  const avontuur = await leesAvontuur(bron);
+  const thema = vlaggen.thema || avontuur.gegevens.thema || configuratie.thema;
+  console.log(`${bron} -> ${doel} - Thema: ${thema}`);
   const themaData = themas[thema];
+
   if (!themaData) {
     console.log(`Thema ${thema} niet gevonden!`);
     process.exit(1);
   }
-  const themaOpties = Object.entries(vlaggen)
+  const instellingen = { ...avontuur.gegevens, ...vlaggen };
+  const themaOpties = Object.entries(instellingen)
     .filter(([vlag, waarde]) => vlag.startsWith("thema."))
     .reduce(
       (opties, [vlag, waarde]) => ({
@@ -40,7 +39,6 @@ const maakHtml = async (
 
   const themaAanpassingen = themaData.opties(themaOpties);
 
-  const avontuur = await leesAvontuur(bron);
   const { actieData: acties, schermData: scherm } = converteerStructuur(
     avontuur
   );
@@ -72,39 +70,39 @@ const maakHtml = async (
   const gegevens = avontuur.gegevens;
   const metagegevens = [];
   metagegevens.push(maakMetaTag({ property: "og:type", content: "article" }));
-  if (gegevens.Titel) {
+  if (gegevens.titel) {
     metagegevens.push(
-      `<title>Avontuur - ${gegevens.Titel}</title>`,
-      maakMetaTag({ property: "og:title", content: gegevens.Titel }),
-      maakMetaTag({ name: "twitter:title", content: gegevens.Titel })
+      `<title>Avontuur - ${gegevens.titel}</title>`,
+      maakMetaTag({ property: "og:title", content: gegevens.titel }),
+      maakMetaTag({ name: "twitter:title", content: gegevens.titel })
     );
   } else {
     metagegevens.push("<title>Avontuur</title>");
   }
-  if (gegevens.Omschrijving) {
+  if (gegevens.omschrijving) {
     metagegevens.push(
       maakMetaTag({ name: "twitter:card", content: "summary" }),
       maakMetaTag({
         property: "og:description",
-        content: gegevens.Omschrijving.trim()
+        content: gegevens.omschrijving.trim()
       }),
       maakMetaTag({
         name: "description",
-        content: gegevens.Omschrijving.trim()
+        content: gegevens.omschrijving.trim()
       })
     );
   }
-  if (gegevens.Auteur) {
+  if (gegevens.auteur) {
     metagegevens.push(
       maakMetaTag({
         property: "og:article:author:name",
-        content: gegevens.Auteur
+        content: gegevens.auteur
       })
     );
   }
-  if (gegevens.Twitter) {
+  if (gegevens.twitter) {
     metagegevens.push(
-      maakMetaTag({ name: "twitter:creator", content: gegevens.Twitter })
+      maakMetaTag({ name: "twitter:creator", content: gegevens.twitter })
     );
   }
 
@@ -122,11 +120,13 @@ const maakHtml = async (
   ].join("\n");
 
   const stats =
-    gegevens["StatHat.Gebruiker"] && gegevens["StatHat.Teller"] && analytics
+    gegevens["statHat.gebruiker"] &&
+    gegevens["statHat.teller"] &&
+    configuratie.analytics
       ? `<img src="https://api.stathat.com/c?ukey=${
-          gegevens["StatHat.Gebruiker"]
+          gegevens["statHat.gebruiker"]
         }&key=${
-          gegevens["StatHat.Teller"]
+          gegevens["statHat.teller"]
         }&count=1" style="display:none;" width="1" height="1">`
       : "";
 
@@ -135,8 +135,8 @@ const maakHtml = async (
   const resultaat = htmlBasis
     .replace("<!-- HEAD -->", bovenkant)
     .replace("<!-- BODY -->", onderkant)
-    .replace(new RegExp("<!-- TITEL -->", "g"), gegevens.Titel)
-    .replace(new RegExp("<!-- AUTEUR -->", "g"), gegevens.Auteur);
+    .replace(new RegExp("<!-- TITEL -->", "g"), gegevens.titel)
+    .replace(new RegExp("<!-- AUTEUR -->", "g"), gegevens.auteur);
 
   await schrijfBestand(doel, resultaat, "utf8");
 };

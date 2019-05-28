@@ -16,14 +16,21 @@ const leesAvontuur = async bestandsNaam => {
     );
     const meerdereRegelData = regel.match(/^'\s*@(?<veld>[\w.]+):\s*$/);
     if (meerdereRegelData) {
-      const veld = meerdereRegelData.groups.veld;
+      const veld = meerdereRegelData.groups.veld.toLowerCase();
       gegevens[veld] = "";
       inMeerRegeligeData = veld;
       return;
     }
 
     if (enkeleRegelData) {
-      gegevens[enkeleRegelData.groups.veld] = enkeleRegelData.groups.waarde;
+      const veld = enkeleRegelData.groups.veld.toLowerCase();
+      if (gegevens.hasOwnProperty(veld)) {
+        gegevens[veld] = []
+          .concat(gegevens[veld])
+          .concat(enkeleRegelData.groups.waarde);
+      } else {
+        gegevens[veld] = enkeleRegelData.groups.waarde;
+      }
       inMeerRegeligeData = false;
       return;
     }

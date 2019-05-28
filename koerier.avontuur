@@ -5,11 +5,15 @@
 
 ' @Auteur: Matthijs Groen
 '
-' @Datum: April 2019
+' @Datum: Mei 2019
 ' @Email: matthijs.groen@gmail.com
 ' @Twitter: @matthijsgroen
-' @Versie: 1.0-alpha
-
+' @Versie: 1.0
+' @Thema: boek
+' @Thema.kaft: rood
+' @Menulink: [DOS Versie](index.html)
+' @Menulink: [Boek Versie](koerier.html)
+'
 ' @StatHat.Gebruiker: MTYzNDIglcA9CQJd4iuFZ02UI1NeFQ~~
 ' @StatHat.Teller: 0votUCE7GFkhPw8ZrSAGdCBDdFhz
 
@@ -1969,10 +1973,13 @@
 "", "*c14", "<slobber!>", "*c2", ""
 "De draak eet zo de taart op.", "&4=0;52=2"
 
-"1=17;2=0;17=2;4=17;6=1;33!5", "*c2", "Je haalt het grote zadel uit je tas. De draak kijkt naar het zadel en geeft een blik van herkenning. Als je het zadel op hem wil leggen, dan briest hij licht en draait zich een beetje."
-"", "Hij wil het zadel niet dragen.", "&4=0"
+"1=17;2=0;17=2;4=17;6=1;33!5", "*c2", "Je haalt het grote zadel uit je tas. De draak kijkt naar"
+"het zadel en geeft een blik van herkenning. Als je het zadel op hem wil leggen, dan briest hij"
+"licht en draait zich een beetje."
+"", "Hij wil het zadel niet dragen.", "", "Hmm, jammer dat je niet met de draak kunt praten", "&4=0"
 
-"1=17;2=0;17=2;4=17;6=1;33=5;53<5", "*c2", "Je haalt het grote zadel uit je tas. De draak kijkt naar het zadel, en geeft een blik van herkenning."
+"1=17;2=0;17=2;4=17;6=1;33=5;53<5", "*c2", "Je haalt het grote zadel uit je tas. De draak kijkt naar"
+"het zadel, en geeft een blik van herkenning."
 "", "*c9", "Dins: 'Ik denk niet dat dat gaat werken hoor!'"
 "&4=0"
 
