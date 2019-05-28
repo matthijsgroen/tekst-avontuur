@@ -257,7 +257,7 @@ const toonActies = async () => {
 
   for (const actie of avontuur.acties) {
     if (toegestaan(actie.test)) {
-      const toets = actie.toets || `${++geteldeActies}`;
+      const toets = actie.toets || toetsen[geteldeActies++];
       acties.push({
         naam: interpoleer(actie.tekst),
         actie: actie.actie,
