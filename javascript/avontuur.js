@@ -3,6 +3,7 @@ const spelLus = require("./spelLus");
 const maakHtml = require("./maakHtml");
 const statistieken = require("./statistieken");
 const pakket = require("./package.json");
+const { genereerCode } = require("./maakCode");
 
 const commandos = process.argv
   .slice(2)
@@ -58,6 +59,13 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
 } else if (eerste === "info") {
   const bron = commandos[1];
   statistieken(bron);
+} else if (eerste === "code") {
+  const encodeDecode = async bron => {
+    const code = await genereerCode(bron);
+    console.log("Code is:", code);
+  };
+  const bron = commandos[1];
+  encodeDecode(bron);
 } else if (eerste === "html") {
   const basisNaam = name =>
     name
