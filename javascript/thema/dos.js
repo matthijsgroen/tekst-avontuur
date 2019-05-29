@@ -40,20 +40,58 @@ document.addEventListener("DOMContentLoaded", function() {
     : [];
 
   const menuOpties = [
-    optie("Info", () => {
+    optie("Info / Contact", () => {
       maakMenuActief(1);
     }),
-    optie("Herstarten", () => {
+    optie("Spel herstarten", () => {
       maakMenuActief(2);
     }),
+    optie("Spel-voortgangs-link versturen", () => {
+      maakMenuActief(3);
+    }),
     ...extraOpties,
-    optie("Sluiten", () => sluitMenu())
+    optie("Menu sluiten", () => sluitMenu())
   ];
 
   const hoofdMenu = h("div", { class: "actief" }, [
     h("h1", { class: "color14" }, gegevens.titel),
     h("p", { class: "color7" }, `Geschreven door ${gegevens.auteur}`),
     h("ul", {}, menuOpties)
+  ]);
+
+  let emailAddres = "";
+  const verzendMenu = h("div", {}, [
+    h("h1", { class: "color14" }, "Spel voortgang versturen"),
+    h(
+      "p",
+      { class: "color7" },
+      "Hiermee kan je de voortgang van het spel naar jezelf e-mailen, om op een ander apparaat verder te spelen."
+    ),
+    h("input", {
+      type: "email",
+      class: "color7",
+      onInput: e => {
+        emailAddres = e.target.value;
+      }
+    }),
+    h(
+      "button",
+      {
+        type: "button",
+        onClick: e => {
+          const subject = `Voortgang ${gegevens.titel}`;
+          const link = verzendLink();
+          const body = `Hoi ${naam},\n\nGebruik deze link om verder te spelen: ${link}\n\nGroetjes!`;
+          open(
+            `mailto:${emailAddres}?subject=${encodeURI(
+              subject
+            )}&body=${encodeURI(body)}`
+          );
+        }
+      },
+      "Verstuur"
+    ),
+    h("ul", {}, [optie("Terug", () => maakMenuActief(0))])
   ]);
 
   const infoMenu = h("div", {}, [
@@ -100,7 +138,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const opties = h("div", { id: "opties", class: "opties" }, [
     hoofdMenu,
     infoMenu,
-    herstartMenu
+    herstartMenu,
+    verzendMenu
   ]);
   menuRef = opties;
 

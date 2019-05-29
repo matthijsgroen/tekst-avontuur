@@ -218,20 +218,58 @@ document.addEventListener("DOMContentLoaded", function() {
     : [];
 
   const menuOpties = [
-    optie("Info", () => {
+    optie("Info / Contact", () => {
       maakMenuActief(1);
     }),
-    optie("Herstarten", () => {
+    optie("Spel herstarten", () => {
       maakMenuActief(2);
     }),
+    optie("Spel-voortgangs-link versturen", () => {
+      maakMenuActief(3);
+    }),
     ...extraOpties,
-    optie("Sluiten", () => sluitMenu())
+    optie("Menu sluiten", () => sluitMenu())
   ];
 
   const hoofdMenu = h("div", { class: "actief" }, [
     h("h1", { class: "color14" }, gegevens.titel),
     h("p", { class: "color7" }, `Geschreven door ${gegevens.auteur}`),
     h("ul", {}, menuOpties)
+  ]);
+
+  let emailAddres = "";
+  const verzendMenu = h("div", {}, [
+    h("h1", { class: "color14" }, "Spel voortgang versturen"),
+    h(
+      "p",
+      { class: "color7" },
+      "Hiermee kan je de voortgang van het spel naar jezelf e-mailen, om op een ander apparaat verder te spelen."
+    ),
+    h("input", {
+      type: "email",
+      class: "color7",
+      onInput: e => {
+        emailAddres = e.target.value;
+      }
+    }),
+    h(
+      "button",
+      {
+        type: "button",
+        onClick: e => {
+          const subject = `Voortgang ${gegevens.titel}`;
+          const link = verzendLink();
+          const body = `Hoi ${naam},\n\nGebruik deze link om verder te spelen: ${link}\n\nGroetjes!`;
+          open(
+            `mailto:${emailAddres}?subject=${encodeURI(
+              subject
+            )}&body=${encodeURI(body)}`
+          );
+        }
+      },
+      "Verstuur"
+    ),
+    h("ul", {}, [optie("Terug", () => maakMenuActief(0))])
   ]);
 
   const infoMenu = h("div", {}, [
@@ -278,7 +316,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const opties = h("div", { id: "opties", class: "opties" }, [
     hoofdMenu,
     infoMenu,
-    herstartMenu
+    herstartMenu,
+    verzendMenu
   ]);
   menuRef = opties;
 
@@ -299,7 +338,9 @@ document.addEventListener("DOMContentLoaded", function() {
 let skip = false;
 let naam = "";
 let spelToestand = Array(100).fill(0);
+let verzendCode;
 
+const verzendLink = () => location.href + `#naam=${naam}|code=${verzendCode}`;
 const resetSpel = () => {
   localStorage.removeItem("opslag");
   localStorage.removeItem(`opslag-${bewaarSleutel}`);
@@ -601,8 +642,119 @@ const krijgNaam = () =>
     });
   });
 
+const karakters =
+  "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@" +
+  "$%^~*(),.;:\"'+-/[]{}_`<>?îêôâëüïöäøéíóáØÊÎÔÂËÜÖÏÉÚÍÓÁåÅßçÇàèìòùÀ";
+
+const encode = spelStatus => {
+  const relevanteData = spelStatus.reduce(
+    (result, item, index) =>
+      item === 0 ? result : { ...result, [index]: item },
+    {}
+  );
+  const grootsteSleutelDelta = spelStatus
+    .map((item, index) => (item > 0 ? index : null))
+    .filter(index => index !== null)
+    .map((index, i, list) => index - (list[i - 1] || -1) - 1)
+    .reduce((currentMax, item) => (item > currentMax ? item : currentMax), 0);
+  const grootsteWaarde = spelStatus.reduce(
+    (currentMax, item) => (item > currentMax ? item : currentMax),
+    0
+  );
+  const bitSizeKey = grootsteSleutelDelta.toString(2).length;
+  const largeValueSize = grootsteWaarde.toString(2).length;
+
+  const predictedWidth = Object.entries(relevanteData).reduce(
+    (total, [key, value]) => total + bitSizeKey + largeValueSize,
+    0
+  );
+  const toBits = (number, size) =>
+    ("0".repeat(size) + number.toString(2)).slice(-size);
+
+  const pairs = Object.entries(relevanteData);
+  const bitStream =
+    toBits(pairs.length, 7) +
+    pairs
+      .map(([key, value], index, list) => {
+        const delta = index > 0 ? key - list[index - 1][0] - 1 : key;
+        return toBits(delta, bitSizeKey) + toBits(value, largeValueSize);
+      })
+      .join("");
+
+  const paddedBitStream = bitStream + "0".repeat(bitStream.length % 7);
+  const amountOnes = paddedBitStream
+    .split("")
+    .reduce((result, item) => (item === "1" ? result + 1 : result), 0);
+
+  let code = "" + karakters[bitSizeKey];
+  for (let i = 0; i < paddedBitStream.length; i += 7) {
+    const karakterIndex = parseInt(paddedBitStream.slice(i, i + 7), 2);
+    code += karakters[karakterIndex];
+  }
+  code += karakters[largeValueSize] + karakters[amountOnes];
+
+  return code;
+};
+
+const decode = code => {
+  const charToNum = char => karakters.indexOf(char);
+
+  const bitSizeKey = charToNum(code[0]);
+  const largeValueSizeKey = charToNum(code.slice(-2, -1));
+  const verifyOnes = charToNum(code.slice(-1));
+
+  const bitStream = code
+    .slice(1, -2)
+    .split("")
+    .map(char => ("0".repeat(7) + charToNum(char).toString(2)).slice(-7))
+    .join("");
+
+  const amountOnes = bitStream
+    .split("")
+    .reduce((result, bit) => (bit === "1" ? result + 1 : result), 0);
+
+  if (verifyOnes !== amountOnes) throw new Error("Ongeldige code");
+
+  const amountValues = parseInt(bitStream.slice(0, 7), 2);
+  let gameState = Array(100).fill(0);
+
+  let currentIndex = 0;
+  for (let i = 0; i < amountValues; i++) {
+    const bitIndex = 7 + (bitSizeKey + largeValueSizeKey) * i;
+    const keyDelta = parseInt(
+      bitStream.slice(bitIndex, bitIndex + bitSizeKey),
+      2
+    );
+    const bitValue = bitStream.slice(
+      bitIndex + bitSizeKey,
+      bitIndex + bitSizeKey + largeValueSizeKey
+    );
+    const value = parseInt(bitValue, 2);
+    currentIndex += i > 0 ? keyDelta + 1 : keyDelta;
+    gameState[currentIndex] = value;
+  }
+  return gameState;
+};
+
 const laadSpel = async () => {
   try {
+    try {
+      if (location.hash.length > 10) {
+        const velden = location.hash
+          .slice(1)
+          .split("|")
+          .reduce((resultaat, paar) => {
+            const [naam, waarde] = paar.split("=");
+            return { ...resultaat, [naam]: waarde };
+          }, {});
+
+        naam = velden.naam;
+        spelToestand = decode(decodeURI(velden.code));
+        location.hash = "";
+        await startSpel();
+        return true;
+      }
+    } catch (e) {}
     const opgeslagen =
       localStorage.getItem(`opslag-${bewaarSleutel}`) ||
       (bewaarSleutel === "koerier" && localStorage.getItem("opslag"));
@@ -638,6 +790,7 @@ const spelLus = async () => {
   let heeftActies;
 
   do {
+    verzendCode = encode(spelToestand);
     await cls();
     await toonGebeurtenis();
     heeftActies = await toonActies();

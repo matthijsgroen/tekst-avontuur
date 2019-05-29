@@ -40,13 +40,16 @@ const encode = spelStatus => {
       .join("");
 
   const paddedBitStream = bitStream + "0".repeat(bitStream.length % 7);
+  const amountOnes = paddedBitStream
+    .split("")
+    .reduce((result, item) => (item === "1" ? result + 1 : result), 0);
 
   let code = "" + karakters[bitSizeKey];
   for (let i = 0; i < paddedBitStream.length; i += 7) {
     const karakterIndex = parseInt(paddedBitStream.slice(i, i + 7), 2);
     code += karakters[karakterIndex];
   }
-  code += karakters[largeValueSize];
+  code += karakters[largeValueSize] + karakters[amountOnes];
 
   return code;
 };
@@ -55,12 +58,20 @@ const decode = code => {
   const charToNum = char => karakters.indexOf(char);
 
   const bitSizeKey = charToNum(code[0]);
-  const largeValueSizeKey = charToNum(code.slice(-1));
+  const largeValueSizeKey = charToNum(code.slice(-2, -1));
+  const verifyOnes = charToNum(code.slice(-1));
   const bitStream = code
-    .slice(1, -1)
+    .slice(1, -2)
     .split("")
     .map(char => ("0".repeat(7) + charToNum(char).toString(2)).slice(-7))
     .join("");
+
+  const amountOnes = bitStream
+    .split("")
+    .reduce((result, bit) => (bit === "1" ? result + 1 : result), 0);
+
+  if (verifyOnes !== amountOnes) throw new Error("Ongeldige code");
+
   const amountValues = parseInt(bitStream.slice(0, 7), 2);
   let gameState = Array(100).fill(0);
 
