@@ -403,7 +403,7 @@ const laadSpel = async () => {
   try {
     try {
       if (location.hash.length > 10) {
-        const velden = location.hash
+        const velden = decodeURI(location.hash)
           .slice(1)
           .split("|")
           .reduce((resultaat, paar) => {
@@ -412,7 +412,7 @@ const laadSpel = async () => {
           }, {});
 
         naam = velden.naam;
-        spelToestand = decode(decodeURI(velden.code));
+        spelToestand = decode(velden.code);
         location.hash = "";
         // -- template:startSpel
         return true;
