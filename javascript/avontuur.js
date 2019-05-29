@@ -4,6 +4,7 @@ const maakHtml = require("./maakHtml");
 const statistieken = require("./statistieken");
 const pakket = require("./package.json");
 const { genereerCode } = require("./maakCode");
+const { toonWoord } = require("./dyslexie");
 
 const commandos = process.argv
   .slice(2)
@@ -87,5 +88,20 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   );
 } else {
   const herstarten = vlaggen.restart || vlaggen.herstart || vlaggen.herstarten;
-  spelLus(eerste, herstarten);
+  const dyslexie = vlaggen.dyslexie;
+  if (dyslexie) {
+    toonWoord("hallo");
+    process.stdout.write(" ");
+    toonWoord("wereld");
+    process.stdout.write(" ");
+    toonWoord("beetje");
+    process.stdout.write(" ");
+    toonWoord("spellen");
+    process.stdout.write(" ");
+    toonWoord("eend");
+    process.stdout.write(" ");
+    toonWoord("schreeuwlelijk");
+  } else {
+    spelLus(eerste, { herstarten, dyslexie });
+  }
 }

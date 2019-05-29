@@ -3,10 +3,12 @@ const { voerActieUit, toegestaan } = require("./spelToestand");
 const { bewaarSpel, laadSpel, basisNaam } = require("./bewaarSpel");
 const leesAvontuur = require("./leesAvontuur");
 const stdin = process.stdin;
+let dyslexieMode = false;
 
 const input = prompt =>
-  new Promise(resolve => {
-    print(prompt + "? ");
+  new Promise(async resolve => {
+    await tekst(7, prompt + "? ", true);
+    await tekst(7, "", true);
     stdin.setRawMode(false);
     stdin.setEncoding("utf8");
     const callback = function(chunk) {
@@ -31,6 +33,7 @@ const interpoleer = zin =>
     .replace(/#\d{2}/g, num => ` ${spelToestand[parseInt(num.slice(1), 10)]}`);
 
 let vorigeZin = "";
+
 const tekst = async (verteller, zin, eerderGelezen) => {
   const MAX_LENGTH = Math.min(process.stdout.columns, 80);
   const inGesprek = /^.*: '/.test(zin);
@@ -188,10 +191,14 @@ const toonActies = async actieData => {
   return true;
 };
 
-const spelLus = async (bestandsNaam, herstarten = false) => {
+const spelLus = async (
+  bestandsNaam,
+  { herstarten = false, dyslexie = false }
+) => {
   const data = await leesAvontuur(bestandsNaam);
   const opslagBestandsNaam = `.${basisNaam(bestandsNaam)}.opslag`;
   const eerderSpel = herstarten ? null : await laadSpel(opslagBestandsNaam);
+  dyslexieMode = dyslexie;
 
   stdin.resume();
   stdin.setRawMode(true);
@@ -217,8 +224,8 @@ const spelLus = async (bestandsNaam, herstarten = false) => {
     spelToestand = eerderSpel.spelToestand;
   } else {
     cls();
-    print("Hallo avonturier!\n");
-    print("\n");
+    await tekst(7, "Hallo avonturier!", true);
+    await tekst(7, "", true);
     naam = await input("Wat is je naam");
     await bewaarSpel(opslagBestandsNaam, { naam, spelToestand });
   }
