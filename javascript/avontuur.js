@@ -90,17 +90,27 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   const herstarten = vlaggen.restart || vlaggen.herstart || vlaggen.herstarten;
   const dyslexie = vlaggen.dyslexie;
   if (dyslexie) {
-    toonWoord("hallo");
-    process.stdout.write(" ");
-    toonWoord("wereld");
-    process.stdout.write(" ");
-    toonWoord("beetje");
-    process.stdout.write(" ");
-    toonWoord("spellen");
-    process.stdout.write(" ");
-    toonWoord("eend");
-    process.stdout.write(" ");
-    toonWoord("schreeuwlelijk");
+    [
+      "hallo",
+      "wereld",
+      "beetje",
+      "spellen",
+      "spelen",
+      "eend",
+      "ze",
+      "u",
+      "nu",
+      "menu",
+      "paraplu",
+      "gezellig",
+      "schreeuwlelijk",
+      "kastelen",
+      "schapen",
+      "lig"
+    ].forEach(woord => {
+      toonWoord(woord);
+      process.stdout.write("\n\n");
+    });
   } else {
     spelLus(eerste, { herstarten, dyslexie });
   }
