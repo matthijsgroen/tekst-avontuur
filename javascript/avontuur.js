@@ -92,13 +92,16 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   if (dyslexie) {
     [
       "hallo, wereld! Dit is een stapje verder natuurlijk.",
-      "beetje",
+      "het is een beetje verwarrend geworden.",
       "we spellen spelenderwijs",
       "de paraplu: 'is gezellig' of een schreeuwlelijk?",
       "kastelen",
       "verder",
       "schapen",
-      "lig"
+      "lig",
+      "veren",
+      "bever",
+      "verschrikkelijk"
     ].forEach(zin => {
       toonZin(zin);
       process.stdout.write("\n\n");

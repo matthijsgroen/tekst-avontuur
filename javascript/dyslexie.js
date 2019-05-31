@@ -35,6 +35,8 @@ const klank = (klank, offset = 0) => selectie =>
 const klasse = (test, offset = 0) => selectie =>
   selectie.resultaat[selectie.index + offset] &&
   test(selectie.resultaat[selectie.index + offset][0]);
+const totaalKlasse = (klasseTest, test) => selectie =>
+  test(selectie.resultaat.reduce((a, e) => a + (klasseTest(e[0]) ? 1 : 0), 0));
 
 const reset = () => "\u001b[0m";
 const tonen = {
@@ -88,28 +90,36 @@ const verwerkStommeE = resultaat => {
     en(totaalKlanken(a => a > 3), laatsteKlank(), klank("j", -1)),
     "stommeE"
   );
+  // uitgangen -en, -em, -er, -el, -es, -et
+  ["n", "m", "r", "l", "s", "t"].forEach(
+    eindLetter =>
+      (resultaat = verwerk(
+        // -en
+        resultaat,
+        selecteerKlank("e", null),
+        en(totaalKlanken(a => a > 3), laatsteKlank(1), klank(eindLetter, 1)),
+        "stommeE"
+      ))
+  );
   // voorvoegsels. be- ge-, ver-
+  const isVoorvoegsel = () =>
+    totaalKlasse(k => k !== "rest" && k !== "stommeE", a => a > 1);
   resultaat = verwerk(
     resultaat,
     selecteerKlank("e", null),
-    en(totaalKlanken(a => a > 3), eersteKlank(1), klank("b", -1)),
+    en(isVoorvoegsel(), eersteKlank(1), klank("b", -1)),
     "stommeE"
   );
   resultaat = verwerk(
     resultaat,
     selecteerKlank("e", null),
-    en(totaalKlanken(a => a > 3), eersteKlank(1), klank("g", -1)),
+    en(isVoorvoegsel(), eersteKlank(1), klank("g", -1)),
     "stommeE"
   );
   resultaat = verwerk(
     resultaat,
     selecteerKlank("e", null),
-    en(
-      totaalKlanken(a => a > 3),
-      eersteKlank(1),
-      klank("v", -1),
-      klank("r", 1)
-    ),
+    en(isVoorvoegsel(), eersteKlank(1), klank("v", -1), klank("r", 1)),
     "stommeE"
   );
   // me-
@@ -139,17 +149,27 @@ const verwerkStommeE = resultaat => {
     ),
     "stommeE"
   );
-  // uitgangen -en, -em, -er, -el, -es, -et
-  ["n", "m", "r", "l", "s", "t"].forEach(
-    eindLetter =>
-      (resultaat = verwerk(
-        // -en
-        resultaat,
-        selecteerKlank("e", null),
-        en(totaalKlanken(a => a > 3), laatsteKlank(1), klank(eindLetter, 1)),
-        "stommeE"
-      ))
+  // lidwoorden, de het een
+  resultaat = verwerk(
+    // het
+    resultaat,
+    selecteerKlank("e", "korteKlinker"),
+    en(
+      totaalKlanken(a => a === 3),
+      laatsteKlank(1),
+      klank("t", 1),
+      klank("h", -1)
+    ),
+    "stommeE"
   );
+  resultaat = verwerk(
+    // een
+    resultaat,
+    selecteerKlank("ee", "langeKlinker"),
+    en(totaalKlanken(a => a === 2), laatsteKlank(1), klank("n", 1)),
+    "stommeE"
+  );
+
   return resultaat;
 };
 
