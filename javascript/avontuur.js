@@ -4,7 +4,7 @@ const maakHtml = require("./maakHtml");
 const statistieken = require("./statistieken");
 const pakket = require("./package.json");
 const { genereerCode } = require("./maakCode");
-const { toonWoord } = require("./dyslexie");
+const { toonZin } = require("./dyslexie");
 
 const commandos = process.argv
   .slice(2)
@@ -91,24 +91,16 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   const dyslexie = vlaggen.dyslexie;
   if (dyslexie) {
     [
-      "hallo",
-      "wereld",
+      "hallo, wereld! Dit is een stapje verder natuurlijk.",
       "beetje",
-      "spellen",
-      "spelen",
-      "eend",
-      "ze",
-      "u",
-      "nu",
-      "menu",
-      "paraplu",
-      "gezellig",
-      "schreeuwlelijk",
+      "we spellen spelenderwijs",
+      "de paraplu: 'is gezellig' of een schreeuwlelijk?",
       "kastelen",
+      "verder",
       "schapen",
       "lig"
-    ].forEach(woord => {
-      toonWoord(woord);
+    ].forEach(zin => {
+      toonZin(zin);
       process.stdout.write("\n\n");
     });
   } else {

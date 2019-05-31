@@ -26,7 +26,6 @@ const selecteerKlank = (zoekKlank, zoekKlassificatie) => resultaat =>
     .filter(Boolean);
 
 const en = (...args) => selectie => args.every(test => test(selectie));
-const of = (...args) => selectie => args.some(test => test(selectie));
 const totaalKlanken = test => selectie => test(selectie.resultaat.length);
 const laatsteKlank = (offset = 0) => selectie =>
   selectie.index === selectie.resultaat.length - 1 - offset;
@@ -42,20 +41,15 @@ const tonen = {
   korteKlinker: klinker =>
     process.stdout.write("\u001b[97;48;5;22m " + klinker + " " + reset()),
   langeKlinker: langeKlinker =>
-    process.stdout.write(
-      "\u001b[30;43m " +
-        langeKlinker +
-        (langeKlinker.length === 1 ? "-" : "") +
-        " " +
-        reset()
-    ),
+    process.stdout.write(`\u001b[30;43m ${langeKlinker} ` + reset()),
   tweeKlank: tweeKlank =>
     process.stdout.write(`\u001b[97;41m ${tweeKlank} ` + reset()),
   letterGroep: letterGroep =>
     process.stdout.write(`\u001b[30;47m ${letterGroep} ` + reset()),
   rest: rest => process.stdout.write(`\u001b[97;44m ${rest} ` + reset()),
   stommeE: klank =>
-    process.stdout.write(`\u001b[97;48;5;202m ${klank} ` + reset())
+    process.stdout.write(`\u001b[97;48;5;202m ${klank} ` + reset()),
+  anders: tekens => process.stdout.write(tekens)
 };
 
 const verwerkLangeKlinkers = resultaat => {
@@ -159,7 +153,7 @@ const verwerkStommeE = resultaat => {
   return resultaat;
 };
 
-const voegKlassificatiesToe = woord => {
+const voegWoordKlassificatiesToe = woord => {
   let start = 0;
   let resultaat = [];
   while (start < woord.length) {
@@ -200,12 +194,34 @@ const voegKlassificatiesToe = woord => {
   return resultaat;
 };
 
-const toonWoord = woord => {
-  const woordMetKlassificaties = voegKlassificatiesToe(woord);
+const voegKlassificatiesToe = zin => {
+  let resultaat = [];
+  let huidigWoord = "";
+  //return [["anders", zin]];
+  for (const char of zin) {
+    if (/\w/.test(char)) {
+      huidigWoord += char;
+    } else {
+      if (huidigWoord.length > 0) {
+        resultaat = resultaat.concat(voegWoordKlassificatiesToe(huidigWoord));
+        huidigWoord = "";
+      }
+      resultaat.push(["anders", char]);
+    }
+  }
+  if (huidigWoord.length > 0) {
+    resultaat = resultaat.concat(voegWoordKlassificatiesToe(huidigWoord));
+    huidigWoord = "";
+  }
+  return resultaat;
+};
 
-  woordMetKlassificaties.forEach(([klassificatie, woord]) =>
-    tonen[klassificatie](woord)
+const toonZin = zin => {
+  const zinMetKlassificaties = voegKlassificatiesToe(zin);
+
+  zinMetKlassificaties.forEach(([klassificatie, zin]) =>
+    tonen[klassificatie](zin)
   );
 };
 
-module.exports = { toonWoord };
+module.exports = { toonZin, voegKlassificatiesToe };
