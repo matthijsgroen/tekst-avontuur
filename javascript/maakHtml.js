@@ -120,13 +120,13 @@ const maakHtml = async (bron, doel, basisNaam, configuratie, vlaggen) => {
   ].join("\n");
 
   const stats =
-    gegevens["statHat.gebruiker"] &&
-    gegevens["statHat.teller"] &&
+    gegevens["stathat.gebruiker"] &&
+    gegevens["stathat.teller"] &&
     configuratie.analytics
       ? `<img src="https://api.stathat.com/c?ukey=${
-          gegevens["statHat.gebruiker"]
+          gegevens["stathat.gebruiker"]
         }&key=${
-          gegevens["statHat.teller"]
+          gegevens["stathat.teller"]
         }&count=1" style="display:none;" width="1" height="1">`
       : "";
 
