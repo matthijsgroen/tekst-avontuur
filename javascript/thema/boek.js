@@ -7,9 +7,11 @@ const cls = async () => {
   pageElement.classList.remove("turn");
 };
 
+let toonMenu = false;
 const startSpel = () => {
   document.getElementsByClassName("kaft")[0].classList.add("open", "ingevuld");
   setTimeout(() => {
+    toonMenu = true;
     const menu = document.querySelector(".menu");
     menu && menu.classList.remove("verberg");
   }, 0);
@@ -88,37 +90,14 @@ document.addEventListener("DOMContentLoaded", function() {
     h("ul", {}, menuOpties)
   ]);
 
-  let emailAddres = "";
   const verzendMenu = h("div", {}, [
     h("h1", { class: "color14" }, "Spel voortgang versturen"),
     h(
       "p",
       { class: "color7" },
-      "Hiermee kan je de voortgang van het spel naar jezelf e-mailen, om op een ander apparaat verder te spelen."
+      "Hiermee kan je de voortgang van het spel versturen, om op een ander apparaat verder te spelen."
     ),
-    h("input", {
-      type: "email",
-      onInput: e => {
-        emailAddres = e.target.value;
-      }
-    }),
-    h(
-      "button",
-      {
-        type: "button",
-        onClick: e => {
-          const subject = `Voortgang ${gegevens.titel}`;
-          const link = verzendLink();
-          const body = `Hoi ${naam},\n\nGebruik deze link om verder te spelen: ${link}\n\nGroetjes!`;
-          open(
-            `mailto:${emailAddres}?subject=${encodeURI(
-              subject
-            )}&body=${encodeURI(body)}`
-          );
-        }
-      },
-      "Verstuur"
-    ),
+    h("input", { type: "text", value: verzendLink() }),
     h("ul", {}, [optie("Terug", () => maakMenuActief(0))])
   ]);
 
@@ -184,4 +163,7 @@ document.addEventListener("DOMContentLoaded", function() {
   );
   document.body.appendChild(menuKnop);
   document.body.appendChild(opties);
+  if (toonMenu) {
+    menuKnop.classList.remove("verberg");
+  }
 });

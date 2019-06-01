@@ -59,38 +59,14 @@ document.addEventListener("DOMContentLoaded", function() {
     h("ul", {}, menuOpties)
   ]);
 
-  let emailAddres = "";
   const verzendMenu = h("div", {}, [
     h("h1", { class: "color14" }, "Spel voortgang versturen"),
     h(
       "p",
       { class: "color7" },
-      "Hiermee kan je de voortgang van het spel naar jezelf e-mailen, om op een ander apparaat verder te spelen."
+      "Hiermee kan je de voortgang van het spel versturen, om op een ander apparaat verder te spelen."
     ),
-    h("input", {
-      type: "email",
-      class: "color7",
-      onInput: e => {
-        emailAddres = e.target.value;
-      }
-    }),
-    h(
-      "button",
-      {
-        type: "button",
-        onClick: e => {
-          const subject = `Voortgang ${gegevens.titel}`;
-          const link = verzendLink();
-          const body = `Hoi ${naam},\n\nGebruik deze link om verder te spelen: ${link}\n\nGroetjes!`;
-          open(
-            `mailto:${emailAddres}?subject=${encodeURI(
-              subject
-            )}&body=${encodeURI(body)}`
-          );
-        }
-      },
-      "Verstuur"
-    ),
+    h("input", { class: "color7", type: "text", value: verzendLink() }),
     h("ul", {}, [optie("Terug", () => maakMenuActief(0))])
   ]);
 
