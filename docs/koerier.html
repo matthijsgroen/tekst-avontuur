@@ -727,7 +727,7 @@ const definities = {
   korteKlinker: ["a", "e", "i", "o", "u", "è"],
   langeKlinker: ["aa", "ee", "oo", "uu", "éé"],
   tweeKlank: ["ie", "oe", "eu", "ui", "ei", "ij", "ou", "au"],
-  letterGroep: ["aai", "ooi", "oei", "eeuw", "ieuw", "uw"],
+  letterGroep: ["aai", "ooi", "oei", "eeuw", "ieuw", "uw", "eau"],
   rest: ["ng", "nk", "ch", "sch", "schr"]
 };
 
@@ -756,6 +756,7 @@ const laatsteKlank = (offset = 0) => selectie =>
   selectie.index === selectie.resultaat.length - 1 - offset;
 const eersteKlank = (offset = 0) => selectie => selectie.index === offset;
 const klank = (klank, offset = 0) => selectie =>
+  selectie.resultaat[selectie.index + offset] &&
   selectie.resultaat[selectie.index + offset][1].toLowerCase() === klank;
 const klankLengte = (lengte, offset = 0) => selectie =>
   selectie.resultaat[selectie.index + offset][1].length === lengte;
@@ -795,7 +796,7 @@ const verwerkStommeE = resultaat => {
   resultaat = verwerk(
     resultaat,
     selecteerKlank("e", "korteKlinker"),
-    en(totaalKlanken(a => a === 2), laatsteKlank()),
+    laatsteKlank(),
     "stommeE"
   );
   // verklein woord
@@ -812,7 +813,7 @@ const verwerkStommeE = resultaat => {
         // -en
         resultaat,
         selecteerKlank("e", null),
-        en(totaalKlanken(a => a > 3), laatsteKlank(1), klank(eindLetter, 1)),
+        en(totaalKlanken(a => a > 3), klank(eindLetter, 1)),
         "stommeE"
       ))
   );
@@ -1424,6 +1425,6 @@ const spelLus = async () => {
   await eindSpel();
 };
 spelLus();
-</script><img src="https://api.stathat.com/c?ukey=MTYzNDIglcA9CQJd4iuFZ02UI1NeFQ~~&key=0votUCE7GFkhPw8ZrSAGdCBDdFhz&count=1" style="display:none;" width="1" height="1">
+</script>
     </body>
 </html>

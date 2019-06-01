@@ -2,7 +2,7 @@ const definities = {
   korteKlinker: ["a", "e", "i", "o", "u", "è"],
   langeKlinker: ["aa", "ee", "oo", "uu", "éé"],
   tweeKlank: ["ie", "oe", "eu", "ui", "ei", "ij", "ou", "au"],
-  letterGroep: ["aai", "ooi", "oei", "eeuw", "ieuw", "uw"],
+  letterGroep: ["aai", "ooi", "oei", "eeuw", "ieuw", "uw", "eau"],
   rest: ["ng", "nk", "ch", "sch", "schr"]
 };
 
@@ -31,6 +31,7 @@ const laatsteKlank = (offset = 0) => selectie =>
   selectie.index === selectie.resultaat.length - 1 - offset;
 const eersteKlank = (offset = 0) => selectie => selectie.index === offset;
 const klank = (klank, offset = 0) => selectie =>
+  selectie.resultaat[selectie.index + offset] &&
   selectie.resultaat[selectie.index + offset][1] === klank;
 const klasse = (test, offset = 0) => selectie =>
   selectie.resultaat[selectie.index + offset] &&
@@ -80,7 +81,7 @@ const verwerkStommeE = resultaat => {
   resultaat = verwerk(
     resultaat,
     selecteerKlank("e", "korteKlinker"),
-    en(totaalKlanken(a => a === 2), laatsteKlank()),
+    laatsteKlank(),
     "stommeE"
   );
   // verklein woord
@@ -97,7 +98,7 @@ const verwerkStommeE = resultaat => {
         // -en
         resultaat,
         selecteerKlank("e", null),
-        en(totaalKlanken(a => a > 3), laatsteKlank(1), klank(eindLetter, 1)),
+        en(totaalKlanken(a => a > 3), klank(eindLetter, 1)),
         "stommeE"
       ))
   );
