@@ -15,7 +15,8 @@ const boekThema = {
   haken: {
     startSpel: "startSpel",
     eindLus: "cls",
-    eindSpel: "eindSpel"
+    eindSpel: "eindSpel",
+    geladen: "geladen"
   },
   opties: ({ kaft = "rood" }) => ({
     css: kaftKleur(kaftKleuren[kaft])

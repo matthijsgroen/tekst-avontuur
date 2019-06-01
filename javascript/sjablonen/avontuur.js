@@ -1,6 +1,7 @@
 let skip = false;
 let naam = "";
 let spelToestand = Array(100).fill(0);
+let klankbord = false;
 let verzendCode;
 
 const verzendLink = () => location.href + `#naam=${naam}|code=${verzendCode}`;
@@ -34,23 +35,6 @@ const h = (tagName, attributes = {}, children = []) => {
 
 const screenElement = document.getElementById("screen");
 
-const widthRuler = document.getElementById("width");
-widthRuler.textContent =
-  'A Quick brown fox jumps. It jumps fast and HIGH over the "Lazy", sleeping, dog!?';
-
-const resizeFont = () => {
-  document.body.setAttribute("style", `font-size: 1rem;`);
-  widthRuler.setAttribute("style", "display: block;");
-  let screenWidth = screenElement.getBoundingClientRect().width;
-  let lineWidth = widthRuler.getBoundingClientRect().width;
-  const scale = Math.max(screenWidth / lineWidth, 1);
-  document.body.setAttribute("style", `font-size: ${scale}rem;`);
-  widthRuler.setAttribute("style", "display: none;");
-};
-
-window.addEventListener("resize", () => setTimeout(resizeFont, 100));
-resizeFont();
-
 window.addEventListener("mouseup", () => (skip = true));
 window.addEventListener("touchend", () => (skip = true));
 
@@ -78,6 +62,7 @@ const printActie = (tekst, actie, parent) => {
     keyPressed = `${actie}`;
     return false;
   };
+  const zinBlokken = voegKlassificatiesToe(tekst);
   const lijstItem = h(
     "li",
     props,
@@ -87,14 +72,20 @@ const printActie = (tekst, actie, parent) => {
         href: "#",
         onClick
       },
-      h("span", { class: actieveKleur }, tekst)
+      zinBlokken.map(([klasse, tekst]) =>
+        h(
+          "span",
+          { class: [actieveKleur, klasse].filter(Boolean).join(" ") },
+          tekst
+        )
+      )
     )
   );
 
   parent.appendChild(lijstItem);
 };
 
-const print = tekst => {
+const print = (tekst, klasse = null) => {
   let parent = screenElement.children[screenElement.children.length - 1];
   if (parent.tagName === "UL") {
     const items = parent.getElementsByTagName("li");
@@ -103,7 +94,8 @@ const print = tekst => {
 
   tekst.split("\n").forEach((element, index, list) => {
     if (element !== "") {
-      parent.appendChild(h("span", { class: actieveKleur }, element));
+      const className = [actieveKleur, klasse].filter(Boolean).join(" ");
+      parent.appendChild(h("span", { class: className }, element));
     }
     if (index < list.length - 1) {
       const tag = document.createTextNode(" ");
@@ -163,14 +155,18 @@ const tekst = async (verteller, zin, eerderGelezen) => {
     huidigeParagraaf.classList.add("gesprek");
   }
 
-  if (eerderGelezen) {
-    print(zin);
-  } else {
-    for (const letter of zin) {
-      print(letter);
-      await sleep(0.02);
+  const zinBlokken = voegKlassificatiesToe(zin);
+  for (const klank of zinBlokken) {
+    print(klank[1], klank[0]);
+    if (!eerderGelezen) {
+      if (klankbord) {
+        await sleep(0.08);
+      } else {
+        await sleep(0.02);
+      }
     }
   }
+
   print("\n");
 };
 
@@ -418,6 +414,7 @@ const laadSpel = async () => {
         naam = velden.naam;
         spelToestand = decode(velden.code);
         location.hash = "";
+        // -- template:geladen
         // -- template:startSpel
         return true;
       }
@@ -430,6 +427,8 @@ const laadSpel = async () => {
 
     naam = data.naam;
     spelToestand = data.gameState;
+    klankbord = data.klankbord;
+    // -- template:geladen
     // -- template:startSpel
     return true;
   } catch (e) {}
@@ -440,7 +439,8 @@ const bewaarSpel = () => {
   try {
     const opslag = {
       naam,
-      gameState: spelToestand
+      gameState: spelToestand,
+      klankbord
     };
     localStorage.setItem(`opslag-${bewaarSleutel}`, JSON.stringify(opslag));
   } catch (e) {}
@@ -449,6 +449,7 @@ const bewaarSpel = () => {
 const spelLus = async () => {
   const spelGeladen = await laadSpel();
   if (!spelGeladen) {
+    // -- template:geladen
     naam = await krijgNaam();
     skip = false;
     bewaarSpel();

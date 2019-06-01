@@ -35,12 +35,18 @@ const eindSpel = () => {
   screenElement.appendChild(paragraaf);
 };
 
-document.addEventListener("DOMContentLoaded", function() {
-  let menuRef = null;
-  const menu = () => menuRef;
+const geladen = () => {
   if (isEPaper) {
     document.body.classList.add("ereader");
   }
+  if (klankbord) {
+    document.body.classList.add("klankbord");
+  }
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+  let menuRef = null;
+  const menu = () => menuRef;
 
   const sluitMenu = () => menu().classList.remove("zichtbaar");
   const maakMenuActief = index => {
@@ -81,6 +87,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }),
 
     ...extraOpties,
+    h("li", {}, [
+      h("label", {}, [
+        h("input", {
+          type: "checkbox",
+          value: "klankbord",
+          ...(klankbord && { checked: "checked" }),
+          onChange: e => {
+            klankbord = e.target.checked;
+            if (klankbord) {
+              document.body.classList.add("klankbord");
+            } else {
+              document.body.classList.remove("klankbord");
+            }
+            bewaarSpel();
+          }
+        }),
+        "Klank blokken"
+      ])
+    ]),
     optie("Menu sluiten", () => sluitMenu())
   ];
 
@@ -97,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
       { class: "color7" },
       "Hiermee kan je de voortgang van het spel versturen, om op een ander apparaat verder te spelen."
     ),
-    h("input", { type: "text", value: verzendLink() }),
+    h("input", { type: "text", value: verzendLink(), style: "width: 100%" }),
     h("ul", {}, [optie("Terug", () => maakMenuActief(0))])
   ]);
 

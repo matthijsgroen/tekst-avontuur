@@ -40,6 +40,9 @@ body {
     margin: 0;
     height: 100%;
 }
+body.klankbord {
+    font-size: 1.5em;
+}
 table, input, textarea, button {
     font-family: inherit;
 }
@@ -202,6 +205,32 @@ table, input, textarea, button {
     animation-name: turn-page;
     animation-fill-mode: forwards;
 }
+body.klankbord #screen span {
+    padding: 0 0.1em;
+}
+body.klankbord #screen {
+    line-height: 2em;
+}
+body.klankbord #screen span.korteKlinker {
+    text-decoration: underline green;
+    background-color: rgba(0,80,0,0.1);
+}
+body.klankbord #screen span.langeKlinker {
+    text-decoration: underline yellow;
+    background-color: rgba(255,255,85,0.1);
+}
+body.klankbord #screen span.stommeE {
+    text-decoration: underline orange;
+    background-color: rgba(170,85,0,0.1);
+}
+body.klankbord #screen span.tweeKlank {
+    text-decoration: underline red;
+    background-color: rgba(170,0,0,0.1);
+}
+body.klankbord #screen span.letterGroep {
+    text-decoration: underline grey;
+    background-color: rgba(80,80,80,0.1);
+}
 #screen span {
     animation-duration: 0.2s;
     animation-name: inkblot;
@@ -360,8 +389,11 @@ button:focus {
     padding-top: 1em;
 }
 
-.ereader, .ereader .page-locator, .ereader .page, .ereader .binnen-pagina {
+.ereader .page-locator, .ereader .page {
     background: white;
+}
+.ereader .binnen-pagina {
+    display: none;
 }
 .ereader .page.turn,
 .ereader .page.turn + .achter-pagina {

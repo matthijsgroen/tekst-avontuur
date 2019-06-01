@@ -50,7 +50,16 @@ const maakHtml = async (bron, doel, basisNaam, configuratie, vlaggen) => {
     themaAanpassingen.css,
     await leesBestand(cssPath, "utf8")
   );
-  const code = await leesBestand(`${__dirname}/sjablonen/avontuur.js`, "utf8");
+  const bestanden = ["dyslexie.js", "avontuur.js"];
+  const codeResultaat = [];
+  for (const bestand of bestanden) {
+    const inhoud = await leesBestand(
+      `${__dirname}/sjablonen/${bestand}`,
+      "utf8"
+    );
+    codeResultaat.push(inhoud);
+  }
+  const code = codeResultaat.join("");
   const themaJs = verwerkAanpassingen(
     themaAanpassingen.javascript,
     themaData.javascript
