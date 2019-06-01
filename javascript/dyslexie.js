@@ -1,6 +1,6 @@
 const definities = {
-  korteKlinker: ["a", "e", "i", "o", "u"],
-  langeKlinker: ["aa", "ee", "oo", "uu"],
+  korteKlinker: ["a", "e", "i", "o", "u", "è"],
+  langeKlinker: ["aa", "ee", "oo", "uu", "éé"],
   tweeKlank: ["ie", "oe", "eu", "ui", "ei", "ij", "ou", "au"],
   letterGroep: ["aai", "ooi", "oei", "eeuw", "ieuw", "uw"],
   rest: ["ng", "nk", "ch", "sch", "schr"]
@@ -219,7 +219,7 @@ const voegKlassificatiesToe = zin => {
   let huidigWoord = "";
   //return [["anders", zin]];
   for (const char of zin) {
-    if (/\w/.test(char)) {
+    if (/\w|[éè]/.test(char)) {
       huidigWoord += char;
     } else {
       if (huidigWoord.length > 0) {

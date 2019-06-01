@@ -36,6 +36,13 @@ const eindSpel = () => {
 document.addEventListener("DOMContentLoaded", function() {
   let menuRef = null;
   const menu = () => menuRef;
+  if (
+    [" Silk/", " Nook/", " PocketBook/"].some(e =>
+      navigator.userAgent.includes(e)
+    )
+  ) {
+    document.body.classList.add("ereader");
+  }
 
   const sluitMenu = () => menu().classList.remove("zichtbaar");
   const maakMenuActief = index => {

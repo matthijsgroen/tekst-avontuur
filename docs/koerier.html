@@ -457,6 +457,15 @@ button:focus {
     padding-top: 1em;
 }
 
+.ereader, .ereader .page-locator, .ereader .page, .ereader .binnen-pagina {
+    background: white;
+}
+.ereader .page.turn,
+.ereader .page.turn + .achter-pagina {
+    display: none;
+}
+.ereader #screen span { -webkit-animation: none; animation: none; }
+.ereader .kaft { transition: none; }
 </style>
     </head>
     <body>
@@ -523,6 +532,13 @@ const eindSpel = () => {
 document.addEventListener("DOMContentLoaded", function() {
   let menuRef = null;
   const menu = () => menuRef;
+  if (
+    [" Silk/", " Nook/", " PocketBook/"].some(e =>
+      navigator.userAgent.includes(e)
+    )
+  ) {
+    document.body.classList.add("ereader");
+  }
 
   const sluitMenu = () => menu().classList.remove("zichtbaar");
   const maakMenuActief = index => {

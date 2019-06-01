@@ -4,7 +4,6 @@ const maakHtml = require("./maakHtml");
 const statistieken = require("./statistieken");
 const pakket = require("./package.json");
 const { genereerCode } = require("./maakCode");
-const { toonZin } = require("./dyslexie");
 
 const commandos = process.argv
   .slice(2)
@@ -88,25 +87,5 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   );
 } else {
   const herstarten = vlaggen.restart || vlaggen.herstart || vlaggen.herstarten;
-  const dyslexie = vlaggen.dyslexie;
-  if (dyslexie) {
-    [
-      "hallo, wereld! Dit is een stapje verder natuurlijk.",
-      "het is een beetje verwarrend geworden.",
-      "we spellen spelenderwijs",
-      "de paraplu: 'is gezellig' of een schreeuwlelijk?",
-      "kastelen",
-      "verder",
-      "schapen",
-      "lig",
-      "veren",
-      "bever",
-      "verschrikkelijk"
-    ].forEach(zin => {
-      toonZin(zin);
-      process.stdout.write("\n\n");
-    });
-  } else {
-    spelLus(eerste, { herstarten, dyslexie });
-  }
+  spelLus(eerste, { herstarten });
 }

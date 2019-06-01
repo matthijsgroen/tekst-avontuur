@@ -360,3 +360,12 @@ button:focus {
     padding-top: 1em;
 }
 
+.ereader, .ereader .page-locator, .ereader .page, .ereader .binnen-pagina {
+    background: white;
+}
+.ereader .page.turn,
+.ereader .page.turn + .achter-pagina {
+    display: none;
+}
+.ereader #screen span { animation: none; }
+.ereader .kaft { transition: none; }
