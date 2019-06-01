@@ -115,6 +115,14 @@ const maakHtml = async (bron, doel, basisNaam, configuratie, vlaggen) => {
     );
   }
 
+  metagegevens.push(
+    maakMetaTag({
+      name: "keywords",
+      content:
+        "spel, educatief, dyslexie, taal in blokjes, avontuur, text adventure, tekst avontuur, nederlands"
+    })
+  );
+
   const processor = postcss([autoprefixer]);
   const processedCss = await processor.process(css, { from: cssPath });
 
