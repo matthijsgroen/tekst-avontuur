@@ -174,6 +174,10 @@ const tekst = async (verteller, zin, eerderGelezen) => {
   print("\n");
 };
 
+const isEPaper = [" Silk/", " Nook/", " PocketBook/"].some(e =>
+  navigator.userAgent.includes(e)
+);
+
 const toonGebeurtenis = async () => {
   let verteller = 7;
   const paragraaf = document.createElement("p");
@@ -182,7 +186,7 @@ const toonGebeurtenis = async () => {
   skip = false;
   for (const teksten of avontuur.scherm) {
     if (toegestaan(teksten.test)) {
-      const eerderGelezen = teksten.gelezen === true;
+      const eerderGelezen = teksten.gelezen === true || isEPaper;
       if (!eerderGelezen) teksten.gelezen = true;
       for (const zin of teksten.schermData) {
         if (zin[0] === "*") {

@@ -36,11 +36,7 @@ const eindSpel = () => {
 document.addEventListener("DOMContentLoaded", function() {
   let menuRef = null;
   const menu = () => menuRef;
-  if (
-    [" Silk/", " Nook/", " PocketBook/"].some(e =>
-      navigator.userAgent.includes(e)
-    )
-  ) {
+  if (isEPaper) {
     document.body.classList.add("ereader");
   }
 
