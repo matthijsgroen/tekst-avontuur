@@ -32,6 +32,8 @@ const laatsteKlank = (offset = 0) => selectie =>
 const eersteKlank = (offset = 0) => selectie => selectie.index === offset;
 const klank = (klank, offset = 0) => selectie =>
   selectie.resultaat[selectie.index + offset][1].toLowerCase() === klank;
+const klankLengte = (lengte, offset = 0) => selectie =>
+  selectie.resultaat[selectie.index + offset][1].length === lengte;
 const klasse = (test, offset = 0) => selectie =>
   selectie.resultaat[selectie.index + offset] &&
   test(selectie.resultaat[selectie.index + offset][0]);
@@ -51,7 +53,11 @@ const verwerkLangeKlinkers = resultaat => {
     resultaat = verwerk(
       resultaat,
       selecteerKlank(klinker, "korteKlinker"),
-      en(klasse(a => a === "rest", 1), klasse(a => a !== "rest", 2)),
+      en(
+        klasse(a => a === "rest", 1),
+        klankLengte(1, 1),
+        klasse(a => a !== "rest", 2)
+      ),
       "langeKlinker"
     );
   });
