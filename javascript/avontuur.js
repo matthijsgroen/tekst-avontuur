@@ -86,7 +86,8 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
     "meten",
     "messen",
     "snel",
-    "Avontuur"
+    "Avontuur",
+    "repareren"
   ].forEach(woord => {
     toonZin(woord);
     console.log("\n");

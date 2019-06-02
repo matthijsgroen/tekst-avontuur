@@ -10,5 +10,9 @@
   "dependencies": {
     "autoprefixer": "^9.5.1",
     "postcss": "^7.0.16"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
   }
 }

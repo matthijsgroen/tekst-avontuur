@@ -2,6 +2,7 @@ let skip = false;
 let naam = "";
 let spelToestand = Array(100).fill(0);
 let klankbord = false;
+let thema = "boek";
 let verzendCode;
 
 const verzendLink = () => location.href + `#naam=${naam}|code=${verzendCode}`;
@@ -428,6 +429,7 @@ const laadSpel = async () => {
     naam = data.naam;
     spelToestand = data.gameState;
     klankbord = data.klankbord;
+    thema = data.thema;
     // -- template:geladen
     // -- template:startSpel
     return true;
@@ -440,7 +442,8 @@ const bewaarSpel = () => {
     const opslag = {
       naam,
       gameState: spelToestand,
-      klankbord
+      klankbord,
+      thema
     };
     localStorage.setItem(`opslag-${bewaarSleutel}`, JSON.stringify(opslag));
   } catch (e) {}

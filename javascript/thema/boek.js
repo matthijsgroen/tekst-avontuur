@@ -42,6 +42,9 @@ const geladen = () => {
   if (klankbord) {
     document.body.classList.add("klankbord");
   }
+  if (thema === "dos") {
+    document.body.classList.add("terminal");
+  }
 };
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -91,6 +94,25 @@ document.addEventListener("DOMContentLoaded", function() {
       h("label", {}, [
         h("input", {
           type: "checkbox",
+          value: "thema",
+          ...(thema === "dos" && { checked: "checked" }),
+          onChange: e => {
+            thema = e.target.checked ? "dos" : "boek";
+            if (thema === "dos") {
+              document.body.classList.add("terminal");
+            } else {
+              document.body.classList.remove("terminal");
+            }
+            bewaarSpel();
+          }
+        }),
+        "DOS Versie"
+      ])
+    ]),
+    h("li", {}, [
+      h("label", {}, [
+        h("input", {
+          type: "checkbox",
           value: "klankbord",
           ...(klankbord && { checked: "checked" }),
           onChange: e => {
@@ -103,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function() {
             bewaarSpel();
           }
         }),
-        "Klank blokken"
+        "Klank blokken / Dyslexie"
       ])
     ]),
     optie("Menu sluiten", () => sluitMenu())
