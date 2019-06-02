@@ -4,6 +4,7 @@ const maakHtml = require("./maakHtml");
 const statistieken = require("./statistieken");
 const pakket = require("./package.json");
 const { genereerCode } = require("./maakCode");
+const { toonZin } = require("./dyslexie");
 
 const commandos = process.argv
   .slice(2)
@@ -66,6 +67,30 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   };
   const bron = commandos[1];
   encodeDecode(bron);
+} else if (eerste === "test") {
+  [
+    "teruggevonden",
+    "boerderij",
+    "vertellen",
+    "veren",
+    "beren",
+    "open",
+    "gedoe",
+    "getver",
+    "geluk",
+    "eten.",
+    "medicijnen",
+    "medebewoner",
+    "medaille",
+    "meteen",
+    "meten",
+    "messen",
+    "snel",
+    "Avontuur"
+  ].forEach(woord => {
+    toonZin(woord);
+    console.log("\n");
+  });
 } else if (eerste === "html") {
   const basisNaam = name =>
     name
