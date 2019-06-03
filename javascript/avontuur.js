@@ -68,27 +68,7 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   const bron = commandos[1];
   encodeDecode(bron);
 } else if (eerste === "test") {
-  [
-    "teruggevonden",
-    "boerderij",
-    "vertellen",
-    "veren",
-    "beren",
-    "open",
-    "gedoe",
-    "getver",
-    "geluk",
-    "eten.",
-    "medicijnen",
-    "medebewoner",
-    "medaille",
-    "meteen",
-    "meten",
-    "messen",
-    "snel",
-    "Avontuur",
-    "repareren"
-  ].forEach(woord => {
+  ["repareren", "verwerkte"].forEach(woord => {
     toonZin(woord);
     console.log("\n");
   });
