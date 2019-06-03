@@ -134,6 +134,38 @@ describe("Dyslexie", () => {
     [L, "aa"],
     [R, "r"]
   ];
+  const molensteen = [
+    [R, "m"],
+    [L, "o"],
+    [R, "l"],
+    [E, "e"],
+    [R, "n"],
+    [R, "s"],
+    [R, "t"],
+    [L, "ee"],
+    [R, "n"]
+  ];
+  const overal = [[L, "O"], [R, "v"], [E, "e"], [R, "r"], [K, "a"], [R, "l"]];
+  const heuvels = [[R, "h"], [T, "eu"], [R, "v"], [E, "e"], [R, "l"], [R, "s"]];
+  const omgeving = [
+    [K, "o"],
+    [R, "m"],
+    [R, "g"],
+    [L, "e"],
+    [R, "v"],
+    [K, "i"],
+    [R, "ng"]
+  ];
+  const omgetikt = [
+    [K, "o"],
+    [R, "m"],
+    [R, "g"],
+    [E, "e"],
+    [R, "t"],
+    [K, "i"],
+    [R, "k"],
+    [R, "t"]
+  ];
 
   [
     avontuur,
@@ -157,7 +189,12 @@ describe("Dyslexie", () => {
     vertellen,
     verwerkte,
     gaaaaap,
-    molenaar
+    molenaar,
+    molensteen,
+    overal,
+    heuvels,
+    omgeving,
+    omgetikt
   ].forEach(resultaat => {
     const woord = resultaat.reduce((r, e) => r + e[1], "");
 

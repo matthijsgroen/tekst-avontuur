@@ -43,7 +43,10 @@ const klasse = (test, offset = 0) => selectie =>
   test(selectie.resultaat[selectie.index + offset][0]);
 const totaalKlasse = (klasseTest, test) => selectie =>
   test(selectie.resultaat.reduce((a, e) => a + (klasseTest(e[0]) ? 1 : 0), 0));
-const klankIndex = test => selectie => test(selectie.index);
+const klankIndex = test => selectie =>
+  test(selectie.index, selectie.resultaat.length);
+const eindKlank = (klank, offset = 0) => selectie =>
+  selectie.resultaat[selectie.resultaat.length - 1 - offset][1] === klank;
 
 const verwerkLangeKlinkers = resultaat => {
   ["u", "a", "o"].forEach(klinker => {
@@ -79,11 +82,14 @@ const verwerkStommeE = resultaat => {
     "stommeE"
   );
   // verklein woord
-  resultaat = verwerk(
-    resultaat,
-    selecteerKlank("e", "korteKlinker"),
-    en(totaalKlanken(a => a > 3), laatsteKlank(), klank("j", -1)),
-    "stommeE"
+  ["j", "t"].forEach(
+    eindLetter =>
+      (resultaat = verwerk(
+        resultaat,
+        selecteerKlank("e", "korteKlinker"),
+        en(totaalKlanken(a => a > 3), laatsteKlank(), klank(eindLetter, -1)),
+        "stommeE"
+      ))
   );
   // uitgangen -en, -em, -er, -el, -es, -et
   ["n", "m", "r", "l", "s", "t"].forEach(
@@ -99,26 +105,39 @@ const verwerkStommeE = resultaat => {
           niet(klank(eindLetter, 2)),
           of(
             niet(klasse(e => e !== "stommeE" || e !== "korteKlinker", 2)),
-            klasse(e => e === "langeKlinker", 2)
+            klasse(e => e === "langeKlinker", 2),
+            klasse(e => e === "korteKlinker", 2),
+            en(
+              klasse(e => e === "rest", 2),
+              klasse(e => e === "rest", 3),
+              klasse(e => e !== "stommeE", 4)
+            ),
+            en(laatsteKlank(2), klank("s", 2))
           )
         ),
         "stommeE"
       ))
   );
   // voorvoegsels. be- ge-, ver- te-
-  const isVoorvoegsel = (offset = 0) => selectie =>
-    selectie.resultaat[selectie.index + 1 + offset] &&
-    selectie.resultaat[selectie.index + 1 + offset][0] === "rest" &&
-    selectie.resultaat[selectie.index + 2 + offset] &&
-    selectie.resultaat[selectie.index + 2 + offset][0] !== "rest" &&
-    totaalKlasse(k => k !== "rest" && k !== "stommeE", a => a > 1)(selectie);
+  const voorvoegsel = (offset = 0) =>
+    en(
+      selectie =>
+        selectie.resultaat[selectie.index + 1 + offset] &&
+        selectie.resultaat[selectie.index + 1 + offset][0] === "rest" &&
+        selectie.resultaat[selectie.index + 2 + offset] &&
+        selectie.resultaat[selectie.index + 2 + offset][0] !== "rest",
+      totaalKlasse(k => k !== "rest" && k !== "stommeE", a => a > 1)
+    );
 
-  ["d", "b", "g", "t"].forEach(
+  const werkwoord = () =>
+    of(eindKlank("d"), eindKlank("t"), en(eindKlank("e", 1), eindKlank("n")));
+
+  ["d", "b", "t"].forEach(
     beginLetter =>
       (resultaat = verwerk(
         resultaat,
         selecteerKlank("e", null),
-        en(isVoorvoegsel(), klank(beginLetter, -1)),
+        en(voorvoegsel(), klank(beginLetter, -1)),
         "stommeE"
       ))
   );
@@ -126,7 +145,14 @@ const verwerkStommeE = resultaat => {
   resultaat = verwerk(
     resultaat,
     selecteerKlank("e", null),
-    en(isVoorvoegsel(1), eersteKlank(1), klank("v", -1), klank("r", 1)),
+    en(voorvoegsel(), klank("g", -1), of(eersteKlank(1), werkwoord())),
+    "stommeE"
+  );
+
+  resultaat = verwerk(
+    resultaat,
+    selecteerKlank("e", null),
+    en(voorvoegsel(1), eersteKlank(1), klank("v", -1), klank("r", 1)),
     "stommeE"
   );
   // me-
@@ -134,7 +160,7 @@ const verwerkStommeE = resultaat => {
     resultaat,
     selecteerKlank("e", null),
     en(
-      isVoorvoegsel(),
+      voorvoegsel(),
       klank("m", -1),
       niet(en(klank("d", 1), of(klank("i", 2), klank("e", 2))))
     ),
