@@ -131,6 +131,11 @@ const verwerkStommeE = resultaat => {
 
   const werkwoord = () =>
     of(eindKlank("d"), eindKlank("t"), en(eindKlank("e", 1), eindKlank("n")));
+  const heeftAchtervoegsel = () =>
+    of(
+      en(eindKlank("l", 2), eindKlank("ij", 1), eindKlank("k")),
+      en(eindKlank("i", 1), eindKlank("g"))
+    );
 
   ["d", "b", "t"].forEach(
     beginLetter =>
@@ -145,7 +150,11 @@ const verwerkStommeE = resultaat => {
   resultaat = verwerk(
     resultaat,
     selecteerKlank("e", null),
-    en(voorvoegsel(), klank("g", -1), of(eersteKlank(1), werkwoord())),
+    en(
+      voorvoegsel(),
+      klank("g", -1),
+      of(eersteKlank(1), werkwoord(), heeftAchtervoegsel())
+    ),
     "stommeE"
   );
 
@@ -182,7 +191,11 @@ const verwerkStommeE = resultaat => {
       totaalKlanken(a => a > 3),
       laatsteKlank(1),
       klank("k", 1),
-      klank("l", -1)
+      klank("l", -1),
+      of(
+        niet(en(klank("e", -2), klank("g", -3))),
+        totaalKlasse(e => e !== "rest", a => a > 3)
+      )
     ),
     "stommeE"
   );
@@ -210,45 +223,57 @@ const verwerkStommeE = resultaat => {
   return resultaat;
 };
 
+const ontkenning = (resultaat, rest) =>
+  resultaat.length === 1 &&
+  resultaat[0][1].toLowerCase() === "o" &&
+  rest.toLowerCase().startsWith("n") &&
+  rest.length > 2;
+
 const voegWoordKlassificatiesToe = woord => {
   let start = 0;
   let resultaat = [];
+
   while (start < woord.length) {
     const rest = woord.slice(start);
     let klassificaties = [];
-    Object.entries(definities).forEach(([klasse, klanken]) => {
-      const klank = klanken
-        .filter(klank =>
-          klank instanceof RegExp
-            ? rest.toLowerCase().match(klank)
-            : rest.toLowerCase().startsWith(klank)
-        )
-        .reduce((resultaat, klank) => {
-          if (klank instanceof RegExp) {
-            const match = rest.toLowerCase().match(klank);
-            return match[0].length > resultaat.length ? match[0] : resultaat;
-          } else {
-            return klank.length > resultaat.length ? klank : resultaat;
-          }
-        }, "");
-      if (klank) {
-        klassificaties.push({ klasse, klank: rest.slice(0, klank.length) });
-      }
-    });
-    const klassificatie = klassificaties.reduce(
-      (huidigResultaat, { klasse, klank }) =>
-        huidigResultaat === null || klank.length > huidigResultaat.klank.length
-          ? { klasse, klank }
-          : huidigResultaat,
-      null
-    );
-    if (klassificatie === null) {
-      const laatsteResultaat = resultaat[resultaat.length - 1];
+    if (ontkenning(resultaat, rest)) {
       resultaat.push(["rest", rest[0]]);
       start += 1;
     } else {
-      resultaat.push([klassificatie.klasse, klassificatie.klank]);
-      start += klassificatie.klank.length;
+      Object.entries(definities).forEach(([klasse, klanken]) => {
+        const klank = klanken
+          .filter(klank =>
+            klank instanceof RegExp
+              ? rest.toLowerCase().match(klank)
+              : rest.toLowerCase().startsWith(klank)
+          )
+          .reduce((resultaat, klank) => {
+            if (klank instanceof RegExp) {
+              const match = rest.toLowerCase().match(klank);
+              return match[0].length > resultaat.length ? match[0] : resultaat;
+            } else {
+              return klank.length > resultaat.length ? klank : resultaat;
+            }
+          }, "");
+        if (klank) {
+          klassificaties.push({ klasse, klank: rest.slice(0, klank.length) });
+        }
+      });
+      const klassificatie = klassificaties.reduce(
+        (huidigResultaat, { klasse, klank }) =>
+          huidigResultaat === null ||
+          klank.length > huidigResultaat.klank.length
+            ? { klasse, klank }
+            : huidigResultaat,
+        null
+      );
+      if (klassificatie === null) {
+        resultaat.push(["rest", rest[0]]);
+        start += 1;
+      } else {
+        resultaat.push([klassificatie.klasse, klassificatie.klank]);
+        start += klassificatie.klank.length;
+      }
     }
   }
 

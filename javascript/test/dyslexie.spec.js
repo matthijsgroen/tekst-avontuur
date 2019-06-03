@@ -166,6 +166,56 @@ describe("Dyslexie", () => {
     [R, "k"],
     [R, "t"]
   ];
+  const vergelijk = [
+    [R, "v"],
+    [E, "e"],
+    [R, "r"],
+    [R, "g"],
+    [E, "e"],
+    [R, "l"],
+    [T, "ij"],
+    [R, "k"]
+  ];
+  const ongelijk = [
+    [K, "o"],
+    [R, "n"],
+    [R, "g"],
+    [E, "e"],
+    [R, "l"],
+    [T, "ij"],
+    [R, "k"]
+  ];
+  const gelijk = [[R, "g"], [E, "e"], [R, "l"], [T, "ij"], [R, "k"]];
+  const ongeldig = [
+    [K, "o"],
+    [R, "n"],
+    [R, "g"],
+    [E, "e"],
+    [R, "l"],
+    [R, "d"],
+    [E, "i"],
+    [R, "g"]
+  ];
+  const onzeker = [
+    [K, "o"],
+    [R, "n"],
+    [R, "z"],
+    [L, "e"],
+    [R, "k"],
+    [E, "e"],
+    [R, "r"]
+  ];
+  const onmogelijk = [
+    [K, "o"],
+    [R, "n"],
+    [R, "m"],
+    [L, "o"],
+    [R, "g"],
+    [E, "e"],
+    [R, "l"],
+    [E, "ij"],
+    [R, "k"]
+  ];
 
   [
     avontuur,
@@ -194,7 +244,12 @@ describe("Dyslexie", () => {
     overal,
     heuvels,
     omgeving,
-    omgetikt
+    omgetikt,
+    ongelijk,
+    vergelijk,
+    gelijk,
+    onmogelijk,
+    onzeker
   ].forEach(resultaat => {
     const woord = resultaat.reduce((r, e) => r + e[1], "");
 
