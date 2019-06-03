@@ -124,6 +124,7 @@ describe("Dyslexie", () => {
     [R, "t"],
     [E, "e"]
   ];
+  const gaaaaap = [[R, "g"], [L, "aaaaa"], [R, "p"]];
 
   [
     avontuur,
@@ -145,7 +146,8 @@ describe("Dyslexie", () => {
     teruggevonden,
     veren,
     vertellen,
-    verwerkte
+    verwerkte,
+    gaaaaap
   ].forEach(resultaat => {
     const woord = resultaat.reduce((r, e) => r + e[1], "");
 

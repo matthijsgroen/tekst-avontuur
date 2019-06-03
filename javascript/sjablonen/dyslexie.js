@@ -1,6 +1,6 @@
 const definities = {
   korteKlinker: ["a", "e", "i", "o", "u", "è"],
-  langeKlinker: ["aa", "ee", "oo", "uu", "éé"],
+  langeKlinker: [/^aa+/, /^ee+/, /^oo+/, /^uu+/, /^éé+/],
   tweeKlank: ["ie", "oe", "eu", "ui", "ei", "ij", "ou", "au"],
   letterGroep: ["aai", "ooi", "oei", "eeuw", "ieuw", "uw", "eau"],
   rest: ["ng", "nk", "ch", "sch", "schr"]
@@ -189,12 +189,19 @@ const voegWoordKlassificatiesToe = woord => {
     let klassificaties = [];
     Object.entries(definities).forEach(([klasse, klanken]) => {
       const klank = klanken
-        .filter(klank => rest.toLowerCase().startsWith(klank))
-        .reduce(
-          (resultaat, klank) =>
-            klank.length > resultaat.length ? klank : resultaat,
-          ""
-        );
+        .filter(klank =>
+          klank instanceof RegExp
+            ? rest.toLowerCase().match(klank)
+            : rest.toLowerCase().startsWith(klank)
+        )
+        .reduce((resultaat, klank) => {
+          if (klank instanceof RegExp) {
+            const match = rest.toLowerCase().match(klank);
+            return match[0].length > resultaat.length ? match[0] : resultaat;
+          } else {
+            return klank.length > resultaat.length ? klank : resultaat;
+          }
+        }, "");
       if (klank) {
         klassificaties.push({ klasse, klank: rest.slice(0, klank.length) });
       }
