@@ -45,22 +45,6 @@ const totaalKlasse = (klasseTest, test) => selectie =>
   test(selectie.resultaat.reduce((a, e) => a + (klasseTest(e[0]) ? 1 : 0), 0));
 const klankIndex = test => selectie => test(selectie.index);
 
-const reset = () => "\u001b[0m";
-const tonen = {
-  korteKlinker: klinker =>
-    process.stdout.write("\u001b[97;48;5;22m " + klinker + " " + reset()),
-  langeKlinker: langeKlinker =>
-    process.stdout.write(`\u001b[30;43m ${langeKlinker} ` + reset()),
-  tweeKlank: tweeKlank =>
-    process.stdout.write(`\u001b[97;41m ${tweeKlank} ` + reset()),
-  letterGroep: letterGroep =>
-    process.stdout.write(`\u001b[30;47m ${letterGroep} ` + reset()),
-  rest: rest => process.stdout.write(`\u001b[97;44m ${rest} ` + reset()),
-  stommeE: klank =>
-    process.stdout.write(`\u001b[97;48;5;202m ${klank} ` + reset()),
-  anders: tekens => process.stdout.write(tekens)
-};
-
 const verwerkLangeKlinkers = resultaat => {
   ["u", "a", "o"].forEach(klinker => {
     resultaat = verwerk(
@@ -113,7 +97,10 @@ const verwerkStommeE = resultaat => {
           klankIndex(e => e > 1),
           klank(eindLetter, 1),
           niet(klank(eindLetter, 2)),
-          niet(klasse(e => e !== "stommeE" || e !== "korteKlinker", 2))
+          of(
+            niet(klasse(e => e !== "stommeE" || e !== "korteKlinker", 2)),
+            klasse(e => e === "langeKlinker", 2)
+          )
         ),
         "stommeE"
       ))
@@ -265,6 +252,22 @@ const voegKlassificatiesToe = zin => {
     huidigWoord = "";
   }
   return resultaat;
+};
+
+const reset = () => "\u001b[0m";
+const tonen = {
+  korteKlinker: klinker =>
+    process.stdout.write("\u001b[97;48;5;22m " + klinker + " " + reset()),
+  langeKlinker: langeKlinker =>
+    process.stdout.write(`\u001b[30;43m ${langeKlinker} ` + reset()),
+  tweeKlank: tweeKlank =>
+    process.stdout.write(`\u001b[97;41m ${tweeKlank} ` + reset()),
+  letterGroep: letterGroep =>
+    process.stdout.write(`\u001b[30;47m ${letterGroep} ` + reset()),
+  rest: rest => process.stdout.write(`\u001b[97;44m ${rest} ` + reset()),
+  stommeE: klank =>
+    process.stdout.write(`\u001b[97;48;5;202m ${klank} ` + reset()),
+  anders: tekens => process.stdout.write(tekens)
 };
 
 const toonZin = zin => {

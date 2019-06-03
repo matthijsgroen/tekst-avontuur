@@ -97,7 +97,10 @@ const verwerkStommeE = resultaat => {
           klankIndex(e => e > 1),
           klank(eindLetter, 1),
           niet(klank(eindLetter, 2)),
-          niet(klasse(e => e !== "stommeE" || e !== "korteKlinker", 2))
+          of(
+            niet(klasse(e => e !== "stommeE" || e !== "korteKlinker", 2)),
+            klasse(e => e === "langeKlinker", 2)
+          )
         ),
         "stommeE"
       ))

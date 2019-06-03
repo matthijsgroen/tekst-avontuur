@@ -125,6 +125,15 @@ describe("Dyslexie", () => {
     [E, "e"]
   ];
   const gaaaaap = [[R, "g"], [L, "aaaaa"], [R, "p"]];
+  const molenaar = [
+    [R, "m"],
+    [L, "o"],
+    [R, "l"],
+    [E, "e"],
+    [R, "n"],
+    [L, "aa"],
+    [R, "r"]
+  ];
 
   [
     avontuur,
@@ -147,7 +156,8 @@ describe("Dyslexie", () => {
     veren,
     vertellen,
     verwerkte,
-    gaaaaap
+    gaaaaap,
+    molenaar
   ].forEach(resultaat => {
     const woord = resultaat.reduce((r, e) => r + e[1], "");
 

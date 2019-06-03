@@ -1496,7 +1496,7 @@
 "&4=0"
 
 "1=14;2=0;4=2", "*c3", "$n: 'Weet u hoe ik aan medicijnen kan komen?'", "", "*c2"
-"De oude molenaar lijkt je aan.", "", "*c9", "&"
+"De oude molenaar kijkt je aan.", "", "*c9", "&"
 "0=1;1=14;2=0;4=2", "Tjasker: 'Sorry jongen, dat zou ik echt niet weten.'", "&4=0"
 "0=2;1=14;2=0;4=2", "Tjasker: 'Sorry dame, dat zou ik echt niet weten.'", "&4=0"
 

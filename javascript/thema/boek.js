@@ -2,7 +2,7 @@ const cls = async () => {
   const pageElement = screenElement.parentElement;
   pageElement.classList.add("turn");
 
-  await sleep(0.6);
+  thema === "boek" && (await sleep(0.6));
   screenElement.innerHTML = "";
   pageElement.classList.remove("turn");
 };

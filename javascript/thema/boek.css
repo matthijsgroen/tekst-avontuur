@@ -411,6 +411,8 @@ body.terminal {
 }
 .terminal .page-locator, .terminal .page {
     background: black;
+    padding: 0;
+    width: 100%;
 }
 .terminal .binnen-pagina {
     display: none;
