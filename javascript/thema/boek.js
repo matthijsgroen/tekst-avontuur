@@ -178,7 +178,9 @@ document.addEventListener("DOMContentLoaded", function() {
     ]),
     h("hr"),
     h("p", {}, [
-      "Avontuur spel motor gemaakt door Matthijs Groen. Idee voor taal hulp door Tinka Huisman. Lettertype voor DOS mode: ",
+      `Avontuur spel motor (${
+        gegevens.systeem
+      }) gemaakt door Matthijs Groen. Idee voor taal hulp door Tinka Huisman. Lettertype voor DOS mode: `,
       h(
         "a",
         { href: "https://int10h.org/oldschool-pc-fonts/" },

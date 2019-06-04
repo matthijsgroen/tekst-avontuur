@@ -1,6 +1,6 @@
 {
   "name": "avontuur",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "tool to create text-adventures",
   "main": "avontuur.js",
   "repository": "https://github.com/matthijsgroen/tekst-avontuur",

@@ -1,5 +1,6 @@
 const postcss = require("postcss");
 const autoprefixer = require("autoprefixer");
+const pakket = require("./package.json");
 
 const { promisify } = require("util");
 const leesBestand = promisify(require("fs").readFile);
@@ -77,8 +78,15 @@ const maakHtml = async (bron, doel, basisNaam, configuratie, vlaggen) => {
   );
 
   const gegevens = avontuur.gegevens;
+  gegevens.systeem = pakket.version;
   const metagegevens = [];
-  metagegevens.push(maakMetaTag({ property: "og:type", content: "article" }));
+  metagegevens.push(
+    maakMetaTag({ property: "og:type", content: "article" }),
+    maakMetaTag({
+      name: "generator",
+      content: `Avontuur ${pakket.version}`
+    })
+  );
   if (gegevens.titel) {
     metagegevens.push(
       `<title>Avontuur - ${gegevens.titel}</title>`,
@@ -105,6 +113,10 @@ const maakHtml = async (bron, doel, basisNaam, configuratie, vlaggen) => {
     metagegevens.push(
       maakMetaTag({
         property: "og:article:author:name",
+        content: gegevens.auteur
+      }),
+      maakMetaTag({
+        name: "author",
         content: gegevens.auteur
       })
     );
