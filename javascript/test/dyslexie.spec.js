@@ -217,6 +217,9 @@ describe("Dyslexie", () => {
     [R, "k"]
   ];
 
+  //const Speciale = [];
+  //const meedenken = [];
+
   [
     avontuur,
     beren,

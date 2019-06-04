@@ -325,7 +325,7 @@ input:focus {
 }
 #welkom p { text-align: left; }
 .verberg { display: none; }
-.menu {
+div.menu {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -381,11 +381,11 @@ button:focus {
     font-size: 1em;
     margin-bottom: 1em;
 }
-#opties ul {
+#opties ul.menu {
     padding: 0;
     list-style-type: none;
 }
-#opties ul li {
+#opties ul.menu li {
     padding-top: 1em;
 }
 
@@ -462,11 +462,11 @@ body.terminal {
     font-size: 1em;
     margin-bottom: 1em;
 }
-.terminal #opties ul {
+.terminal #opties ul.menu {
     padding: 0;
     list-style-type: none;
 }
-.terminal #opties ul li {
+.terminal #opties ul.menu li {
     padding-top: 1em;
 }
 
@@ -506,4 +506,15 @@ body.terminal {
     color: #aaaaaa;
     border: 1px solid #aaaaaa;
     border-radius: 0;
+}
+.terminal #opties ul:not(.menu) {
+    list-style-type: none;
+    padding-left: 0;
+}
+.terminal #opties ul:not(.menu) li {
+    padding-left: var(--inspring);
+    text-indent: calc(-1 * var(--inspring));
+}
+.terminal #opties ul:not(.menu) li::before {
+    content: '- '
 }

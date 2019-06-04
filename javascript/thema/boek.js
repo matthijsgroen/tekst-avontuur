@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const hoofdMenu = h("div", { class: "actief" }, [
     h("h1", { class: "color14" }, gegevens.titel),
     h("p", { class: "color7" }, `Geschreven door ${gegevens.auteur}`),
-    h("ul", {}, menuOpties)
+    h("ul", { class: "menu" }, menuOpties)
   ]);
 
   const verzendMenu = h("div", {}, [
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function() {
       "Hiermee kan je de voortgang van het spel versturen, om op een ander apparaat verder te spelen."
     ),
     h("input", { type: "text", value: verzendLink(), style: "width: 100%" }),
-    h("ul", {}, [optie("Terug", () => maakMenuActief(0))])
+    h("ul", { class: "menu" }, [optie("Terug", () => maakMenuActief(0))])
   ]);
 
   const infoMenu = h("div", {}, [
@@ -171,7 +171,21 @@ document.addEventListener("DOMContentLoaded", function() {
           gegevens.twitter
         )
       ]),
-    h("ul", {}, [optie("Terug", () => maakMenuActief(0))])
+
+    ...(gegevens.bedankt && [
+      h("p", {}, "Met dank aan:"),
+      h("ul", {}, gegevens.bedankt.map(regel => h("li", {}, regel)))
+    ]),
+    h("hr"),
+    h("p", {}, [
+      "Avontuur spel motor gemaakt door Matthijs Groen. Idee voor taal hulp door Tinka Huisman. Lettertype voor DOS mode: ",
+      h(
+        "a",
+        { href: "https://int10h.org/oldschool-pc-fonts/" },
+        "The Oldschool PC Font Resource"
+      )
+    ]),
+    h("ul", { class: "menu" }, [optie("Terug", () => maakMenuActief(0))])
   ]);
 
   const herstartMenu = h("div", {}, [
@@ -181,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function() {
       "Dit herstart het spel en verwijderd alle voortgang!"
     ),
     h("p", { class: "color7" }, "Weet je het zeker?"),
-    h("ul", {}, [
+    h("ul", { class: "menu" }, [
       optie("Herstarten", () => {
         resetSpel();
       }),
