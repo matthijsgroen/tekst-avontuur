@@ -845,7 +845,12 @@ document.addEventListener("DOMContentLoaded", function() {
       { class: "color7" },
       "Hiermee kan je de voortgang van het spel versturen, om op een ander apparaat verder te spelen."
     ),
-    h("input", { type: "text", value: verzendLink(), style: "width: 100%" }),
+    h("input", {
+      type: "text",
+      id: "verzendLinkVeld",
+      value: "",
+      style: "width: 100%"
+    }),
     h("ul", { class: "menu" }, [optie("Terug", () => maakMenuActief(0))])
   ]);
 
@@ -920,6 +925,8 @@ document.addEventListener("DOMContentLoaded", function() {
     e.preventDefault();
     opties.classList.add("zichtbaar");
     maakMenuActief(0);
+    const link = document.getElementById("verzendLinkVeld");
+    link.setAttribute("value", verzendLink());
   };
 
   const menuKnop = h(
