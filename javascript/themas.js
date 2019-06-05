@@ -19,20 +19,37 @@ const boekThema = {
     geladen: "geladen"
   },
   opties: ({ kaft = "rood" }) => ({
+    javascript: 'let startThema = "boek";',
     css: kaftKleur(kaftKleuren[kaft])
   })
 };
 
 const dosThema = {
-  css: "thema/dos.css",
-  html: "thema/dos.html",
-  javascript: "thema/dos.js",
+  css: "thema/boek.css",
+  html: "thema/boek.html",
+  javascript: "thema/boek.js",
   haken: {
     startSpel: "startSpel",
-    startLus: "cls"
+    eindLus: "cls",
+    eindSpel: "eindSpel",
+    geladen: "geladen"
   },
-  opties: () => ({})
+  opties: ({ kaft = "rood" }) => ({
+    javascript: 'let startThema = "dos";',
+    css: kaftKleur(kaftKleuren[kaft])
+  })
 };
+
+//const dosThema = {
+//css: "thema/dos.css",
+//html: "thema/dos.html",
+//javascript: "thema/dos.js",
+//haken: {
+//startSpel: "startSpel",
+//startLus: "cls"
+//},
+//opties: () => ({})
+//};
 
 module.exports = {
   boek: boekThema,

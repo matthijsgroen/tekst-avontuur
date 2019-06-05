@@ -1,8 +1,8 @@
+let thema = "";
 let skip = false;
 let naam = "";
 let spelToestand = Array(100).fill(0);
 let klankbord = false;
-let thema = "boek";
 let verzendCode;
 
 const verzendLink = () => location.href + `#naam=${naam}|code=${verzendCode}`;

@@ -42,6 +42,9 @@ const geladen = () => {
   if (klankbord) {
     document.body.classList.add("klankbord");
   }
+  if (thema === "") {
+    thema = startThema;
+  }
   if (thema === "dos") {
     document.body.classList.add("terminal");
   }
@@ -172,10 +175,12 @@ document.addEventListener("DOMContentLoaded", function() {
         )
       ]),
 
-    ...(gegevens.bedankt && [
-      h("p", {}, "Met dank aan:"),
-      h("ul", {}, gegevens.bedankt.map(regel => h("li", {}, regel)))
-    ]),
+    ...(gegevens.bedankt
+      ? [
+          h("p", {}, "Met dank aan:"),
+          h("ul", {}, gegevens.bedankt.map(regel => h("li", {}, regel)))
+        ]
+      : []),
     h("hr"),
     h("p", {}, [
       `Avontuur spel motor (${

@@ -423,7 +423,19 @@ body.terminal {
     display: none;
 }
 .terminal #screen span { animation: none; }
-.terminal .kaft { transition: none; }
+.terminal .kaft {
+    transition: none;
+    background: linear-gradient(to right,
+        var(--kaft-kleur) 2%,
+        var(--kaft-kleur) 5%,
+        var(--kaft-kleur2) 5%,
+        var(--kaft-kleur2) 7%,
+        var(--kaft-kleur) 7%,
+        var(--kaft-kleur) 99%,
+        var(--kaft-kleur2) 99%,
+        var(--kaft-kleur2) 100%
+    );
+}
 
 .terminal #screen ul:not(.acties) {
     list-style-type: none;
@@ -517,4 +529,24 @@ body.terminal {
 }
 .terminal #opties ul:not(.menu) li::before {
     content: '- '
+}
+
+.terminal input {
+    border-radius: 0em;
+}
+.terminal input::placeholder {
+    color: rgb(0,80,0);
+}
+.terminal #welkom {
+    position: absolute;
+    top: calc(50% - 3em);
+    right: 2em;
+    padding: 1em 1em 1em 2em;
+    background: brown;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: none;
+    border-width: 3px;
+    border-color: rgba(0,0,0,0.2);
+    border-style: double solid double double;
 }
