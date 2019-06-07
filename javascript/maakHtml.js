@@ -96,6 +96,11 @@ const maakHtml = async (bron, doel, basisNaam, configuratie, vlaggen) => {
   } else {
     metagegevens.push("<title>Avontuur</title>");
   }
+  if (gegevens.afbeelding) {
+    metagegevens.push(
+      maakMetaTag({ property: "og:image", content: gegevens.afbeelding })
+    );
+  }
   if (gegevens.omschrijving) {
     metagegevens.push(
       maakMetaTag({ name: "twitter:card", content: "summary" }),

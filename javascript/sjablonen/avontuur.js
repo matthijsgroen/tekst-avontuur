@@ -126,7 +126,7 @@ const toegestaan = beweringen =>
 const interpoleer = zin =>
   zin
     .replace(/\$n/g, naam)
-    .replace(/#\d{2}/g, num => ` ${spelToestand[parseInt(num.slice(1), 10)]}`);
+    .replace(/#\d{2}/g, num => `${spelToestand[parseInt(num.slice(1), 10)]}`);
 
 const tekst = async (verteller, zin, eerderGelezen) => {
   color(verteller);

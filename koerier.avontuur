@@ -11,6 +11,8 @@
 ' @Versie: 1.0
 ' @Thema: boek
 ' @Thema.kaft: rood
+
+' @Afbeelding: koerier.png
 '
 ' @StatHat.Gebruiker: MTYzNDIglcA9CQJd4iuFZ02UI1NeFQ~~
 ' @StatHat.Teller: 0votUCE7GFkhPw8ZrSAGdCBDdFhz
@@ -361,7 +363,7 @@
 "2=1;4=4;26=4", "&26=5"
 
 "2=1", "*c15", "Je hebt het volgende bij je:", "&"
-"2=1;22>1", "*c7", "-#22 geldstukken", "&"
+"2=1;22>1", "*c7", "- #22 geldstukken", "&"
 "2=1;22=1", "*c7", "- 1 geldstuk", "&"
 "2=1;21=2", "*c7", "- Een stok, opgeraapt in het bos", "&"
 "2=1;23>0;23<3", "*c7", "- De sleutel van je kast", "&23=2"
@@ -390,23 +392,23 @@
 "2=1;48=2", "*c7", "- Een beker met wijn", "&"
 "2=1;53>3", "*c7", "- Een schilderij van een man op een draak", "&"
 "2=1;40=1", "*c7", "- 1 plant met ronde bladeren", "&"
-"2=1;40>1", "*c7", "-#40 planten met ronde bladeren", "&"
+"2=1;40>1", "*c7", "- #40 planten met ronde bladeren", "&"
 "2=1;41=1", "*c7", "- 1 plant met stekelige bladeren", "&"
-"2=1;41>1", "*c7", "-#41 planten met stekelige bladeren", "&"
+"2=1;41>1", "*c7", "- #41 planten met stekelige bladeren", "&"
 "2=1;57=1", "*c7", "- 1 plant met hartvormige bladeren", "&"
-"2=1;57>1", "*c7", "-#57 plant met hartvormige bladeren", "&"
+"2=1;57>1", "*c7", "- #57 plant met hartvormige bladeren", "&"
 "2=1;42=1", "*c7", "- 1 lichtblauwe paddenstoel", "&"
-"2=1;42>1", "*c7", "-#42 lichtblauwe paddenstoelen", "&"
+"2=1;42>1", "*c7", "- #42 lichtblauwe paddenstoelen", "&"
 "2=1;58=1", "*c7", "- 1 oranje zwam", "&"
-"2=1;58>1", "*c7", "-#58 oranje zwammen", "&"
+"2=1;58>1", "*c7", "- #58 oranje zwammen", "&"
 "2=1;63=1", "*c7", "- 1 lichtbruine boomzwam", "&"
-"2=1;63>1", "*c7", "-#63 lichtbruine boomzwammen", "&"
+"2=1;63>1", "*c7", "- #63 lichtbruine boomzwammen", "&"
 "2=1;64=1", "*c7", "- 1 pluk Sterrenmos", "&"
-"2=1;64>1", "*c7", "-#64 plukken Sterrenmos", "&"
+"2=1;64>1", "*c7", "- #64 plukken Sterrenmos", "&"
 "2=1;65=1", "*c7", "- 1 pluk Maanmos", "&"
-"2=1;65>1", "*c7", "-#65 plukken Maanmos", "&"
+"2=1;65>1", "*c7", "- #65 plukken Maanmos", "&"
 "2=1;66=1", "*c7", "- 1 pluk Kosmos", "&"
-"2=1;66>1", "*c7", "-#66 plukken Kosmos", "&"
+"2=1;66>1", "*c7", "- #66 plukken Kosmos", "&"
 "2=1;45=2", "*c7", "- Tand van een draak", "&"
 "2=1;52=1", "*c7", "- Een heerlijke appeltaart", "&"
 
@@ -1611,7 +1613,7 @@
 
 "1=15;2=0;4=5;22=0", "Je kijkt even snel in je tas, maar je hebt geen geld bij je.", "&"
 "1=15;2=0;4=5;22=1", "Je kijkt even snel in je tas, je hebt 1 geldstuk bij je.", "&"
-"1=15;2=0;4=5;22>1", "Je kijkt even snel in je tas, je hebt#22 geldstukken bij je.", "&"
+"1=15;2=0;4=5;22>1", "Je kijkt even snel in je tas, je hebt #22 geldstukken bij je.", "&"
 
 "1=15;2=0;4=23", "*c2", "Je geeft bij Lucy aan interesse te hebben in het gigantische zwaard.", "", "&"
 "1=15;2=0;4=22", "*c2", "Je geeft bij Lucy aan interesse te hebben in het stalen harnas.", "", "&"
@@ -2349,15 +2351,15 @@
 "2=0;1=12;12=3;6=1;4=0", "Zeg: `Abracadabra...'", "4=4"
 "2=0;1=12;12=3;6=1;4=0", "Stap weg bij de ketel", "4=1"
 
-"2=3;40>0", "Plant met ronde bladeren (nog#40)", "4=1"
-"2=3;41>0", "Plant met stekelige bladeren (nog#41)", "4=2"
-"2=3;57>0", "Plant met hartvormige bladeren (nog#57)", "4=3"
-"2=3;64>0", "Pluk sterrenmos (nog#64)", "4=4"
-"2=3;65>0", "Pluk maanmos (nog#65)", "4=5"
-"2=3;66>0", "Pluk kosmos (nog#66)", "4=6"
-"2=3;42>0", "Lichtblauwe paddenstoel (nog#42)", "4=7"
-"2=3;58>0", "Oranje zwam (nog#58)", "4=8"
-"2=3;63>0", "Lichtbruine boomzwam (nog#63)", "4=9"
+"2=3;40>0", "Plant met ronde bladeren (nog #40)", "4=1"
+"2=3;41>0", "Plant met stekelige bladeren (nog #41)", "4=2"
+"2=3;57>0", "Plant met hartvormige bladeren (nog #57)", "4=3"
+"2=3;64>0", "Pluk sterrenmos (nog #64)", "4=4"
+"2=3;65>0", "Pluk maanmos (nog #65)", "4=5"
+"2=3;66>0", "Pluk kosmos (nog #66)", "4=6"
+"2=3;42>0", "Lichtblauwe paddenstoel (nog #42)", "4=7"
+"2=3;58>0", "Oranje zwam (nog #58)", "4=8"
+"2=3;63>0", "Lichtbruine boomzwam (nog #63)", "4=9"
 "2=3;36=2", "Maansteen", "4=10"
 "2=3;48=2", "Wijn", "4=11"
 "2=3;45=2", "Tand van de draak", "4=12"
