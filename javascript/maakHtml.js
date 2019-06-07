@@ -98,7 +98,8 @@ const maakHtml = async (bron, doel, basisNaam, configuratie, vlaggen) => {
   }
   if (gegevens.afbeelding) {
     metagegevens.push(
-      maakMetaTag({ property: "og:image", content: gegevens.afbeelding })
+      maakMetaTag({ property: "og:image", content: gegevens.afbeelding }),
+      maakMetaTag({ name: "twitter:image", content: gegevens.afbeelding })
     );
   }
   if (gegevens.omschrijving) {
