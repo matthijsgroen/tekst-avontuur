@@ -217,42 +217,62 @@ describe("Dyslexie", () => {
     [R, "k"]
   ];
 
-  //const Speciale = [];
-  //const meedenken = [];
+  const speciale = [
+    [R, "S"],
+    [R, "p"],
+    [L, "e"],
+    [R, "c"],
+    [K, "i"],
+    [L, "a"],
+    [R, "l"],
+    [E, "e"]
+  ];
+
+  const meedenken = [
+    [R, "m"],
+    [L, "ee"],
+    [R, "d"],
+    [K, "e"],
+    [R, "nk"],
+    [E, "e"],
+    [R, "n"]
+  ];
 
   [
     avontuur,
     beren,
     boerderij,
     eten,
+    gaaaaap,
     gedoe,
+    gelijk,
     geluk,
     getver,
+    heuvels,
     medaille,
     medebewoner,
     medicijnen,
+    meedenken,
     messen,
     meteen,
     meten,
-    open,
-    repareren,
-    snel,
-    teruggevonden,
-    veren,
-    vertellen,
-    verwerkte,
-    gaaaaap,
     molenaar,
     molensteen,
-    overal,
-    heuvels,
-    omgeving,
     omgetikt,
+    omgeving,
     ongelijk,
-    vergelijk,
-    gelijk,
     onmogelijk,
-    onzeker
+    onzeker,
+    open,
+    overal,
+    repareren,
+    snel,
+    speciale,
+    teruggevonden,
+    veren,
+    vergelijk,
+    vertellen,
+    verwerkte
   ].forEach(resultaat => {
     const woord = resultaat.reduce((r, e) => r + e[1], "");
 

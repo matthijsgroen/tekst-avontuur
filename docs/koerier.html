@@ -979,9 +979,9 @@ const eersteKlank = (offset = 0) => selectie => selectie.index === offset;
 const klank = (klank, offset = 0) => selectie =>
   selectie.resultaat[selectie.index + offset] &&
   selectie.resultaat[selectie.index + offset][1].toLowerCase() === klank;
-const klankLengte = (lengte, offset = 0) => selectie =>
+const klankLengte = (lengteTest, offset = 0) => selectie =>
   selectie.resultaat[selectie.index + offset] &&
-  selectie.resultaat[selectie.index + offset][1].length === lengte;
+  lengteTest(selectie.resultaat[selectie.index + offset][1].length);
 const klasse = (test, offset = 0) => selectie =>
   selectie.resultaat[selectie.index + offset] &&
   test(selectie.resultaat[selectie.index + offset][0]);
@@ -1006,8 +1006,8 @@ const verwerkLangeKlinkers = resultaat => {
       resultaat,
       selecteerKlank(klinker, "korteKlinker"),
       en(
-        niet(klasse(a => a !== "rest", -1)),
-        klankLengte(1, 1),
+        niet(klasse(a => a !== "rest" && a !== "korteKlinker", -1)),
+        klankLengte(l => l === 1, 1),
         klasse(a => a !== "rest", 2)
       ),
       "langeKlinker"
@@ -1065,11 +1065,9 @@ const verwerkStommeE = resultaat => {
   // voorvoegsels. be- ge-, ver- te-
   const voorvoegsel = (offset = 0) =>
     en(
-      selectie =>
-        selectie.resultaat[selectie.index + 1 + offset] &&
-        selectie.resultaat[selectie.index + 1 + offset][0] === "rest" &&
-        selectie.resultaat[selectie.index + 2 + offset] &&
-        selectie.resultaat[selectie.index + 2 + offset][0] !== "rest",
+      klasse(k => k === "rest", offset + 1),
+      klasse(k => k !== "rest", offset + 2),
+      klankLengte(l => l == 1, offset + 1),
       totaalKlasse(k => k !== "rest" && k !== "stommeE", a => a > 1)
     );
 

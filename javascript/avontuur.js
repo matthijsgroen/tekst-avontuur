@@ -67,11 +67,8 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   };
   const bron = commandos[1];
   encodeDecode(bron);
-} else if (eerste === "test") {
-  ["repareren", "verwerkte"].forEach(woord => {
-    toonZin(woord);
-    console.log("\n");
-  });
+} else if (eerste === "test" && commandos[1]) {
+  toonZin(commandos[1]);
 } else if (eerste === "html") {
   const basisNaam = name =>
     name
