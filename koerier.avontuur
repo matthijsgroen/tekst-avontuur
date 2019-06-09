@@ -1011,7 +1011,7 @@
 "", "*c13", "Eucalypta: 'Goed dat ik die dan nog uit mijn hoofd weet! De spreuk is: Abracadabra ratjetoe!'"
 "&4=1;26=8"
 
-"2=0;1=12;12=3;4=8;6=0;26=8", "*c3", "$n: 'Sorry, wat is de spreuk ook alweer?'"
+"2=0;1=12;12=3;4=8;6=0;26>7", "*c3", "$n: 'Sorry, wat is de spreuk ook alweer?'"
 "", "*c13", "Eucalypta: 'De spreuk is: Abracadabra ratjetoe!'"
 "&4=1"
 
@@ -2344,7 +2344,7 @@
 "2=0;1=12;12=3;6=0;4=0", "Ga naar buiten", "1=4;3=5"
 
 "2=0;1=12;12=3;6=0;26>6;4=1", "Zeg: 'Wat ging er mis?'", "4=7"
-"2=0;1=12;12=3;6=0;26>6;4=1", "Vraag naar spreuk voor medicijn", "4=8"
+"2=0;1=12;12=3;6=0;26>6;4=1;26<9", "Vraag naar spreuk voor medicijn", "4=8"
 "2=0;1=12;12=3;6=0;26>6;4=1", "Ga weer verder", "4=0;20=1"
 
 "2=0;1=12;12=3;6=1;4=0", "Voeg ingrediënt toe aan ketel", "4=10"
