@@ -8,6 +8,7 @@ const L = "langeKlinker";
 const O = "letterGroep1";
 const W = "letterGroep2";
 const T = "tweeKlank";
+const S = "speciaal";
 const A = "anders";
 
 describe("Dyslexie", () => {
@@ -56,12 +57,23 @@ describe("Dyslexie", () => {
   const getver = [[R, "g"], [K, "e"], [R, "t"], [R, "v"], [E, "e"], [R, "r"]];
   const geluk = [[R, "g"], [E, "e"], [R, "l"], [K, "u"], [R, "k"]];
   const eten = [[L, "e"], [R, "t"], [E, "e"], [R, "n"], [A, "."]];
+  const dromerige = [
+    [R, "d"],
+    [R, "r"],
+    [L, "o"],
+    [R, "m"],
+    [E, "e"],
+    [R, "r"],
+    [E, "i"],
+    [R, "g"],
+    [E, "e"]
+  ];
   const medicijnen = [
     [R, "m"],
     [L, "e"],
     [R, "d"],
-    [K, "i"],
-    [R, "c"],
+    [S, "i"],
+    [S, "c"],
     [T, "ij"],
     [R, "n"],
     [E, "e"],
@@ -222,11 +234,34 @@ describe("Dyslexie", () => {
     [R, "S"],
     [R, "p"],
     [L, "e"],
-    [R, "c"],
-    [K, "i"],
+    [S, "c"],
+    [S, "i"],
     [L, "a"],
     [R, "l"],
     [E, "e"]
+  ];
+
+  const opgegeten = [
+    [K, "o"],
+    [R, "p"],
+    [R, "g"],
+    [E, "e"],
+    [R, "g"],
+    [L, "e"],
+    [R, "t"],
+    [E, "e"],
+    [R, "n"]
+  ];
+
+  const vergeten = [
+    [R, "v"],
+    [E, "e"],
+    [R, "r"],
+    [R, "g"],
+    [L, "e"],
+    [R, "t"],
+    [E, "e"],
+    [R, "n"]
   ];
 
   const meedenken = [
@@ -239,11 +274,34 @@ describe("Dyslexie", () => {
     [R, "n"]
   ];
 
+  const olifant = [
+    [L, "o"],
+    [R, "l"],
+    [S, "i"],
+    [R, "f"],
+    [K, "a"],
+    [R, "n"],
+    [R, "t"]
+  ];
+
+  const fantastisch = [
+    [R, "f"],
+    [K, "a"],
+    [R, "n"],
+    [R, "t"],
+    [K, "a"],
+    [R, "s"],
+    [R, "t"],
+    [S, "i"],
+    [S, "sch"]
+  ];
+
   [
     avontuur,
     beren,
     boerderij,
     eten,
+    fantastisch,
     gaaaaap,
     gedoe,
     gelijk,
@@ -259,12 +317,15 @@ describe("Dyslexie", () => {
     meten,
     molenaar,
     molensteen,
+    olifant,
     omgetikt,
     omgeving,
+    dromerige,
     ongelijk,
     onmogelijk,
     onzeker,
     open,
+    opgegeten,
     overal,
     repareren,
     snel,
@@ -272,6 +333,7 @@ describe("Dyslexie", () => {
     teruggevonden,
     veren,
     vergelijk,
+    vergeten,
     vertellen,
     verwerkte
   ].forEach(resultaat => {
