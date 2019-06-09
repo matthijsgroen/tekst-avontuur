@@ -1299,7 +1299,7 @@ const color = index => (actieveKleur = `color${index}`);
 const printActie = (tekst, actie, parent) => {
   const props = { class: `actie ${actieveKleur}` };
   if (/^[a-z]$/.test(actie)) {
-    props.style = "list-style-type: lower-alpha;";
+    props.style = "list-style-type: upper-alpha;";
     props.value = `${actie.charCodeAt(0) - 96}`;
   }
   if (/^[0-9]$/.test(actie)) {
