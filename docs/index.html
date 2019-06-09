@@ -299,27 +299,39 @@ body.klankbord #screen {
 body.klankbord #screen span.korteKlinker {
     -webkit-text-decoration: underline green;
             text-decoration: underline green;
-    background-color: rgba(0,80,0,0.1);
+    color: #000;
+    background-color: rgba(0, 128, 0, 0.5);
+}
+body.terminal.klankbord #screen span.korteKlinker {
+    background-color: rgb(0, 128, 0);
 }
 body.klankbord #screen span.langeKlinker {
     -webkit-text-decoration: underline yellow;
             text-decoration: underline yellow;
-    background-color: rgba(255,255,85,0.1);
+    background-color: yellow;
+}
+body.terminal.klankbord #screen span.langeKlinker {
+    color: #000;
 }
 body.klankbord #screen span.stommeE {
     -webkit-text-decoration: underline orange;
             text-decoration: underline orange;
-    background-color: rgba(170,85,0,0.1);
+    color: #000;
+    background-color: orange; /*rgba(170,85,0,0.1);*/
 }
 body.klankbord #screen span.tweeKlank {
     -webkit-text-decoration: underline red;
             text-decoration: underline red;
-    background-color: rgba(170,0,0,0.1);
+    color: #000;
+    background-color: hsla(0, 100%, 70%, 1);
 }
-body.klankbord #screen span.letterGroep {
-    -webkit-text-decoration: underline grey;
-            text-decoration: underline grey;
-    background-color: rgba(80,80,80,0.1);
+body.klankbord #screen span.letterGroep1 {
+    -webkit-text-decoration: underline double grey;
+            text-decoration: underline double grey;
+}
+body.klankbord #screen span.letterGroep2 {
+    -webkit-text-decoration: underline dotted grey;
+            text-decoration: underline dotted grey;
 }
 #screen span {
     -webkit-animation-duration: 0.2s;
@@ -946,7 +958,8 @@ const definities = {
   korteKlinker: ["a", "e", "i", "o", "u", "è"],
   langeKlinker: [/^aa+/, /^ee+/, /^oo+/, /^uu+/, /^éé+/],
   tweeKlank: ["ie", "oe", "eu", "ui", "ei", "ij", "ou", "au"],
-  letterGroep: ["aai", "ooi", "oei", "eeuw", "ieuw", "uw", "eau"],
+  letterGroep1: ["aai", "ooi", "oei", "eau"],
+  letterGroep2: ["eeuw", "ieuw", "uw"],
   rest: ["ng", "nk", "ch", "sch", "schr"]
 };
 
