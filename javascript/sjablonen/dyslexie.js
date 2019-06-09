@@ -2,7 +2,8 @@ const definities = {
   korteKlinker: ["a", "e", "i", "o", "u", "è"],
   langeKlinker: [/^aa+/, /^ee+/, /^oo+/, /^uu+/, /^éé+/],
   tweeKlank: ["ie", "oe", "eu", "ui", "ei", "ij", "ou", "au"],
-  letterGroep: ["aai", "ooi", "oei", "eeuw", "ieuw", "uw", "eau"],
+  letterGroep1: ["aai", "ooi", "oei", "eau"],
+  letterGroep2: ["eeuw", "ieuw", "uw"],
   rest: ["ng", "nk", "ch", "sch", "schr"]
 };
 

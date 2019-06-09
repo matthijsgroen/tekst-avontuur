@@ -2,7 +2,8 @@ const definities = {
   korteKlinker: ["a", "e", "i", "o", "u", "è"],
   langeKlinker: [/^aa+/, /^ee+/, /^oo+/, /^uu+/, /^éé+/],
   tweeKlank: ["ie", "oe", "eu", "ui", "ei", "ij", "ou", "au"],
-  letterGroep: ["aai", "ooi", "oei", "eeuw", "ieuw", "uw", "eau"],
+  letterGroep1: ["aai", "ooi", "oei", "eau"],
+  letterGroep2: ["eeuw", "ieuw", "uw"],
   rest: ["ng", "nk", "ch", "sch", "schr"]
 };
 
@@ -311,7 +312,9 @@ const tonen = {
     process.stdout.write(`\u001b[30;43m ${langeKlinker} ` + reset()),
   tweeKlank: tweeKlank =>
     process.stdout.write(`\u001b[97;41m ${tweeKlank} ` + reset()),
-  letterGroep: letterGroep =>
+  letterGroep1: letterGroep =>
+    process.stdout.write(`\u001b[30;47m ${letterGroep} ` + reset()),
+  letterGroep2: letterGroep =>
     process.stdout.write(`\u001b[30;47m ${letterGroep} ` + reset()),
   rest: rest => process.stdout.write(`\u001b[97;44m ${rest} ` + reset()),
   stommeE: klank =>

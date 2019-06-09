@@ -213,23 +213,34 @@ body.klankbord #screen {
 }
 body.klankbord #screen span.korteKlinker {
     text-decoration: underline green;
-    background-color: rgba(0,80,0,0.1);
+    color: #000;
+    background-color: rgba(0, 128, 0, 0.5);
+}
+body.terminal.klankbord #screen span.korteKlinker {
+    background-color: rgb(0, 128, 0);
 }
 body.klankbord #screen span.langeKlinker {
     text-decoration: underline yellow;
-    background-color: rgba(255,255,85,0.1);
+    background-color: yellow;
+}
+body.terminal.klankbord #screen span.langeKlinker {
+    color: #000;
 }
 body.klankbord #screen span.stommeE {
     text-decoration: underline orange;
-    background-color: rgba(170,85,0,0.1);
+    color: #000;
+    background-color: orange; /*rgba(170,85,0,0.1);*/
 }
 body.klankbord #screen span.tweeKlank {
     text-decoration: underline red;
-    background-color: rgba(170,0,0,0.1);
+    color: #000;
+    background-color: hsla(0, 100%, 70%, 1);
 }
-body.klankbord #screen span.letterGroep {
-    text-decoration: underline grey;
-    background-color: rgba(80,80,80,0.1);
+body.klankbord #screen span.letterGroep1 {
+    text-decoration: underline double grey;
+}
+body.klankbord #screen span.letterGroep2 {
+    text-decoration: underline dotted grey;
 }
 #screen span {
     animation-duration: 0.2s;

@@ -5,7 +5,8 @@ const R = "rest";
 const E = "stommeE";
 const K = "korteKlinker";
 const L = "langeKlinker";
-const W = "letterGroep";
+const O = "letterGroep1";
+const W = "letterGroep2";
 const T = "tweeKlank";
 const A = "anders";
 
