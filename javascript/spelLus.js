@@ -30,7 +30,14 @@ let spelToestand = Array(100).fill(0);
 const interpoleer = zin =>
   zin
     .replace(/\$n/g, naam)
-    .replace(/#\d{2}/g, num => `${spelToestand[parseInt(num.slice(1), 10)]}`);
+    .replace(/#\d{2}/g, num => `${spelToestand[parseInt(num.slice(1), 10)]}`)
+    .replace(/#\d+p\d{2}/g, paddedNum => {
+      const [padding, num] = paddedNum.slice(1).split("p");
+      const waarde = `${spelToestand[parseInt(num.slice(1), 10)]}`;
+      const pad = parseInt(padding, 10);
+
+      return `${"0".repeat(pad)}${waarde}`.slice(-pad);
+    });
 
 let vorigeZin = "";
 

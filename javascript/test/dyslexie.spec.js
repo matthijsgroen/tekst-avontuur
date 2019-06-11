@@ -285,7 +285,7 @@ describe("Dyslexie", () => {
     [R, "n"],
     [R, "t"]
   ];
-
+  const pakket = [[R, "p"], [K, "a"], [R, "k"], [R, "k"], [K, "e"], [R, "t"]];
   const fantastisch = [
     [R, "f"],
     [K, "a"],
@@ -324,12 +324,11 @@ describe("Dyslexie", () => {
   const donkere = [[R, "d"], [K, "o"], [R, "nk"], [E, "e"], [R, "r"], [E, "e"]];
 
   [
-    donkere,
-    bakkerij,
-    linkerkant,
     avontuur,
+    bakkerij,
     beren,
     boerderij,
+    donkere,
     dromerige,
     eten,
     fantastisch,
@@ -340,6 +339,7 @@ describe("Dyslexie", () => {
     getver,
     heuvels,
     knipoog,
+    linkerkant,
     medaille,
     medebewoner,
     medicijnen,
@@ -359,6 +359,7 @@ describe("Dyslexie", () => {
     open,
     opgegeten,
     overal,
+    pakket,
     repareren,
     snel,
     speciale,
@@ -385,5 +386,12 @@ describe("Dyslexie", () => {
         });
       }
     );
+
+    ["tegen", "ogen", "vlagen"].forEach(woord => {
+      it(`gebruikt een G niet als J in ${woord}`, () => {
+        const resultaat = voegKlassificatiesToe(woord);
+        expect(resultaat).not.to.deep.include(["speciaal", "g"]);
+      });
+    });
   });
 });

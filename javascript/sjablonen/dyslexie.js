@@ -100,8 +100,8 @@ const verwerkStommeE = resultaat => {
         "stommeE"
       ))
   );
-  // uitgangen -en, -em, -er, -el, -es, -et
-  ["n", "m", "r", "l", "s", "t"].forEach(
+  // uitgangen -en, -em, -er, -el, -es
+  ["n", "m", "r", "l", "s"].forEach(
     eindLetter =>
       (resultaat = verwerk(
         // -en
@@ -304,8 +304,11 @@ const verwerkSpecialeKlanken = resultaat => {
     of(
       en(
         klasse(k => k === "langeKlinker", -1),
+        klankIndex(i => i > 1),
         klank("e", 1),
-        niet(klank("l", 2))
+        niet(klank("l", 2)),
+        niet(klank("n", 2)),
+        of(klank("a", -1), klank("o", -1))
       ),
       en(
         klank("e", 1),
