@@ -308,6 +308,7 @@ const verwerkSpecialeKlanken = resultaat => {
         klank("e", 1),
         niet(klank("l", 2)),
         niet(klank("n", 2)),
+        niet(klank("h", -2)),
         of(klank("a", -1), klank("o", -1))
       ),
       en(

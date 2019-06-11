@@ -387,7 +387,7 @@ describe("Dyslexie", () => {
       }
     );
 
-    ["tegen", "ogen", "vlagen"].forEach(woord => {
+    ["hoger", "tegen", "ogen", "vlagen"].forEach(woord => {
       it(`gebruikt een G niet als J in ${woord}`, () => {
         const resultaat = voegKlassificatiesToe(woord);
         expect(resultaat).not.to.deep.include(["speciaal", "g"]);
