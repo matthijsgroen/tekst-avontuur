@@ -27,7 +27,6 @@ describe("Dyslexie", () => {
     [E, "e"],
     [R, "n"]
   ];
-
   const boerderij = [
     [R, "b"],
     [T, "oe"],
@@ -37,7 +36,6 @@ describe("Dyslexie", () => {
     [R, "r"],
     [T, "ij"]
   ];
-
   const vertellen = [
     [R, "v"],
     [E, "e"],
@@ -49,7 +47,6 @@ describe("Dyslexie", () => {
     [E, "e"],
     [R, "n"]
   ];
-
   const veren = [[R, "v"], [L, "e"], [R, "r"], [E, "e"], [R, "n"]];
   const beren = [[R, "b"], [L, "e"], [R, "r"], [E, "e"], [R, "n"]];
   const open = [[L, "o"], [R, "p"], [E, "e"], [R, "n"]];
@@ -229,7 +226,15 @@ describe("Dyslexie", () => {
     [E, "ij"],
     [R, "k"]
   ];
-
+  const mogelijk = [
+    [R, "m"],
+    [L, "o"],
+    [R, "g"],
+    [E, "e"],
+    [R, "l"],
+    [E, "ij"],
+    [R, "k"]
+  ];
   const speciale = [
     [R, "S"],
     [R, "p"],
@@ -240,7 +245,6 @@ describe("Dyslexie", () => {
     [R, "l"],
     [E, "e"]
   ];
-
   const opgegeten = [
     [K, "o"],
     [R, "p"],
@@ -263,7 +267,6 @@ describe("Dyslexie", () => {
     [E, "e"],
     [R, "n"]
   ];
-
   const meedenken = [
     [R, "m"],
     [L, "ee"],
@@ -273,7 +276,6 @@ describe("Dyslexie", () => {
     [E, "e"],
     [R, "n"]
   ];
-
   const olifant = [
     [L, "o"],
     [R, "l"],
@@ -295,11 +297,40 @@ describe("Dyslexie", () => {
     [S, "i"],
     [S, "sch"]
   ];
+  const knipoog = [[R, "k"], [R, "n"], [K, "i"], [R, "p"], [L, "oo"], [R, "g"]];
+
+  const linkerkant = [
+    [R, "l"],
+    [K, "i"],
+    [R, "nk"],
+    [E, "e"],
+    [R, "r"],
+    [R, "k"],
+    [K, "a"],
+    [R, "n"],
+    [R, "t"]
+  ];
+
+  const bakkerij = [
+    [R, "b"],
+    [K, "a"],
+    [R, "k"],
+    [R, "k"],
+    [E, "e"],
+    [R, "r"],
+    [T, "ij"]
+  ];
+
+  const donkere = [[R, "d"], [K, "o"], [R, "nk"], [E, "e"], [R, "r"], [E, "e"]];
 
   [
+    donkere,
+    bakkerij,
+    linkerkant,
     avontuur,
     beren,
     boerderij,
+    dromerige,
     eten,
     fantastisch,
     gaaaaap,
@@ -308,6 +339,7 @@ describe("Dyslexie", () => {
     geluk,
     getver,
     heuvels,
+    knipoog,
     medaille,
     medebewoner,
     medicijnen,
@@ -315,12 +347,12 @@ describe("Dyslexie", () => {
     messen,
     meteen,
     meten,
+    mogelijk,
     molenaar,
     molensteen,
     olifant,
     omgetikt,
     omgeving,
-    dromerige,
     ongelijk,
     onmogelijk,
     onzeker,
@@ -342,5 +374,16 @@ describe("Dyslexie", () => {
     it(`de juiste klanken voor "${woord}"`, () => {
       expect(voegKlassificatiesToe(woord)).to.eql(resultaat);
     });
+  });
+
+  describe("G als een J", () => {
+    ["gelij", "gel", "logeren", "horloge", "garage", "collage"].forEach(
+      woord => {
+        it(`gebruikt een G als J in ${woord}`, () => {
+          const resultaat = voegKlassificatiesToe(woord);
+          expect(resultaat).to.deep.include(["speciaal", "g"]);
+        });
+      }
+    );
   });
 });

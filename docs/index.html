@@ -317,7 +317,13 @@ body.klankbord #screen span.stommeE {
     -webkit-text-decoration: underline orange;
             text-decoration: underline orange;
     color: #000;
-    background-color: orange; /*rgba(170,85,0,0.1);*/
+    background-color: orange;
+}
+body.klankbord #screen span.speciaal {
+    -webkit-text-decoration: underline #ff80ff;
+            text-decoration: underline #ff80ff;
+    color: #000;
+    background-color: #ff80ff;
 }
 body.klankbord #screen span.tweeKlank {
     -webkit-text-decoration: underline red;
@@ -956,10 +962,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 const definities = {
   korteKlinker: ["a", "e", "i", "o", "u", "è"],
-  langeKlinker: [/^aa+/, /^ee+/, /^oo+/, /^uu+/, /^éé+/],
+  langeKlinker: [/^aa+/, /^ee+/, /^oo+/, /^uu+/, /^é+/],
   tweeKlank: ["ie", "oe", "eu", "ui", "ei", "ij", "ou", "au"],
   letterGroep1: ["aai", "ooi", "oei", "eau"],
   letterGroep2: ["eeuw", "ieuw", "uw"],
+  speciaal: ["th", "c", "y"],
   rest: ["ng", "nk", "ch", "sch", "schr"]
 };
 
@@ -1004,6 +1011,8 @@ const klankIndex = test => selectie =>
   test(selectie.index, selectie.resultaat.length);
 const eindKlank = (klank, offset = 0) => selectie =>
   selectie.resultaat[selectie.resultaat.length - 1 - offset][1] === klank;
+const isWoord = test => selectie =>
+  test(selectie.resultaat.reduce((w, e) => w + e[1], ""));
 
 const verwerkLangeKlinkers = resultaat => {
   ["u", "a", "o"].forEach(klinker => {
@@ -1019,7 +1028,12 @@ const verwerkLangeKlinkers = resultaat => {
       resultaat,
       selecteerKlank(klinker, "korteKlinker"),
       en(
-        niet(klasse(a => a !== "rest" && a !== "korteKlinker", -1)),
+        niet(
+          klasse(
+            a => a !== "rest" && a !== "korteKlinker" && a !== "speciaal",
+            -1
+          )
+        ),
         klankLengte(l => l === 1, 1),
         klasse(a => a !== "rest", 2)
       ),
@@ -1062,19 +1076,26 @@ const verwerkStommeE = resultaat => {
           niet(klank(eindLetter, 2)),
           of(
             niet(klasse(e => e !== "stommeE" || e !== "korteKlinker", 2)),
-            klasse(e => e === "langeKlinker", 2),
-            klasse(e => e === "korteKlinker", 2),
+            klasse(
+              e =>
+                e === "langeKlinker" ||
+                e === "korteKlinker" ||
+                e === "tweeKlank",
+              2
+            ),
+            en(klasse(e => e === "rest", 2), klasse(e => e !== "rest", 3)),
             en(
               klasse(e => e === "rest", 2),
               klasse(e => e === "rest", 3),
               klasse(e => e !== "stommeE", 4)
             ),
-            en(laatsteKlank(2), klank("s", 2))
+            en(laatsteKlank(2), of(klank("s", 2), klank("e", 2)))
           )
         ),
         "stommeE"
       ))
   );
+
   // voorvoegsels. be- ge-, ver- te-
   const voorvoegsel = (offset = 0) =>
     en(
@@ -1082,6 +1103,12 @@ const verwerkStommeE = resultaat => {
       klasse(k => k !== "rest", offset + 2),
       klankLengte(l => l == 1, offset + 1),
       totaalKlasse(k => k !== "rest" && k !== "stommeE", a => a > 1)
+    );
+
+  const voorvoegselErvoor = () =>
+    of(
+      en(of(klank("b", -3), klank("g", -3), klank("t", -3)), klank("e", -2)),
+      en(klank("v", -4), klank("e", -3), klank("r", -2))
     );
 
   const werkwoord = () =>
@@ -1097,7 +1124,7 @@ const verwerkStommeE = resultaat => {
       (resultaat = verwerk(
         resultaat,
         selecteerKlank("e", null),
-        en(voorvoegsel(), klank(beginLetter, -1)),
+        en(voorvoegsel(), klank(beginLetter, -1), niet(voorvoegselErvoor())),
         "stommeE"
       ))
   );
@@ -1108,7 +1135,13 @@ const verwerkStommeE = resultaat => {
     en(
       voorvoegsel(),
       klank("g", -1),
-      of(eersteKlank(1), werkwoord(), heeftAchtervoegsel())
+      en(
+        of(eersteKlank(1), werkwoord(), heeftAchtervoegsel()),
+        of(
+          niet(voorvoegselErvoor()),
+          klasse(k => k === "tweeKlank" || k === "langeKlinker", 2)
+        )
+      )
     ),
     "stommeE"
   );
@@ -1135,7 +1168,13 @@ const verwerkStommeE = resultaat => {
     // -ig
     resultaat,
     selecteerKlank("i", "korteKlinker"),
-    en(totaalKlanken(a => a > 3), laatsteKlank(1), klank("g", 1)),
+    en(
+      totaalKlanken(a => a > 3),
+      of(
+        en(laatsteKlank(1), klank("g", 1)),
+        en(laatsteKlank(2), klank("g", 1), klank("e", 2))
+      )
+    ),
     "stommeE"
   );
   resultaat = verwerk(
@@ -1144,12 +1183,16 @@ const verwerkStommeE = resultaat => {
     selecteerKlank("ij", "tweeKlank"),
     en(
       totaalKlanken(a => a > 3),
-      laatsteKlank(1),
-      klank("k", 1),
-      klank("l", -1),
       of(
-        niet(en(klank("e", -2), klank("g", -3))),
-        totaalKlasse(e => e !== "rest", a => a > 3)
+        en(laatsteKlank(1), klank("l", -1), klank("k", 1)),
+        en(laatsteKlank(2), klank("l", -1), klank("k", 1), klank("e", 2))
+      ),
+      of(
+        niet(
+          isWoord(woord =>
+            ["ongelijk", "gelijk", "tegelijk", "vergelijk"].includes(woord)
+          )
+        )
       )
     ),
     "stommeE"
@@ -1173,6 +1216,67 @@ const verwerkStommeE = resultaat => {
     selecteerKlank("ee", "langeKlinker"),
     en(totaalKlanken(a => a === 2), laatsteKlank(1), klank("n", 1)),
     "stommeE"
+  );
+
+  return resultaat;
+};
+
+const verwerkSpecialeKlanken = resultaat => {
+  resultaat = verwerk(
+    // ci
+    resultaat,
+    selecteerKlank("i", "korteKlinker"),
+    klank("c", -1),
+    "speciaal"
+  );
+
+  resultaat = verwerk(
+    // isch
+    resultaat,
+    selecteerKlank("sch", null),
+    of(laatsteKlank(), en(laatsteKlank(1), klank("e", 1))),
+    "speciaal"
+  );
+
+  // lange i
+  resultaat = verwerk(
+    resultaat,
+    selecteerKlank("i", "korteKlinker"),
+    of(
+      en(
+        niet(
+          klasse(
+            a => a !== "rest" && a !== "korteKlinker" && a !== "speciaal",
+            -1
+          )
+        ),
+        niet(klasse(a => a === "rest", -2)),
+        klankLengte(l => l === 1, 1),
+        klasse(a => a !== "rest", 2)
+      ),
+      en(klank("sch", 1), klasse(k => k === "speciaal", 1))
+    ),
+    "speciaal"
+  );
+
+  // G als J
+  resultaat = verwerk(
+    resultaat,
+    selecteerKlank("g", "rest"),
+    of(
+      en(
+        klasse(k => k === "langeKlinker", -1),
+        klank("e", 1),
+        niet(klank("l", 2))
+      ),
+      en(
+        klank("e", 1),
+        klank("l", 2),
+        of(klank("ij", 3), klank("a", 3), laatsteKlank(2)),
+        niet(klank("k", 4))
+      )
+    ),
+    "speciaal"
   );
 
   return resultaat;
@@ -1234,6 +1338,7 @@ const voegWoordKlassificatiesToe = woord => {
 
   resultaat = verwerkLangeKlinkers(resultaat);
   resultaat = verwerkStommeE(resultaat);
+  resultaat = verwerkSpecialeKlanken(resultaat);
 
   return resultaat;
 };

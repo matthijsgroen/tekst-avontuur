@@ -229,7 +229,12 @@ body.terminal.klankbord #screen span.langeKlinker {
 body.klankbord #screen span.stommeE {
     text-decoration: underline orange;
     color: #000;
-    background-color: orange; /*rgba(170,85,0,0.1);*/
+    background-color: orange;
+}
+body.klankbord #screen span.speciaal {
+    text-decoration: underline #ff80ff;
+    color: #000;
+    background-color: #ff80ff;
 }
 body.klankbord #screen span.tweeKlank {
     text-decoration: underline red;
