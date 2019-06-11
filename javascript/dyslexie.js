@@ -142,7 +142,6 @@ const verwerkStommeE = resultaat => {
       klankLengte(l => l == 1, offset + 1),
       totaalKlasse(k => k !== "rest" && k !== "stommeE", a => a > 1)
     );
-
   const voorvoegselErvoor = () =>
     of(
       en(of(klank("b", -3), klank("g", -3), klank("t", -3)), klank("e", -2)),
@@ -162,7 +161,12 @@ const verwerkStommeE = resultaat => {
       (resultaat = verwerk(
         resultaat,
         selecteerKlank("e", null),
-        en(voorvoegsel(), klank(beginLetter, -1), niet(voorvoegselErvoor())),
+        en(
+          voorvoegsel(),
+          klank(beginLetter, -1),
+          niet(voorvoegselErvoor()),
+          niet(klank("s", -2))
+        ),
         "stommeE"
       ))
   );

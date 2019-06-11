@@ -256,7 +256,6 @@ describe("Dyslexie", () => {
     [E, "e"],
     [R, "n"]
   ];
-
   const vergeten = [
     [R, "v"],
     [E, "e"],
@@ -286,6 +285,17 @@ describe("Dyslexie", () => {
     [R, "t"]
   ];
   const pakket = [[R, "p"], [K, "a"], [R, "k"], [R, "k"], [K, "e"], [R, "t"]];
+  const stekelige = [
+    [R, "s"],
+    [R, "t"],
+    [L, "e"],
+    [R, "k"],
+    [E, "e"],
+    [R, "l"],
+    [E, "i"],
+    [R, "g"],
+    [E, "e"]
+  ];
   const fantastisch = [
     [R, "f"],
     [K, "a"],
@@ -298,7 +308,6 @@ describe("Dyslexie", () => {
     [S, "sch"]
   ];
   const knipoog = [[R, "k"], [R, "n"], [K, "i"], [R, "p"], [L, "oo"], [R, "g"]];
-
   const linkerkant = [
     [R, "l"],
     [K, "i"],
@@ -310,7 +319,6 @@ describe("Dyslexie", () => {
     [R, "n"],
     [R, "t"]
   ];
-
   const bakkerij = [
     [R, "b"],
     [K, "a"],
@@ -320,7 +328,6 @@ describe("Dyslexie", () => {
     [R, "r"],
     [T, "ij"]
   ];
-
   const donkere = [[R, "d"], [K, "o"], [R, "nk"], [E, "e"], [R, "r"], [E, "e"]];
 
   [
@@ -363,6 +370,7 @@ describe("Dyslexie", () => {
     repareren,
     snel,
     speciale,
+    stekelige,
     teruggevonden,
     veren,
     vergelijk,
