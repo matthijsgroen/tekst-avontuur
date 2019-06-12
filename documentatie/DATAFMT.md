@@ -182,7 +182,8 @@ regel.
 - `' @Omschrijving: Korte omschrijving van het spel/verhaal`
 - `' @Datum: tijdsperiode waarin het gemaakt is`
 - `' @Email: matthijs.groen@gmail.com`
-- `' @Versie: 1.0` `' @Thema: boek`
+- `' @Versie: 1.0`
+- `' @Thema: boek`
 - `' @Thema.instelling: waarde`
 - `' @Bedankt: Bedankt regel`
 - `' @Bedankt: Nog een bedankt regel`
