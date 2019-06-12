@@ -45,11 +45,18 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   [
     `Avontuur, versie ${pakket.version}`,
     "",
-    "Gebruik:",
-    "  - spelen: avontuur.js bestand.avontuur [--herstarten]",
-    "  - html versie maken: avontuur.js html bronbestand.avontuur [doelbestand.html]",
+    "Spel spelen:",
+    "  avontuur.js bestand.avontuur [--herstarten]",
+    "",
+    "HTML versie maken:",
+    "  avontuur.js html bronbestand.avontuur [doelbestand.html]",
     "    [--thema=dos|boek]",
-    "  - informatie: avontuur.js info bronbestand.avontuur",
+    "",
+    "Informatie over spelbestand:",
+    "  avontuur.js info bronbestand.avontuur",
+    "",
+    "Uitgebreide hulp/tutorial:",
+    "  avontuur.js handleiding",
     "",
     "Foutjes, suggesties, vragen?",
     "- Github: https://github.com/matthijsgroen/tekst-avontuur",
@@ -69,6 +76,15 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   encodeDecode(bron);
 } else if (eerste === "test" && commandos[1]) {
   toonZin(commandos[1]);
+} else if (eerste === "handleiding") {
+  const bestand = `${__dirname}/handleiding.avontuur`;
+
+  spelLus(bestand, {
+    herstarten: true,
+    spelerNaam: "Gebruiker",
+    opslaan: false,
+    uitschrijven: false
+  });
 } else if (eerste === "html") {
   const basisNaam = name =>
     name
@@ -89,6 +105,15 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
     vlaggen
   );
 } else {
-  const herstarten = vlaggen.restart || vlaggen.herstart || vlaggen.herstarten;
-  spelLus(eerste, { herstarten });
+  const speelSpel = async () => {
+    try {
+      const herstarten =
+        vlaggen.restart || vlaggen.herstart || vlaggen.herstarten;
+      await spelLus(eerste, { herstarten });
+    } catch (e) {
+      console.log(e.message);
+      process.exit(1);
+    }
+  };
+  speelSpel();
 }

@@ -3,7 +3,6 @@ const { voerActieUit, toegestaan } = require("./spelToestand");
 const { bewaarSpel, laadSpel, basisNaam } = require("./bewaarSpel");
 const leesAvontuur = require("./leesAvontuur");
 const stdin = process.stdin;
-let dyslexieMode = false;
 
 const input = prompt =>
   new Promise(async resolve => {
@@ -22,7 +21,8 @@ const input = prompt =>
     stdin.on("data", callback);
   });
 
-let skip = false;
+let defaultSkip = false;
+let skip = defaultSkip;
 let keyPressed = null;
 let naam = "";
 let spelToestand = Array(100).fill(0);
@@ -94,7 +94,7 @@ const tekst = async (verteller, zin, eerderGelezen) => {
 const gelezen = [];
 const toonGebeurtenis = async schermData => {
   let verteller = 7;
-  skip = false;
+  skip = defaultSkip;
   vorigeZin = "";
   cls();
 
@@ -200,12 +200,12 @@ const toonActies = async actieData => {
 
 const spelLus = async (
   bestandsNaam,
-  { herstarten = false, dyslexie = false }
+  { herstarten = false, spelerNaam = null, opslaan = true, uitschrijven = true }
 ) => {
+  defaultSkip = !uitschrijven;
   const data = await leesAvontuur(bestandsNaam);
   const opslagBestandsNaam = `.${basisNaam(bestandsNaam)}.opslag`;
   const eerderSpel = herstarten ? null : await laadSpel(opslagBestandsNaam);
-  dyslexieMode = dyslexie;
 
   stdin.resume();
   stdin.setRawMode(true);
@@ -229,6 +229,8 @@ const spelLus = async (
   if (eerderSpel) {
     naam = eerderSpel.naam;
     spelToestand = eerderSpel.spelToestand;
+  } else if (spelerNaam) {
+    naam = spelerNaam;
   } else {
     cls();
     await tekst(7, "Hallo avonturier!", true);
@@ -243,7 +245,7 @@ const spelLus = async (
     await toonGebeurtenis(data.schermData);
     await print("\n");
     heeftActies = await toonActies(data.actieData);
-    if (heeftActies) {
+    if (heeftActies && opslaan) {
       await bewaarSpel(opslagBestandsNaam, { naam, spelToestand });
     }
   } while (heeftActies);

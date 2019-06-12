@@ -20,3 +20,9 @@ Foutjes, suggesties, vragen?
 - E-mail: matthijs.groen@gmail.com
 - Twitter: @matthijsgroen
 ```
+
+# .Avontuur bestand
+
+.avontuur bestanden zijn de databestanden van een tekst-avontuur. Het formaat
+staat beschreven op:
+https://github.com/matthijsgroen/tekst-avontuur/blob/master/documentatie/DATAFMT.md

@@ -292,6 +292,7 @@ const verwerkSpecialeKlanken = resultaat => {
             -1
           )
         ),
+        niet(eersteKlank()),
         niet(klasse(a => a === "rest", -2)),
         klankLengte(l => l === 1, 1),
         klasse(a => a !== "rest", 2)
