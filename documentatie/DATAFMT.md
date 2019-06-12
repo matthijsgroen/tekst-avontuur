@@ -128,7 +128,12 @@ Waardes uit de speltoestand in tekst gebruiken:
 - `#12` Hiermee wordt `#12` vervangen door de getalwaarde op lokatie 12 in de
   speltoestand. De lokatie in tekst moet altijd worden aangegeven door 2
   cijfers. Om een waarde in het lokatie gebied 0-9 te tonen, moet je een
-  voorloop nul gebruiken (`#04`).
+  voorloop-nul gebruiken (`#04`).
+
+- `#4p12` Hiermee wordt net als hierboven, de waarde van lokatie 12 geschreven.
+  de `4p` maakt er van dat het getal altijd uit 4 cijfers moet bestaan, en dat
+  het dus wordt opgevult met voorloop-nullen. Stel op lokatie 12 staat de waarde
+  34, dan wordt 0034 getoond.
 
 # Voorbeeld
 
@@ -147,7 +152,7 @@ Waardes uit de speltoestand in tekst gebruiken:
 "1=1;2=0", "Hallo? Is daar iemand?", "&1=3"
 ' Wachtrij
 "1=1;2>0", "Sorry, al onze medewerkers zijn in gesprek", "&"
-"1=1;2>1", "Er zijn nog#02 wachtenden voor u", "&2-1;1=0"
+"1=1;2>1", "Er zijn nog #02 wachtenden voor u", "&2-1;1=0"
 "1=1;2=1", "Er is nog 1 wachtenden voor u", "&2-1;1=0"
 
 "1=4", "Sorry daarbij kan ik u niet helpen", "&1=3"
@@ -165,3 +170,20 @@ Waardes uit de speltoestand in tekst gebruiken:
 "1=3", "Hang op", "1=5"
 
 ```
+
+# Notities in commentaar
+
+Commentaar in het bestand is het toevoegen van `'` als eerste karakter op een
+regel.
+
+- `' @Titel: Naam van je spel`
+- `' @Auteur: Jouw naam hier`
+- `' @Afbeelding: koerier.png`
+- `' @Omschrijving: Korte omschrijving van het spel/verhaal`
+- `' @Datum: tijdsperiode waarin het gemaakt is`
+- `' @Email: matthijs.groen@gmail.com`
+- `' @Versie: 1.0` `' @Thema: boek`
+- `' @Thema.instelling: waarde`
+- `' @Bedankt: Bedankt regel`
+- `' @Bedankt: Nog een bedankt regel`
+- `' @MenuLink: [Bekijk meer spellen op](https://www.tekstavontuur.nl)`
