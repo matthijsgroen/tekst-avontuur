@@ -1979,6 +1979,11 @@
 "", "*c14", "<slobber!>", "*c2", ""
 "De draak eet zo de taart op.", "&4=0;52=2"
 
+"1=17;2=0;17=2;4=21;6=1", "*c2", "Je pakt de koeken uit je tas."
+"De draak ruikt eraan. Hij kijkt je heel hongerig aan, maar draait zijn kop weg."
+"", "Hmm, blijkbaar houd hij niet van koeken.", ""
+"Je stopt de koeken maar weer terug in je tas.", "&4=0"
+
 "1=17;2=0;17=2;4=17;6=1;33!5", "*c2", "Je haalt het grote zadel uit je tas. De draak kijkt naar"
 "het zadel en geeft een blik van herkenning. Als je het zadel op hem wil leggen, dan briest hij"
 "licht en draait zich een beetje."
@@ -2513,6 +2518,7 @@
 
 "2=1;1=17;17=2;31=1;6=1", "Knoop touw aan tand van de draak", "4=11;2=0"
 "2=1;1=17;17=2;6=1;52=1", "Geef appeltaart aan de draak", "4=16;2=0"
+"2=1;1=17;17=2;6=1;25=2", "Geef koeken aan de draak", "4=21;2=0"
 "2=1;1=17;17=2;6=1;49=1", "Zet zadel op de draak", "4=17;2=0"
 "2=1;1=17;17=2;6=1;33=4", "Gebruik 'vertaler' op de draak", "4=18;2=0"
 
