@@ -73,7 +73,7 @@ const verwerkLangeKlinkers = resultaat => {
           )
         ),
         klankLengte(l => l === 1, 1),
-        klasse(a => a !== "rest", 2)
+        klasse(a => a !== "rest" && a !== "speciaal", 2)
       ),
       "langeKlinker"
     );
@@ -138,7 +138,6 @@ const verwerkStommeE = resultaat => {
   const voorvoegsel = (offset = 0) =>
     en(
       klasse(k => k === "rest", offset + 1),
-      klasse(k => k !== "rest", offset + 2),
       klankLengte(l => l == 1, offset + 1),
       totaalKlasse(k => k !== "rest" && k !== "stommeE", a => a > 1)
     );

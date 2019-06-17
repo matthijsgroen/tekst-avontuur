@@ -73,7 +73,7 @@ const verwerkLangeKlinkers = resultaat => {
           )
         ),
         klankLengte(l => l === 1, 1),
-        klasse(a => a !== "rest", 2)
+        klasse(a => a !== "rest" && a !== "speciaal", 2)
       ),
       "langeKlinker"
     );

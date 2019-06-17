@@ -12,6 +12,16 @@ const S = "speciaal";
 const A = "anders";
 
 describe("Dyslexie", () => {
+  const tevreden = [
+    [R, "t"],
+    [E, "e"],
+    [R, "v"],
+    [R, "r"],
+    [L, "e"],
+    [R, "d"],
+    [E, "e"],
+    [R, "n"]
+  ];
   const teruggevonden = [
     [R, "t"],
     [E, "e"],
@@ -329,8 +339,18 @@ describe("Dyslexie", () => {
     [T, "ij"]
   ];
   const donkere = [[R, "d"], [K, "o"], [R, "nk"], [E, "e"], [R, "r"], [E, "e"]];
+  const matthijs = [
+    [R, "m"],
+    [K, "a"],
+    [R, "t"],
+    [S, "th"],
+    [T, "ij"],
+    [R, "s"]
+  ];
 
   [
+    matthijs,
+    tevreden,
     avontuur,
     bakkerij,
     beren,
