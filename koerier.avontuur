@@ -843,6 +843,11 @@
 "*c9", "Thorin: 'Neem maar mee. Ik heb nu genoeg! Nog bedankt voor alle hulp!'"
 "&11=3;4=0"
 
+"1=11;2=0;11=2;4=8", "*c2", "Je staat op het punt om de appeltaart aan Thorin aan te bieden. "
+"", "*c3", "$n: 'Bloem heeft deze taart aan mij gegeven voor de draak, dan moet ik dit nu"
+"  niet aan Thorin gaan geven. Ik moet voor Thorin iets anders te eten gaan vinden.'"
+"&4=0"
+
 "1=11;2=0;11=3;4=1;28=0", "*c2"
 "Je raapt de edelsteen op. Hij fonkelt mooi in het zonlicht.", "&28=1;4=0"
 
@@ -2310,6 +2315,7 @@
 "2=0;1=11;11=2;4=0;24=0", "Zeg: 'Zou ik je houweel mogen hebben?'", "4=2"
 "2=0;1=11;11=2;4=0;24=2", "Geef gerepareerde houweel aan Thorin", "4=3"
 "2=0;1=11;11=2;4=0;25=2", "Geef koeken aan Thorin", "4=4"
+"2=0;1=11;11=2;4=0;52=1", "Geef appeltaart aan Thorin", "4=8"
 "2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan medicijnen kan komen?'", "4=5"
 "2=0;1=11;11>1;4=0", "Zeg: 'Enig idee hoe ik aan vervoer kan komen?'", "4=6"
 "2=0;1=11;11>1;4=0;34>0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=7"
