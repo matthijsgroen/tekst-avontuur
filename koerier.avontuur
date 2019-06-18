@@ -302,7 +302,7 @@
 "1=14;3=6;19=2;29>2", "*c2", "Teun brengt je snel naar de molen.", "", "&3=0;30=14;19=1"
 
 "1=16;3=5;19=1;29>1", "*c2", "Je knoopt Teun vast aan de winkel."
-"Je stapt watertandend de winkel binnen.", "", "&3=0"
+"Je stapt watertandend de winkel binnen.", "", "&3=0;30=16"
 "1=16;3=5;19=0", "*c2", "Uit de bakkerij komt een geur van heerlijke verse broodjes en taarten."
 "", "Je stapt watertandend de winkel binnen.", "", "&3=0"
 "1=16;3=5;19=2;29>2", "*c2", "Teun brengt je snel naar de bakkerij."
@@ -2472,7 +2472,7 @@
 "2=0;1=16;16=1;4=0;26>0;34>0;36=0;34<5", "Zeg: 'Heb jij ook gehoord dat er een schat ergens is?'", "4=8"
 "2=0;1=16;16=1;4=0;26>0;33<3", "Zeg: 'Waarom is uw toonbank leeg?'", "4=6"
 "2=0;1=16;16=1;4=0;46=1", "Praat met Bloem", "4=9"
-"2=0;1=16;16=1;4=0;33=2", "Zeg: 'Ik heb meel gehaald'", "4=7"
+"2=0;1=16;16=1;4=0;33=2;30=16;19=1", "Zeg: 'Ik heb meel gehaald'", "4=7"
 "2=0;1=16;16=1;4=0", "Verlaat de bakkerij", "1=6;3=5;4=0"
 "2=0;1=16;16=1;4=1;26=0", "Zeg: 'Monster? Waar heeft u het over?'", "4=4"
 
