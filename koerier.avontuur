@@ -2506,7 +2506,7 @@
 "2=0;1=17;17=2;4=0;6=0;46=0", "Praat met Bloem", "4=1"
 "2=0;1=17;17=2;4=0;6=0", "Ga naar de draak", "4=10"
 "2=0;1=17;17=2;4=0;6=0;31=3", "Knoop touw aan tand van de draak", "4=13"
-"2=0;1=17;17=2;4=0;6=0;31=2;44=4", "Knoop touw aan molensteen", "4=14"
+"2=0;1=17;17=2;4=0;6=0;31=2;44=4;43=0", "Knoop touw aan molensteen", "4=14"
 "2=0;1=17;17=2;4=0;6=0", "Ga met de trap naar beneden", "1=18;3=5"
 
 "2=0;1=17;17=2;4=1;45=0", "Zeg: 'Hoe kan ik je helpen?'", "4=2"
