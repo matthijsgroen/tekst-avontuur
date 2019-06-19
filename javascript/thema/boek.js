@@ -48,6 +48,9 @@ const geladen = () => {
   if (thema === "dos") {
     document.body.classList.add("terminal");
   }
+  if (naam === "") {
+    document.getElementById("naam").focus();
+  }
 };
 
 document.addEventListener("DOMContentLoaded", function() {
