@@ -93,20 +93,71 @@ const toonOmschrijving = teksten =>
       .join("\n")
   );
 
-const willekeurigeKeuzeMaker = pogingen => {
+const vooruitKijker = (eersteKeuze, pogingen) => {
+  let huidigePoging = 0;
+
+  const keuzeMaker = async (teksten, keuzes, spelToestand) => {
+    if (huidigePoging >= pogingen) return [false, false];
+    huidigePoging++;
+
+    const gamestateKey = spelToestand.join(",");
+    const keuze = Math.round(Math.random() * (keuzes.length - 1));
+
+    const actie = huidigePoging === 1 ? eersteKeuze : keuzes[keuze];
+    return [actie, gamestateKey];
+  };
+  return keuzeMaker;
+};
+
+const VOORUIT_KIJKEN = 6;
+const puntenSchaal = [0, 16, 8, 4, 2, 1];
+
+const willekeurigeKeuzeMaker = (acties, scherm, pogingen) => {
   let huidigePoging = 0;
 
   const gamestateKeuzes = {};
   let laatsteActie = "";
 
-  const keuzeMaker = async (teksten, acties, spelToestand) => {
+  const keuzeMaker = async (teksten, keuzes, spelToestand) => {
     if (huidigePoging >= pogingen) return [false, false];
     huidigePoging++;
 
     const gamestateKey = spelToestand.join(",");
     const gedaneKeuzes = gamestateKeuzes[gamestateKey] || {};
+    gamestateKeuzes[gamestateKey] = gedaneKeuzes;
 
-    const gewogenActies = acties.map(actie => ({
+    let besteKeuzes = [];
+    let maxScore = 0;
+
+    for (let optie of keuzes) {
+      const optieResultaten = await speelSpel(
+        acties,
+        scherm,
+        spelToestand,
+        vooruitKijker(optie, VOORUIT_KIJKEN)
+      );
+
+      const score = optieResultaten.reduce((som, element, index, list) => {
+        return (
+          som +
+          (gamestateKeuzes[element] === undefined &&
+          list.indexOf(element) === index
+            ? 1
+            : 0) *
+            puntenSchaal[index]
+        );
+      }, 0);
+
+      if (score === maxScore) {
+        besteKeuzes.push(optie);
+      }
+      if (score > maxScore) {
+        maxScore = score;
+        besteKeuzes = [optie];
+      }
+    }
+
+    const gewogenActies = besteKeuzes.map(actie => ({
       actie,
       score:
         1 /
@@ -118,27 +169,28 @@ const willekeurigeKeuzeMaker = pogingen => {
     const actie = gewogenActies.find(actie => {
       if (actie.score > keuze) return actie;
       keuze -= actie.score;
-    });
-    const kerenGekozen = gedaneKeuzes[actie.actie.tekst] || 1;
+    }).actie;
+
+    const kerenGekozen = gedaneKeuzes[actie.tekst] || 1;
     gamestateKeuzes[gamestateKey] = {
       ...gedaneKeuzes,
-      [actie.actie.tekst]: kerenGekozen + 1
+      [actie.tekst]: kerenGekozen + 1
     };
-    laatsteActie = actie.actie.tekst;
+    laatsteActie = actie.tekst;
 
-    return [actie.actie, acties.indexOf(actie.actie)];
+    return [actie, keuzes.indexOf(actie)];
   };
   return keuzeMaker;
 };
 
 const logAfspeler = log => {
   let positie = 0;
-  const keuzeMaker = async (teksten, acties) => {
+  const keuzeMaker = async (teksten, keuzes) => {
     if (positie >= log.length) return [false, false];
     //toonOmschrijving(teksten);
 
     const keuze = log[positie];
-    const actie = acties[keuze];
+    const actie = keuzes[keuze];
     if (log.length - positie < 30) {
       console.log("-", actie.tekst);
     }
@@ -160,10 +212,10 @@ const testSpel = async bestandsnaam => {
     acties,
     scherm,
     spelToestand,
-    willekeurigeKeuzeMaker(20)
+    willekeurigeKeuzeMaker(acties, scherm, 10000)
   );
   console.log("replay...");
-  console.log(gameLog);
+  //console.log(gameLog);
   await speelSpel(acties, scherm, spelToestand, logAfspeler(gameLog));
 };
 
