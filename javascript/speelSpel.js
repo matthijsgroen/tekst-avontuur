@@ -67,11 +67,6 @@ const speelSpel = async (acties, scherm, startToestand, keuzeMaker) => {
       toegestaan(spelToestand, actie.test)
     );
 
-    if (beschikbareActies.length === 0) {
-      console.log("Uitgespeeld!?");
-      return log;
-    }
-
     const [actie, logItem] = await keuzeMaker(
       schermTeksten,
       beschikbareActies,
@@ -98,6 +93,7 @@ const vooruitKijker = (eersteKeuze, pogingen) => {
 
   const keuzeMaker = async (teksten, keuzes, spelToestand) => {
     if (huidigePoging >= pogingen) return [false, false];
+    if (keuzes.length === 0) return [false, false];
     huidigePoging++;
 
     const gamestateKey = spelToestand.join(",");
@@ -120,6 +116,7 @@ const willekeurigeKeuzeMaker = (acties, scherm, pogingen) => {
 
   const keuzeMaker = async (teksten, keuzes, spelToestand) => {
     if (huidigePoging >= pogingen) return [false, false];
+    if (keuzes.length === 0) return [false, false];
     huidigePoging++;
 
     const gamestateKey = spelToestand.join(",");
@@ -137,16 +134,18 @@ const willekeurigeKeuzeMaker = (acties, scherm, pogingen) => {
         vooruitKijker(optie, VOORUIT_KIJKEN)
       );
 
-      const score = optieResultaten.reduce((som, element, index, list) => {
-        return (
-          som +
-          (gamestateKeuzes[element] === undefined &&
-          list.indexOf(element) === index
-            ? 1
-            : 0) *
-            puntenSchaal[index]
-        );
-      }, 0);
+      const score =
+        optieResultaten.reduce((som, element, index, list) => {
+          return (
+            som +
+            (gamestateKeuzes[element] === undefined &&
+            list.indexOf(element) === index
+              ? 1
+              : 0) *
+              puntenSchaal[index]
+          );
+        }, 0) +
+        (VOORUIT_KIJKEN - optieResultaten.length) * 10;
 
       if (score === maxScore) {
         besteKeuzes.push(optie);
@@ -186,8 +185,11 @@ const willekeurigeKeuzeMaker = (acties, scherm, pogingen) => {
 const logAfspeler = log => {
   let positie = 0;
   const keuzeMaker = async (teksten, keuzes) => {
+    if (keuzes.length === 0) {
+      toonOmschrijving(teksten);
+      return [false, false];
+    }
     if (positie >= log.length) return [false, false];
-    //toonOmschrijving(teksten);
 
     const keuze = log[positie];
     const actie = keuzes[keuze];
@@ -214,7 +216,7 @@ const testSpel = async bestandsnaam => {
     spelToestand,
     willekeurigeKeuzeMaker(acties, scherm, 10000)
   );
-  console.log("replay...");
+  console.log("replay... ", gameLog.length);
   //console.log(gameLog);
   await speelSpel(acties, scherm, spelToestand, logAfspeler(gameLog));
 };
