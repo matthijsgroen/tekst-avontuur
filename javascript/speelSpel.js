@@ -46,20 +46,23 @@ const voerActieUit = (spelToestand, instructies) => {
   return resultaat;
 };
 
-const speelSpel = (acties, scherm, spelToestand, pogingen) => {
-  let resultaatToestand = spelToestand;
+const gelijkeToestand = (a, b) => a.every((v, i) => b[i] === v);
 
-  let proberen = pogingen;
+const speelSpel = (acties, scherm, spelToestand, keuzeMaker) => {
+  let resultaatToestand = spelToestand;
   let log = [];
 
-  while (proberen > 0) {
+  while (true) {
+    let schermTeksten = [];
     scherm.forEach(teksten => {
       if (!toegestaan(resultaatToestand, teksten.test)) return;
+      schermTeksten.push(teksten);
 
       if (teksten.actie) {
         resultaatToestand = voerActieUit(resultaatToestand, teksten.actie);
       }
     });
+
     const beschikbareActies = acties.filter(actie =>
       toegestaan(resultaatToestand, actie.test)
     );
@@ -69,19 +72,56 @@ const speelSpel = (acties, scherm, spelToestand, pogingen) => {
       return log;
     }
 
-    const keuze = Math.round(Math.random() * (beschikbareActies.length - 1));
-    console.log(proberen, beschikbareActies[keuze].tekst);
-    resultaatToestand = voerActieUit(
-      resultaatToestand,
-      beschikbareActies[keuze].actie
-    );
-
-    proberen--;
-    log.push(keuze);
+    const actie = keuzeMaker(schermTeksten, beschikbareActies);
+    if (actie === false) {
+      // speler stopt
+      return log;
+    }
+    resultaatToestand = voerActieUit(resultaatToestand, actie.actie);
+    log.push(beschikbareActies.indexOf(actie));
   }
 
   console.log("Geen pogingen meer");
   return log;
+};
+
+const toonOmschrijving = teksten =>
+  console.log(
+    teksten
+      .map(tekst => tekst.schermData.filter(t => !t.startsWith("*")).join("\n"))
+      .join("\n")
+  );
+
+const willekeurigeKeuzeMaker = pogingen => {
+  let huidigePoging = 0;
+  let vorigeKeuze = "";
+
+  const keuzeMaker = (teksten, acties) => {
+    if (huidigePoging > pogingen) return false;
+    huidigePoging++;
+    const beschikbareActies = acties.filter(
+      actie => actie.tekst !== vorigeKeuze
+    );
+
+    const keuze = Math.round(Math.random() * (beschikbareActies.length - 1));
+    vorigeKeuze = beschikbareActies[keuze].tekst;
+
+    return beschikbareActies[keuze];
+  };
+  return keuzeMaker;
+};
+
+const logAfspeler = log => {
+  let positie = 0;
+  const keuzeMaker = (teksten, acties) => {
+    if (positie >= log.length) return false;
+    //toonOmschrijving(teksten);
+    const keuze = acties[log[positie]];
+    console.log(keuze.tekst);
+    positie++;
+    return keuze;
+  };
+  return keuzeMaker;
 };
 
 const testSpel = async bestandsnaam => {
@@ -93,7 +133,14 @@ const testSpel = async bestandsnaam => {
 
   let spelToestand = Array(100).fill(0);
 
-  const gameLog = speelSpel(acties, scherm, spelToestand, 1000);
+  const gameLog = speelSpel(
+    acties,
+    scherm,
+    spelToestand,
+    willekeurigeKeuzeMaker(8000)
+  );
+  //console.log(gameLog);
+  //speelSpel(acties, scherm, spelToestand, logAfspeler(gameLog));
 };
 
 module.exports = {
