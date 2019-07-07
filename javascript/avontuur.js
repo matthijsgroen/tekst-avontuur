@@ -5,6 +5,7 @@ const statistieken = require("./statistieken");
 const pakket = require("./package.json");
 const { genereerCode } = require("./maakCode");
 const { toonZin } = require("./dyslexie");
+const { testSpel } = require("./speelSpel");
 
 const commandos = process.argv
   .slice(2)
@@ -74,8 +75,10 @@ if (vlaggen.versie || vlaggen.version || eerste === "-V") {
   };
   const bron = commandos[1];
   encodeDecode(bron);
-} else if (eerste === "test" && commandos[1]) {
+} else if (eerste === "kleur" && commandos[1]) {
   toonZin(commandos[1]);
+} else if (eerste === "test" && commandos[1]) {
+  testSpel(commandos[1]);
 } else if (eerste === "handleiding") {
   const bestand = `${__dirname}/handleiding.avontuur`;
 
