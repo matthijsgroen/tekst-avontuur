@@ -1,6 +1,18 @@
 const leesAvontuur = require("./leesAvontuur");
 const converteerStructuur = require("./converteerStructuur");
 
+const interpoleer = (spelToestand, naam, zin) =>
+  zin
+    .replace(/\$n/g, naam)
+    .replace(/#\d{2}/g, num => `${spelToestand[parseInt(num.slice(1), 10)]}`)
+    .replace(/#\d+p\d{2}/g, paddedNum => {
+      const [padding, num] = paddedNum.slice(1).split("p");
+      const waarde = `${spelToestand[parseInt(num.slice(1), 10)]}`;
+      const pad = parseInt(padding, 10);
+
+      return `${"0".repeat(pad)}${waarde}`.slice(-pad);
+    });
+
 const toets = (spelToestand, plek, bewerking, waarde) =>
   (bewerking === "=" && spelToestand[plek] === waarde) ||
   (bewerking === "!" && spelToestand[plek] !== waarde) ||
@@ -48,24 +60,35 @@ const voerActieUit = (spelToestand, instructies) => {
 
 const gelijkeToestand = (a, b) => a.every((v, i) => b[i] === v);
 
+const tekstInterpolatie = (schermTekst, naam, spelToestand) => ({
+  ...schermTekst,
+  schermData: schermTekst.schermData.map(t =>
+    interpoleer(spelToestand, naam, t)
+  )
+});
+
 const speelSpel = async (acties, scherm, startToestand, keuzeMaker) => {
   let spelToestand = [].concat(startToestand);
+  const naam = "Speler";
   let log = [];
 
   while (true) {
     let schermTeksten = [];
     scherm.forEach(teksten => {
       if (!toegestaan(spelToestand, teksten.test)) return;
-      schermTeksten.push(teksten);
+      schermTeksten.push(tekstInterpolatie(teksten, naam, spelToestand));
 
       if (teksten.actie) {
         spelToestand = voerActieUit(spelToestand, teksten.actie);
       }
     });
 
-    const beschikbareActies = acties.filter(actie =>
-      toegestaan(spelToestand, actie.test)
-    );
+    const beschikbareActies = acties
+      .filter(actie => toegestaan(spelToestand, actie.test))
+      .map(actie => ({
+        ...actie,
+        tekst: interpoleer(spelToestand, naam, actie.tekst)
+      }));
 
     const [actie, logItem] = await keuzeMaker(
       schermTeksten,
@@ -108,7 +131,7 @@ const vooruitKijker = (eersteKeuze, pogingen) => {
 const VOORUIT_KIJKEN = 6;
 const puntenSchaal = [0, 16, 8, 4, 2, 1];
 
-const willekeurigeKeuzeMaker = (acties, scherm, pogingen) => {
+const voorSpellendeKeuzemaker = (acties, scherm, pogingen) => {
   let huidigePoging = 0;
 
   const gamestateKeuzes = {};
@@ -177,7 +200,7 @@ const willekeurigeKeuzeMaker = (acties, scherm, pogingen) => {
     };
     laatsteActie = actie.tekst;
 
-    return [actie, keuzes.indexOf(actie)];
+    return [actie, [keuzes.indexOf(actie), gamestateKey]];
   };
   return keuzeMaker;
 };
@@ -185,13 +208,13 @@ const willekeurigeKeuzeMaker = (acties, scherm, pogingen) => {
 const logAfspeler = log => {
   let positie = 0;
   const keuzeMaker = async (teksten, keuzes) => {
+    //toonOmschrijving(teksten);
     if (keuzes.length === 0) {
-      toonOmschrijving(teksten);
       return [false, false];
     }
     if (positie >= log.length) return [false, false];
 
-    const keuze = log[positie];
+    const keuze = log[positie][0];
     const actie = keuzes[keuze];
     if (log.length - positie < 30) {
       console.log("-", actie.tekst);
@@ -200,6 +223,23 @@ const logAfspeler = log => {
     return [actie, keuze];
   };
   return keuzeMaker;
+};
+
+const optimaliseerGameLog = gameLog => {
+  let werkLog = [];
+
+  for (let i = 0; i < gameLog.length; i++) {
+    const gameState = gameLog[i][1];
+    let laatste = i;
+    for (let last = i; last < gameLog.length; last++) {
+      if (gameLog[last][1] === gameState) {
+        laatste = last;
+      }
+    }
+    werkLog.push(gameLog[laatste]);
+    i = laatste;
+  }
+  return werkLog;
 };
 
 const testSpel = async bestandsnaam => {
@@ -214,11 +254,13 @@ const testSpel = async bestandsnaam => {
     acties,
     scherm,
     spelToestand,
-    willekeurigeKeuzeMaker(acties, scherm, 10000)
+    voorSpellendeKeuzemaker(acties, scherm, 80000)
   );
-  console.log("replay... ", gameLog.length);
+  const korteGameLog = optimaliseerGameLog(gameLog);
+  console.log("replay... ", gameLog.length, korteGameLog.length);
   //console.log(gameLog);
-  await speelSpel(acties, scherm, spelToestand, logAfspeler(gameLog));
+  //await speelSpel(acties, scherm, spelToestand, logAfspeler(gameLog));
+  await speelSpel(acties, scherm, spelToestand, logAfspeler(korteGameLog));
 };
 
 module.exports = {

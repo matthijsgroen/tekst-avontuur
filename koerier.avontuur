@@ -183,6 +183,7 @@
 "1=0;10=1;4=3", "*c2", "Je probeert het briefje van de raaf te pakken.", "&"
 "1=0;10=1;4>0;4<4", "*c2", "", "De raaf pikt naar je hand."
 "*c3", "", "$n: 'Grrr!'", "&"
+"1=0;10=1;4>0;4<4;5<3", "&5+1"
 
 "1=0;10=0;4=4", "*c2", "Je opent het raam. De raaf springt snel naar binnen."
 "Zo te zien heeft hij een brief aan zijn poot hangen."
@@ -2181,9 +2182,9 @@
 "1=0;10=0;4<2;0!0", "Probeer nog even verder te slapen", "4=1"
 "1=0;10=0;4=2", "Kijk waar geluid vandaan komt", "4=3"
 "1=0;10=0;4=3", "Open raam", "4=4"
-"1=0;10=1", "Jaag de raaf weg", "4=1;5+1"
-"1=0;10=1", "Het tikken is weg! Probeer weer in bed te kruipen", "4=2;5+1"
-"1=0;10=1", "Pak briefje van de raaf", "4=3;5+1"
+"1=0;10=1", "Jaag de raaf weg", "4=1"
+"1=0;10=1", "Het tikken is weg! Probeer weer in bed te kruipen", "4=2"
+"1=0;10=1", "Pak briefje van de raaf", "4=3"
 "1=0;10=1;5>2", "Kijk de kamer rond", "2=0;4=0;10=2"
 
 "1=0;10=2;2!1;4!0", "Kijk de kamer rond", "2=0;4=0"
