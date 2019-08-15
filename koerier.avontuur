@@ -573,7 +573,7 @@
 "Mensen hebben hun vlaggen uitgehangen."
 "Een bewoner die je niet kent komt op je af.", "", "*c10"
 "Bewoner: 'Hoera voor $n! De grote draken doder!"
-"  we hoorden de brul wel! Je bent een held!'"
+"  We hoorden de brul wel! Je bent een held!'"
 "", "&"
 
 "1=6;2=0;4=0", "*c2"
@@ -1161,10 +1161,10 @@
 "  - Plaats alle ingrediënten beschreven in het recept in de ketel. De volgorde doet er niet toe."
 "  - Zodra alle ingrediënten erin zitten, steek je beide handen hoog in de lucht."
 "  - Met een geheimzinnige stem zeg je dan hardop de toverspreuk die bij het recept hoort."
-"  - Indien het recept gelukt is, dan is de ketel gevult met de toverdrank."
+"  - Indien het recept gelukt is, dan is de ketel gevuld met de toverdrank."
 "  - Indien de spreuk mislukt omdat de ingrediënten niet kloppen, wordt de ketel automatisch"
 "    schoongemaakt en kun je het nog eens proberen."
-"  - Voor de 'meester-heks' recepten is een runesteen nodig om de ingrediënten toonbaar te maken"
+"  - Voor de 'meester-heks' recepten is een runesteen nodig om de ingrediënten toonbaar te maken."
 "", "Veel plezier!", "&"
 
 "2=0;1=12;12=3;6=4;4=0;51=1", "*c6", "Bladzijde 10. -- Alleshelende medicinale drank --"
@@ -1211,7 +1211,7 @@
 "Met deze drank kan je iedereen verstaan!", ""
 "Niveau: Meester-heks", ""
 "Benodigdheden:"
-"  - 1 planten met hartvormige bladeren"
+"  - 1 plant met hartvormige bladeren"
 "  - 1 pluk Maanmos"
 "  - 2 plukken Sterrenmos"
 "  - 1 Maansteen"
@@ -1256,7 +1256,7 @@
 "Locatie: Paddenstoelen en zwammen groeien goed in donkere wouden."
 "&"
 
-"2=0;1=12;12=3;6=3;4=0;5=1;55=0", "", "*c2", "Mooi! je weet nu alles over paddenstoelen!"
+"2=0;1=12;12=3;6=3;4=0;5=1;55=0", "", "*c2", "Mooi! Je weet nu alles over paddenstoelen!"
 "&55=1"
 
 "2=0;1=12;12=3;6=3;4=0;5=2", "*c6", "Bladzijde 6510. -- Mossen en grassen. --"
@@ -1329,7 +1329,7 @@
 
 "2=3;51=3;38=2", "*c2", "Vanuit een ooghoek gluur je naar het receptenboek:", "", "*c6"
 "Benodigdheden:"
-"  - 1 planten met hartvormige bladeren"
+"  - 1 plant met hartvormige bladeren"
 "  - 1 pluk Maanmos"
 "  - 2 plukken Sterrenmos"
 "  - 1 Maansteen"
@@ -2243,7 +2243,7 @@
 "2=0;1=6", "Wandel naar de bakkerij", "1=16;4=0;3=5"
 "2=0;1=6", "Wandel naar de smederij", "1=15;4=0;3=6"
 "2=0;1=6;k=n", "Ga naar het noorden, richting de akkers", "1=2;3=1"
-"2=0;1=6;k=o", "Ga naar het oosten, richting de het donkere woud", "1=7;3=2"
+"2=0;1=6;k=o", "Ga naar het oosten, richting het donkere woud", "1=7;3=2"
 "2=0;1=6;k=z", "Ga naar het zuiden, richting de rivier", "1=8;3=3"
 
 '== 7. Donker woud acties
