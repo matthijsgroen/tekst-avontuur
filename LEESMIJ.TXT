@@ -3,7 +3,7 @@ Avontuur
 
 Een tekst avontuur, geschreven in QBasic, node.js en HTML
 
-De code, en het avontuur zijn zo nederlands mogelijk.
+De code, en het avontuur zijn zo Nederlands mogelijk.
 
 QBASIC versie
 -------------
