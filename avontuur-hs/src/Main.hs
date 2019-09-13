@@ -14,7 +14,10 @@ data MutationOperator = Assign | Add | Subtract | Random
 data GameState = GameState [Value]
 
 match :: Operator -> Value -> Value -> Bool
-match Equals a b = a == b
+match Equals = (==)
+match NotEquals = (/=)
+match GreaterThan = (>)
+match LessThan = (<)
 
 conditionMet :: GameState -> Condition -> Bool
 conditionMet (GameState values) (Condition slot operator value) =
@@ -23,6 +26,10 @@ conditionMet (GameState values) (Condition slot operator value) =
 
 isApplicable :: GameState -> Description -> Bool
 isApplicable gameState (Description conditions _ _) =
+  and (map (conditionMet gameState) conditions)
+
+isApplicableAction :: GameState -> Action -> Bool
+isApplicableAction gameState (Action conditions _ _) =
   and (map (conditionMet gameState) conditions)
 
 printDisplayData :: DisplayData -> IO ()
@@ -37,13 +44,33 @@ printDescription (Description _ displayData _) = do
   mapM_ printDisplayData displayData
   putStrLn ""
 
+printAction :: Action -> Int -> IO ()
+printAction (Action _ text _) num = do
+  putStrLn (show num ++ ") " ++ text)
+
+applyAction :: Action -> GameState -> GameState
+applyAction (Action _ _ mutations) state =
+  {-Fold result here-}
+  state
+
 gameLoop :: Content -> GameState -> IO ()
-gameLoop (Content descriptions actions) gameState = do
+gameLoop content@(Content descriptions actions) gameState = do
   let matchingDescriptions =
         filter (isApplicable gameState) descriptions
   mapM_ printDescription matchingDescriptions
 
-  return ()
+  putStrLn ""
+  let matchingActions =
+        filter (isApplicableAction gameState) actions
+  mapM_ (uncurry printAction) (zip matchingActions [1..])
+
+  if null matchingActions
+    then return ()
+    else do
+      let userResponse = 0
+      let applicableAction = matchingActions !! userResponse
+      let newGamestate = applyAction applicableAction gameState
+      gameLoop content newGamestate
 
 main :: IO ()
 main = do
