@@ -2,6 +2,8 @@ module Loop (gameLoop) where
 import Types
 import Display
 import Text.Read (readMaybe)
+import System.Console.ANSI.Types
+import System.Console.ANSI
 
 match :: Operator -> Value -> Value -> Bool
 match Equals = (==)
@@ -56,6 +58,9 @@ gameLoop :: Content -> GameState -> IO ()
 gameLoop content@(Content descriptions actions) gameState = do
   let matchingDescriptions =
         filter (isApplicable gameState) descriptions
+  clearScreen
+  setCursorPosition 0 0
+
   mapM_ printDescription matchingDescriptions
 
   putStrLn ""
@@ -72,5 +77,4 @@ gameLoop content@(Content descriptions actions) gameState = do
       let newGamestate = applyAction applicableAction gameState
 
       gameLoop content newGamestate
-
 
