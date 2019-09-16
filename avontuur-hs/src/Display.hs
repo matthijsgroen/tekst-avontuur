@@ -3,7 +3,9 @@ import Types
 
 printDisplayData :: DisplayData -> IO ()
 printDisplayData (Text text) =
-  putStr text
+  case text of
+    "" -> putStrLn "\n"
+    _ -> putStr text
 
 printDisplayData (Color code) =
   putStr ""
