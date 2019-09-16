@@ -5,7 +5,7 @@ import Text.Read (readMaybe)
 import System.Console.ANSI.Types
 import System.Console.ANSI
 
-match :: Operator -> Value -> Value -> Bool
+match :: Comparator -> Value -> Value -> Bool
 match Equals = (==)
 match NotEquals = (/=)
 match GreaterThan = (>)
@@ -55,11 +55,9 @@ readInt max = do
     _ -> readInt max
 
 gameLoop :: Content -> GameState -> IO ()
-gameLoop content@(Content descriptions actions) gameState = do
+gameLoop content@(Content _ descriptions actions) gameState = do
   let matchingDescriptions =
         filter (isApplicable gameState) descriptions
-  clearScreen
-  setCursorPosition 0 0
 
   mapM_ printDescription matchingDescriptions
 
@@ -75,6 +73,8 @@ gameLoop content@(Content descriptions actions) gameState = do
 
       let applicableAction = matchingActions !! userResponse
       let newGamestate = applyAction applicableAction gameState
+      clearScreen
+      setCursorPosition 0 0
 
       gameLoop content newGamestate
 
