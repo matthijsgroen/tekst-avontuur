@@ -16,11 +16,12 @@ doubleQuote = char '"'
 singleQuote :: Parser Char
 singleQuote = char '\''
 
-eol :: Parser Char
-eol = char '\n'
+eol :: Parser String
+eol = "" <$ (optional (char '\r') *> char '\n')
 
 isNewLine :: Char -> Bool
 isNewLine '\n' = True
+isNewLine '\r' = True
 isNewLine _ = False
 
 pLineComment :: Parser String
@@ -61,7 +62,7 @@ pConditions = do
 pFieldSeperation :: Parser ()
 pFieldSeperation = do
   optional $ many $ char ' '
-  ((:) <$> char ',' <*> many (char ' ')) <|> ("" <$ eol)
+  ((:) <$> char ',' <*> many (char ' ')) <|> (eol <* many (pLineComment <|> eol))
   return ()
 
 pText :: Parser DisplayData
@@ -81,37 +82,48 @@ pColor = do
   return $ Color color
 
 pDisplayData :: Parser DisplayData
-pDisplayData = try pColor <|> pText <|> pEmptyText
+pDisplayData = optional pFieldSeperation *> (try pColor <|> try pText <|> pEmptyText)
+
+pOperator :: Parser MutationOperator
+pOperator =
+  choice [ Assign <$ char '='
+         , Add <$ char '+'
+         , Subtract <$ char '-'
+         , Random <$ char 'r'
+         ]
+
+pMutation :: Parser Mutation
+pMutation = do
+  slot <- pNumber
+  operator <- pOperator
+  value <- pNumber
+  return $ Mutation slot operator value
+
+pDescriptionMutations :: Parser [Mutation]
+pDescriptionMutations = do
+  result <- pQuoted (char '&' *> (pMutation `sepBy` char ';'))
+  return $ result
 
 pDescription :: Parser Description
 pDescription = do
-  optional (many (pLineComment <|> "" <$ eol))
+  optional (many (pLineComment <|> eol))
   conditions <- pConditions
-  pFieldSeperation
-  displayData <- pDisplayData `sepBy` pFieldSeperation
+  displayData <- many (try pDisplayData)
+  optional pFieldSeperation
+  mutations <- pDescriptionMutations
 
-  return $ Description conditions displayData []
+  return $ Description conditions displayData mutations
 
 adventure :: Parser Content
 adventure = do
-  descriptions <- many pDescription
+  descriptions <- many (try pDescription)
   return $ Content [] descriptions []
 
 readGame :: FilePath -> IO Content
 readGame filePath = do
   contents <- readFile filePath
-  {-let fakeContents = "' hello\n\n\"0=0;2!1\", \"Some text!\", \"\"\n\"Some more!\"\n\"&\""-}
-  let fakeContents = "\"0=0\", \"Some text!\", \"*c14\", \"e&\""
-  {-let fakeContents = "\"0=0\", \"&\""-}
-  case parse adventure "" fakeContents of
+  case parse adventure "" contents of
     Right content -> return $ content
     Left message -> do
       print message
       return $ Content [] [] []
-
-  {-return $ Content [] [-}
-    {-Description [ Condition 0 Equals 0 ] [Text "Hello world"] [],-}
-    {-Description [ Condition 0 Equals 1 ] [Text "Goodbye", Color 14, Text " Woohoo!"] []-}
-    {-] [-}
-    {-Action [ Condition 0 Equals 0 ] "Complete game" [ Mutation 0 Assign 1 ]-}
-    {-]-}
