@@ -10,7 +10,7 @@ data Condition = Condition Slot Comparator Value
 data Mutation = Mutation Slot MutationOperator Value
 
 data Action = Action [Condition] String [Mutation]
-data DisplayData = Text String | Color Int
+data DisplayData = Text String | Color Int | Delay Int
 data Description = Description [Condition] [DisplayData] [Mutation]
 
 type MetaData = (String, String)

@@ -86,8 +86,17 @@ pColor = do
   color <- pQuoted (char '*' *> char 'c' *> pNumber)
   return $ Color color
 
+pDelay :: Parser DisplayData
+pDelay = do
+  delay <- pQuoted (char '*' *> char 's' *> pNumber)
+  return $ Delay delay
+
 pDisplayData :: Parser DisplayData
-pDisplayData = optional pFieldSeperation *> (try pColor <|> try pDisplayText <|> pEmptyText)
+pDisplayData = optional pFieldSeperation *> (
+  try pColor <|>
+  try pDelay <|>
+  try pDisplayText <|>
+  pEmptyText)
 
 pOperator :: Parser MutationOperator
 pOperator =
