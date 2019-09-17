@@ -10,6 +10,9 @@ printDisplayData (Text text) =
 printDisplayData (Color code) =
   putStr ""
 
+printDisplayData (Delay code) =
+  putStr ""
+
 printDescription :: Description -> IO ()
 printDescription (Description _ displayData _) = do
   mapM_ printDisplayData displayData
