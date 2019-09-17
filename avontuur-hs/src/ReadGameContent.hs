@@ -2,7 +2,7 @@ module ReadGameContent (readGame) where
 import Types
 import Text.Megaparsec hiding (ParseError)
 import qualified Text.Megaparsec.Char.Lexer as L ( lexeme, skipLineComment, space )
-import Text.Megaparsec.Char (digitChar, letterChar, lowerChar, upperChar)
+import Text.Megaparsec.Char (string)
 import Data.Void
 
 type Parser = Parsec Void String
@@ -27,7 +27,7 @@ isNewLine _ = False
 pLineComment :: Parser String
 pLineComment = do
   singleQuote <?> "Line comment"
-  comment <- takeWhile1P (Just "comment") (\c -> not (isNewLine c)) <?> "Line comment"
+  comment <- takeWhileP (Just "comment") (\c -> not (isNewLine c)) <?> "Line comment"
   eol
   return $ comment
 
@@ -65,12 +65,17 @@ pFieldSeperation = do
   ((:) <$> char ',' <*> many (char ' ')) <|> (eol <* many (pLineComment <|> eol))
   return ()
 
-pText :: Parser DisplayData
-pText = do
+pDisplayText :: Parser DisplayData
+pDisplayText = do
   text <- pQuoted (
     ((:) <$> (satisfy (\x -> x /= '\"' && x /= '&')) <*> (many (satisfy (\x -> x /= '\"'))))
     )
   return $ Text text
+
+pText :: Parser String
+pText = do
+  text <- pQuoted (some (satisfy (\x -> x /= '\"')))
+  return $ text
 
 pEmptyText :: Parser DisplayData
 pEmptyText =
@@ -82,7 +87,7 @@ pColor = do
   return $ Color color
 
 pDisplayData :: Parser DisplayData
-pDisplayData = optional pFieldSeperation *> (try pColor <|> try pText <|> pEmptyText)
+pDisplayData = optional pFieldSeperation *> (try pColor <|> try pDisplayText <|> pEmptyText)
 
 pOperator :: Parser MutationOperator
 pOperator =
@@ -114,10 +119,29 @@ pDescription = do
 
   return $ Description conditions displayData mutations
 
+pActionMutations :: Parser [Mutation]
+pActionMutations = do
+  result <- pQuoted (pMutation `sepBy` char ';')
+  return $ result
+
+pAction :: Parser Action
+pAction = do
+  optional (many (pLineComment <|> eol))
+  conditions <- pConditions
+  optional pFieldSeperation
+  actionText <- pText
+  optional pFieldSeperation
+  mutations <- pActionMutations
+
+  return $ Action conditions actionText mutations
+
 adventure :: Parser Content
 adventure = do
   descriptions <- many (try pDescription)
-  return $ Content [] descriptions []
+  optional (many (pLineComment <|> eol))
+  pQuoted (string "END")
+  actions <- many (try pAction)
+  return $ Content [] descriptions actions
 
 readGame :: FilePath -> IO Content
 readGame filePath = do
