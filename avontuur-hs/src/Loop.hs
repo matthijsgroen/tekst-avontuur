@@ -47,6 +47,10 @@ applyAction :: Action -> GameState -> GameState
 applyAction (Action _ _ _ _ mutations) state =
   foldl applyMutation state mutations
 
+applyDescription :: Description -> GameState -> GameState
+applyDescription (Description _ _ mutations) state =
+  foldl applyMutation state mutations
+
 readInt :: Int -> IO Int
 readInt max = do
   input <- getLine
@@ -54,17 +58,24 @@ readInt max = do
     Just i | i > 0 && i <= max -> return (i - 1)
     _ -> readInt max
 
+applyDescriptions :: GameState -> [Description] -> (GameState, [Description])
+applyDescriptions gameState (description:descriptions) =
+  case isApplicable gameState description of
+    True -> do
+      let newGamestate = applyDescription description gameState
+      let (latestGameState, matchingDescriptions) = applyDescriptions newGamestate descriptions
+      (latestGameState, [description] ++ matchingDescriptions)
+    False -> applyDescriptions gameState descriptions
+applyDescriptions gameState [] = (gameState, [])
+
 gameLoop :: Content -> GameState -> IO ()
 gameLoop content@(Content _ descriptions actions) gameState = do
-  -- TODO: Display directly on matching, or collect but apply mutations on the fly
-  let matchingDescriptions =
-        filter (isApplicable gameState) descriptions
-
+  let (updatedGameState, matchingDescriptions) = applyDescriptions gameState descriptions
   mapM_ printDescription matchingDescriptions
 
   putStrLn ""
   let matchingActions =
-        filter (isApplicableAction gameState) actions
+        filter (isApplicableAction updatedGameState) actions
   mapM_ (uncurry printAction) (zip matchingActions [1..])
 
   if null matchingActions
@@ -73,7 +84,7 @@ gameLoop content@(Content _ descriptions actions) gameState = do
       userResponse <- readInt (length matchingActions)
 
       let applicableAction = matchingActions !! userResponse
-      let newGamestate = applyAction applicableAction gameState
+      let newGamestate = applyAction applicableAction updatedGameState
       clearScreen
       setCursorPosition 0 0
 
