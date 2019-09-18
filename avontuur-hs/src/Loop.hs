@@ -5,6 +5,19 @@ import Text.Read (readMaybe)
 import System.Console.ANSI.Types
 import System.Console.ANSI
 
+replace :: Eq a => [a] -> [a] -> [a] -> [a]
+replace needle replacement haystack =
+  case begins haystack needle of
+    Just remains -> replacement ++ remains
+    Nothing      -> case haystack of
+                      []     -> []
+                      x : xs -> x : replace needle replacement xs
+
+begins :: Eq a => [a] -> [a] -> Maybe [a]
+begins haystack []                = Just haystack
+begins (x : xs) (y : ys) | x == y = begins xs ys
+begins _        _                 = Nothing
+
 match :: Comparator -> Value -> Value -> Bool
 match Equals = (==)
 match NotEquals = (/=)
@@ -12,7 +25,7 @@ match GreaterThan = (>)
 match LessThan = (<)
 
 conditionMet :: GameState -> Condition -> Bool
-conditionMet (GameState values) (Condition slot operator value) =
+conditionMet (GameState _ values) (Condition slot operator value) =
   let stateValue = values !! slot
    in match operator stateValue value
 
@@ -36,20 +49,29 @@ replaceNth n newVal (x:xs)
   | otherwise = x:replaceNth (n - 1) newVal xs
 
 applyMutation :: GameState -> Mutation -> GameState
-applyMutation (GameState values) (Mutation slot operator value) =
-  let
-    currentValue = values !! slot
-    newValue = mutate operator currentValue value
-  in
-    GameState (replaceNth slot newValue values)
+applyMutation (GameState name values) (Mutation slot operator value) =
+  let currentValue = values !! slot
+      newValue = mutate operator currentValue value
+  in GameState name (replaceNth slot newValue values)
+
+interpolateText :: GameState -> DisplayData -> DisplayData
+interpolateText (GameState name values) (Text x) =
+  let replacedName = Text (replace "$n" name x)
+      -- TODO: Interpolate state values
+      -- TODO: Word breaks for terminal
+      -- TODO: Interpolate Gamestate
+  in replacedName
+interpolateText _ x = x
 
 applyAction :: Action -> GameState -> GameState
 applyAction (Action _ _ _ _ mutations) state =
   foldl applyMutation state mutations
 
-applyDescription :: Description -> GameState -> GameState
-applyDescription (Description _ _ mutations) state =
-  foldl applyMutation state mutations
+applyDescription :: Description -> GameState -> (GameState, Description)
+applyDescription (Description conditions displayData mutations) state =
+  let newGameState = foldl applyMutation state mutations
+      newDisplayData = map (interpolateText state) displayData
+  in (newGameState, Description conditions newDisplayData mutations)
 
 readInt :: Int -> IO Int
 readInt max = do
@@ -62,9 +84,9 @@ applyDescriptions :: GameState -> [Description] -> (GameState, [Description])
 applyDescriptions gameState (description:descriptions) =
   case isApplicable gameState description of
     True -> do
-      let newGamestate = applyDescription description gameState
+      let (newGamestate, newDescription) = applyDescription description gameState
       let (latestGameState, matchingDescriptions) = applyDescriptions newGamestate descriptions
-      (latestGameState, [description] ++ matchingDescriptions)
+      (latestGameState, [newDescription] ++ matchingDescriptions)
     False -> applyDescriptions gameState descriptions
 applyDescriptions gameState [] = (gameState, [])
 
@@ -74,9 +96,10 @@ gameLoop content@(Content _ descriptions actions) gameState = do
   mapM_ printDescription matchingDescriptions
 
   putStrLn ""
+  setSGR [Reset]
   let matchingActions =
         filter (isApplicableAction updatedGameState) actions
-  mapM_ (uncurry printAction) (zip matchingActions [1..])
+  mapM_ (uncurry printAction) $ zip matchingActions [1..]
 
   if null matchingActions
     then return ()
@@ -87,6 +110,7 @@ gameLoop content@(Content _ descriptions actions) gameState = do
       let newGamestate = applyAction applicableAction updatedGameState
       clearScreen
       setCursorPosition 0 0
+      setSGR [Reset]
 
       gameLoop content newGamestate
 

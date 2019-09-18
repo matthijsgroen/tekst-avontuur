@@ -2,6 +2,7 @@ module Types where
 
 type Slot = Int
 type Value = Int
+type PlayerName = [Char]
 
 data Comparator = Equals | NotEquals | GreaterThan | LessThan
 data MutationOperator = Assign | Add | Subtract | Random
@@ -18,5 +19,5 @@ data Description = Description [Condition] [DisplayData] [Mutation]
 
 type MetaData = (String, String)
 data Content = Content [MetaData] [Description] [Action]
-data GameState = GameState [Value]
+data GameState = GameState PlayerName [Value]
 
