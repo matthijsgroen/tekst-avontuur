@@ -19,6 +19,6 @@ printDescription (Description _ displayData _) = do
   putStrLn ""
 
 printAction :: Action -> Int -> IO ()
-printAction (Action _ text _) num = do
+printAction (Action _ _ _ text _) num = do
   putStrLn (show num ++ ") " ++ text)
 

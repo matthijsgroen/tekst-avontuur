@@ -21,7 +21,7 @@ isApplicable gameState (Description conditions _ _) =
   and (map (conditionMet gameState) conditions)
 
 isApplicableAction :: GameState -> Action -> Bool
-isApplicableAction gameState (Action conditions _ _) =
+isApplicableAction gameState (Action conditions _ _ _ _) =
   and (map (conditionMet gameState) conditions)
 
 mutate :: MutationOperator -> Value -> Value -> Value
@@ -44,7 +44,7 @@ applyMutation (GameState values) (Mutation slot operator value) =
     GameState (replaceNth slot newValue values)
 
 applyAction :: Action -> GameState -> GameState
-applyAction (Action _ _ mutations) state =
+applyAction (Action _ _ _ _ mutations) state =
   foldl applyMutation state mutations
 
 readInt :: Int -> IO Int
@@ -56,6 +56,7 @@ readInt max = do
 
 gameLoop :: Content -> GameState -> IO ()
 gameLoop content@(Content _ descriptions actions) gameState = do
+  -- TODO: Display directly on matching, or collect but apply mutations on the fly
   let matchingDescriptions =
         filter (isApplicable gameState) descriptions
 

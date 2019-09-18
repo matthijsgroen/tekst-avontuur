@@ -9,7 +9,10 @@ data MutationOperator = Assign | Add | Subtract | Random
 data Condition = Condition Slot Comparator Value
 data Mutation = Mutation Slot MutationOperator Value
 
-data Action = Action [Condition] String [Mutation]
+type ActionKey = Char
+data ActionColor = ActionColor Int
+data Action = Action [Condition] (Maybe ActionKey) (Maybe ActionColor) String [Mutation]
+
 data DisplayData = Text String | Color Int | Delay Int
 data Description = Description [Condition] [DisplayData] [Mutation]
 

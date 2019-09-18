@@ -2,7 +2,7 @@ module ReadGameContent (readGame) where
 import Types
 import Text.Megaparsec hiding (ParseError)
 import qualified Text.Megaparsec.Char.Lexer as L ( lexeme, skipLineComment, space )
-import Text.Megaparsec.Char (string)
+import Text.Megaparsec.Char (string, letterChar)
 import Data.Void
 
 type Parser = Parsec Void String
@@ -15,6 +15,9 @@ doubleQuote = char '"'
 
 singleQuote :: Parser Char
 singleQuote = char '\''
+
+sep :: Parser Char
+sep = char ';'
 
 eol :: Parser String
 eol = "" <$ (optional (char '\r') *> char '\n')
@@ -56,8 +59,30 @@ pCondition = do
 
 pConditions :: Parser [Condition]
 pConditions = do
-  result <- pQuoted (pCondition `sepBy1` char ';')
+  result <- pQuoted (pCondition `sepBy1` sep)
   return $ result
+
+pActionKey :: Parser ActionKey
+pActionKey = string "k=" *> letterChar
+
+pActionColor :: Parser ActionColor
+pActionColor = do
+  string "c="
+  colorCode <- pNumber
+  return $ ActionColor colorCode
+
+-- Action conditions can also hold an action color and key
+pActionConditions :: Parser ([Condition], (Maybe ActionKey), (Maybe ActionColor))
+pActionConditions = do
+  doubleQuote
+  conditions <- many $ try (optional sep *> pCondition)
+  optional sep
+  actionKey <- optional pActionKey
+  optional sep
+  actionColor <- optional pActionColor
+  doubleQuote
+
+  return $ (conditions, actionKey, actionColor)
 
 pFieldSeperation :: Parser ()
 pFieldSeperation = do
@@ -115,7 +140,7 @@ pMutation = do
 
 pDescriptionMutations :: Parser [Mutation]
 pDescriptionMutations = do
-  result <- pQuoted (char '&' *> (pMutation `sepBy` char ';'))
+  result <- pQuoted (char '&' *> (pMutation `sepBy` sep))
   return $ result
 
 pDescription :: Parser Description
@@ -130,19 +155,18 @@ pDescription = do
 
 pActionMutations :: Parser [Mutation]
 pActionMutations = do
-  result <- pQuoted (pMutation `sepBy` char ';')
+  result <- pQuoted (pMutation `sepBy` sep)
   return $ result
 
 pAction :: Parser Action
 pAction = do
   optional (many (pLineComment <|> eol))
-  conditions <- pConditions
+  (conditions, actionKey, actionColor) <- pActionConditions
   optional pFieldSeperation
   actionText <- pText
   optional pFieldSeperation
   mutations <- pActionMutations
-
-  return $ Action conditions actionText mutations
+  return $ Action conditions actionKey actionColor actionText mutations
 
 adventure :: Parser Content
 adventure = do
@@ -150,6 +174,8 @@ adventure = do
   optional (many (pLineComment <|> eol))
   pQuoted (string "END")
   actions <- many (try pAction)
+  optional (many (pLineComment <|> eol))
+  eof
   return $ Content [] descriptions actions
 
 readGame :: FilePath -> IO Content
