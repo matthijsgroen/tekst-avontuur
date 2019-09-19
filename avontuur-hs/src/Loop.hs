@@ -14,9 +14,9 @@ replace needle replacement haystack =
                       x : xs -> x : replace needle replacement xs
 
 begins :: Eq a => [a] -> [a] -> Maybe [a]
-begins haystack []                = Just haystack
-begins (x : xs) (y : ys) | x == y = begins xs ys
-begins _        _                 = Nothing
+begins haystack [] = Just haystack
+begins (x:xs) (y:ys) | x == y = begins xs ys
+begins _ _ = Nothing
 
 match :: Comparator -> Value -> Value -> Bool
 match Equals = (==)
@@ -41,6 +41,7 @@ mutate :: MutationOperator -> Value -> Value -> Value
 mutate Add a b = a + b
 mutate Assign _ x = x
 mutate Subtract a b = a - b
+-- TODO: Add support for random
 
 replaceNth :: Int -> a -> [a] -> [a]
 replaceNth _ _ [] = []
@@ -54,13 +55,23 @@ applyMutation (GameState name values) (Mutation slot operator value) =
       newValue = mutate operator currentValue value
   in GameState name (replaceNth slot newValue values)
 
+isDigit :: Char -> Bool
+isDigit x | x >= '0' && x <= '9' = True
+isDigit _ = False
+
+interpolateGameState :: [Int] -> [Char] -> [Char]
+interpolateGameState state (x1:x2:x3:xs)
+  | x1 == '#' && (isDigit x2) && (isDigit x2) = do
+    let slot = read [x2, x3] :: Int
+    show (state !! slot) ++ (interpolateGameState state xs)
+interpolateGameState state (x:xs) = x:(interpolateGameState state xs)
+interpolateGameState _ [] = []
+
 interpolateText :: GameState -> DisplayData -> DisplayData
 interpolateText (GameState name values) (Text x) =
-  let replacedName = Text (replace "$n" name x)
-      -- TODO: Interpolate state values
-      -- TODO: Word breaks for terminal
-      -- TODO: Interpolate Gamestate
-  in replacedName
+  let replacedName = replace "$n" name x
+      replacedState = interpolateGameState values replacedName
+  in Text replacedState
 interpolateText _ x = x
 
 applyAction :: Action -> GameState -> GameState
