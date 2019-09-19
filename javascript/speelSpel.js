@@ -254,7 +254,7 @@ const testSpel = async bestandsnaam => {
     acties,
     scherm,
     spelToestand,
-    voorSpellendeKeuzemaker(acties, scherm, 80000)
+    voorSpellendeKeuzemaker(acties, scherm, 8000)
   );
   const korteGameLog = optimaliseerGameLog(gameLog);
   console.log("replay... ", gameLog.length, korteGameLog.length);
