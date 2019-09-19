@@ -11,7 +11,11 @@ main = do
   case args of
     [] -> error "must supply a file to open"
     [arg] -> do
-      let initialGameState = GameState "Haskell" $ take 100 (repeat 0)
+      clearScreen
+      setCursorPosition 0 0
+      putStrLn "Hoi! Welkom bij Avontuur! Wat is je naam?"
+      name <- getLine
+      let initialGameState = GameState name $ take 100 (repeat 0)
       clearScreen
       setCursorPosition 0 0
       content <- readGame arg

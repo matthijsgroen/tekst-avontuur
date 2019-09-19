@@ -86,8 +86,8 @@ applyDescription (Description conditions displayData mutations) state =
 
 readInt :: Int -> IO Int
 readInt max = do
-  input <- getLine
-  case readMaybe input :: Maybe Int of
+  input <- getChar
+  case readMaybe [input] :: Maybe Int of
     Just i | i > 0 && i <= max -> return (i - 1)
     _ -> readInt max
 

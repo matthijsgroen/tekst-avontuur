@@ -1,13 +1,10 @@
 module ReadGameContent (readGame) where
 import Types
 import Text.Megaparsec
-import Text.Megaparsec.Char (string, letterChar)
+import Text.Megaparsec.Char (string, letterChar, char)
 import Data.Void
 
 type Parser = Parsec Void String
-
-char :: Char -> Parser Char
-char = single
 
 doubleQuote :: Parser Char
 doubleQuote = char '"'
@@ -58,7 +55,7 @@ pCondition = do
 
 pConditions :: Parser [Condition]
 pConditions = do
-  result <- pQuoted (pCondition `sepBy1` sep)
+  result <- pQuoted $ pCondition `sepBy1` sep
   return $ result
 
 pActionKey :: Parser ActionKey
@@ -74,7 +71,7 @@ pActionColor = do
 pActionConditions :: Parser ([Condition], (Maybe ActionKey), (Maybe ActionColor))
 pActionConditions = do
   doubleQuote
-  conditions <- many $ try (optional sep *> pCondition)
+  conditions <- many $ try $ optional sep *> pCondition
   optional sep
   actionKey <- optional pActionKey
   optional sep
@@ -89,16 +86,26 @@ pFieldSeperation = do
   ((:) <$> char ',' <*> many (char ' ')) <|> (eol <* many (pLineComment <|> eol))
   return ()
 
+noQuote :: Char -> Bool
+noQuote x = x /= '\"'
+
+noAmp :: Char -> Bool
+noAmp x = x /= '&'
+
+allP :: [a -> Bool] -> a -> Bool
+allP (p:ps) a = (p a) && (allP ps a)
+allP _ _ = True
+
 pDisplayText :: Parser DisplayData
 pDisplayText = do
   text <- pQuoted (
-    ((:) <$> (satisfy (\x -> x /= '\"' && x /= '&')) <*> (many (satisfy (\x -> x /= '\"'))))
+    ((:) <$> (satisfy (allP [noAmp, noQuote])) <*> (many $ satisfy noQuote))
     )
   return $ Text text
 
 pText :: Parser String
 pText = do
-  text <- pQuoted (some (satisfy (\x -> x /= '\"')))
+  text <- pQuoted (some $ satisfy noQuote)
   return $ text
 
 pEmptyText :: Parser DisplayData
@@ -116,11 +123,12 @@ pDelay = do
   return $ Delay delay
 
 pDisplayData :: Parser DisplayData
-pDisplayData = optional pFieldSeperation *> (
-  try pColor <|>
-  try pDelay <|>
-  try pDisplayText <|>
-  pEmptyText)
+pDisplayData = optional pFieldSeperation *>
+  ( try pColor <|>
+    try pDelay <|>
+    try pDisplayText <|>
+    pEmptyText
+  )
 
 pOperator :: Parser MutationOperator
 pOperator =
