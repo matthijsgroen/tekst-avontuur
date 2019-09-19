@@ -1,7 +1,6 @@
 module ReadGameContent (readGame) where
 import Types
-import Text.Megaparsec hiding (ParseError)
-import qualified Text.Megaparsec.Char.Lexer as L ( lexeme, skipLineComment, space )
+import Text.Megaparsec
 import Text.Megaparsec.Char (string, letterChar)
 import Data.Void
 
