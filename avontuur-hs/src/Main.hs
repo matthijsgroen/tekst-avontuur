@@ -14,6 +14,7 @@ main = do
     [arg] -> do
       -- https://stackoverflow.com/a/27331215
       hSetBuffering stdout NoBuffering
+      hSetBuffering stdin NoBuffering
       clearScreen
       setCursorPosition 0 0
       putStrLn "Hoi! Welkom bij Avontuur! Wat is je naam?"
