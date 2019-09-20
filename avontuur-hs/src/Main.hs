@@ -4,6 +4,7 @@ import Types
 import ReadGameContent
 import System.Environment (getArgs)
 import System.Console.ANSI
+import System.IO
 
 main :: IO ()
 main = do
@@ -11,6 +12,8 @@ main = do
   case args of
     [] -> error "must supply a file to open"
     [arg] -> do
+      -- https://stackoverflow.com/a/27331215
+      hSetBuffering stdout NoBuffering
       clearScreen
       setCursorPosition 0 0
       putStrLn "Hoi! Welkom bij Avontuur! Wat is je naam?"
