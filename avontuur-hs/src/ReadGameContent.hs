@@ -3,6 +3,7 @@ import Types
 import Text.Megaparsec
 import Text.Megaparsec.Char (string, letterChar, char)
 import Data.Void
+import Data.Foldable
 
 type Parser = Parsec Void String
 
@@ -38,25 +39,32 @@ pNumber = do
   number <- some (oneOf ['0'..'9']) <?> "Number"
   return $ (read number :: Int)
 
-pCompare :: Parser Comparator
+pCompare :: Ord a => Parser (a -> a -> Bool)
 pCompare =
-  choice [ Equals <$ char '='
-         , NotEquals <$ char '!'
-         , GreaterThan <$ char '>'
-         , LessThan <$ char '<'
+  choice [ (==) <$ char '='
+         , (/=) <$ char '!'
+         , (>) <$ char '>'
+         , (<) <$ char '<'
          ]
+
+slotValue :: GameState -> Slot -> Value
+slotValue (GameState _ values) slot = values !! slot
+
+createCondition :: (Value -> Value -> Bool) -> Slot -> Value -> Condition
+createCondition compare slot value =
+  Condition (\gameState -> compare (slotValue gameState slot) value)
 
 pCondition :: Parser Condition
 pCondition = do
   slot <- pNumber
   comparator <- pCompare
   value <- pNumber
-  return $ Condition slot comparator value
+  return $ createCondition comparator slot value
 
-pConditions :: Parser [Condition]
+pConditions :: Parser Condition
 pConditions = do
   result <- pQuoted $ pCondition `sepBy1` sep
-  return $ result
+  return $ fold result
 
 pActionKey :: Parser ActionKey
 pActionKey = string "k=" *> letterChar
@@ -68,17 +76,19 @@ pActionColor = do
   return $ ActionColor colorCode
 
 -- Action conditions can also hold an action color and key
-pActionConditions :: Parser ([Condition], (Maybe ActionKey), (Maybe ActionColor))
+pActionConditions :: Parser (Condition, (Maybe ActionKey), (Maybe ActionColor))
 pActionConditions = do
   doubleQuote
   conditions <- many $ try $ optional sep *> pCondition
+  let condition = fold conditions
+
   optional sep
   actionKey <- optional pActionKey
   optional sep
   actionColor <- optional pActionColor
   doubleQuote
 
-  return $ (conditions, actionKey, actionColor)
+  return $ (condition, actionKey, actionColor)
 
 pFieldSeperation :: Parser ()
 pFieldSeperation = do
@@ -135,7 +145,7 @@ pOperator =
   choice [ Assign <$ char '='
          , Add <$ char '+'
          , Subtract <$ char '-'
-         , Random <$ char 'r'
+         , Random 0 <$ char 'r'
          ]
 
 pMutation :: Parser Mutation
@@ -153,12 +163,12 @@ pDescriptionMutations = do
 pDescription :: Parser Description
 pDescription = do
   optional (many (pLineComment <|> eol))
-  conditions <- pConditions
+  condition <- pConditions
   displayData <- many (try pDisplayData)
   optional pFieldSeperation
   mutations <- pDescriptionMutations
 
-  return $ Description conditions displayData mutations
+  return $ Description condition displayData mutations
 
 pActionMutations :: Parser [Mutation]
 pActionMutations = do
@@ -168,12 +178,12 @@ pActionMutations = do
 pAction :: Parser Action
 pAction = do
   optional (many (pLineComment <|> eol))
-  (conditions, actionKey, actionColor) <- pActionConditions
+  (condition, actionKey, actionColor) <- pActionConditions
   optional pFieldSeperation
   actionText <- pText
   optional pFieldSeperation
   mutations <- pActionMutations
-  return $ Action conditions actionKey actionColor actionText mutations
+  return $ Action condition actionKey actionColor actionText mutations
 
 adventure :: Parser Content
 adventure = do

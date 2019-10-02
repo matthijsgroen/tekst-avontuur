@@ -18,30 +18,19 @@ begins haystack [] = Just haystack
 begins (x:xs) (y:ys) | x == y = begins xs ys
 begins _ _ = Nothing
 
-match :: Comparator -> Value -> Value -> Bool
-match Equals = (==)
-match NotEquals = (/=)
-match GreaterThan = (>)
-match LessThan = (<)
-
-conditionMet :: GameState -> Condition -> Bool
-conditionMet (GameState _ values) (Condition slot operator value) =
-  let stateValue = values !! slot
-   in match operator stateValue value
-
 isApplicable :: GameState -> Description -> Bool
-isApplicable gameState (Description conditions _ _) =
-  and (map (conditionMet gameState) conditions)
+isApplicable gameState (Description (Condition condition) _ _) =
+  condition gameState
 
 isApplicableAction :: GameState -> Action -> Bool
-isApplicableAction gameState (Action conditions _ _ _ _) =
-  and (map (conditionMet gameState) conditions)
+isApplicableAction gameState (Action (Condition condition) _ _ _ _) =
+  condition gameState
 
 mutate :: MutationOperator -> Value -> Value -> Value
 mutate Add a b = a + b
 mutate Assign _ x = x
 mutate Subtract a b = a - b
--- TODO: Add support for random
+-- TODO: Implement Random
 
 replaceNth :: Int -> a -> [a] -> [a]
 replaceNth _ _ [] = []
