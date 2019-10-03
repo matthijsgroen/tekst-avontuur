@@ -148,17 +148,36 @@ pOperator =
          , Random 0 <$ char 'r'
          ]
 
+replaceNth :: Int -> a -> [a] -> [a]
+replaceNth _ _ [] = []
+replaceNth n newVal (x:xs)
+  | n == 0 = newVal:xs
+  | otherwise = x:replaceNth (n - 1) newVal xs
+
+mutate :: MutationOperator -> Value -> Value -> Value
+mutate Add a b = a + b
+mutate Assign _ x = x
+mutate Subtract a b = a - b
+-- TODO: Implement Random
+
+createMutation :: Slot -> MutationOperator -> Value -> Mutation
+createMutation slot operator value = Mutation (\(GameState name values) ->
+    let currentValue = values !! slot
+        newValue = mutate operator currentValue value
+    in GameState name (replaceNth slot newValue values)
+  )
+
 pMutation :: Parser Mutation
 pMutation = do
   slot <- pNumber
   operator <- pOperator
   value <- pNumber
-  return $ Mutation slot operator value
+  return $ createMutation slot operator value
 
-pDescriptionMutations :: Parser [Mutation]
+pDescriptionMutations :: Parser Mutation
 pDescriptionMutations = do
   result <- pQuoted (char '&' *> (pMutation `sepBy` sep))
-  return $ result
+  return $ fold result
 
 pDescription :: Parser Description
 pDescription = do
@@ -170,10 +189,10 @@ pDescription = do
 
   return $ Description condition displayData mutations
 
-pActionMutations :: Parser [Mutation]
+pActionMutations :: Parser Mutation
 pActionMutations = do
   result <- pQuoted (pMutation `sepBy` sep)
-  return $ result
+  return $ fold result
 
 pAction :: Parser Action
 pAction = do

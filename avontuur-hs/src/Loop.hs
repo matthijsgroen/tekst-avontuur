@@ -26,24 +26,6 @@ isApplicableAction :: GameState -> Action -> Bool
 isApplicableAction gameState (Action (Condition condition) _ _ _ _) =
   condition gameState
 
-mutate :: MutationOperator -> Value -> Value -> Value
-mutate Add a b = a + b
-mutate Assign _ x = x
-mutate Subtract a b = a - b
--- TODO: Implement Random
-
-replaceNth :: Int -> a -> [a] -> [a]
-replaceNth _ _ [] = []
-replaceNth n newVal (x:xs)
-  | n == 0 = newVal:xs
-  | otherwise = x:replaceNth (n - 1) newVal xs
-
-applyMutation :: GameState -> Mutation -> GameState
-applyMutation (GameState name values) (Mutation slot operator value) =
-  let currentValue = values !! slot
-      newValue = mutate operator currentValue value
-  in GameState name (replaceNth slot newValue values)
-
 isDigit :: Char -> Bool
 isDigit x | x >= '0' && x <= '9' = True
 isDigit _ = False
@@ -64,14 +46,18 @@ interpolateText (GameState name values) (Text x) =
 interpolateText _ x = x
 
 applyAction :: Action -> GameState -> GameState
-applyAction (Action _ _ _ _ mutations) state =
-  foldl applyMutation state mutations
+applyAction (Action _ _ _ _ (Mutation mutate)) = mutate
 
+interpolateDescription :: Description -> GameState -> Description
+interpolateDescription (Description co di mu) state =
+  Description co (map (interpolateText state) di) mu
+
+-- Can we turn this into a reduce?
 applyDescription :: Description -> GameState -> (GameState, Description)
-applyDescription (Description conditions displayData mutations) state =
-  let newGameState = foldl applyMutation state mutations
-      newDisplayData = map (interpolateText state) displayData
-  in (newGameState, Description conditions newDisplayData mutations)
+applyDescription description@(Description _ _ (Mutation mutate)) state =
+  let newGameState = mutate state
+      newDescription = interpolateDescription description state
+   in (newGameState, newDescription)
 
 readInt :: Int -> IO Int
 readInt max = do
