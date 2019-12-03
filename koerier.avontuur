@@ -2041,7 +2041,7 @@
 
 "1=17;2=0;17=2;4=20;6=1;5=2;53<4;52=2", "*c3", "$n: 'Je wil mij mee op reis?'"
 "", "*c9", "Dins: 'Ja dat zou mooi zijn... Helaas kan je niet op mijn rug mee.'"
-"", "*c2", "Misschien kan je de draak overtuigen dat je mee kan?"
+"", "*c2", "Misschien kan je de draak laten zien dat mensen op draken kunnen vliegen?"
 "&"
 "1=17;2=0;17=2;4=20;6=1;5=2;53=2;52=2", "&53=3"
 
