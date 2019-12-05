@@ -1,0 +1,1862 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700,700i" rel="stylesheet" />
+        <meta property="og:type" content="article" />
+<meta name="generator" content="Avontuur 1.1.0" />
+<title>Avontuur - Tinka's avontuur</title>
+<meta property="og:title" content="Tinka's avontuur" />
+<meta name="twitter:title" content="Tinka's avontuur" />
+<meta name="twitter:card" content="summary" />
+<meta property="og:description" content="Tinka wil heel graag op vakantie! Gaat het haar lukken?
+In dit tekst-avontuur maak jij de keuzes!" />
+<meta name="description" content="Tinka wil heel graag op vakantie! Gaat het haar lukken?
+In dit tekst-avontuur maak jij de keuzes!" />
+<meta property="og:article:author:name" content="Sinterklaas" />
+<meta name="author" content="Sinterklaas" />
+<meta name="keywords" content="spel, educatief, dyslexie, taal in blokjes, avontuur, text adventure, tekst avontuur, nederlands" /><style type="text/css">:root { --kaft-tint: 300; --kaft-saturatie: 60%; --kaft-helder: 30%; }
+:root {
+    --kaft-kleur: hsl(var(--kaft-tint), var(--kaft-saturatie), var(--kaft-helder));
+    --kaft-kleur2: hsl(var(--kaft-tint), var(--kaft-saturatie), calc(var(--kaft-helder) - 10%));
+    --kaft-donker: hsl(var(--kaft-tint), var(--kaft-saturatie), calc(var(--kaft-helder) - 15%));
+    --kaft-rug: hsl(var(--kaft-tint), var(--kaft-saturatie), calc(var(--kaft-helder) - 25%));
+    --inspring: calc(0.54526em * 2);
+    --inspring-lijst: calc(0.54526em * 3);
+}
+
+@-webkit-keyframes inkblot {
+    from {
+        text-shadow: 0px 0px 0px, 0px 0px 0px;
+        opacity: 0.2;
+    }
+
+    50% {
+        text-shadow: 1px 1px 0px, -1px -1px 0px;
+        opacity: 0.4;
+    }
+
+    to {
+        text-shadow: 0px 0px 0px, 0px 0px 0px;
+        opacity: 1.0;
+    }
+}
+
+@keyframes inkblot {
+    from {
+        text-shadow: 0px 0px 0px, 0px 0px 0px;
+        opacity: 0.2;
+    }
+
+    50% {
+        text-shadow: 1px 1px 0px, -1px -1px 0px;
+        opacity: 0.4;
+    }
+
+    to {
+        text-shadow: 0px 0px 0px, 0px 0px 0px;
+        opacity: 1.0;
+    }
+}
+@-webkit-keyframes turn-page {
+    from {
+        -webkit-transform: rotateY(0deg);
+                transform: rotateY(0deg);
+    }
+    to {
+        -webkit-transform: rotateY(-180deg);
+                transform: rotateY(-180deg);
+    }
+}
+@keyframes turn-page {
+    from {
+        -webkit-transform: rotateY(0deg);
+                transform: rotateY(0deg);
+    }
+    to {
+        -webkit-transform: rotateY(-180deg);
+                transform: rotateY(-180deg);
+    }
+}
+html {
+    -webkit-text-size-adjust: 100%;
+       -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+    margin: 0;
+    height: 100%;
+}
+body {
+    background: black;
+    font-family: 'Vollkorn', serif;
+    margin: 0;
+    height: 100%;
+}
+table, input, textarea, button {
+    font-family: inherit;
+}
+.book {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.page-locator {
+    margin: 0 auto;
+    max-width: 870px;
+    height: 100%;
+    background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
+}
+.page-stack {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    max-width: 50%;
+    width: 460px;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(to right,
+        var(--kaft-kleur2) 0%,
+        var(--kaft-kleur2) 99%,
+        var(--kaft-donker) 100%
+    )
+}
+.page-stack::after {
+    content: ' ';
+    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+    background: repeating-linear-gradient(90deg, #a8a6a3 2px, #a8a6a3 2px, #dbc8b3 5px, #dbc8b3 5px);
+}
+.kaft {
+    width: 100%;
+    max-width: 870px;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    transition: -webkit-transform 3s ease-in-out 1s;
+    transition: transform 3s ease-in-out 1s;
+    transition: transform 3s ease-in-out 1s, -webkit-transform 3s ease-in-out 1s;
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-perspective: 100px;
+            perspective: 100px;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    background: linear-gradient(to right,
+        var(--kaft-rug) 0%,
+        var(--kaft-kleur) 2%,
+        var(--kaft-kleur) 5%,
+        var(--kaft-kleur2) 6%,
+        var(--kaft-kleur2) 7%,
+        var(--kaft-donker) 8%,
+        var(--kaft-kleur) 9%,
+        var(--kaft-kleur) 99%,
+        var(--kaft-kleur2) 100%
+    );
+    box-shadow: rgba(0,0,0,0.2) 7px 0px 2px;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+.binnen-pagina {
+    width: 100%;
+    max-width: 870px;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    transition: -webkit-transform 3s ease-in-out 1s;
+    transition: transform 3s ease-in-out 1s;
+    transition: transform 3s ease-in-out 1s, -webkit-transform 3s ease-in-out 1s;
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-perspective: 100px;
+            perspective: 100px;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
+}
+.kaft h1 {
+    text-align: center;
+    color: gold;
+    text-shadow: var(--kaft-kleur2) 1px -1px;
+    height: calc(50% - 4em);
+    padding-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.kaft h2.bedankt {
+    opacity: 0;
+    color: gold;
+    height: calc(50% - 4em);
+    margin-top: 4em;
+    padding-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 5s 4s;
+}
+.kaft h2.bedankt.zichtbaar {
+    opacity: 1;
+}
+.kaft p {
+    text-align: center;
+    color: gold;
+    padding-left: 10%;
+}
+.kaft form {
+    opacity: 1.0;
+    transition: opacity 1s;
+}
+.kaft form p {
+    display: none;
+}
+.kaft.open {
+    -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+}
+.kaft.open + .binnen-pagina {
+    -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+}
+.kaft.ingevuld form {
+    opacity: 0;
+}
+
+.page {
+    max-width: 830px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    padding: 20px 10px 20px 30px;
+    overflow-y: scroll;
+    background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-perspective: 100px;
+            perspective: 100px;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    position: absolute;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+.page.turn {
+    -webkit-animation-duration: 0.5s;
+            animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    -webkit-animation-name: turn-page;
+            animation-name: turn-page;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    overflow: hidden;
+}
+.page + .achter-pagina {
+    max-width: 870px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    -webkit-transform-origin: top left;
+            transform-origin: top left;
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-perspective: 100px;
+            perspective: 100px;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
+}
+.page.turn + .achter-pagina {
+    -webkit-animation-duration: 0.5s;
+            animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    -webkit-animation-name: turn-page;
+            animation-name: turn-page;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+body.klankbord #screen span {
+    padding: 0 0.1em;
+}
+body.klankbord #screen {
+    font-size: 1.5em;
+    line-height: 2em;
+}
+body.klankbord #screen span.korteKlinker {
+    -webkit-text-decoration: underline green;
+            text-decoration: underline green;
+    color: #000;
+    background-color: rgba(0, 128, 0, 0.5);
+}
+body.terminal.klankbord #screen span.korteKlinker {
+    background-color: rgb(0, 128, 0);
+}
+body.klankbord #screen span.langeKlinker {
+    -webkit-text-decoration: underline yellow;
+            text-decoration: underline yellow;
+    background-color: yellow;
+}
+body.terminal.klankbord #screen span.langeKlinker {
+    color: #000;
+}
+body.klankbord #screen span.stommeE {
+    -webkit-text-decoration: underline orange;
+            text-decoration: underline orange;
+    color: #000;
+    background-color: orange;
+}
+body.klankbord #screen span.speciaal {
+    -webkit-text-decoration: underline #ff80ff;
+            text-decoration: underline #ff80ff;
+    color: #000;
+    background-color: #ff80ff;
+}
+body.klankbord #screen span.tweeKlank {
+    -webkit-text-decoration: underline red;
+            text-decoration: underline red;
+    color: #000;
+    background-color: hsla(0, 100%, 70%, 1);
+}
+body.klankbord #screen span.letterGroep1 {
+    -webkit-text-decoration: underline double grey;
+            text-decoration: underline double grey;
+}
+body.klankbord #screen span.letterGroep2 {
+    -webkit-text-decoration: underline dotted grey;
+            text-decoration: underline dotted grey;
+}
+#screen span {
+    -webkit-animation-duration: 0.2s;
+            animation-duration: 0.2s;
+    -webkit-animation-name: inkblot;
+            animation-name: inkblot;
+}
+.actie a {
+    text-decoration: none;
+}
+#screen .actie {
+    margin-top: 1em;
+}
+#width {
+    white-space: nowrap;
+    display: inline-block;
+    pointer-events: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+#screen { padding: 1em; }
+#screen ul {
+    padding-left: 1.2em;
+}
+
+p.gesprek {
+    --inspring: 1em;
+    padding-left: var(--inspring);
+    text-indent: calc(-1 * var(--inspring));
+}
+p.einde {
+    text-align: center;
+    color: #555;
+}
+p.einde a.verberg {
+    opacity: 0;
+    display: inline;
+}
+p.einde a {
+    text-decoration: none;
+    color: #555;
+    opacity: 1;
+    transition: opacity 1s 0s;
+}
+.color0 { color: #ffffff; }
+.color1 { color: #565cfb; }
+.color2 { color: rgb(0, 80, 0); }
+.color3 { color: rgb(0,128,128); }
+.color4 { color: #fc575a; }
+.color5 { color: #fd5dfc; }
+.color6 { color: rgb(170,85,0); }
+.color7 { color: #555555; }
+.color8 { color: #aaaaaa; }
+.color9 { color: #0414a7; }
+.color10 { color: rgb(57,181,74); }
+.color11 { color: #1aaaa9; }
+.color12 { color: #a8060e; }
+.color13 { color: #a817a8; }
+.color14 { color: rgb(128,128,0); }
+.color15 { color: #000000; }
+input {
+    background: brown;
+    font-size: 1em;
+    padding: 0.2em;
+    line-height: 2em;
+    border: 2px solid black;
+    color: gold;
+    border-radius: 0.4em;
+    transition: border-color 0.5s;
+}
+input::-webkit-input-placeholder {
+    color: rgba(0,0,0,0.6);
+}
+input::-moz-placeholder {
+    color: rgba(0,0,0,0.6);
+}
+input:-ms-input-placeholder {
+    color: rgba(0,0,0,0.6);
+}
+input::-ms-input-placeholder {
+    color: rgba(0,0,0,0.6);
+}
+input::placeholder {
+    color: rgba(0,0,0,0.6);
+}
+input:focus {
+    outline: none;
+    border-color: gold;
+}
+#welkom::before {
+    content: ' ';
+    display: block;
+    background: lime;
+
+}
+#welkom {
+    position: absolute;
+    top: calc(50% - 3em);
+    right: 0em;
+    padding: 1em 1em 1em 2em;
+    background: brown;
+    border-top-left-radius: 1.5em;
+    border-bottom-left-radius: 1.5em;
+    box-shadow: rgba(0, 0, 0, 0.3) -2px 3px 2px, brown 5px 1px 6px, #832121 28px 1px 1px;
+    border-width: 3px;
+    border-color: rgba(0,0,0,0.2);
+    border-style: dashed none dashed dashed;
+}
+#welkom p { text-align: left; }
+.verberg { display: none; }
+div.menu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+}
+button {
+    font-size: 1em;
+    line-height: 1.5em;
+    background-color: darkred;
+    color: gold;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    margin-left: 0.5em;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 8px;
+    transition: box-shadow 0.2s;
+}
+button:hover {
+    background-color: #881717;
+}
+button:focus {
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 2px;
+}
+
+#opties {
+    padding: 1em;
+    position: absolute;
+    z-index: 2;
+    top: 2em;
+    left: calc(50% - 10em);
+    max-width: 20em;
+    overflow-y: scroll;
+    max-height: calc(100% - 6em);
+    width: calc(100% - 6em);
+    border: 6px var(--kaft-kleur) solid;
+    border-radius: 2em;
+    box-shadow: 1.5em 1.5em 1em rgba(0,0,0,0.3);
+    background: #efebe6;
+    display: none;
+    color: rgb(0, 80, 0);
+}
+#opties.zichtbaar {
+    display: block;
+}
+#opties > div {
+    display: none;
+}
+#opties > div.actief {
+    display: block;
+}
+#opties h1 {
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+#opties ul.menu {
+    padding: 0;
+    list-style-type: none;
+}
+#opties ul.menu li {
+    padding-top: 1em;
+}
+
+.ereader .page-locator, .ereader .page {
+    background: white;
+}
+.ereader .binnen-pagina {
+    display: none;
+}
+.ereader .page.turn,
+.ereader .page.turn + .achter-pagina {
+    display: none;
+}
+.ereader #screen span { -webkit-animation: none; animation: none; }
+.ereader .kaft { transition: none; }
+
+@font-face {
+    font-family: computerletters;
+    src: url(data:application/font-woff2;base64,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);
+}
+body.terminal {
+    font-family: computerletters, cursive;
+}
+.terminal .page-locator, .terminal .page {
+    background: black;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+.terminal .binnen-pagina {
+    display: none;
+}
+.terminal .page.turn,
+.terminal .page-stack,
+.terminal .page.turn + .achter-pagina {
+    display: none;
+}
+.terminal #screen span { -webkit-animation: none; animation: none; }
+.terminal .kaft {
+    transition: none;
+    background: linear-gradient(to right,
+        var(--kaft-kleur) 2%,
+        var(--kaft-kleur) 5%,
+        var(--kaft-kleur2) 5%,
+        var(--kaft-kleur2) 7%,
+        var(--kaft-kleur) 7%,
+        var(--kaft-kleur) 99%,
+        var(--kaft-kleur2) 99%,
+        var(--kaft-kleur2) 100%
+    );
+}
+
+.terminal #screen ul:not(.acties) {
+    list-style-type: none;
+    padding-left: 0;
+}
+.terminal #screen ul:not(.acties) li {
+    padding-left: var(--inspring);
+    text-indent: calc(-1 * var(--inspring));
+}
+.terminal #screen ul:not(.acties) li::before {
+    content: '- '
+}
+.terminal #screen ul.acties {
+    padding-left: var(--inspring-lijst);
+}
+.terminal #opties {
+    padding: 1em;
+    position: absolute;
+    top: 2em;
+    left: calc(50% - 10em);
+    max-width: 20em;
+    overflow-y: scroll;
+    max-height: calc(100% - 6em);
+    width: calc(100% - 6em);
+    border: 6px double #aaaaaa;
+    border-radius: 0;
+    box-shadow: calc(var(--inspring) * -1) 1.5em rgba(0,0,0,0.5);
+    background: black;
+    display: none;
+    color: #aaaaaa;
+}
+.terminal #opties.zichtbaar {
+    display: block;
+}
+.terminal #opties h1 {
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+.terminal #opties ul.menu {
+    padding: 0;
+    list-style-type: none;
+}
+.terminal #opties ul.menu li {
+    padding-top: 1em;
+}
+
+.terminal p.gesprek {
+    padding-left: var(--inspring);
+    text-indent: calc(-1 * var(--inspring));
+}
+.terminal .color0 { color: #000000; }
+.terminal .color1 { color: #0414a7; }
+.terminal .color2 { color: #18a81b; }
+.terminal .color3 { color: #1aaaa9; }
+.terminal .color4 { color: #a8060e; }
+.terminal .color5 { color: #a817a8; }
+.terminal .color6 { color: #a85514; }
+.terminal .color7 { color: #aaaaaa; }
+.terminal .color8 { color: #555555; }
+.terminal .color9 { color: #565cfb; }
+.terminal .color10 { color: #5efd60; }
+.terminal .color11 { color: #5ffffe; }
+.terminal .color12 { color: #fc575a; }
+.terminal .color13 { color: #fd5dfc; }
+.terminal .color14 { color: #fffd64; }
+.terminal .color15 { color: #ffffff; }
+.terminal input {
+    background: black;
+    font-size: 1em;
+    line-height: 2em;
+    border: 2px solid #aaaaaa;
+}
+.terminal #welkom {
+    padding-top: 1em;
+}
+.terminal button {
+    font-size: 1em;
+    line-height: 1.5em;
+    background-color: #000000;
+    color: #aaaaaa;
+    border: 1px solid #aaaaaa;
+    border-radius: 0;
+}
+.terminal #opties ul:not(.menu) {
+    list-style-type: none;
+    padding-left: 0;
+}
+.terminal #opties ul:not(.menu) li {
+    padding-left: var(--inspring);
+    text-indent: calc(-1 * var(--inspring));
+}
+.terminal #opties ul:not(.menu) li::before {
+    content: '- '
+}
+
+.terminal input {
+    border-radius: 0em;
+}
+.terminal input::-webkit-input-placeholder {
+    color: rgb(0,80,0);
+}
+.terminal input::-moz-placeholder {
+    color: rgb(0,80,0);
+}
+.terminal input:-ms-input-placeholder {
+    color: rgb(0,80,0);
+}
+.terminal input::-ms-input-placeholder {
+    color: rgb(0,80,0);
+}
+.terminal input::placeholder {
+    color: rgb(0,80,0);
+}
+.terminal #welkom {
+    position: absolute;
+    top: calc(50% - 3em);
+    right: 2em;
+    padding: 1em 1em 1em 2em;
+    background: brown;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: none;
+    border-width: 3px;
+    border-color: rgba(0,0,0,0.2);
+    border-style: double solid double double;
+}
+</style>
+    </head>
+    <body>
+        <div class="book">
+            <div class="page-stack"></div>
+            <div class="page-locator">
+                <div class="kaft">
+                    <p>Sinterklaas</p>
+                    <h1>Tinka's avontuur</h1>
+                    <form id="welkom">
+                        <input type="text" id="naam" placeholder="Wat is je naam?" autocomplete="off" />
+                        <button type="submit">Ok</button>
+                    </form>
+                    <h2 class="bedankt">Bedankt voor het spelen!</h2>
+                </div>
+                <div class="binnen-pagina">
+                </div>
+                <div class="page">
+                    <div id="screen"></div>
+                </div>
+                <div class="achter-pagina">
+                </div>
+            </div>
+            <div id="width" class="color0"></div>
+        </div>
+        <script type="text/javascript">const bewaarSleutel = "surprise-tinka";
+const avontuur = {"scherm":[{"schermData":["*c2","Het is lente! Je hebt al super veel zin in de zomer! Lekker op vakantie gaan!"],"test":["0=0","3=0"]},{"schermData":["*c2","Meh, je houd niet zo van de ardennen..."],"test":["0=0","3=1"]},{"schermData":["*c2","Ja de boer is leuk, maar niet voor de grote zomervakantie!","Dan wil je toch liever iets zuidelijker op vakantie..."],"test":["0=0","3=2"]},{"schermData":["*c2","Ja, Spanje! Heerlijk!!","","*c3","$n: 'Hmm, ik moet dan wel vervoer hebben'"],"test":["0=0","3=3"],"actie":["0=1"]},{"schermData":["*c2","Vliegtuig is lekker snel! Maar we willen wel wat bagage mee gaan nemen...","","*c3","$n: 'Ik ben bang dat alle bagage meenemen te duur wordt...'"],"test":["0=1","3=1"],"actie":["1+1"]},{"schermData":["*c2","Eigen auto wordt wel heel erg proppen... dat is te klein..."],"test":["0=1","3=2"],"actie":["1+1"]},{"schermData":["*c3","$n: 'Hmm, mijn moeder heeft een bus... misschien kan ik haar overhalen","om met ons mee te gaan op vakantie?'","","*c2","$n pakt de telefoon en belt haar moeder op...","","*c3","$n: 'Hoi mam, met mij! Heee... ik had een vraagje...'"],"test":["0=1","3=3"],"actie":["0=2","3=0"]},{"schermData":["*c3","$n: 'Wil je ons naar Spanje rijden?'","","*c2","Het blijft even stil aan de andere kant van de lijn...","*s4","","*c13","Moeder: 'Sorry griet, ik heb het vreselijk druk, ik moet hier","nog 3 kasten versjouwen en boodschappen doen en met Joep wandelen...'","","*c13","Moeder: 'Nee dat gaat niet lukken...'","","*c2","Oei! mislukt! nu gaat de vakantie niet door!"],"test":["0=2","3=3"],"actie":["0=99"]},{"schermData":["*c3","$n: 'Heb je zin om met ons mee te gaan op vakantie in Spanje?'","","*c2","Het blijft even stil aan de andere kant van de lijn...","*s4","","*c13","Moeder: 'Ja lijkt me leuk! ik ben ook erg aan vakantie toe...","Zullen we met mijn bus gaan? is wel zo handig!'","","*c2","Yes! het is gelukt! Je kan op vakantie!"],"test":["0=2","3=1"],"actie":["0=3","3=0"]},{"schermData":["*c2","Met een bus ingeladen en een hoop goede zin zijn jullie lekker met zijn allen onderweg naar","het zonnige Spanje...","*s3","","*c9","Carl: 'Hee, vinden jullie het ook niet wat warm worden hier?'","","*c2","Inderdaad, het is best warm geworden in de auto...","","Pfff...","","*c3","$n: 'Op deze manier gaan we Spanje niet halen jongens, we moeten iets vinden!'"],"test":["0=3","3=1"],"actie":["0=4","3=0"]},{"schermData":["*c2","Je zet de bus aan de kant bij een tankstation... Iedereen stapt uit.","","Je kijkt rond in de winkel van het tankstation.","","*c3","$n: 'Verdorie, geen ventilators te koop'"],"test":["0=4","3=1"],"actie":["0=5","3=0"]},{"schermData":["*c2","Je koopt een ijsje voor iedereen","","*c3","$n: 'Hmm misschien kunnen we hier ook de bus een beetje koel mee houden?'"],"test":["0=5","3=1"],"actie":["5+5"]},{"schermData":["*c2","","Je hebt nu #05 ijsjes!"],"test":["0=5","3=1"]},{"schermData":["*c2","Je koopt alle ijsjes die bij het tankstation te vinden zijn","","*c3","$n: 'Zo, nu moet die bus wel koel blijven!'","*c2","","Jullie laden de bus tot de nok vol met ijsjes, en stappen allemaal in."],"test":["0=5","3=2"],"actie":["0=6","3=0"]},{"schermData":["*c2","Je loopt terug naar de caravan.",""],"test":["0=6","3=2"]},{"schermData":["*c2","Je rent snel de caravan weer uit. Je staat nu buiten bij de caravan.",""],"test":["0=6","3=12","20=0"],"actie":["3=2"]},{"schermData":["*c2","Je gaat caravan weer uit. Je staat nu buiten bij de caravan.",""],"test":["0=6","3=12","20=1"],"actie":["3=2"]},{"schermData":["*c2","Je grist snel de sleutels en rent snel de caravan weer uit. Je staat nu buiten bij de caravan.",""],"test":["0=6","3=13"],"actie":["3=2","14=1"]},{"schermData":["*c2","Je gaat op de fiets schoonmaak middelen kopen. Na een tijdje kom je terug bij de caravan.",""],"test":["0=6","3=15"],"actie":["18=1","3=2"]},{"schermData":["*c2","Na een hele lange rit, en een bus vol gesmolten ijsjes, komen jullie in Spanje aan.","","Op de camping staat er een caravan te wachten.",""],"test":["0=6","3=1"],"actie":["3=2"]},{"schermData":["De deur staat een beetje bol en er komen rare geurtjes uit."],"test":["0=6","3=2","10<3"]},{"schermData":["De deur staat open en er komt een hele gore schimmellucht uit."],"test":["0=6","3=2","10=3","20=0"]},{"schermData":["De deur staat open en er komt een frisse geur uit de caravan."],"test":["0=6","3=2","10=3","20=1"]},{"schermData":["Er hangen een paar fietsen aan de achterkant van de caravan."],"test":["0=6","3=2","11=0"]},{"schermData":["Er staan een paar fietsen bij de caravan."],"test":["0=6","3=2","11=1","18=0"]},{"schermData":["*c2","Hmm, de caravan zit op slot."],"test":["0=6","3=7","10<2"],"actie":["3=2","10=1"]},{"schermData":["*c2","Je doet voorzichtig de deur van de caravan open.","","Heel snel doe je bijna kokhalsend een paar stappen naar achteren.","","*c12","*s1","Gat","*s1","ver","*s1","damme!","","*s2","*c2","Deze caravan moet echt schoongemaakt worden"],"test":["0=6","3=7","10=2"],"actie":["3=2","10=3"]},{"schermData":["*c2","We kunnen de bus niet uitladen, we kunnen de spullen niet kwijt."],"test":["0=6","3=3","10<3"],"actie":["3=2"]},{"schermData":["*c2","We kunnen de bus wel uitladen, maar dan moet alles in die vieze caravan!"],"test":["0=6","3=3","10=3","20=0"],"actie":["3=2"]},{"schermData":["*c2","De bus wordt uitgeladen, het vakantie gevoel begint al!"],"test":["0=6","3=3","10=3","20=1"],"actie":["3=2","21=1"]},{"schermData":["*c2","Je wil heel graag vakantie vieren, maar dat kan pas als de bus is uitgeladen."],"test":["0=6","3=4","21=0"],"actie":["3=2"]},{"schermData":["*c2","Ja!!! Eindelijk vakantie! Goed gedaan!"],"test":["0=6","3=4","21=1"],"actie":["0=80"]},{"schermData":["*c2","Je wandeld naar de receptie. Je gaat in de rij staan achter een meneer.","De meneer is aan de beurt bij de receptie."],"test":["0=6","3=5"],"actie":["0=7","3=0"]},{"schermData":["*c3","$n: 'Carl, haal jij even de fietsen van de caravan af?'","","*c2","Carl haalt de fietsen van de caravan af.","","De fietsen zijn op slot"],"test":["0=6","3=6"],"actie":["11=1","3=2"]},{"schermData":["*c2","Je bekijkt de fietsen. De banden zijn redelijk leeg, "],"test":["0=6","3=8"]},{"schermData":["ze zijn op slot.",""],"test":["0=6","3=8","11=1"]},{"schermData":["Je inspecteert de fietstassen. He, er zit een strandbal in de fietstas!"],"test":["0=6","3=8","12=0"],"actie":["12=1","3=2"]},{"schermData":["Je inspecteert de fietstassen. Ze zijn leeg."],"test":["0=6","3=8","12>0"],"actie":["3=2"]},{"schermData":["*c2","Je houd je adem in en gaat de caravan binnen."],"test":["0=6","3=9","20=0"]},{"schermData":["*c2","Je gaat de caravan binnen. Helemaal schoon! Wat een genot!"],"test":["0=6","3=9","20=1"]},{"schermData":["Helaas, er liggen geen schoonmaak spullen in de caravan."],"test":["0=6","3=9","18=0"]},{"schermData":["","Er liggen een paar fietssleutels in de caravan."],"test":["0=6","3=9","14=0"]},{"schermData":["*c2","Dagenlang ga je poetsen...","","*s1","Wat een werk!","","Maar eindelijk is de caravan uitgemest en schoon!"],"test":["0=6","3=20"],"actie":["20=1","3=9"]},{"schermData":["*c2","De meneer is blijkbaar in het spaans aan het mopperen tegen de meneer van de receptie","Je doet je best het te verstaan. Je denkt dat de meneer graag een strandbal wil."],"test":["0=7","3=1"],"actie":["3=0","13=1"]},{"schermData":["*c2","De meneer is dolgelukkig! Als een klein kind rent hij er met de strandbal vandoor.","Eindelijk ben je aan de beurt. Je vraagt aan de receptie of ze toevallig de sleutel hebben van de caravan.","","Je hebt geluk! je krijgt de sleutel en loopt terug naar de caravan."],"test":["0=7","3=3"],"actie":["0=6","3=2","10=2"]},{"schermData":["*c15","","Waar gaan we dit jaar naar toe?"],"test":["0=0"]},{"schermData":["*c15","","Hoe gaan we naar Spanje toe?"],"test":["0=1"]},{"schermData":["*c15","","Wat wil je vragen?"],"test":["0=2"]},{"schermData":["*c15","","Wat ga je doen:"],"test":["0>2","0<80"]}],"acties":[{"test":["0=0"],"toets":null,"kleur":7,"tekst":"Ardennen, heerlijk in het bos!","actie":["3=1"]},{"test":["0=0"],"toets":null,"kleur":7,"tekst":"Castricum, camperen op de boerderij!","actie":["3=2"]},{"test":["0=0"],"toets":null,"kleur":7,"tekst":"Spanje, luieren aan de middelandse zee!","actie":["3=3"]},{"test":["0=1"],"toets":null,"kleur":7,"tekst":"Met het vliegtuig","actie":["3=1"]},{"test":["0=1"],"toets":null,"kleur":7,"tekst":"Met de eigen auto","actie":["3=2"]},{"test":["0=1","1=2"],"toets":null,"kleur":7,"tekst":"Probeer iets anders te regelen","actie":["3=3"]},{"test":["0=2"],"toets":null,"kleur":7,"tekst":"Heb je zin om met ons mee te gaan naar Spanje?","actie":["3=1"]},{"test":["0=2"],"toets":null,"kleur":7,"tekst":"Ben jij ook niet aan vakantie toe?","actie":["3=1"]},{"test":["0=2"],"toets":null,"kleur":7,"tekst":"Wil je ons naar Spanje rijden?","actie":["3=3"]},{"test":["0=3"],"toets":null,"kleur":7,"tekst":"Vertrekken naar Spanje!","actie":["3=1"]},{"test":["0=4"],"toets":null,"kleur":7,"tekst":"Stop de bus bij het tankstation","actie":["3=1"]},{"test":["0=5","5=0"],"toets":null,"kleur":7,"tekst":"Koop ijsjes","actie":["3=1"]},{"test":["0=5","5>0","5<15"],"toets":null,"kleur":7,"tekst":"Koop meer ijsjes","actie":["3=1"]},{"test":["0=5","5>14"],"toets":null,"kleur":7,"tekst":"Koop nog heel veel meer ijsjes","actie":["3=2"]},{"test":["0=6","3=0"],"toets":null,"kleur":7,"tekst":"Doorrijden naar Spanje!","actie":["3=1"]},{"test":["0=6","3=2","10=1"],"toets":null,"kleur":7,"tekst":"Ga naar de receptie","actie":["3=5"]},{"test":["0=6","3=2","11=0"],"toets":null,"kleur":7,"tekst":"Haal de fietsen van de caravan af","actie":["3=6"]},{"test":["0=6","3=2","11=1","14=0"],"toets":null,"kleur":7,"tekst":"Bekijk fietsen","actie":["3=8"]},{"test":["0=6","3=2","11=1","14=1","18=0"],"toets":null,"kleur":7,"tekst":"Gebruik fietsen","actie":["3=15"]},{"test":["0=6","3=2","10<3"],"toets":null,"kleur":7,"tekst":"Maak de deur van de caravan open","actie":["3=7"]},{"test":["0=6","3=2","10>2"],"toets":null,"kleur":7,"tekst":"Ga de caravan in","actie":["3=9"]},{"test":["0=6","3=2","21=0"],"toets":null,"kleur":7,"tekst":"Ga de bus uitladen","actie":["3=3"]},{"test":["0=6","3=2"],"toets":null,"kleur":7,"tekst":"Ga vakantie vieren","actie":["3=4"]},{"test":["0=6","3=9","14=0"],"toets":null,"kleur":7,"tekst":"Pak de fietssleutels","actie":["3=13"]},{"test":["0=6","3=9","18=1","20=0"],"toets":null,"kleur":7,"tekst":"Ga dagenlang de caravan poetsen","actie":["3=20"]},{"test":["0=6","3=9","20=0"],"toets":null,"kleur":7,"tekst":"Ga snel weer naar buiten","actie":["3=12"]},{"test":["0=6","3=9","20=1"],"toets":null,"kleur":7,"tekst":"Ga naar buiten","actie":["3=12"]},{"test":["0=7","3=0"],"toets":null,"kleur":7,"tekst":"Ga terug naar de caravan","actie":["0=6","3=2"]},{"test":["0=7","3=0"],"toets":null,"kleur":7,"tekst":"Luister naar het geklaag van de meneer","actie":["0=7","3=1"]},{"test":["0=7","3=0","13=1","12=1"],"toets":null,"kleur":7,"tekst":"Geef de strandbal aan de meneer","actie":["0=7","3=3"]}]};
+const gegevens = {"titel":"Tinka's avontuur","omschrijving":"\nTinka wil heel graag op vakantie! Gaat het haar lukken?\nIn dit tekst-avontuur maak jij de keuzes!","auteur":"Sinterklaas","datum":"5 December 2019","thema":"boek","thema.kaft":"paars","systeem":"1.1.0"};
+let startThema = "boek";
+const cls = async () => {
+  const pageElement = screenElement.parentElement;
+  pageElement.classList.add("turn");
+
+  thema === "boek" && (await sleep(0.6));
+  screenElement.innerHTML = "";
+  pageElement.classList.remove("turn");
+};
+
+let toonMenu = false;
+const startSpel = () => {
+  document.getElementsByClassName("kaft")[0].classList.add("open", "ingevuld");
+  setTimeout(() => {
+    toonMenu = true;
+    const menu = document.querySelector(".menu");
+    menu && menu.classList.remove("verberg");
+  }, 0);
+};
+
+const eindSpel = () => {
+  const paragraaf = document.createElement("p");
+  paragraaf.classList.add("einde");
+  const linkTag = document.createElement("a");
+  const textNode = document.createTextNode("Sluit boek");
+  linkTag.appendChild(textNode);
+  linkTag.setAttribute("href", "#");
+  linkTag.addEventListener("click", e => {
+    e.preventDefault();
+    linkTag.classList.add("verberg");
+    document.getElementsByClassName("kaft")[0].classList.remove("open");
+    document.getElementsByClassName("bedankt")[0].classList.add("zichtbaar");
+    return false;
+  });
+  paragraaf.appendChild(linkTag);
+  screenElement.appendChild(paragraaf);
+};
+
+const geladen = () => {
+  if (isEPaper) {
+    document.body.classList.add("ereader");
+  }
+  if (klankbord) {
+    document.body.classList.add("klankbord");
+  }
+  if (thema === "") {
+    thema = startThema;
+  }
+  if (thema === "dos") {
+    document.body.classList.add("terminal");
+  }
+  if (naam === "") {
+    document.getElementById("naam").focus();
+  }
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+  let menuRef = null;
+  const menu = () => menuRef;
+
+  const sluitMenu = () => menu().classList.remove("zichtbaar");
+  const maakMenuActief = index => {
+    for (let i = 0; i < menu().children.length; i++) {
+      const child = menu().children[i];
+      i == index
+        ? child.classList.add("actief")
+        : child.classList.remove("actief");
+    }
+  };
+
+  const optie = (naam, handler) => {
+    const onClick = e => {
+      e.preventDefault();
+      handler();
+    };
+    return h("li", {}, h("a", { href: "#", class: "color7", onClick }, naam));
+  };
+  const extraOpties = gegevens.menulink
+    ? []
+        .concat(gegevens.menulink)
+        .map(link => link.match(/^\[([^\]]+)]\(([^)]+)\)$/))
+        .filter(item => item && !location.href.endsWith(item[2]))
+        .map(([, naam, link]) =>
+          h("li", {}, h("a", { href: link, class: "color7" }, naam))
+        )
+    : [];
+
+  const menuOpties = [
+    optie("Info / Contact", () => {
+      maakMenuActief(1);
+    }),
+    optie("Spel herstarten", () => {
+      maakMenuActief(2);
+    }),
+    optie("Spel-voortgangs-link versturen", () => {
+      maakMenuActief(3);
+    }),
+
+    ...extraOpties,
+    h("li", {}, [
+      h("label", {}, [
+        h("input", {
+          type: "checkbox",
+          value: "thema",
+          ...(thema === "dos" && { checked: "checked" }),
+          onChange: e => {
+            thema = e.target.checked ? "dos" : "boek";
+            if (thema === "dos") {
+              document.body.classList.add("terminal");
+            } else {
+              document.body.classList.remove("terminal");
+            }
+            bewaarSpel();
+          }
+        }),
+        "DOS Versie"
+      ])
+    ]),
+    h("li", {}, [
+      h("label", {}, [
+        h("input", {
+          type: "checkbox",
+          value: "klankbord",
+          ...(klankbord && { checked: "checked" }),
+          onChange: e => {
+            klankbord = e.target.checked;
+            if (klankbord) {
+              document.body.classList.add("klankbord");
+            } else {
+              document.body.classList.remove("klankbord");
+            }
+            bewaarSpel();
+          }
+        }),
+        "Klank blokken / Dyslexie"
+      ])
+    ]),
+    optie("Menu sluiten", () => sluitMenu())
+  ];
+
+  const hoofdMenu = h("div", { class: "actief" }, [
+    h("h1", { class: "color14" }, gegevens.titel),
+    h("p", { class: "color7" }, `Geschreven door ${gegevens.auteur}`),
+    h("ul", { class: "menu" }, menuOpties)
+  ]);
+
+  const verzendMenu = h("div", {}, [
+    h("h1", { class: "color14" }, "Spel voortgang versturen"),
+    h(
+      "p",
+      { class: "color7" },
+      "Hiermee kan je de voortgang van het spel versturen, om op een ander apparaat verder te spelen."
+    ),
+    h("input", {
+      type: "text",
+      id: "verzendLinkVeld",
+      value: "",
+      style: "width: 100%"
+    }),
+    h("ul", { class: "menu" }, [optie("Terug", () => maakMenuActief(0))])
+  ]);
+
+  const infoMenu = h("div", {}, [
+    gegevens.titel && h("h1", { class: "color14" }, gegevens.titel),
+    gegevens.omschrijving && h("p", {}, gegevens.omschrijving),
+    gegevens.versie && h("p", {}, `Versie: ${gegevens.versie}`),
+    gegevens.datum && h("p", {}, `Datum: ${gegevens.datum}`),
+    gegevens.email &&
+      h("p", {}, [
+        "Email: ",
+        h(
+          "a",
+          { class: "color9", href: `mailto:${gegevens.email}` },
+          gegevens.email
+        )
+      ]),
+    gegevens.twitter &&
+      h("p", {}, [
+        "Twitter: ",
+        h(
+          "a",
+          { class: "color9", href: `https://twitter.com/${gegevens.twitter}` },
+          gegevens.twitter
+        )
+      ]),
+
+    ...(gegevens.bedankt
+      ? [
+          h("p", {}, "Met dank aan:"),
+          h("ul", {}, gegevens.bedankt.map(regel => h("li", {}, regel)))
+        ]
+      : []),
+    h("hr"),
+    h("p", {}, [
+      `Avontuur spel motor (${
+        gegevens.systeem
+      }) gemaakt door Matthijs Groen. Idee voor taal hulp door Tinka Huisman. Lettertype voor DOS mode: `,
+      h(
+        "a",
+        { href: "https://int10h.org/oldschool-pc-fonts/" },
+        "The Oldschool PC Font Resource"
+      )
+    ]),
+    h("ul", { class: "menu" }, [optie("Terug", () => maakMenuActief(0))])
+  ]);
+
+  const herstartMenu = h("div", {}, [
+    h(
+      "p",
+      { class: "color12" },
+      "Dit herstart het spel en verwijderd alle voortgang!"
+    ),
+    h("p", { class: "color7" }, "Weet je het zeker?"),
+    h("ul", { class: "menu" }, [
+      optie("Herstarten", () => {
+        resetSpel();
+      }),
+      optie("Terug", () => maakMenuActief(0))
+    ])
+  ]);
+
+  const opties = h("div", { id: "opties", class: "opties" }, [
+    hoofdMenu,
+    infoMenu,
+    herstartMenu,
+    verzendMenu
+  ]);
+  menuRef = opties;
+
+  const openMenu = e => {
+    e.preventDefault();
+    opties.classList.add("zichtbaar");
+    maakMenuActief(0);
+    const link = document.getElementById("verzendLinkVeld");
+    link.setAttribute("value", verzendLink());
+  };
+
+  const menuKnop = h(
+    "div",
+    { class: "menu verberg" },
+    h("button", { id: "menu", onClick: openMenu }, "Menu")
+  );
+  document.body.appendChild(menuKnop);
+  document.body.appendChild(opties);
+  if (toonMenu) {
+    menuKnop.classList.remove("verberg");
+  }
+});
+const definities = {
+  korteKlinker: ["a", "e", "i", "o", "u", "è"],
+  langeKlinker: [/^aa+/, /^ee+/, /^oo+/, /^uu+/, /^é+/],
+  tweeKlank: ["ie", "oe", "eu", "ui", "ei", "ij", "ou", "au"],
+  letterGroep1: ["aai", "ooi", "oei", "eau"],
+  letterGroep2: ["eeuw", "ieuw", "uw"],
+  speciaal: ["th", "c", "y"],
+  rest: ["ng", "nk", "ch", "sch", "schr"]
+};
+
+const verwerk = (resultaat, selecteerder, toets, nieuweKlassificatie) => {
+  selecteerder(resultaat).forEach(selectie => {
+    if (toets(selectie)) {
+      resultaat[selectie.index][0] = nieuweKlassificatie;
+    }
+  });
+  return resultaat;
+};
+
+const selecteerKlank = (zoekKlank, zoekKlassificatie) => resultaat =>
+  resultaat
+    .map(([klasse, klank], index) =>
+      (zoekKlank === null || klank.toLowerCase() === zoekKlank) &&
+      (zoekKlassificatie === null || zoekKlassificatie === klasse)
+        ? { resultaat, index, klasse, klank }
+        : null
+    )
+    .filter(Boolean);
+
+const en = (...args) => selectie => args.every(test => test(selectie));
+const of = (...args) => selectie => args.some(test => test(selectie));
+const niet = test => selectie => !test(selectie);
+const totaalKlanken = test => selectie => test(selectie.resultaat.length);
+const laatsteKlank = (offset = 0) => selectie =>
+  selectie.index === selectie.resultaat.length - 1 - offset;
+const eersteKlank = (offset = 0) => selectie => selectie.index === offset;
+const klank = (klank, offset = 0) => selectie =>
+  selectie.resultaat[selectie.index + offset] &&
+  selectie.resultaat[selectie.index + offset][1].toLowerCase() === klank;
+const klankLengte = (lengteTest, offset = 0) => selectie =>
+  selectie.resultaat[selectie.index + offset] &&
+  lengteTest(selectie.resultaat[selectie.index + offset][1].length);
+const klasse = (test, offset = 0) => selectie =>
+  selectie.resultaat[selectie.index + offset] &&
+  test(selectie.resultaat[selectie.index + offset][0]);
+const totaalKlasse = (klasseTest, test) => selectie =>
+  test(selectie.resultaat.reduce((a, e) => a + (klasseTest(e[0]) ? 1 : 0), 0));
+const klankIndex = test => selectie =>
+  test(selectie.index, selectie.resultaat.length);
+const eindKlank = (klank, offset = 0) => selectie =>
+  selectie.resultaat[selectie.resultaat.length - 1 - offset][1] === klank;
+const isWoord = test => selectie =>
+  test(selectie.resultaat.reduce((w, e) => w + e[1], ""));
+
+const verwerkLangeKlinkers = resultaat => {
+  ["u", "a", "o"].forEach(klinker => {
+    resultaat = verwerk(
+      resultaat,
+      selecteerKlank(klinker, "korteKlinker"),
+      laatsteKlank(),
+      "langeKlinker"
+    );
+  });
+  ["u", "a", "o", "e"].forEach(klinker => {
+    resultaat = verwerk(
+      resultaat,
+      selecteerKlank(klinker, "korteKlinker"),
+      en(
+        niet(
+          klasse(
+            a => a !== "rest" && a !== "korteKlinker" && a !== "speciaal",
+            -1
+          )
+        ),
+        klankLengte(l => l === 1, 1),
+        klasse(a => a !== "rest" && a !== "speciaal", 2)
+      ),
+      "langeKlinker"
+    );
+  });
+
+  return resultaat;
+};
+
+const verwerkStommeE = resultaat => {
+  // Korte woorden
+  resultaat = verwerk(
+    resultaat,
+    selecteerKlank("e", "korteKlinker"),
+    laatsteKlank(),
+    "stommeE"
+  );
+  // verklein woord
+  ["j", "t"].forEach(
+    eindLetter =>
+      (resultaat = verwerk(
+        resultaat,
+        selecteerKlank("e", "korteKlinker"),
+        en(totaalKlanken(a => a > 3), laatsteKlank(), klank(eindLetter, -1)),
+        "stommeE"
+      ))
+  );
+  // uitgangen -en, -em, -er, -el, -es
+  ["n", "m", "r", "l", "s"].forEach(
+    eindLetter =>
+      (resultaat = verwerk(
+        // -en
+        resultaat,
+        selecteerKlank("e", null),
+        en(
+          totaalKlasse(k => k !== "rest" && k !== "stommeE", a => a > 1),
+          klankIndex(e => e > 1),
+          klank(eindLetter, 1),
+          niet(klank(eindLetter, 2)),
+          of(
+            niet(klasse(e => e !== "stommeE" || e !== "korteKlinker", 2)),
+            klasse(
+              e =>
+                e === "langeKlinker" ||
+                e === "korteKlinker" ||
+                e === "tweeKlank",
+              2
+            ),
+            en(klasse(e => e === "rest", 2), klasse(e => e !== "rest", 3)),
+            en(
+              klasse(e => e === "rest", 2),
+              klasse(e => e === "rest", 3),
+              klasse(e => e !== "stommeE", 4)
+            ),
+            en(laatsteKlank(2), of(klank("s", 2), klank("e", 2)))
+          )
+        ),
+        "stommeE"
+      ))
+  );
+
+  // voorvoegsels. be- ge-, ver- te-
+  const voorvoegsel = (offset = 0) =>
+    en(
+      klasse(k => k === "rest", offset + 1),
+      klankLengte(l => l == 1, offset + 1),
+      totaalKlasse(k => k !== "rest" && k !== "stommeE", a => a > 1)
+    );
+  const voorvoegselErvoor = () =>
+    of(
+      en(of(klank("b", -3), klank("g", -3), klank("t", -3)), klank("e", -2)),
+      en(klank("v", -4), klank("e", -3), klank("r", -2))
+    );
+
+  const werkwoord = () =>
+    of(eindKlank("d"), eindKlank("t"), en(eindKlank("e", 1), eindKlank("n")));
+  const heeftAchtervoegsel = () =>
+    of(
+      en(eindKlank("l", 2), eindKlank("ij", 1), eindKlank("k")),
+      en(eindKlank("i", 1), eindKlank("g"))
+    );
+
+  ["d", "b", "t"].forEach(
+    beginLetter =>
+      (resultaat = verwerk(
+        resultaat,
+        selecteerKlank("e", null),
+        en(
+          voorvoegsel(),
+          klank(beginLetter, -1),
+          niet(voorvoegselErvoor()),
+          niet(klank("s", -2))
+        ),
+        "stommeE"
+      ))
+  );
+
+  resultaat = verwerk(
+    resultaat,
+    selecteerKlank("e", null),
+    en(
+      voorvoegsel(),
+      klank("g", -1),
+      en(
+        of(eersteKlank(1), werkwoord(), heeftAchtervoegsel()),
+        of(
+          niet(voorvoegselErvoor()),
+          klasse(k => k === "tweeKlank" || k === "langeKlinker", 2)
+        )
+      )
+    ),
+    "stommeE"
+  );
+
+  resultaat = verwerk(
+    resultaat,
+    selecteerKlank("e", null),
+    en(voorvoegsel(1), eersteKlank(1), klank("v", -1), klank("r", 1)),
+    "stommeE"
+  );
+  // me-
+  resultaat = verwerk(
+    resultaat,
+    selecteerKlank("e", null),
+    en(
+      voorvoegsel(),
+      klank("m", -1),
+      niet(en(klank("d", 1), of(klank("i", 2), klank("e", 2))))
+    ),
+    "stommeE"
+  );
+  // achtervoegsels
+  resultaat = verwerk(
+    // -ig
+    resultaat,
+    selecteerKlank("i", "korteKlinker"),
+    en(
+      totaalKlanken(a => a > 3),
+      of(
+        en(laatsteKlank(1), klank("g", 1)),
+        en(laatsteKlank(2), klank("g", 1), klank("e", 2))
+      )
+    ),
+    "stommeE"
+  );
+  resultaat = verwerk(
+    // -lijk
+    resultaat,
+    selecteerKlank("ij", "tweeKlank"),
+    en(
+      totaalKlanken(a => a > 3),
+      of(
+        en(laatsteKlank(1), klank("l", -1), klank("k", 1)),
+        en(laatsteKlank(2), klank("l", -1), klank("k", 1), klank("e", 2))
+      ),
+      of(
+        niet(
+          isWoord(woord =>
+            ["ongelijk", "gelijk", "tegelijk", "vergelijk"].includes(woord)
+          )
+        )
+      )
+    ),
+    "stommeE"
+  );
+  // lidwoorden, de het een
+  resultaat = verwerk(
+    // het
+    resultaat,
+    selecteerKlank("e", "korteKlinker"),
+    en(
+      totaalKlanken(a => a === 3),
+      laatsteKlank(1),
+      klank("t", 1),
+      klank("h", -1)
+    ),
+    "stommeE"
+  );
+  resultaat = verwerk(
+    // een
+    resultaat,
+    selecteerKlank("ee", "langeKlinker"),
+    en(totaalKlanken(a => a === 2), laatsteKlank(1), klank("n", 1)),
+    "stommeE"
+  );
+
+  return resultaat;
+};
+
+const verwerkSpecialeKlanken = resultaat => {
+  resultaat = verwerk(
+    // ci
+    resultaat,
+    selecteerKlank("i", "korteKlinker"),
+    klank("c", -1),
+    "speciaal"
+  );
+
+  resultaat = verwerk(
+    // isch
+    resultaat,
+    selecteerKlank("sch", null),
+    of(laatsteKlank(), en(laatsteKlank(1), klank("e", 1))),
+    "speciaal"
+  );
+
+  // lange i
+  resultaat = verwerk(
+    resultaat,
+    selecteerKlank("i", "korteKlinker"),
+    of(
+      en(
+        niet(
+          klasse(
+            a => a !== "rest" && a !== "korteKlinker" && a !== "speciaal",
+            -1
+          )
+        ),
+        niet(eersteKlank()),
+        niet(klasse(a => a === "rest", -2)),
+        klankLengte(l => l === 1, 1),
+        klasse(a => a !== "rest", 2)
+      ),
+      en(klank("sch", 1), klasse(k => k === "speciaal", 1))
+    ),
+    "speciaal"
+  );
+
+  // G als J
+  resultaat = verwerk(
+    resultaat,
+    selecteerKlank("g", "rest"),
+    of(
+      en(
+        klasse(k => k === "langeKlinker", -1),
+        klankIndex(i => i > 1),
+        klank("e", 1),
+        niet(klank("l", 2)),
+        niet(klank("n", 2)),
+        niet(klank("h", -2)),
+        of(klank("a", -1), klank("o", -1))
+      ),
+      en(
+        klank("e", 1),
+        klank("l", 2),
+        of(klank("ij", 3), klank("a", 3), laatsteKlank(2)),
+        niet(klank("k", 4))
+      )
+    ),
+    "speciaal"
+  );
+
+  return resultaat;
+};
+
+const ontkenning = (resultaat, rest) =>
+  resultaat.length === 1 &&
+  resultaat[0][1].toLowerCase() === "o" &&
+  rest.toLowerCase().startsWith("n") &&
+  rest.length > 2;
+
+const voegWoordKlassificatiesToe = woord => {
+  let start = 0;
+  let resultaat = [];
+
+  while (start < woord.length) {
+    const rest = woord.slice(start);
+    let klassificaties = [];
+    if (ontkenning(resultaat, rest)) {
+      resultaat.push(["rest", rest[0]]);
+      start += 1;
+    } else {
+      Object.entries(definities).forEach(([klasse, klanken]) => {
+        const klank = klanken
+          .filter(klank =>
+            klank instanceof RegExp
+              ? rest.toLowerCase().match(klank)
+              : rest.toLowerCase().startsWith(klank)
+          )
+          .reduce((resultaat, klank) => {
+            if (klank instanceof RegExp) {
+              const match = rest.toLowerCase().match(klank);
+              return match[0].length > resultaat.length ? match[0] : resultaat;
+            } else {
+              return klank.length > resultaat.length ? klank : resultaat;
+            }
+          }, "");
+        if (klank) {
+          klassificaties.push({ klasse, klank: rest.slice(0, klank.length) });
+        }
+      });
+      const klassificatie = klassificaties.reduce(
+        (huidigResultaat, { klasse, klank }) =>
+          huidigResultaat === null ||
+          klank.length > huidigResultaat.klank.length
+            ? { klasse, klank }
+            : huidigResultaat,
+        null
+      );
+      if (klassificatie === null) {
+        resultaat.push(["rest", rest[0]]);
+        start += 1;
+      } else {
+        resultaat.push([klassificatie.klasse, klassificatie.klank]);
+        start += klassificatie.klank.length;
+      }
+    }
+  }
+
+  resultaat = verwerkLangeKlinkers(resultaat);
+  resultaat = verwerkStommeE(resultaat);
+  resultaat = verwerkSpecialeKlanken(resultaat);
+
+  return resultaat;
+};
+
+const voegKlassificatiesToe = zin => {
+  let resultaat = [];
+  let huidigWoord = "";
+  //return [["anders", zin]];
+  for (const char of zin) {
+    if (/\w|[éè]/.test(char)) {
+      huidigWoord += char;
+    } else {
+      if (huidigWoord.length > 0) {
+        resultaat = resultaat.concat(voegWoordKlassificatiesToe(huidigWoord));
+        huidigWoord = "";
+      }
+      resultaat.push(["anders", char]);
+    }
+  }
+  if (huidigWoord.length > 0) {
+    resultaat = resultaat.concat(voegWoordKlassificatiesToe(huidigWoord));
+    huidigWoord = "";
+  }
+  return resultaat;
+};
+let thema = "";
+let skip = false;
+let naam = "";
+let spelToestand = Array(100).fill(0);
+let klankbord = false;
+let verzendCode;
+
+const verzendLink = () => location.href + `#naam=${naam}|code=${verzendCode}`;
+const resetSpel = () => {
+  localStorage.removeItem("opslag");
+  localStorage.removeItem(`opslag-${bewaarSleutel}`);
+  document.location.reload();
+};
+
+const h = (tagName, attributes = {}, children = []) => {
+  const element = document.createElement(tagName);
+  []
+    .concat(children)
+    .filter(Boolean)
+    .forEach(child =>
+      typeof child === "string"
+        ? element.appendChild(document.createTextNode(child))
+        : element.appendChild(child)
+    );
+
+  Object.entries(attributes).forEach(([key, value]) => {
+    const handler = key.match(/^on(.*)$/);
+    if (handler) {
+      element.addEventListener(handler[1].toLowerCase(), value);
+    } else {
+      element.setAttribute(key, value);
+    }
+  });
+  return element;
+};
+
+const screenElement = document.getElementById("screen");
+
+window.addEventListener("mouseup", () => (skip = true));
+window.addEventListener("touchend", () => (skip = true));
+
+const sleep = duration =>
+  duration === 0 || skip
+    ? true
+    : new Promise(resolve =>
+        skip ? resolve() : setTimeout(resolve, duration * 1e3)
+      );
+
+let actieveKleur = "color7";
+const color = index => (actieveKleur = `color${index}`);
+const printActie = (tekst, actie, parent) => {
+  const props = { class: `actie ${actieveKleur}` };
+  if (/^[a-z]$/.test(actie)) {
+    props.style = "list-style-type: upper-alpha;";
+    props.value = `${actie.charCodeAt(0) - 96}`;
+  }
+  if (/^[0-9]$/.test(actie)) {
+    props.style = "list-style-type: decimal;";
+    props.value = `${actie.charCodeAt(0) - 48}`;
+  }
+  const onClick = e => {
+    e.preventDefault();
+    keyPressed = `${actie}`;
+    return false;
+  };
+  const zinBlokken = voegKlassificatiesToe(tekst);
+  const lijstItem = h(
+    "li",
+    props,
+    h(
+      "a",
+      {
+        href: "#",
+        onClick
+      },
+      zinBlokken.map(([klasse, tekst]) =>
+        h(
+          "span",
+          { class: [actieveKleur, klasse].filter(Boolean).join(" ") },
+          tekst
+        )
+      )
+    )
+  );
+
+  parent.appendChild(lijstItem);
+};
+
+const print = (tekst, klasse = null) => {
+  let parent = screenElement.children[screenElement.children.length - 1];
+  if (parent.tagName === "UL") {
+    const items = parent.getElementsByTagName("li");
+    parent = items.item(items.length - 1);
+  }
+
+  tekst.split("\n").forEach((element, index, list) => {
+    if (element !== "") {
+      const className = [actieveKleur, klasse].filter(Boolean).join(" ");
+      parent.appendChild(h("span", { class: className }, element));
+    }
+    if (index < list.length - 1) {
+      const tag = document.createTextNode(" ");
+      parent.appendChild(tag);
+    }
+  });
+  if (tekst.includes("\n")) {
+    screenElement.parentElement.scroll({
+      top: screenElement.scrollHeight,
+      behavior: "smooth"
+    });
+  }
+};
+
+const toets = (plek, bewerking, waarde) =>
+  (bewerking === "=" && spelToestand[plek] === waarde) ||
+  (bewerking === "!" && spelToestand[plek] !== waarde) ||
+  (bewerking === ">" && spelToestand[plek] > waarde) ||
+  (bewerking === "<" && spelToestand[plek] < waarde);
+
+const toegestaan = beweringen =>
+  beweringen.every(bewering => {
+    const [, plek, bewerking, waarde] = bewering.match(/(\d+)([=!<>])(\d+)/);
+    return toets(parseInt(plek, 10), bewerking, parseInt(waarde, 10));
+  });
+
+const interpoleer = zin =>
+  zin
+    .replace(/\$n/g, naam)
+    .replace(/#\d{2}/g, num => `${spelToestand[parseInt(num.slice(1), 10)]}`)
+    .replace(/#\d+p\d{2}/g, paddedNum => {
+      const [padding, num] = paddedNum.slice(1).split("p");
+      const waarde = `${spelToestand[parseInt(num.slice(1), 10)]}`;
+      const pad = parseInt(padding, 10);
+
+      return `${"0".repeat(pad)}${waarde}`.slice(-pad);
+    });
+
+const tekst = async (verteller, zin, eerderGelezen) => {
+  color(verteller);
+  if (zin === "") {
+    const paragraaf = document.createElement("p");
+    screenElement.appendChild(paragraaf);
+    return;
+  }
+  const isLijstItem = zin.match(/^\s*-\s(\S.*)$/);
+  if (isLijstItem) {
+    const parent = screenElement.children[screenElement.children.length - 1];
+    if (parent.tagName === "UL") {
+      parent.appendChild(h("li"));
+    } else {
+      screenElement.appendChild(h("ul", { class: actieveKleur }, h("li")));
+    }
+    if (parent.tagName === "P" && parent.children.length === 0) {
+      parent.remove();
+    }
+    zin = isLijstItem[1];
+  }
+
+  const isGesprek = /^.*: '/.test(zin);
+  if (isGesprek) {
+    const paragrafen = screenElement.getElementsByTagName("p");
+    const huidigeParagraaf = paragrafen.item(paragrafen.length - 1);
+    huidigeParagraaf.classList.add("gesprek");
+  }
+
+  const zinBlokken = voegKlassificatiesToe(zin);
+  for (const klank of zinBlokken) {
+    print(klank[1], klank[0]);
+    if (!eerderGelezen) {
+      if (klankbord) {
+        await sleep(0.08);
+      } else {
+        await sleep(0.02);
+      }
+    }
+  }
+
+  print("\n");
+};
+
+const isEPaper = [" Silk/", " Nook/", " PocketBook/"].some(e =>
+  navigator.userAgent.includes(e)
+);
+
+const toonGebeurtenis = async () => {
+  let verteller = 7;
+  const paragraaf = document.createElement("p");
+  screenElement.appendChild(paragraaf);
+
+  skip = false;
+  for (const teksten of avontuur.scherm) {
+    if (toegestaan(teksten.test)) {
+      const eerderGelezen = teksten.gelezen === true || isEPaper;
+      if (!eerderGelezen) teksten.gelezen = true;
+      for (const zin of teksten.schermData) {
+        if (zin[0] === "*") {
+          // Opmaak
+          const commando = zin[1];
+          const data = zin.slice(2);
+          if (commando === "c") {
+            verteller = parseInt(data, 10);
+          }
+          if (commando === "s") {
+            await sleep(parseInt(data, 10));
+          }
+        } else {
+          await tekst(verteller, interpoleer(zin), eerderGelezen);
+          await sleep(eerderGelezen ? 0.1 : 0);
+        }
+      }
+      if (teksten.actie) {
+        voerActieUit(teksten.actie);
+      }
+    }
+  }
+  keyPressed = null;
+};
+
+const muteer = (plek, bewerking, waarde) => {
+  if (bewerking === "=") {
+    spelToestand[plek] = waarde;
+  }
+  if (bewerking === "+") {
+    spelToestand[plek] += waarde;
+  }
+  if (bewerking === "-") {
+    spelToestand[plek] -= waarde;
+  }
+  if (bewerking === "r") {
+    spelToestand[plek] = Math.min(
+      waarde,
+      Math.max(1, Math.ceil(Math.random() * waarde))
+    );
+  }
+};
+
+document.addEventListener("keypress", event => {
+  keyPressed = event.key;
+  if (keyPressed == " ") {
+    skip = true;
+  }
+});
+
+const keypress = () =>
+  new Promise(resolve => {
+    let watcher = setInterval(() => {
+      if (keyPressed !== null) {
+        resolve(keyPressed);
+        keyPressed = null;
+        clearInterval(watcher);
+      }
+    }, 100);
+  });
+
+const voerActieUit = instructies => {
+  instructies.forEach(instructie => {
+    const [, plek, bewerking, waarde] = instructie.match(/(\d+)([=+-r])(\d+)/);
+    muteer(parseInt(plek, 10), bewerking, parseInt(waarde, 10));
+  });
+};
+
+const toetsen = "123456789abcdefghijklmnop";
+
+const toonActies = async () => {
+  const acties = [];
+  let geteldeActies = 0;
+
+  for (const actie of avontuur.acties) {
+    if (toegestaan(actie.test)) {
+      const toets = actie.toets || toetsen[geteldeActies++];
+      acties.push({
+        naam: interpoleer(actie.tekst),
+        actie: actie.actie,
+        kleur: actie.kleur,
+        toets
+      });
+    }
+  }
+
+  const actieLijst = document.createElement("ul");
+  actieLijst.classList.add("acties");
+  screenElement.appendChild(actieLijst);
+  for (const actie of acties) {
+    await sleep(0.2);
+    color(actie.kleur);
+    printActie(actie.naam, actie.toets, actieLijst);
+  }
+  // geen acties, dan is spel voorbij
+  if (acties.length === 0) {
+    return false;
+  }
+
+  let toets;
+  let gekozen = null;
+  do {
+    toets = await keypress();
+    gekozen = acties.find(actie => actie.toets === toets);
+  } while (!gekozen);
+
+  voerActieUit(gekozen.actie);
+  return true;
+};
+
+const krijgNaam = () =>
+  new Promise(resolve => {
+    const formulier = document.getElementById("welkom");
+    formulier.addEventListener("submit", async event => {
+      event.preventDefault();
+      const naam = document.getElementById("naam").value;
+      if (naam.trim() === "") return;
+      await startSpel();
+      resolve(naam);
+    });
+  });
+
+const karakters =
+  "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@" +
+  "$%^~*(),.;:\"'+-/[]{}_`<>?îêôâëüïöäøéíóáØÊÎÔÂËÜÖÏÉÚÍÓÁåÅßçÇàèìòùÀ";
+
+const encode = spelStatus => {
+  const relevanteData = spelStatus.reduce(
+    (result, item, index) =>
+      item === 0 ? result : { ...result, [index]: item },
+    {}
+  );
+  const grootsteSleutelDelta = spelStatus
+    .map((item, index) => (item > 0 ? index : null))
+    .filter(index => index !== null)
+    .map((index, i, list) => index - (list[i - 1] || -1) - 1)
+    .reduce((currentMax, item) => (item > currentMax ? item : currentMax), 0);
+  const grootsteWaarde = spelStatus.reduce(
+    (currentMax, item) => (item > currentMax ? item : currentMax),
+    0
+  );
+  const bitSizeKey = grootsteSleutelDelta.toString(2).length;
+  const largeValueSize = grootsteWaarde.toString(2).length;
+
+  const predictedWidth = Object.entries(relevanteData).reduce(
+    (total, [key, value]) => total + bitSizeKey + largeValueSize,
+    0
+  );
+  const toBits = (number, size) =>
+    ("0".repeat(size) + number.toString(2)).slice(-size);
+
+  const pairs = Object.entries(relevanteData);
+  const bitStream =
+    toBits(pairs.length, 7) +
+    pairs
+      .map(([key, value], index, list) => {
+        const delta = index > 0 ? key - list[index - 1][0] - 1 : key;
+        return toBits(delta, bitSizeKey) + toBits(value, largeValueSize);
+      })
+      .join("");
+
+  const paddedBitStream = bitStream + "0".repeat(bitStream.length % 7);
+  const amountOnes = paddedBitStream
+    .split("")
+    .reduce((result, item) => (item === "1" ? result + 1 : result), 0);
+
+  let code = "" + karakters[bitSizeKey];
+  for (let i = 0; i < paddedBitStream.length; i += 7) {
+    const karakterIndex = parseInt(paddedBitStream.slice(i, i + 7), 2);
+    code += karakters[karakterIndex];
+  }
+  code += karakters[largeValueSize] + karakters[amountOnes];
+
+  return code;
+};
+
+const decode = code => {
+  const charToNum = char => karakters.indexOf(char);
+
+  const bitSizeKey = charToNum(code[0]);
+  const largeValueSizeKey = charToNum(code.slice(-2, -1));
+  const verifyOnes = charToNum(code.slice(-1));
+
+  const bitStream = code
+    .slice(1, -2)
+    .split("")
+    .map(char => ("0".repeat(7) + charToNum(char).toString(2)).slice(-7))
+    .join("");
+
+  const amountOnes = bitStream
+    .split("")
+    .reduce((result, bit) => (bit === "1" ? result + 1 : result), 0);
+
+  if (verifyOnes !== amountOnes) throw new Error("Ongeldige code");
+
+  const amountValues = parseInt(bitStream.slice(0, 7), 2);
+  let gameState = Array(100).fill(0);
+
+  let currentIndex = 0;
+  for (let i = 0; i < amountValues; i++) {
+    const bitIndex = 7 + (bitSizeKey + largeValueSizeKey) * i;
+    const keyDelta = parseInt(
+      bitStream.slice(bitIndex, bitIndex + bitSizeKey),
+      2
+    );
+    const bitValue = bitStream.slice(
+      bitIndex + bitSizeKey,
+      bitIndex + bitSizeKey + largeValueSizeKey
+    );
+    const value = parseInt(bitValue, 2);
+    currentIndex += i > 0 ? keyDelta + 1 : keyDelta;
+    gameState[currentIndex] = value;
+  }
+  return gameState;
+};
+
+const laadSpel = async () => {
+  try {
+    try {
+      if (location.hash.length > 10) {
+        const velden = decodeURI(location.hash)
+          .slice(1)
+          .split("|")
+          .reduce((resultaat, paar) => {
+            const [naam, waarde] = paar.split("=");
+            return { ...resultaat, [naam]: waarde };
+          }, {});
+
+        naam = velden.naam;
+        spelToestand = decode(velden.code);
+        location.hash = "";
+        await geladen();
+        await startSpel();
+        return true;
+      }
+    } catch (e) {}
+    const opgeslagen =
+      localStorage.getItem(`opslag-${bewaarSleutel}`) ||
+      (bewaarSleutel === "koerier" && localStorage.getItem("opslag"));
+    if (!opgeslagen) return false;
+    let data = JSON.parse(opgeslagen);
+
+    naam = data.naam;
+    spelToestand = data.gameState;
+    klankbord = data.klankbord;
+    thema = data.thema;
+    await geladen();
+    await startSpel();
+    return true;
+  } catch (e) {}
+  return false;
+};
+
+const bewaarSpel = () => {
+  try {
+    const opslag = {
+      naam,
+      gameState: spelToestand,
+      klankbord,
+      thema
+    };
+    localStorage.setItem(`opslag-${bewaarSleutel}`, JSON.stringify(opslag));
+  } catch (e) {}
+};
+
+const spelLus = async () => {
+  const spelGeladen = await laadSpel();
+  if (!spelGeladen) {
+    await geladen();
+    naam = await krijgNaam();
+    skip = false;
+    bewaarSpel();
+  }
+
+  let heeftActies;
+
+  do {
+    verzendCode = encode(spelToestand);
+    // -- template:startLus
+    await toonGebeurtenis();
+    heeftActies = await toonActies();
+    bewaarSpel();
+    skip = false;
+    if (heeftActies) {
+      await cls();
+    }
+  } while (heeftActies);
+  // Spel afgelopen
+  await eindSpel();
+};
+spelLus();
+</script>
+    </body>
+</html>
