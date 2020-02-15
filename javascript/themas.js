@@ -24,6 +24,22 @@ const boekThema = {
   })
 };
 
+const bookThema = {
+  css: "thema/book.css",
+  html: "thema/book.html",
+  javascript: "thema/book.js",
+  haken: {
+    startSpel: "startSpel",
+    eindLus: "cls",
+    eindSpel: "eindSpel",
+    geladen: "geladen"
+  },
+  opties: ({ kaft = "rood" }) => ({
+    javascript: 'let startThema = "boek";',
+    css: kaftKleur(kaftKleuren[kaft])
+  })
+};
+
 const dosThema = {
   css: "thema/boek.css",
   html: "thema/boek.html",
@@ -53,5 +69,6 @@ const dosThema = {
 
 module.exports = {
   boek: boekThema,
+  book: bookThema,
   dos: dosThema
 };

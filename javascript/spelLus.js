@@ -1,8 +1,15 @@
 const { sleep, cls, color, print } = require("./basic");
 const { voerActieUit, toegestaan } = require("./spelToestand");
 const { bewaarSpel, laadSpel, basisNaam } = require("./bewaarSpel");
+const locale = {
+  nl: require("./locales/nl"),
+  en: require("./locales/nl")
+}
 const leesAvontuur = require("./leesAvontuur");
 const stdin = process.stdin;
+
+const t = (key, loc) =>
+  (locale[loc] || locale["nl"])[key] || locale["nl"][key];
 
 const input = prompt =>
   new Promise(async resolve => {
@@ -206,6 +213,7 @@ const spelLus = async (
   const data = await leesAvontuur(bestandsNaam);
   const opslagBestandsNaam = `.${basisNaam(bestandsNaam)}.opslag`;
   const eerderSpel = herstarten ? null : await laadSpel(opslagBestandsNaam);
+  const locale = data.gegevens.lang || "nl";
 
   stdin.resume();
   stdin.setRawMode(true);
@@ -216,7 +224,7 @@ const spelLus = async (
     if (key === "\u0003" || key === "\u001b") {
       cls();
       color(7);
-      print("Bedankt voor het spelen!\n");
+      print(t("thanks_for_playing", locale));
 
       process.exit();
     }
@@ -233,9 +241,9 @@ const spelLus = async (
     naam = spelerNaam;
   } else {
     cls();
-    await tekst(7, "Hallo avonturier!", true);
+    await tekst(7, t("hello", locale), true);
     await tekst(7, "", true);
-    naam = await input("Wat is je naam");
+    naam = await input(t("name", locale));
     await bewaarSpel(opslagBestandsNaam, { naam, spelToestand });
   }
 
