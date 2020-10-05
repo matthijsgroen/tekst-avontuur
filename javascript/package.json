@@ -9,6 +9,7 @@
   "private": false,
   "dependencies": {
     "autoprefixer": "^9.5.1",
+    "lodash": "^4.17.13",
     "postcss": "^7.0.16"
   },
   "devDependencies": {
@@ -16,6 +17,6 @@
     "mocha": "^6.2.0"
   },
   "resolutions": {
-    "lodash": "^4.17.13"
+    "lodash": "4.17.20"
   }
 }
