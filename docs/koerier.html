@@ -1832,6 +1832,9 @@ const spelLus = async () => {
   if (!spelGeladen) {
     await geladen();
     naam = await krijgNaam();
+    if (vertaalControle.textContent !== "Hallo hoe gaat het?" && !usingGoogleTranslate) {
+      usingGoogleTranslate = true;
+    }
     skip = false;
     bewaarSpel();
   }

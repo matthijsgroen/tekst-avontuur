@@ -476,6 +476,9 @@ const spelLus = async () => {
   if (!spelGeladen) {
     // -- template:geladen
     naam = await krijgNaam();
+    if (vertaalControle.textContent !== "Hallo hoe gaat het?" && !usingGoogleTranslate) {
+      usingGoogleTranslate = true;
+    }
     skip = false;
     bewaarSpel();
   }
