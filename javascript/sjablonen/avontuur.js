@@ -4,6 +4,7 @@ let naam = "";
 let spelToestand = Array(100).fill(0);
 let klankbord = false;
 let verzendCode;
+let usingGoogleTranslate = false;
 
 const verzendLink = () => location.href + `#naam=${naam}|code=${verzendCode}`;
 const resetSpel = () => {
@@ -73,13 +74,14 @@ const printActie = (tekst, actie, parent) => {
         href: "#",
         onClick
       },
-      zinBlokken.map(([klasse, tekst]) =>
-        h(
-          "span",
-          { class: [actieveKleur, klasse].filter(Boolean).join(" ") },
-          tekst
-        )
-      )
+      klankbord ?
+        zinBlokken.map(([klasse, tekst]) =>
+          h(
+            "span",
+            { class: [actieveKleur, klasse].filter(Boolean).join(" ") },
+            tekst
+          )
+        ) : h("span", {class: [actieveKleur] }, tekst)
     )
   );
 
@@ -164,12 +166,22 @@ const tekst = async (verteller, zin, eerderGelezen) => {
   }
 
   const zinBlokken = voegKlassificatiesToe(zin);
-  for (const klank of zinBlokken) {
-    print(klank[1], klank[0]);
+  if (usingGoogleTranslate) {
+    print(zin); // This helps google translate
     if (!eerderGelezen) {
-      if (klankbord) {
+      await sleep(0.4);
+    }
+  } else if (klankbord) {
+    for (const klank of zinBlokken) {
+      print(klank[1], klank[0]);
+      if (!eerderGelezen) {
         await sleep(0.08);
-      } else {
+      }
+    }
+  } else {
+    for (const klank of zinBlokken) {
+      print(klank[1], klank[0]);
+      if (!eerderGelezen) {
         await sleep(0.02);
       }
     }
@@ -241,9 +253,15 @@ document.addEventListener("keypress", event => {
   }
 });
 
+const vertaalControle = document.querySelector(".translate")
+
 const keypress = () =>
   new Promise(resolve => {
     let watcher = setInterval(() => {
+      if (vertaalControle.textContent !== "Hallo hoe gaat het?" && !usingGoogleTranslate) {
+        usingGoogleTranslate = true;
+        resolve("REFRESH");
+      }
       if (keyPressed !== null) {
         resolve(keyPressed);
         keyPressed = null;
@@ -294,6 +312,7 @@ const toonActies = async () => {
   let gekozen = null;
   do {
     toets = await keypress();
+    if (toets === "REFRESH") return true;
     gekozen = acties.find(actie => actie.toets === toets);
   } while (!gekozen);
 
@@ -335,10 +354,6 @@ const encode = spelStatus => {
   const bitSizeKey = grootsteSleutelDelta.toString(2).length;
   const largeValueSize = grootsteWaarde.toString(2).length;
 
-  const predictedWidth = Object.entries(relevanteData).reduce(
-    (total, [key, value]) => total + bitSizeKey + largeValueSize,
-    0
-  );
   const toBits = (number, size) =>
     ("0".repeat(size) + number.toString(2)).slice(-size);
 
