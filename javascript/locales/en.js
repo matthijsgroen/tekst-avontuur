@@ -1,5 +1,5 @@
 module.exports = {
-  hello: "Hallo avonturier!",
-  name: "Wat is je naam",
-  thanks_for_playing: "Bedankt voor het spelen!\n"
-}
+  hello: "Hello adventurer!",
+  name: "What is your name",
+  thanks_for_playing: "Thanks for playing!\n",
+};
