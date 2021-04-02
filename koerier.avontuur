@@ -1,8 +1,8 @@
 ' @lang: nl
 ' @Titel: Koerier voor de koning
 ' @Omschrijving:
-' De koning is ziek. Kan jij op tijd de medicijnen naar de koning brengen?
-' In dit tekst-avontuur maak jij de keuzes!
+' De koning is ziek. Kun jij de medicijnen op tijd naar de koning brengen?
+' In dit tekstavontuur maak jij de keuzes!
 
 ' @Auteur: Matthijs Groen
 '
@@ -145,12 +145,12 @@
 
 "1=0;10=0;4=0;0=1", "*c2", "Er was eens, lang geleden een stoere koerier...", ""
 "Zijn naam was $n.", ""
-"Hij was altijd super snel in het bezorgen van brieven en pakketjes."
+"Hij was altijd supersnel in het bezorgen van brieven en pakketjes."
 "Dingen bezorgen was dan ook zijn lust en zijn leven.", "&"
 
 "1=0;10=0;4=0;0=2", "*c2", "Er was eens, lang geleden een stoere koerier..."
 "Haar naam was $n.", ""
-"Zij was altijd super snel in het bezorgen van brieven en pakketjes."
+"Zij was altijd supersnel in het bezorgen van brieven en pakketjes."
 "Dingen bezorgen was dan ook haar lust en haar leven.", "&"
 
 "1=0;10=0;4=0;0!0"
@@ -161,7 +161,7 @@
 "1=0;10=0;4=1", "*c2"
 "Je probeert nog even verder te slapen.", ""
 "*c3", "$n: 'Gaaaaap..   ..zzzzzz'", ""
-"*s2", "*c14", "<tik, tik, tik>", "*c3", "", "$n: 'hmmmz?'"
+"*s2", "*c14", "<tik, tik, tik>", "*c3", "", "$n: 'hmmm?'"
 "&5+1"
 
 "1=0;10=0;4>0;4<3;5>4", "*c3"
@@ -175,7 +175,7 @@
 
 "1=0;10=0;4=3", "*c2"
 "Je kijkt de hele kamer rond, op zoek naar de bron van het geluid."
-"", "*c3", "$n: 'Hey, er zit een raaf tegen het raam te tikken!'"
+"", "*c3", "$n: 'Hee, er zit een raaf tegen het raam te tikken!'"
 "", "*c14", "<TIK, TIK, TIK!>"
 "&"
 
@@ -198,7 +198,7 @@
 "1=0;10=2;2=0;4=1;23>2", "*c2", "De kast is al open, maar er zit niets interessants meer in.", "&"
 "1=0;10=2;2=0;4=1;23<2", "*c2", "De kast zit op slot.", "&"
 "1=0;10=2;2=0;4=1;23=2", "*c2", "Je opent de kast met de sleutel.", ""
-"*c3", "$n: 'Hey, hier ligt vogelvoer!'"
+"*c3", "$n: 'Hee, hier ligt vogelvoer!'"
 "", "*c2", "Je pakt het vogelvoer uit de kast.", "&4=8;23=3"
 "1=0;10=2;2=0;4=2;23=0", "*c2", "Je pakt je tas van achter de deur.", "&20=1;22=3;23=1"
 
@@ -336,11 +336,11 @@
 "", "&4=0;3=0"
 "1=18;3=8", "*c2", "Je klautert de trap op, en klimt door het gat in het luik naar buiten toe.", "", "&4=0;3=0"
 
-"1=19;3=1", "*c2", "Je stapt voorzichtig over alle brokstukken van de lift en daalt de trap af richting de kelder","", "&4=0;3=0"
+"1=19;3=1", "*c2", "Je stapt voorzichtig over alle brokstukken van de lift en daalt de trap af richting de kelder.","", "&4=0;3=0"
 
 '== Tas
 "2=1;4=1", "*c2", "Je verwijdert het oude heft van de houweel,"
-"en vervangt het door de stok uit het bos."
+"en vervangt het met de stok uit het bos."
 "", "Het past! Het houweel is weer zo goed als nieuw.", "", "&24=2;21=3"
 
 "2=1;4=2", "*c2", "De koeken ruiken heerlijk, maar toch besluit je ze voor later te bewaren.", "", "&"
@@ -359,10 +359,10 @@
 
 "2=1;4=4", "*c2", "Je bekijkt de ingrediëntenlijst:"
 "*c6", "", "  Lieve $n, ik heb het volgende nodig:", ""
-"  - 2 Planten met ronde bladeren"
-"  - 2 Lichtblauwe paddenstoelen"
-"  - 3 Planten met stekelige bladeren"
-"  - 1 Tand van een draak"
+"  - 2 planten met ronde bladeren"
+"  - 2 lichtblauwe paddenstoelen"
+"  - 3 planten met stekelige bladeren"
+"  - 1 tand van een draak"
 "", "&"
 "2=1;4=4;26=4", "&26=5"
 
@@ -629,7 +629,7 @@
 "  Ik heb geen idee of ik de rode paddenstoelen met witte stippen wel nodig ga hebben.'", "&4=1"
 
 "1=7;4=2;2=0;26>0;7=2;55=1", "*c3"
-"$n: 'Deze paddenstoelen ga ik echt niet plukken! Straks wordt ik nog aangevallen door kabouters!'", "&4=1"
+"$n: 'Deze paddenstoelen ga ik echt niet plukken! Straks word ik nog aangevallen door kabouters!'", "&4=1"
 
 "1=7;4=3;2=0;26>0;7=2;55=0", "*c3"
 "$n: 'Hmm paddenstoelen kunnen ook giftig zijn."
@@ -696,7 +696,7 @@
 "1=8;2=0;4=0", "*c2"
 "Je staat bij een ingestorte brug over de rivier. Er lijkt geen mogelijkheid te zijn om over te steken."
 "De rivier stroomt snel en gevaarlijk.", ""
-"*c3", "$n: 'Verdorie zo kan ik hier niet weg komen."
+"*c3", "$n: 'Verdorie, zo kan ik hier niet wegkomen."
 "  Dit was de weg richting het kasteel van de koning, ook al moet ik dan nog een aantal dagen reizen per paard."
 "Hier moet ik een oplossing voor gaan vinden.'", "&"
 "1=8;2=0;4=0;32=0", "*c2", "", "Langs de waterkant ligt een groot stuk witte stof, met rode stippen.", "&"
@@ -716,13 +716,13 @@
 "*c3", "$n: 'Kom maar Teun, dan breng ik je naar huis.'"
 "*c2", "", "Het paard blijft rustig, en loopt met je mee."
 "Het valt je op dat hij wel erg lastig loopt."
-"", "*c3", "$n: 'Ok, we lopen wel rustig aan naar huis.'"
+"", "*c3", "$n: 'Oké, we lopen wel rustig aan naar huis.'"
 "*c2", "", "Teun volgt je nu!"
 "&19=1;29=2;4=0"
 
 "1=8;2=0;4=3", "*c2"
 "*c3", "$n: 'Kom je mee Teun?'"
-"*c2", "", "Het paard komt enthousiast op je af gelopen."
+"*c2", "", "Het paard komt enthousiast op je afgelopen."
 "", "*c3", "$n: 'Goed om je weer te zien!'"
 "*c2", "", "Teun volgt je nu!"
 "&19=1;4=0"
@@ -817,26 +817,26 @@
 "", "*c9", "Thorin: 'Echt waar? Laat zien.'", ""
 "*c3", "$n: 'Alsjeblieft.'"
 "*c2", "", "Je geeft de gerepareerde houweel aan Thorin. Hij bekijkt hem grondig."
-"", "*c9", "Thorin: 'Wow hij is zo goed als nieuw! bedankt!'", "&4=0;24=4"
+"", "*c9", "Thorin: 'Wauw, hij is zo goed als nieuw! Bedankt!'", "&4=0;24=4"
 
-"1=11;2=0;11=2;4=4", "*c2", "Je bied Thorin de koeken aan.", "", "*c3"
+"1=11;2=0;11=2;4=4", "*c2", "Je biedt Thorin de koeken aan.", "", "*c3"
 "$n: 'Hier, alsjeblieft.'"
-"", "*c9", "Thorin: 'Whoa die ruiken lekker, bedankt!'", "", "*c2"
+"", "*c9", "Thorin: 'Wauw, die ruiken lekker, bedankt!'", "", "*c2"
 "Thorin zit te smullen van de koeken.", ""
 "", "*c9", "Thorin: 'Zo daar was ik echt aan toe!'", "&4=0;25=3"
 
 "1=11;2=0;11>1;4=5", "*c3", "$n: 'Thorin, zou jij weten hoe ik aan medicijnen kan komen?'", "", "*c2"
 "Thorin denkt even na.", "*c9", "", "Thorin: 'Geen idee, dat zou je het beste in het dorp kunnen vragen."
-"  Ze hebben daar van alles. Het dorp ligt in het zuid oosten vanaf hier."
+"  Ze hebben daar van alles. Het dorp ligt in het zuidoosten vanaf hier."
 "  Eerst naar het oosten, dan naar het zuiden.'", "&4=0"
 
 "1=11;2=0;11>1;4=6", "*c3", "$n: 'Thorin, zou jij weten hoe ik aan vervoer kan komen?'", "", "*c2"
 "Thorin denkt even na.", "*c9", "", "Thorin: 'Hmm, de boer verderop heeft een paard."
-"Je zou kunnen vragen of je die mag lenen?'", "&4=0"
+"Je zou kunnen vragen of je hem mag lenen?'", "&4=0"
 
 "1=11;2=0;11>1;4=7", "*c3", "$n: 'Thorin, heb jij ook gehoord dat er een schat ergens is?'", ""
 "*c9", "Thorin: 'Mensen praten over mijn mijn! Zeker weten! Deze mijn is MIJN grote schat.'"
-"", "*c2", "Thorin heeft duidelijk het idee dat je iets anders bedoeld.", "&4=0"
+"", "*c2", "Thorin heeft duidelijk het idee dat je iets anders bedoelt.", "&4=0"
 
 "1=11;2=0;11=2;24=4;25=3", "", "*c2", "Thorin staat op, en loopt de mijn in."
 "Met nieuwe energie en een gerepareerde houweel, gaat hij op de edelstenen inhakken.", ""
@@ -878,7 +878,7 @@
 "1=11;2=0;11=1;4=2", "*c3", "$n: 'Pardon? Wie is een stom ding?'"
 "", "*c9", "Dwerg: 'Sorry, ik heb het niet tegen jou...", "&"
 "1=11;2=0;11=1;4>0;4<3", "*c9"
-"  Sorry van mijn manieren, ik heb gewoon pech!"
+"  Sorry voor mijn manieren, ik heb gewoon pech!"
 "  Mijn naam is Thorin, en wie mag jij wezen?'",""
 "*c3", "$n: 'Mijn naam is $n.'",""
 "*c9", "Thorin: 'Hallo $n. Sorry dat ik zo ruw deed."
@@ -908,14 +908,14 @@
 "De vrouw komt best vriendelijk en enthousiast over."
 "", "... is dit nu een heks?", "Je had haar heel anders voorgesteld.", ""
 "*c3", "$n: '...'", "", "*c13", "Eucalypta: 'Ha! je hoeft niet te schrikken hoor."
-"  Ik verwachte je al!'", "&"
+"  Ik verwachtte je al!'", "&"
 
 "1=12;12=0;2=0;4=2", "*c3", "$n: '...'", "*c2", ""
 "Je kan echt even niet op woorden komen.", ""
 "*c13", "Eucalypta: 'Mijn naam is Eucalypta. En jij bent zeker $n."
 "  En laat me raden, je komt hier voor een genezingsdrankje?'"
 "*c2", "", "Hoe weet ze al die dingen toch?", "", "*c13"
-"Eucalypta: 'Ja magie is een krachtig iets!'", "*c2"
+"Eucalypta: 'Ja, magie is een krachtig iets!'", "*c2"
 "", "In je ooghoek zie je een raaf wegvliegen uit het venster."
 "Je begint het vermoeden te krijgen dat ze ook een brief heeft gehad..."
 "&12=1;4=0;20=1"
@@ -949,9 +949,9 @@
 "  De krachten van planten en magie is vele malen groter dan dat van geld.'", ""
 "*c2", "Dit helpt je niet verder.", "&4=0"
 
-"1=12;12=1;2=0;4=4", "*c2", "Je geeft alle ingrediënten aan Eucalupta.", ""
-"*c13", "Eucalypta: 'Dank je! Wacht hier maar even, dan ga ik aan de slag'", ""
-"*c2", "Eucalypta gaat naar binnen, en sluit de deur."
+"1=12;12=1;2=0;4=4", "*c2", "Je geeft alle ingrediënten aan Eucalypta.", ""
+"*c13", "Eucalypta: 'Dank je! Wacht hier maar even, dan ga ik aan de slag.'", ""
+"*c2", "Eucalypta gaat naar binnen en sluit de deur."
 "&4=0;45=3;40=0;41=0;42=0;12=2;20=0;5=0"
 
 "2=0;1=12;12=2;5=0;4=1", "*c2", "Je staat even te wachten. Je hoort allerlei geluiden uit de hut komen."
@@ -961,13 +961,13 @@
 
 "2=0;1=12;12=2;5=1;4=1", "*c2", "Je loopt wat heen en weer terwijl je wacht."
 "Je hoort dat er in de hut een ketel begint te borrelen. Af en toe hoor je een kleine plons."
-"Blijkbaar wordt er nu echt gebrouwen."
+"Blijkbaar wordt er nu echt gebrouwd."
 "", "Je hoopt maar dat je geduld beloond wordt."
 "", "*c3", "$n: 'Nog eventjes wachten dan maar.'", "&5=2;4=0"
 
 "2=0;1=12;12=2;5=2;4=1", "*c2", "Je hoort de ketel borrelen. Er komt een rare geur uit de hut."
 "", "Je hoort geen voetstappen meer in de hut zelf."
-"", "*c3", "$n: 'Hmm dit duurt langer dan ik dacht...'", "&5=3;4=0"
+"", "*c3", "$n: 'Hmm, dit duurt langer dan ik dacht...'", "&5=3;4=0"
 
 "2=0;1=12;12=2;5=3;4=1", "*c3", "$n: 'Gaat alles goed?'"
 "*c2", "", "Je krijgt geen reactie. De geur uit de hut lijkt bedwelmend."
@@ -990,7 +990,7 @@
 
 "2=0;1=12;12=3;4=1;6=0;26<6", "*c2", "Je loopt naar Eucalypta. Ze ligt op de grond bij de ketel."
 "Je probeert haar wakker te maken."
-"*c3", "", "$n: 'Eucalypta, wakker worden.'", "", "*c2", "Je schud haar een beetje heen en weer."
+"*c3", "", "$n: 'Eucalypta, wakker worden.'", "", "*c2", "Je schudt haar een beetje heen en weer."
 "Ze lijkt nergens op te reageren.", "&4=0"
 
 "2=0;1=12;12=3;4=1;6=0;26=6", "*c2", "Je loopt naar Eucalypta. Ze ligt op de grond bij de ketel. Je probeert haar wakker te maken."
@@ -1002,7 +1002,7 @@
 "&4=0;26=7"
 
 "2=0;1=12;12=3;4=1;6=0;26>6", "*c3", "$n: 'Hoe gaat het met je?'"
-"", "*c13", "Eucalypta: 'Ja het gaat wel een beetje, ik ben vooral moe en draaierig.'"
+"", "*c13", "Eucalypta: 'Ja, het gaat wel een beetje, ik ben vooral moe en draaierig.'"
 "&20=0"
 
 "2=0;1=12;12=3;4=7;6=0;26>6", "*c3", "$n: 'Toen je het medicijn ging maken, wat ging er mis?'"
@@ -1012,7 +1012,7 @@
 
 "2=0;1=12;12=3;4=8;6=0;26<8", "*c2", "Je vertelt dat je Eucalypta op de grond aantrof en"
 "dat je met haar ketel een drankje hebt gemaakt om haar wakker te krijgen."
-"", "*c13", "Eucalypta: 'Dank je wel voor alles dat je hebt gedaan. Kan ik je nog helpen?'"
+"", "*c13", "Eucalypta: 'Dank je wel voor alles wat je hebt gedaan. Kan ik je nog helpen?'"
 "*c2", "", "Je legt uit dat je graag het medicijn wilt maken, maar dat er een vlek op het"
 "recept zit en je daardoor de spreuk niet weet die bij het recept hoort."
 "", "*c13", "Eucalypta: 'Goed dat ik die dan nog uit mijn hoofd weet! De spreuk is: Abracadabra ratjetoe!'"
@@ -1030,7 +1030,7 @@
 "2=0;1=12;12=3;4=0;6=2", "", "*c6"
 "  '100 dingen die je altijd al wilde weten over mossen, kruiden en paddenstoelen, maar nooit durfde te vragen'", ""
 "*c2", "en een opengeslagen boek, genaamd:", "*c6", ""
-"  'Toverdank recepten 101. Voor beginners tot meester-heksen'"
+"  'Toverdrankrecepten 101. Voor beginners tot meesterheksen'"
 "*c2", "", "In elk boek zijn boekenleggers gestoken."
 "&20=0"
 
@@ -1060,7 +1060,7 @@
 ' Oplosdrank
 "2=0;1=12;12=3;4=6;6=1;59=1;61=4;62=1;68=2;71=3", "*c2"
 "De ketel begint te borrelen. Er ontstaan kleine draaikolken in de ketel."
-"Opeens wordt het rustig en veranderd de kleur van de vloeistof in helder blauw."
+"Opeens wordt het rustig en verandert de kleur van de vloeistof in helder blauw."
 "Je pakt een flesje van een schap en vult het met de inhoud van de ketel."
 ""
 "Je hebt net het flesje vol en dan zie je ineens de hele ketel weer verkleuren naar helder doorzichtig."
@@ -1082,7 +1082,7 @@
 "2=0;1=12;12=3;4=8;6=1;59=1;36=3;70=2;67=1;71=1", "*c2"
 "Het water in de ketel gaat dansen. Buiten lijken ineens allerlei wolken zich samen te pakken."
 "Het begint ineens erg hard te regenen buiten."
-"Opeens klaart het weer op en veranderd de kleur van de vloeistof in helder geel."
+"Opeens klaart het weer op en verandert de kleur van de vloeistof in helder geel."
 "Je pakt een flesje van een schap en vult het met de inhoud van de ketel."
 ""
 "Je hebt net het flesje vol en dan zie je ineens de hele ketel weer verkleuren naar helder doorzichtig."
@@ -1092,7 +1092,7 @@
 ' Medicijn
 "2=0;1=12;12=3;4=9;6=1;59=1;60=1;62=2;61=4;45=4", "*c2"
 "Het water in de ketel bruist! Er komen ineens allemaal rare geluiden uit de ketel. Het lijkt wel muziek!"
-"Opeens wordt het stil en veranderd de kleur van de vloeistof in helder paars."
+"Opeens wordt het stil en verandert de kleur van de vloeistof in helder paars."
 "Je pakt een flesje van een schap en vult het met de inhoud van de ketel."
 ""
 "Je hebt net het flesje vol en dan zie je ineens de hele ketel weer verkleuren naar helder doorzichtig."
@@ -1133,7 +1133,7 @@
 "Er schieten allerlei stralen licht in alle kleuren uit de ketel."
 "Je voelt je ineens heel raar. Je wilt wat zeggen.", "", "*c3"
 "$n: 'Bêêêh'", "", "*c2", "Je loopt naar een spiegel. Oh, nee!! Je bent in een geit veranderd!"
-"*c7", "", "...Tien minuten later...", "", "*s3", "*c2", "Je verandert weer naar een mens."
+"*c7", "", "...Tien minuten later...", "", "*s3", "*c2", "Je verandert weer in een mens."
 "Oef, je hebt geluk!", "&"
 
 "2=0;1=12;12=3;6=1;59=5", "*c2"
@@ -1146,8 +1146,8 @@
 "*c7", "", "...Tien minuten later...", "", "*s3", "*c2", "Je verandert weer naar normale lengte."
 "Oef, je hebt geluk!", "&"
 
-"2=0;1=12;12=3;4>4;4<10;6=1;59>0;36=3", "", "De maansteen springt ineens uit de ketel en land op tafel.", "&36=4"
-"2=0;1=12;12=3;4>4;4<10;6=1;59>0;45=4", "", "De tand van de draak springt ineens uit de ketel en land op tafel.", "&45=3"
+"2=0;1=12;12=3;4>4;4<10;6=1;59>0;36=3", "", "De maansteen springt ineens uit de ketel en landt op tafel.", "&36=4"
+"2=0;1=12;12=3;4>4;4<10;6=1;59>0;45=4", "", "De tand van de draak springt ineens uit de ketel en landt op tafel.", "&45=3"
 
 ' Reset wijn
 "2=0;1=12;12=3;4>4;4<10;6=1;59>0;48=3", "&48=0"
@@ -1158,7 +1158,7 @@
 "2=0;1=12;12=3;4=3;6=2;51>0", "*c2", "Je kijkt in het receptenboek, dat open op de werkbank ligt.", "", "&6=4;4=0"
 
 "2=0;1=12;12=3;6=4;4=0;51=0", "*c6", "Bladzijde 1. -- Introductie --"
-"", "Heb je een toverketel 3000 aangeschaft maar je weet niet wat je er mee kunt?"
+"", "Heb je een Toverketel 3000 aangeschaft, maar je weet niet wat je er mee kunt?"
 "Dankzij dit boek wordt het maken van een toverdrank kinderlijk eenvoudig."
 "Alle recepten werken als volgt:", ""
 "  - Plaats alle ingrediënten beschreven in het recept in de ketel. De volgorde doet er niet toe."
@@ -1167,7 +1167,7 @@
 "  - Indien het recept gelukt is, dan is de ketel gevuld met de toverdrank."
 "  - Indien de spreuk mislukt omdat de ingrediënten niet kloppen, wordt de ketel automatisch"
 "    schoongemaakt en kun je het nog eens proberen."
-"  - Voor de 'meester-heks' recepten is een runesteen nodig om de ingrediënten toonbaar te maken."
+"  - Voor de 'meesterheks'-recepten is een runesteen nodig om de ingrediënten toonbaar te maken."
 "", "Veel plezier!", "&"
 
 "2=0;1=12;12=3;6=4;4=0;51=1", "*c6", "Bladzijde 10. -- Alleshelende medicinale drank --"
@@ -1196,10 +1196,10 @@
 
 "2=0;1=12;12=3;6=4;4=1;51=3;38!2", "*c2", "Je legt de runesteen op de bladzijde. Op een magische wijze veranderen alle onleesbare tekens in leesbare letters.", "", "&38=2;4=0"
 
-"2=0;1=12;12=3;6=4;4=0;51=3;38!2", "*c6", "Bladzijde 85. -- Vreemde talen vertaler --"
-"", "Op vakantie in Limburg of Friesland? Praat iemand in drie-letterige afkortingen?"
+"2=0;1=12;12=3;6=4;4=0;51=3;38!2", "*c6", "Bladzijde 85. -- Vreemde talenvertaler --"
+"", "Op vakantie in Limburg of Friesland? Praat iemand in drieletterige afkortingen?"
 "Laat diegene deze drank drinken en je kan hem/haar verstaan!", ""
-"Niveau: Meester-heks", ""
+"Niveau: Meesterheks", ""
 "Benodigdheden:"
 "  - ??????????"
 "  - ??????????"
@@ -1210,9 +1210,9 @@
 "", "*c2", "Hmm, ik denk dat ik iets nodig heb om deze bladzijde leesbaar te maken.", "&"
 
 "2=0;1=12;12=3;6=4;4=0;51=3;38=2", "*c6", "Bladzijde 85. -- Vreemde talen vertaler --"
-"", "Op vakantie in Limburg of Friesland? Praat iemand in drie-letterige afkortingen?"
+"", "Op vakantie in Limburg of Friesland? Praat iemand in drieletterige afkortingen?"
 "Met deze drank kan je iedereen verstaan!", ""
-"Niveau: Meester-heks", ""
+"Niveau: Meesterheks", ""
 "Benodigdheden:"
 "  - 1 plant met hartvormige bladeren"
 "  - 1 pluk Maanmos"
@@ -1238,7 +1238,7 @@
 ""
 "Let vooral of de plant ruitvormige bladeren heeft. Als de plant dit heeft, zijn ze zeer giftig en gevaarlijk! Niet aanraken!"
 ""
-"Locatie: Kruiden en planten groeien goed in een moeras achtige omgeving."
+"Locatie: Kruiden en planten groeien goed in een moerasachtige omgeving."
 "&"
 "2=0;1=12;12=3;6=3;4=0;5=0;56=0", "", "*c2", "Mooi! je weet nu alles over kruiden en planten!"
 "&56=1"
@@ -1366,14 +1366,14 @@
 "&4=0"
 
 "1=13;13=1;2=0;4=2;29<2", "*c3", "$n: 'Hoe zou ik uw paard kunnen vinden?'", "*c9"
-"", "Boer: 'Ik denk dat Teun gewoon erg geschrokken is. Water drinken wordt Teun rustig van, misschien is hij bij de rivier?'"
+"", "Boer: 'Ik denk dat Teun gewoon erg geschrokken is. Van water drinken wordt Teun rustig, misschien is hij bij de rivier?'"
 "&4=0;29=1;30=8"
 
 "1=13;13=1;2=0;4=2;29=2", "*c3", "$n: 'Ik heb Teun teruggevonden!'", "*c9"
 "", "Boer: 'Fantastisch!'", "", "*c2", "De boer gaat meteen naar Teun toe."
 "", "*c9", "Boer: 'Hoi lieve Teun, gaat het weer een beetje?'"
 "", "*c2", "De boer staat Teun te aaien.", "", "*c9"
-"Boer: 'Hey, heb je pijn jongen?'", "", "*c2"
+"Boer: 'Hee, heb je pijn, jongen?'", "", "*c2"
 "De boer inspecteert de poten van Teun"
 "", "*c9", "Boer: 'Ik zie het al, er mist een hoefijzer!"
 "  Zo kan Teun niet op het land werken, of een wagen trekken."
@@ -1410,8 +1410,8 @@
 
 "1=13;13>0;2=0;4=8;26>0;37=0", "*c3", "$n: 'Heb jij ook gehoord dat er een schat ergens is?'"
 "", "*c9", "Boer: 'Haha zeker, maar geloof er maar niets van hoor! Dat is allemaal onzin."
-"  Iemand vertelde mij ooit dat je een route moest lopen. NNWNNOZ."
-"  Geen idee wat dat betekend.'", ""
+"  Iemand vertelde mij ooit dat je een route moest lopen: NNWNNOZ."
+"  Geen idee wat dat betekent.'", ""
 "*c2", "Je vindt het erg interessant en maakt er een aantekening van."
 "&4=0;37=1;34+1"
 
@@ -1455,14 +1455,14 @@
 "1=14;14=1;2=0;4=0;44<2", "Een molensteen ligt naast de molen.", "&"
 "1=14;14=1;2=0;4=0", "Een lege wagen staat naast de andere kant van de molen."
 "Een oude molenaar is aan het werk om de wieken te repareren."
-"", "*c9", "Tjasker: 'Hey hallo daar!'", "&"
+"", "*c9", "Tjasker: 'Hee, hallo daar!'", "&"
 
 "1=14;14=2;2=0;4=0", "*c2", "Je bent bij de molen.", ""
 "De molen draait rustig in de wind.", "&"
 "1=14;14=2;2=0;4=0;44<2", "Een molensteen ligt naast de molen.", "&"
 "1=14;14=2;2=0;4=0;29!4", "Een lege wagen staat naast de andere kant van de molen.", "&"
 "1=14;14=2;2=0;4=0", "Tjasker zit op een bankje voor de molen te genieten van de zon."
-"", "*c9", "Tjasker: 'Hey hallo daar!'", "&"
+"", "*c9", "Tjasker: 'Hee, hallo daar!'", "&"
 
 "1=14;2=0;4=1", "*c3", "$n: 'Weet u hoe ik aan vervoer kan komen?'", "", "*c2"
 "De oude molenaar kijkt je aan."
@@ -1492,8 +1492,8 @@
 
 "1=14;14=2;2=0;4=7", "*c3", "$n: 'Hallo, ik heb graan van de boer gekregen. Zou je het kunnen malen voor mij?'", ""
 "*c9", "Tjasker: 'Tuurlijk! Dankzij jou werkt mijn molen weer! Dan kunnen we hem meteen testen!'", ""
-"*c2", "Samen laden jullie het graan uit en sluiten een molensteen aan op de graan toevoer. Na een tijdje komt er super fijn meel uit de molen.", "", "*c9"
-"Tjasker: 'Geweldig! De molen doet het weer! Dit is echt super goed meel! De bakker zou hier goud geld voor willen betalen! Je bent echt een bofkont.'"
+"*c2", "Samen laden jullie het graan uit en sluiten een molensteen aan op de graantoevoer. Na een tijdje komt er superfijn meel uit de molen.", "", "*c9"
+"Tjasker: 'Geweldig! De molen doet het weer! Dit is echt supergoed meel! De bakker zou hier goud geld voor willen betalen! Je bent echt een bofkont.'"
 "", "*c2", "Samen laden jullie het fijne meel weer op de wagen."
 "&4=0;33=2"
 
@@ -1501,7 +1501,7 @@
 "$n: 'Heb jij ook gehoord dat er een schat ergens is?'", "", "*c9"
 "Tjasker: 'Dat is echt de grootste onzin waar men over kletst tegenwoordig."
 "  Geloof er maar niets van hoor. Zeker van die smeden in het dorp gehoord?"
-"  Volgens mij geloven zij alles! Een schat route die begint bij de rivier?"
+"  Volgens mij geloven zij alles! Een schatroute die begint bij de rivier?"
 "  Ik ben vaak genoeg bij de rivier geweest, maar daar is echt niets.'"
 "*c2", "", "Je vindt het erg interessant, en maakt er een aantekening van."
 "&4=0;35=1;34+1"
@@ -1518,7 +1518,7 @@
 
 "1=14;14=1;2=0;4=4", "*c3", "$n: 'Wat was er ook alweer nodig om de molen te maken?'"
 "", "*c9", "Tjasker: 'Er moet een nieuw doek op een van de wieken komen.'", ""
-"*c3", "$n: 'Ok, bedankt.'"
+"*c3", "$n: 'Oké, bedankt.'"
 "&4=0"
 
 "1=14;14=1;2=0;4=3;32=1", "*c2", "Je klimt samen met de molenaar in de wieken van de molen."
@@ -1532,14 +1532,14 @@
 "Een molensteen ligt naast de molen."
 "Een lege wagen staat aan de andere kant van de molen."
 "Een oude molenaar lijkt aan het werk om proberen de wieken te repareren."
-"", "*c9", "Tjasker: 'Hey hallo daar! Zou je me kunnen helpen?"
+"", "*c9", "Tjasker: 'Hee, hallo daar! Zou je me kunnen helpen?"
 "  Deze oude molen moet gerepareerd worden. Maar ik heb geen goed doek!'"
-"", "*c3", "$n: 'Ik zal mijn ogen open houden of ik iets tegenkom voor u!'"
+"", "*c3", "$n: 'Ik zal mijn ogen openhouden of ik iets tegenkom voor u!'"
 "", "*c9", "Tjasker: 'Bedankt!'"
 "&14=1"
 
 "1=14;2=0;4=10;44=0", "*c2", "Je bekijkt de molensteen naast de molen. Het ziet er uit als een zware steen."
-"", "*c9", "Tjasker: 'Ach dat is een oudje, helemaal versleten'", "&4=0;44=1"
+"", "*c9", "Tjasker: 'Ach, dat is een oudje, helemaal versleten'", "&4=0;44=1"
 
 "1=14;2=0;4=10;44=1;7!2", "*c3", "$n: 'Zou ik de molensteen mogen hebben?'"
 "", "*c9", "Tjasker: 'Wat zou je met deze steen moeten? Hij is alleen maar zwaar en versleten.'", "&4=0"
@@ -1552,15 +1552,15 @@
 "Samen tillen jullie de versleten molensteen op de wagen.", "&44=2;4=0"
 
 '== 15. Smederij
-"1=15;15=1;2=0;4=0;45=0", "*c2", "Je bent in de smederij.", "", "*c13", "Lucy: 'Hey welkom!'", ""
+"1=15;15=1;2=0;4=0;45=0", "*c2", "Je bent in de smederij.", "", "*c13", "Lucy: 'Hee, welkom!'", ""
 "*c11", "Luuk: 'Wat kunnen we voor je doen?'"
 "&15=1"
 
-"1=15;15=1;2=0;4=0;45>0", "*c2", "Je bent in de smederij.", "", "*c13", "Lucy: 'Hey welkom, drakendoder!'", ""
+"1=15;15=1;2=0;4=0;45>0", "*c2", "Je bent in de smederij.", "", "*c13", "Lucy: 'Hee, welkom, drakendoder!'", ""
 "*c11", "Luuk: 'Wat kunnen we voor onze held doen vandaag?'"
 "&15=1"
 
-"1=15;15=0;2=0;4=0", "*c13", "Lucy: 'Hey welkom nieuwe klant!'", ""
+"1=15;15=0;2=0;4=0", "*c13", "Lucy: 'Hee, welkom nieuwe klant!'", ""
 "*c9", "Luk: 'Ik heet Luk, de hoefsmid. Luuk hier is onze goudsmid.'", ""
 "*c11", "Luuk: 'En onze wapensmid hier heet Lucy.'", ""
 "*c13", "Lucy: 'Wat kunnen we voor je doen?'"
@@ -1570,7 +1570,7 @@
 "*c3", "$n: 'Weten jullie hoe ik aan medicijnen zou kunnen komen?'", ""
 "*c9", "Luk: 'Ik zelf niet, Ik ben nooit ziek.'", ""
 "*c13", "Lucy: 'Hah grote aansteller! Je bent vaak genoeg ziek.'", ""
-"*c11", "Luuk: 'En dan smeek je als een baby aan de bakker voor medicijnen!'", ""
+"*c11", "Luuk: 'En dan smeek je als een baby bij de bakker om medicijnen!'", ""
 "*c9", "Luk: 'Niet waar!'", "", "*c2", "Luk krijgt een rood hoofd."
 "&4=0"
 
@@ -1602,7 +1602,7 @@
 "*c11", "Luuk: 'Geen probleem, je moet alleen wel zelf voor het materiaal gaan zorgen bijvoorbeeld met een edelsteen en wat goud zou ik een mooie halsketting kunnen maken.'", "&20=0"
 
 "1=15;2=0;4=10", "*c3", "$n: 'Wat weten jullie van het monster in het woud?'", ""
-"*c13", "Lucy: 'Oei dat is een gevaarlijke jongen. Hij heeft een lange staart.'", ""
+"*c13", "Lucy: 'Oei, dat is een gevaarlijke jongen. Hij heeft een lange staart.'", ""
 "*c9", "Luk: 'Kan ontzettend hard brullen.'", ""
 "*c11", "Luuk: 'En we hebben geen idee wat het eet, misschien moet hij nog eten, brrr.'", ""
 "&4=0"
@@ -1613,7 +1613,7 @@
 
 "1=15;2=0;4=5", "*c2", "Je kijkt rond in de smederij. Overal staan spullen met een prijskaartje."
 "Je besluit om ze van dichter bij te bekijken. Ondertussen beginnen de smeden met elkaar te praten.", ""
-"*c13", "Lucy: 'Nee daar geloof ik echt niets van.'", ""
+"*c13", "Lucy: 'Nee, daar geloof ik echt niets van.'", ""
 "*c9", "Luk: 'Het is echt waar. Er ligt een schat verborgen hier in de buurt.'", ""
 "*c13", "Lucy: 'Van wie dan?'", "", "*c11", "Luuk: 'Ik heb het ook gehoord. Er moet daar goud verborgen zijn.'", ""
 "*c13", "Lucy: 'Ssst! Niet zo hard praten, we hebben klanten in de winkel.'", ""
@@ -1637,8 +1637,8 @@
 "1=15;2=0;4=20;22<99", "", "*c2", "Je kijkt in je tas, maar je hebt niet genoeg geld bij je.", "&4=30"
 "1=15;2=0;4=20;22>98", "", "*c2", "Je kijkt in je tas, je hebt genoeg geld bij je.", "&4=31"
 
-"1=15;2=0;4=30", "", "*c3", "$n: 'Sorry ik heb niet genoeg geld bij me.'", ""
-"*c13", "Lucy: 'Ok, kijk gerust even verder.'", "&4=5"
+"1=15;2=0;4=30", "", "*c3", "$n: 'Sorry, ik heb niet genoeg geld bij me.'", ""
+"*c13", "Lucy: 'Oké, kijk gerust even verder.'", "&4=5"
 
 "1=15;2=0;4=41", "*c3", "$n: 'Alstublieft, 99 geldstukken.'", ""
 "*c13", "Lucy: 'Dank je! Veel plezier met het zwaard!'", ""
@@ -1646,10 +1646,10 @@
 "&4=5;27=2;22-99"
 
 "1=15;2=0;4=9", "*c3", "$n: 'Hmm, misschien een andere keer.'", ""
-"*c9", "Luk: 'Ok, prima.'", "*c2", "", "Luk loopt weer terug naar zijn werkplek.", "&4=0"
+"*c9", "Luk: 'Oké, prima.'", "*c2", "", "Luk loopt weer terug naar zijn werkplek.", "&4=0"
 
 "1=15;2=0;4=10", "*c3", "$n: 'Hmm, misschien een andere keer.'", ""
-"*c11", "Luuk: 'Ok, prima.'", "*c2", "", "Luuk loopt weer terug naar zijn werkplek.", "&4=0"
+"*c11", "Luuk: 'Oké, prima.'", "*c2", "", "Luuk loopt weer terug naar zijn werkplek.", "&4=0"
 
 "1=15;2=0;4=8", "*c3", "$n: 'Alstublieft, 2 geldstukken.'", ""
 "*c2", "Luk gaat aan het werk. Teun laat kalm zijn hoeven nakijken."
@@ -1701,7 +1701,7 @@
 "$n: 'Monster? Waar heeft u het over?'", "", "*c9"
 "Gerst: 'Dat ... beest ... in die toren ... in het woud.'", ""
 "*c2", "De bakker blijft snikken.", "*c9", ""
-"Gerst: 'Sinds 2 dagen komt er wild gebrul uit het woud. En sinds 2 dagen is ook mijn dochter vermist!  ... Eerst de brand bij de boer. En nu heeft hij ook mijn lieve Bloem te pakken!'"
+"Gerst: 'Sinds 2 dagen komt er wild gebrul uit het woud. En sinds twee dagen is ook mijn dochter vermist!  ... Eerst de brand bij de boer. En nu heeft hij ook mijn lieve Bloem te pakken!'"
 "&26=1;20=1;4=0"
 
 "1=16;16=1;4=8;2=0", "*c3"
@@ -1770,7 +1770,7 @@
 
 "1=16;16=2;2=0;4=2", "*c3"
 "$n: 'Hmm, misschien toch een andere keer.'", "", "*c9"
-"Gerst: 'Ok, prima.'", "&16=1;4=0"
+"Gerst: 'Oké, prima.'", "&16=1;4=0"
 
 "1=16;16=2;2=0;4=1", "*c3"
 "$n: 'Alstublieft, 2 geldstukken.'", "", "*c9"
@@ -1778,13 +1778,13 @@
 "&16=1;4=0;25=2;22-2"
 
 "1=16;16=1;2=0;4=9;52=2", "*c13"
-"Bloem: 'Hey, hoe gaat het met onze vriend?'", ""
+"Bloem: 'Hee, hoe gaat het met onze vriend?'", ""
 "*c3", "$n: 'Goed, hij is heel goed opgeknapt.'"
 "", "*c13", "Bloem: 'Dat is fijn om te horen!'", "&"
 
 "1=16;16=1;2=0;4=9;52<2", "*c13"
-"Bloem: 'Hey, hoe gaat het met onze vriend?'", ""
-"*c3", "$n: 'Goed, hij is alleen een beetje suf op moment.'"
+"Bloem: 'Hee, hoe gaat het met onze vriend?'", ""
+"*c3", "$n: 'Goed, hij is alleen een beetje suf op dit moment.'"
 "", "*c13", "Bloem: 'Misschien heeft hij wel honger.'", "&"
 
 "1=16;16=1;2=0;4=9;52=0", "*c13"
@@ -1795,18 +1795,18 @@
 "1=16;16=1;2=0;4=9", "&4=0"
 
 ' == 17. Toren
-"1=17;2=0;17=0;4=0", "*c2", "", "Aan de rechterkant van de toren is een houten lift constructie."
+"1=17;2=0;17=0;4=0", "*c2", "", "Aan de rechterkant van de toren is een houten liftconstructie."
 "Aan de voorkant van de toren is een grote zware deur.", "&20=0"
 
-"1=17;2=0;17=0;4=1", "*c2", "Je loopt naar de lift constructie. Het ziet er naar uit dat het plateau van de lift boven is. Je kan er vanaf deze kant niet op. Ook zie je geen manier om hem vanaf beneden te laten zakken.", ""
-"Achter de lift constructie zie je ineens een luik richting een kelder."
+"1=17;2=0;17=0;4=1", "*c2", "Je loopt naar de liftconstructie. Het ziet er naar uit dat het plateau van de lift boven is. Je kan er vanaf deze kant niet op. Ook zie je geen manier om hem vanaf beneden te laten zakken.", ""
+"Achter de liftconstructie zie je ineens een luik richting een kelder."
 "Maar die zit op slot.", "&"
 
 "1=17;2=0;17=0;4=2", "*c2", "Je duwt tegen de deur. Hij piept en kraakt vreselijk. Er komt beweging in."
 "Je opent hem ver genoeg zodat je er tussendoor kan. Het is binnen in de toren erg donker."
 "*s2", "", "*c12", "<Ggrrooaaaaarrrrh!!!!!>", "", "*c2"
 "Je schrikt en duikt opzij. Het geluid klinkt erg dichtbij. Toch lijkt het van boven in de toren te komen. Je ligt even stil in de duisternis en staat dan op."
-"Je ogen beginnen te wennen aan het donker. Langzaam ontwaard zich een wenteltrap naar boven.", "&"
+"Je ogen beginnen te wennen aan het donker. Langzaam ontwaart zich een wenteltrap naar boven.", "&"
 
 "1=17;2=0;17=0;4=3", "*c2", "Je trilt van angst. Je hebt geen idee wat je aan gaat treffen. Het monster klinkt niet vriendelijk."
 "Je pakt je zwaard stevig vast en je sluipt langzaam trede voor trede de trap op. Je tuurt omhoog om iets zien."
@@ -1843,7 +1843,7 @@
 "*c13", "Bloem: 'Mij redden? Waarom? Ik hoef niet gered te worden. Ik ben hier zelf naar toe gegaan. We moeten de draak redden!'", "&"
 
 "1=17;2=0;17=2;4=1;45=0", "*c13", "Bloem: 'Hoi $n, kom je me helpen met de kiespijn?'", "&20=0"
-"1=17;2=0;17=2;4=1;45!0", "*c13", "Bloem: 'Woohoo! Dat was ongeloofelijk!'", "&20=0"
+"1=17;2=0;17=2;4=1;45!0", "*c13", "Bloem: 'Woehoe! Dat was ongelofelijk!'", "&20=0"
 
 "1=17;2=0;17=1;4=2", "*c3", "$n: 'Kijk uit! Er zit daar een draak!'"
 "", "*c13", "Bloem: 'Ha, dat weet ik ook wel, ik ben zelf naar hem toegegaan. Hij is echt niet gevaarlijk hoor. Wie ben jij eigenlijk?'"
@@ -1888,10 +1888,10 @@
 "  een echte ridder kon betalen.'", "&4=1"
 
 "1=17;2=0;17=2;4=3;45!0", "*c3", "$n: 'Je moet meekomen, je vader is hartstikke ongerust!'"
-"", "*c13", "Bloem: 'Ja, je hebt gelijk. Die tand trekken was echt super! Mijn carriere"
+"", "*c13", "Bloem: 'Ja, je hebt gelijk. Die tand trekken was echt super! Mijn carrière"
 "  voor tandarts maakt zo wel een geweldige start, denk je niet?'"
 "", "Bloem: 'Nou dan ga ik nu wel naar de bakkerij. Zie ik je later misschien daar weer?'"
-"", "*c2", "Bloem geeft je jou en de draak een knuffel en gaat de toren uit richting de bakkerij.", "&4=0;46=1;20=1"
+"", "*c2", "Bloem geeft jou en de draak een knuffel en gaat de toren uit richting de bakkerij.", "&4=0;46=1;20=1"
 
 "1=17;2=0;17=2;4=4", "*c3", "$n: 'Wat weet je van deze draak?'"
 "", "*c13", "Bloem: 'Ow best wel wat eigenlijk. Deze draak is een Dins.'"
@@ -1914,7 +1914,7 @@
 "", "*c3", "$n: 'Je hebt natuurlijk al een paar dagen niets gegeten.'"
 "&"
 
-"1=17;2=0;17=2;4=10;45=0", "*c2", "Je loopt voorzictig naar de draak. Hij ziet er verdrietig uit. Dikke tranen staan op zijn wangen."
+"1=17;2=0;17=2;4=10;45=0", "*c2", "Je loopt voorzichtig naar de draak. Hij ziet er verdrietig uit. Dikke tranen staan op zijn wangen."
 "", "*c12", "<GGgrrroaaaarrrrggh!>", "", "*c2"
 "De draak ligt met zijn mond open. Je ziet een kapotte tand waar een stuk van een hoefijzer in steekt. Dat moet ook wel erg veel pijn doen."
 "&6=1"
@@ -1927,15 +1927,15 @@
 "1=17;2=0;17=2;6=1;31=2", "*c2", "Een touw loopt van de tand van de draak de kamer in.", "&"
 
 "1=17;2=0;17=2;4=5;45=0", "*c3", "$n: 'Ik ga kijken wat ik kan doen.'"
-"", "*c13", "Bloem: 'Ok.'", "&4=0;20=1"
+"", "*c13", "Bloem: 'Oké.'", "&4=0;20=1"
 
 "1=17;2=0;17=2;4=5;45!0", "*c3", "$n: 'Tot later'"
-"", "*c13", "Bloem: 'Ok.'", "&4=0;20=1"
+"", "*c13", "Bloem: 'Oké.'", "&4=0;20=1"
 
 "1=17;2=0;17=2;4=8", "*c3", "$n: 'Zou je me kunnen helpen uitladen?'"
 "", "*c13", "Bloem: 'Tuurlijk, wat heb je meegenomen?'", "", "*c3"
 "$n: 'Ik heb een oude molensteen meegenomen, maar hij is te zwaar om alleen te tillen.'"
-"*c13", "", "Bloem: 'Ok mooi! Volgens mij hebben we allebei het zelfde plan. Ik neem de lift wel. Zie ik je beneden?'"
+"*c13", "", "Bloem: 'Oké, mooi! Volgens mij hebben we allebei het zelfde plan. Ik neem de lift wel. Zie ik je beneden?'"
 "&4=0;44=3;20=1"
 
 "1=17;2=0;44=3;17=2;4=6", "*c3", "$n: 'Bloem gaat zo met de lift naar beneden. Ik kan maar beter de trap nemen.'", "&4=0"
@@ -1983,7 +1983,7 @@
 "&43=2;31=5;45=1"
 
 "1=17;2=0;17=2;4=16;6=1", "*c2", "Je pakt de appeltaart uit je tas."
-"De draak ruikt het meteen. Hij kijkt je heel hongerig aan. Je bied de taart aan."
+"De draak ruikt het meteen. Hij kijkt je heel hongerig aan. Je biedt de taart aan."
 "", "*c14", "<slobber!>", "*c2", ""
 "De draak eet zo de taart op.", "&4=0;52=2"
 
@@ -2013,18 +2013,18 @@
 
 "1=17;2=0;17=2;4=18;6=1", "*c2", "Je pakt het flesje 'vertaler' en giet de inhoud in de bek van de draak."
 "", "*c14", "<Gulp>", "", "*c2", "...", "*s2"
-"*c9", "Dins: 'Getver dat is vies!!'"
+"*c9", "Dins: 'Getver, dat is vies!!'"
 "", "*c3", "$n: 'Hee, kan je mij verstaan?'"
-"", "*c2", "De draak kijkt ineens verbaast op."
-"", "*c9", "Dins: 'Whooaa ik kan jou verstaan!'", "&4=0;33=5"
+"", "*c2", "De draak kijkt ineens verbaasd op."
+"", "*c9", "Dins: 'Whooaa, ik kan jou verstaan!'", "&4=0;33=5"
 
 "1=17;2=0;17=2;4=19;6=1", "*c3", "$n: 'Hoe gaat het?'"
-"", "*c9", "Dins: 'Ja gaat wel. Bedankt dat je me geholpen hebt met de tand!", "&"
+"", "*c9", "Dins: 'Ja, gaat wel. Bedankt dat je me geholpen hebt met de tand!", "&"
 "1=17;2=0;17=2;4=19;6=1;52=2", "  De appeltaart die je gegeven hebt was ook super lekker.'", "&"
 "1=17;2=0;17=2;4=19;6=1;52<2", "  Ik heb alleen best honger, ik heb al een tijdje niet gegeten.'", "&"
 
 "1=17;2=0;17=2;4=20;6=1;5=0", "*c3", "$n: 'Wie ben je?'"
-"", "*c9", "Dins: 'Ik ben een Dins. Ik kom uit een ver land. Ik ben hier om een tussenstop van mijn reis te maken. Ik had erg honger en de boer hier in de buurt had zulke lekkere appels! Helaas schrok het paard daar van mij en raakte mij ongelukkig met zijn hoef! Zo dat deed echt heel erg veel pijn!'"
+"", "*c9", "Dins: 'Ik ben een Dins. Ik kom uit een ver land. Ik ben hier om een tussenstop van mijn reis te maken. Ik had erg honger en de boer hier in de buurt had zulke lekkere appels! Helaas schrok het paard daar van mij en raakte mij ongelukkig met zijn hoef! Zo, dat deed echt heel erg veel pijn!'"
 "&"
 "1=17;2=0;17=2;4=20;6=1;5=0;53=0", "&53=1"
 
@@ -2053,13 +2053,13 @@
 "", "*c9", "Dins: 'Ja dat zou mooi zijn... Helaas kan je niet op mijn rug mee.'"
 "", "*c2", "Je haalt het schilderij uit je tas en laat het aan de draak zien."
 "", "*c3", "$n: 'Kijk, hier zie je ook een persoon op een draak vliegen'"
-"", "*c9", "Dins: 'Whoa ik ken die draak! Althans, ik heb er verhalen over gehoord... Ok laten we dat proberen! En laten we gaan!'"
+"", "*c9", "Dins: 'Whoa, ik ken die draak! Althans, ik heb er verhalen over gehoord... Oké, laten we dat proberen! En laten we gaan!'"
 "", "*c9", "Dins: 'Heb je een zadel?'", "&"
 "1=17;2=0;17=2;4=20;6=1;5=2;53=4", "&53=5"
 
 "1=17;2=0;17=2;4=20;6=1;5=3"
 "*c3", "$n: 'Ik moet eerst medicijnen bezorgen bij de koning.'"
-"", "*c9", "Dins: 'Ok geen probleem, dan doen we dat toch even?'"
+"", "*c9", "Dins: 'Oké, geen probleem, dan doen we dat toch even?'"
 "&"
 
 "1=17;2=0;17=2;4=20;6=1;5=3;26<9", "", "*c3"
@@ -2146,11 +2146,11 @@
 "1=19;4=2;2=0", "*c2", "Je loopt naar het zadel dat aan de muur hangt. Als je dichterbij komt, lijkt het zadel eigenlijk absurd groot. Zou dit voor een olifant zijn? Het is in ieder geval te groot voor een paard.", "", "Je besluit het grote zadel maar mee te nemen."
 "&4=0;49=1"
 
-"1=19;4=3;2=0;48=0", "*c2", "Loopt naar het wijnvat om er wat wijn uit te halen."
-"", "*c3", "$n: 'Hmm ik heb niets om het in te doen.'"
+"1=19;4=3;2=0;48=0", "*c2", "Je loopt naar het wijnvat om er wat wijn uit te halen."
+"", "*c3", "$n: 'Hmm, ik heb niets om het in te doen.'"
 "&4=0"
 
-"1=19;4=3;2=0;48=1", "*c2", "Loopt naar het wijnvat om er wat wijn uit te halen."
+"1=19;4=3;2=0;48=1", "*c2", "Je loopt naar het wijnvat om er wat wijn uit te halen."
 "Je gebruikt je beker en vult het met wijn."
 "&4=0;48=2"
 
@@ -2174,7 +2174,7 @@
 "2=2;16>0;1!6", "Bakkerij", "2=0;4=0;19=2;1=16;3=5"
 "2=2;15>0;1!6", "Smederij", "2=0;4=0;19=2;1=15;3=6"
 "2=2;14>0;1!14", "Molen", "2=0;4=0;19=2;1=14;3=6"
-"2=2;12>0;1!12", "Hut van de Heks", "2=0;4=0;19=2;1=12;3=5"
+"2=2;12>0;1!12", "Hut van de heks", "2=0;4=0;19=2;1=12;3=5"
 "2=2;17>1;1!18", "Toren van de draak", "2=0;4=0;19=2;1=18;3=6"
 "2=2;19>0", "Afstappen", "2=0;4=0"
 
@@ -2264,9 +2264,9 @@
 
 '== 8. Rivier acties
 "2=0;1=8;4=0;19=1;29=3;30=8;k=p;c=8", "Spring op paard", "2=2"
-"2=0;1=8;4=0;19=1;29>1;30=8", "Laat teun water drinken", "19=0"
+"2=0;1=8;4=0;19=1;29>1;30=8", "Laat Teun water drinken", "19=0"
 "2=0;1=8;29=1", "Probeer paard te benaderen", "4=1"
-"2=0;1=8;29>1;19=0;30=8", "Haal teun op", "4=3"
+"2=0;1=8;29>1;19=0;30=8", "Haal Teun op", "4=3"
 "2=0;1=8;32=0", "Probeer stof te pakken", "4=2"
 "2=0;1=8;k=n", "Ga naar het noorden, richting het dorp", "1=6;3=1"
 
@@ -2312,7 +2312,7 @@
 "2=0;1=11;4=0;19=1;29=3;k=p;c=8", "Spring op paard", "2=2"
 "2=0;1=11;11=1;4=0", "Zeg: 'Je bent zelf een stom ding!'", "4=1"
 "2=0;1=11;11=1;4=0", "Zeg: 'Pardon?'", "4=2"
-"2=0;1=11;11=1;4=0", "Zeg: 'Ok ik ga weer.'", "1=3;3=5"
+"2=0;1=11;11=1;4=0", "Zeg: 'Oké, ik ga weer.'", "1=3;3=5"
 
 "2=0;1=11;11=2;4=0", "Zeg: 'Hoe kan ik je helpen?'", "4=1"
 "2=0;1=11;11=2;4=0;24=0", "Zeg: 'Zou ik je houweel mogen hebben?'", "4=2"
@@ -2325,7 +2325,7 @@
 "2=0;1=11;11=2;4=0", "Zeg: 'Sorry, ik moet er weer vandoor'", "1=3;3=5"
 
 "2=0;1=11;11=3;4=0;28=0", "Raap edelsteen op", "4=1"
-"2=0;1=11;11=3;4=0", "Zeg: 'Ok, ik ben er weer vandoor'", "1=3;3=5"
+"2=0;1=11;11=3;4=0", "Zeg: 'Oké, ik ben er weer vandoor'", "1=3;3=5"
 
 '== 12. Hut
 "2=0;1=12;12=0;4=0", "Zeg: 'euhm...'", "4=1"
@@ -2401,7 +2401,7 @@
 "2=0;1=12;12=3;6=1;4=4;26=8", "Zeg: `...ratjetoe!'", "4=9"
 
 "2=0;1=12;12=3;6=2;4=0", "Lees de almanak", "4=2;5=0"
-"2=0;1=12;12=3;6=2;4=0", "Lees het recepten boek", "4=3;5=0;20=1"
+"2=0;1=12;12=3;6=2;4=0", "Lees het receptenboek", "4=3;5=0;20=1"
 "2=0;1=12;12=3;6=2;4=0", "Stap weg bij de boeken", "4=1;20=1"
 
 "2=0;1=12;12=3;6=3;5>0", "Vorige boekenlegger", "5-1"
@@ -2562,7 +2562,7 @@
 ' Generale inventory acties
 "2=1;24=1;21=2", "Repareer houweel met stok uit bos", "4=1"
 "2=1;25=2", "Eet koeken", "4=2"
-"2=1;34>1", "Bekijk schat aantekeningen", "4=3"
+"2=1;34>1", "Bekijk schataantekeningen", "4=3"
 "2=1;36=2;34=4;1=8", "Wacht tot het donker is", "4=4;2=0"
 "2=1;26>3", "Bekijk ingrediëntenlijst voor medicijn", "4=4"
 "2=1;38=1;1=12;6=4;51=3", "Leg de runesteen op de bladzijde", "4=1;2=0"
