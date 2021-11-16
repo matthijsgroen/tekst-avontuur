@@ -12,6 +12,20 @@ const S = "speciaal";
 const A = "anders";
 
 describe("Dyslexie", () => {
+  const mooi = [
+    [R, "m"],
+    [O, "ooi"],
+  ];
+  const bureau = [
+    [R, "b"],
+    [L, "u"],
+    [R, "r"],
+    [O, "eau"],
+  ];
+  const schreeuw = [
+    [R, "schr"],
+    [W, "eeuw"],
+  ];
   const tevreden = [
     [R, "t"],
     [E, "e"],
@@ -20,7 +34,7 @@ describe("Dyslexie", () => {
     [L, "e"],
     [R, "d"],
     [E, "e"],
-    [R, "n"]
+    [R, "n"],
   ];
   const teruggevonden = [
     [R, "t"],
@@ -35,7 +49,7 @@ describe("Dyslexie", () => {
     [R, "n"],
     [R, "d"],
     [E, "e"],
-    [R, "n"]
+    [R, "n"],
   ];
   const boerderij = [
     [R, "b"],
@@ -44,7 +58,7 @@ describe("Dyslexie", () => {
     [R, "d"],
     [E, "e"],
     [R, "r"],
-    [T, "ij"]
+    [T, "ij"],
   ];
   const vertellen = [
     [R, "v"],
@@ -55,15 +69,56 @@ describe("Dyslexie", () => {
     [R, "l"],
     [R, "l"],
     [E, "e"],
-    [R, "n"]
+    [R, "n"],
   ];
-  const veren = [[R, "v"], [L, "e"], [R, "r"], [E, "e"], [R, "n"]];
-  const beren = [[R, "b"], [L, "e"], [R, "r"], [E, "e"], [R, "n"]];
-  const open = [[L, "o"], [R, "p"], [E, "e"], [R, "n"]];
-  const gedoe = [[R, "g"], [E, "e"], [R, "d"], [T, "oe"]];
-  const getver = [[R, "g"], [K, "e"], [R, "t"], [R, "v"], [E, "e"], [R, "r"]];
-  const geluk = [[R, "g"], [E, "e"], [R, "l"], [K, "u"], [R, "k"]];
-  const eten = [[L, "e"], [R, "t"], [E, "e"], [R, "n"], [A, "."]];
+  const veren = [
+    [R, "v"],
+    [L, "e"],
+    [R, "r"],
+    [E, "e"],
+    [R, "n"],
+  ];
+  const beren = [
+    [R, "b"],
+    [L, "e"],
+    [R, "r"],
+    [E, "e"],
+    [R, "n"],
+  ];
+  const open = [
+    [L, "o"],
+    [R, "p"],
+    [E, "e"],
+    [R, "n"],
+  ];
+  const gedoe = [
+    [R, "g"],
+    [E, "e"],
+    [R, "d"],
+    [T, "oe"],
+  ];
+  const getver = [
+    [R, "g"],
+    [K, "e"],
+    [R, "t"],
+    [R, "v"],
+    [E, "e"],
+    [R, "r"],
+  ];
+  const geluk = [
+    [R, "g"],
+    [E, "e"],
+    [R, "l"],
+    [K, "u"],
+    [R, "k"],
+  ];
+  const eten = [
+    [L, "e"],
+    [R, "t"],
+    [E, "e"],
+    [R, "n"],
+    [A, "."],
+  ];
   const dromerige = [
     [R, "d"],
     [R, "r"],
@@ -73,7 +128,7 @@ describe("Dyslexie", () => {
     [R, "r"],
     [E, "i"],
     [R, "g"],
-    [E, "e"]
+    [E, "e"],
   ];
   const medicijnen = [
     [R, "m"],
@@ -84,7 +139,7 @@ describe("Dyslexie", () => {
     [T, "ij"],
     [R, "n"],
     [E, "e"],
-    [R, "n"]
+    [R, "n"],
   ];
   const medebewoner = [
     [R, "m"],
@@ -97,7 +152,7 @@ describe("Dyslexie", () => {
     [L, "o"],
     [R, "n"],
     [E, "e"],
-    [R, "r"]
+    [R, "r"],
   ];
   const medaille = [
     [R, "m"],
@@ -107,12 +162,36 @@ describe("Dyslexie", () => {
     [K, "i"],
     [R, "l"],
     [R, "l"],
-    [E, "e"]
+    [E, "e"],
   ];
-  const meteen = [[R, "m"], [E, "e"], [R, "t"], [L, "ee"], [R, "n"]];
-  const meten = [[R, "m"], [L, "e"], [R, "t"], [E, "e"], [R, "n"]];
-  const messen = [[R, "m"], [K, "e"], [R, "s"], [R, "s"], [E, "e"], [R, "n"]];
-  const snel = [[R, "s"], [R, "n"], [K, "e"], [R, "l"]];
+  const meteen = [
+    [R, "m"],
+    [E, "e"],
+    [R, "t"],
+    [L, "ee"],
+    [R, "n"],
+  ];
+  const meten = [
+    [R, "m"],
+    [L, "e"],
+    [R, "t"],
+    [E, "e"],
+    [R, "n"],
+  ];
+  const messen = [
+    [R, "m"],
+    [K, "e"],
+    [R, "s"],
+    [R, "s"],
+    [E, "e"],
+    [R, "n"],
+  ];
+  const snel = [
+    [R, "s"],
+    [R, "n"],
+    [K, "e"],
+    [R, "l"],
+  ];
   const avontuur = [
     [L, "A"],
     [R, "v"],
@@ -120,7 +199,7 @@ describe("Dyslexie", () => {
     [R, "n"],
     [R, "t"],
     [L, "uu"],
-    [R, "r"]
+    [R, "r"],
   ];
   const repareren = [
     [R, "r"],
@@ -131,7 +210,7 @@ describe("Dyslexie", () => {
     [L, "e"],
     [R, "r"],
     [E, "e"],
-    [R, "n"]
+    [R, "n"],
   ];
   const verwerkte = [
     [R, "v"],
@@ -142,9 +221,13 @@ describe("Dyslexie", () => {
     [R, "r"],
     [R, "k"],
     [R, "t"],
-    [E, "e"]
+    [E, "e"],
   ];
-  const gaaaaap = [[R, "g"], [L, "aaaaa"], [R, "p"]];
+  const gaaaaap = [
+    [R, "g"],
+    [L, "aaaaa"],
+    [R, "p"],
+  ];
   const molenaar = [
     [R, "m"],
     [L, "o"],
@@ -152,7 +235,7 @@ describe("Dyslexie", () => {
     [E, "e"],
     [R, "n"],
     [L, "aa"],
-    [R, "r"]
+    [R, "r"],
   ];
   const molensteen = [
     [R, "m"],
@@ -163,10 +246,24 @@ describe("Dyslexie", () => {
     [R, "s"],
     [R, "t"],
     [L, "ee"],
-    [R, "n"]
+    [R, "n"],
   ];
-  const overal = [[L, "O"], [R, "v"], [E, "e"], [R, "r"], [K, "a"], [R, "l"]];
-  const heuvels = [[R, "h"], [T, "eu"], [R, "v"], [E, "e"], [R, "l"], [R, "s"]];
+  const overal = [
+    [L, "O"],
+    [R, "v"],
+    [E, "e"],
+    [R, "r"],
+    [K, "a"],
+    [R, "l"],
+  ];
+  const heuvels = [
+    [R, "h"],
+    [T, "eu"],
+    [R, "v"],
+    [E, "e"],
+    [R, "l"],
+    [R, "s"],
+  ];
   const omgeving = [
     [K, "o"],
     [R, "m"],
@@ -174,7 +271,7 @@ describe("Dyslexie", () => {
     [L, "e"],
     [R, "v"],
     [K, "i"],
-    [R, "ng"]
+    [R, "ng"],
   ];
   const omgetikt = [
     [K, "o"],
@@ -184,7 +281,7 @@ describe("Dyslexie", () => {
     [R, "t"],
     [K, "i"],
     [R, "k"],
-    [R, "t"]
+    [R, "t"],
   ];
   const vergelijk = [
     [R, "v"],
@@ -194,7 +291,7 @@ describe("Dyslexie", () => {
     [E, "e"],
     [R, "l"],
     [T, "ij"],
-    [R, "k"]
+    [R, "k"],
   ];
   const ongelijk = [
     [K, "o"],
@@ -203,9 +300,15 @@ describe("Dyslexie", () => {
     [E, "e"],
     [R, "l"],
     [T, "ij"],
-    [R, "k"]
+    [R, "k"],
   ];
-  const gelijk = [[R, "g"], [E, "e"], [R, "l"], [T, "ij"], [R, "k"]];
+  const gelijk = [
+    [R, "g"],
+    [E, "e"],
+    [R, "l"],
+    [T, "ij"],
+    [R, "k"],
+  ];
   const ongeldig = [
     [K, "o"],
     [R, "n"],
@@ -214,7 +317,7 @@ describe("Dyslexie", () => {
     [R, "l"],
     [R, "d"],
     [E, "i"],
-    [R, "g"]
+    [R, "g"],
   ];
   const onzeker = [
     [K, "o"],
@@ -223,7 +326,7 @@ describe("Dyslexie", () => {
     [L, "e"],
     [R, "k"],
     [E, "e"],
-    [R, "r"]
+    [R, "r"],
   ];
   const onmogelijk = [
     [K, "o"],
@@ -234,7 +337,7 @@ describe("Dyslexie", () => {
     [E, "e"],
     [R, "l"],
     [E, "ij"],
-    [R, "k"]
+    [R, "k"],
   ];
   const mogelijk = [
     [R, "m"],
@@ -243,7 +346,7 @@ describe("Dyslexie", () => {
     [E, "e"],
     [R, "l"],
     [E, "ij"],
-    [R, "k"]
+    [R, "k"],
   ];
   const speciale = [
     [R, "S"],
@@ -253,7 +356,7 @@ describe("Dyslexie", () => {
     [S, "i"],
     [L, "a"],
     [R, "l"],
-    [E, "e"]
+    [E, "e"],
   ];
   const opgegeten = [
     [K, "o"],
@@ -264,7 +367,7 @@ describe("Dyslexie", () => {
     [L, "e"],
     [R, "t"],
     [E, "e"],
-    [R, "n"]
+    [R, "n"],
   ];
   const vergeten = [
     [R, "v"],
@@ -274,7 +377,7 @@ describe("Dyslexie", () => {
     [L, "e"],
     [R, "t"],
     [E, "e"],
-    [R, "n"]
+    [R, "n"],
   ];
   const meedenken = [
     [R, "m"],
@@ -283,7 +386,7 @@ describe("Dyslexie", () => {
     [K, "e"],
     [R, "nk"],
     [E, "e"],
-    [R, "n"]
+    [R, "n"],
   ];
   const olifant = [
     [L, "o"],
@@ -292,9 +395,16 @@ describe("Dyslexie", () => {
     [R, "f"],
     [K, "a"],
     [R, "n"],
-    [R, "t"]
+    [R, "t"],
   ];
-  const pakket = [[R, "p"], [K, "a"], [R, "k"], [R, "k"], [K, "e"], [R, "t"]];
+  const pakket = [
+    [R, "p"],
+    [K, "a"],
+    [R, "k"],
+    [R, "k"],
+    [K, "e"],
+    [R, "t"],
+  ];
   const stekelige = [
     [R, "s"],
     [R, "t"],
@@ -304,7 +414,7 @@ describe("Dyslexie", () => {
     [R, "l"],
     [E, "i"],
     [R, "g"],
-    [E, "e"]
+    [E, "e"],
   ];
   const fantastisch = [
     [R, "f"],
@@ -315,9 +425,16 @@ describe("Dyslexie", () => {
     [R, "s"],
     [R, "t"],
     [S, "i"],
-    [S, "sch"]
+    [S, "sch"],
   ];
-  const knipoog = [[R, "k"], [R, "n"], [K, "i"], [R, "p"], [L, "oo"], [R, "g"]];
+  const knipoog = [
+    [R, "k"],
+    [R, "n"],
+    [K, "i"],
+    [R, "p"],
+    [L, "oo"],
+    [R, "g"],
+  ];
   const linkerkant = [
     [R, "l"],
     [K, "i"],
@@ -327,7 +444,7 @@ describe("Dyslexie", () => {
     [R, "k"],
     [K, "a"],
     [R, "n"],
-    [R, "t"]
+    [R, "t"],
   ];
   const bakkerij = [
     [R, "b"],
@@ -336,21 +453,42 @@ describe("Dyslexie", () => {
     [R, "k"],
     [E, "e"],
     [R, "r"],
-    [T, "ij"]
+    [T, "ij"],
   ];
-  const donkere = [[R, "d"], [K, "o"], [R, "nk"], [E, "e"], [R, "r"], [E, "e"]];
+  const donkere = [
+    [R, "d"],
+    [K, "o"],
+    [R, "nk"],
+    [E, "e"],
+    [R, "r"],
+    [E, "e"],
+  ];
   const matthijs = [
     [R, "m"],
     [K, "a"],
     [R, "t"],
     [S, "th"],
     [T, "ij"],
-    [R, "s"]
+    [R, "s"],
+  ];
+  const geweldig = [
+    [R, "g"],
+    [E, "e"],
+    [R, "w"],
+    [K, "e"],
+    [R, "l"],
+    [R, "d"],
+    [E, "i"],
+    [R, "g"],
   ];
 
   [
     matthijs,
+    mooi,
+    schreeuw,
+    bureau,
     tevreden,
+    geweldig,
     avontuur,
     bakkerij,
     beren,
@@ -364,6 +502,7 @@ describe("Dyslexie", () => {
     gelijk,
     geluk,
     getver,
+    ongeldig,
     heuvels,
     knipoog,
     linkerkant,
@@ -396,8 +535,8 @@ describe("Dyslexie", () => {
     vergelijk,
     vergeten,
     vertellen,
-    verwerkte
-  ].forEach(resultaat => {
+    verwerkte,
+  ].forEach((resultaat) => {
     const woord = resultaat.reduce((r, e) => r + e[1], "");
 
     it(`de juiste klanken voor "${woord}"`, () => {
@@ -407,7 +546,7 @@ describe("Dyslexie", () => {
 
   describe("G als een J", () => {
     ["gelij", "gel", "logeren", "horloge", "garage", "collage"].forEach(
-      woord => {
+      (woord) => {
         it(`gebruikt een G als J in ${woord}`, () => {
           const resultaat = voegKlassificatiesToe(woord);
           expect(resultaat).to.deep.include(["speciaal", "g"]);
@@ -415,10 +554,53 @@ describe("Dyslexie", () => {
       }
     );
 
-    ["hoger", "tegen", "ogen", "vlagen"].forEach(woord => {
+    ["hoger", "tegen", "ogen", "vlagen"].forEach((woord) => {
       it(`gebruikt een G niet als J in ${woord}`, () => {
         const resultaat = voegKlassificatiesToe(woord);
         expect(resultaat).not.to.deep.include(["speciaal", "g"]);
+      });
+    });
+  });
+
+  describe("Oefenwoorden", () => {
+    const kar = [
+      [R, "k"],
+      [K, "a"],
+      [R, "r"],
+    ];
+
+    const vaas = [
+      [R, "v"],
+      [L, "aa"],
+      [R, "s"],
+    ];
+
+    const klank = [
+      [R, "k"],
+      [R, "l"],
+      [K, "a"],
+      [R, "nk"],
+    ];
+
+    const boek = [
+      [R, "b"],
+      [T, "oe"],
+      [R, "k"],
+    ];
+
+    const afwas = [
+      [K, "a"],
+      [R, "f"],
+      [R, "w"],
+      [K, "a"],
+      [R, "s"],
+    ];
+
+    [kar, afwas, vaas, klank, boek].forEach((resultaat) => {
+      const woord = resultaat.reduce((r, e) => r + e[1], "");
+
+      it(`de juiste klanken voor "${woord}"`, () => {
+        expect(voegKlassificatiesToe(woord)).to.eql(resultaat);
       });
     });
   });

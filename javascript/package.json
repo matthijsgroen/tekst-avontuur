@@ -6,6 +6,9 @@
   "bin": {
     "avontuur": "./avontuur.js"
   },
+  "scripts": {
+    "test": "mocha"
+  },
   "repository": "https://github.com/matthijsgroen/tekst-avontuur",
   "author": "Matthijs Groen",
   "license": "MIT",

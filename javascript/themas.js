@@ -2,7 +2,7 @@ const kaftKleuren = {
   rood: ["0", "80%", "50%"],
   groen: ["120", "50%", "30%"],
   blauw: ["240", "30%", "40%"],
-  paars: ["300", "60%", "30%"]
+  paars: ["300", "60%", "30%"],
 };
 
 const kaftKleur = ([tint, saturatie, helderheid]) =>
@@ -16,12 +16,12 @@ const boekThema = {
     startSpel: "startSpel",
     eindLus: "cls",
     eindSpel: "eindSpel",
-    geladen: "geladen"
+    geladen: "geladen",
   },
   opties: ({ kaft = "rood" }) => ({
     javascript: 'let startThema = "boek";',
-    css: kaftKleur(kaftKleuren[kaft])
-  })
+    css: kaftKleur(kaftKleuren[kaft]),
+  }),
 };
 
 const bookThema = {
@@ -32,12 +32,12 @@ const bookThema = {
     startSpel: "startSpel",
     eindLus: "cls",
     eindSpel: "eindSpel",
-    geladen: "geladen"
+    geladen: "geladen",
   },
   opties: ({ kaft = "rood" }) => ({
     javascript: 'let startThema = "boek";',
-    css: kaftKleur(kaftKleuren[kaft])
-  })
+    css: kaftKleur(kaftKleuren[kaft]),
+  }),
 };
 
 const dosThema = {
@@ -48,27 +48,16 @@ const dosThema = {
     startSpel: "startSpel",
     eindLus: "cls",
     eindSpel: "eindSpel",
-    geladen: "geladen"
+    geladen: "geladen",
   },
   opties: ({ kaft = "rood" }) => ({
     javascript: 'let startThema = "dos";',
-    css: kaftKleur(kaftKleuren[kaft])
-  })
+    css: kaftKleur(kaftKleuren[kaft]),
+  }),
 };
-
-//const dosThema = {
-//css: "thema/dos.css",
-//html: "thema/dos.html",
-//javascript: "thema/dos.js",
-//haken: {
-//startSpel: "startSpel",
-//startLus: "cls"
-//},
-//opties: () => ({})
-//};
 
 module.exports = {
   boek: boekThema,
   book: bookThema,
-  dos: dosThema
+  dos: dosThema,
 };

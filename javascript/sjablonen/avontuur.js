@@ -2,7 +2,7 @@ let thema = "";
 let skip = false;
 let naam = "";
 let spelToestand = Array(100).fill(0);
-let klankbord = false;
+let klankbord = location.search.includes("klankblokken");
 let verzendCode;
 let usingGoogleTranslate = false;
 
@@ -18,7 +18,7 @@ const h = (tagName, attributes = {}, children = []) => {
   []
     .concat(children)
     .filter(Boolean)
-    .forEach(child =>
+    .forEach((child) =>
       typeof child === "string"
         ? element.appendChild(document.createTextNode(child))
         : element.appendChild(child)
@@ -40,15 +40,15 @@ const screenElement = document.getElementById("screen");
 window.addEventListener("mouseup", () => (skip = true));
 window.addEventListener("touchend", () => (skip = true));
 
-const sleep = duration =>
+const sleep = (duration) =>
   duration === 0 || skip
     ? true
-    : new Promise(resolve =>
+    : new Promise((resolve) =>
         skip ? resolve() : setTimeout(resolve, duration * 1e3)
       );
 
 let actieveKleur = "color7";
-const color = index => (actieveKleur = `color${index}`);
+const color = (index) => (actieveKleur = `color${index}`);
 const printActie = (tekst, actie, parent) => {
   const props = { class: `actie ${actieveKleur}` };
   if (/^[a-z]$/.test(actie)) {
@@ -59,7 +59,7 @@ const printActie = (tekst, actie, parent) => {
     props.style = "list-style-type: decimal;";
     props.value = `${actie.charCodeAt(0) - 48}`;
   }
-  const onClick = e => {
+  const onClick = (e) => {
     e.preventDefault();
     keyPressed = `${actie}`;
     return false;
@@ -72,16 +72,17 @@ const printActie = (tekst, actie, parent) => {
       "a",
       {
         href: "#",
-        onClick
+        onClick,
       },
-      klankbord ?
-        zinBlokken.map(([klasse, tekst]) =>
-          h(
-            "span",
-            { class: [actieveKleur, klasse].filter(Boolean).join(" ") },
-            tekst
+      klankbord
+        ? zinBlokken.map(([klasse, tekst]) =>
+            h(
+              "span",
+              { class: [actieveKleur, klasse].filter(Boolean).join(" ") },
+              tekst
+            )
           )
-        ) : h("span", {class: [actieveKleur] }, tekst)
+        : h("span", { class: [actieveKleur] }, tekst)
     )
   );
 
@@ -108,7 +109,7 @@ const print = (tekst, klasse = null) => {
   if (tekst.includes("\n")) {
     screenElement.parentElement.scroll({
       top: screenElement.scrollHeight,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }
 };
@@ -119,17 +120,17 @@ const toets = (plek, bewerking, waarde) =>
   (bewerking === ">" && spelToestand[plek] > waarde) ||
   (bewerking === "<" && spelToestand[plek] < waarde);
 
-const toegestaan = beweringen =>
-  beweringen.every(bewering => {
+const toegestaan = (beweringen) =>
+  beweringen.every((bewering) => {
     const [, plek, bewerking, waarde] = bewering.match(/(\d+)([=!<>])(\d+)/);
     return toets(parseInt(plek, 10), bewerking, parseInt(waarde, 10));
   });
 
-const interpoleer = zin =>
+const interpoleer = (zin) =>
   zin
     .replace(/\$n/g, naam)
-    .replace(/#\d{2}/g, num => `${spelToestand[parseInt(num.slice(1), 10)]}`)
-    .replace(/#\d+p\d{2}/g, paddedNum => {
+    .replace(/#\d{2}/g, (num) => `${spelToestand[parseInt(num.slice(1), 10)]}`)
+    .replace(/#\d+p\d{2}/g, (paddedNum) => {
       const [padding, num] = paddedNum.slice(1).split("p");
       const waarde = `${spelToestand[parseInt(num.slice(1), 10)]}`;
       const pad = parseInt(padding, 10);
@@ -190,7 +191,7 @@ const tekst = async (verteller, zin, eerderGelezen) => {
   print("\n");
 };
 
-const isEPaper = [" Silk/", " Nook/", " PocketBook/"].some(e =>
+const isEPaper = [" Silk/", " Nook/", " PocketBook/"].some((e) =>
   navigator.userAgent.includes(e)
 );
 
@@ -246,19 +247,22 @@ const muteer = (plek, bewerking, waarde) => {
   }
 };
 
-document.addEventListener("keypress", event => {
+document.addEventListener("keypress", (event) => {
   keyPressed = event.key;
   if (keyPressed == " ") {
     skip = true;
   }
 });
 
-const vertaalControle = document.querySelector(".translate")
+const vertaalControle = document.querySelector(".translate");
 
 const keypress = () =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     let watcher = setInterval(() => {
-      if (vertaalControle.textContent !== "Hallo hoe gaat het?" && !usingGoogleTranslate) {
+      if (
+        vertaalControle.textContent !== "Hallo hoe gaat het?" &&
+        !usingGoogleTranslate
+      ) {
         usingGoogleTranslate = true;
         resolve("REFRESH");
       }
@@ -270,8 +274,8 @@ const keypress = () =>
     }, 100);
   });
 
-const voerActieUit = instructies => {
-  instructies.forEach(instructie => {
+const voerActieUit = (instructies) => {
+  instructies.forEach((instructie) => {
     const [, plek, bewerking, waarde] = instructie.match(/(\d+)([=+-r])(\d+)/);
     muteer(parseInt(plek, 10), bewerking, parseInt(waarde, 10));
   });
@@ -290,7 +294,7 @@ const toonActies = async () => {
         naam: interpoleer(actie.tekst),
         actie: actie.actie,
         kleur: actie.kleur,
-        toets
+        toets,
       });
     }
   }
@@ -313,7 +317,7 @@ const toonActies = async () => {
   do {
     toets = await keypress();
     if (toets === "REFRESH") return true;
-    gekozen = acties.find(actie => actie.toets === toets);
+    gekozen = acties.find((actie) => actie.toets === toets);
   } while (!gekozen);
 
   voerActieUit(gekozen.actie);
@@ -321,9 +325,9 @@ const toonActies = async () => {
 };
 
 const krijgNaam = () =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     const formulier = document.getElementById("welkom");
-    formulier.addEventListener("submit", async event => {
+    formulier.addEventListener("submit", async (event) => {
       event.preventDefault();
       const naam = document.getElementById("naam").value;
       if (naam.trim() === "") return;
@@ -336,7 +340,7 @@ const karakters =
   "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@" +
   "$%^~*(),.;:\"'+-/[]{}_`<>?îêôâëüïöäøéíóáØÊÎÔÂËÜÖÏÉÚÍÓÁåÅßçÇàèìòùÀ";
 
-const encode = spelStatus => {
+const encode = (spelStatus) => {
   const relevanteData = spelStatus.reduce(
     (result, item, index) =>
       item === 0 ? result : { ...result, [index]: item },
@@ -344,7 +348,7 @@ const encode = spelStatus => {
   );
   const grootsteSleutelDelta = spelStatus
     .map((item, index) => (item > 0 ? index : null))
-    .filter(index => index !== null)
+    .filter((index) => index !== null)
     .map((index, i, list) => index - (list[i - 1] || -1) - 1)
     .reduce((currentMax, item) => (item > currentMax ? item : currentMax), 0);
   const grootsteWaarde = spelStatus.reduce(
@@ -382,8 +386,8 @@ const encode = spelStatus => {
   return code;
 };
 
-const decode = code => {
-  const charToNum = char => karakters.indexOf(char);
+const decode = (code) => {
+  const charToNum = (char) => karakters.indexOf(char);
 
   const bitSizeKey = charToNum(code[0]);
   const largeValueSizeKey = charToNum(code.slice(-2, -1));
@@ -392,7 +396,7 @@ const decode = code => {
   const bitStream = code
     .slice(1, -2)
     .split("")
-    .map(char => ("0".repeat(7) + charToNum(char).toString(2)).slice(-7))
+    .map((char) => ("0".repeat(7) + charToNum(char).toString(2)).slice(-7))
     .join("");
 
   const amountOnes = bitStream
@@ -465,7 +469,7 @@ const bewaarSpel = () => {
       naam,
       gameState: spelToestand,
       klankbord,
-      thema
+      thema,
     };
     localStorage.setItem(`opslag-${bewaarSleutel}`, JSON.stringify(opslag));
   } catch (e) {}
@@ -476,7 +480,10 @@ const spelLus = async () => {
   if (!spelGeladen) {
     // -- template:geladen
     naam = await krijgNaam();
-    if (vertaalControle.textContent !== "Hallo hoe gaat het?" && !usingGoogleTranslate) {
+    if (
+      vertaalControle.textContent !== "Hallo hoe gaat het?" &&
+      !usingGoogleTranslate
+    ) {
       usingGoogleTranslate = true;
     }
     skip = false;

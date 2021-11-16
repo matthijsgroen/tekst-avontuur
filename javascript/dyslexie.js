@@ -5,11 +5,11 @@ const definities = {
   letterGroep1: ["aai", "ooi", "oei", "eau"],
   letterGroep2: ["eeuw", "ieuw", "uw"],
   speciaal: ["th", "c", "y"],
-  rest: ["ng", "nk", "ch", "sch", "schr"]
+  rest: ["ng", "nk", "ch", "sch", "schr"],
 };
 
 const verwerk = (resultaat, selecteerder, toets, nieuweKlassificatie) => {
-  selecteerder(resultaat).forEach(selectie => {
+  selecteerder(resultaat).forEach((selectie) => {
     if (toets(selectie)) {
       resultaat[selectie.index][0] = nieuweKlassificatie;
     }
@@ -17,7 +17,7 @@ const verwerk = (resultaat, selecteerder, toets, nieuweKlassificatie) => {
   return resultaat;
 };
 
-const selecteerKlank = (zoekKlank, zoekKlassificatie) => resultaat =>
+const selecteerKlank = (zoekKlank, zoekKlassificatie) => (resultaat) =>
   resultaat
     .map(([klasse, klank], index) =>
       (zoekKlank === null || klank.toLowerCase() === zoekKlank) &&
@@ -27,33 +27,52 @@ const selecteerKlank = (zoekKlank, zoekKlassificatie) => resultaat =>
     )
     .filter(Boolean);
 
-const en = (...args) => selectie => args.every(test => test(selectie));
-const of = (...args) => selectie => args.some(test => test(selectie));
-const niet = test => selectie => !test(selectie);
-const totaalKlanken = test => selectie => test(selectie.resultaat.length);
-const laatsteKlank = (offset = 0) => selectie =>
-  selectie.index === selectie.resultaat.length - 1 - offset;
-const eersteKlank = (offset = 0) => selectie => selectie.index === offset;
-const klank = (klank, offset = 0) => selectie =>
-  selectie.resultaat[selectie.index + offset] &&
-  selectie.resultaat[selectie.index + offset][1].toLowerCase() === klank;
-const klankLengte = (lengteTest, offset = 0) => selectie =>
-  selectie.resultaat[selectie.index + offset] &&
-  lengteTest(selectie.resultaat[selectie.index + offset][1].length);
-const klasse = (test, offset = 0) => selectie =>
-  selectie.resultaat[selectie.index + offset] &&
-  test(selectie.resultaat[selectie.index + offset][0]);
-const totaalKlasse = (klasseTest, test) => selectie =>
+const en =
+  (...args) =>
+  (selectie) =>
+    args.every((test) => test(selectie));
+const of =
+  (...args) =>
+  (selectie) =>
+    args.some((test) => test(selectie));
+const niet = (test) => (selectie) => !test(selectie);
+const totaalKlanken = (test) => (selectie) => test(selectie.resultaat.length);
+const laatsteKlank =
+  (offset = 0) =>
+  (selectie) =>
+    selectie.index === selectie.resultaat.length - 1 - offset;
+const eersteKlank =
+  (offset = 0) =>
+  (selectie) =>
+    selectie.index === offset;
+const klank =
+  (klank, offset = 0) =>
+  (selectie) =>
+    selectie.resultaat[selectie.index + offset] &&
+    selectie.resultaat[selectie.index + offset][1].toLowerCase() === klank;
+const klankLengte =
+  (lengteTest, offset = 0) =>
+  (selectie) =>
+    selectie.resultaat[selectie.index + offset] &&
+    lengteTest(selectie.resultaat[selectie.index + offset][1].length);
+const klasse =
+  (test, offset = 0) =>
+  (selectie) =>
+    selectie.resultaat[selectie.index + offset] &&
+    test(selectie.resultaat[selectie.index + offset][0]);
+const totaalKlasse = (klasseTest, test) => (selectie) =>
   test(selectie.resultaat.reduce((a, e) => a + (klasseTest(e[0]) ? 1 : 0), 0));
-const klankIndex = test => selectie =>
+const klankIndex = (test) => (selectie) =>
   test(selectie.index, selectie.resultaat.length);
-const eindKlank = (klank, offset = 0) => selectie =>
-  selectie.resultaat[selectie.resultaat.length - 1 - offset][1] === klank;
-const isWoord = test => selectie =>
+const eindKlank =
+  (klank, offset = 0) =>
+  (selectie) =>
+    selectie.resultaat[selectie.resultaat.length - 1 - offset][1] === klank;
+const isWoord = (test) => (selectie) =>
   test(selectie.resultaat.reduce((w, e) => w + e[1], ""));
 
-const verwerkLangeKlinkers = resultaat => {
-  ["u", "a", "o"].forEach(klinker => {
+const verwerkLangeKlinkers = (resultaat) => {
+  ["u", "a", "o"].forEach((klinker) => {
     resultaat = verwerk(
       resultaat,
       selecteerKlank(klinker, "korteKlinker"),
@@ -61,19 +80,19 @@ const verwerkLangeKlinkers = resultaat => {
       "langeKlinker"
     );
   });
-  ["u", "a", "o", "e"].forEach(klinker => {
+  ["u", "a", "o", "e"].forEach((klinker) => {
     resultaat = verwerk(
       resultaat,
       selecteerKlank(klinker, "korteKlinker"),
       en(
         niet(
           klasse(
-            a => a !== "rest" && a !== "korteKlinker" && a !== "speciaal",
+            (a) => a !== "rest" && a !== "korteKlinker" && a !== "speciaal",
             -1
           )
         ),
-        klankLengte(l => l === 1, 1),
-        klasse(a => a !== "rest" && a !== "speciaal", 2)
+        klankLengte((l) => l === 1, 1),
+        klasse((a) => a !== "rest" && a !== "speciaal", 2)
       ),
       "langeKlinker"
     );
@@ -82,7 +101,7 @@ const verwerkLangeKlinkers = resultaat => {
   return resultaat;
 };
 
-const verwerkStommeE = resultaat => {
+const verwerkStommeE = (resultaat) => {
   // Korte woorden
   resultaat = verwerk(
     resultaat,
@@ -92,40 +111,51 @@ const verwerkStommeE = resultaat => {
   );
   // verklein woord
   ["j", "t"].forEach(
-    eindLetter =>
+    (eindLetter) =>
       (resultaat = verwerk(
         resultaat,
         selecteerKlank("e", "korteKlinker"),
-        en(totaalKlanken(a => a > 3), laatsteKlank(), klank(eindLetter, -1)),
+        en(
+          totaalKlanken((a) => a > 3),
+          laatsteKlank(),
+          klank(eindLetter, -1)
+        ),
         "stommeE"
       ))
   );
   // uitgangen -en, -em, -er, -el, -es
   ["n", "m", "r", "l", "s"].forEach(
-    eindLetter =>
+    (eindLetter) =>
       (resultaat = verwerk(
         // -en
         resultaat,
         selecteerKlank("e", null),
         en(
-          totaalKlasse(k => k !== "rest" && k !== "stommeE", a => a > 1),
-          klankIndex(e => e > 1),
+          totaalKlasse(
+            (k) => k !== "rest" && k !== "stommeE",
+            (a) => a > 1
+          ),
+          klankIndex((e) => e > 1),
           klank(eindLetter, 1),
           niet(klank(eindLetter, 2)),
+          niet(klank("w", -1)),
           of(
-            niet(klasse(e => e !== "stommeE" || e !== "korteKlinker", 2)),
+            niet(klasse((e) => e !== "stommeE" || e !== "korteKlinker", 2)),
             klasse(
-              e =>
+              (e) =>
                 e === "langeKlinker" ||
                 e === "korteKlinker" ||
                 e === "tweeKlank",
               2
             ),
-            en(klasse(e => e === "rest", 2), klasse(e => e !== "rest", 3)),
             en(
-              klasse(e => e === "rest", 2),
-              klasse(e => e === "rest", 3),
-              klasse(e => e !== "stommeE", 4)
+              klasse((e) => e === "rest", 2),
+              klasse((e) => e !== "rest", 3)
+            ),
+            en(
+              klasse((e) => e === "rest", 2),
+              klasse((e) => e === "rest", 3),
+              klasse((e) => e !== "stommeE", 4)
             ),
             en(laatsteKlank(2), of(klank("s", 2), klank("e", 2)))
           )
@@ -137,9 +167,12 @@ const verwerkStommeE = resultaat => {
   // voorvoegsels. be- ge-, ver- te-
   const voorvoegsel = (offset = 0) =>
     en(
-      klasse(k => k === "rest", offset + 1),
-      klankLengte(l => l == 1, offset + 1),
-      totaalKlasse(k => k !== "rest" && k !== "stommeE", a => a > 1)
+      klasse((k) => k === "rest", offset + 1),
+      klankLengte((l) => l == 1, offset + 1),
+      totaalKlasse(
+        (k) => k !== "rest" && k !== "stommeE",
+        (a) => a > 1
+      )
     );
   const voorvoegselErvoor = () =>
     of(
@@ -156,7 +189,7 @@ const verwerkStommeE = resultaat => {
     );
 
   ["d", "b", "t"].forEach(
-    beginLetter =>
+    (beginLetter) =>
       (resultaat = verwerk(
         resultaat,
         selecteerKlank("e", null),
@@ -180,7 +213,7 @@ const verwerkStommeE = resultaat => {
         of(eersteKlank(1), werkwoord(), heeftAchtervoegsel()),
         of(
           niet(voorvoegselErvoor()),
-          klasse(k => k === "tweeKlank" || k === "langeKlinker", 2)
+          klasse((k) => k === "tweeKlank" || k === "langeKlinker", 2)
         )
       )
     ),
@@ -210,7 +243,7 @@ const verwerkStommeE = resultaat => {
     resultaat,
     selecteerKlank("i", "korteKlinker"),
     en(
-      totaalKlanken(a => a > 3),
+      totaalKlanken((a) => a > 3),
       of(
         en(laatsteKlank(1), klank("g", 1)),
         en(laatsteKlank(2), klank("g", 1), klank("e", 2))
@@ -223,14 +256,14 @@ const verwerkStommeE = resultaat => {
     resultaat,
     selecteerKlank("ij", "tweeKlank"),
     en(
-      totaalKlanken(a => a > 3),
+      totaalKlanken((a) => a > 3),
       of(
         en(laatsteKlank(1), klank("l", -1), klank("k", 1)),
         en(laatsteKlank(2), klank("l", -1), klank("k", 1), klank("e", 2))
       ),
       of(
         niet(
-          isWoord(woord =>
+          isWoord((woord) =>
             ["ongelijk", "gelijk", "tegelijk", "vergelijk"].includes(woord)
           )
         )
@@ -244,7 +277,7 @@ const verwerkStommeE = resultaat => {
     resultaat,
     selecteerKlank("e", "korteKlinker"),
     en(
-      totaalKlanken(a => a === 3),
+      totaalKlanken((a) => a === 3),
       laatsteKlank(1),
       klank("t", 1),
       klank("h", -1)
@@ -255,14 +288,18 @@ const verwerkStommeE = resultaat => {
     // een
     resultaat,
     selecteerKlank("ee", "langeKlinker"),
-    en(totaalKlanken(a => a === 2), laatsteKlank(1), klank("n", 1)),
+    en(
+      totaalKlanken((a) => a === 2),
+      laatsteKlank(1),
+      klank("n", 1)
+    ),
     "stommeE"
   );
 
   return resultaat;
 };
 
-const verwerkSpecialeKlanken = resultaat => {
+const verwerkSpecialeKlanken = (resultaat) => {
   resultaat = verwerk(
     // ci
     resultaat,
@@ -287,16 +324,19 @@ const verwerkSpecialeKlanken = resultaat => {
       en(
         niet(
           klasse(
-            a => a !== "rest" && a !== "korteKlinker" && a !== "speciaal",
+            (a) => a !== "rest" && a !== "korteKlinker" && a !== "speciaal",
             -1
           )
         ),
         niet(eersteKlank()),
-        niet(klasse(a => a === "rest", -2)),
-        klankLengte(l => l === 1, 1),
-        klasse(a => a !== "rest", 2)
+        niet(klasse((a) => a === "rest", -2)),
+        klankLengte((l) => l === 1, 1),
+        klasse((a) => a !== "rest", 2)
       ),
-      en(klank("sch", 1), klasse(k => k === "speciaal", 1))
+      en(
+        klank("sch", 1),
+        klasse((k) => k === "speciaal", 1)
+      )
     ),
     "speciaal"
   );
@@ -307,8 +347,8 @@ const verwerkSpecialeKlanken = resultaat => {
     selecteerKlank("g", "rest"),
     of(
       en(
-        klasse(k => k === "langeKlinker", -1),
-        klankIndex(i => i > 1),
+        klasse((k) => k === "langeKlinker", -1),
+        klankIndex((i) => i > 1),
         klank("e", 1),
         niet(klank("l", 2)),
         niet(klank("n", 2)),
@@ -334,7 +374,7 @@ const ontkenning = (resultaat, rest) =>
   rest.toLowerCase().startsWith("n") &&
   rest.length > 2;
 
-const voegWoordKlassificatiesToe = woord => {
+const voegWoordKlassificatiesToe = (woord) => {
   let start = 0;
   let resultaat = [];
 
@@ -347,7 +387,7 @@ const voegWoordKlassificatiesToe = woord => {
     } else {
       Object.entries(definities).forEach(([klasse, klanken]) => {
         const klank = klanken
-          .filter(klank =>
+          .filter((klank) =>
             klank instanceof RegExp
               ? rest.toLowerCase().match(klank)
               : rest.toLowerCase().startsWith(klank)
@@ -389,7 +429,7 @@ const voegWoordKlassificatiesToe = woord => {
   return resultaat;
 };
 
-const voegKlassificatiesToe = zin => {
+const voegKlassificatiesToe = (zin) => {
   let resultaat = [];
   let huidigWoord = "";
   //return [["anders", zin]];
@@ -411,32 +451,25 @@ const voegKlassificatiesToe = zin => {
   return resultaat;
 };
 
-const reset = () => "\u001b[0m";
+const reset = "\u001b[0m";
 const tonen = {
-  korteKlinker: klinker =>
-    process.stdout.write("\u001b[97;48;5;22m " + klinker + " " + reset()),
-  speciaal: speciaal =>
-    process.stdout.write("\u001b[97;45m " + speciaal + " " + reset()),
-  langeKlinker: langeKlinker =>
-    process.stdout.write(`\u001b[30;43m ${langeKlinker} ` + reset()),
-  tweeKlank: tweeKlank =>
-    process.stdout.write(`\u001b[97;41m ${tweeKlank} ` + reset()),
-  letterGroep1: letterGroep =>
-    process.stdout.write(`\u001b[30;47m ${letterGroep} ` + reset()),
-  letterGroep2: letterGroep =>
-    process.stdout.write(`\u001b[30;47m ${letterGroep} ` + reset()),
-  rest: rest => process.stdout.write(`\u001b[97;44m ${rest} ` + reset()),
-  stommeE: klank =>
-    process.stdout.write(`\u001b[97;48;5;202m ${klank} ` + reset()),
-  anders: tekens => process.stdout.write(tekens)
+  korteKlinker: (klinker) => "\u001b[97;48;5;22m " + klinker + " " + reset,
+  speciaal: (speciaal) => "\u001b[97;45m " + speciaal + " " + reset,
+  langeKlinker: (langeKlinker) => `\u001b[30;43m ${langeKlinker} ` + reset,
+  tweeKlank: (tweeKlank) => `\u001b[97;41m ${tweeKlank} ` + reset,
+  letterGroep1: (letterGroep) => `\u001b[30;47m ${letterGroep} ` + reset,
+  letterGroep2: (letterGroep) => `\u001b[30;47m ${letterGroep} ` + reset,
+  rest: (rest) => `\u001b[97;44m ${rest} ` + reset,
+  stommeE: (klank) => `\u001b[97;48;5;202m ${klank} ` + reset,
+  anders: (tekens) => tekens,
 };
 
-const toonZin = zin => {
-  const zinMetKlassificaties = voegKlassificatiesToe(zin);
+const formateerWoord = (woord) => {
+  const zinMetKlassificaties = voegKlassificatiesToe(woord);
 
-  zinMetKlassificaties.forEach(([klassificatie, zin]) =>
-    tonen[klassificatie](zin)
-  );
+  return zinMetKlassificaties
+    .map(([klassificatie, zin]) => tonen[klassificatie](zin))
+    .join("");
 };
 
-module.exports = { toonZin, voegKlassificatiesToe };
+module.exports = { formateerWoord, voegKlassificatiesToe };
