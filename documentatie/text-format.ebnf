@@ -1,0 +1,143 @@
+(*
+
+  # Adventure game file
+  
+  The adventure game file is a single file
+  that describes an entire text adventure.
+  
+  ## State management
+  
+  The game state consists of 100 integer values.
+  Each index in that list could represent something,
+  and so could each value.
+  
+  the Game starts with 100 integers set to 0.
+
+  ## Running a game
+  
+  It will then start to process each 'conditional text'
+  element. When the text conditions matches the state,
+  the text is displayed on screen, until the `"END"` marker is reached.
+  any state terminators will execute **immediately** so state mutations can happen
+  between the state evaluation steps.
+
+  After the `END` marker, the actions are processed
+
+  Using the same condition matching mechanic, actions are selected that the player can perform.
+  If no actions are available. You reached the end of the game.
+  After the action text state mutations are described, that are triggered when the user
+  selects this action.
+  after the processing of these state actions, the file is processed again with the new state.
+
+*)
+
+adventure file = conditional texts , '"END"' ,
+  conditional actions ;
+
+conditional texts = ( comment | conditional text ) ,
+  { comment | conditional text } ;
+
+comment = line comment | meta comment ;
+
+line comment = "'" , line characters , "\n" ;
+
+meta comment = "' @" , meta identifier , ":" ,
+  ( line characters , "\n"
+  | "\n" , "'" , line characters , "\n" , { "'" ,
+    line characters , "\n" } , ? empty line ?
+  ) ;
+
+meta identifier
+  = "lang" (* language indicator *)
+  | "Titel" (* Game title *)
+  | "Omschrijving" (* description *)
+  | "Auteur" (* Author *)
+  | "Datum" (* Date *)
+  | "Email"
+  | "Twitter" (* Twitter handle *)
+  | "Versie" (* Version *)
+  | "Thema" (* UI Theme: "boek" *)
+  | "Thema.kaft" (* For UI Theme "book", the color of the cover *)
+  | "Afbeelding" (* Meta image for media sharing *)
+  | "Bedankt" (* Creditation of people *)
+  | "MenuLink" (* Extra links to place in the menu *)
+  ;
+
+line characters = ? characters except \n ? ,
+  { ? characters except \n ? } ;
+
+string characters = ? characters except \n, " ? ,
+  { ? characters except \n, " ? } ;
+
+conditional text = condition , ( "\n" | "," ) ,
+  formatted text items , state terminator ;
+
+condition = '"' , comparison , { ";" , comparison } , '"' ;
+
+comparison = slot , check , value ;
+
+formatted text items = text item , { ( "," | "\n" ) ,
+  text item } ;
+
+text item = format instruction | text ;
+
+text = '"' ,
+  { string characters
+  | "#" , slot (* value of memory slot *)
+  | "$n" (* player's name *)
+  } , '"' ;
+
+format instruction = '"*' ,
+  ( "c" , number (* text color instruction *)
+  | "s" , number (* text delay instruction *)
+  ) , '"' ;
+
+state terminator = '"&' , [ state mutations ] , '"' ;
+
+conditional actions = ( comment | conditional action ) ,
+  { comment | conditional action } ;
+
+conditional action = action condition , "," ,
+  action text , "," , action mutation , "\n" ;
+
+action condition = '"' , ( comparison | action instruction ) ,
+  { ";" , ( comparison | action instruction ) } , '"' ;
+
+action instruction
+  = "k=" , ? letter ? (* key to trigger action *)
+  | "c=" , number (* number of colored action text *)
+  ;
+
+action text = '"' , string characters , '"' ;
+
+action mutation = '"' , state mutations , '"' ;
+
+state mutations = state mutation , { ";" ,
+  state mutation } ;
+
+state mutation = slot , state instruction , value ;
+
+slot = number ;
+
+check
+  = "=" (* equality *)
+  | "!" (* inequality *)
+  | ">" (* larger than *)
+  | "<" (* less than *)
+  ;
+
+state instruction
+  = "=" (* set equal to *)
+  | "+" (* increase by *)
+  | "-" (* decrease by *)
+  | "r" (* random value from 0 upto *)
+  ;
+
+value = number ;
+
+number = digit , { digit } ;
+
+digit
+  = "0" | "1" | "2" | "3" | "4" | "5" | "6"
+  | "7" | "8" | "9"
+  ;
