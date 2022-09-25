@@ -1,10 +1,10 @@
-import game from "../game";
+import g from "../game";
 
-game.location("forest", ({ onEnter, describe }) => {
+g.location("forest", ({ onEnter, describe, interaction }) => {
   onEnter("farmland", () => {});
 
   describe(() => {
-    game.text(
+    g.text(
       "Je staat in het bos. Het is een stralende dag.",
       "De wind laat de blaadjes ritselen.",
       "",
@@ -12,17 +12,33 @@ game.location("forest", ({ onEnter, describe }) => {
       "In het westen zijn heuvels."
     );
 
-    game.ifItemNot("bag", "possession", () => {
-      game.text("Op de grond ligt je tas en scherven van de fles medicijnen.");
-      game
-        .character("player")
-        .say("Verdorie, de medicijnen zijn echt verloren.");
-      game.text("Je raapt de tas op.");
-      game.item("bag").setState("possession");
+    g.onState(g.not(g.isItemState("bag", "possession")), () => {
+      g.text("Op de grond ligt je tas en scherven van de fles medicijnen.");
+      g.character("player").say("Verdorie, de medicijnen zijn echt verloren.");
+      g.text("Je raapt de tas op.");
+      g.item("bag").setState("possession");
     });
 
-    game.ifItem("branch", "unknown", () => {
-      game.text("Op de grond ligt een vers afgebroken tak.");
+    g.onState(g.isItemState("branch", "unknown"), () => {
+      g.text("Op de grond ligt een vers afgebroken tak.");
     });
+  });
+
+  interaction("Spring op paard", g.never(), () => {});
+
+  interaction(
+    "Raap de tak op",
+    g.not(g.isItemState("branch", "unknown")),
+    () => {
+      g.item("branch").setState("possession");
+    }
+  );
+
+  interaction("Ga naar het oosten, richting de akkers", g.always(), () => {
+    g.travel("farmland");
+  });
+
+  interaction("Ga naar het westen, richting de heuvels", g.always(), () => {
+    g.travel("hills");
   });
 });

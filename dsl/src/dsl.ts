@@ -1,21 +1,32 @@
-import {
+import type {
   GameWorld,
-  ItemStateCondition,
   LocationScript,
   Settings,
+  EvaluateCondition,
+  GameObjectStateCondition,
+  NegateCondition,
+  StateCondition,
+  TrueCondition,
+  FalseCondition,
 } from "./world-types";
 
 type ScriptAST = ScriptStatement[];
 
-type ScriptStatement = TextStatement;
+type ScriptStatement = TextStatement | TravelStatement;
 
 type TextStatement = { statementType: "Text"; sentences: string[] };
+type TravelStatement = { statementType: "Travel"; destination: string };
 
 type GameLocation<Game extends GameWorld> = {
   id: keyof Game["locations"];
   onEnter: { from: keyof Game["locations"]; script: ScriptAST }[];
   onLeave: { to: keyof Game["locations"]; script: ScriptAST }[];
   describe: { script: ScriptAST };
+  interactions: {
+    label: string;
+    condition: StateCondition<Game>;
+    script: ScriptAST;
+  }[];
 };
 
 type GameModel<Game extends GameWorld> = {
@@ -24,6 +35,9 @@ type GameModel<Game extends GameWorld> = {
 };
 
 let worldModel: GameModel<GameWorld> | undefined = undefined;
+
+const always = (): TrueCondition => ({ op: "true" });
+const never = (): FalseCondition => ({ op: "false" });
 
 export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
   worldModel = {
@@ -44,8 +58,19 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
     return result;
   };
 
-  const ifItem: ItemStateCondition<Game> = () => {};
-  const ifItemNot: ItemStateCondition<Game> = () => {};
+  const onState: EvaluateCondition<Game> = () => {};
+  const not = (condition: StateCondition<Game>): NegateCondition<Game> => ({
+    op: "negate",
+    condition,
+  });
+  const isItemState = <K extends keyof Game["items"]>(
+    item: K,
+    state: Game["items"][K]["states"] | "unknown"
+  ): GameObjectStateCondition<Game, "item"> => ({
+    op: "itemEquals",
+    item,
+    state,
+  });
 
   return {
     location: (
@@ -57,6 +82,7 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
         describe: { script: [] },
         onEnter: [],
         onLeave: [],
+        interactions: [],
       };
       script({
         describe: (script) => {
@@ -77,8 +103,18 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
             script: enterScript,
           });
         },
+        interaction: (label, condition, script) => {
+          const interactionScript = wrapScript(script);
+          locationAST.interactions.push({
+            label,
+            condition,
+            script: interactionScript,
+          });
+        },
       });
-      worldModel?.locations.push(locationAST as GameLocation<GameWorld>);
+      worldModel?.locations.push(
+        locationAST as unknown as GameLocation<GameWorld>
+      );
     },
     character: (character: keyof Game["characters"]) => ({
       say: (...sentences: string[]) => {},
@@ -92,8 +128,17 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
         sentences,
       });
     },
-    ifItem,
-    ifItemNot,
+    travel: (location: keyof Game["locations"]) => {
+      activeScriptScope.push({
+        statementType: "Travel",
+        destination: String(location),
+      });
+    },
+    onState,
+    isItemState,
+    not,
+    always,
+    never,
   };
 };
 
@@ -103,4 +148,4 @@ type GameConverter<Game extends GameWorld> = (
 
 export const convertGame = <Game extends GameWorld>(
   converter: GameConverter<Game>
-) => converter(worldModel as GameModel<Game>);
+) => converter(worldModel as unknown as GameModel<Game>);

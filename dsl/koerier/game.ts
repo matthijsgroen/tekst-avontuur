@@ -4,6 +4,7 @@ type Game = {
   locations: {
     forest: { states: "default" };
     farmland: { states: "default" };
+    hills: { states: "default" };
   };
   items: {
     bag: { states: "known" | "possession" };
