@@ -1,8 +1,6 @@
 import g from "../game";
 
-g.location("forest", ({ onEnter, describe, interaction }) => {
-  onEnter("farmland", () => {});
-
+g.location("forest", ({ describe, interaction }) => {
   describe(() => {
     g.text(
       "Je staat in het bos. Het is een stralende dag.",

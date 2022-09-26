@@ -9,6 +9,7 @@ type Game = {
   items: {
     bag: { states: "known" | "possession" };
     branch: { states: "known" | "possession" };
+    horse: { states: "known" | "found" | "hooves" | "cart" };
   };
   characters: {
     player: { states: "default" };

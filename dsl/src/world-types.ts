@@ -49,7 +49,8 @@ export type FalseCondition = {
 
 export type EvaluateCondition<Game extends GameWorld> = (
   condition: StateCondition<Game>,
-  script: Script
+  script: Script,
+  elseScript?: Script
 ) => void;
 
 export type Settings<Game extends GameWorld> = {
