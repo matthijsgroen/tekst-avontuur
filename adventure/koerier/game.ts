@@ -1,6 +1,6 @@
-import { world } from "../src/dsl";
+import { world } from "../dsl/dsl";
 
-type Game = {
+export type Game = {
   locations: {
     forest: { states: "default" };
     farmland: { states: "default" };
@@ -18,7 +18,9 @@ type Game = {
 
 const game = world<Game>({
   defaultLocale: "nl-NL",
-  startLocation: "forest",
+  initialState: {
+    currentLocation: "forest",
+  },
   characterConfigs: {
     player: {
       defaultName: "Matthijs",

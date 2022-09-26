@@ -53,9 +53,28 @@ export type EvaluateCondition<Game extends GameWorld> = (
   elseScript?: Script
 ) => void;
 
+export type GameState<Game extends GameWorld> = {
+  currentLocation: keyof Game["locations"];
+  items?: {
+    [k in keyof Game["items"]]?: {
+      state: Game["items"][k]["states"];
+    };
+  };
+  characters?: {
+    [k in keyof Game["characters"]]?: {
+      state: Game["characters"][k]["states"];
+    };
+  };
+  locations?: {
+    [k in keyof Game["locations"]]?: {
+      state: Game["locations"][k]["states"];
+    };
+  };
+};
+
 export type Settings<Game extends GameWorld> = {
   defaultLocale: `${string}-${string}`;
-  startLocation: keyof Game["locations"];
+  initialState: GameState<Game>;
   characterConfigs: Record<
     keyof Game["characters"],
     {

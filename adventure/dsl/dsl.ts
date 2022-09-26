@@ -10,32 +10,32 @@ import type {
   FalseCondition,
 } from "./world-types";
 
-type ScriptAST<Game extends GameWorld> = ScriptStatement<Game>[];
+export type ScriptAST<Game extends GameWorld> = ScriptStatement<Game>[];
 
-type ScriptStatement<Game extends GameWorld> =
+export type ScriptStatement<Game extends GameWorld> =
   | TextStatement
   | TravelStatement<Game>
   | ConditionStatement<Game>
   | UpdateStateItem<Game>
   | CharacterSay<Game>;
 
-type TextStatement = { statementType: "Text"; sentences: string[] };
-type TravelStatement<Game extends GameWorld> = {
+export type TextStatement = { statementType: "Text"; sentences: string[] };
+export type TravelStatement<Game extends GameWorld> = {
   statementType: "Travel";
   destination: keyof Game["locations"];
 };
-type ConditionStatement<Game extends GameWorld> = {
+export type ConditionStatement<Game extends GameWorld> = {
   statementType: "Condition";
   condition: StateCondition<Game>;
   body: ScriptAST<Game>;
   elseBody: ScriptAST<Game>;
 };
-type UpdateStateItem<Game extends GameWorld> = {
+export type UpdateStateItem<Game extends GameWorld> = {
   statementType: "UpdateItemState";
   stateItem: keyof Game["items"];
   newState: Game["items"][keyof Game["items"]]["states"];
 };
-type CharacterSay<Game extends GameWorld> = {
+export type CharacterSay<Game extends GameWorld> = {
   statementType: "CharacterSay";
   character: keyof Game["characters"];
   sentences: string[];
@@ -53,7 +53,7 @@ type GameLocation<Game extends GameWorld> = {
   }[];
 };
 
-type GameModel<Game extends GameWorld> = {
+export type GameModel<Game extends GameWorld> = {
   settings: Settings<Game>;
   locations: GameLocation<Game>[];
 };
@@ -187,10 +187,9 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
   };
 };
 
-type GameConverter<Game extends GameWorld> = (
+export type GameConverter = <Game extends GameWorld>(
   model: GameModel<Game> | undefined
 ) => void;
 
-export const convertGame = <Game extends GameWorld>(
-  converter: GameConverter<Game>
-) => converter(worldModel as unknown as GameModel<Game>);
+export const convertGame = <Game extends GameWorld>(converter: GameConverter) =>
+  converter(worldModel as unknown as GameModel<Game>);
