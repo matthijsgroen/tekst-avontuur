@@ -19,6 +19,11 @@ type Game = {
 const game = world<Game>({
   defaultLocale: "nl-NL",
   startLocation: "forest",
+  characterConfigs: {
+    player: {
+      defaultName: "Matthijs",
+    },
+  },
 });
 
 export default game;

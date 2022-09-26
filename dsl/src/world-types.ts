@@ -56,6 +56,12 @@ export type EvaluateCondition<Game extends GameWorld> = (
 export type Settings<Game extends GameWorld> = {
   defaultLocale: `${string}-${string}`;
   startLocation: keyof Game["locations"];
+  characterConfigs: Record<
+    keyof Game["characters"],
+    {
+      defaultName: string;
+    }
+  >;
 };
 
 export type Interaction<Game extends GameWorld> = (
