@@ -24,13 +24,9 @@ g.location("forest", ({ describe, interaction }) => {
 
   interaction("Spring op paard", g.never(), () => {});
 
-  interaction(
-    "Raap de tak op",
-    g.not(g.isItemState("branch", "unknown")),
-    () => {
-      g.item("branch").setState("possession");
-    }
-  );
+  interaction("Raap de tak op", g.isItemState("branch", "unknown"), () => {
+    g.item("branch").setState("possession");
+  });
 
   interaction("Ga naar het oosten, richting de akkers", g.always(), () => {
     g.travel("farmland");

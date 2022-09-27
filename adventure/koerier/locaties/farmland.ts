@@ -25,12 +25,12 @@ g.location("farmland", ({ describe, interaction }) => {
         );
       },
       () => {
-        g.travel("farmland");
+        g.travel("forest");
       }
     );
   });
 
-  interaction("Ga naar het westen, richting de heuvels", g.always(), () => {
+  interaction("Ga naar het zuiden, richting het dorp", g.always(), () => {
     g.travel("hills");
   });
 });
