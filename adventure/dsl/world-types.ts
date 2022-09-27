@@ -1,7 +1,9 @@
 import { StateCondition } from "./ast-types";
 
 export type WorldObjectSettings = {
-  states: unknown;
+  states?: unknown;
+  flags?: unknown;
+  counters?: unknown;
 };
 
 export type GameWorld = {

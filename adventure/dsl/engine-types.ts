@@ -6,17 +6,20 @@ export type GameState<Game extends GameWorld> = {
   items: {
     [K in keyof Game["items"]]?: {
       state: Game["items"][K]["states"] | "unknown";
+      flags: Record<string, boolean>;
     };
   };
   characters: {
     [K in keyof Game["characters"]]?: {
       state: Game["characters"][K]["states"] | "unknown";
+      flags: Record<string, boolean>;
       name?: string;
     };
   };
   locations: {
     [K in keyof Game["locations"]]?: {
       state: Game["locations"][K]["states"] | "unknown";
+      flags: Record<string, boolean>;
     };
   };
 };

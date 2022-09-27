@@ -7,6 +7,7 @@ import {
 import { GameStateManager, GameState } from "../dsl/engine-types";
 import { GameWorld } from "../dsl/world-types";
 import { testCondition } from "../engine/testCondition";
+import { produce } from "immer";
 
 type StatementMap<Game extends GameWorld> = {
   [K in ScriptStatement<Game> as K["statementType"]]: (
@@ -39,15 +40,110 @@ const statementHandler = <
       }));
     },
     UpdateItemState: ({ stateItem, newState }, _gameModel, stateManager) => {
-      stateManager.updateState((state) => ({
-        ...state,
-        items: {
-          ...state.items,
-          [stateItem]: {
-            state: newState,
-          },
-        },
-      }));
+      stateManager.updateState(
+        produce((draft) => {
+          const item = (draft as GameState<Game>).items[stateItem];
+          if (item) {
+            item.state = newState;
+          } else {
+            (draft as GameState<Game>).items[stateItem] = {
+              state: newState,
+              flags: {},
+            };
+          }
+        })
+      );
+    },
+    UpdateItemFlag: ({ stateItem, flag, value }, _gameModel, stateManager) => {
+      stateManager.updateState(
+        produce((draft) => {
+          const item = (draft as GameState<Game>).items[stateItem];
+          if (item) {
+            item.flags[String(flag)] = value;
+          } else {
+            (draft as GameState<Game>).items[stateItem] = {
+              state: "unknown",
+              flags: { [String(flag)]: value },
+            };
+          }
+        })
+      );
+    },
+    UpdateCharacterState: (
+      { stateItem, newState },
+      _gameModel,
+      stateManager
+    ) => {
+      stateManager.updateState(
+        produce((draft) => {
+          const item = (draft as GameState<Game>).characters[stateItem];
+          if (item) {
+            item.state = newState;
+          } else {
+            (draft as GameState<Game>).characters[stateItem] = {
+              state: newState,
+              flags: {},
+            };
+          }
+        })
+      );
+    },
+    UpdateCharacterFlag: (
+      { stateItem, flag, value },
+      _gameModel,
+      stateManager
+    ) => {
+      stateManager.updateState(
+        produce((draft) => {
+          const item = (draft as GameState<Game>).characters[stateItem];
+          if (item) {
+            item.flags[String(flag)] = value;
+          } else {
+            (draft as GameState<Game>).characters[stateItem] = {
+              state: "unknown",
+              flags: { [String(flag)]: value },
+            };
+          }
+        })
+      );
+    },
+    UpdateLocationState: (
+      { stateItem, newState },
+      _gameModel,
+      stateManager
+    ) => {
+      stateManager.updateState(
+        produce((draft) => {
+          const item = (draft as GameState<Game>).locations[stateItem];
+          if (item) {
+            item.state = newState;
+          } else {
+            (draft as GameState<Game>).locations[stateItem] = {
+              state: newState,
+              flags: {},
+            };
+          }
+        })
+      );
+    },
+    UpdateLocationFlag: (
+      { stateItem, flag, value },
+      _gameModel,
+      stateManager
+    ) => {
+      stateManager.updateState(
+        produce((draft) => {
+          const item = (draft as GameState<Game>).locations[stateItem];
+          if (item) {
+            item.flags[String(flag)] = value;
+          } else {
+            (draft as GameState<Game>).locations[stateItem] = {
+              state: "unknown",
+              flags: { [String(flag)]: value },
+            };
+          }
+        })
+      );
     },
     CharacterSay: ({ character, sentences }, gameModel, stateManager) => {
       const name =
@@ -179,6 +275,7 @@ const runLocation = async <Game extends GameWorld>(
     for (const interaction of possibleInteractions) {
       console.log(`${interaction.key}) ${interaction.action.label}`);
     }
+
     let input: string | undefined;
     let chosenAction:
       | { action: GameInteraction<Game>; key: string }

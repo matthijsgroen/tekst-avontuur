@@ -2,9 +2,9 @@ import { world } from "../dsl/dsl";
 
 export type Game = {
   locations: {
-    forest: { states: "default" };
-    farmland: { states: "default" };
-    hills: { states: "default" };
+    forest: { flags: "visited" };
+    farmland: { flags: "visited" };
+    hills: { flags: "visited" };
   };
   items: {
     bag: { states: "known" | "possession" };

@@ -1,6 +1,6 @@
 import g from "../game";
 
-g.location("farmland", ({ describe, interaction }) => {
+g.defineLocation("farmland", ({ describe, interaction }) => {
   describe(() => {
     g.text(
       "Je staat in een boerenlandschap.",
@@ -10,6 +10,7 @@ g.location("farmland", ({ describe, interaction }) => {
       "In het westen ligt een bos.",
       "In het zuiden loopt een weg richting een dorp."
     );
+    g.location("farmland").setFlag("visited", true);
   });
 
   interaction("Ga naar het westen, richting het bos", g.always(), () => {

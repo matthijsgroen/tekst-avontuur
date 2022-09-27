@@ -1,6 +1,6 @@
 import g from "../game";
 
-g.location("forest", ({ describe, interaction }) => {
+g.defineLocation("forest", ({ describe, interaction }) => {
   describe(() => {
     g.text(
       "Je staat in het bos. Het is een stralende dag.",
@@ -9,6 +9,7 @@ g.location("forest", ({ describe, interaction }) => {
       "In het oosten zijn akkers.",
       "In het westen zijn heuvels."
     );
+    g.location("forest").setFlag("visited", true);
 
     g.onState(g.not(g.isItemState("bag", "possession")), () => {
       g.text("Op de grond ligt je tas en scherven van de fles medicijnen.");
@@ -25,6 +26,10 @@ g.location("forest", ({ describe, interaction }) => {
   interaction("Spring op paard", g.never(), () => {});
 
   interaction("Raap de tak op", g.isItemState("branch", "unknown"), () => {
+    g.text(
+      "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd.",
+      "Deze tak heeft je best pijn gedaan."
+    );
     g.item("branch").setState("possession");
   });
 

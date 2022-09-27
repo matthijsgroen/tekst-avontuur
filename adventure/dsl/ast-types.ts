@@ -37,7 +37,9 @@ export type ScriptStatement<Game extends GameWorld> =
   | TextStatement
   | TravelStatement<Game>
   | ConditionStatement<Game>
-  | UpdateStateItem<Game>
+  | UpdateState<Game, "item">
+  | UpdateState<Game, "location">
+  | UpdateState<Game, "character">
   | CharacterSay<Game>;
 
 export type TextStatement = { statementType: "Text"; sentences: string[] };
@@ -51,11 +53,23 @@ export type ConditionStatement<Game extends GameWorld> = {
   body: ScriptAST<Game>;
   elseBody: ScriptAST<Game>;
 };
-export type UpdateStateItem<Game extends GameWorld> = {
-  statementType: "UpdateItemState";
-  stateItem: keyof Game["items"];
-  newState: Game["items"][keyof Game["items"]]["states"];
-};
+
+export type UpdateState<
+  Game extends GameWorld,
+  ItemType extends "item" | "location" | "character"
+> =
+  | {
+      statementType: `Update${Capitalize<ItemType>}State`;
+      stateItem: keyof Game[`${ItemType}s`];
+      newState: Game[`${ItemType}s`][keyof Game[`${ItemType}s`]]["states"];
+    }
+  | {
+      statementType: `Update${Capitalize<ItemType>}Flag`;
+      stateItem: keyof Game[`${ItemType}s`];
+      flag: Game[`${ItemType}s`][keyof Game[`${ItemType}s`]]["flags"];
+      value: boolean;
+    };
+
 export type CharacterSay<Game extends GameWorld> = {
   statementType: "CharacterSay";
   character: keyof Game["characters"];

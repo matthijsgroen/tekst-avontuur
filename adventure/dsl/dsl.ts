@@ -63,7 +63,7 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
   });
 
   return {
-    location: (
+    defineLocation: (
       location: keyof Game["locations"],
       script: LocationScript<Game>
     ) => {
@@ -121,6 +121,31 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
           statementType: "UpdateItemState",
           stateItem: item,
           newState,
+        });
+      },
+      setFlag: (flag: Game["items"][I]["flags"], value: boolean) => {
+        activeScriptScope.push({
+          statementType: "UpdateItemFlag",
+          stateItem: item,
+          flag,
+          value,
+        });
+      },
+    }),
+    location: <I extends keyof Game["locations"]>(location: I) => ({
+      setState: (newState: Game["locations"][I]["states"]) => {
+        activeScriptScope.push({
+          statementType: "UpdateLocationState",
+          stateItem: location,
+          newState,
+        });
+      },
+      setFlag: (flag: Game["locations"][I]["flags"], value: boolean) => {
+        activeScriptScope.push({
+          statementType: "UpdateLocationFlag",
+          stateItem: location,
+          flag,
+          value,
         });
       },
     }),
