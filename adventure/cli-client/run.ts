@@ -189,6 +189,7 @@ const runLocation = async <Game extends GameWorld>(
         (interaction) => interaction.key === input
       );
     } while (!chosenAction);
+    cls();
 
     await runScript<Game>(chosenAction.action.script, gameModel, stateManager);
   };
