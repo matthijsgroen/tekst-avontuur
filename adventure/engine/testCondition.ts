@@ -1,5 +1,5 @@
 import { StateCondition } from "../dsl/ast-types";
-import { GameStateManager } from "../dsl/engine-types";
+import { GameStateManager } from "./engine-types";
 import { GameWorld } from "../dsl/world-types";
 
 export const testCondition = <Game extends GameWorld>(
@@ -34,6 +34,27 @@ export const testCondition = <Game extends GameWorld>(
     const actualState =
       stateManager.getState().locations[item]?.state ?? "unknown";
     return expectedState === actualState;
+  }
+  if (condition.op === "characterFlagSet") {
+    return (
+      stateManager.getState().characters[condition.item]?.flags[
+        String(condition.flag)
+      ] === true
+    );
+  }
+  if (condition.op === "locationFlagSet") {
+    return (
+      stateManager.getState().locations[condition.item]?.flags[
+        String(condition.flag)
+      ] === true
+    );
+  }
+  if (condition.op === "itemFlagSet") {
+    return (
+      stateManager.getState().items[condition.item]?.flags[
+        String(condition.flag)
+      ] === true
+    );
   }
 
   return true;

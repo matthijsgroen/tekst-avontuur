@@ -5,14 +5,16 @@ export type Game = {
     forest: { flags: "visited" };
     farmland: { flags: "visited" };
     hills: { flags: "visited" };
+    mine: { flags: "visited" };
   };
   items: {
     bag: { states: "known" | "possession" };
-    branch: { states: "known" | "possession" };
+    branch: { states: "possession" };
     horse: { states: "known" | "found" | "hooves" | "cart" };
   };
   characters: {
-    player: { states: "default" };
+    player: {};
+    dwarf: { flags: "nameKnown" };
   };
 };
 
@@ -24,6 +26,9 @@ const game = world<Game>({
   characterConfigs: {
     player: {
       defaultName: "Matthijs",
+    },
+    dwarf: {
+      defaultName: "Thorin",
     },
   },
 });

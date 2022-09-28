@@ -1,4 +1,4 @@
-import { GameWorld } from "./world-types";
+import { GameWorld } from "../dsl/world-types";
 
 export type GameState<Game extends GameWorld> = {
   currentLocation: keyof Game["locations"];

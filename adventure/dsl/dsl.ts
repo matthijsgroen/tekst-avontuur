@@ -2,6 +2,7 @@ import type {
   FalseCondition,
   GameLocation,
   GameModel,
+  GameObjectFlagCondition,
   GameObjectStateCondition,
   NegateCondition,
   ScriptAST,
@@ -53,19 +54,31 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
     op: "negate",
     condition,
   });
-  const isItemState = <K extends keyof Game["items"]>(
-    item: K,
-    state: Game["items"][K]["states"] | "unknown"
-  ): GameObjectStateCondition<Game, "item"> => ({
-    op: "itemEquals",
-    item,
-    state,
-  });
+  const isState =
+    <I extends "item" | "character" | "location">(key: I) =>
+    <K extends keyof Game[`${I}s`]>(
+      item: K,
+      state: Game[`${I}s`][K]["states"] | "unknown"
+    ): GameObjectStateCondition<Game, I> => ({
+      op: `${key}Equals`,
+      item,
+      state,
+    });
+  const hasFlag =
+    <I extends "item" | "character" | "location">(key: I) =>
+    <K extends keyof Game[`${I}s`]>(
+      item: K,
+      flag: Game[`${I}s`][K]["flags"]
+    ): GameObjectFlagCondition<Game, I> => ({
+      op: `${key}FlagSet`,
+      item,
+      flag,
+    });
 
   return {
-    defineLocation: (
-      location: keyof Game["locations"],
-      script: LocationScript<Game>
+    defineLocation: <Location extends keyof Game["locations"]>(
+      location: Location,
+      script: LocationScript<Game, Location>
     ) => {
       const locationAST: GameLocation<Game> = {
         id: location,
@@ -79,14 +92,14 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
           const description = wrapScript(script);
           locationAST.describe = { script: description };
         },
-        onEnter: (from: keyof Game["locations"], script) => {
+        onEnter: (from: Exclude<keyof Game["locations"], Location>, script) => {
           const enterScript = wrapScript(script);
           locationAST.onEnter.push({
             from,
             script: enterScript,
           });
         },
-        onLeave: (to: keyof Game["locations"], script) => {
+        onLeave: (to: Exclude<keyof Game["locations"], Location>, script) => {
           const enterScript = wrapScript(script);
           locationAST.onLeave.push({
             to,
@@ -162,7 +175,12 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
       });
     },
     onState,
-    isItemState,
+    isItemState: isState("item"),
+    isLocationState: isState("location"),
+    isCharacterState: isState("character"),
+    hasCharacterFlag: hasFlag("character"),
+    hasLocationFlag: hasFlag("location"),
+    hasItemFlag: hasFlag("item"),
     not,
     always,
     never,

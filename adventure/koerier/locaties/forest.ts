@@ -1,6 +1,13 @@
 import g from "../game";
 
-g.defineLocation("forest", ({ describe, interaction }) => {
+g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
+  onLeave("farmland", () => {
+    g.text("Je wandelt naar het oosten, richting de akkers.");
+  });
+  onLeave("hills", () => {
+    g.text("Je wandelt naar het westen, richting de heuvels.");
+  });
+
   describe(() => {
     g.text(
       "Je staat in het bos. Het is een stralende dag.",

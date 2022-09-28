@@ -14,9 +14,18 @@ export type GameWorld = {
 
 export type Script = () => void;
 
-export type LocationScript<Game extends GameWorld> = (events: {
-  onEnter: (from: keyof Game["locations"], script: Script) => void;
-  onLeave: (from: keyof Game["locations"], script: Script) => void;
+export type LocationScript<
+  Game extends GameWorld,
+  Location extends keyof Game["locations"]
+> = (events: {
+  onEnter: (
+    from: Exclude<keyof Game["locations"], Location>,
+    script: Script
+  ) => void;
+  onLeave: (
+    from: Exclude<keyof Game["locations"], Location>,
+    script: Script
+  ) => void;
   describe: (script: () => void) => void;
   interaction: Interaction<Game>;
 }) => void;

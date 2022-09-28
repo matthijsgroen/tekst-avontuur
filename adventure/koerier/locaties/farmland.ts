@@ -1,6 +1,10 @@
 import g from "../game";
 
-g.defineLocation("farmland", ({ describe, interaction }) => {
+g.defineLocation("farmland", ({ describe, interaction, onLeave }) => {
+  onLeave("forest", () => {
+    g.text("Je wandelt naar het oosten, richting het bos.");
+  });
+
   describe(() => {
     g.text(
       "Je staat in een boerenlandschap.",
@@ -31,7 +35,7 @@ g.defineLocation("farmland", ({ describe, interaction }) => {
     );
   });
 
-  interaction("Ga naar het zuiden, richting het dorp", g.always(), () => {
+  interaction("Ga naar het zuiden, richting het dorp", g.never(), () => {
     g.travel("hills");
   });
 });

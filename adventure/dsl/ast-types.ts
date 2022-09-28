@@ -1,4 +1,4 @@
-import { GameState } from "./engine-types";
+import { GameState } from "../engine/engine-types";
 import { GameWorld } from "./world-types";
 
 export type Settings<Game extends GameWorld> = {
@@ -80,6 +80,9 @@ export type StateCondition<Game extends GameWorld> =
   | GameObjectStateCondition<Game, "item">
   | GameObjectStateCondition<Game, "location">
   | GameObjectStateCondition<Game, "character">
+  | GameObjectFlagCondition<Game, "item">
+  | GameObjectFlagCondition<Game, "location">
+  | GameObjectFlagCondition<Game, "character">
   | TrueCondition
   | FalseCondition
   | NegateCondition<Game>;
@@ -96,6 +99,14 @@ export type GameObjectStateCondition<
   op: `${ItemType}Equals`;
   item: keyof Game[`${ItemType}s`];
   state: Game[`${ItemType}s`][keyof Game[`${ItemType}s`]]["states"] | "unknown";
+};
+export type GameObjectFlagCondition<
+  Game extends GameWorld,
+  ItemType extends "item" | "location" | "character"
+> = {
+  op: `${ItemType}FlagSet`;
+  item: keyof Game[`${ItemType}s`];
+  flag: Game[`${ItemType}s`][keyof Game[`${ItemType}s`]]["flags"];
 };
 
 export type TrueCondition = {

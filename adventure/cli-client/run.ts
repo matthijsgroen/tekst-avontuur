@@ -4,7 +4,7 @@ import {
   GameModel,
   GameInteraction,
 } from "../dsl/ast-types";
-import { GameStateManager, GameState } from "../dsl/engine-types";
+import { GameStateManager, GameState } from "../engine/engine-types";
 import { GameWorld } from "../dsl/world-types";
 import { testCondition } from "../engine/testCondition";
 import { produce } from "immer";
@@ -32,6 +32,7 @@ const statementHandler = <
       for (const sentence of statement.sentences) {
         console.log(sentence);
       }
+      console.log("");
     },
     Travel: ({ destination }, _gameModel, stateManager) => {
       stateManager.updateState((state) => ({
@@ -163,6 +164,7 @@ const statementHandler = <
           }
         }
       }
+      console.log("");
     },
     Condition: async (
       { condition, body, elseBody },
@@ -238,7 +240,6 @@ const runLocation = async <Game extends GameWorld>(
     console.log(`Location not found: ${String(currentLocation)}`);
     process.exit(1);
   }
-  cls();
 
   const describeLocation = async () => {
     const previousLocation = stateManager.getState().previousLocation;
@@ -260,7 +261,6 @@ const runLocation = async <Game extends GameWorld>(
   };
 
   const handleInteraction = async () => {
-    console.log("");
     // prompt: should be default configured, and can be redefined for overlays
     console.log("Wat ga je doen:");
     const possibleInteractions = (locationData?.interactions || [])
@@ -330,6 +330,7 @@ export const runGame = async <Game extends GameWorld>(
   };
   enableKeyPresses();
 
+  cls();
   while (true) {
     await runLocation(gameModel, stateManager);
   }
