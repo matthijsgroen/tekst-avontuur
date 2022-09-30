@@ -5,6 +5,8 @@ import { testCondition } from "../dsl/testCondition";
 import { GameWorld } from "../dsl/world-types";
 import { describeLocation } from "./describeLocation";
 import { handleOverlay } from "./handleOverlay";
+import { getSettings } from "./settings";
+import { resetColor, setColor } from "./utils";
 
 type StatementMap<Game extends GameWorld> = {
   [K in ScriptStatement<Game> as K["statementType"]]: (
@@ -25,11 +27,19 @@ const statementHandler = <
   stateManager: GameStateManager<Game>
 ) => Promise<void> | void) => {
   const statementMap: StatementMap<Game> = {
-    Text: (statement) => {
+    Text: (statement, gameModel) => {
+      const useColor = getSettings().color;
+      const color = gameModel.settings.defaultTextColor;
+      if (useColor && color) {
+        setColor(color);
+      }
       for (const sentence of statement.sentences) {
         console.log(sentence);
       }
       console.log("");
+      if (useColor && color) {
+        resetColor();
+      }
     },
     Travel: ({ destination }, _gameModel, stateManager) => {
       stateManager.updateState((state) => ({
@@ -125,6 +135,12 @@ const statementHandler = <
         stateManager.getState().characters[character]?.name ??
         gameModel.settings.characterConfigs[character].defaultName;
 
+      const useColor = getSettings().color;
+      const color = gameModel.settings.characterConfigs[character].textColor;
+      if (useColor && color) {
+        setColor(color);
+      }
+
       if (sentences.length === 1) {
         console.log(`${name}: "${sentences[0]}"`);
       } else {
@@ -139,6 +155,9 @@ const statementHandler = <
         }
       }
       console.log("");
+      if (useColor && color) {
+        resetColor();
+      }
     },
     Condition: async (
       { condition, body, elseBody },

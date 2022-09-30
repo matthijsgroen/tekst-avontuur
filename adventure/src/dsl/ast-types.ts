@@ -1,13 +1,16 @@
 import { GameState } from "./engine-types";
+import { HexColor } from "./hexColor";
 import { GameWorld } from "./world-types";
 
 export type Settings<Game extends GameWorld> = {
   defaultLocale: `${string}-${string}`;
   initialState: Partial<GameState<Game>>;
+  defaultTextColor?: HexColor;
   characterConfigs: Record<
     keyof Game["characters"],
     {
       defaultName: string;
+      textColor?: HexColor;
     }
   >;
 };

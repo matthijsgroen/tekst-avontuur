@@ -1,18 +1,11 @@
 import type {
-  FalseCondition,
   GameOverlay,
   GameLocation,
   GameModel,
-  GameObjectFlagCondition,
-  GameObjectStateCondition,
-  NegateCondition,
   ScriptAST,
   Settings,
-  StateCondition,
-  TrueCondition,
-  AndCondition,
-  OrCondition,
 } from "./ast-types";
+import { dslStateConditions } from "./dsl-conditions";
 import type {
   GameWorld,
   LocationScript,
@@ -21,9 +14,6 @@ import type {
 } from "./world-types";
 
 let worldModel: GameModel<GameWorld> | undefined = undefined;
-
-const always = (): TrueCondition => ({ op: "true" });
-const never = (): FalseCondition => ({ op: "false" });
 
 export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
   worldModel = {
@@ -54,38 +44,6 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
       elseBody,
     });
   };
-  const not = (condition: StateCondition<Game>): NegateCondition<Game> => ({
-    op: "negate",
-    condition,
-  });
-  const and = (...conditions: StateCondition<Game>[]): AndCondition<Game> => ({
-    op: "and",
-    conditions,
-  });
-  const or = (...conditions: StateCondition<Game>[]): OrCondition<Game> => ({
-    op: "or",
-    conditions,
-  });
-  const isState =
-    <I extends "item" | "character" | "location">(key: I) =>
-    <K extends keyof Game[`${I}s`]>(
-      item: K,
-      state: Game[`${I}s`][K]["states"] | "unknown"
-    ): GameObjectStateCondition<Game, I> => ({
-      op: `${key}Equals`,
-      item,
-      state,
-    });
-  const hasFlag =
-    <I extends "item" | "character" | "location">(key: I) =>
-    <K extends keyof Game[`${I}s`]>(
-      item: K,
-      flag: Game[`${I}s`][K]["flags"]
-    ): GameObjectFlagCondition<Game, I> => ({
-      op: `${key}FlagSet`,
-      item,
-      flag,
-    });
 
   return {
     defineLocation: <Location extends keyof Game["locations"]>(
@@ -251,17 +209,7 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
       });
     },
     onState,
-    isItemState: isState("item"),
-    isLocationState: isState("location"),
-    isCharacterState: isState("character"),
-    hasCharacterFlag: hasFlag("character"),
-    hasLocationFlag: hasFlag("location"),
-    hasItemFlag: hasFlag("item"),
-    not,
-    and,
-    or,
-    always,
-    never,
+    ...dslStateConditions<Game>(),
   };
 };
 

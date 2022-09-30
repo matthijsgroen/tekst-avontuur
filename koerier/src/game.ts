@@ -1,4 +1,4 @@
-import { world } from "point-n-click";
+import { hexColor, world } from "point-n-click";
 
 export type Game = {
   locations: {
@@ -21,15 +21,18 @@ export type Game = {
 
 const game = world<Game>({
   defaultLocale: "nl-NL",
+  defaultTextColor: hexColor("80ff80"),
   initialState: {
     currentLocation: "forest",
   },
   characterConfigs: {
     player: {
       defaultName: "Matthijs",
+      textColor: hexColor("4040ff"),
     },
     dwarf: {
       defaultName: "Thorin",
+      textColor: hexColor("ee4040"),
     },
   },
 });
