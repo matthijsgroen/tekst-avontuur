@@ -1,4 +1,5 @@
 import g from "../game";
+import { inventory } from "../inventory";
 
 g.defineLocation("mine", ({ describe, interaction, onLeave }) => {
   onLeave("hills", () => {
@@ -25,6 +26,8 @@ g.defineLocation("mine", ({ describe, interaction, onLeave }) => {
     );
     g.text("Hij ziet er niet al te vrolijk uit.");
   });
+
+  inventory(interaction);
 
   interaction("Praat met de dwerg", g.always(), () => {
     g.overlay(

@@ -1,4 +1,5 @@
 import g from "../game";
+import { inventory } from "../inventory";
 
 g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
   onLeave("farmland", () => {
@@ -30,6 +31,7 @@ g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
     });
   });
 
+  inventory(interaction);
   interaction("Spring op paard", g.never(), () => {});
 
   interaction("Raap de tak op", g.isItemState("branch", "unknown"), () => {

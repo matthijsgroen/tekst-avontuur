@@ -1,4 +1,5 @@
 import g from "../game";
+import { inventory } from "../inventory";
 
 g.defineLocation("farmland", ({ describe, interaction, onLeave }) => {
   onLeave("forest", () => {
@@ -16,6 +17,8 @@ g.defineLocation("farmland", ({ describe, interaction, onLeave }) => {
     );
     g.location("farmland").setFlag("visited", true);
   });
+
+  inventory(interaction);
 
   interaction("Ga naar het westen, richting het bos", g.always(), () => {
     g.onState(
