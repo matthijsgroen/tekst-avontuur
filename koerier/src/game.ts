@@ -1,4 +1,4 @@
-import { world } from "../dsl/dsl";
+import { world } from "point-n-click";
 
 export type Game = {
   locations: {

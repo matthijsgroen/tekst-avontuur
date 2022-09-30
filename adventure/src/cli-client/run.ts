@@ -4,9 +4,10 @@ import {
   GameModel,
   GameInteraction,
 } from "../dsl/ast-types";
-import { GameStateManager, GameState } from "../engine/engine-types";
+import { GameStateManager, GameState } from "../dsl/engine-types";
 import { GameWorld } from "../dsl/world-types";
-import { testCondition } from "../engine/testCondition";
+import { testCondition } from "../dsl/testCondition";
+import { createDefaultState } from "../dsl/createDefaultState";
 import { produce } from "immer";
 
 type StatementMap<Game extends GameWorld> = {
@@ -16,39 +17,6 @@ type StatementMap<Game extends GameWorld> = {
     stateManager: GameStateManager<Game>
   ) => Promise<void> | void;
 };
-
-const createDefaultState = <Game extends GameWorld>(
-  gameModel: GameModel<Game>
-): GameState<Game> => ({
-  currentLocation: gameModel.locations[0].id,
-  overlayStack: [],
-  items: {},
-  characters: Object.entries(gameModel.settings.characterConfigs).reduce<
-    Partial<GameState<Game>["characters"]>
-  >((map, [characterId, settings]) => {
-    return {
-      ...map,
-      [characterId]: {
-        state: "unknown",
-        flags: {},
-        name: null,
-        defaultName: settings.defaultName,
-      },
-    };
-  }, {}) as GameState<Game>["characters"],
-  locations: gameModel.locations.reduce<Partial<GameState<Game>["locations"]>>(
-    (map, currentLocation) => {
-      return {
-        ...map,
-        [currentLocation.id]: {
-          state: "unknown",
-          flags: {},
-        },
-      };
-    },
-    {}
-  ) as GameState<Game>["locations"],
-});
 
 const exitGame = (code = 0) => {
   process.exit(code);

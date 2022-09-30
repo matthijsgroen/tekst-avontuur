@@ -1,13 +1,20 @@
 {
-  "name": "koerier",
+  "name": "point-n-click",
   "version": "2.0.0",
-  "description": "Koerier van de koning",
+  "description": "Adventure game engine, from text to graphical",
   "license": "MIT",
+  "source": "./src/index.ts",
+  "main": "./dist/main.js",
+  "module": "./dist/module.js",
+  "types": "./dist/types.d.ts",
   "scripts": {
-    "start-cli": "ts-node koerier/runText.ts"
+    "build": "parcel build"
   },
   "devDependencies": {
-    "@types/node": "^18.7.23",
+    "@parcel/packager-ts": "2.7.0",
+    "@parcel/transformer-typescript-types": "2.7.0",
+    "@types/node": "16",
+    "parcel": "^2.7.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3"
   },

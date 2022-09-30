@@ -1,4 +1,4 @@
-import { GameWorld, Interaction } from "../dsl/world-types";
+import { GameWorld, Interaction } from "point-n-click";
 import g from "./game";
 
 export const inventory = <Game extends GameWorld>(

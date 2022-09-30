@@ -1,6 +1,6 @@
-import { StateCondition } from "../dsl/ast-types";
+import { StateCondition } from "./ast-types";
 import { GameStateManager } from "./engine-types";
-import { GameWorld } from "../dsl/world-types";
+import { GameWorld } from "./world-types";
 
 export const testCondition = <Game extends GameWorld>(
   condition: StateCondition<Game>,

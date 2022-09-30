@@ -1,0 +1,14 @@
+{
+  "name": "koerier",
+  "version": "1.0.0",
+  "description": "Koerier van de koning",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start-cli": "ts-node src/runText.ts"
+  },
+  "devDependencies": {
+    "point-n-click": "^0.0.3",
+    "ts-node": "^10.9.1"
+  }
+}

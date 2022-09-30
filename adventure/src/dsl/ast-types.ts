@@ -1,4 +1,4 @@
-import { GameState } from "../engine/engine-types";
+import { GameState } from "./engine-types";
 import { GameWorld } from "./world-types";
 
 export type Settings<Game extends GameWorld> = {
