@@ -1,5 +1,6 @@
 import type {
   FalseCondition,
+  GameOverlay,
   GameLocation,
   GameModel,
   GameObjectFlagCondition,
@@ -14,6 +15,7 @@ import type {
   GameWorld,
   LocationScript,
   EvaluateCondition,
+  ConversationScript as OverlayScript,
 } from "./world-types";
 
 let worldModel: GameModel<GameWorld> | undefined = undefined;
@@ -119,12 +121,76 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
         locationAST as unknown as GameLocation<GameWorld>
       );
     },
-    character: (character: keyof Game["characters"]) => ({
+    overlay: (id: string, handleOverlay: OverlayScript<Game>) => {
+      const overlayAST: GameOverlay<Game> = {
+        statementType: "OpenOverlay",
+        overlayId: id,
+        onStart: { script: [] },
+        onEnd: { script: [] },
+        interactions: [],
+      };
+
+      handleOverlay({
+        onStart: (script) => {
+          const startScript = wrapScript(script);
+          overlayAST.onStart.script = startScript;
+        },
+        onEnd: (script) => {
+          const endScript = wrapScript(script);
+          overlayAST.onEnd.script = endScript;
+        },
+        interaction: (label, condition, script) => {
+          const interactionScript = wrapScript(script);
+          overlayAST.interactions.push({
+            label,
+            condition,
+            script: interactionScript,
+          });
+        },
+        closeOverlay: () => {
+          activeScriptScope.push({
+            statementType: "CloseOverlay",
+            overlayId: id,
+          });
+        },
+      });
+      activeScriptScope.push(overlayAST);
+    },
+    character: <I extends keyof Game["characters"]>(character: I) => ({
       say: (...sentences: string[]) => {
         activeScriptScope.push({
           statementType: "CharacterSay",
           character,
           sentences,
+        });
+      },
+      setName: (newName: string) => {
+        activeScriptScope.push({
+          statementType: "UpdateCharacterName",
+          character,
+          newName,
+        });
+      },
+      setState: (newState: Game["characters"][I]["states"]) => {
+        activeScriptScope.push({
+          statementType: "UpdateCharacterState",
+          stateItem: character,
+          newState,
+        });
+      },
+      setFlag: (flag: Game["characters"][I]["flags"], value: boolean) => {
+        activeScriptScope.push({
+          statementType: "UpdateCharacterFlag",
+          stateItem: character,
+          flag,
+          value,
+        });
+      },
+      clearCustomName: () => {
+        activeScriptScope.push({
+          statementType: "UpdateCharacterName",
+          character,
+          newName: null,
         });
       },
     }),

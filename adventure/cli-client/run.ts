@@ -17,6 +17,67 @@ type StatementMap<Game extends GameWorld> = {
   ) => Promise<void> | void;
 };
 
+const createDefaultState = <Game extends GameWorld>(
+  gameModel: GameModel<Game>
+): GameState<Game> => ({
+  currentLocation: gameModel.locations[0].id,
+  overlayStack: [],
+  items: {},
+  characters: Object.entries(gameModel.settings.characterConfigs).reduce<
+    Partial<GameState<Game>["characters"]>
+  >((map, [characterId, settings]) => {
+    return {
+      ...map,
+      [characterId]: {
+        state: "unknown",
+        flags: {},
+        name: null,
+        defaultName: settings.defaultName,
+      },
+    };
+  }, {}) as GameState<Game>["characters"],
+  locations: gameModel.locations.reduce<Partial<GameState<Game>["locations"]>>(
+    (map, currentLocation) => {
+      return {
+        ...map,
+        [currentLocation.id]: {
+          state: "unknown",
+          flags: {},
+        },
+      };
+    },
+    {}
+  ) as GameState<Game>["locations"],
+});
+
+const exitGame = (code = 0) => {
+  process.exit(code);
+};
+
+const handleOverlay = async <Game extends GameWorld>(
+  overlayId: string,
+  gameModel: GameModel<Game>,
+  stateManager: GameStateManager<Game>,
+  startScript: ScriptAST<Game>,
+  endScript: ScriptAST<Game>,
+  interactions: GameInteraction<Game>[]
+) => {
+  stateManager.updateState((state) => ({
+    ...state,
+    overlayStack: state.overlayStack.concat(overlayId),
+  }));
+
+  await runScript(startScript, gameModel, stateManager);
+
+  let currentOverlayId = stateManager.getState().overlayStack.slice(-1)[0];
+  do {
+    await handleInteractions(interactions || [], gameModel, stateManager);
+    currentOverlayId = stateManager.getState().overlayStack.slice(-1)[0];
+  } while (currentOverlayId === overlayId);
+
+  await runScript(endScript, gameModel, stateManager);
+};
+
 const statementHandler = <
   Game extends GameWorld,
   K extends ScriptStatement<Game>
@@ -77,15 +138,7 @@ const statementHandler = <
     ) => {
       stateManager.updateState(
         produce((draft) => {
-          const item = (draft as GameState<Game>).characters[stateItem];
-          if (item) {
-            item.state = newState;
-          } else {
-            (draft as GameState<Game>).characters[stateItem] = {
-              state: newState,
-              flags: {},
-            };
-          }
+          (draft as GameState<Game>).characters[stateItem].state = newState;
         })
       );
     },
@@ -96,15 +149,15 @@ const statementHandler = <
     ) => {
       stateManager.updateState(
         produce((draft) => {
-          const item = (draft as GameState<Game>).characters[stateItem];
-          if (item) {
-            item.flags[String(flag)] = value;
-          } else {
-            (draft as GameState<Game>).characters[stateItem] = {
-              state: "unknown",
-              flags: { [String(flag)]: value },
-            };
-          }
+          (draft as GameState<Game>).characters[stateItem].flags[String(flag)] =
+            value;
+        })
+      );
+    },
+    UpdateCharacterName: ({ character, newName }, _gameModel, stateManager) => {
+      stateManager.updateState(
+        produce((draft) => {
+          (draft as GameState<Game>).characters[character].name = newName;
         })
       );
     },
@@ -115,15 +168,7 @@ const statementHandler = <
     ) => {
       stateManager.updateState(
         produce((draft) => {
-          const item = (draft as GameState<Game>).locations[stateItem];
-          if (item) {
-            item.state = newState;
-          } else {
-            (draft as GameState<Game>).locations[stateItem] = {
-              state: newState,
-              flags: {},
-            };
-          }
+          (draft as GameState<Game>).locations[stateItem].state = newState;
         })
       );
     },
@@ -134,15 +179,8 @@ const statementHandler = <
     ) => {
       stateManager.updateState(
         produce((draft) => {
-          const item = (draft as GameState<Game>).locations[stateItem];
-          if (item) {
-            item.flags[String(flag)] = value;
-          } else {
-            (draft as GameState<Game>).locations[stateItem] = {
-              state: "unknown",
-              flags: { [String(flag)]: value },
-            };
-          }
+          (draft as GameState<Game>).locations[stateItem].flags[String(flag)] =
+            value;
         })
       );
     },
@@ -177,6 +215,28 @@ const statementHandler = <
         await runScript(elseBody, gameModel, stateManager);
       }
     },
+    OpenOverlay: async (statement, gameModel, stateManager) => {
+      await handleOverlay(
+        statement.overlayId,
+        gameModel,
+        stateManager,
+        statement.onStart.script,
+        statement.onEnd.script,
+        statement.interactions
+      );
+      if (stateManager.getState().overlayStack.length === 0) {
+        await describeLocation(gameModel, stateManager);
+      }
+    },
+    CloseOverlay: ({ overlayId }, _gameModel, stateManager) => {
+      stateManager.updateState(
+        produce((draft) => {
+          draft.overlayStack = draft.overlayStack.filter(
+            (id) => id !== overlayId
+          );
+        })
+      );
+    },
   };
 
   return statementMap[statementType] as (
@@ -184,6 +244,37 @@ const statementHandler = <
     gameModel: GameModel<Game>,
     stateManager: GameStateManager<Game>
   ) => Promise<void> | void;
+};
+
+const handleInteractions = async <Game extends GameWorld>(
+  interactions: GameInteraction<Game>[],
+  gameModel: GameModel<Game>,
+  stateManager: GameStateManager<Game>
+) => {
+  // prompt: should be default configured, and can be redefined for overlays
+  console.log("Wat ga je doen:");
+  const possibleInteractions = interactions
+    .filter((interaction) => testCondition(interaction.condition, stateManager))
+    .map((action, key) => ({
+      action,
+      key: `${key + 1}`,
+    }));
+
+  for (const interaction of possibleInteractions) {
+    console.log(`${interaction.key}) ${interaction.action.label}`);
+  }
+
+  let input: string | undefined;
+  let chosenAction: { action: GameInteraction<Game>; key: string } | undefined;
+  do {
+    input = await keypress();
+    chosenAction = possibleInteractions.find(
+      (interaction) => interaction.key === input
+    );
+  } while (!chosenAction);
+  cls();
+
+  await runScript<Game>(chosenAction.action.script, gameModel, stateManager);
 };
 
 const runScript = async <Game extends GameWorld>(
@@ -210,7 +301,7 @@ const enableKeyPresses = () => {
   stdin.on("data", function (key: string) {
     // ctrl-c ( end of text )
     if (key === "\u0003" || key === "\u001b") {
-      process.exit();
+      exitGame();
     }
     // if (key === "\u0020") {
     //   skip = true;
@@ -226,9 +317,7 @@ const keypress = () =>
     };
   });
 
-const cls = () => process.stdout.write("\x1Bc");
-
-const runLocation = async <Game extends GameWorld>(
+const describeLocation = async <Game extends GameWorld>(
   gameModel: GameModel<Game>,
   stateManager: GameStateManager<Game>
 ) => {
@@ -238,63 +327,48 @@ const runLocation = async <Game extends GameWorld>(
   );
   if (!locationData) {
     console.log(`Location not found: ${String(currentLocation)}`);
-    process.exit(1);
+    exitGame(1);
   }
 
-  const describeLocation = async () => {
-    const previousLocation = stateManager.getState().previousLocation;
-    if (previousLocation !== currentLocation) {
-      const enterScript = locationData?.onEnter.find(
-        (item) => item.from === previousLocation
-      );
-      if (enterScript) {
-        await runScript<Game>(enterScript.script, gameModel, stateManager);
-        stateManager.updateState((state) => ({ ...state, previousLocation }));
-      }
+  const previousLocation = stateManager.getState().previousLocation;
+  if (currentLocation !== previousLocation) {
+    const enterScript = locationData?.onEnter.find(
+      (item) => item.from === previousLocation
+    );
+    if (enterScript) {
+      await runScript<Game>(enterScript.script, gameModel, stateManager);
+      stateManager.updateState((state) => ({
+        ...state,
+        previousLocation: currentLocation,
+      }));
     }
+  }
 
-    await runScript<Game>(
-      locationData?.describe.script || [],
+  await runScript<Game>(
+    locationData?.describe.script || [],
+    gameModel,
+    stateManager
+  );
+};
+
+const cls = () => process.stdout.write("\x1Bc");
+
+const runLocation = async <Game extends GameWorld>(
+  gameModel: GameModel<Game>,
+  stateManager: GameStateManager<Game>
+) => {
+  await describeLocation(gameModel, stateManager);
+
+  const currentLocation = stateManager.getState().currentLocation;
+  const locationData = gameModel.locations.find(
+    (l) => l.id === currentLocation
+  );
+  while (stateManager.getState().currentLocation === currentLocation) {
+    await handleInteractions(
+      locationData?.interactions || [],
       gameModel,
       stateManager
     );
-  };
-
-  const handleInteraction = async () => {
-    // prompt: should be default configured, and can be redefined for overlays
-    console.log("Wat ga je doen:");
-    const possibleInteractions = (locationData?.interactions || [])
-      .filter((interaction) =>
-        testCondition(interaction.condition, stateManager)
-      )
-      .map((action, key) => ({
-        action,
-        key: `${key + 1}`,
-      }));
-
-    for (const interaction of possibleInteractions) {
-      console.log(`${interaction.key}) ${interaction.action.label}`);
-    }
-
-    let input: string | undefined;
-    let chosenAction:
-      | { action: GameInteraction<Game>; key: string }
-      | undefined;
-    do {
-      input = await keypress();
-      chosenAction = possibleInteractions.find(
-        (interaction) => interaction.key === input
-      );
-    } while (!chosenAction);
-    cls();
-
-    await runScript<Game>(chosenAction.action.script, gameModel, stateManager);
-  };
-
-  await describeLocation();
-
-  while (stateManager.getState().currentLocation === currentLocation) {
-    await handleInteraction();
   }
   const newLocation = stateManager.getState().currentLocation;
   const exitScript = locationData?.onLeave.find(
@@ -310,15 +384,12 @@ export const runGame = async <Game extends GameWorld>(
 ) => {
   if (!gameModel) {
     console.log("No valid game file");
-    process.exit(1);
+    exitGame(1);
     return;
   }
 
   let gameState: GameState<Game> = {
-    currentLocation: gameModel.locations[0].id,
-    items: {},
-    characters: {},
-    locations: {},
+    ...createDefaultState(gameModel),
     ...gameModel.settings.initialState,
   };
 

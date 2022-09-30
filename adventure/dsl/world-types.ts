@@ -30,6 +30,13 @@ export type LocationScript<
   interaction: Interaction<Game>;
 }) => void;
 
+export type ConversationScript<Game extends GameWorld> = (events: {
+  onStart: (script: Script) => void;
+  onEnd: (script: Script) => void;
+  interaction: Interaction<Game>;
+  closeOverlay: () => void;
+}) => void;
+
 export type EvaluateCondition<Game extends GameWorld> = (
   condition: StateCondition<Game>,
   script: Script,
