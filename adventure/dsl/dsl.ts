@@ -10,6 +10,8 @@ import type {
   Settings,
   StateCondition,
   TrueCondition,
+  AndCondition,
+  OrCondition,
 } from "./ast-types";
 import type {
   GameWorld,
@@ -55,6 +57,14 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
   const not = (condition: StateCondition<Game>): NegateCondition<Game> => ({
     op: "negate",
     condition,
+  });
+  const and = (...conditions: StateCondition<Game>[]): AndCondition<Game> => ({
+    op: "and",
+    conditions,
+  });
+  const or = (...conditions: StateCondition<Game>[]): OrCondition<Game> => ({
+    op: "or",
+    conditions,
   });
   const isState =
     <I extends "item" | "character" | "location">(key: I) =>
@@ -248,6 +258,8 @@ export const world = <Game extends GameWorld>(settings: Settings<Game>) => {
     hasLocationFlag: hasFlag("location"),
     hasItemFlag: hasFlag("item"),
     not,
+    and,
+    or,
     always,
     never,
   };

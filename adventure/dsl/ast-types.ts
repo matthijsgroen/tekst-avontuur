@@ -111,11 +111,23 @@ export type StateCondition<Game extends GameWorld> =
   | GameObjectFlagCondition<Game, "character">
   | TrueCondition
   | FalseCondition
-  | NegateCondition<Game>;
+  | NegateCondition<Game>
+  | AndCondition<Game>
+  | OrCondition<Game>;
 
 export type NegateCondition<Game extends GameWorld> = {
   op: "negate";
   condition: StateCondition<Game>;
+};
+
+export type AndCondition<Game extends GameWorld> = {
+  op: "and";
+  conditions: StateCondition<Game>[];
+};
+
+export type OrCondition<Game extends GameWorld> = {
+  op: "or";
+  conditions: StateCondition<Game>[];
 };
 
 export type GameObjectStateCondition<

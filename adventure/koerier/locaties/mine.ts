@@ -83,6 +83,48 @@ g.defineLocation("mine", ({ describe, interaction, onLeave }) => {
           }
         );
 
+        interaction(
+          "Hoe kan ik je helpen?",
+          g.hasCharacterFlag("dwarf", "nameKnown"),
+          () => {
+            g.character("player").say("Hoe kan ik je helpen?");
+
+            g.character("dwarf").say(
+              "Heb je iets te eten voor mij?",
+              "En een nieuwe houweel?"
+            );
+
+            // "", "*c9", "Thorin: 'Heb je iets te eten voor mij?'", "&4=0"
+            // "", "*c9", "Thorin: 'Ik heb dringend een nieuwe houweel nodig.'", "&4=0"
+          }
+        );
+
+        interaction(
+          "Zou ik je houweel mogen hebben?",
+          g.and(
+            g.hasCharacterFlag("dwarf", "nameKnown"),
+            g.isItemState("pickaxe", "unknown")
+          ),
+          () => {
+            g.character("player").say("Zou ik je houweel mogen hebben?");
+            g.character("dwarf").say(
+              "Tuurlijk. alleen de bovenkant is nog heel.",
+              "Het heft is gebroken. Ik heb er niets meer aan."
+            );
+            g.text("Je stopt de bovenkant van de houweel in je tas.");
+            g.item("pickaxe").setState("broken");
+          }
+        );
+
+        // "1=11;2=0;11>1;4=5", "*c3", "$n: 'Thorin, zou jij weten hoe ik aan medicijnen kan komen?'", "", "*c2"
+        // "Thorin denkt even na.", "*c9", "", "Thorin: 'Geen idee, dat zou je het beste in het dorp kunnen vragen."
+        // "  Ze hebben daar van alles. Het dorp ligt in het zuidoosten vanaf hier."
+        // "  Eerst naar het oosten, dan naar het zuiden.'", "&4=0"
+
+        // "1=11;2=0;11>1;4=6", "*c3", "$n: 'Thorin, zou jij weten hoe ik aan vervoer kan komen?'", "", "*c2"
+        // "Thorin denkt even na.", "*c9", "", "Thorin: 'Hmm, de boer verderop heeft een paard."
+        // "Je zou kunnen vragen of je hem mag lenen?'", "&4=0"
+
         interaction("Oké, ik ga weer.", g.always(), () => {
           closeOverlay();
         });

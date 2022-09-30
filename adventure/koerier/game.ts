@@ -10,6 +10,7 @@ export type Game = {
   items: {
     bag: { states: "known" | "possession" };
     branch: { states: "possession" };
+    pickaxe: { states: "broken" | "fixed" | "given" };
     horse: { states: "known" | "found" | "hooves" | "cart" };
   };
   characters: {

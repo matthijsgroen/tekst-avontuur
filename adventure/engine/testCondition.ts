@@ -56,6 +56,16 @@ export const testCondition = <Game extends GameWorld>(
       ] === true
     );
   }
+  if (condition.op === "and") {
+    return condition.conditions.every((condition) =>
+      testCondition(condition, stateManager)
+    );
+  }
+  if (condition.op === "or") {
+    return condition.conditions.some((condition) =>
+      testCondition(condition, stateManager)
+    );
+  }
 
   return true;
 };
