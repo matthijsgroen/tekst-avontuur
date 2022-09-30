@@ -92,12 +92,16 @@ g.defineLocation("mine", ({ describe, interaction, onLeave }) => {
           () => {
             g.character("player").say("Hoe kan ik je helpen?");
 
-            g.character("dwarf").say(
-              "Heb je iets te eten voor mij?",
-              "En een nieuwe houweel?"
-            );
+            g.onState(g.not(g.isItemState("pickaxe", "given")), () => {
+              g.character("dwarf").say(
+                "Heb je iets te eten voor mij?",
+                "En een nieuwe houweel?"
+              );
+            });
+            g.onState(g.isItemState("pickaxe", "given"), () => {
+              g.character("dwarf").say("Heb je iets te eten voor mij?");
+            });
 
-            // "", "*c9", "Thorin: 'Heb je iets te eten voor mij?'", "&4=0"
             // "", "*c9", "Thorin: 'Ik heb dringend een nieuwe houweel nodig.'", "&4=0"
           }
         );
@@ -116,6 +120,23 @@ g.defineLocation("mine", ({ describe, interaction, onLeave }) => {
             );
             g.text("Je stopt de bovenkant van de houweel in je tas.");
             g.item("pickaxe").setState("broken");
+          }
+        );
+
+        interaction(
+          "Ik heb je houweel kunnen repareren.",
+          g.isItemState("pickaxe", "fixed"),
+          () => {
+            g.character("player").say("Ik heb je houweel kunnen reparerern.");
+            g.character("dwarf").say("Echt waar? Laat zien.");
+            g.character("player").say("Alsjeblieft.");
+            g.text(
+              "Je geeft de gerepareerde houweel aan Thorin. Hij bekijkt hem grondig."
+            );
+            g.character("dwarf").say(
+              "Wauw, hij is zo goed als nieuw! Bedankt!"
+            );
+            g.item("pickaxe").setState("given");
           }
         );
 
