@@ -347,30 +347,41 @@ const runLocation = async <Game extends GameWorld>(
   }
 };
 
-export const runGame = async <Game extends GameWorld>(
-  gameModel?: GameModel<Game>
-) => {
-  if (!gameModel) {
-    console.log("No valid game file");
-    exitGame(1);
-    return;
-  }
-
-  let gameState: GameState<Game> = {
-    ...createDefaultState(gameModel),
-    ...gameModel.settings.initialState,
-  };
-
-  const stateManager: GameStateManager<Game> = {
-    getState: () => gameState,
-    updateState: (mutation) => {
-      gameState = mutation(gameState);
-    },
-  };
-  enableKeyPresses();
-
-  cls();
-  while (true) {
-    await runLocation(gameModel, stateManager);
-  }
+export type CLISettings = {
+  /**
+   * Wether to use colors in the TTY.
+   * @default true
+   */
+  color?: boolean;
 };
+
+let settings: CLISettings = { color: true };
+
+export const runGame =
+  ({ color = true }: CLISettings) =>
+  async <Game extends GameWorld>(gameModel?: GameModel<Game>) => {
+    if (!gameModel) {
+      console.log("No valid game file");
+      exitGame(1);
+      return;
+    }
+    settings.color = color;
+
+    let gameState: GameState<Game> = {
+      ...createDefaultState(gameModel),
+      ...gameModel.settings.initialState,
+    };
+
+    const stateManager: GameStateManager<Game> = {
+      getState: () => gameState,
+      updateState: (mutation) => {
+        gameState = mutation(gameState);
+      },
+    };
+    enableKeyPresses();
+
+    cls();
+    while (true) {
+      await runLocation(gameModel, stateManager);
+    }
+  };
