@@ -1,0 +1,152 @@
+{
+  "characters": {
+    "player": {
+      "defaultName": "Matthijs"
+    },
+    "dwarf": {
+      "defaultName": "Thorin"
+    }
+  },
+  "location": {
+    "forest": {
+      "text": {
+        "Je wandelt naar het oosten, richting de akkers.": "Je wandelt naar het oosten, richting de akkers.",
+        "Je wandelt naar het westen, richting de heuvels.": "Je wandelt naar het westen, richting de heuvels.",
+        "Je staat in het bos. Het is een stralende dag.": "Je staat in het bos. Het is een stralende dag.",
+        "De wind laat de blaadjes ritselen.": "De wind laat de blaadjes ritselen.",
+        "In het oosten zijn akkers.": "In het oosten zijn akkers.",
+        "In het westen zijn heuvels.": "In het westen zijn heuvels.",
+        "Op de grond ligt je tas en scherven van de fles medicijnen.": "Op de grond ligt je tas en scherven van de fles medicijnen.",
+        "Je raapt de tas op.": "Je raapt de tas op.",
+        "Op de grond ligt een vers afgebroken tak.": "Op de grond ligt een vers afgebroken tak.",
+        "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd.": "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd.",
+        "Deze tak heeft je best pijn gedaan.": "Deze tak heeft je best pijn gedaan."
+      },
+      "player": {
+        "Verdorie, de medicijnen zijn echt verloren.": "Verdorie, de medicijnen zijn echt verloren."
+      },
+      "interactions": {
+        "Open tas": "Open tas",
+        "Spring op paard": "Spring op paard",
+        "Raap de tak op": "Raap de tak op",
+        "Ga naar het oosten, richting de akkers": "Ga naar het oosten, richting de akkers",
+        "Ga naar het westen, richting de heuvels": "Ga naar het westen, richting de heuvels"
+      }
+    },
+    "farmland": {
+      "text": {
+        "Je wandelt naar het oosten, richting het bos.": "Je wandelt naar het oosten, richting het bos.",
+        "Je staat in een boerenlandschap.": "Je staat in een boerenlandschap.",
+        "Aan de rechterkant van de weg staat een boerderij.": "Aan de rechterkant van de weg staat een boerderij.",
+        "Er komt rook achter de boerderij vandaan.": "Er komt rook achter de boerderij vandaan.",
+        "In het westen ligt een bos.": "In het westen ligt een bos.",
+        "In het zuiden loopt een weg richting een dorp.": "In het zuiden loopt een weg richting een dorp.",
+        "Je wil naar het westen wandelen, richting het bos, maar Teun begint steeds moeilijker te lopen,": "Je wil naar het westen wandelen, richting het bos, maar Teun begint steeds moeilijker te lopen,",
+        "en sputtert actief tegen.": "en sputtert actief tegen."
+      },
+      "interactions": {
+        "Open tas": "Open tas",
+        "Ga naar het westen, richting het bos": "Ga naar het westen, richting het bos",
+        "Ga naar het zuiden, richting het dorp": "Ga naar het zuiden, richting het dorp"
+      },
+      "player": {
+        "Misschien moet ik hem eerst naar de boerderij brengen?": "Misschien moet ik hem eerst naar de boerderij brengen?"
+      }
+    },
+    "hills": {
+      "text": {
+        "Je wandelt naar het oosten, richting het bos.": "Je wandelt naar het oosten, richting het bos.",
+        "Je loopt van de weg af, richting de ingang van de mijn.": "Je loopt van de weg af, richting de ingang van de mijn.",
+        "Je staat in de heuvels. De zon schijnt heerlijk.": "Je staat in de heuvels. De zon schijnt heerlijk.",
+        "Er is een mooi uitzicht van de omgeving.": "Er is een mooi uitzicht van de omgeving.",
+        "Verder op het pad zie je een mijn.": "Verder op het pad zie je een mijn.",
+        "Iets hoger op de heuvel staat een molen.": "Iets hoger op de heuvel staat een molen.",
+        "Naar het oosten loopt het pad naar het bos.": "Naar het oosten loopt het pad naar het bos.",
+        "Naar het zuiden loopt een drassig pad een moeras in.": "Naar het zuiden loopt een drassig pad een moeras in."
+      },
+      "interactions": {
+        "Open tas": "Open tas",
+        "Spring op paard": "Spring op paard",
+        "Volg het pad naar de mijn": "Volg het pad naar de mijn",
+        "Wandel naar de molen": "Wandel naar de molen",
+        "Ga naar het oosten, richting het groene bos": "Ga naar het oosten, richting het groene bos",
+        "Ga naar het zuiden, richting het moeras": "Ga naar het zuiden, richting het moeras"
+      }
+    },
+    "mine": {
+      "text": {
+        "Je groet de dwerg en loopt weer richting de weg.": "Je groet de dwerg en loopt weer richting de weg.",
+        "Je bent bij de mijn": "Je bent bij de mijn",
+        "Er ligt een mijnkarretje op zijn kant. Voor de ingang zit [character.dwarf.defaultName] de dwerg.": "Er ligt een mijnkarretje op zijn kant. Voor de ingang zit [character.dwarf.defaultName] de dwerg.",
+        "Er ligt een mijnkarretje op zijn kant. Voor de ingang zit een dwerg.": "Er ligt een mijnkarretje op zijn kant. Voor de ingang zit een dwerg.",
+        "Hij ziet er niet al te vrolijk uit.": "Hij ziet er niet al te vrolijk uit."
+      },
+      "interactions": {
+        "Open tas": "Open tas",
+        "Praat met de dwerg": "Praat met de dwerg",
+        "Verlaat mijn": "Verlaat mijn"
+      }
+    }
+  },
+  "overlays": {
+    "inventory": {
+      "text": {
+        "Je hebt het volgende bij je:": "Je hebt het volgende bij je:",
+        "- Een stok, opgeraapt in het bos": "- Een stok, opgeraapt in het bos",
+        "- Houweel met gebroken heft": "- Houweel met gebroken heft",
+        "- Gerepareerde houweel": "- Gerepareerde houweel",
+        "Je verwijdert het oude heft van de houweel,": "Je verwijdert het oude heft van de houweel,",
+        "en vervangt het met de stok uit het bos.": "en vervangt het met de stok uit het bos.",
+        "Het past! Het houweel is weer zo goed als nieuw.": "Het past! Het houweel is weer zo goed als nieuw."
+      },
+      "interactions": {
+        "Repareer houweel met stok uit het bos": "Repareer houweel met stok uit het bos",
+        "Sluit tas": "Sluit tas"
+      }
+    },
+    "dwarfConversation": {
+      "dwarf": {
+        "Hallo [character.player.name]": "Hallo [character.player.name]",
+        "Grr. Stom ding, stom ding!": "Grr. Stom ding, stom ding!",
+        "Ik heb het niet tegen jou!": "Ik heb het niet tegen jou!",
+        "Sorry voor mijn manieren, ik heb gewoon pech!": "Sorry voor mijn manieren, ik heb gewoon pech!",
+        "Mijn naam is [.defaultName], en wie mag jij wezen?": "Mijn naam is [.defaultName], en wie mag jij wezen?",
+        "Hallo [character.player.name]. Sorry dat ik zo ruw deed.": "Hallo [character.player.name]. Sorry dat ik zo ruw deed.",
+        "Mijn houweel is gebroken, en ik had net een ader van edelstenen ontdekt!": "Mijn houweel is gebroken, en ik had net een ader van edelstenen ontdekt!",
+        "Ik heb zo hard mijn best gedaan om ze los te krijgen.": "Ik heb zo hard mijn best gedaan om ze los te krijgen.",
+        "Nu is mijn houweel gebroken. En ik heb honger!'": "Nu is mijn houweel gebroken. En ik heb honger!'",
+        "Sorry, ik heb het niet tegen jou...": "Sorry, ik heb het niet tegen jou...",
+        "Heb je iets te eten voor mij?": "Heb je iets te eten voor mij?",
+        "En een nieuwe houweel?": "En een nieuwe houweel?",
+        "Tuurlijk. alleen de bovenkant is nog heel.": "Tuurlijk. alleen de bovenkant is nog heel.",
+        "Het heft is gebroken. Ik heb er niets meer aan.": "Het heft is gebroken. Ik heb er niets meer aan.",
+        "Echt waar? Laat zien.": "Echt waar? Laat zien.",
+        "Wauw, hij is zo goed als nieuw! Bedankt!": "Wauw, hij is zo goed als nieuw! Bedankt!"
+      },
+      "player": {
+        "Hallo, kun je mij helpen?": "Hallo, kun je mij helpen?",
+        "Je bent zelf een stom ding!": "Je bent zelf een stom ding!",
+        "Mijn naam is [.name].": "Mijn naam is [.name].",
+        "Pardon? Wie is een stom ding?": "Pardon? Wie is een stom ding?",
+        "Hoe kan ik je helpen?": "Hoe kan ik je helpen?",
+        "Zou ik je houweel mogen hebben?": "Zou ik je houweel mogen hebben?",
+        "Ik heb je houweel kunnen reparerern.": "Ik heb je houweel kunnen reparerern.",
+        "Alsjeblieft.": "Alsjeblieft."
+      },
+      "text": {
+        "De dwerg kijkt je een beetje boos aan.": "De dwerg kijkt je een beetje boos aan.",
+        "[character.dwarf.name] zucht diep.": "[character.dwarf.name] zucht diep.",
+        "Je stopt de bovenkant van de houweel in je tas.": "Je stopt de bovenkant van de houweel in je tas.",
+        "Je geeft de gerepareerde houweel aan Thorin. Hij bekijkt hem grondig.": "Je geeft de gerepareerde houweel aan Thorin. Hij bekijkt hem grondig."
+      },
+      "interactions": {
+        "Je bent zelf een stom ding!": "Je bent zelf een stom ding!",
+        "Pardon?": "Pardon?",
+        "Hoe kan ik je helpen?": "Hoe kan ik je helpen?",
+        "Zou ik je houweel mogen hebben?": "Zou ik je houweel mogen hebben?",
+        "Ik heb je houweel kunnen repareren.": "Ik heb je houweel kunnen repareren.",
+        "Oké, ik ga weer.": "Oké, ik ga weer."
+      }
+    }
+  }
+}

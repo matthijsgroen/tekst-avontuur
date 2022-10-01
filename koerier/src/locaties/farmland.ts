@@ -10,8 +10,9 @@ g.defineLocation("farmland", ({ describe, interaction, onLeave }) => {
     g.text(
       "Je staat in een boerenlandschap.",
       "Aan de rechterkant van de weg staat een boerderij.",
-      "Er komt rook achter de boerderij vandaan.",
-      "",
+      "Er komt rook achter de boerderij vandaan."
+    );
+    g.text(
       "In het westen ligt een bos.",
       "In het zuiden loopt een weg richting een dorp."
     );

@@ -12,8 +12,9 @@ g.defineLocation("hills", ({ describe, onLeave, interaction }) => {
   describe(() => {
     g.text(
       "Je staat in de heuvels. De zon schijnt heerlijk.",
-      "Er is een mooi uitzicht van de omgeving.",
-      "",
+      "Er is een mooi uitzicht van de omgeving."
+    );
+    g.text(
       "Verder op het pad zie je een mijn.",
       "Iets hoger op de heuvel staat een molen.",
       "Naar het oosten loopt het pad naar het bos.",

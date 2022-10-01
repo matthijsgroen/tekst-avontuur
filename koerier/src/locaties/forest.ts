@@ -12,11 +12,9 @@ g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
   describe(() => {
     g.text(
       "Je staat in het bos. Het is een stralende dag.",
-      "De wind laat de blaadjes ritselen.",
-      "",
-      "In het oosten zijn akkers.",
-      "In het westen zijn heuvels."
+      "De wind laat de blaadjes ritselen."
     );
+    g.text("In het oosten zijn akkers.", "In het westen zijn heuvels.");
     g.location("forest").setFlag("visited", true);
 
     g.onState(g.not(g.isItemState("bag", "possession")), () => {
