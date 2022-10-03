@@ -5,7 +5,12 @@ import { testCondition } from "../dsl/testCondition";
 import { GameWorld } from "../dsl/world-types";
 import { describeLocation } from "./describeLocation";
 import { handleOverlay } from "./handleOverlay";
-import { getDisplayText } from "./processText";
+import {
+  determineTextScope,
+  FormattedText,
+  getDisplayText,
+  renderText,
+} from "./processText";
 import { getSettings } from "./settings";
 import { resetColor, setColor } from "./utils";
 
@@ -30,22 +35,19 @@ const statementHandler = <
   const statementMap: StatementMap<Game> = {
     Text: async (statement, gameModel, stateManager) => {
       const useColor = getSettings().color;
-      const color = gameModel.settings.defaultTextColor;
-      if (useColor && color) {
-        setColor(color);
-      }
+      const color = useColor ? gameModel.settings.defaultTextColor : undefined;
 
-      const location = String(stateManager.getState().currentLocation);
-      const textScope = ["location", location, "text"];
+      const textScope = determineTextScope(stateManager, "text");
 
       for (const sentence of statement.sentences) {
         const text = getDisplayText(sentence, stateManager, textScope);
-        console.log(text);
+        renderText(text, 500, color);
       }
-      console.log("");
-      if (useColor && color) {
+
+      if (color) {
         resetColor();
       }
+      console.log("");
     },
     Travel: ({ destination }, _gameModel, stateManager) => {
       stateManager.updateState((state) => ({
@@ -142,37 +144,26 @@ const statementHandler = <
         gameModel.settings.characterConfigs[character].defaultName;
 
       const useColor = getSettings().color;
-      const color = gameModel.settings.characterConfigs[character].textColor;
-      if (useColor && color) {
-        setColor(color);
-      }
-      const location = String(stateManager.getState().currentLocation);
-      const textScope = ["location", location, String(character)];
+      const color = useColor
+        ? gameModel.settings.characterConfigs[character].textColor
+        : undefined;
 
-      if (sentences.length === 1) {
-        console.log(
-          `${name}: "${getDisplayText(sentences[0], stateManager, textScope)}"`
-        );
-      } else {
-        for (const index in sentences) {
-          if (Number(index) === 0) {
-            console.log(
-              `${name}: "${getDisplayText(
-                sentences[index],
-                stateManager,
-                textScope
-              )}`
-            );
-          } else if (Number(index) === sentences.length - 1) {
-            console.log(
-              `  ${getDisplayText(sentences[index], stateManager, textScope)}"`
-            );
-          } else {
-            console.log(
-              `  ${getDisplayText(sentences[index], stateManager, textScope)}`
-            );
-          }
+      const textScope = determineTextScope(stateManager, String(character));
+
+      for (const index in sentences) {
+        let text: FormattedText = [];
+        if (Number(index) === 0) {
+          text.push({ type: "text", text: `${name}: "` });
+        } else {
+          text.push({ type: "text", text: "  " });
         }
+
+        text.push(...getDisplayText(sentences[index], stateManager, textScope));
+
+        if (Number(index) === sentences.length - 1) {
+          text.push({ type: "text", text: '"' });
+        }
+        renderText(text, 500, color);
       }
       console.log("");
       if (useColor && color) {

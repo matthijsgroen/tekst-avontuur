@@ -2,7 +2,12 @@ import { GameInteraction, GameModel } from "../dsl/ast-types";
 import { GameStateManager } from "../dsl/engine-types";
 import { testCondition } from "../dsl/testCondition";
 import { GameWorld } from "../dsl/world-types";
-import { getDisplayText } from "./processText";
+import {
+  determineTextScope,
+  FormattedText,
+  getDisplayText,
+  renderText,
+} from "./processText";
 import { runScript } from "./runScript";
 import { cls, keypress } from "./utils";
 
@@ -20,17 +25,15 @@ export const handleInteractions = async <Game extends GameWorld>(
       key: `${key + 1}`,
     }));
 
-  const location = String(stateManager.getState().currentLocation);
-  const textScope = ["location", location, "interactions"];
+  const textScope = determineTextScope(stateManager, "interactions");
 
   for (const interaction of possibleInteractions) {
-    console.log(
-      `${interaction.key}) ${getDisplayText(
-        interaction.action.label,
-        stateManager,
-        textScope
-      )}`
+    let text: FormattedText = [];
+    text.push({ type: "text", text: `${interaction.key}) ` });
+    text.push(
+      ...getDisplayText(interaction.action.label, stateManager, textScope)
     );
+    renderText(text, 500);
   }
 
   let input: string | undefined;
