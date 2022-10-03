@@ -12,25 +12,25 @@
       "text": {
         "Je wandelt naar het oosten, richting de akkers.": "Je wandelt naar het oosten, richting de akkers.",
         "Je wandelt naar het westen, richting de heuvels.": "Je wandelt naar het westen, richting de heuvels.",
-        "Je staat in het bos. Het is een stralende dag.": "Je staat in het bos. Het is een stralende dag.",
-        "De wind laat de blaadjes ritselen.": "De wind laat de blaadjes ritselen.",
-        "In het oosten zijn akkers.": "In het oosten zijn akkers.",
-        "In het westen zijn heuvels.": "In het westen zijn heuvels.",
-        "Op de grond ligt je tas en scherven van de fles medicijnen.": "Op de grond ligt je tas en scherven van de fles medicijnen.",
-        "Je raapt de tas op.": "Je raapt de tas op.",
-        "Op de grond ligt een vers afgebroken tak.": "Op de grond ligt een vers afgebroken tak.",
+        "Je staat in het bos. Het is een stralende dag.": "You are in the forest. It is a beautiful day.",
+        "De wind laat de blaadjes ritselen.": "The wind is rustling the leaves.",
+        "In het oosten zijn akkers.": "There are farmlands to the east.",
+        "In het westen zijn heuvels.": "There are hills to the west.",
+        "Op de grond ligt je tas en scherven van de fles medicijnen.": "Your bag is on the ground, surrounded by shards of glass of the bottle of medicine.",
+        "Je raapt de tas op.": "You pick up your bag.",
+        "Op de grond ligt een vers afgebroken tak.": "There is a freshly broken branch on the ground.",
         "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd.": "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd.",
         "Deze tak heeft je best pijn gedaan.": "Deze tak heeft je best pijn gedaan."
       },
       "player": {
-        "Verdorie, de medicijnen zijn echt verloren.": "Verdorie, de medicijnen zijn echt verloren."
+        "Verdorie, de medicijnen zijn echt verloren.": "Drat, the medicine is truly lost."
       },
       "interactions": {
-        "Open tas": "Open tas",
-        "Spring op paard": "Spring op paard",
-        "Raap de tak op": "Raap de tak op",
-        "Ga naar het oosten, richting de akkers": "Ga naar het oosten, richting de akkers",
-        "Ga naar het westen, richting de heuvels": "Ga naar het westen, richting de heuvels"
+        "Open tas": "Open bag",
+        "Spring op paard": "Jump on horse",
+        "Raap de tak op": "Pick up branch",
+        "Ga naar het oosten, richting de akkers": "Go east, towards the farmlands",
+        "Ga naar het westen, richting de heuvels": "Go west, towards the hills"
       }
     },
     "farmland": {

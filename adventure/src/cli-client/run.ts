@@ -7,14 +7,14 @@ import { cls, enableKeyPresses, exitGame } from "./utils";
 import { runLocation } from "./runLocation";
 
 export const runGame =
-  ({ color = true }: CLISettings) =>
+  ({ color = true, translationData }: CLISettings) =>
   async <Game extends GameWorld>(gameModel?: GameModel<Game>) => {
     if (!gameModel) {
       console.log("No valid game file");
       exitGame(1);
       return;
     }
-    updateSettings({ color });
+    updateSettings({ color, translationData });
 
     let gameState: GameState<Game> = {
       ...createDefaultState(gameModel),

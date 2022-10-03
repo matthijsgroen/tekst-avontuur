@@ -5,6 +5,7 @@ import { testCondition } from "../dsl/testCondition";
 import { GameWorld } from "../dsl/world-types";
 import { describeLocation } from "./describeLocation";
 import { handleOverlay } from "./handleOverlay";
+import { getDisplayText } from "./processText";
 import { getSettings } from "./settings";
 import { resetColor, setColor } from "./utils";
 
@@ -27,14 +28,19 @@ const statementHandler = <
   stateManager: GameStateManager<Game>
 ) => Promise<void> | void) => {
   const statementMap: StatementMap<Game> = {
-    Text: (statement, gameModel) => {
+    Text: async (statement, gameModel, stateManager) => {
       const useColor = getSettings().color;
       const color = gameModel.settings.defaultTextColor;
       if (useColor && color) {
         setColor(color);
       }
+
+      const location = String(stateManager.getState().currentLocation);
+      const textScope = ["location", location, "text"];
+
       for (const sentence of statement.sentences) {
-        console.log(sentence);
+        const text = getDisplayText(sentence, stateManager, textScope);
+        console.log(text);
       }
       console.log("");
       if (useColor && color) {
@@ -140,17 +146,31 @@ const statementHandler = <
       if (useColor && color) {
         setColor(color);
       }
+      const location = String(stateManager.getState().currentLocation);
+      const textScope = ["location", location, String(character)];
 
       if (sentences.length === 1) {
-        console.log(`${name}: "${sentences[0]}"`);
+        console.log(
+          `${name}: "${getDisplayText(sentences[0], stateManager, textScope)}"`
+        );
       } else {
         for (const index in sentences) {
           if (Number(index) === 0) {
-            console.log(`${name}: "${sentences[index]}`);
+            console.log(
+              `${name}: "${getDisplayText(
+                sentences[index],
+                stateManager,
+                textScope
+              )}`
+            );
           } else if (Number(index) === sentences.length - 1) {
-            console.log(`  ${sentences[index]}"`);
+            console.log(
+              `  ${getDisplayText(sentences[index], stateManager, textScope)}"`
+            );
           } else {
-            console.log(`  ${sentences[index]}`);
+            console.log(
+              `  ${getDisplayText(sentences[index], stateManager, textScope)}`
+            );
           }
         }
       }

@@ -1,4 +1,5 @@
 import { Settings } from "../dsl/ast-types";
+import { TranslationFile } from "../export-translations/exportTranslations";
 
 export type CLISettings = {
   /**
@@ -6,6 +7,11 @@ export type CLISettings = {
    * @default true
    */
   color?: boolean;
+
+  /**
+   * Translation file to use
+   */
+  translationData?: TranslationFile;
 };
 
 let settings: CLISettings = { color: true };
