@@ -1,4 +1,4 @@
-import { HexColor } from "../dsl/hexColor";
+import { HexColor } from "../engine/hexColor";
 
 export const cls = () => process.stdout.write("\x1Bc");
 export const setColor = (color: HexColor) => {

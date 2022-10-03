@@ -1,7 +1,7 @@
 import produce from "immer";
 import { GameModel, ScriptAST, ScriptStatement } from "../dsl/ast-types";
-import { GameState, GameStateManager } from "../dsl/engine-types";
-import { testCondition } from "../dsl/testCondition";
+import { GameState, GameStateManager } from "../engine/engine-types";
+import { testCondition } from "../engine/testCondition";
 import { GameWorld } from "../dsl/world-types";
 import { describeLocation } from "./describeLocation";
 import { handleOverlay } from "./handleOverlay";
@@ -9,10 +9,10 @@ import {
   determineTextScope,
   FormattedText,
   getDisplayText,
-  renderText,
-} from "./processText";
+} from "../engine/processText";
 import { getSettings } from "./settings";
 import { resetColor, setColor } from "./utils";
+import { renderText } from "./renderText";
 
 type StatementMap<Game extends GameWorld> = {
   [K in ScriptStatement<Game> as K["statementType"]]: (

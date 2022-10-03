@@ -1,5 +1,5 @@
 import { GameModel, ScriptAST, GameInteraction } from "../dsl/ast-types";
-import { GameStateManager } from "../dsl/engine-types";
+import { GameStateManager } from "../engine/engine-types";
 import { GameWorld } from "../dsl/world-types";
 import { handleInteractions } from "./handleInteractions";
 import { runScript } from "./runScript";

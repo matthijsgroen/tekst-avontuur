@@ -1,7 +1,7 @@
 import { GameModel } from "../dsl/ast-types";
-import { GameStateManager, GameState } from "../dsl/engine-types";
+import { GameStateManager, GameState } from "../engine/engine-types";
 import { GameWorld } from "../dsl/world-types";
-import { createDefaultState } from "../dsl/createDefaultState";
+import { createDefaultState } from "../engine/createDefaultState";
 import { CLISettings, updateSettings } from "./settings";
 import { cls, enableKeyPresses, exitGame } from "./utils";
 import { runLocation } from "./runLocation";

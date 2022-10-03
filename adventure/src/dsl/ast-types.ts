@@ -1,5 +1,5 @@
-import { GameState } from "./engine-types";
-import { HexColor } from "./hexColor";
+import { GameState } from "../engine/engine-types";
+import { HexColor } from "../engine/hexColor";
 import { GameWorld } from "./world-types";
 
 export type Settings<Game extends GameWorld> = {

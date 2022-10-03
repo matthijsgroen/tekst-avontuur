@@ -1,8 +1,6 @@
-import { GameStateManager } from "../dsl/engine-types";
-import { HexColor } from "../dsl/hexColor";
+import { GameStateManager } from "./engine-types";
 import { GameWorld } from "../dsl/world-types";
-import { getSettings } from "./settings";
-import { setColor } from "./utils";
+import { getSettings } from "../cli-client/settings";
 
 export const determineTextScope = <Game extends GameWorld>(
   stateManager: GameStateManager<Game>,
@@ -63,36 +61,19 @@ export type ParsedText = ParsedTextElement[];
 type FormattedTextElement = Text | TextFormatting<FormattedText>;
 export type FormattedText = FormattedTextElement[];
 
+const parseText = (text: string): ParsedText => {
+  return [{ type: "text", text }];
+};
+
 export const getDisplayText = <Game extends GameWorld>(
   sentence: string,
   stateManager: GameStateManager<Game>,
   scope: string[]
 ): FormattedText => {
-  let renderSentence = getTranslationText(scope, sentence) || sentence;
+  const renderSentence = getTranslationText(scope, sentence) || sentence;
   // 1: Parse text
+  const parsedText = parseText(renderSentence);
   // 2: Apply state
   // 3: Return formatted text
-  return [{ type: "text", text: renderSentence }];
-};
-
-export const renderText = (
-  text: FormattedText,
-  cpm: number,
-  color?: HexColor,
-  addNewline = true
-) => {
-  if (color) {
-    setColor(color);
-  }
-  for (const element of text) {
-    if (element.type === "text") {
-      process.stdout.write(element.text);
-    }
-    if (element.type === "formatting") {
-      renderText(element.contents, cpm, color, false);
-    }
-  }
-  if (addNewline) {
-    process.stdout.write("\n");
-  }
+  return parsedText as FormattedText;
 };

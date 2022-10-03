@@ -1,5 +1,5 @@
 import { GameModel } from "../dsl/ast-types";
-import { GameStateManager } from "../dsl/engine-types";
+import { GameStateManager } from "../engine/engine-types";
 import { GameWorld } from "../dsl/world-types";
 import { runScript } from "./runScript";
 import { exitGame } from "./utils";
