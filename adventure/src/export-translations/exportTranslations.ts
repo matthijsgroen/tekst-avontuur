@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "fs/promises";
+import { mkdir, writeFile, readFile } from "fs/promises";
 import { join } from "path";
 import { exitGame } from "../cli-client/utils";
 import { GameModel, ScriptAST } from "../dsl/ast-types";
@@ -46,6 +46,40 @@ const processScript = <Game extends GameWorld>(
       }
     }
   }
+};
+
+const mergeTranslations = (
+  newTranslations: TranslationFile,
+  existingTranslations: TranslationFile
+) => {
+  const newKeys = Object.keys(newTranslations);
+  const existingKeys = Object.keys(existingTranslations);
+
+  const removedKeys = existingKeys.filter((k) => !newKeys.includes(k));
+  const addedKeys = newKeys.filter((k) => !existingKeys.includes(k));
+  const keptKeys = newKeys.filter((k) => existingKeys.includes(k));
+
+  const result: TranslationFile = {};
+
+  for (const removedKey of removedKeys) {
+    result[`DELETED ${removedKey}`] = existingTranslations[removedKey];
+  }
+  for (const addedKey of addedKeys) {
+    result[addedKey] = newTranslations[addedKey];
+  }
+  for (const keptKey of keptKeys) {
+    const value = newTranslations[keptKey];
+    if (typeof value === "string") {
+      result[keptKey] = existingTranslations[keptKey];
+    } else {
+      result[keptKey] = mergeTranslations(
+        newTranslations[keptKey] as TranslationFile,
+        existingTranslations[keptKey] as TranslationFile
+      );
+    }
+  }
+
+  return result;
 };
 
 export const exportTranslations =
@@ -111,9 +145,26 @@ export const exportTranslations =
       }
     }
     for (const locale of locales) {
+      const filePath = join(folder, `${locale}.json`);
+      let existingTranslations: TranslationFile = {};
+
+      try {
+        const fileData = await readFile(filePath, {
+          encoding: "utf-8",
+        });
+        if (fileData) {
+          existingTranslations = JSON.parse(fileData);
+        }
+      } catch (e) {}
+
+      const mergedTranslations = mergeTranslations(
+        translationObject,
+        existingTranslations
+      );
+
       await writeFile(
-        join(folder, `${locale}.json`),
-        JSON.stringify(translationObject, undefined, 2)
+        filePath,
+        JSON.stringify(mergedTranslations, undefined, 2)
       );
     }
   };
