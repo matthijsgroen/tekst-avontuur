@@ -5,11 +5,12 @@ import { testCondition } from "../engine/state/testCondition";
 import { GameWorld } from "../dsl/world-types";
 import { describeLocation } from "./describeLocation";
 import { handleOverlay } from "./handleOverlay";
-import { FormattedText, getDisplayText } from "../engine/text/processText";
+import { getDisplayText } from "../engine/text/processText";
 import { getSettings } from "./settings";
-import { resetColor, setColor } from "./utils";
+import { resetStyling, setColor } from "./utils";
 import { renderText } from "./renderText";
 import { determineTextScope } from "../engine/text/determineTextScope";
+import { FormattedText } from "../engine/text/types";
 
 type StatementMap<Game extends GameWorld> = {
   [K in ScriptStatement<Game> as K["statementType"]]: (
@@ -37,12 +38,17 @@ const statementHandler = <
       const textScope = determineTextScope(stateManager, "text");
 
       for (const sentence of statement.sentences) {
-        const text = getDisplayText(sentence, stateManager, textScope);
-        renderText(text, 500, color);
+        const text = getDisplayText(
+          sentence,
+          stateManager,
+          textScope,
+          textScope
+        );
+        renderText(text, 500, { color });
       }
 
       if (color) {
-        resetColor();
+        resetStyling();
       }
       console.log("");
     },
@@ -155,16 +161,21 @@ const statementHandler = <
           text.push({ type: "text", text: "  " });
         }
 
-        text.push(...getDisplayText(sentences[index], stateManager, textScope));
+        text.push(
+          ...getDisplayText(sentences[index], stateManager, textScope, [
+            "character",
+            String(character),
+          ])
+        );
 
         if (Number(index) === sentences.length - 1) {
           text.push({ type: "text", text: '"' });
         }
-        renderText(text, 500, color);
+        renderText(text, 500, { color });
       }
       console.log("");
       if (useColor && color) {
-        resetColor();
+        resetStyling();
       }
     },
     Condition: async (

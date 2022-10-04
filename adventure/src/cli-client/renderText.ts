@@ -1,22 +1,41 @@
-import { HexColor } from "../engine/hexColor";
-import { FormattedText } from "../engine/text/processText";
-import { setColor } from "./utils";
+import { FormattedText } from "../engine/text/types";
+import { getSettings } from "./settings";
+import { resetStyling, setStyling, TextStyling } from "./utils";
 
 export const renderText = (
   text: FormattedText,
   cpm: number,
-  color?: HexColor,
+  styling: TextStyling,
   addNewline = true
 ) => {
-  if (color) {
-    setColor(color);
+  if (getSettings().color) {
+    setStyling(styling);
   }
   for (const element of text) {
     if (element.type === "text") {
       process.stdout.write(element.text);
     }
     if (element.type === "formatting") {
-      renderText(element.contents, cpm, color, false);
+      const newStyling = {
+        ...styling,
+      };
+      if (element.format === "b") {
+        newStyling.bold = true;
+      }
+      if (element.format === "u") {
+        newStyling.underline = true;
+      }
+      if (element.format === "i") {
+        newStyling.italic = true;
+      }
+      if (element.format === "s") {
+        newStyling.strikeThrough = true;
+      }
+      renderText(element.contents, cpm, newStyling, false);
+      if (getSettings().color) {
+        resetStyling();
+        setStyling(styling);
+      }
     }
   }
   if (addNewline) {
