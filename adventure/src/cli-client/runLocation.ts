@@ -1,5 +1,5 @@
 import { GameModel } from "../dsl/ast-types";
-import { GameStateManager } from "../engine/engine-types";
+import { GameStateManager } from "../engine/state/types";
 import { GameWorld } from "../dsl/world-types";
 import { describeLocation } from "./describeLocation";
 import { handleInteractions } from "./handleInteractions";

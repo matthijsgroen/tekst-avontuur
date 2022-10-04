@@ -1,41 +1,6 @@
-import { GameStateManager } from "./engine-types";
-import { GameWorld } from "../dsl/world-types";
-import { getSettings } from "../cli-client/settings";
-
-export const determineTextScope = <Game extends GameWorld>(
-  stateManager: GameStateManager<Game>,
-  entry: string
-): string[] => {
-  const overlay = stateManager.getState().overlayStack.at(-1);
-  if (overlay) {
-    return ["overlays", overlay, entry];
-  }
-  const location = String(stateManager.getState().currentLocation);
-  return ["location", location, entry];
-};
-
-export const getTranslationText = (
-  scope: string[],
-  key: string
-): string | undefined => {
-  const translationData = getSettings().translationData;
-  if (!translationData) return undefined;
-  let t = translationData;
-  for (const k of scope) {
-    const v = t[k];
-    if (typeof v !== "string") {
-      t = v;
-    } else {
-      return undefined;
-    }
-  }
-
-  const v = t[key];
-  if (typeof v !== "string") {
-    return undefined;
-  }
-  return v;
-};
+import { GameStateManager } from "../state/types";
+import { GameWorld } from "../../dsl/world-types";
+import { getTranslationText } from "./getTranslationText";
 
 type FormattingOptions = "bold" | "underline" | "italic";
 

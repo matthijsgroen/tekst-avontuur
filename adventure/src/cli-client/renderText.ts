@@ -1,5 +1,5 @@
 import { HexColor } from "../engine/hexColor";
-import { FormattedText } from "../engine/processText";
+import { FormattedText } from "../engine/text/processText";
 import { setColor } from "./utils";
 
 export const renderText = (

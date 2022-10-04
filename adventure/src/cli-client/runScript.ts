@@ -1,18 +1,15 @@
 import produce from "immer";
 import { GameModel, ScriptAST, ScriptStatement } from "../dsl/ast-types";
-import { GameState, GameStateManager } from "../engine/engine-types";
-import { testCondition } from "../engine/testCondition";
+import { GameState, GameStateManager } from "../engine/state/types";
+import { testCondition } from "../engine/state/testCondition";
 import { GameWorld } from "../dsl/world-types";
 import { describeLocation } from "./describeLocation";
 import { handleOverlay } from "./handleOverlay";
-import {
-  determineTextScope,
-  FormattedText,
-  getDisplayText,
-} from "../engine/processText";
+import { FormattedText, getDisplayText } from "../engine/text/processText";
 import { getSettings } from "./settings";
 import { resetColor, setColor } from "./utils";
 import { renderText } from "./renderText";
+import { determineTextScope } from "../engine/text/determineTextScope";
 
 type StatementMap<Game extends GameWorld> = {
   [K in ScriptStatement<Game> as K["statementType"]]: (

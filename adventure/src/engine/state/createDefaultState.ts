@@ -1,6 +1,6 @@
-import { GameModel } from "../dsl/ast-types";
-import { GameState } from "./engine-types";
-import { GameWorld } from "../dsl/world-types";
+import { GameModel } from "../../dsl/ast-types";
+import { GameState } from "./types";
+import { GameWorld } from "../../dsl/world-types";
 
 export const createDefaultState = <Game extends GameWorld>(
   gameModel: GameModel<Game>

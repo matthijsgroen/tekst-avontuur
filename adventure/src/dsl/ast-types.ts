@@ -1,4 +1,4 @@
-import { GameState } from "../engine/engine-types";
+import { GameState } from "../engine/state/types";
 import { HexColor } from "../engine/hexColor";
 import { GameWorld } from "./world-types";
 

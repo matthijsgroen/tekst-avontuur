@@ -1,15 +1,12 @@
+import { FormattedText, getDisplayText } from "../engine/text/processText";
 import { GameInteraction, GameModel } from "../dsl/ast-types";
-import { GameStateManager } from "../engine/engine-types";
-import { testCondition } from "../engine/testCondition";
+import { GameStateManager } from "../engine/state/types";
 import { GameWorld } from "../dsl/world-types";
-import {
-  determineTextScope,
-  FormattedText,
-  getDisplayText,
-} from "../engine/processText";
-import { runScript } from "./runScript";
 import { cls, keypress } from "./utils";
+import { determineTextScope } from "../engine/text/determineTextScope";
 import { renderText } from "./renderText";
+import { runScript } from "./runScript";
+import { testCondition } from "../engine/state/testCondition";
 
 export const handleInteractions = async <Game extends GameWorld>(
   interactions: GameInteraction<Game>[],
