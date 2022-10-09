@@ -17,6 +17,7 @@ export type Game = {
     player: {};
     dwarf: { flags: "nameKnown" };
   };
+  overlays: "dwarfConversation" | "inventory";
 };
 
 const game = world<Game>({
