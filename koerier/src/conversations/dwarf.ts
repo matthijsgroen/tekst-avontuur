@@ -12,64 +12,64 @@ g.defineOverlay(
           g.character("dwarf").say("Hallo [character.player.name]");
         },
         () => {
-          g.character("player").say("Hallo, kun je mij helpen?");
-          g.text("De dwerg kijkt je een beetje boos aan.");
-          g.character("dwarf").say("Grr. Stom ding, stom ding!");
+          g.character("player").say("Hello, can you help me?");
+          g.text("The dwarf looks grumpy in your direction.");
+          g.character("dwarf").say("Grr. Stupid thing, stupid thing!");
         }
       );
     });
 
     const dwarfIntro = () => {
       g.character("dwarf").say(
-        "Sorry voor mijn manieren, ik heb gewoon pech!",
-        "Mijn naam is [.defaultName], en wie mag jij wezen?"
+        "Pardon my manners, I just have bad luck!",
+        "My name is [.defaultName], and who might you be?"
       );
       g.character("dwarf").clearCustomName();
       g.character("dwarf").setFlag("nameKnown", true);
 
-      g.character("player").say("Mijn naam is [.name].");
+      g.character("player").say("My name is [.name].");
       g.character("dwarf").say(
-        "Hallo [character.player.name]. Sorry dat ik zo ruw deed.",
-        "Mijn houweel is gebroken, en ik had net een ader van edelstenen ontdekt!",
-        "Ik heb zo hard mijn best gedaan om ze los te krijgen.",
-        "Nu is mijn houweel gebroken. En ik heb honger!'"
+        "Hi [character.player.name]. Sorry for being rude.",
+        "My pickaxe just broke, and I just discovered a vein of gemstones!",
+        "I tried so hard to get them out of there.",
+        "And now mu pickaxe is broken. And I'm hungry!"
       );
-      g.text("[character.dwarf.name] zucht diep.");
+      g.text("[character.dwarf.name] sighs.");
     };
 
     interaction(
-      "Je bent zelf een stom ding!",
+      "You are stupid yourself!",
       g.not(g.hasCharacterFlag("dwarf", "nameKnown")),
       () => {
-        g.character("player").say("Je bent zelf een stom ding!");
-        g.character("dwarf").say("Ik heb het niet tegen jou!");
+        g.character("player").say("You are stupid yourself!");
+        g.character("dwarf").say("I wasn't talking to you!");
         dwarfIntro();
       }
     );
     interaction(
-      "Pardon?",
+      "Excuse me?",
       g.not(g.hasCharacterFlag("dwarf", "nameKnown")),
       () => {
-        g.character("player").say("Pardon? Wie is een stom ding?");
-        g.character("dwarf").say("Sorry, ik heb het niet tegen jou...");
+        g.character("player").say("Excuse me? Who is stupid here?");
+        g.character("dwarf").say("Sorry, I wasn't talking to you...");
         dwarfIntro();
       }
     );
 
     interaction(
-      "Hoe kan ik je helpen?",
+      "How can I help you?",
       g.hasCharacterFlag("dwarf", "nameKnown"),
       () => {
-        g.character("player").say("Hoe kan ik je helpen?");
+        g.character("player").say("How can I help you?");
 
         g.onState(g.not(g.isItemState("pickaxe", "given")), () => {
           g.character("dwarf").say(
-            "Heb je iets te eten voor mij?",
-            "En een nieuwe houweel?"
+            "Do you have any food for me?",
+            "And a new pickaxe?"
           );
         });
         g.onState(g.isItemState("pickaxe", "given"), () => {
-          g.character("dwarf").say("Heb je iets te eten voor mij?");
+          g.character("dwarf").say("Do you have any food for me?");
         });
 
         // "", "*c9", "Thorin: 'Ik heb dringend een nieuwe houweel nodig.'", "&4=0"
@@ -77,33 +77,33 @@ g.defineOverlay(
     );
 
     interaction(
-      "Zou ik je houweel mogen hebben?",
+      "Can I have your pickaxe?",
       g.and(
         g.hasCharacterFlag("dwarf", "nameKnown"),
         g.isItemState("pickaxe", "unknown")
       ),
       () => {
-        g.character("player").say("Zou ik je houweel mogen hebben?");
+        g.character("player").say("Can I have your pickaxe?");
         g.character("dwarf").say(
-          "Tuurlijk. alleen de bovenkant is nog heel.",
-          "Het heft is gebroken. Ik heb er niets meer aan."
+          "Sure. But only the top half is intact.",
+          "The hilt is broken. It's no use to me."
         );
-        g.text("Je stopt de bovenkant van de houweel in je tas.");
+        g.text("You put the top if the pickaxe in your bag.");
         g.item("pickaxe").setState("broken");
       }
     );
 
     interaction(
-      "Ik heb je houweel kunnen repareren.",
+      "I was able to repair your pickaxe",
       g.isItemState("pickaxe", "fixed"),
       () => {
-        g.character("player").say("Ik heb je houweel kunnen reparerern.");
-        g.character("dwarf").say("Echt waar? Laat zien.");
-        g.character("player").say("Alsjeblieft.");
+        g.character("player").say("I was able to repair your pickaxe");
+        g.character("dwarf").say("Really? show me!");
+        g.character("player").say("Here you go.");
         g.text(
-          "Je geeft de gerepareerde houweel aan Thorin. Hij bekijkt hem grondig."
+          "You give the repaired pickaxe to [character.dwarf.defaultName]. He gives it a thorough inspection."
         );
-        g.character("dwarf").say("Wauw, hij is zo goed als nieuw! Bedankt!");
+        g.character("dwarf").say("Wow, It's as good as new! Thanks!");
         g.item("pickaxe").setState("given");
       }
     );
@@ -117,7 +117,7 @@ g.defineOverlay(
     // "Thorin denkt even na.", "*c9", "", "Thorin: 'Hmm, de boer verderop heeft een paard."
     // "Je zou kunnen vragen of je hem mag lenen?'", "&4=0"
 
-    interaction("Oké, ik ga weer.", g.always(), () => {
+    interaction("Okay, I'm going.", g.always(), () => {
       closeOverlay();
     });
 

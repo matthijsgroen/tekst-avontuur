@@ -3,34 +3,30 @@ import { inventory } from "../inventory";
 
 g.defineLocation("farmland", ({ describe, interaction, onLeave }) => {
   onLeave("forest", () => {
-    g.text("Je wandelt naar het oosten, richting het bos.");
+    g.text("You are walking to the east, towards the forest.");
   });
 
   describe(() => {
     g.text(
-      "Je staat in een boerenlandschap.",
-      "Aan de rechterkant van de weg staat een boerderij.",
-      "Er komt rook achter de boerderij vandaan."
+      "You are in the farmlands.",
+      "On the right side of the road is a farm.",
+      "Smoke is rising up from behind the farm."
     );
-    g.text(
-      "In het westen ligt een bos.",
-      "In het zuiden loopt een weg richting een dorp."
-    );
+    g.text("In the west is a forest.", "A small village lies to the south.");
     g.location("farmland").setFlag("visited", true);
   });
 
   inventory(interaction);
 
-  interaction("Ga naar het westen, richting het bos", g.always(), () => {
+  interaction("Go west, to the forest", g.always(), () => {
     g.onState(
       g.isItemState("horse", "found"),
       () => {
         g.text(
-          "Je wil naar het westen wandelen, richting het bos, maar Teun begint steeds moeilijker te lopen,",
-          "en sputtert actief tegen."
+          "You want to walk to the west towards the forest, but [character.horse.defaultName] starts to refuse."
         );
         g.character("player").say(
-          "Misschien moet ik hem eerst naar de boerderij brengen?"
+          "Maybe I have to take him to the farm first?"
         );
       },
       () => {
@@ -39,7 +35,7 @@ g.defineLocation("farmland", ({ describe, interaction, onLeave }) => {
     );
   });
 
-  interaction("Ga naar het zuiden, richting het dorp", g.never(), () => {
+  interaction("Go south, towards the village", g.never(), () => {
     g.travel("hills");
   });
 });

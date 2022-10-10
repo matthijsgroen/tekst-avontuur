@@ -1,0 +1,156 @@
+{
+  "settings": {
+    "defaultActionPrompt": "Wat ga je doen:"
+  },
+  "characters": {
+    "player": {
+      "defaultName": "Matthijs"
+    },
+    "dwarf": {
+      "defaultName": "Thorin"
+    }
+  },
+  "location": {
+    "farmland": {
+      "text": {
+        "You are walking to the east, towards the forest.": "You are walking to the east, towards the forest.",
+        "You are in the farmlands.": "You are in the farmlands.",
+        "On the right side of the road is a farm.": "On the right side of the road is a farm.",
+        "Smoke is rising up from behind the farm.": "Smoke is rising up from behind the farm.",
+        "In the west is a forest.": "In the west is a forest.",
+        "A small village lies to the south.": "A small village lies to the south.",
+        "You want to walk to the west towards the forest, but [character.horse.defaultName] starts to refuse.": "You want to walk to the west towards the forest, but [character.horse.defaultName] starts to refuse."
+      },
+      "interactions": {
+        "Open your bag": "Open your bag",
+        "Go west, to the forest": "Go west, to the forest",
+        "Go south, towards the village": "Go south, towards the village"
+      },
+      "player": {
+        "Maybe I have to take him to the farm first?": "Maybe I have to take him to the farm first?"
+      }
+    },
+    "forest": {
+      "text": {
+        "You walk east, to the farmlands.": "You walk east, to the farmlands.",
+        "You walk west, towards the hills.": "You walk west, towards the hills.",
+        "You are in the forest. It is a beautiful day.": "You are in the forest. It is a beautiful day.",
+        "The wind is rustling the leaves.": "The wind is rustling the leaves.",
+        "There are farmlands in the east.": "There are farmlands in the east.",
+        "There are hills in the west.": "There are hills in the west.",
+        "Your bag is on the ground, surrounded by shards of glass of the bottle of medicine.": "Your bag is on the ground, surrounded by shards of glass of the bottle of medicine.",
+        "You pick up your bag.": "You pick up your bag.",
+        "There is a freshly broken branch on the ground.": "There is a freshly broken branch on the ground.",
+        "You pick up the branch. You feel a small bump on your head.": "You pick up the branch. You feel a small bump on your head.",
+        "This branch hurt you quite a bit.": "This branch hurt you quite a bit."
+      },
+      "player": {
+        "Drat, the medicine is truly lost.": "Drat, the medicine is truly lost."
+      },
+      "interactions": {
+        "Open your bag": "Open your bag",
+        "Jump on horse": "Jump on horse",
+        "Pick up branch": "Pick up branch",
+        "Go east, to the farmlands": "Go east, to the farmlands",
+        "Go west, to the hills": "Go west, to the hills"
+      }
+    },
+    "hills": {
+      "text": {
+        "You walk east, towards the forest.": "You walk east, towards the forest.",
+        "You follow the road, towards the entrance of the mine.": "You follow the road, towards the entrance of the mine.",
+        "You are in the hills. The sun is shining lovely.": "You are in the hills. The sun is shining lovely.",
+        "There is a nice view of the environment.": "There is a nice view of the environment.",
+        "A bit farther on the road you see a mine.": "A bit farther on the road you see a mine.",
+        "A bit higher up the hill is a windmill.": "A bit higher up the hill is a windmill.",
+        "There is a road to the forest to the east.": "There is a road to the forest to the east.",
+        "To the south, there is a soggy path going into a swamp.": "To the south, there is a soggy path going into a swamp."
+      },
+      "interactions": {
+        "Open your bag": "Open your bag",
+        "Jump on horse": "Jump on horse",
+        "Follow the path to the mine": "Follow the path to the mine",
+        "Go towards the mill": "Go towards the mill",
+        "Go east, to the forest": "Go east, to the forest",
+        "Go south, to the swamp": "Go south, to the swamp"
+      }
+    },
+    "mine": {
+      "text": {
+        "You greet the dwarf and walk back towards the road.": "You greet the dwarf and walk back towards the road.",
+        "You are at the mine entrance.": "You are at the mine entrance.",
+        "A mining cart lies on its side. [character.dwarf.defaultName] is sitting at the entrance.": "A mining cart lies on its side. [character.dwarf.defaultName] is sitting at the entrance.",
+        "A mining cart lies on its side. A dwarf is sitting at the entrance.": "A mining cart lies on its side. A dwarf is sitting at the entrance.",
+        "He looks grumpy.": "He looks grumpy."
+      },
+      "interactions": {
+        "Open your bag": "Open your bag",
+        "Talk to the dwarf": "Talk to the dwarf",
+        "Leave the mine": "Leave the mine"
+      }
+    }
+  },
+  "overlays": {
+    "inventory": {
+      "text": {
+        "- [character.player.values.coins] coin": "- [character.player.values.coins] geldstuk",
+        "You carry the following items:": "Je hebt het volgende bij je:",
+        "- [character.player.values.coins] coins": "- [character.player.values.coins] geldstukken",
+        "- A branch, picked up in the forest": "- A branch, picked up in the forest",
+        "- A pickaxe with a broken hilt": "- A pickaxe with a broken hilt",
+        "- A fixed pickaxe": "- A fixed pickaxe",
+        "You remove the old hilt of the pickaxe,": "You remove the old hilt of the pickaxe,",
+        "and replace the hilt with the branch from the forest.": "and replace the hilt with the branch from the forest.",
+        "It fits! The pickaxe is as good as new.": "It fits! The pickaxe is as good as new."
+      },
+      "interactions": {
+        "Repair the pickaxe with the branch from the forest": "Repair the pickaxe with the branch from the forest",
+        "Close your bag": "Sluit je tas"
+      }
+    },
+    "dwarfConversation": {
+      "dwarf": {
+        "Hallo [character.player.name]": "Hallo [character.player.name]",
+        "Grr. Stupid thing, stupid thing!": "Grr. Stupid thing, stupid thing!",
+        "I wasn't talking to you!": "I wasn't talking to you!",
+        "Pardon my manners, I just have bad luck!": "Pardon my manners, I just have bad luck!",
+        "My name is [.defaultName], and who might you be?": "My name is [.defaultName], and who might you be?",
+        "Hi [character.player.name]. Sorry for being rude.": "Hi [character.player.name]. Sorry for being rude.",
+        "My pickaxe just broke, and I just discovered a vein of gemstones!": "My pickaxe just broke, and I just discovered a vein of gemstones!",
+        "I tried so hard to get them out of there.": "I tried so hard to get them out of there.",
+        "And now mu pickaxe is broken. And I'm hungry!": "And now mu pickaxe is broken. And I'm hungry!",
+        "Sorry, I wasn't talking to you...": "Sorry, I wasn't talking to you...",
+        "Do you have any food for me?": "Do you have any food for me?",
+        "And a new pickaxe?": "And a new pickaxe?",
+        "Sure. But only the top half is intact.": "Sure. But only the top half is intact.",
+        "The hilt is broken. It's no use to me.": "The hilt is broken. It's no use to me.",
+        "Really? show me!": "Really? show me!",
+        "Wow, It's as good as new! Thanks!": "Wow, It's as good as new! Thanks!"
+      },
+      "player": {
+        "Hello, can you help me?": "Hello, can you help me?",
+        "You are stupid yourself!": "You are stupid yourself!",
+        "My name is [.name].": "My name is [.name].",
+        "Excuse me? Who is stupid here?": "Excuse me? Who is stupid here?",
+        "How can I help you?": "How can I help you?",
+        "Can I have your pickaxe?": "Can I have your pickaxe?",
+        "I was able to repair your pickaxe": "I was able to repair your pickaxe",
+        "Here you go.": "Here you go."
+      },
+      "text": {
+        "The dwarf looks grumpy in your direction.": "The dwarf looks grumpy in your direction.",
+        "[character.dwarf.name] sighs.": "[character.dwarf.name] sighs.",
+        "You put the top if the pickaxe in your bag.": "You put the top if the pickaxe in your bag.",
+        "You give the repaired pickaxe to [character.dwarf.defaultName]. He gives it a thorough inspection.": "You give the repaired pickaxe to [character.dwarf.defaultName]. He gives it a thorough inspection."
+      },
+      "interactions": {
+        "You are stupid yourself!": "You are stupid yourself!",
+        "Excuse me?": "Excuse me?",
+        "How can I help you?": "How can I help you?",
+        "Can I have your pickaxe?": "Can I have your pickaxe?",
+        "I was able to repair your pickaxe": "I was able to repair your pickaxe",
+        "Okay, I'm going.": "Okay, I'm going."
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { inventory } from "../inventory";
 
 g.defineLocation("mine", ({ describe, interaction, onLeave }) => {
   onLeave("hills", () => {
-    g.text("Je groet de dwerg en loopt weer richting de weg.");
+    g.text("You greet the dwarf and walk back towards the road.");
   });
 
   describe(() => {
@@ -11,29 +11,29 @@ g.defineLocation("mine", ({ describe, interaction, onLeave }) => {
       g.hasCharacterFlag("dwarf", "nameKnown"),
       () => {
         g.text(
-          "Je bent bij de mijn",
-          "Er ligt een mijnkarretje op zijn kant. Voor de ingang zit [character.dwarf.defaultName] de dwerg."
+          "You are at the mine entrance.",
+          "A mining cart lies on its side. [character.dwarf.defaultName] is sitting at the entrance."
         );
       },
       () => {
-        g.character("dwarf").setName("Dwerg"); // This name should become translatable
+        g.character("dwarf").setName("Dwarf"); // This name should become translatable
 
         g.text(
-          "Je bent bij de mijn",
-          "Er ligt een mijnkarretje op zijn kant. Voor de ingang zit een dwerg."
+          "You are at the mine entrance.",
+          "A mining cart lies on its side. A dwarf is sitting at the entrance."
         );
       }
     );
-    g.text("Hij ziet er niet al te vrolijk uit.");
+    g.text("He looks grumpy.");
   });
 
   inventory(interaction);
 
-  interaction("Praat met de dwerg", g.always(), () => {
+  interaction("Talk to the dwarf", g.always(), () => {
     g.openOverlay("dwarfConversation");
   });
 
-  interaction("Verlaat mijn", g.always(), () => {
+  interaction("Leave the mine", g.always(), () => {
     g.travel("hills");
   });
 });

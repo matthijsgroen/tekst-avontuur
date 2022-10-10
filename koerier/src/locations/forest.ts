@@ -3,48 +3,51 @@ import { inventory } from "../inventory";
 
 g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
   onLeave("farmland", () => {
-    g.text("Je wandelt naar het oosten, richting de akkers.");
+    g.text("You walk east, to the farmlands.");
   });
   onLeave("hills", () => {
-    g.text("Je wandelt naar het westen, richting de heuvels.");
+    g.text("You walk west, towards the hills.");
   });
 
   describe(() => {
     g.text(
-      "Je staat in het bos. Het is een stralende dag.",
-      "De wind laat de blaadjes ritselen."
+      "You are in the forest. It is a beautiful day.",
+      "The wind is rustling the leaves."
     );
-    g.text("In het oosten zijn akkers.", "In het westen zijn heuvels.");
+    g.text("There are farmlands in the east.", "There are hills in the west.");
     g.location("forest").setFlag("visited", true);
 
     g.onState(g.not(g.isItemState("bag", "possession")), () => {
-      g.text("Op de grond ligt je tas en scherven van de fles medicijnen.");
-      g.character("player").say("Verdorie, de medicijnen zijn echt verloren.");
-      g.text("Je raapt de tas op.");
+      g.text(
+        "Your bag is on the ground, surrounded by shards of glass of the bottle of medicine."
+      );
+      g.character("player").say("Drat, the medicine is truly lost.");
+      g.text("You pick up your bag.");
       g.item("bag").setState("possession");
+      g.character("player").setValue("coins", 3);
     });
 
     g.onState(g.isItemState("branch", "unknown"), () => {
-      g.text("Op de grond ligt een vers afgebroken tak.");
+      g.text("There is a freshly broken branch on the ground.");
     });
   });
 
   inventory(interaction);
-  interaction("Spring op paard", g.never(), () => {});
+  interaction("Jump on horse", g.never(), () => {});
 
-  interaction("Raap de tak op", g.isItemState("branch", "unknown"), () => {
+  interaction("Pick up branch", g.isItemState("branch", "unknown"), () => {
     g.text(
-      "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd.",
-      "Deze tak heeft je best pijn gedaan."
+      "You pick up the branch. You feel a small bump on your head.",
+      "This branch hurt you quite a bit."
     );
     g.item("branch").setState("possession");
   });
 
-  interaction("Ga naar het oosten, richting de akkers", g.always(), () => {
+  interaction("Go east, to the farmlands", g.always(), () => {
     g.travel("farmland");
   });
 
-  interaction("Ga naar het westen, richting de heuvels", g.always(), () => {
+  interaction("Go west, to the hills", g.always(), () => {
     g.travel("hills");
   });
 });

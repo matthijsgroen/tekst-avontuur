@@ -14,14 +14,14 @@ export type Game = {
     horse: { states: "known" | "found" | "hooves" | "cart" };
   };
   characters: {
-    player: {};
+    player: { values: "coins" };
     dwarf: { flags: "nameKnown" };
   };
   overlays: "dwarfConversation" | "inventory";
 };
 
 const game = world<Game>({
-  defaultLocale: "nl-NL",
+  defaultLocale: "en-US",
   defaultTextColor: hexColor("80ff80"),
   initialState: {
     currentLocation: "forest",
