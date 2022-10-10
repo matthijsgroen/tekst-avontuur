@@ -16,8 +16,7 @@ g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
     );
     g.text("There are farmlands in the east.", "There are hills in the west.");
     g.location("forest").setFlag("visited", true);
-
-    g.onState(g.not(g.isItemState("bag", "possession")), () => {
+    g.onState(g.not(g.item("bag").hasState("possession")), () => {
       g.text(
         "Your bag is on the ground, surrounded by shards of glass of the bottle of medicine."
       );
@@ -27,7 +26,7 @@ g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
       g.character("player").setValue("coins", 3);
     });
 
-    g.onState(g.isItemState("branch", "unknown"), () => {
+    g.onState(g.item("branch").hasState("unknown"), () => {
       g.text("There is a freshly broken branch on the ground.");
     });
   });
@@ -35,7 +34,7 @@ g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
   inventory(interaction);
   interaction("Jump on horse", g.never(), () => {});
 
-  interaction("Pick up branch", g.isItemState("branch", "unknown"), () => {
+  interaction("Pick up branch", g.item("branch").hasState("unknown"), () => {
     g.text(
       "You pick up the branch. You feel a small bump on your head.",
       "This branch hurt you quite a bit."

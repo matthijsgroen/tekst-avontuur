@@ -8,7 +8,7 @@ g.defineLocation("mine", ({ describe, interaction, onLeave }) => {
 
   describe(() => {
     g.onState(
-      g.hasCharacterFlag("dwarf", "nameKnown"),
+      g.character("dwarf").hasFlag("nameKnown"),
       () => {
         g.text(
           "You are at the mine entrance.",

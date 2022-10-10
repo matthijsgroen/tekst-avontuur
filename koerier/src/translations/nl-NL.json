@@ -93,9 +93,9 @@
   "overlays": {
     "inventory": {
       "text": {
-        "- [character.player.values.coins] coin": "- [character.player.values.coins] geldstuk",
         "You carry the following items:": "Je hebt het volgende bij je:",
         "- [character.player.values.coins] coins": "- [character.player.values.coins] geldstukken",
+        "- [character.player.values.coins] coin": "- [character.player.values.coins] geldstuk",
         "- A branch, picked up in the forest": "- A branch, picked up in the forest",
         "- A pickaxe with a broken hilt": "- A pickaxe with a broken hilt",
         "- A fixed pickaxe": "- A fixed pickaxe",

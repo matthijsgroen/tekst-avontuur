@@ -20,7 +20,7 @@ g.defineLocation("farmland", ({ describe, interaction, onLeave }) => {
 
   interaction("Go west, to the forest", g.always(), () => {
     g.onState(
-      g.isItemState("horse", "found"),
+      g.item("horse").hasState("found"),
       () => {
         g.text(
           "You want to walk to the west towards the forest, but [character.horse.defaultName] starts to refuse."

@@ -7,7 +7,7 @@ g.defineOverlay(
       // potential place to do the posing of characters first.
 
       g.onState(
-        g.hasCharacterFlag("dwarf", "nameKnown"),
+        g.character("dwarf").hasFlag("nameKnown"),
         () => {
           g.character("dwarf").say("Hallo [character.player.name]");
         },
@@ -39,7 +39,7 @@ g.defineOverlay(
 
     interaction(
       "You are stupid yourself!",
-      g.not(g.hasCharacterFlag("dwarf", "nameKnown")),
+      g.not(g.character("dwarf").hasFlag("nameKnown")),
       () => {
         g.character("player").say("You are stupid yourself!");
         g.character("dwarf").say("I wasn't talking to you!");
@@ -48,7 +48,7 @@ g.defineOverlay(
     );
     interaction(
       "Excuse me?",
-      g.not(g.hasCharacterFlag("dwarf", "nameKnown")),
+      g.not(g.character("dwarf").hasFlag("nameKnown")),
       () => {
         g.character("player").say("Excuse me? Who is stupid here?");
         g.character("dwarf").say("Sorry, I wasn't talking to you...");
@@ -58,17 +58,17 @@ g.defineOverlay(
 
     interaction(
       "How can I help you?",
-      g.hasCharacterFlag("dwarf", "nameKnown"),
+      g.character("dwarf").hasFlag("nameKnown"),
       () => {
         g.character("player").say("How can I help you?");
 
-        g.onState(g.not(g.isItemState("pickaxe", "given")), () => {
+        g.onState(g.not(g.item("pickaxe").hasState("given")), () => {
           g.character("dwarf").say(
             "Do you have any food for me?",
             "And a new pickaxe?"
           );
         });
-        g.onState(g.isItemState("pickaxe", "given"), () => {
+        g.onState(g.item("pickaxe").hasState("given"), () => {
           g.character("dwarf").say("Do you have any food for me?");
         });
 
@@ -79,8 +79,8 @@ g.defineOverlay(
     interaction(
       "Can I have your pickaxe?",
       g.and(
-        g.hasCharacterFlag("dwarf", "nameKnown"),
-        g.isItemState("pickaxe", "unknown")
+        g.character("dwarf").hasFlag("nameKnown"),
+        g.item("pickaxe").hasState("unknown")
       ),
       () => {
         g.character("player").say("Can I have your pickaxe?");
@@ -95,7 +95,7 @@ g.defineOverlay(
 
     interaction(
       "I was able to repair your pickaxe",
-      g.isItemState("pickaxe", "fixed"),
+      g.item("pickaxe").hasState("fixed"),
       () => {
         g.character("player").say("I was able to repair your pickaxe");
         g.character("dwarf").say("Really? show me!");

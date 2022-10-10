@@ -4,19 +4,19 @@ import g from "./game";
 g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
   onEnter(() => {
     g.text("You carry the following items:");
-    g.onState(g.hasCharacterValue("player", "coins", "moreThan", 1), () => {
+    g.onState(g.character("player").hasValue("coins").moreThan(2), () => {
       g.text("- [character.player.values.coins] coins");
     });
-    g.onState(g.hasCharacterValue("player", "coins", "equals", 1), () => {
+    g.onState(g.character("player").hasValue("coins").equals(1), () => {
       g.text("- [character.player.values.coins] coin");
     });
-    g.onState(g.isItemState("branch", "possession"), () => {
+    g.onState(g.item("branch").hasState("possession"), () => {
       g.text("- A branch, picked up in the forest");
     });
-    g.onState(g.isItemState("pickaxe", "broken"), () => {
+    g.onState(g.item("pickaxe").hasState("broken"), () => {
       g.text("- A pickaxe with a broken hilt");
     });
-    g.onState(g.isItemState("pickaxe", "fixed"), () => {
+    g.onState(g.item("pickaxe").hasState("fixed"), () => {
       g.text("- A fixed pickaxe");
     });
   });
@@ -24,8 +24,8 @@ g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
   interaction(
     "Repair the pickaxe with the branch from the forest",
     g.and(
-      g.isItemState("branch", "possession"),
-      g.isItemState("pickaxe", "broken")
+      g.item("branch").hasState("possession"),
+      g.item("pickaxe").hasState("broken")
     ),
     () => {
       g.text(
@@ -46,7 +46,7 @@ g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
 export const inventory = <Game extends GameWorld>(
   interaction: Interaction<Game>
 ) => {
-  interaction("Open your bag", g.isItemState("bag", "possession"), () => {
+  interaction("Open your bag", g.item("bag").hasState("possession"), () => {
     g.openOverlay("inventory");
   });
 };
