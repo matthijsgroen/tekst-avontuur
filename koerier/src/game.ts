@@ -11,11 +11,11 @@ export type Game = {
     bag: { states: "known" | "possession" };
     branch: { states: "possession" | "used" };
     pickaxe: { states: "broken" | "fixed" | "given" };
-    horse: { states: "known" | "found" | "hooves" | "cart" };
   };
   characters: {
     player: { values: "coins" };
     dwarf: { flags: "nameKnown" };
+    horse: { states: "known" | "found" | "hooves" | "cart" };
   };
   overlays: "dwarfConversation" | "inventory";
 };
@@ -33,6 +33,10 @@ const game = world<Game>({
     },
     dwarf: {
       defaultName: "Thorin",
+      textColor: hexColor("ee4040"),
+    },
+    horse: {
+      defaultName: "Teun",
       textColor: hexColor("ee4040"),
     },
   },

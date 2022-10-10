@@ -9,7 +9,7 @@ g.defineOverlay(
       g.onState(
         g.character("dwarf").hasFlag("nameKnown"),
         () => {
-          g.character("dwarf").say("Hallo [character.player.name]");
+          g.character("dwarf").say("Hello [character.player.name]");
         },
         () => {
           g.character("player").say("Hello, can you help me?");
