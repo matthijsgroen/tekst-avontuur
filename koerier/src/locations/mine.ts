@@ -16,7 +16,7 @@ g.defineLocation("mine", ({ describe, interaction, onLeave }) => {
         );
       },
       () => {
-        g.character("dwarf").setName("Dwarf"); // This name should become translatable
+        g.character("dwarf").setTranslatableName("Dwarf"); // This name should become translatable
 
         g.text(
           "You are at the mine entrance.",
