@@ -23,7 +23,7 @@ g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
       g.character("player").say("Drat, the medicine is truly lost.");
       g.text("You pick up your bag.");
       g.item("bag").setState("possession");
-      g.character("player").setValue("coins", 3);
+      g.character("player").setCounter("coins", 3);
     });
 
     g.onState(g.item("branch").hasState("unknown"), () => {

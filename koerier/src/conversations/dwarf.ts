@@ -32,7 +32,7 @@ g.defineOverlay(
         "Hi [character.player.name]. Sorry for being rude.",
         "My pickaxe just broke, and I just discovered a vein of gemstones!",
         "I tried so hard to get them out of there.",
-        "And now mu pickaxe is broken. And I'm hungry!"
+        "And now my pickaxe is broken. And I'm hungry!"
       );
       g.text("[character.dwarf.name] sighs.");
     };

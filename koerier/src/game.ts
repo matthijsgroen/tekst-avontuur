@@ -1,6 +1,6 @@
-import { hexColor, world } from "point-n-click";
+import { hexColor, world, GameDefinition } from "point-n-click";
 
-export type Game = {
+export type Game = GameDefinition<{
   locations: {
     forest: { flags: "visited" };
     farmland: { flags: "visited" };
@@ -13,12 +13,12 @@ export type Game = {
     pickaxe: { states: "broken" | "fixed" | "given" };
   };
   characters: {
-    player: { values: "coins" };
+    player: { counters: "coins" };
     dwarf: { flags: "nameKnown" };
     horse: { states: "known" | "found" | "hooves" | "cart" };
   };
   overlays: "dwarfConversation" | "inventory";
-};
+}>;
 
 const game = world<Game>({
   defaultLocale: "en-US",
