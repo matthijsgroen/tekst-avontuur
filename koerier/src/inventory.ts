@@ -5,10 +5,10 @@ g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
   onEnter(() => {
     g.text("You carry the following items:");
     g.onState(g.character("player").hasCounter("coins").moreThan(2), () => {
-      g.text("- [character.player.values.coins] coins");
+      g.text("- [character.player.counters.coins] coins");
     });
     g.onState(g.character("player").hasCounter("coins").equals(1), () => {
-      g.text("- [character.player.values.coins] coin");
+      g.text("- [character.player.counters.coins] coin");
     });
     g.onState(g.item("branch").hasState("possession"), () => {
       g.text("- A branch, picked up in the forest");
