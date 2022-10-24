@@ -9,7 +9,7 @@
 ' @Datum: Mei 2019
 ' @Email: matthijs.groen@gmail.com
 ' @Twitter: @matthijsgroen
-' @Versie: 1.2.1
+' @Versie: 1.2.2
 ' @Thema: boek
 ' @Thema.kaft: rood
 
@@ -185,7 +185,7 @@
 "1=0;10=1;4=3", "*c2", "Je probeert het briefje van de raaf te pakken.", "&"
 "1=0;10=1;4>0;4<4", "*c2", "", "De raaf pikt naar je hand."
 "*c3", "", "$n: 'Grrr!'", "&"
-"1=0;10=1;4>0;4<4;5<3", "&5+1"
+"1=0;10=1;4>0;4<4;5<2", "&5+1"
 
 "1=0;10=0;4=4", "*c2", "Je opent het raam. De raaf springt snel naar binnen."
 "Zo te zien heeft hij een brief aan zijn poot hangen."
@@ -791,7 +791,7 @@
 
 '== 11. Mijn
 "1=11;2=0;11<2;4=0", "*c2"
-"Je bent bij de mijn"
+"Je bent bij de mijn."
 "Er ligt een mijnkarretje. Voor de ingang zit een dwerg."
 "", "Hij ziet er niet al te vrolijk uit."
 "", "*c3", "$n: 'Hallo, kun je mij helpen?'"
@@ -1676,7 +1676,7 @@
 "1=16;16=1;2=0;4=0;45!0;46=0", "*c2"
 "Je staat in de bakkerij. De bakker ziet er verdrietig uit."
 "Er hangt een geur van heerlijke verse broodjes en taarten.", ""
-"*c9", "Gerst: 'Ik hoor mensen zeggen dat de draak gedood is. Ik hoorde ook de mega brul. Heb je Bloem gezien? is ze nog in leven?'"
+"*c9", "Gerst: 'Ik hoor mensen zeggen dat de draak gedood is. Ik hoorde ook de mega brul. Heb je Bloem gezien? Is ze nog in leven?'"
 "", "*c2", "De bakker is heel erg somber en verdrietig.", "&"
 
 "1=16;16=1;2=0;4=0;46=1", "*c2"
@@ -1727,6 +1727,12 @@
 "Gerst: 'Wat heb ik aan geld als ik niet eens mijn eigen dochter kan redden?'", "*c2", ""
 "De bakker staat weer voor zich uit te staren..."
 "&4=0;33=3;22+100"
+
+"1=16;16=1;4=10;2=0", "*c3"
+"$n: 'Ik heb graan gehaald.'", "", "*c9"
+"Gerst: 'Echt waar? Ik kan alleen met graan zelf niet veel. Zou je het misschien kunnen malen tot meel?'", "", "*c2"
+"De bakker staat weer voor zich uit te staren..."
+"&4=0"
 
 "1=16;16=1;4=1;2=0;26>0", "*c3"
 "$n: 'Kunt u me meer vertellen over het monster?'", "", "*c9"
@@ -2187,7 +2193,7 @@
 "1=0;10=1", "Jaag de raaf weg", "4=1"
 "1=0;10=1", "Het tikken is weg! Probeer weer in bed te kruipen", "4=2"
 "1=0;10=1", "Pak briefje van de raaf", "4=3"
-"1=0;10=1;5>2", "Kijk de kamer rond", "2=0;4=0;10=2"
+"1=0;10=1;5>1", "Kijk de kamer rond", "2=0;4=0;10=2"
 
 "1=0;10=2;2!1;4!0", "Kijk de kamer rond", "2=0;4=0"
 "1=0;10=2;2=1", "Sluit tas", "2=0;4=0"
@@ -2461,7 +2467,7 @@
 "2=0;1=15;4=0;26=3;28=1;34<7", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=4"
 "2=0;1=15;4=0;26=3;28=1;34=7", "Zeg: 'Kunnen jullie een sieraad maken?'", "4=7"
 "2=0;1=15;4=0;26>0;27<2", "Zeg: 'Kunnen jullie een wapen maken?'", "4=6"
-"2=0;1=15;4=0;17<2", "Zeg: 'Wat weten jullie van het monster in het woud?'", "4=10"
+"2=0;1=15;4=0;26>0;17<2", "Zeg: 'Wat weten jullie van het monster in het woud?'", "4=10"
 "2=0;1=15;4=0", "Kijk rond in smederij", "4=5"
 "2=0;1=15;4=0", "Verlaat de smederij", "1=6;3=6;4=0"
 
@@ -2484,6 +2490,7 @@
 "2=0;1=16;16=1;4=0;26>0;33<3", "Zeg: 'Waarom is uw toonbank leeg?'", "4=6"
 "2=0;1=16;16=1;4=0;46=1", "Praat met Bloem", "4=9"
 "2=0;1=16;16=1;4=0;33=2;30=16;19=1", "Zeg: 'Ik heb meel gehaald'", "4=7"
+"2=0;1=16;16=1;4=0;33=1;30=16;19=1", "Zeg: 'Ik heb graan gehaald'", "4=10"
 "2=0;1=16;16=1;4=0", "Verlaat de bakkerij", "1=6;3=5;4=0"
 "2=0;1=16;16=1;4=1;26=0", "Zeg: 'Monster? Waar heeft u het over?'", "4=4"
 
