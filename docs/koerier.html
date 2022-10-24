@@ -27,23 +27,6 @@ In dit tekstavontuur maak jij de keuzes!" />
     --inspring-lijst: calc(0.54526em * 3);
 }
 
-@-webkit-keyframes inkblot {
-    from {
-        text-shadow: 0px 0px 0px, 0px 0px 0px;
-        opacity: 0.2;
-    }
-
-    50% {
-        text-shadow: 1px 1px 0px, -1px -1px 0px;
-        opacity: 0.4;
-    }
-
-    to {
-        text-shadow: 0px 0px 0px, 0px 0px 0px;
-        opacity: 1.0;
-    }
-}
-
 @keyframes inkblot {
     from {
         text-shadow: 0px 0px 0px, 0px 0px 0px;
@@ -58,14 +41,6 @@ In dit tekstavontuur maak jij de keuzes!" />
     to {
         text-shadow: 0px 0px 0px, 0px 0px 0px;
         opacity: 1.0;
-    }
-}
-@-webkit-keyframes turn-page {
-    from {
-        transform: rotateY(0deg);
-    }
-    to {
-        transform: rotateY(-180deg);
     }
 }
 @keyframes turn-page {
@@ -229,14 +204,10 @@ table, input, textarea, button {
             backface-visibility: hidden;
 }
 .page.turn {
-    -webkit-animation-duration: 0.5s;
-            animation-duration: 0.5s;
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    -webkit-animation-name: turn-page;
-            animation-name: turn-page;
-    -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+    animation-name: turn-page;
+    animation-fill-mode: forwards;
     overflow: hidden;
 }
 .page + .achter-pagina {
@@ -252,14 +223,10 @@ table, input, textarea, button {
     background: linear-gradient(to right, #a8a6a3 0%,#dddad7 3%,#efebe6 10%,#e0dad2 66%,#dbc8b3 99%);
 }
 .page.turn + .achter-pagina {
-    -webkit-animation-duration: 0.5s;
-            animation-duration: 0.5s;
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    -webkit-animation-name: turn-page;
-            animation-name: turn-page;
-    -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+    animation-name: turn-page;
+    animation-fill-mode: forwards;
 }
 body.klankbord #screen span {
     padding: 0 0.1em;
@@ -312,10 +279,8 @@ body.klankbord #screen span.letterGroep2 {
             text-decoration: underline dotted grey;
 }
 #screen span {
-    -webkit-animation-duration: 0.2s;
-            animation-duration: 0.2s;
-    -webkit-animation-name: inkblot;
-            animation-name: inkblot;
+    animation-duration: 0.2s;
+    animation-name: inkblot;
 }
 .actie a {
     text-decoration: none;
@@ -490,7 +455,7 @@ button:focus {
 .ereader .page.turn + .achter-pagina {
     display: none;
 }
-.ereader #screen span { -webkit-animation: none; animation: none; }
+.ereader #screen span { animation: none; }
 .ereader .kaft { transition: none; }
 
 @font-face {
@@ -514,7 +479,7 @@ body.terminal {
 .terminal .page.turn + .achter-pagina {
     display: none;
 }
-.terminal #screen span { -webkit-animation: none; animation: none; }
+.terminal #screen span { animation: none; }
 .terminal .kaft {
     transition: none;
     background: linear-gradient(to right,
