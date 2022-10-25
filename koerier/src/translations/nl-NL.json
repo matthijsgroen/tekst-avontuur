@@ -19,7 +19,7 @@
   "location": {
     "farmland": {
       "text": {
-        "You are walking to the east, towards the forest.": "You are walking to the east, towards the forest.",
+        "You are walking to the east, towards the forest.": "Je wandelt naar het oosten, richting het groene bos.",
         "You are in the farmlands.": "Je staat in een boerenlandschap.",
         "On the right side of the road is a farm.": "Aan de rechterkant van de weg staat een boerderij.",
         "Smoke is rising up from behind the farm.": "Er komt rook achter de boerderij vandaan.",
@@ -42,11 +42,11 @@
         "You walk west, towards the hills.": "Je wandelt naar het westen, richting de heuvels.",
         "You are in the forest. It is a beautiful day.": "Je staat in het bos. Het is een stralende dag.",
         "The wind is rustling the leaves.": "De wind laat de blaadjes ritselen.",
-        "There are farmlands in the east.": "In het oosten zijn akkers.",
-        "There are hills in the west.": "In het westen zijn heuvels.",
+        "There are {b}farmlands{/b} in the {b}east{/b}.": "In het {b}oosten{/b} zijn {b}akkers{/b}.",
+        "There are {b}hills{/b} in the {b}west{/b}.": "In het {b}westen{/b} zijn {b}heuvels{/b}.",
         "Your bag is on the ground, surrounded by shards of glass of the bottle of medicine.": "Op de grond ligt je tas en scherven van de fles medicijnen.",
         "You pick up your bag.": "Je raapt de tas op",
-        "There is a freshly broken branch on the ground.": "Op de grond ligt een vers afgebroken tak.",
+        "There is a freshly broken {b}branch{/b} on the ground.": "Op de grond ligt een vers afgebroken {b}tak{/b}.",
         "You pick up the branch. You feel a small bump on your head.": "Je bukt en raapt de tak op. Je voelt nog even aan je hoofd.",
         "This branch hurt you quite a bit.": "Deze tak heeft je best pijn gedaan."
       },
@@ -67,10 +67,10 @@
         "You follow the road, towards the entrance of the mine.": "Je loopt van de weg af, richting de ingang van de mijn.",
         "You are in the hills. The sun is shining lovely.": "Je staat in de heuvels. De zon schijnt heerlijk.",
         "There is a nice view of the environment.": "Er is een mooi uitzicht van de omgeving.",
-        "A bit farther on the road you see a mine.": "Verder op het pad zie je een mijn.",
-        "A bit higher up the hill is a windmill.": "Iets hoger op de heuvel staat een molen.",
-        "There is a road to the forest to the east.": "Naar het oosten loopt het pad naar het bos.",
-        "To the south, there is a soggy path going into a swamp.": "Naar het zuiden loopt een drassig pad een moeras in."
+        "A bit farther on the road you see a {b}mine{/b}.": "Verder op het pad zie je een {b}mijn{/b}.",
+        "A bit higher up the hill is a {b}windmill{/b}.": "Iets hoger op de heuvel staat een {b}molen{/b}.",
+        "There is a road to the {b}forest{/b} to the {b}east{/b}.": "Naar het {b}oosten{/b} loopt het pad naar het {b}bos{/b}.",
+        "To the {b}south{/b}, there is a soggy path going into a {b}swamp{/b}.": "Naar het {b}zuiden{/b} loopt een drassig pad een {b}moeras{/b} in."
       },
       "interactions": {
         "Open your bag": "Bekijk inhoud van tas",
@@ -83,7 +83,7 @@
     },
     "mine": {
       "text": {
-        "You greet the dwarf and walk back towards the road.": "You greet the dwarf and walk back towards the road.",
+        "You greet the dwarf and walk back towards the road.": "Je groet de dwerg en loopt weer richting de weg.",
         "You are at the mine entrance.": "Je bent bij de mijn.",
         "A mining cart lies on its side. [character.dwarf.defaultName] is sitting at the entrance.": "Er ligt een mijnkarretje op zijn kant. Voor de ingang zit [character.dwarf.defaultName] de dwerg.",
         "A mining cart lies on its side. A dwarf is sitting at the entrance.": "Er ligt een mijnkarretje. Voor de ingang zit een dwerg.",
@@ -120,9 +120,9 @@
         "Grr. Stupid thing, stupid thing!": "Grr. Stom ding, stom ding!",
         "I wasn't talking to you!": "Ik heb het niet tegen jou!",
         "Pardon my manners, I just have bad luck!": "Sorry voor mijn manieren, ik heb gewoon pech!",
-        "My name is [.defaultName], and who might you be?": "Mijn naam is [character.dwarf.defaultName], en wie mag jij wezen?",
-        "Hi [character.player.name]. Sorry for being rude.": "Hallo [character.player.name]. Sorry dat ik zo ruw deed.",
-        "My pickaxe just broke, and I just discovered a vein of gemstones!": "Mijn houweel is gebroken, en ik had net een ader van edelstenen ontdekt!",
+        "My name is {b}[.defaultName]{/b}, and who might you be?": "Mijn naam is {b}[.defaultName]{/b}, en wie mag jij wezen?",
+        "Hi {b}[character.player.name]{/b}. Sorry for being rude.": "Hallo {b}[character.player.name]{/b}. Sorry dat ik zo ruw deed.",
+        "My {b}pickaxe{/b} just broke, and I just discovered a vein of {b}gemstones{/b}!": "Mijn {b}houweel{/b} is gebroken, en ik had net een ader van {b}edelstenen{/b} ontdekt!",
         "I tried so hard to get them out of there.": "Ik heb zo hard mijn best gedaan om ze los te krijgen.",
         "And now my pickaxe is broken. And I'm hungry!": "Nu is mijn houweel gebroken. En ik heb honger!",
         "Sorry, I wasn't talking to you...": "Sorry, ik heb het niet tegen jou...",
@@ -130,24 +130,34 @@
         "And a new pickaxe?": "En een nieuwe houweel?",
         "Sure. But only the top half is intact.": "Tuurlijk. Alleen de bovenkant is nog heel.",
         "The hilt is broken. It's no use to me.": "Het heft is gebroken. Ik heb er niets meer aan.",
-        "Really? show me!": "Really? show me!",
-        "Wow, It's as good as new! Thanks!": "Wow, It's as good as new! Thanks!"
+        "Really? show me!": "Echt waar? Laat zien.",
+        "Wow, It's as good as new! Thanks!": "Wauw, hij is zo goed als nieuw! Bedankt!",
+        "No idea, Its best to ask around in the {b}village{/b}.": "Geen idee, dat zou je het beste in het {b}dorp{/b} kunnen vragen.",
+        "They have all kinds of things there.": "Ze hebben daar van alles.",
+        "The village is southeast of here.": "Het dorp ligt in het zuidoosten vanaf hier.",
+        "First {b}east{/b}, then {b}south{/b}.": "Eerst naar het {b}oosten{/b}, dan naar het {b}zuiden{/b}.",
+        "Hmm, the {b}farmer{/b} nearby has a horse.": "Hmm, de {b}boer{/b} verderop heeft een paard.",
+        "Maybe you can borrow it?": "Je zou kunnen vragen of je hem mag lenen?"
       },
       "player": {
         "Hello, can you help me?": "Hallo, kun je mij helpen?",
         "You are stupid yourself!": "Je bent zelf een stom ding!",
-        "My name is [.name].": "Mijn naam is [.name].",
-        "Excuse me? Who is stupid here?": "Excuse me? Who is stupid here?",
+        "My name is {b}[.name]{/b}.": "Mijn naam is {b}[.name]{/b}.",
+        "Excuse me? Who is stupid here?": "Pardon? Wie is een stom ding?",
         "How can I help you?": "Hoe kan ik je helpen?",
-        "Can I have your pickaxe?": "Can I have your pickaxe?",
+        "Can I have your pickaxe?": "Zou ik je houweel mogen hebben?",
         "I was able to repair your pickaxe": "I was able to repair your pickaxe",
-        "Here you go.": "Here you go."
+        "Here you go.": "Here you go.",
+        "{b}[character.dwarf.name]{/b}, would you happen to know how I could get some medicine?": "{b}[character.dwarf.name]{/b}, zou jij weten hoe ik aan medicijnen kan komen?",
+        "{b}[character.dwarf.name]{/b}, would you happen to know how I could get some transportation?": "{b}[character.dwarf.name]{/b}, zou jij weten hoe ik aan vervoer kan komen?'"
       },
       "text": {
         "The dwarf looks grumpy in your direction.": "De dwerg kijkt je een beetje boos aan.",
+        "You greet the dwarf and walk towards the road.": "Je groet de dwerg en loopt weer richting de weg.",
         "[character.dwarf.name] sighs.": "[character.dwarf.name] zucht diep.",
         "You put the top if the pickaxe in your bag.": "You put the top if the pickaxe in your bag.",
-        "You give the repaired pickaxe to [character.dwarf.defaultName]. He gives it a thorough inspection.": "You give the repaired pickaxe to [character.dwarf.defaultName]. He gives it a thorough inspection."
+        "You give the repaired pickaxe to [character.dwarf.name]. He gives it a thorough inspection.": "You give the repaired pickaxe to [character.dwarf.name]. He gives it a thorough inspection.",
+        "[character.dwarf.name] thinks.": "[character.dwarf.name] denkt even na."
       },
       "interactions": {
         "You are stupid yourself!": "Je bent zelf een stom ding!",
@@ -155,6 +165,8 @@
         "How can I help you?": "Hoe kan ik je helpen?",
         "Can I have your pickaxe?": "Zou ik je houweel mogen hebben?",
         "I was able to repair your pickaxe": "I was able to repair your pickaxe",
+        "Any idea how I could get any medicine?": "Enig idee hoe ik aan medicijnen kan komen?",
+        "Any idea how I could get any transportation?": "Enig idee hoe ik aan vervoer kan komen?",
         "Okay, I'm going.": "Oké, ik ga weer."
       }
     }

@@ -14,7 +14,10 @@ g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
       "You are in the forest. It is a beautiful day.",
       "The wind is rustling the leaves."
     );
-    g.text("There are farmlands in the east.", "There are hills in the west.");
+    g.text(
+      "There are {b}farmlands{/b} in the {b}east{/b}.",
+      "There are {b}hills{/b} in the {b}west{/b}."
+    );
     g.location("forest").setFlag("visited", true);
     g.onState(g.not(g.item("bag").hasState("possession")), () => {
       g.text(
@@ -27,7 +30,7 @@ g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
     });
 
     g.onState(g.item("branch").hasState("unknown"), () => {
-      g.text("There is a freshly broken branch on the ground.");
+      g.text("There is a freshly broken {b}branch{/b} on the ground.");
     });
   });
 

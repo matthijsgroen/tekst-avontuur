@@ -22,15 +22,15 @@ g.defineOverlay(
     const dwarfIntro = () => {
       g.character("dwarf").say(
         "Pardon my manners, I just have bad luck!",
-        "My name is [.defaultName], and who might you be?"
+        "My name is {b}[.defaultName]{/b}, and who might you be?"
       );
       g.character("dwarf").clearCustomName();
       g.character("dwarf").setFlag("nameKnown", true);
 
-      g.character("player").say("My name is [.name].");
+      g.character("player").say("My name is {b}[.name]{/b}.");
       g.character("dwarf").say(
-        "Hi [character.player.name]. Sorry for being rude.",
-        "My pickaxe just broke, and I just discovered a vein of gemstones!",
+        "Hi {b}[character.player.name]{/b}. Sorry for being rude.",
+        "My {b}pickaxe{/b} just broke, and I just discovered a vein of {b}gemstones{/b}!",
         "I tried so hard to get them out of there.",
         "And now my pickaxe is broken. And I'm hungry!"
       );
@@ -101,28 +101,51 @@ g.defineOverlay(
         g.character("dwarf").say("Really? show me!");
         g.character("player").say("Here you go.");
         g.text(
-          "You give the repaired pickaxe to [character.dwarf.defaultName]. He gives it a thorough inspection."
+          "You give the repaired pickaxe to [character.dwarf.name]. He gives it a thorough inspection."
         );
         g.character("dwarf").say("Wow, It's as good as new! Thanks!");
         g.item("pickaxe").setState("given");
       }
     );
 
-    // "1=11;2=0;11>1;4=5", "*c3", "$n: 'Thorin, zou jij weten hoe ik aan medicijnen kan komen?'", "", "*c2"
-    // "Thorin denkt even na.", "*c9", "", "Thorin: 'Geen idee, dat zou je het beste in het dorp kunnen vragen."
-    // "  Ze hebben daar van alles. Het dorp ligt in het zuidoosten vanaf hier."
-    // "  Eerst naar het oosten, dan naar het zuiden.'", "&4=0"
+    interaction(
+      "Any idea how I could get any medicine?",
+      g.character("dwarf").hasFlag("nameKnown"),
+      () => {
+        g.character("player").say(
+          "{b}[character.dwarf.name]{/b}, would you happen to know how I could get some medicine?"
+        );
+        g.text("[character.dwarf.name] thinks.");
+        g.character("dwarf").say(
+          "No idea, Its best to ask around in the {b}village{/b}.",
+          "They have all kinds of things there.",
+          "The village is southeast of here.",
+          "First {b}east{/b}, then {b}south{/b}."
+        );
+      }
+    );
 
-    // "1=11;2=0;11>1;4=6", "*c3", "$n: 'Thorin, zou jij weten hoe ik aan vervoer kan komen?'", "", "*c2"
-    // "Thorin denkt even na.", "*c9", "", "Thorin: 'Hmm, de boer verderop heeft een paard."
-    // "Je zou kunnen vragen of je hem mag lenen?'", "&4=0"
+    interaction(
+      "Any idea how I could get any transportation?",
+      g.character("dwarf").hasFlag("nameKnown"),
+      () => {
+        g.character("player").say(
+          "{b}[character.dwarf.name]{/b}, would you happen to know how I could get some transportation?"
+        );
+        g.text("[character.dwarf.name] thinks.");
+        g.character("dwarf").say(
+          "Hmm, the {b}farmer{/b} nearby has a horse.",
+          "Maybe you can borrow it?"
+        );
+      }
+    );
 
     interaction("Okay, I'm going.", g.always(), () => {
       closeOverlay();
     });
 
     onLeave(() => {
-      // teardown
+      g.text("You greet the dwarf and walk towards the road.");
     });
   }
 );

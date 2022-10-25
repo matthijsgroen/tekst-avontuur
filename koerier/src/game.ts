@@ -22,18 +22,18 @@ export type Game = GameDefinition<{
 
 const game = world<Game>({
   defaultLocale: "en-US",
-  defaultTextColor: hexColor("80ff80"),
+  defaultTextColor: hexColor("18a81b"),
   initialState: {
     currentLocation: "forest",
   },
   characterConfigs: {
     player: {
       defaultName: "Matthijs",
-      textColor: hexColor("4040ff"),
+      textColor: hexColor("1aaaa9"),
     },
     dwarf: {
       defaultName: "Thorin",
-      textColor: hexColor("ee4040"),
+      textColor: hexColor("565cfb"),
     },
     horse: {
       defaultName: "Teun",

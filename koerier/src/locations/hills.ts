@@ -15,10 +15,12 @@ g.defineLocation("hills", ({ describe, onLeave, interaction }) => {
       "There is a nice view of the environment."
     );
     g.text(
-      "A bit farther on the road you see a mine.",
-      "A bit higher up the hill is a windmill.",
-      "There is a road to the forest to the east.",
-      "To the south, there is a soggy path going into a swamp."
+      "A bit farther on the road you see a {b}mine{/b}.",
+      "A bit higher up the hill is a {b}windmill{/b}."
+    );
+    g.text(
+      "There is a road to the {b}forest{/b} to the {b}east{/b}.",
+      "To the {b}south{/b}, there is a soggy path going into a {b}swamp{/b}."
     );
   });
 
