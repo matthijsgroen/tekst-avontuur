@@ -1,0 +1,39 @@
+import g from "../game";
+import { inventory } from "../inventory";
+
+g.defineLocation("mill", ({ describe, onLeave, interaction }) => {
+  describe(() => {
+    g.text(
+      "You are at the windmill.",
+      "The mill misses a {b}sail{/b} of one of its blades."
+    );
+    g.text(
+      "A big {b}millstone{/b} lies next to the mill.",
+      "An empty {b}carriage{/b} is parked on the other side of the mill."
+    );
+    g.text("An old miller appears to be working on restoring the blade.");
+
+    g.onState(g.not(g.location("mill").hasFlag("visited")), () => {
+      g.character("miller").say(
+        "Hey hello over there! Could you help me out?",
+        "This old mill needs fixin', but I'm missing a sail!"
+      );
+
+      g.character("player").say(
+        "I'll keep my eyes open for something that could fit your needs!"
+      );
+      g.character("miller").say("Thanks!");
+      g.location("mill").setFlag("visited", true);
+    });
+
+    //     "", "*c9", "Tjasker: 'Hee, hallo daar! Zou je me kunnen helpen?"
+    // "  Deze oude molen moet gerepareerd worden. Maar ik heb geen goed doek!'"
+    // "", "*c3", "$n: 'Ik zal mijn ogen openhouden of ik iets tegenkom voor u!'"
+    // "", "*c9", "Tjasker: 'Bedankt!'"
+    // "&
+  });
+
+  interaction("Walk back to the road", g.always(), () => {
+    g.travel("hills");
+  });
+});

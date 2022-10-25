@@ -3,7 +3,7 @@ import { inventory } from "../inventory";
 
 g.defineLocation("mine", ({ describe, interaction, onLeave }) => {
   onLeave("hills", () => {
-    g.text("You greet the dwarf and walk back towards the road.");
+    g.text("You walk back towards the road.");
   });
 
   describe(() => {

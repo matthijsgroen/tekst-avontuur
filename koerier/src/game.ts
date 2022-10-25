@@ -6,6 +6,7 @@ export type Game = GameDefinition<{
     farmland: { flags: "visited" };
     hills: { flags: "visited" };
     mine: { flags: "visited" };
+    mill: { flags: "visited" };
   };
   items: {
     bag: { states: "known" | "possession" };
@@ -15,6 +16,7 @@ export type Game = GameDefinition<{
   characters: {
     player: { counters: "coins" };
     dwarf: { flags: "nameKnown" };
+    miller: {};
     horse: { states: "known" | "found" | "hooves" | "cart" };
   };
   overlays: "dwarfConversation" | "inventory";
@@ -33,6 +35,10 @@ const game = world<Game>({
     },
     dwarf: {
       defaultName: "Thorin",
+      textColor: hexColor("565cfb"),
+    },
+    miller: {
+      defaultName: "Tjasker",
       textColor: hexColor("565cfb"),
     },
     horse: {

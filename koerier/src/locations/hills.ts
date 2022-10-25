@@ -8,6 +8,9 @@ g.defineLocation("hills", ({ describe, onLeave, interaction }) => {
   onLeave("mine", () => {
     g.text("You follow the road, towards the entrance of the mine.");
   });
+  onLeave("mill", () => {
+    g.text("You walk towards the mill.");
+  });
 
   describe(() => {
     g.text(
@@ -33,8 +36,8 @@ g.defineLocation("hills", ({ describe, onLeave, interaction }) => {
     g.travel("mine");
   });
 
-  interaction("Go towards the mill", g.never(), () => {
-    // out of scope of proto
+  interaction("Go towards the mill", g.always(), () => {
+    g.travel("mill");
   });
 
   interaction("Go east, to the forest", g.always(), () => {

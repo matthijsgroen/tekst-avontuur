@@ -12,6 +12,9 @@
         "Dwarf": "Dwerg"
       }
     },
+    "miller": {
+      "defaultName": "Tjasker"
+    },
     "horse": {
       "defaultName": "Teun"
     }
@@ -65,6 +68,7 @@
       "text": {
         "You walk east, towards the forest.": "Je wandelt naar het oosten, richting het bos.",
         "You follow the road, towards the entrance of the mine.": "Je loopt van de weg af, richting de ingang van de mijn.",
+        "You walk towards the mill.": "Je loopt verder, naar de molen.",
         "You are in the hills. The sun is shining lovely.": "Je staat in de heuvels. De zon schijnt heerlijk.",
         "There is a nice view of the environment.": "Er is een mooi uitzicht van de omgeving.",
         "A bit farther on the road you see a {b}mine{/b}.": "Verder op het pad zie je een {b}mijn{/b}.",
@@ -83,7 +87,7 @@
     },
     "mine": {
       "text": {
-        "You greet the dwarf and walk back towards the road.": "Je groet de dwerg en loopt weer richting de weg.",
+        "You walk back towards the road.": "Je loopt naar de weg.",
         "You are at the mine entrance.": "Je bent bij de mijn.",
         "A mining cart lies on its side. [character.dwarf.defaultName] is sitting at the entrance.": "Er ligt een mijnkarretje op zijn kant. Voor de ingang zit [character.dwarf.defaultName] de dwerg.",
         "A mining cart lies on its side. A dwarf is sitting at the entrance.": "Er ligt een mijnkarretje. Voor de ingang zit een dwerg.",
@@ -93,6 +97,26 @@
         "Open your bag": "Bekijk inhoud van tas",
         "Talk to the dwarf": "Praat met de dwerg",
         "Leave the mine": "Verlaat de mijn"
+      }
+    },
+    "mill": {
+      "text": {
+        "You are at the windmill.": "You are at the windmill.",
+        "The mill misses a {b}sail{/b} of one of its blades.": "The mill misses a {b}sail{/b} of one of its blades.",
+        "A big {b}millstone{/b} lies next to the mill.": "A big {b}millstone{/b} lies next to the mill.",
+        "An empty {b}carriage{/b} is parked on the other side of the mill.": "An empty {b}carriage{/b} is parked on the other side of the mill.",
+        "An old miller appears to be working on restoring the blade.": "An old miller appears to be working on restoring the blade."
+      },
+      "miller": {
+        "Hey hello over there! Could you help me out?": "Hey hello over there! Could you help me out?",
+        "This old mill needs fixin', but I'm missing a sail!": "This old mill needs fixin', but I'm missing a sail!",
+        "Thanks!": "Thanks!"
+      },
+      "player": {
+        "I'll keep my eyes open for something that could fit your needs!": "I'll keep my eyes open for something that could fit your needs!"
+      },
+      "interactions": {
+        "Walk back to the road": "Walk back to the road"
       }
     }
   },
