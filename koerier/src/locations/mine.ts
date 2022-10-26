@@ -1,5 +1,4 @@
 import g from "../game";
-import { inventory } from "../inventory";
 
 g.defineLocation("mine", ({ describe, interaction, onLeave }) => {
   onLeave("hills", () => {
@@ -26,8 +25,6 @@ g.defineLocation("mine", ({ describe, interaction, onLeave }) => {
     );
     g.text("He looks grumpy.");
   });
-
-  inventory(interaction);
 
   interaction("Talk to the dwarf", g.always(), () => {
     g.openOverlay("dwarfConversation");

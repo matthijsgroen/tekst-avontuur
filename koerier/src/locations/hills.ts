@@ -1,5 +1,4 @@
 import g from "../game";
-import { inventory } from "../inventory";
 
 g.defineLocation("hills", ({ describe, onLeave, interaction }) => {
   onLeave("forest", () => {
@@ -27,11 +26,6 @@ g.defineLocation("hills", ({ describe, onLeave, interaction }) => {
     );
   });
 
-  inventory(interaction);
-
-  interaction("Jump on horse", g.never(), () => {
-    // out of scope of proto
-  });
   interaction("Follow the path to the mine", g.always(), () => {
     g.travel("mine");
   });

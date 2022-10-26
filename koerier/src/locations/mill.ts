@@ -1,5 +1,4 @@
 import g from "../game";
-import { inventory } from "../inventory";
 
 g.defineLocation("mill", ({ describe, onLeave, interaction }) => {
   describe(() => {
@@ -25,12 +24,10 @@ g.defineLocation("mill", ({ describe, onLeave, interaction }) => {
       g.character("miller").say("Thanks!");
       g.location("mill").setFlag("visited", true);
     });
+  });
 
-    //     "", "*c9", "Tjasker: 'Hee, hallo daar! Zou je me kunnen helpen?"
-    // "  Deze oude molen moet gerepareerd worden. Maar ik heb geen goed doek!'"
-    // "", "*c3", "$n: 'Ik zal mijn ogen openhouden of ik iets tegenkom voor u!'"
-    // "", "*c9", "Tjasker: 'Bedankt!'"
-    // "&
+  interaction("Talk to the miller", g.always(), () => {
+    g.openOverlay("millerConversation");
   });
 
   interaction("Walk back to the road", g.always(), () => {

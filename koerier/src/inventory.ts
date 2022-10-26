@@ -1,4 +1,3 @@
-import { GameWorld, Interaction } from "point-n-click";
 import g from "./game";
 
 g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
@@ -43,10 +42,11 @@ g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
   });
 });
 
-export const inventory = <Game extends GameWorld>(
-  interaction: Interaction<Game>
-) => {
-  interaction("Open your bag", g.item("bag").hasState("possession"), () => {
+g.globalInteraction(
+  "Open your bag",
+  "b",
+  g.and(g.item("bag").hasState("possession"), g.not(g.isOverlayOpen())),
+  () => {
     g.openOverlay("inventory");
-  });
-};
+  }
+);

@@ -31,9 +31,9 @@
         "You want to walk to the west towards the forest, but [character.horse.defaultName] starts to refuse.": "Je wil naar het westen wandelen, richting het bos, maar [character.horse.defaultName] begint steeds moeilijker te lopen, en sputtert actief tegen."
       },
       "interactions": {
-        "Open your bag": "Bekijk inhoud van tas",
         "Go west, to the forest": "Ga naar het westen, richting het groene bos",
-        "Go south, towards the village": "Ga naar het zuiden, richting het dorp"
+        "Go south, towards the village": "Ga naar het zuiden, richting het dorp",
+        "DELETED Open your bag": "Bekijk inhoud van tas"
       },
       "player": {
         "Maybe I have to take him to the farm first?": "Misschien moet ik hem eerst naar de boerderij brengen?"
@@ -57,11 +57,11 @@
         "Drat, the medicine is truly lost.": "Verdorie, de medicijnen zijn echt verloren."
       },
       "interactions": {
-        "Open your bag": "Bekijk inhoud van tas",
-        "Jump on horse": "Spring op paard",
         "Pick up branch": "Raap de tak op",
         "Go east, to the farmlands": "Ga naar het oosten, richting de akkers",
-        "Go west, to the hills": "Ga naar het westen, richting de heuvels"
+        "Go west, to the hills": "Ga naar het westen, richting de heuvels",
+        "DELETED Open your bag": "Bekijk inhoud van tas",
+        "DELETED Jump on horse": "Spring op paard"
       }
     },
     "hills": {
@@ -77,12 +77,12 @@
         "To the {b}south{/b}, there is a soggy path going into a {b}swamp{/b}.": "Naar het {b}zuiden{/b} loopt een drassig pad een {b}moeras{/b} in."
       },
       "interactions": {
-        "Open your bag": "Bekijk inhoud van tas",
-        "Jump on horse": "Spring op paard",
         "Follow the path to the mine": "Volg het pad naar de mijn",
         "Go towards the mill": "Wandel naar de molen",
         "Go east, to the forest": "Ga naar het oosten, richting het groene bos",
-        "Go south, to the swamp": "Ga naar het zuiden, richting het moeras"
+        "Go south, to the swamp": "Ga naar het zuiden, richting het moeras",
+        "DELETED Open your bag": "Bekijk inhoud van tas",
+        "DELETED Jump on horse": "Spring op paard"
       }
     },
     "mine": {
@@ -94,50 +94,34 @@
         "He looks grumpy.": "Hij ziet er niet al te vrolijk uit."
       },
       "interactions": {
-        "Open your bag": "Bekijk inhoud van tas",
         "Talk to the dwarf": "Praat met de dwerg",
-        "Leave the mine": "Verlaat de mijn"
+        "Leave the mine": "Verlaat de mijn",
+        "DELETED Open your bag": "Bekijk inhoud van tas"
       }
     },
     "mill": {
       "text": {
-        "You are at the windmill.": "You are at the windmill.",
-        "The mill misses a {b}sail{/b} of one of its blades.": "The mill misses a {b}sail{/b} of one of its blades.",
-        "A big {b}millstone{/b} lies next to the mill.": "A big {b}millstone{/b} lies next to the mill.",
-        "An empty {b}carriage{/b} is parked on the other side of the mill.": "An empty {b}carriage{/b} is parked on the other side of the mill.",
-        "An old miller appears to be working on restoring the blade.": "An old miller appears to be working on restoring the blade."
+        "You are at the windmill.": "Je bent bij de molen.",
+        "The mill misses a {b}sail{/b} of one of its blades.": "De molen mist het {b}doek{/b} op een van de wieken.",
+        "A big {b}millstone{/b} lies next to the mill.": "Een {b}molensteen{/b} ligt naast de molen.",
+        "An empty {b}carriage{/b} is parked on the other side of the mill.": "Een lege {b}wagen{/b} staat naast de andere kant van de molen.",
+        "An old miller appears to be working on restoring the blade.": "Een oude molenaar is aan het werk om de wieken te repareren."
       },
       "miller": {
-        "Hey hello over there! Could you help me out?": "Hey hello over there! Could you help me out?",
-        "This old mill needs fixin', but I'm missing a sail!": "This old mill needs fixin', but I'm missing a sail!",
-        "Thanks!": "Thanks!"
+        "Hey hello over there! Could you help me out?": "Hee, hallo daar! Zou je me kunnen helpen?",
+        "This old mill needs fixin', but I'm missing a sail!": "Deze oude molen moet gerepareerd worden. Maar ik heb geen goed doek!'",
+        "Thanks!": "Bedankt!"
       },
       "player": {
-        "I'll keep my eyes open for something that could fit your needs!": "I'll keep my eyes open for something that could fit your needs!"
+        "I'll keep my eyes open for something that could fit your needs!": "Ik zal mijn ogen openhouden of ik iets tegenkom voor u!"
       },
       "interactions": {
-        "Walk back to the road": "Walk back to the road"
+        "Talk to the miller": "Praat met de molenaar",
+        "Walk back to the road": "Loop terug naar de weg"
       }
     }
   },
   "overlays": {
-    "inventory": {
-      "text": {
-        "You carry the following items:": "Je hebt het volgende bij je:",
-        "- [character.player.counters.coins] coins": "- [character.player.counters.coins] geldstukken",
-        "- [character.player.counters.coins] coin": "- [character.player.counters.coins] geldstuk",
-        "- A branch, picked up in the forest": "- Een stok, opgeraapt in het bos",
-        "- A pickaxe with a broken hilt": "- Houweel met gebroken heft",
-        "- A fixed pickaxe": "- Gerepareerde houweel",
-        "You remove the old hilt of the pickaxe,": "Je verwijdert het oude heft van de houweel,",
-        "and replace the hilt with the branch from the forest.": "en vervangt het met de stok uit het bos.",
-        "It fits! The pickaxe is as good as new.": "Het past! Het houweel is weer zo goed als nieuw."
-      },
-      "interactions": {
-        "Repair the pickaxe with the branch from the forest": "Repareer houweel met stok uit bos",
-        "Close your bag": "Sluit je tas"
-      }
-    },
     "dwarfConversation": {
       "dwarf": {
         "Hello [character.player.name]": "Hallo [character.player.name]",
@@ -192,6 +176,39 @@
         "Any idea how I could get any medicine?": "Enig idee hoe ik aan medicijnen kan komen?",
         "Any idea how I could get any transportation?": "Enig idee hoe ik aan vervoer kan komen?",
         "Okay, I'm going.": "Oké, ik ga weer."
+      }
+    },
+    "millerConversation": {
+      "miller": {
+        "Hey hello there!": "Hey hello there!"
+      },
+      "interactions": {
+        "Goodbye.": "Goodbye."
+      }
+    },
+    "inventory": {
+      "text": {
+        "You carry the following items:": "Je hebt het volgende bij je:",
+        "- [character.player.counters.coins] coins": "- [character.player.counters.coins] geldstukken",
+        "- [character.player.counters.coins] coin": "- [character.player.counters.coins] geldstuk",
+        "- A branch, picked up in the forest": "- Een stok, opgeraapt in het bos",
+        "- A pickaxe with a broken hilt": "- Houweel met gebroken heft",
+        "- A fixed pickaxe": "- Gerepareerde houweel",
+        "You remove the old hilt of the pickaxe,": "Je verwijdert het oude heft van de houweel,",
+        "and replace the hilt with the branch from the forest.": "en vervangt het met de stok uit het bos.",
+        "It fits! The pickaxe is as good as new.": "Het past! Het houweel is weer zo goed als nieuw."
+      },
+      "interactions": {
+        "Repair the pickaxe with the branch from the forest": "Repareer houweel met stok uit bos",
+        "Close your bag": "Sluit je tas"
+      }
+    }
+  },
+  "global": {
+    "interactions": {
+      "Open your bag": {
+        "label": "Bekijk inhoud van tas",
+        "shortcutKey": "t"
       }
     }
   }

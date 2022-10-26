@@ -1,5 +1,4 @@
 import g from "../game";
-import { inventory } from "../inventory";
 
 g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
   onLeave("farmland", () => {
@@ -33,9 +32,6 @@ g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
       g.text("There is a freshly broken {b}branch{/b} on the ground.");
     });
   });
-
-  inventory(interaction);
-  interaction("Jump on horse", g.never(), () => {});
 
   interaction("Pick up branch", g.item("branch").hasState("unknown"), () => {
     g.text(

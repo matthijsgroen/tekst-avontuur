@@ -19,7 +19,7 @@ export type Game = GameDefinition<{
     miller: {};
     horse: { states: "known" | "found" | "hooves" | "cart" };
   };
-  overlays: "dwarfConversation" | "inventory";
+  overlays: "dwarfConversation" | "millerConversation" | "inventory";
 }>;
 
 const game = world<Game>({
