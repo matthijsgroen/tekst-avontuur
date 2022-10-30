@@ -6,6 +6,9 @@ g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
     g.onState(g.character("player").hasCounter("coins").moreThan(2), () => {
       g.text("- [character.player.counters.coins] coins");
     });
+    g.onState(g.item("rope").hasState("possession"), () => {
+      g.text("- A long rope");
+    });
     g.onState(g.character("player").hasCounter("coins").equals(1), () => {
       g.text("- [character.player.counters.coins] coin");
     });

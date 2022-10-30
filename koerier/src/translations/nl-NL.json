@@ -17,23 +17,27 @@
     },
     "horse": {
       "defaultName": "Teun"
+    },
+    "farmer": {
+      "defaultName": "Piet"
     }
   },
   "location": {
     "farmland": {
       "text": {
         "You are walking to the east, towards the forest.": "Je wandelt naar het oosten, richting het groene bos.",
+        "You walk onto the barnyard of the farm.": "Je loopt het erf van een boerderij op.",
         "You are in the farmlands.": "Je staat in een boerenlandschap.",
-        "On the right side of the road is a farm.": "Aan de rechterkant van de weg staat een boerderij.",
+        "On the right side of the road is a {b}farm{/b}.": "Aan de rechterkant van de weg staat een {b}boerderij{/b}.",
         "Smoke is rising up from behind the farm.": "Er komt rook achter de boerderij vandaan.",
-        "In the west is a forest.": "In het westen ligt een bos.",
-        "A small village lies to the south.": "In het zuiden loopt een weg richting een dorp.",
+        "In the {b}west{/b} is a {b}forest{/b}.": "In het {b}westen{/b} ligt een {b}bos{/b}.",
+        "A small {b}village{/b} lies to the {b}south{/b}.": "In het {b}zuiden{/b} loopt een weg richting een {b}dorp{/b}.",
         "You want to walk to the west towards the forest, but [character.horse.defaultName] starts to refuse.": "Je wil naar het westen wandelen, richting het bos, maar [character.horse.defaultName] begint steeds moeilijker te lopen, en sputtert actief tegen."
       },
       "interactions": {
+        "Go to the farm": "Ga naar de boerderij",
         "Go west, to the forest": "Ga naar het westen, richting het groene bos",
-        "Go south, towards the village": "Ga naar het zuiden, richting het dorp",
-        "DELETED Open your bag": "Bekijk inhoud van tas"
+        "Go south, towards the village": "Ga naar het zuiden, richting het dorp"
       },
       "player": {
         "Maybe I have to take him to the farm first?": "Misschien moet ik hem eerst naar de boerderij brengen?"
@@ -59,9 +63,7 @@
       "interactions": {
         "Pick up branch": "Raap de tak op",
         "Go east, to the farmlands": "Ga naar het oosten, richting de akkers",
-        "Go west, to the hills": "Ga naar het westen, richting de heuvels",
-        "DELETED Open your bag": "Bekijk inhoud van tas",
-        "DELETED Jump on horse": "Spring op paard"
+        "Go west, to the hills": "Ga naar het westen, richting de heuvels"
       }
     },
     "hills": {
@@ -69,6 +71,7 @@
         "You walk east, towards the forest.": "Je wandelt naar het oosten, richting het bos.",
         "You follow the road, towards the entrance of the mine.": "Je loopt van de weg af, richting de ingang van de mijn.",
         "You walk towards the mill.": "Je loopt verder, naar de molen.",
+        "You go south, over a soggy trail, towards the swamp.": "Je daalt af naar het zuiden, over een zompig pad, richting het moeras.",
         "You are in the hills. The sun is shining lovely.": "Je staat in de heuvels. De zon schijnt heerlijk.",
         "There is a nice view of the environment.": "Er is een mooi uitzicht van de omgeving.",
         "A bit farther on the road you see a {b}mine{/b}.": "Verder op het pad zie je een {b}mijn{/b}.",
@@ -80,9 +83,7 @@
         "Follow the path to the mine": "Volg het pad naar de mijn",
         "Go towards the mill": "Wandel naar de molen",
         "Go east, to the forest": "Ga naar het oosten, richting het groene bos",
-        "Go south, to the swamp": "Ga naar het zuiden, richting het moeras",
-        "DELETED Open your bag": "Bekijk inhoud van tas",
-        "DELETED Jump on horse": "Spring op paard"
+        "Go south, to the swamp": "Ga naar het zuiden, richting het moeras"
       }
     },
     "mine": {
@@ -95,8 +96,7 @@
       },
       "interactions": {
         "Talk to the dwarf": "Praat met de dwerg",
-        "Leave the mine": "Verlaat de mijn",
-        "DELETED Open your bag": "Bekijk inhoud van tas"
+        "Leave the mine": "Verlaat de mijn"
       }
     },
     "mill": {
@@ -105,18 +105,54 @@
         "The mill misses a {b}sail{/b} of one of its blades.": "De molen mist het {b}doek{/b} op een van de wieken.",
         "A big {b}millstone{/b} lies next to the mill.": "Een {b}molensteen{/b} ligt naast de molen.",
         "An empty {b}carriage{/b} is parked on the other side of the mill.": "Een lege {b}wagen{/b} staat naast de andere kant van de molen.",
-        "An old miller appears to be working on restoring the blade.": "Een oude molenaar is aan het werk om de wieken te repareren."
+        "An old miller appears to be working on restoring the blade.": "Een oude molenaar is aan het werk om de wieken te repareren.",
+        "You check the millstone. It looks really {b}heavy{/b}.": "Je bekijkt de molensteen naast de molen. Het ziet er uit als een {b}zware{/b} steen."
       },
       "miller": {
         "Hey hello over there! Could you help me out?": "Hee, hallo daar! Zou je me kunnen helpen?",
         "This old mill needs fixin', but I'm missing a sail!": "Deze oude molen moet gerepareerd worden. Maar ik heb geen goed doek!'",
-        "Thanks!": "Bedankt!"
+        "Thanks!": "Bedankt!",
+        "Ah yes, that is an old one, really worn out.": "Ach, dat is een oudje, helemaal versleten"
       },
       "player": {
         "I'll keep my eyes open for something that could fit your needs!": "Ik zal mijn ogen openhouden of ik iets tegenkom voor u!"
       },
       "interactions": {
         "Talk to the miller": "Praat met de molenaar",
+        "Check millstone": "Bekijk molensteen naast de molen",
+        "Walk back to the road": "Loop terug naar de weg"
+      }
+    },
+    "swamp": {
+      "text": {
+        "You climb upwards, to the north, towards the hills.": "Je klimt omhoog, noordwaarts, richting de heuvels.",
+        "You are at the edge of a swamp.": "Je bent aan de rand van het moeras.",
+        "At the end of the trail, you stop.": "Aan het eind van het pad blijf je staan.",
+        "You hear weird bubbling noises in the distance.": "In de verte klinken rare bubbelende geluiden.",
+        "There is a trail going to the {b}north{/b}, up into the {b}hills{/b}.": "Er loopt een pad naar het {b}noorden{/b}, omhoog richting {b}heuvels{/b}."
+      },
+      "player": {
+        "I'm not going to walk into a swamp for {b}no reason{/b}!": "Ik ga niet {b}zonder reden{/b} een moeras in lopen!",
+        "That is way too dangerous!": "Dat is veel te gevaarlijk!"
+      },
+      "interactions": {
+        "Go north, towards the hills": "Ga naar het noorden, richting de heuvels"
+      }
+    },
+    "farm": {
+      "text": {
+        "You are at a large farm.": "Je bent bij een grote boerderij.",
+        "Next to the farm lies a pile of {b}grain{/b}.": "Naast de boerderij ligt een voorraad {b}graan{/b}.",
+        "Big plumes of smoke rise up from the other side of the farm.": "Grote rookpluimen komen van achter de boerderij vandaan.",
+        "You quickly walk to the other side of the farm.": "Je loopt snel om de boerderij heen om te gaan kijken.",
+        "There was clearly a fire here, but the flames have been extinguished.": "Er is duidelijk een brand geweest. De vlammen zijn wel al gedoofd.",
+        "A farmer looks defeated at the smoldering remains...": "De boer staat verslagen naar de smeulende restanten te kijken...",
+        "The stable is {b}empty{/b}.": "De stal is {b}leeg{/b}.",
+        "A {b}rope{/b} is hanging on the side of the stable.": "Er hangt een lang stuk {b}touw{/b} aan de zijkant van de stal.",
+        "You pickup the rope": "Je pakt het touw."
+      },
+      "interactions": {
+        "Pickup rope": "Pak touw",
         "Walk back to the road": "Loop terug naar de weg"
       }
     }
@@ -180,16 +216,35 @@
     },
     "millerConversation": {
       "miller": {
-        "Hey hello there!": "Hey hello there!"
+        "Hey hello there!": "Hee, hallo daar!",
+        "Sorry kid{#male/}, I wouldn't know.": "Sorry jongen, dat zou ik echt niet weten.",
+        "Sorry kid{#female/}, I wouldn't know.": "Sorry dame, dat zou ik echt niet weten.",
+        "I no longer have a horse, just a carriage.": "Ik heb geen paard meer, alleen een wagen.",
+        "If I need a horse, I borrow [character.horse.defaultName] from farmer {b}[character.farmer.defaultName]{/b}.": "Als ik een paard nodig heb, dan leen ik [character.horse.defaultName] af en toe bij boer {b}[character.farmer.defaultName]{/b}.",
+        "It is a really dependable animal. Ideal for pulling the carriage!": "Dat is een heel goed en trouw beestje. Ideaal om een wagen te trekken!",
+        "I need a new sail for one of the blades.": "Er moet een nieuw doek op een van de wieken komen."
       },
       "interactions": {
-        "Goodbye.": "Goodbye."
+        "Any idea how I could get any medicine?": "Weet u hoe ik aan medicijnen kan komen?",
+        "Any idea how I could get any transportation?": "Weet u hoe ik aan vervoer kan komen?",
+        "What did you need again for the repairs?": "Wat was er ook alweer nodig om de molen te maken?",
+        "Goodbye": "Tot ziens"
+      },
+      "player": {
+        "Any idea how I could get any medicine?": "Weet u hoe ik aan medicijnen kan komen?",
+        "Any idea how I could get any transportation?": "Weet u hoe ik aan vervoer kan komen?",
+        "What did you need again for the repairs?": "Wat was er ook alweer nodig om de molen te maken?",
+        "Ah ok, thanks.": "Oké, bedankt."
+      },
+      "text": {
+        "The old miller looks at you.": "De oude molenaar kijkt je aan."
       }
     },
     "inventory": {
       "text": {
         "You carry the following items:": "Je hebt het volgende bij je:",
         "- [character.player.counters.coins] coins": "- [character.player.counters.coins] geldstukken",
+        "- A long rope": "- Een lang stuk touw",
         "- [character.player.counters.coins] coin": "- [character.player.counters.coins] geldstuk",
         "- A branch, picked up in the forest": "- Een stok, opgeraapt in het bos",
         "- A pickaxe with a broken hilt": "- Houweel met gebroken heft",

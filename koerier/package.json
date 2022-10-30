@@ -5,13 +5,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start-dev": "point-n-click dev src/index.ts"
-  },
-  "devDependencies": {
-    "ts-node": "^10.9.1"
+    "start": "point-n-click dev src/index.ts"
   },
   "dependencies": {
-    "point-n-click": "^2.0.0-alhpa.0",
-    "@parcel/config-default": "^2.7.0"
+    "@point-n-click/theme-cli": "1.0.0-alpha.0",
+    "point-n-click": "2.0.0-alpha.1"
   }
 }

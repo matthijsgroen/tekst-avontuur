@@ -30,6 +30,11 @@ g.defineLocation("mill", ({ describe, onLeave, interaction }) => {
     g.openOverlay("millerConversation");
   });
 
+  interaction("Check millstone", g.always(), () => {
+    g.text("You check the millstone. It looks really {b}heavy{/b}.");
+    g.character("miller").say("Ah yes, that is an old one, really worn out.");
+  });
+
   interaction("Walk back to the road", g.always(), () => {
     g.travel("hills");
   });
