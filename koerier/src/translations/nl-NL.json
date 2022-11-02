@@ -1,4 +1,16 @@
 {
+  "title": "Koerier van de koning",
+  "meta": {
+    "author": "Matthijs Groen",
+    "credits": {
+      "Story & Writing": "Verhaal & schrijven",
+      "Programming": "Programmeren",
+      "Play testing": "Speeltesten"
+    },
+    "themes": {
+      "Terminal": "Terminal"
+    }
+  },
   "settings": {
     "defaultActionPrompt": "Wat ga je doen:"
   },

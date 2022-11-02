@@ -27,6 +27,25 @@ export type Game = GameDefinition<{
 }>;
 
 const game = world<Game>({
+  gameTitle: "Courier for the king",
+  meta: {
+    author: "Matthijs Groen",
+    credits: [
+      { role: "Story & Writing", names: ["Matthijs Groen"] },
+      { role: "Programming", names: ["Matthijs Groen"] },
+      {
+        role: "Play testing",
+        names: ["Matthijs Groen", "Hiddo Groen", "Jinte Groen"],
+      },
+    ],
+  },
+  themes: [
+    {
+      name: "Terminal",
+      themePackage: "@point-n-click/theme-cli",
+      settings: { color: true },
+    },
+  ],
   defaultLocale: "en-US",
   defaultTextColor: hexColor("18a81b"),
   initialState: {
