@@ -42,7 +42,7 @@ g.defineLocation("farmland", ({ describe, interaction, onLeave }) => {
     );
   });
 
-  interaction("Go south, towards the village", g.never(), () => {
-    g.travel("hills");
+  interaction("Go south, towards the village", g.always(), () => {
+    g.travel("village");
   });
 });

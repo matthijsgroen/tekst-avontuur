@@ -30,6 +30,9 @@
     "horse": {
       "defaultName": "Teun"
     },
+    "dragon": {
+      "defaultName": "Dins"
+    },
     "farmer": {
       "defaultName": "Piet"
     }
@@ -164,8 +167,17 @@
         "You pickup the rope": "Je pakt het touw."
       },
       "interactions": {
+        "Talk to farmer": "Praat met de boer",
         "Pickup rope": "Pak touw",
         "Walk back to the road": "Loop terug naar de weg"
+      }
+    },
+    "village": {
+      "text": {
+        "You are in a village": "You are in a village"
+      },
+      "interactions": {
+        "Go north, to the farmlands": "Go north, to the farmlands"
       }
     }
   },
@@ -250,6 +262,37 @@
       },
       "text": {
         "The old miller looks at you.": "De oude molenaar kijkt je aan."
+      }
+    },
+    "farmerConversation": {
+      "player": {
+        "Can I help you? I hope nobody got hurt?": "Kan ik ergens mee helpen? Er zijn toch geen gewonden?",
+        "Hey, Can I help you?": "Hey, Can I help you?",
+        "Can I help putting out the fire?": "Kan ik helpen met blussen?",
+        "Can I help find your horse?": "Hoe zou ik uw paard kunnen vinden?",
+        "What could you tell me about the monster?": "What could you tell me about the monster?"
+      },
+      "farmer": {
+        "Nobody got hurt, but that is the only good thing.": "Nee, er zijn geen gewonden, maar daar is alles mee gezegd.",
+        "My entire orchard has been burned to the ground,": "Mijn hele boomgaard is in vlammen opgegaan, ",
+        "and my horse ran off.": "en mijn paard is er vandoor.",
+        "That monstrous beast in the tower burned everything down! We have to get rid of it!": "Dat monster in die toren heeft alles afgebrand! Dat monster moet weg!'",
+        "Meh.": "Meh.",
+        "It's of no use, we can best just leave it smoldering for now.": "Nee dat heeft geen zin, we kunnen het het beste maar uit laten branden.",
+        "It's a pity of the apple harvest.": "Zonde van de appeloogst.",
+        "I think that {b}[character.horse.name]{/b} scared off.": "Ik denk dat {b}[character.horse.name]{/b} gewoon erg geschrokken is.",
+        "Drinking water calms him, maybe he is at the {b}river{/b}?": "Van water drinken wordt {b}[character.horse.name]{/b} rustig, misschien is hij bij de {b}rivier{/b}?"
+      },
+      "text": {
+        "You want to ask something about possible transportation,": "Je wilt een vraag stellen over mogelijk vervoer,",
+        "but since his horse is gone, it would not be appropriate to ask.": "maar aangezien het paard weg is, is dat geen handige vraag om te stellen.",
+        "You say goodbye to {b}[character.farmer.name]{/b}.": "Je groet {b}[character.farmer.name]{/b} en gaat weer op weg."
+      },
+      "interactions": {
+        "Can I help putting out the fire?": "Kan ik helpen met blussen?",
+        "Can I help find your horse?": "Hoe zou ik uw paard kunnen vinden?",
+        "What could you tell me about the monster?": "What could you tell me about the monster?",
+        "Goodbye": "Zeg gedag"
       }
     },
     "inventory": {

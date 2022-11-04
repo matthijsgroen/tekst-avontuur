@@ -9,6 +9,7 @@ export type Game = GameDefinition<{
     mill: { flags: "visited"; states: "fixed" };
     swamp: {};
     farm: { flags: "visited" };
+    village: { flags: "visited" };
   };
   items: {
     bag: { states: "known" | "possession" };
@@ -21,9 +22,14 @@ export type Game = GameDefinition<{
     dwarf: { flags: "nameKnown" };
     miller: {};
     horse: { states: "known" | "found" | "hooves" | "cart" };
-    farmer: {};
+    dragon: { states: "known" | "found" };
+    farmer: { flags: "visited" };
   };
-  overlays: "dwarfConversation" | "millerConversation" | "inventory";
+  overlays:
+    | "dwarfConversation"
+    | "millerConversation"
+    | "farmerConversation"
+    | "inventory";
 }>;
 
 const game = world<Game>({
@@ -75,9 +81,13 @@ const game = world<Game>({
       defaultName: "Teun",
       textColor: hexColor("ee4040"),
     },
+    dragon: {
+      defaultName: "Dins",
+      textColor: hexColor("cc40cc"),
+    },
     farmer: {
       defaultName: "Joe",
-      textColor: hexColor("ee4040"),
+      textColor: hexColor("30cc30"),
     },
   },
 });

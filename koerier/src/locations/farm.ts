@@ -19,10 +19,21 @@ g.defineLocation("farm", ({ describe, interaction }) => {
     });
   });
 
-  interaction("Pickup rope", g.item("rope").hasState("unknown"), () => {
-    g.text("You pickup the rope");
-    g.item("rope").setState("possession");
+  interaction("Talk to farmer", g.always(), () => {
+    g.openOverlay("farmerConversation");
   });
+
+  interaction(
+    "Pickup rope",
+    g.and(
+      g.character("farmer").hasFlag("visited"),
+      g.item("rope").hasState("unknown")
+    ),
+    () => {
+      g.text("You pickup the rope");
+      g.item("rope").setState("possession");
+    }
+  );
 
   interaction("Walk back to the road", g.always(), () => {
     g.travel("farmland");

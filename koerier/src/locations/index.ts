@@ -5,3 +5,4 @@ import "./mine";
 import "./mill";
 import "./swamp";
 import "./farm";
+import "./village";
