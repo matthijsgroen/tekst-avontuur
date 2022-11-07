@@ -34,7 +34,16 @@
       "defaultName": "Dins"
     },
     "farmer": {
-      "defaultName": "Piet"
+      "defaultName": "Hallehuis"
+    },
+    "baker": {
+      "defaultName": "Gerst"
+    },
+    "daughter": {
+      "defaultName": "Bloem"
+    },
+    "witch": {
+      "defaultName": "Eucalypta"
     }
   },
   "location": {
@@ -174,10 +183,55 @@
     },
     "village": {
       "text": {
-        "You are in a village": "You are in a village"
+        "You are in the village. It is eery quiet.": "Je bent in het dorp. Er hangt een rare stilte.",
+        "At the left side of the road is is a {b}bakery{/b}.": "Aan de linkerkant van de weg zit een {b}bakker{/b}.",
+        "At the right side of the road a large {b}smithy{/b}.": "Aan de rechterkant van de weg een grote {b}smederij{/b}.",
+        "The road continues {b}southwards{/b}, to a {b}river{/b}.": "De weg loopt verder naar het {b}zuiden{/b}, richting een {b}rivier{/b}.",
+        "A small hidden path goes {b}eastwards{/b}, to a {b}dark wood{/b}.": "Een klein verborgen pad leidt naar het {b}oosten{/b}, richting een {b}donker woud{/b}."
       },
       "interactions": {
-        "Go north, to the farmlands": "Go north, to the farmlands"
+        "Go to bakery": "Wandel naar de bakkerij",
+        "Go to smithy": "Wandel naar de smederij",
+        "Go north, to the farmlands": "Ga naar het noorden, richting de akkers",
+        "Go east, to the dark woods": "Ga naar het oosten, richting het donkere woud",
+        "Go south, to the river": "Ga naar het zuiden, richting de rivier"
+      }
+    },
+    "bakery": {
+      "text": {
+        "You are in the bakery. It is surprisingly empty.": "Je bent in de bakkerij. Het is er verrassend leeg.",
+        "No cakes, pies or bread.": "Geen gebak, taart of brood",
+        "The only thing for sale seem to be {b}cookies{/b}.": "Het enige dat te koop lijkt te zijn, zijn {b}koeken{/b}.",
+        "The baker looks really sad.": "De bakker ziet er verdietig uit.",
+        "You somehow expected to be greeted by the baker, but no luck.": "Je had verwacht op een vriendelijke manier door de bakker begroet te worden, maar helaas."
+      },
+      "interactions": {
+        "Talk to baker": "Praat met de bakker",
+        "Leave bakery": "Verlaat bakkerij"
+      }
+    },
+    "smithy": {
+      "text": {
+        "you are at the smithy": "you are at the smithy"
+      },
+      "interactions": {
+        "leave": "leave"
+      }
+    },
+    "darkwoods": {
+      "text": {
+        "You are in the dark woods": "You are in the dark woods"
+      },
+      "interactions": {
+        "leave": "leave"
+      }
+    },
+    "river": {
+      "text": {
+        "You are at the river bank": "You are at the river bank"
+      },
+      "interactions": {
+        "leave": "leave"
       }
     }
   },
@@ -293,6 +347,63 @@
         "Can I help find your horse?": "Hoe zou ik uw paard kunnen vinden?",
         "What could you tell me about the monster?": "What could you tell me about the monster?",
         "Goodbye": "Zeg gedag"
+      }
+    },
+    "bakerConversation": {
+      "player": {
+        "Hello, my name is {b}[.name]{/b}.": "Hallo, mijn naam is {b}[.name]{/b}.",
+        "I'm urgently looking for a medicine for the king.": "Ik ben dringend op zoek naar medicijnen voor de koning.",
+        "Could you help me?": "Kunt u mij helpen?",
+        "Hello? Are you alright?": "Hello? Are you alright?",
+        "Monster? What are you talking about?": "Monster? What are you talking about?",
+        "Why do you think the 'monster' has your daughter?": "Why do you think the 'monster' has your daughter?",
+        "Could you tell me more about that monster?": "Could you tell me more about that monster?"
+      },
+      "text": {
+        "The baker does not respond and is staring in the distance.": "De bakker geeft geen antwoord, en staart voor zich uit.",
+        "You leave the baker alone and look around in the shop.": "You leave the baker alone and look around in the shop.",
+        "You say goodbye and start browsing the shop.": "You say goodbye and start browsing the shop.",
+        "The baker is staring in the distance.": "The baker is staring in the distance.",
+        "The baker is startled. He was not aware you were in his shop.": "The baker is startled. He was not aware you were in his shop.",
+        "The baker bursts out in tears.": "The baker bursts out in tears.",
+        "The baker keeps sobbing.": "The baker keeps sobbing.",
+        "The baker has trouble not to start crying.": "The baker has trouble not to start crying.",
+        "{b}[character.baker.name]{/b} turns red.": "{b}[character.baker.name]{/b} turns red.",
+        "hello": "hello"
+      },
+      "interactions": {
+        "Hello, is everything alright?": "Hello, is everything alright?",
+        "Monster? what are you talking about?": "Monster? what are you talking about?",
+        "Could you tell me more about that monster?": "Could you tell me more about that monster?",
+        "Do you know where I could get any medicine?": "Do you know where I could get any medicine?",
+        "Hello, can I buy something to eat?": "Hello, can I buy something to eat?",
+        "Never mind": "Never mind",
+        "Goodbye": "Goodbye"
+      },
+      "baker": {
+        "Oh. Sorry, I was not paying attention.": "Oh. Sorry, I was not paying attention.",
+        "My {i}poor daughter!{/i} I will never see her again!": "My {i}poor daughter!{/i} I will never see her again!",
+        "That monsterous beast has her! I am sure of it!": "That monsterous beast has her! I am sure of it!",
+        "I baked some {b}cookies{/b} this morning, but I'm out of flour now.": "I baked some {b}cookies{/b} this morning, but I'm out of flour now.",
+        "And that is a problem, especially since the {b}mill{/b} broke down.": "And that is a problem, especially since the {b}mill{/b} broke down.",
+        "And I need to make more money so that I can hire a {b}knight{/b},": "And I need to make more money so that I can hire a {b}knight{/b},",
+        "to slay that monster and save my daughter!": "to slay that monster and save my daughter!",
+        "That ... beast ... in that tower .. in the woods.": "That ... beast ... in that tower .. in the woods.",
+        "My daughter is now missing for 2 days,": "My daughter is now missing for 2 days,",
+        "and there is a {i}terrifying roar{/i} coming out of the dark woods for 2 days as well.": "and there is a {i}terrifying roar{/i} coming out of the dark woods for 2 days as well.",
+        "It all started with that big fire at farmer {b}[character.farmer.name]{/b}'s place.": "It all started with that big fire at farmer {b}[character.farmer.name]{/b}'s place.",
+        "That creature must have my sweet {b}[character.daughter.name]{/b}...": "That creature must have my sweet {b}[character.daughter.name]{/b}...",
+        "That creature lives {b}east{/b} of here, in the {b}dark woods{/b}.": "That creature lives {b}east{/b} of here, in the {b}dark woods{/b}.",
+        "We have to slay the beast! And save my daughter!": "We have to slay the beast! And save my daughter!",
+        "You won't happen to have a {b}sword{/b} do you?": "You won't happen to have a {b}sword{/b} do you?",
+        "You definitely would need a {b}sword{/b} to defend you against that monster.": "You definitely would need a {b}sword{/b} to defend you against that monster.",
+        "Uh, maybe... There is this lady see... uh...": "Uh, maybe... There is this lady see... uh...",
+        "She lives in the {b}swamp{/b}. Lots of people are calling her a witch.": "She lives in the {b}swamp{/b}. Lots of people are calling her a witch.",
+        "She could definitely help you.": "She could definitely help you.",
+        "Don't tell anyone, but if people come here for medicine I always get those from her.": "Don't tell anyone, but if people come here for medicine I always get those from her.",
+        "People don't dare to visit her. But she practically makes all medication for everyone here.": "People don't dare to visit her. But she practically makes all medication for everyone here.",
+        "Normally I would arrange it for you, but with the current situation with my daughter {b}[character.daughter.name]{/b}...": "Normally I would arrange it for you, but with the current situation with my daughter {b}[character.daughter.name]{/b}...",
+        "... Let's say I'm avoiding here for the moment.": "... Let's say I'm avoiding here for the moment."
       }
     },
     "inventory": {

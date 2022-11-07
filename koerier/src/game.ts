@@ -1,38 +1,7 @@
-import { hexColor, world, GameDefinition } from "point-n-click";
+import { hexColor, world } from "point-n-click";
+import { GameState } from "./initialState";
 
-export type Game = GameDefinition<{
-  locations: {
-    forest: { flags: "visited" };
-    farmland: { flags: "visited" };
-    hills: { flags: "visited" };
-    mine: { flags: "visited" };
-    mill: { flags: "visited"; states: "fixed" };
-    swamp: {};
-    farm: { flags: "visited" };
-    village: { flags: "visited" };
-  };
-  items: {
-    bag: { states: "known" | "possession" };
-    branch: { states: "possession" | "used" };
-    pickaxe: { states: "broken" | "fixed" | "given" };
-    rope: { states: "possession" };
-  };
-  characters: {
-    player: { counters: "coins"; flags: "male" };
-    dwarf: { flags: "nameKnown" };
-    miller: {};
-    horse: { states: "known" | "found" | "hooves" | "cart" };
-    dragon: { states: "known" | "found" };
-    farmer: { flags: "visited" };
-  };
-  overlays:
-    | "dwarfConversation"
-    | "millerConversation"
-    | "farmerConversation"
-    | "inventory";
-}>;
-
-const game = world<Game>({
+const game = world<GameState>({
   gameTitle: "Courier for the king",
   meta: {
     author: "Matthijs Groen",
@@ -88,6 +57,16 @@ const game = world<Game>({
     farmer: {
       defaultName: "Joe",
       textColor: hexColor("30cc30"),
+    },
+    baker: {
+      defaultName: "Gerst",
+      textColor: hexColor("30cc30"),
+    },
+    daughter: {
+      defaultName: "Bloem",
+    },
+    witch: {
+      defaultName: "Eucalypta",
     },
   },
 });

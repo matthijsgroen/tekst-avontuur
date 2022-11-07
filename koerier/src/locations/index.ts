@@ -6,3 +6,7 @@ import "./mill";
 import "./swamp";
 import "./farm";
 import "./village";
+import "./bakery";
+import "./smithy";
+import "./darkwoods";
+import "./river";
