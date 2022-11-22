@@ -1,4 +1,5 @@
 import { hexColor, world } from "point-n-click";
+import terminalTheme from "@point-n-click/theme-cli";
 import { GameState } from "./initialState";
 
 const game = world<GameState>({
@@ -14,13 +15,6 @@ const game = world<GameState>({
       },
     ],
   },
-  themes: [
-    {
-      name: "Terminal",
-      themePackage: "@point-n-click/theme-cli",
-      settings: { color: true },
-    },
-  ],
   defaultLocale: "en-US",
   defaultTextColor: hexColor("18a81b"),
   initialState: {
@@ -69,6 +63,6 @@ const game = world<GameState>({
       defaultName: "Eucalypta",
     },
   },
-});
+})(terminalTheme({ color: true }));
 
 export default game;

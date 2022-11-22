@@ -25,7 +25,7 @@ g.defineOverlay(
         "My name is {b}[.defaultName]{/b}, and who might you be?"
       );
       g.character("dwarf").clearCustomName();
-      g.character("dwarf").setFlag("nameKnown", true);
+      g.character("dwarf").setFlag("nameKnown");
 
       g.character("player").say("My name is {b}[.name]{/b}.");
       g.character("dwarf").say(

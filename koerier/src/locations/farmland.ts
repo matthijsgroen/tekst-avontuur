@@ -18,7 +18,7 @@ g.defineLocation("farmland", ({ describe, interaction, onLeave }) => {
       "In the {b}west{/b} is a {b}forest{/b}.",
       "A small {b}village{/b} lies to the {b}south{/b}."
     );
-    g.location("farmland").setFlag("visited", true);
+    g.location("farmland").setFlag("visited");
   });
 
   interaction("Go to the farm", g.always(), () => {

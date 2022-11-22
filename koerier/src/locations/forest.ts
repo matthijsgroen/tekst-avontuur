@@ -9,17 +9,21 @@ g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
   });
 
   describe(() => {
-    g.text(
+    g.descriptionText(
       "You are in the forest. It is a beautiful day.",
       "The wind is rustling the leaves."
     );
-    g.text(
+    // g.text(
+    //   "You are in the forest. It is a beautiful day.",
+    //   "The wind is rustling the leaves."
+    // );
+    g.descriptionText(
       "There are {b}farmlands{/b} in the {b}east{/b}.",
       "There are {b}hills{/b} in the {b}west{/b}."
     );
-    g.location("forest").setFlag("visited", true);
+    g.location("forest").setFlag("visited");
     g.onState(g.not(g.item("bag").hasState("possession")), () => {
-      g.text(
+      g.descriptionText(
         "Your bag is on the ground, surrounded by shards of glass of the bottle of medicine."
       );
       g.character("player").say("Drat, the medicine is truly lost.");
@@ -29,7 +33,9 @@ g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
     });
 
     g.onState(g.item("branch").hasState("unknown"), () => {
-      g.text("There is a freshly broken {b}branch{/b} on the ground.");
+      g.descriptionText(
+        "There is a freshly broken {b}branch{/b} on the ground."
+      );
     });
   });
 

@@ -48,12 +48,12 @@ g.defineOverlay(
     );
 
     interaction(
-      "Monster? what are you talking about?",
+      "Monster? What are you talking about?",
       g.character("baker").hasState("intro"),
       () => {
         g.character("player").say("Monster? What are you talking about?");
         g.character("baker").say(
-          "That ... beast ... in that tower .. in the woods."
+          "That ... beast ... in that tower ... in the woods."
         );
         g.text("The baker keeps sobbing.");
         g.character("player").say(
@@ -92,7 +92,7 @@ g.defineOverlay(
 
     interaction(
       "Do you know where I could get any medicine?",
-      g.always(),
+      g.character("baker").hasState("visited"),
       () => {
         g.text("{b}[character.baker.name]{/b} turns red.");
         g.character("baker").say(

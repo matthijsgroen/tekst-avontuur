@@ -17,7 +17,7 @@ g.defineLocation("bakery", ({ describe, interaction }) => {
           "You somehow expected to be greeted by the baker, but no luck.",
           "The baker looks really sad."
         );
-        g.location("bakery").setFlag("visited", true);
+        g.location("bakery").setFlag("visited");
       }
     );
   });

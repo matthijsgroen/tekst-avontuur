@@ -20,7 +20,7 @@ g.defineOverlay(
             "You want to ask something about possible transportation,",
             "but since his horse is gone, it would not be appropriate to ask."
           );
-          g.character("farmer").setFlag("visited", true);
+          g.character("farmer").setFlag("visited");
         },
         () => {
           g.character("player").say("Hey, Can I help you?");

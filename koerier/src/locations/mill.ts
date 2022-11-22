@@ -22,7 +22,7 @@ g.defineLocation("mill", ({ describe, onLeave, interaction }) => {
         "I'll keep my eyes open for something that could fit your needs!"
       );
       g.character("miller").say("Thanks!");
-      g.location("mill").setFlag("visited", true);
+      g.location("mill").setFlag("visited");
     });
   });
 
