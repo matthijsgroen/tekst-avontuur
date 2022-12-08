@@ -15,7 +15,13 @@ const game = world<GameState>({
       },
     ],
   },
-  defaultLocale: "en-US",
+  locales: {
+    default: "en-US",
+    supported: {
+      ["en-US"]: "English",
+      ["nl-NL"]: "Nederlands",
+    },
+  },
   defaultTextColor: hexColor("18a81b"),
   initialState: {
     currentLocation: "forest",
@@ -63,6 +69,9 @@ const game = world<GameState>({
       defaultName: "Eucalypta",
     },
   },
-})(terminalTheme({ color: true }));
+})(
+  terminalTheme("Terminal", { color: true }),
+  terminalTheme("Terminal (Black & White)", { color: false })
+);
 
 export default game;

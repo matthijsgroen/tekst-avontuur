@@ -8,7 +8,8 @@
       "Play testing": "Speeltesten"
     },
     "themes": {
-      "Terminal": "Terminal"
+      "Terminal": "Terminal",
+      "Terminal (Black & White)": "Terminal (Black & White)"
     }
   },
   "settings": {
@@ -433,6 +434,14 @@
         "label": "Bekijk inhoud van tas",
         "shortcutKey": "t"
       }
+    }
+  },
+  "themes": {
+    "@point-n-click/theme-cli": {
+      "menu": "Menu",
+      "settings": "Settings",
+      "language": "Language",
+      "pause": "Pause Menu"
     }
   }
 }
