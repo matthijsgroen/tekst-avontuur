@@ -9,7 +9,7 @@
     },
     "themes": {
       "Terminal": "Terminal",
-      "Terminal (Black & White)": "Terminal (Black & White)"
+      "Terminal (Black & White)": "Terminal (Zwart & Wit)"
     }
   },
   "settings": {
@@ -186,6 +186,8 @@
     },
     "village": {
       "text": {
+        "You walk over a small twisting path, towards the dark woods.": "Je wandelt over een smal kronkelig pad, richting het donkere woud.",
+        "You walk southwards, towards the river.": "Je wandelt naar het zuiden, richting de rivier.",
         "You are in the village. It is eery quiet.": "Je bent in het dorp. Er hangt een rare stilte.",
         "At the left side of the road is is a {b}bakery{/b}.": "Aan de linkerkant van de weg zit een {b}bakker{/b}.",
         "At the right side of the road a large {b}smithy{/b}.": "Aan de rechterkant van de weg een grote {b}smederij{/b}.",
@@ -223,18 +225,47 @@
     },
     "darkwoods": {
       "text": {
-        "You are in the dark woods": "You are in the dark woods"
+        "You walk westwards, towards the village.": "Je wandelt naar het westen, richting het dorp.",
+        "You are on the edge of a dark wood. It looks dangerous.": "Je staat aan de rand van een donker woud. Het ziet er gevaarlijk uit.",
+        "The sunlight can barely reach the forest floor, and trees seem to look at you.": "Het zonlicht raakt de grond amper en de bomen lijken je aan te kijken.",
+        "There is a thick fog between the bare branches.": "Mist hangt tussen de kale takken van de bomen.",
+        "It is eerily quiet. No animal lives here.": "Het is hier akelig stil. Geen dier leeft hier."
+      },
+      "player": {
+        "Brr... I have {b}no reason{/b} to be here.": "Brr... Ik heb hier {b}niets te zoeken{/b}."
       },
       "interactions": {
-        "leave": "leave"
+        "Go west, towards the village": "Ga naar het westen, richting het dorp"
       }
     },
     "river": {
       "text": {
-        "You are at the river bank": "You are at the river bank"
+        "You are standing near a collapsed bridge that used to cross the river.": "Je staat bij een ingestorte brug over de rivier.",
+        "There seems no way to cross it now. The river is too wild.": "Er lijkt geen mogenlijkheid te zijn om over te steken. De rivier stroomt snel en gevaarlijk.",
+        "A big piece of {b}white cloth, with red dots{/b} lies near the waterfront.": "Langs de waterkant ligt een {b}groot stuk witte stof, met rode stippen{/b}.",
+        "In the corner of your eye, along the water, you see a horse drinking.": "In je ooghoek langs het water, zie je een paard drinken.",
+        "In the corner of your eye, along the water, you see {b}[character.horse.name]{/b} drinking.": "In je ooghoek langs het water, zie je {b}[character.horse.name]{/b} water drinken.",
+        "The horse approaches you enthusiastically.": "Het paard komt enthousiast op je afgelopen.",
+        "{b}[character.horse.name]{/b} is now following you!": "{b}[character.horse.name]{/b} volgt je nu!",
+        "You carefully approach the horse.": "Je probeert het paard voorzichtig te benaderen.",
+        "The horse stays calm, and walks along with you.": "Het paard blijft rustig, en loopt met je mee.",
+        "You notice that the horse is limping a bit.": "Het valt je op dat hij wel erg lastig loopt.",
+        "You bring {b}[character.horse.name]{/b} to the waterfront to let him drink.": "Je brengt {b}[character.horse.name]{/b} naar de waterkant om hem te laten drinken."
+      },
+      "player": {
+        "Drat, I can't leave this area. This was the road towards the castle of the King,": "Verdorie, zo kan ik niet wegkomen. Dit was de weg richting het kasteel van de koning,",
+        "and even then I needed a few days on horse to reach it. I have to find a solution to cross the river.": "ook al moet ik dan nog een aantal dagen reizen per paard. Hier moet ik een oplossing voor vinden.",
+        "Will you come with me {b}[character.horse.name]{/b}?": "Kom je mee {b}[character.horse.name]{/b}?",
+        "Nice to see you again!": "Goed om je weer te zien!",
+        "Come with me {b}[character.horse.name]{/b}, I'll take you home.": "Kom maar {b}[character.horse.name]{/b}, dan breng ik je naar huis.",
+        "Okay, we will take it slow.": "Oké, we lopen wel rustig aan naar huis."
       },
       "interactions": {
-        "leave": "leave"
+        "Pick up [character.horse.name]": "Haal [character.horse.name] op",
+        "Try to approach horse": "Probeer paard te benaderen",
+        "Let [character.horse.name] drink some water": "Laat [character.horse.name] water drinken",
+        "Try to pick up fabric": "Probeer stof te pakken",
+        "Go north, towards the village": "Ga naar het noorden, richting het dorp"
       }
     }
   },
@@ -280,7 +311,7 @@
         "The dwarf looks grumpy in your direction.": "De dwerg kijkt je een beetje boos aan.",
         "You greet the dwarf and walk towards the road.": "Je groet de dwerg en loopt weer richting de weg.",
         "[character.dwarf.name] sighs.": "[character.dwarf.name] zucht diep.",
-        "You put the top if the pickaxe in your bag.": "You put the top if the pickaxe in your bag.",
+        "You put the top if the pickaxe in your bag.": "Je stopt de bovenkant van de houweel in je tas.",
         "You give the repaired pickaxe to [character.dwarf.name]. He gives it a thorough inspection.": "You give the repaired pickaxe to [character.dwarf.name]. He gives it a thorough inspection.",
         "[character.dwarf.name] thinks.": "[character.dwarf.name] denkt even na."
       },
@@ -292,30 +323,34 @@
         "I was able to repair your pickaxe": "I was able to repair your pickaxe",
         "Any idea how I could get any medicine?": "Enig idee hoe ik aan medicijnen kan komen?",
         "Any idea how I could get any transportation?": "Enig idee hoe ik aan vervoer kan komen?",
-        "Okay, I'm going.": "Oké, ik ga weer."
+        "Sorry, I have to go": "Sorry, ik moet er weer vandoor"
       }
     },
     "millerConversation": {
       "miller": {
         "Hey hello there!": "Hee, hallo daar!",
-        "Sorry kid{#male/}, I wouldn't know.": "Sorry jongen, dat zou ik echt niet weten.",
-        "Sorry kid{#female/}, I wouldn't know.": "Sorry dame, dat zou ik echt niet weten.",
         "I no longer have a horse, just a carriage.": "Ik heb geen paard meer, alleen een wagen.",
         "If I need a horse, I borrow [character.horse.defaultName] from farmer {b}[character.farmer.defaultName]{/b}.": "Als ik een paard nodig heb, dan leen ik [character.horse.defaultName] af en toe bij boer {b}[character.farmer.defaultName]{/b}.",
         "It is a really dependable animal. Ideal for pulling the carriage!": "Dat is een heel goed en trouw beestje. Ideaal om een wagen te trekken!",
-        "I need a new sail for one of the blades.": "Er moet een nieuw doek op een van de wieken komen."
+        "Sorry kid{#male/}, I wouldn't know.": "Sorry jongen, dat zou ik echt niet weten.",
+        "Sorry kid{#female/}, I wouldn't know.": "Sorry dame, dat zou ik echt niet weten.",
+        "I need a new sail for one of the blades.": "Er moet een nieuw doek op een van de wieken komen.",
+        "Whay could you possibly want with this millstone?": "Wat zou je met deze steen moeten?",
+        "It is only {b}heavy{/b} and worn out.": "Hij is alleen maar {b}zwaar{/b} en versleten."
       },
       "interactions": {
-        "Any idea how I could get any medicine?": "Weet u hoe ik aan medicijnen kan komen?",
         "Any idea how I could get any transportation?": "Weet u hoe ik aan vervoer kan komen?",
+        "Any idea how I could get any medicine?": "Weet u hoe ik aan medicijnen kan komen?",
         "What did you need again for the repairs?": "Wat was er ook alweer nodig om de molen te maken?",
+        "Can I have the millstone?": "Zou ik de molensteen mogen hebben?",
         "Goodbye": "Tot ziens"
       },
       "player": {
-        "Any idea how I could get any medicine?": "Weet u hoe ik aan medicijnen kan komen?",
         "Any idea how I could get any transportation?": "Weet u hoe ik aan vervoer kan komen?",
+        "Any idea how I could get any medicine?": "Weet u hoe ik aan medicijnen kan komen?",
         "What did you need again for the repairs?": "Wat was er ook alweer nodig om de molen te maken?",
-        "Ah ok, thanks.": "Oké, bedankt."
+        "Ah ok, thanks.": "Oké, bedankt.",
+        "Can I have the millstone?": "Zou ik de molensteen mogen hebben?"
       },
       "text": {
         "The old miller looks at you.": "De oude molenaar kijkt je aan."
@@ -439,9 +474,13 @@
   "themes": {
     "@point-n-click/theme-cli": {
       "menu": "Menu",
-      "settings": "Settings",
-      "language": "Language",
-      "pause": "Pause Menu"
+      "settings": "Instellingen",
+      "language": "Taal",
+      "theme": "Thema",
+      "pause": "Pauze Menu",
+      "continuePlaying": "Doorgaan met spelen",
+      "saveGame": "Spel opslaan",
+      "loadGame": "Spel laden"
     }
   }
 }

@@ -23,12 +23,17 @@ export type GameState = GameDefinition<
       branch: { states: "possession" | "used" };
       pickaxe: { states: "broken" | "fixed" | "given" };
       rope: { states: "possession" };
+      millstone: { states: "seen" };
+      fabric: { states: "possession" | "used" };
     };
     characters: {
       player: { counters: "coins"; flags: "male" };
       dwarf: { flags: "nameKnown" };
       miller: {};
-      horse: { states: "known" | "found" | "hooves" | "cart" };
+      horse: {
+        state: "river" | "following" | "stable";
+        flags: "hooves" | "cart" | "found" | "known";
+      };
       dragon: { states: "known" | "found" };
       farmer: { flags: "visited" };
       daughter: {};

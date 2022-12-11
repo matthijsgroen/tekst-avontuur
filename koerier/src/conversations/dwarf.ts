@@ -140,7 +140,7 @@ g.defineOverlay(
       }
     );
 
-    interaction("Okay, I'm going.", g.always(), () => {
+    interaction("Sorry, I have to go", g.always(), () => {
       closeOverlay();
     });
 

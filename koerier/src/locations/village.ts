@@ -1,6 +1,6 @@
 import g from "../game";
 
-g.defineLocation("village", ({ describe, interaction }) => {
+g.defineLocation("village", ({ describe, interaction, onLeave }) => {
   describe(() => {
     g.text("You are in the village. It is eery quiet.");
 
@@ -13,6 +13,14 @@ g.defineLocation("village", ({ describe, interaction }) => {
       "The road continues {b}southwards{/b}, to a {b}river{/b}.",
       "A small hidden path goes {b}eastwards{/b}, to a {b}dark wood{/b}."
     );
+  });
+
+  onLeave("darkwoods", () => {
+    g.text("You walk over a small twisting path, towards the dark woods.");
+  });
+
+  onLeave("river", () => {
+    g.text("You walk southwards, towards the river.");
   });
 
   interaction("Go to bakery", g.always(), () => {
