@@ -31,7 +31,7 @@ export type GameState = GameDefinition<
       dwarf: { flags: "nameKnown" };
       miller: {};
       horse: {
-        state: "river" | "following" | "stable";
+        states: "river" | "following" | "stable";
         flags: "hooves" | "cart" | "found" | "known";
       };
       dragon: { states: "known" | "found" };

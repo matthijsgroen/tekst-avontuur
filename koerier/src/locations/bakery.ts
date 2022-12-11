@@ -1,6 +1,6 @@
 import g from "../game";
 
-g.defineLocation("bakery", ({ describe, interaction }) => {
+g.defineLocation("bakery", ({ describe, onEnter, onLeave, interaction }) => {
   describe(() => {
     g.text(
       "You are in the bakery. It is surprisingly empty.",
@@ -18,6 +18,30 @@ g.defineLocation("bakery", ({ describe, interaction }) => {
           "The baker looks really sad."
         );
         g.location("bakery").setFlag("visited");
+      }
+    );
+  });
+
+  onEnter("village", () => {
+    g.onState(g.not(g.character("horse").hasState("following")), () => {
+      g.text("A nice smell of bread and cakes comes from the bakery.");
+      g.text("You step into the shop with a mouth watering.");
+    });
+  });
+
+  onLeave("village", () => {
+    g.onState(
+      g.character("horse").hasState("following"),
+      () => {
+        g.text(
+          "You have no idea how to deal with the situation, so you walk back outside.",
+          "You untie {b}[character.horse.name]{/b}."
+        );
+      },
+      () => {
+        g.text(
+          "You have no idea how to deal with the situation, so you walk back outside."
+        );
       }
     );
   });

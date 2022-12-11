@@ -187,7 +187,11 @@
     "village": {
       "text": {
         "You walk over a small twisting path, towards the dark woods.": "Je wandelt over een smal kronkelig pad, richting het donkere woud.",
+        "Together with [character.horse.name] you walk towards the river.": "Je wantelt samen met [character.horse.name] richting de rivier.",
         "You walk southwards, towards the river.": "Je wandelt naar het zuiden, richting de rivier.",
+        "You tie up [character.horse.name] to the store. You enter the store with your mouth watering.": "Je knoopt [character.horse.name] vast aan de winkel. Je stapt watertandend de winkel binnen.",
+        "You tie up [character.horse.name] to a pole near the smithy and enter.": "You tie up [character.horse.name] to a pole near the smithy and enter.",
+        "You enter the large smithy.": "You enter the large smithy.",
         "You are in the village. It is eery quiet.": "Je bent in het dorp. Er hangt een rare stilte.",
         "At the left side of the road is is a {b}bakery{/b}.": "Aan de linkerkant van de weg zit een {b}bakker{/b}.",
         "At the right side of the road a large {b}smithy{/b}.": "Aan de rechterkant van de weg een grote {b}smederij{/b}.",
@@ -204,6 +208,10 @@
     },
     "bakery": {
       "text": {
+        "A nice smell of bread and cakes comes from the bakery.": "Uit de bakkerij komt een geur van heerlijke verse broodjes en taarten.",
+        "You step into the shop with a mouth watering.": "Je stapt watertandend de winkel binnen.",
+        "You have no idea how to deal with the situation, so you walk back outside.": "Je hebt geen idee wat je met de situatie aan moet, dus je loopt weer naar buiten.",
+        "You untie {b}[character.horse.name]{/b}.": "Je maakt {b}[character.horse.name]{/b} weer los.",
         "You are in the bakery. It is surprisingly empty.": "Je bent in de bakkerij. Het is er verrassend leeg.",
         "No cakes, pies or bread.": "Geen gebak, taart of brood",
         "The only thing for sale seem to be {b}cookies{/b}.": "Het enige dat te koop lijkt te zijn, zijn {b}koeken{/b}.",
@@ -240,6 +248,8 @@
     },
     "river": {
       "text": {
+        "Together with [character.horse.name] you walk north, towards the village.": "Je wandelt samen met [character.horse.name] naar het noorden, richting het dorp.",
+        "You walk to the north, towards the village.": "Je wandelt naar het noorden, richting het dorp.",
         "You are standing near a collapsed bridge that used to cross the river.": "Je staat bij een ingestorte brug over de rivier.",
         "There seems no way to cross it now. The river is too wild.": "Er lijkt geen mogenlijkheid te zijn om over te steken. De rivier stroomt snel en gevaarlijk.",
         "A big piece of {b}white cloth, with red dots{/b} lies near the waterfront.": "Langs de waterkant ligt een {b}groot stuk witte stof, met rode stippen{/b}.",
@@ -250,7 +260,12 @@
         "You carefully approach the horse.": "Je probeert het paard voorzichtig te benaderen.",
         "The horse stays calm, and walks along with you.": "Het paard blijft rustig, en loopt met je mee.",
         "You notice that the horse is limping a bit.": "Het valt je op dat hij wel erg lastig loopt.",
-        "You bring {b}[character.horse.name]{/b} to the waterfront to let him drink.": "Je brengt {b}[character.horse.name]{/b} naar de waterkant om hem te laten drinken."
+        "You bring {b}[character.horse.name]{/b} to the waterfront to let him drink.": "Je brengt {b}[character.horse.name]{/b} naar de waterkant om hem te laten drinken.",
+        "You slowly climb down to the waterfront.": "Je klimt langzaam naar beneden naar de waterkant.",
+        "When you reach the edge of the water, you grab the big piece of cloth.": "Wanneer je beneden bent, pak je het grote stuk stof op.",
+        "It looks like a huge underpants! White with red dots!": "Het lijkt wel een hele grote onderbroek! Wit met rode stippen!",
+        "Suddenly you see a {b}giant{/b} swimming in the river a bit further down.": "Ineens zie je een heel stuk verderop in de rivier een {b}reus{/b} zwemmen.",
+        "Je quickly climb up to the path and take the underpants with you.": "Je klimt snel weer naar boven naar het pad en neemt de onderbroek mee."
       },
       "player": {
         "Drat, I can't leave this area. This was the road towards the castle of the King,": "Verdorie, zo kan ik niet wegkomen. Dit was de weg richting het kasteel van de koning,",
@@ -258,7 +273,8 @@
         "Will you come with me {b}[character.horse.name]{/b}?": "Kom je mee {b}[character.horse.name]{/b}?",
         "Nice to see you again!": "Goed om je weer te zien!",
         "Come with me {b}[character.horse.name]{/b}, I'll take you home.": "Kom maar {b}[character.horse.name]{/b}, dan breng ik je naar huis.",
-        "Okay, we will take it slow.": "Oké, we lopen wel rustig aan naar huis."
+        "Okay, we will take it slow.": "Oké, we lopen wel rustig aan naar huis.",
+        "Whoops! I need to get out of here!": "Oei! Wegwezen!"
       },
       "interactions": {
         "Pick up [character.horse.name]": "Haal [character.horse.name] op",
@@ -395,7 +411,8 @@
         "Hello? Are you alright?": "Hallo? Is alles goed met u?",
         "Monster? What are you talking about?": "Monster? Waar heb je het over?",
         "Why do you think the 'monster' has your daughter?": "Waarom denkt u dat het 'monster' uw dochter heeft?",
-        "Could you tell me more about that monster?": "Could you tell me more about that monster?"
+        "Could you tell me more about that monster?": "Kunt u me meer vertellen over het monster?",
+        "Do you sell any medicine?": "Zijn hier ook medicijnen te koop?"
       },
       "text": {
         "The baker does not respond and is staring in the distance.": "De bakker geeft geen antwoord, en staart voor zich uit.",
@@ -406,17 +423,17 @@
         "The baker bursts out in tears.": "Ineens barst de bakker in huilen uit.",
         "The baker keeps sobbing.": "De bakker blijft snikken.",
         "The baker has trouble not to start crying.": "De bakker heeft moeite om niet in huilen uit te barsten.",
-        "{b}[character.baker.name]{/b} turns red.": "{b}[character.baker.name]{/b} turns red.",
+        "{b}[character.baker.name]{/b} turns red.": "{b}[character.baker.name]{/b} krijgt een beetje een rood hoofd.",
         "hello": "hello"
       },
       "interactions": {
         "Hello, is everything alright?": "Hallo, is alles goed met u?",
         "Monster? What are you talking about?": "Monster? Waar heb je het over?",
-        "Could you tell me more about that monster?": "Could you tell me more about that monster?",
-        "Do you know where I could get any medicine?": "Do you know where I could get any medicine?",
-        "Hello, can I buy something to eat?": "Hello, can I buy something to eat?",
+        "Could you tell me more about that monster?": "Vertel me nog eens over het monster?",
+        "Do you know where I could get any medicine?": "Zijn hier ook medicijnen te koop?",
+        "Hello, can I buy something to eat?": "Hallo? Kan ik iets te eten kopen?",
         "Never mind": "Laat maar",
-        "Goodbye": "Goodbye"
+        "Goodbye": "Tot ziens"
       },
       "baker": {
         "Oh. Sorry, I was not paying attention.": "Oh. Sorry, ik had het even niet in de gaten.",
@@ -427,14 +444,14 @@
         "And I need to make more money so that I can hire a {b}knight{/b},": "Ik kan het geld goed gebruiken om een {b}ridder{/b} te huren,",
         "to slay that monster and save my daughter!": "om het monster te verslaan en mijn dochter te redden!",
         "That ... beast ... in that tower ... in the woods.": "Dat ... beest ... in die toren ... in het woud.",
-        "My daughter is now missing for 2 days,": "My daughter is now missing for 2 days,",
-        "and there is a {i}terrifying roar{/i} coming out of the dark woods for 2 days as well.": "and there is a {i}terrifying roar{/i} coming out of the dark woods for 2 days as well.",
-        "It all started with that big fire at farmer {b}[character.farmer.name]{/b}'s place.": "It all started with that big fire at farmer {b}[character.farmer.name]{/b}'s place.",
-        "That creature must have my sweet {b}[character.daughter.name]{/b}...": "That creature must have my sweet {b}[character.daughter.name]{/b}...",
-        "That creature lives {b}east{/b} of here, in the {b}dark woods{/b}.": "That creature lives {b}east{/b} of here, in the {b}dark woods{/b}.",
-        "We have to slay the beast! And save my daughter!": "We have to slay the beast! And save my daughter!",
-        "You won't happen to have a {b}sword{/b} do you?": "You won't happen to have a {b}sword{/b} do you?",
-        "You definitely would need a {b}sword{/b} to defend you against that monster.": "You definitely would need a {b}sword{/b} to defend you against that monster.",
+        "My daughter is now missing for two days,": "Mijn dochter is nu al twee dagen vermist.",
+        "and there is a {i}terrifying roar{/i} coming out of the dark woods for two days as well.": "en sinds twee dagen komt er {i}vreselijk gebrul{/i} uit het donkere woud!",
+        "It all started with that big fire at farmer {b}[character.farmer.name]{/b}'s place.": "Het begon allemaal met die grote brand bij boer {b}[character.farmer.name]{/b}.",
+        "That creature must have my sweet {b}[character.daughter.name]{/b}...": "Dat beest moet mijn lieve {b}[character.daughter.name]{/b} wel hebben...",
+        "That creature lives {b}east{/b} of here, in the {b}dark woods{/b}.": "Het beest leeft in het {b}donkere woud{/b}, ten {b}oosten{/b} van hier.",
+        "We have to slay the beast! And save my daughter!": "We moeten dat beest verslaan! En mijn dochter redden!",
+        "You won't happen to have a {b}sword{/b} do you?": "Je hebt toch niet toevallig een {b}zwaard{/b} he?",
+        "You definitely would need a {b}sword{/b} to defend you against that monster.": "Je moet zeker een {b}zwaard{/b} hebben om je tegen het monster te kunnen verdedigen!",
         "Uh, maybe... There is this lady see... uh...": "Uh, maybe... There is this lady see... uh...",
         "She lives in the {b}swamp{/b}. Lots of people are calling her a witch.": "She lives in the {b}swamp{/b}. Lots of people are calling her a witch.",
         "She could definitely help you.": "She could definitely help you.",

@@ -60,8 +60,8 @@ g.defineOverlay(
           "Why do you think the 'monster' has your daughter?"
         );
         g.character("baker").say(
-          "My daughter is now missing for 2 days,",
-          "and there is a {i}terrifying roar{/i} coming out of the dark woods for 2 days as well.",
+          "My daughter is now missing for two days,",
+          "and there is a {i}terrifying roar{/i} coming out of the dark woods for two days as well.",
           "It all started with that big fire at farmer {b}[character.farmer.name]{/b}'s place.",
           "That creature must have my sweet {b}[character.daughter.name]{/b}..."
         );
@@ -79,8 +79,8 @@ g.defineOverlay(
         );
         g.text("The baker has trouble not to start crying.");
         g.character("baker").say(
-          "My daughter is now missing for 2 days,",
-          "and there is a {i}terrifying roar{/i} coming out of the dark woods for 2 days as well."
+          "My daughter is now missing for two days,",
+          "and there is a {i}terrifying roar{/i} coming out of the dark woods for two days as well."
         );
         g.character("baker").say(
           "We have to slay the beast! And save my daughter!",
@@ -94,6 +94,7 @@ g.defineOverlay(
       "Do you know where I could get any medicine?",
       g.character("baker").hasState("visited"),
       () => {
+        g.character("player").say("Do you sell any medicine?");
         g.text("{b}[character.baker.name]{/b} turns red.");
         g.character("baker").say(
           "Uh, maybe... There is this lady see... uh...",

@@ -1,6 +1,6 @@
 import g from "../game";
 
-g.defineLocation("river", ({ describe, interaction }) => {
+g.defineLocation("river", ({ describe, onLeave, interaction }) => {
   describe(() => {
     g.text(
       "You are standing near a collapsed bridge that used to cross the river.",
@@ -35,6 +35,20 @@ g.defineLocation("river", ({ describe, interaction }) => {
         g.text(
           "In the corner of your eye, along the water, you see {b}[character.horse.name]{/b} drinking."
         );
+      }
+    );
+  });
+
+  onLeave("village", () => {
+    g.onState(
+      g.character("horse").hasState("following"),
+      () => {
+        g.text(
+          "Together with [character.horse.name] you walk north, towards the village."
+        );
+      },
+      () => {
+        g.text("You walk to the north, towards the village.");
       }
     );
   });
@@ -96,7 +110,21 @@ g.defineLocation("river", ({ describe, interaction }) => {
   interaction(
     "Try to pick up fabric",
     g.item("fabric").hasState("unknown"),
-    () => {}
+    () => {
+      g.text(
+        "You slowly climb down to the waterfront.",
+        "When you reach the edge of the water, you grab the big piece of cloth."
+      );
+      g.text(
+        "It looks like a huge underpants! White with red dots!",
+        "Suddenly you see a {b}giant{/b} swimming in the river a bit further down."
+      );
+      g.character("player").say("Whoops! I need to get out of here!");
+      g.text(
+        "Je quickly climb up to the path and take the underpants with you."
+      );
+      g.item("fabric").setState("possession");
+    }
   );
 
   interaction("Go north, towards the village", g.always(), () => {

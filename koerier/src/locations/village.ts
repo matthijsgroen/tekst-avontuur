@@ -20,7 +20,39 @@ g.defineLocation("village", ({ describe, interaction, onLeave }) => {
   });
 
   onLeave("river", () => {
-    g.text("You walk southwards, towards the river.");
+    g.onState(
+      g.character("horse").hasState("following"),
+      () => {
+        g.text(
+          "Together with [character.horse.name] you walk towards the river."
+        );
+      },
+      () => {
+        g.text("You walk southwards, towards the river.");
+      }
+    );
+  });
+
+  onLeave("bakery", () => {
+    g.onState(g.character("horse").hasState("following"), () => {
+      g.text(
+        "You tie up [character.horse.name] to the store. You enter the store with your mouth watering."
+      );
+    });
+  });
+
+  onLeave("smithy", () => {
+    g.onState(
+      g.character("horse").hasState("following"),
+      () => {
+        g.text(
+          "You tie up [character.horse.name] to a pole near the smithy and enter."
+        );
+      },
+      () => {
+        g.text("You enter the large smithy.");
+      }
+    );
   });
 
   interaction("Go to bakery", g.always(), () => {
