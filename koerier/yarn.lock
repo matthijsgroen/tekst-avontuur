@@ -265,7 +265,14 @@
     chrome-trace-event "^1.0.2"
     nullthrows "^1.1.1"
 
-"@point-n-click/engine@^1.0.0-alpha.0":
+"@point-n-click/content-description-text@^1.0.0-alpha.0":
+  version "1.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@point-n-click/content-description-text/-/content-description-text-1.0.0-alpha.0.tgz#24e3be4d5ca02b696a2fbd04b5642e6bb5e8f5b9"
+  integrity sha512-yeZ9zGF1033135qxSWV/pa95dE4ORCUpJxm62kmk/KkhKYe5N4V6e7QZB/nZENDq8SudPdKOwJdfXkuQzqGrJw==
+  dependencies:
+    "@point-n-click/types" "^1.0.0-alpha.1"
+
+"@point-n-click/engine@1.0.0-alpha.0", "@point-n-click/engine@^1.0.0-alpha.0":
   version "1.0.0-alpha.0"
   resolved "https://registry.yarnpkg.com/@point-n-click/engine/-/engine-1.0.0-alpha.0.tgz#7286335248b5835abb8a950f2a1d92dabc374747"
   integrity sha512-ZAZrKMaRxcrg8Q3kib+vz8k9cx9GaG5K5bPTCDBFMkpvCs4HYwDb4MSnDYphTkkuRwjgaAI1/jTQGJZmxTUM8w==
@@ -274,10 +281,22 @@
     "@point-n-click/types" "^1.0.0-alpha.1"
     immer "^9.0.15"
 
-"@point-n-click/state@^1.0.0-alpha.0":
+"@point-n-click/state@1.0.0-alpha.0", "@point-n-click/state@^1.0.0-alpha.0":
   version "1.0.0-alpha.0"
   resolved "https://registry.yarnpkg.com/@point-n-click/state/-/state-1.0.0-alpha.0.tgz#417f78e362fac78031a513088449dd6a7ed606ce"
   integrity sha512-8yB5Ah9O7mQJ3SUPV2JyfCyLX0vvKnjMhzTRE61NPsLI5+1iA6LtDDtWcwvyNO96lcltE6XjJ75obvUBHc+w9A==
+
+"@point-n-click/theme-book@1.0.0-alpha.0":
+  version "1.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@point-n-click/theme-book/-/theme-book-1.0.0-alpha.0.tgz#58a8ff49772d10cfb56624bc380d6db1ab8608e6"
+  integrity sha512-zTL+niGN9RLEF/KkNlqo5ipXth3UKo1/EJFK3fNn/+yNKiQRvLdfgbBd2hAQA20hknKEUxC1WDPPNlVs3Q/9EA==
+  dependencies:
+    "@point-n-click/content-description-text" "^1.0.0-alpha.0"
+    "@point-n-click/engine" "^1.0.0-alpha.0"
+    "@point-n-click/state" "^1.0.0-alpha.0"
+    "@point-n-click/themes" "^1.0.0-alpha.0"
+    "@point-n-click/types" "^1.0.0-alpha.1"
+    "@point-n-click/web-engine" "^1.0.0-alpha.0"
 
 "@point-n-click/theme-cli@1.0.0-alpha.0":
   version "1.0.0-alpha.0"
@@ -289,7 +308,7 @@
     "@point-n-click/themes" "^1.0.0-alpha.0"
     "@point-n-click/types" "^1.0.0-alpha.1"
 
-"@point-n-click/themes@^1.0.0-alpha.0":
+"@point-n-click/themes@1.0.0-alpha.0", "@point-n-click/themes@^1.0.0-alpha.0":
   version "1.0.0-alpha.0"
   resolved "https://registry.yarnpkg.com/@point-n-click/themes/-/themes-1.0.0-alpha.0.tgz#8ef6137b31c15ee575b143ca1ebfb03b2a8e617f"
   integrity sha512-84rapjCbZPxh2J0yqf2eARpV0jRflSe7acwkxOcpTMxzvzc4388yuaezkbQLyVm6AoMjU1PKrD6lNvNdTRF/cA==
@@ -301,10 +320,25 @@
   resolved "https://registry.yarnpkg.com/@point-n-click/types/-/types-1.0.0-alpha.1.tgz#63cf5ae159330266124990f590780b817179f3f6"
   integrity sha512-iIYWWZfq60TMQD9JbGlv7+wKKQBXQxCk3O7cWE96NUuiGxnpvVmTbVS91oRpo86UNM3ZLoLQZAor92bRAJhYDQ==
 
+"@point-n-click/web-engine@^1.0.0-alpha.0":
+  version "1.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@point-n-click/web-engine/-/web-engine-1.0.0-alpha.0.tgz#c9113f956c7cfec44010626dcbd8b4380d56e360"
+  integrity sha512-os5AcxsDbMg9AOnQouEgGgF9CwbzhgA3RQco19q0c3fhdrwlzt/KZpf3tshOSt8ioY24YdQ36U3ueJLdsRUbVQ==
+  dependencies:
+    "@point-n-click/engine" "1.0.0-alpha.0"
+    "@point-n-click/state" "1.0.0-alpha.0"
+    "@point-n-click/themes" "1.0.0-alpha.0"
+    "@tanstack/react-query" "^4.13.0"
+
 "@tanstack/query-core@4.15.1":
   version "4.15.1"
   resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.15.1.tgz#a282f04fe5e612b50019e1cfaf0efabd220e00ce"
   integrity sha512-+UfqJsNbPIVo0a9ANW0ZxtjiMfGLaaoIaL9vZeVycvmBuWywJGtSi7fgPVMCPdZQFOzMsaXaOsDtSKQD5xLRVQ==
+
+"@tanstack/query-core@4.19.1":
+  version "4.19.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.19.1.tgz#2e92d9e8a50884eb231c5beb4386e131ebe34306"
+  integrity sha512-Zp0aIose5C8skBzqbVFGk9HJsPtUhRVDVNWIqVzFbGQQgYSeLZMd3Sdb4+EnA5wl1J7X+bre2PJGnQg9x/zHOA==
 
 "@tanstack/react-query@^4.10.3":
   version "4.16.1"
@@ -312,6 +346,14 @@
   integrity sha512-PDE9u49wSDykPazlCoLFevUpceLjQ0Mm8i6038HgtTEKb/aoVnUZdlUP7C392ds3Cd75+EGlHU7qpEX06R7d9Q==
   dependencies:
     "@tanstack/query-core" "4.15.1"
+    use-sync-external-store "^1.2.0"
+
+"@tanstack/react-query@^4.13.0":
+  version "4.19.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-4.19.1.tgz#43356dd537127e76d75f5a2769eb23dafd9a3690"
+  integrity sha512-5dvHvmc0vrWI03AJugzvKfirxCyCLe+qawrWFCXdu8t7dklIhJ7D5ZhgTypv7mMtIpdHPcECtCiT/+V74wCn2A==
+  dependencies:
+    "@tanstack/query-core" "4.19.1"
     use-sync-external-store "^1.2.0"
 
 "@types/prop-types@*":

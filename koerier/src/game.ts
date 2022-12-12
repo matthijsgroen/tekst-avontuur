@@ -1,5 +1,6 @@
 import { hexColor, world } from "point-n-click";
 import terminalTheme from "@point-n-click/theme-cli";
+import bookTheme from "@point-n-click/theme-book";
 import { GameState } from "./initialState";
 
 const game = world<GameState>({
@@ -71,7 +72,8 @@ const game = world<GameState>({
   },
 })(
   terminalTheme("Terminal", { color: true }),
-  terminalTheme("Terminal (Black & White)", { color: false })
+  terminalTheme("Terminal (Black & White)", { color: false }),
+  bookTheme("Book", { coverColor: "red" })
 );
 
 export default game;

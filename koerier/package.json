@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@point-n-click/theme-cli": "1.0.0-alpha.0",
+    "@point-n-click/theme-book": "1.0.0-alpha.0",
     "point-n-click": "2.0.0-alpha.1"
   }
 }

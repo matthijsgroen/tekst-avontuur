@@ -5,5 +5,6 @@ yarn link @point-n-click/types
 yarn link @point-n-click/state
 yarn link @point-n-click/themes
 yarn link @point-n-click/theme-cli
+yarn link @point-n-click/theme-book
 yarn link @point-n-click/content-description-text
 yarn link point-n-click

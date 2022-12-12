@@ -9,7 +9,8 @@
     },
     "themes": {
       "Terminal": "Terminal",
-      "Terminal (Black & White)": "Terminal (Zwart & Wit)"
+      "Terminal (Black & White)": "Terminal (Zwart & Wit)",
+      "Book": "Boek"
     }
   },
   "settings": {
@@ -505,6 +506,16 @@
   },
   "themes": {
     "@point-n-click/theme-cli": {
+      "menu": "Menu",
+      "settings": "Instellingen",
+      "language": "Taal",
+      "theme": "Thema",
+      "pause": "Pauze Menu",
+      "continuePlaying": "Doorgaan met spelen",
+      "saveGame": "Spel opslaan",
+      "loadGame": "Spel laden"
+    },
+    "@point-n-click/theme-book": {
       "menu": "Menu",
       "settings": "Instellingen",
       "language": "Taal",
