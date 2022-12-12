@@ -25,6 +25,8 @@ export type GameState = GameDefinition<
       rope: { states: "possession" };
       millstone: { states: "seen" };
       fabric: { states: "possession" | "used" };
+      medicine: { states: "location" | "recipe" };
+      cookies: { states: "price" | "buying" | "possession" };
     };
     characters: {
       player: { counters: "coins"; flags: "male" };

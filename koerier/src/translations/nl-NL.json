@@ -412,7 +412,11 @@
         "Monster? What are you talking about?": "Monster? Waar heb je het over?",
         "Why do you think the 'monster' has your daughter?": "Waarom denkt u dat het 'monster' uw dochter heeft?",
         "Could you tell me more about that monster?": "Kunt u me meer vertellen over het monster?",
-        "Do you sell any medicine?": "Zijn hier ook medicijnen te koop?"
+        "Do you sell any medicine?": "Zijn hier ook medicijnen te koop?",
+        "Hello? Can I buy something to eat?": "Hello? Kan ik iets te eten kopen?",
+        "I would like to buy some cookies.": "Ik wil graag wat koeken kopen.",
+        "Here you go, 2 coins.": "Here you go, 2 coins.",
+        "Hmm, maybe another time.": "Hmm, misschien toch een andere keer."
       },
       "text": {
         "The baker does not respond and is staring in the distance.": "De bakker geeft geen antwoord, en staart voor zich uit.",
@@ -424,7 +428,8 @@
         "The baker keeps sobbing.": "De bakker blijft snikken.",
         "The baker has trouble not to start crying.": "De bakker heeft moeite om niet in huilen uit te barsten.",
         "{b}[character.baker.name]{/b} turns red.": "{b}[character.baker.name]{/b} krijgt een beetje een rood hoofd.",
-        "hello": "hello"
+        "The baker suddenly realizes that there is someone in his store.": "De bakker heeft ineens door dat er iemand in zijn winkel staat.",
+        "The baker gives a few delicious cookies.": "The baker gives a few delicious cookies."
       },
       "interactions": {
         "Hello, is everything alright?": "Hallo, is alles goed met u?",
@@ -432,6 +437,9 @@
         "Could you tell me more about that monster?": "Vertel me nog eens over het monster?",
         "Do you know where I could get any medicine?": "Zijn hier ook medicijnen te koop?",
         "Hello, can I buy something to eat?": "Hallo? Kan ik iets te eten kopen?",
+        "I would like to buy some cookies": "Ik wil graag koeken kopen",
+        "Here you go, 2 coins": "Alstublieft, 2 geldstukken",
+        "Hmm, maybe another time": "Hmm, misschien toch een andere keer",
         "Never mind": "Laat maar",
         "Goodbye": "Tot ziens"
       },
@@ -452,13 +460,19 @@
         "We have to slay the beast! And save my daughter!": "We moeten dat beest verslaan! En mijn dochter redden!",
         "You won't happen to have a {b}sword{/b} do you?": "Je hebt toch niet toevallig een {b}zwaard{/b} he?",
         "You definitely would need a {b}sword{/b} to defend you against that monster.": "Je moet zeker een {b}zwaard{/b} hebben om je tegen het monster te kunnen verdedigen!",
-        "Uh, maybe... There is this lady see... uh...": "Uh, maybe... There is this lady see... uh...",
-        "She lives in the {b}swamp{/b}. Lots of people are calling her a witch.": "She lives in the {b}swamp{/b}. Lots of people are calling her a witch.",
-        "She could definitely help you.": "She could definitely help you.",
-        "Don't tell anyone, but if people come here for medicine I always get those from her.": "Don't tell anyone, but if people come here for medicine I always get those from her.",
-        "People don't dare to visit her. But she practically makes all medication for everyone here.": "People don't dare to visit her. But she practically makes all medication for everyone here.",
-        "Normally I would arrange it for you, but with the current situation with my daughter {b}[character.daughter.name]{/b}...": "Normally I would arrange it for you, but with the current situation with my daughter {b}[character.daughter.name]{/b}...",
-        "... Let's say I'm avoiding here for the moment.": "... Let's say I'm avoiding here for the moment."
+        "Uh, maybe... There is this lady see... uh...": "Euh, nee dat niet... Kijk er is een dame...",
+        "She lives in the {b}swamp{/b}. Lots of people are calling her a witch.": "Ze leeft in het {b}moeras{/b}. Veel mensen noemen haar een heks.",
+        "She could definitely help you.": "Zij kan je zeker weten helpen.",
+        "Don't tell anyone, but if people come here for medicine I always get those from her.": "Niet doorvertellen hoor, maar als mensen bij mij komen voor medicijnen dan regel ik het altijd via haar.",
+        "People don't dare to visit her. But she practically makes all medication for everyone here.": "Mensen durven niet bij haar langs te gaan. Maar eigenljk maakt zij alle medicijnen voor iedereen in de omgeving.",
+        "Normally I would arrange it for you, but with the current situation with my daughter {b}[character.daughter.name]{/b}...": "Normaal zou ik het voor je regelen, maar nu met de situatie met {b}[character.daughter.name]{/b}...",
+        "... Let's say I'm avoiding her for the moment.": "... Laten we zeggen dat ik nu even liever niet bij haar langs ga.",
+        "Oh sorry, I didn't see you there.": "Oh sorry, ik had je even niet in de gaten.",
+        "We do have some {b}cookies{/b} for sale.": "We hebben nog wel wat {b}koeken{/b} te koop.",
+        "The price is {b}2 coins{/b}.": "Ze kosten {b}2 geldstukken{/b}.",
+        "That will be {b}2 coins{/b}.": "Dat is dan {b}2 geldstukken{/b}.",
+        "Here you go.": "Here you go.",
+        "Okay, fine": "Oké, prima."
       }
     },
     "inventory": {
@@ -470,6 +484,7 @@
         "- A branch, picked up in the forest": "- Een stok, opgeraapt in het bos",
         "- A pickaxe with a broken hilt": "- Houweel met gebroken heft",
         "- A fixed pickaxe": "- Gerepareerde houweel",
+        "- Delicious cookies": "- Heerlijke koeken",
         "You remove the old hilt of the pickaxe,": "Je verwijdert het oude heft van de houweel,",
         "and replace the hilt with the branch from the forest.": "en vervangt het met de stok uit het bos.",
         "It fits! The pickaxe is as good as new.": "Het past! Het houweel is weer zo goed als nieuw."

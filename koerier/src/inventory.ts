@@ -21,6 +21,9 @@ g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
     g.onState(g.item("pickaxe").hasState("fixed"), () => {
       g.text("- A fixed pickaxe");
     });
+    g.onState(g.item("cookies").hasState("possession"), () => {
+      g.text("- Delicious cookies");
+    });
   });
 
   interaction(
