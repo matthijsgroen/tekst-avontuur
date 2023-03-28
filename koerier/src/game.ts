@@ -1,7 +1,55 @@
-import { hexColor, world } from "point-n-click";
+import { createColorPalette, hexColor, world } from "point-n-click";
 import terminalTheme from "@point-n-click/theme-cli";
 import bookTheme from "@point-n-click/theme-book";
 import { GameState } from "./initialState";
+
+const palette = createColorPalette([
+  "default",
+  "player",
+  "baker",
+  "miller",
+  "dwarf",
+  "horse",
+  "dragon",
+  "farmer",
+  "daughter",
+  "witch",
+  "farrier",
+  "goldsmith",
+  "armorer",
+]);
+
+const darkColors = palette.defineColorScheme({
+  default: hexColor("18a81b"),
+  player: hexColor("1aaaa9"),
+  dwarf: hexColor("565cfb"),
+  miller: hexColor("565cfb"),
+  horse: hexColor("ee4040"),
+  dragon: hexColor("cc40cc"),
+  farmer: hexColor("30cc30"),
+  baker: hexColor("30cc30"),
+  daughter: hexColor("30cc30"),
+  witch: hexColor("30cc30"),
+  farrier: hexColor("e0e3d7"),
+  goldsmith: hexColor("ffd700"),
+  armorer: hexColor("2879C0"),
+});
+
+const lightColors = palette.defineColorScheme({
+  default: hexColor("18181b"),
+  player: hexColor("1aaaa9"),
+  dwarf: hexColor("565cfb"),
+  miller: hexColor("565cfb"),
+  horse: hexColor("ee4040"),
+  dragon: hexColor("cc40cc"),
+  farmer: hexColor("30cc30"),
+  baker: hexColor("30cc30"),
+  daughter: hexColor("30cc30"),
+  witch: hexColor("30cc30"),
+  farrier: hexColor("30cc30"),
+  goldsmith: hexColor("30cc30"),
+  armorer: hexColor("30cc30"),
+});
 
 const game = world<GameState>({
   gameTitle: "Courier for the king",
@@ -23,7 +71,11 @@ const game = world<GameState>({
       ["nl-NL"]: "Nederlands",
     },
   },
-  defaultTextColor: hexColor("18a81b"),
+  colors: {
+    lightPalette: lightColors,
+    darkPalette: darkColors,
+    defaultTextColor: palette.color("default"),
+  },
   initialState: {
     currentLocation: "forest",
     characters: {
@@ -37,43 +89,59 @@ const game = world<GameState>({
   characterConfigs: {
     player: {
       defaultName: "Matthijs",
-      textColor: hexColor("1aaaa9"),
+      textColor: palette.color("player"),
     },
     dwarf: {
       defaultName: "Thorin",
-      textColor: hexColor("565cfb"),
+      textColor: palette.color("dwarf"),
     },
     miller: {
       defaultName: "Tjasker",
-      textColor: hexColor("565cfb"),
+      textColor: palette.color("miller"),
     },
     horse: {
       defaultName: "Teun",
-      textColor: hexColor("ee4040"),
+      textColor: palette.color("horse"),
     },
     dragon: {
       defaultName: "Dins",
-      textColor: hexColor("cc40cc"),
+      textColor: palette.color("dragon"),
     },
     farmer: {
       defaultName: "Joe",
-      textColor: hexColor("30cc30"),
+      textColor: palette.color("farmer"),
     },
     baker: {
       defaultName: "Gerst",
-      textColor: hexColor("30cc30"),
+      textColor: palette.color("baker"),
     },
     daughter: {
       defaultName: "Bloem",
+      textColor: palette.color("daughter"),
     },
     witch: {
       defaultName: "Eucalypta",
+      textColor: palette.color("witch"),
+    },
+    farrier: {
+      defaultName: "Luk",
+      textColor: palette.color("farrier"),
+    },
+    goldsmith: {
+      defaultName: "Luuk",
+      textColor: palette.color("goldsmith"),
+    },
+    armorer: {
+      defaultName: "Lucy",
+      textColor: palette.color("armorer"),
     },
   },
 })(
+  bookTheme("Book", { coverColor: "red" }),
   terminalTheme("Terminal", { color: true }),
-  terminalTheme("Terminal (Black & White)", { color: false }),
-  bookTheme("Book", { coverColor: "red" })
+  terminalTheme("Terminal (Black & White)", {
+    color: false,
+  })
 );
 
 export default game;

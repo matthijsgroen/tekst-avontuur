@@ -15,8 +15,32 @@ g.defineLocation("village", ({ describe, interaction, onLeave }) => {
     );
   });
 
+  onLeave("farmland", () => {
+    g.onState(
+      g.character("horse").hasState("following"),
+      () => {
+        g.text(
+          "Together with [characters.horse.name], you walk northwards, to the farmlands."
+        );
+      },
+      () => {
+        g.text("You walk northwards, to the farmlands.");
+      }
+    );
+  });
+
   onLeave("darkwoods", () => {
-    g.text("You walk over a small twisting path, towards the dark woods.");
+    g.onState(
+      g.character("horse").hasState("following"),
+      () => {
+        g.text(
+          "Together with [characters.horse.name], you walk over a small twisting path, towards the dark woods."
+        );
+      },
+      () => {
+        g.text("You walk over a small twisting path, towards the dark woods.");
+      }
+    );
   });
 
   onLeave("river", () => {
@@ -24,7 +48,7 @@ g.defineLocation("village", ({ describe, interaction, onLeave }) => {
       g.character("horse").hasState("following"),
       () => {
         g.text(
-          "Together with [character.horse.name] you walk towards the river."
+          "Together with [characters.horse.name] you walk towards the river."
         );
       },
       () => {
@@ -36,7 +60,7 @@ g.defineLocation("village", ({ describe, interaction, onLeave }) => {
   onLeave("bakery", () => {
     g.onState(g.character("horse").hasState("following"), () => {
       g.text(
-        "You tie up [character.horse.name] to the store. You enter the store with your mouth watering."
+        "You tie up [characters.horse.name] to the store. You enter the store with your mouth watering."
       );
     });
   });
@@ -46,7 +70,7 @@ g.defineLocation("village", ({ describe, interaction, onLeave }) => {
       g.character("horse").hasState("following"),
       () => {
         g.text(
-          "You tie up [character.horse.name] to a pole near the smithy and enter."
+          "You tie up [characters.horse.name] to a pole near the smithy and enter."
         );
       },
       () => {

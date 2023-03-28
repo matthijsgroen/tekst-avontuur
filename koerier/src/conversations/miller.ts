@@ -17,7 +17,7 @@ g.defineOverlay(
         g.text("The old miller looks at you.");
         g.character("miller").say(
           "I no longer have a horse, just a carriage.",
-          "If I need a horse, I borrow [character.horse.defaultName] from farmer {b}[character.farmer.defaultName]{/b}.",
+          "If I need a horse, I borrow [characters.horse.defaultName] from farmer {b}[characters.farmer.defaultName]{/b}.",
           "It is a really dependable animal. Ideal for pulling the carriage!"
         );
       }

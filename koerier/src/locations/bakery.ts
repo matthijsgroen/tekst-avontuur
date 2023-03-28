@@ -35,7 +35,7 @@ g.defineLocation("bakery", ({ describe, onEnter, onLeave, interaction }) => {
       () => {
         g.text(
           "You have no idea how to deal with the situation, so you walk back outside.",
-          "You untie {b}[character.horse.name]{/b}."
+          "You untie {b}[characters.horse.name]{/b}."
         );
       },
       () => {

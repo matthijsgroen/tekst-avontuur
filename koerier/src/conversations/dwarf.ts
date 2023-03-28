@@ -9,7 +9,7 @@ g.defineOverlay(
       g.onState(
         g.character("dwarf").hasFlag("nameKnown"),
         () => {
-          g.character("dwarf").say("Hello [character.player.name]");
+          g.character("dwarf").say("Hello [characters.player.name]");
         },
         () => {
           g.character("player").say("Hello, can you help me?");
@@ -29,12 +29,27 @@ g.defineOverlay(
 
       g.character("player").say("My name is {b}[.name]{/b}.");
       g.character("dwarf").say(
-        "Hi {b}[character.player.name]{/b}. Sorry for being rude.",
+        "Hi {b}[characters.player.name]{/b}. Sorry for being rude.",
         "My {b}pickaxe{/b} just broke, and I just discovered a vein of {b}gemstones{/b}!",
         "I tried so hard to get them out of there.",
         "And now my pickaxe is broken. And I'm hungry!"
       );
-      g.text("[character.dwarf.name] sighs.");
+      g.text("[characters.dwarf.name] sighs.");
+    };
+
+    const dwarfHappy = () => {
+      g.text(
+        "[characters.dwarf.name] gets up, and walks into the mine. With new energy and a repaired pickaxe, he starts to chop on some {b}gems{/b}."
+      );
+      g.character("dwarf").say("Hei ho, Hei ho....");
+      g.text(
+        "Pieces of {b}gemstone{/b} fall on the ground. One piece rolls towards you."
+      );
+      g.character("dwarf").say(
+        "You can have that. I have plenty now! Thanks again for all your help!"
+      );
+      g.character("dwarf").setState("happy");
+      g.item("gemstone").setState("chopped");
     };
 
     interaction(
@@ -58,21 +73,33 @@ g.defineOverlay(
 
     interaction(
       "How can I help you?",
-      g.character("dwarf").hasFlag("nameKnown"),
+      g.and(
+        g.character("dwarf").hasFlag("nameKnown"),
+        g.not(g.character("dwarf").hasState("happy"))
+      ),
       () => {
         g.character("player").say("How can I help you?");
 
-        g.onState(g.not(g.item("pickaxe").hasState("given")), () => {
-          g.character("dwarf").say(
-            "Do you have any food for me?",
-            "And a new pickaxe?"
-          );
-        });
-        g.onState(g.item("pickaxe").hasState("given"), () => {
-          g.character("dwarf").say("Do you have any food for me?");
-        });
-
-        // "", "*c9", "Thorin: 'Ik heb dringend een nieuwe houweel nodig.'", "&4=0"
+        g.onState(
+          g.and(
+            g.not(g.item("pickaxe").hasState("given")),
+            g.not(g.item("cookies").hasState("given"))
+          ),
+          () => {
+            g.character("dwarf").say(
+              "Do you have any food for me?",
+              "And a new pickaxe?"
+            );
+          },
+          () => {
+            g.onState(g.not(g.item("cookies").hasState("given")), () => {
+              g.character("dwarf").say("Do you have any food for me?");
+            });
+            g.onState(g.not(g.item("pickaxe").hasState("given")), () => {
+              g.character("dwarf").say("I really need a new pickaxe.");
+            });
+          }
+        );
       }
     );
 
@@ -94,6 +121,25 @@ g.defineOverlay(
     );
 
     interaction(
+      "Give cookies to [characters.dwarf.name]",
+      g.and(
+        g.character("dwarf").hasFlag("nameKnown"),
+        g.item("cookies").hasState("possession")
+      ),
+      () => {
+        g.text("You offer the cookies to [characters.dwarf.name].");
+        g.character("player").say("Here you go.");
+        g.character("dwarf").say("Wow those smell nice!");
+        g.text("[characters.dwarf.name] is enjoying the cookies.");
+        g.character("dwarf").say("I really needed that, thanks!");
+        g.item("cookies").setState("given");
+        g.onState(g.item("pickaxe").hasState("given"), () => {
+          dwarfHappy();
+        });
+      }
+    );
+
+    interaction(
       "I was able to repair your pickaxe",
       g.item("pickaxe").hasState("fixed"),
       () => {
@@ -101,10 +147,13 @@ g.defineOverlay(
         g.character("dwarf").say("Really? show me!");
         g.character("player").say("Here you go.");
         g.text(
-          "You give the repaired pickaxe to [character.dwarf.name]. He gives it a thorough inspection."
+          "You give the repaired pickaxe to [characters.dwarf.name]. He gives it a thorough inspection."
         );
         g.character("dwarf").say("Wow, It's as good as new! Thanks!");
         g.item("pickaxe").setState("given");
+        g.onState(g.item("cookies").hasState("given"), () => {
+          dwarfHappy();
+        });
       }
     );
 
@@ -113,9 +162,9 @@ g.defineOverlay(
       g.character("dwarf").hasFlag("nameKnown"),
       () => {
         g.character("player").say(
-          "{b}[character.dwarf.name]{/b}, would you happen to know how I could get some medicine?"
+          "{b}[characters.dwarf.name]{/b}, would you happen to know how I could get some medicine?"
         );
-        g.text("[character.dwarf.name] thinks.");
+        g.text("[characters.dwarf.name] thinks.");
         g.character("dwarf").say(
           "No idea, Its best to ask around in the {b}village{/b}.",
           "They have all kinds of things there.",
@@ -130,9 +179,9 @@ g.defineOverlay(
       g.character("dwarf").hasFlag("nameKnown"),
       () => {
         g.character("player").say(
-          "{b}[character.dwarf.name]{/b}, would you happen to know how I could get some transportation?"
+          "{b}[characters.dwarf.name]{/b}, would you happen to know how I could get some transportation?"
         );
-        g.text("[character.dwarf.name] thinks.");
+        g.text("[characters.dwarf.name] thinks.");
         g.character("dwarf").say(
           "Hmm, the {b}farmer{/b} nearby has a horse.",
           "Maybe you can borrow it?"
@@ -145,7 +194,7 @@ g.defineOverlay(
     });
 
     onLeave(() => {
-      g.text("You greet the dwarf and walk towards the road.");
+      g.text("You greet the dwarf.");
     });
   }
 );

@@ -7,6 +7,19 @@ g.defineLocation("farmland", ({ describe, interaction, onLeave }) => {
   onLeave("farm", () => {
     g.text("You walk onto the barnyard of the farm.");
   });
+  onLeave("village", () => {
+    g.onState(
+      g.character("horse").hasState("following"),
+      () => {
+        g.text(
+          "Together with [characters.horse.name], you walk south towards the village."
+        );
+      },
+      () => {
+        g.text("You walk south towards the village.");
+      }
+    );
+  });
 
   describe(() => {
     g.text(
@@ -27,10 +40,13 @@ g.defineLocation("farmland", ({ describe, interaction, onLeave }) => {
 
   interaction("Go west, to the forest", g.always(), () => {
     g.onState(
-      g.character("horse").hasState("found"),
+      g.and(
+        g.character("horse").hasState("following"),
+        g.not(g.character("horse").hasFlag("hooves"))
+      ),
       () => {
         g.text(
-          "You want to walk to the west towards the forest, but [character.horse.defaultName] starts to refuse."
+          "You want to walk to the west towards the forest, but [characters.horse.defaultName] starts to refuse."
         );
         g.character("player").say(
           "Maybe I have to take him to the farm first?"

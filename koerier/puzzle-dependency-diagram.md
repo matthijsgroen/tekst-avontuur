@@ -2,6 +2,7 @@
 
 ```mermaid
 stateDiagram
+  classDef done fill:green
 
   koop_zwaard_voor_99_bij_wapensmid --> beklim_toren
   genoeg_info_over_monster --> beklim_toren
@@ -148,7 +149,7 @@ stateDiagram
   volg_maansteen_route --> vind_goud_in_bos
   krijg_plant_hint_van_bakker --> vind_maansteen_in_moeras
 
-  [*] --> vind_inderbroek_bij_rivier
+  [*] --> vind_onderbroek_bij_rivier
   praat_met_boer --> vind_paard_bij_rivier
   volg_maansteen_route --> vind_runesteen_in_bos
 
@@ -163,4 +164,5 @@ stateDiagram
   pak_schilderij_uit_kelder --> zet_zadel_op_draak
   vind_zadel_in_kelder --> zet_zadel_op_draak
 
+  class vind_onderbroek_bij_rivier, vind_paard_bij_rivier, praat_met_dwerg done
 ```

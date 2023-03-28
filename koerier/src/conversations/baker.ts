@@ -62,10 +62,13 @@ g.defineOverlay(
         g.character("baker").say(
           "My daughter is now missing for two days,",
           "and there is a {i}terrifying roar{/i} coming out of the dark woods for two days as well.",
-          "It all started with that big fire at farmer {b}[character.farmer.name]{/b}'s place.",
-          "That creature must have my sweet {b}[character.daughter.name]{/b}..."
+          "It all started with that big fire at farmer {b}[characters.farmer.name]{/b}'s place.",
+          "That creature must have my sweet {b}[characters.daughter.name]{/b}..."
         );
         g.character("baker").setState("visited");
+        g.onState(g.character("dragon").hasState("unknown"), () => {
+          g.character("dragon").setState("known");
+        });
       }
     );
 
@@ -90,6 +93,8 @@ g.defineOverlay(
           "You won't happen to have a {b}sword{/b} do you?",
           "You definitely would need a {b}sword{/b} to defend you against that monster."
         );
+        g.item("sword").setState("need");
+        g.character("baker").setFlag("toldDragon");
       }
     );
 
@@ -102,7 +107,7 @@ g.defineOverlay(
       ),
       () => {
         g.character("player").say("Do you sell any medicine?");
-        g.text("{b}[character.baker.name]{/b} turns red.");
+        g.text("{b}[characters.baker.name]{/b} turns red.");
         g.character("baker").say(
           "Uh, maybe... There is this lady see... uh...",
           "She lives in the {b}swamp{/b}. Lots of people are calling her a witch.",
@@ -113,7 +118,7 @@ g.defineOverlay(
           "People don't dare to visit her. But she practically makes all medication for everyone here."
         );
         g.character("baker").say(
-          "Normally I would arrange it for you, but with the current situation with my daughter {b}[character.daughter.name]{/b}..."
+          "Normally I would arrange it for you, but with the current situation with my daughter {b}[characters.daughter.name]{/b}..."
         );
         g.character("baker").say(
           "... Let's say I'm avoiding her for the moment."

@@ -2,27 +2,53 @@ import g from "./game";
 
 g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
   onEnter(() => {
-    g.text("You carry the following items:");
-    g.onState(g.character("player").hasCounter("coins").moreThan(2), () => {
-      g.text("- [character.player.counters.coins] coins");
-    });
-    g.onState(g.item("rope").hasState("possession"), () => {
-      g.text("- A long rope");
+    g.descriptionText("You carry the following items:");
+    // g.textList("inventory", (displayText) => {
+    //   displayText(
+    //     "coins",
+    //     "[characters.player.counters.coins] coins",
+    //     g.character("player").hasCounter("coins").moreThan(1)
+    //   );
+    //   displayText(
+    //     "coins",
+    //     "[characters.player.counters.coins] coin",
+    //     g.character("player").hasCounter("coins").equals(1)
+    //   );
+    //   displayText("rope", "A long rope");
+    //   displayText("branch", "A branch, picked up in the forest");
+    //   displayText("brokenPickaxe", "A pickaxe with a broken hilt");
+    //   displayText("pickaxe", "A fixed pickaxe");
+    //   displayText("cookies", "Delicious cookies");
+    //   displayText("fabric", "A giant trunk, probably of a giant");
+    //   displayText("gemstone", "A sparkling gemstone");
+    // });
+
+    g.onState(g.character("player").hasCounter("coins").moreThan(1), () => {
+      g.descriptionText("- [characters.player.counters.coins] coins");
     });
     g.onState(g.character("player").hasCounter("coins").equals(1), () => {
-      g.text("- [character.player.counters.coins] coin");
+      g.descriptionText("- [characters.player.counters.coins] coin");
+    });
+    g.onState(g.item("rope").hasState("possession"), () => {
+      g.descriptionText("- A long rope");
     });
     g.onState(g.item("branch").hasState("possession"), () => {
-      g.text("- A branch, picked up in the forest");
+      g.descriptionText("- A branch, picked up in the forest");
     });
     g.onState(g.item("pickaxe").hasState("broken"), () => {
-      g.text("- A pickaxe with a broken hilt");
+      g.descriptionText("- A pickaxe with a broken hilt");
     });
     g.onState(g.item("pickaxe").hasState("fixed"), () => {
-      g.text("- A fixed pickaxe");
+      g.descriptionText("- A fixed pickaxe");
     });
     g.onState(g.item("cookies").hasState("possession"), () => {
-      g.text("- Delicious cookies");
+      g.descriptionText("- Delicious cookies");
+    });
+    g.onState(g.item("fabric").hasState("possession"), () => {
+      g.descriptionText("- A giant trunk, probably of a giant");
+    });
+    g.onState(g.item("gemstone").hasState("possession"), () => {
+      g.descriptionText("- A sparkling gemstone");
     });
   });
 
