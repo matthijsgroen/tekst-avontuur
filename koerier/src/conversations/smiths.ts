@@ -54,6 +54,25 @@ g.defineOverlay(
       }
     );
 
+    interaction(
+      "What do you know of the monster in the woods?",
+      g.character("dragon").hasState("known"),
+      () => {
+        g.character("player").say(
+          "What do you know of the monster in the woods?"
+        );
+        g.character("armorer").say(
+          "Oi, I think that is a really dangerous one. He has a long tail."
+        );
+        g.character("farrier").say("And has a really loud {i}roar{/i}.");
+        g.character("goldsmith").say(
+          "We have no idea what his diet looks like, maybe he still needs to eat."
+        );
+        g.character("armorer").say("brr.");
+        g.text("They all shiver.");
+      }
+    );
+
     interaction("I think I'll browse", g.always(), () => {
       g.character("armorer").say("See you later!");
       closeOverlay();

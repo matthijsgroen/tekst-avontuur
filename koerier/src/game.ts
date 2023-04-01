@@ -1,7 +1,7 @@
 import { createColorPalette, hexColor, world } from "point-n-click";
 import terminalTheme from "@point-n-click/theme-cli";
 import bookTheme from "@point-n-click/theme-book";
-import { GameState } from "./initialState";
+import { GameState } from "./stateModelV1";
 
 const palette = createColorPalette([
   "default",
@@ -47,8 +47,8 @@ const lightColors = palette.defineColorScheme({
   daughter: hexColor("30cc30"),
   witch: hexColor("30cc30"),
   farrier: hexColor("30cc30"),
-  goldsmith: hexColor("30cc30"),
-  armorer: hexColor("30cc30"),
+  goldsmith: hexColor("806C00"),
+  armorer: hexColor("2879C0"),
 });
 
 const game = world<GameState>({

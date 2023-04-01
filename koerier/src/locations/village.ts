@@ -3,11 +3,13 @@ import g from "../game";
 g.defineLocation("village", ({ describe, interaction, onLeave }) => {
   describe(() => {
     g.text("You are in the village. It is eery quiet.");
+    g.descriptionText("");
 
     g.text(
       "At the left side of the road is is a {b}bakery{/b}.",
       "At the right side of the road a large {b}smithy{/b}."
     );
+    g.descriptionText("");
 
     g.text(
       "The road continues {b}southwards{/b}, to a {b}river{/b}.",

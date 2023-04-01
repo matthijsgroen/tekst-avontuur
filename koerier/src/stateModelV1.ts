@@ -7,15 +7,16 @@ export type GameState = GameDefinition<
     locations: {
       forest: { flags: "visited" };
       farmland: { flags: "visited" };
+      farm: { flags: "visited" };
       hills: { flags: "visited" };
       mine: { flags: "visited" };
       mill: { flags: "visited"; states: "fixed" };
-      swamp: {};
-      farm: { flags: "visited" };
+      swamp: { flags: "allowEntrance" };
+      cabin: { flags: "visited" };
       village: { flags: "visited" };
       bakery: { flags: "visited" };
-      darkwoods: { flags: "visited" };
       smithy: { flags: "visited" };
+      darkwoods: { flags: "visited" };
       river: { flags: "visited" };
     };
     items: {
@@ -25,10 +26,15 @@ export type GameState = GameDefinition<
       rope: { states: "possession" };
       millstone: { states: "seen" };
       fabric: { states: "possession" | "used" };
-      medicine: { states: "location" | "recipe" };
+      medicine: { flags: "recipe" };
       cookies: { states: "price" | "buying" | "possession" | "given" };
       gemstone: { states: "chopped" | "possession" };
       sword: { states: "need" | "possession" };
+      treasureNotes: {
+        states: "existence" | "possession";
+        flags: "moonStone" | "route" | "startPoint";
+      };
+      moonStone: { states: "possession" };
     };
     // lists: { // useful for inventory management
     //   inventory:
@@ -65,6 +71,8 @@ export type GameState = GameDefinition<
       | "farmerConversation"
       | "bakerConversation"
       | "smithsConversation"
-      | "inventory";
+      | "inventory"
+      | "treasureNotes"
+      | "plants";
   }
 >;

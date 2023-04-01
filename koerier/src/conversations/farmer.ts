@@ -72,11 +72,11 @@ g.defineOverlay(
         g.onState(
           g.character("horse").hasFlag("hooves"),
           () => {
-            g.character("farmer").say(
-              "Ik wou dat ik je kon bedanken. Helaas kan ik geen appels geven.",
-              "Maar als je intresse hebt in wat graan, dan geef ik het graag.",
-              "Als je Teun of andere spullen wilt lenen om je te helpen, ga je vooral je gang."
-            );
+            // g.character("farmer").say(
+            //   "Ik wou dat ik je kon bedanken. Helaas kan ik geen appels geven.",
+            //   "Maar als je intresse hebt in wat graan, dan geef ik het graag.",
+            //   "Als je Teun of andere spullen wilt lenen om je te helpen, ga je vooral je gang."
+            // );
           },
           () => {
             g.character("farmer").say("Hey boy, are you hurt?");
@@ -90,6 +90,25 @@ g.defineOverlay(
             );
           }
         );
+      }
+    );
+
+    interaction(
+      "Did you also hear that there is a treasure hidden somewhere?",
+      g.not(g.item("treasureNotes").hasState("unknown")),
+      () => {
+        g.character("player").say(
+          "Did you also hear that there is a treasure hidden somewhere?"
+        );
+        g.character("farmer").say(
+          "Haha sure! But you should not believe all that rubbish!",
+          "Someone told me once you had to walk a certain route: {i}NNWNNES{/i}"
+        );
+        g.character("farmer").say("No idea what that is supposed to mean.");
+
+        g.text("You find this very interesting, and make a note of it.");
+        g.item("treasureNotes").setState("possession");
+        g.item("treasureNotes").setFlag("route");
       }
     );
 

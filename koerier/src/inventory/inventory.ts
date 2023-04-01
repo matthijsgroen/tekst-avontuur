@@ -1,4 +1,4 @@
-import g from "./game";
+import g from "../game";
 
 g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
   onEnter(() => {
@@ -50,6 +50,24 @@ g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
     g.onState(g.item("gemstone").hasState("possession"), () => {
       g.descriptionText("- A sparkling gemstone");
     });
+    g.onState(g.item("treasureNotes").hasState("possession"), () => {
+      g.descriptionText("- Notes on treasure");
+    });
+    g.onState(
+      g.and(
+        g.item("moonStone").hasState("possession"),
+        g.not(g.isLocation("river"))
+      ),
+      () => {
+        g.descriptionText("- Moonstone, it looks dim");
+      }
+    );
+    g.onState(
+      g.and(g.item("moonStone").hasState("possession"), g.isLocation("river")),
+      () => {
+        g.descriptionText("- Moonstone, it seems to glow lightly");
+      }
+    );
   });
 
   interaction(
@@ -66,6 +84,14 @@ g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
       g.text("It fits! The pickaxe is as good as new.");
       g.item("branch").setState("used");
       g.item("pickaxe").setState("fixed");
+    }
+  );
+
+  interaction(
+    "Check notes on treasure",
+    g.item("treasureNotes").hasState("possession"),
+    () => {
+      g.openOverlay("treasureNotes");
     }
   );
 

@@ -189,6 +189,26 @@ g.defineOverlay(
       }
     );
 
+    interaction(
+      "Did you also hear that there is a treasure hidden somewhere?",
+      g.and(
+        g.character("dwarf").hasFlag("nameKnown"),
+        g.not(g.item("treasureNotes").hasState("unknown"))
+      ),
+      () => {
+        g.character("player").say(
+          "Did you also hear that there is a treasure hidden somewhere?"
+        );
+        g.character("dwarf").say(
+          "People are talking about my {i}mine{/i}!",
+          "But this mine is {b}mine{/b}! This is {i}my{/i} treasure."
+        );
+        g.text(
+          "[characters.dwarf.name] clearly thinks you mean something else."
+        );
+      }
+    );
+
     interaction("Sorry, I have to go", g.always(), () => {
       closeOverlay();
     });

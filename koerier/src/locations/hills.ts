@@ -19,10 +19,12 @@ g.defineLocation("hills", ({ describe, onLeave, interaction }) => {
       "You are in the hills. The sun is shining lovely.",
       "There is a nice view of the environment."
     );
+    g.descriptionText("");
     g.text(
       "A bit farther on the road you see a {b}mine{/b}.",
       "A bit higher up the hill is a {b}windmill{/b}."
     );
+    g.descriptionText("");
     g.text(
       "There is a road to the {b}forest{/b} to the {b}east{/b}.",
       "To the {b}south{/b}, there is a soggy path going into a {b}swamp{/b}."

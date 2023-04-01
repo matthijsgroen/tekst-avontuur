@@ -1,0 +1,2 @@
+import "./inventory";
+import "./treasureNotes";

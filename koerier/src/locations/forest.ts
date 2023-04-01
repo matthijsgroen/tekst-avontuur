@@ -13,6 +13,7 @@ g.defineLocation("forest", ({ describe, interaction, onLeave }) => {
       "You are in the forest. It is a beautiful day.",
       "The wind is rustling the leaves."
     );
+    g.descriptionText("");
     g.descriptionText(
       "There are {b}farmlands{/b} in the {b}east{/b}.",
       "There are {b}hills{/b} in the {b}west{/b}."

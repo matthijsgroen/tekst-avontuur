@@ -82,7 +82,7 @@ g.definePuzzleDependencies<MetaData>({
   },
   talkToDwarf: {
     dependsOn: ["mainAct"],
-    tags: { location: "hills", languages: ["en", "nl"] },
+    tags: { location: "hills", state: "text", languages: ["en", "nl"] },
     hierarchy: ["hills", "mine"],
   },
   getBrokenPickAxe: {
@@ -110,7 +110,7 @@ g.definePuzzleDependencies<MetaData>({
     hierarchy: ["village", "bakery"],
   },
   talkToWitch: {
-    dependsOn: ["talkToBaker"],
+    dependsOn: ["getEntranceToSwamp"],
     tags: { location: "swamp" },
     hierarchy: ["swamp", "cabin"],
   },
@@ -252,30 +252,36 @@ g.definePuzzleDependencies<MetaData>({
   },
   getTreasureSubject: {
     dependsOn: ["talkToSmiths"],
-    tags: { location: "village" },
+    tags: { location: "village", state: "text", languages: ["en", "nl"] },
     hierarchy: ["village", "smithy"],
   },
   getPlantHintOfBaker: {
     dependsOn: ["getTreasureSubject"],
-    tags: { location: "village" },
+    tags: { location: "village", state: "text", languages: ["en", "nl"] },
     hierarchy: ["village", "bakery"],
   },
   getRiverHintFromMiller: {
     dependsOn: ["getTreasureSubject"],
-    tags: { location: "hills" },
+    tags: { location: "hills", state: "text", languages: ["en", "nl"] },
     hierarchy: ["hills", "mill"],
   },
   getRouteHintFromFarmer: {
     dependsOn: ["getTreasureSubject"],
-    tags: { location: "farmland" },
+    tags: { location: "farmland", state: "text", languages: ["en", "nl"] },
     hierarchy: ["farm"],
+  },
+  getEntranceToSwamp: {
+    dependsOn: ["talkToBaker"],
+    tags: { location: "village", state: "text", languages: ["en", "nl"] },
+    hierarchy: ["village", "bakery"],
   },
   completeTreasureRouteInfo: {
     dependsOn: ["getRiverHintFromMiller", "getRouteHintFromFarmer"],
+    tags: { state: "text", languages: ["en", "nl"] },
   },
   findMoonStoneInSwamp: {
-    dependsOn: ["getPlantHintOfBaker"],
-    tags: { location: "swamp" },
+    dependsOn: ["getPlantHintOfBaker", "getEntranceToSwamp"],
+    tags: { location: "swamp", state: "text", languages: ["en", "nl"] },
     hierarchy: ["swamp"],
   },
   followMoonStoneTrail: {

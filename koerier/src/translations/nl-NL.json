@@ -175,13 +175,19 @@
         "You are at the edge of a swamp.": "Je bent aan de rand van het moeras.",
         "At the end of the trail, you stop.": "Aan het eind van het pad blijf je staan.",
         "You hear weird bubbling noises in the distance.": "In de verte klinken rare bubbelende geluiden.",
+        "You move further into the swamp. You sink up to your ankles in the wetness.": "Je loopt wat verder het moeras in. Je zakt tot je enkels weg in de nattigheid.",
+        "A small {b}cabin{/b} becomes visible, hidden under some crooked trees.": "Een kleine {b}hut{/b} wordt zichtbaar, verscholen onder wat krom hangende bomen.",
+        "All matter of {b}plants{/b} grow here, most of them you haven't seen before.": "Allerlei soorten {b}planten{/b} groeien hier, de meeste heb je nog nooit eerder gezien.",
         "There is a trail going to the {b}north{/b}, up into the {b}hills{/b}.": "Er loopt een pad naar het {b}noorden{/b}, omhoog richting {b}heuvels{/b}."
       },
       "player": {
+        "Here we go, in search of the witch.": "Daar gaan we dan, op zoek naar de heks.",
         "I'm not going to walk into a swamp for {b}no reason{/b}!": "Ik ga niet {b}zonder reden{/b} een moeras in lopen!",
         "That is way too dangerous!": "Dat is veel te gevaarlijk!"
       },
       "interactions": {
+        "Walk towards the cabin": "Loop richting de hut",
+        "Inspect the plants": "Bekijk de planten",
         "Go north, towards the hills": "Ga naar het noorden, richting de heuvels"
       }
     },
@@ -261,14 +267,19 @@
       "armorer": {
         "Hey, welcome!": "Hee, welkom!",
         "Hey, a new customer! Welcome!": "Een nieuwe klant! Welkom!",
-        "How can we help you?": "Hoe kunnen we je helpen?"
+        "How can we help you?": "Hoe kunnen we je helpen?",
+        "No, that is really nonsense.": "Nee, dat is echt onzin.",
+        "And who's treasure would that be?": "En van wie zou die schat moeten zijn?",
+        "{i}Hush!{/i}. Don't talk so loud, we have customers in the shop.": "{i}Ssst!{/i}. Niet zo hard praten, we hebben klanten in de winkel."
       },
       "goldsmith": {
         "How can we help you?": "Hoe kunnen we je helpen?",
-        "And our {b}armorer{/b} here is {b}[characters.armorer.name]{/b}.": "And our {b}armorer{/b} here is {b}[characters.armorer.name]{/b}."
+        "And our {b}armorer{/b} here is {b}[characters.armorer.name]{/b}.": "En onze {b}wapensmid{/b} hier is {b}[characters.armorer.name]{/b}.",
+        "I'm telling you its true. There is a treasure hidden here in the area.": "Ik zeg het je, het is echt waar. Er is een schat hier verborgen in de omgeving."
       },
       "farrier": {
-        "My name is {b}[characters.farrier.name]{/b}, the {b}farrier{/b}. {b}[characters.goldsmith.name]{/b} here is our {b}goldsmith{/b}.": "My name is {b}[characters.farrier.name]{/b}, the {b}farrier{/b}. {b}[characters.goldsmith.name]{/b} here is our {b}goldsmith{/b}."
+        "My name is {b}[characters.farrier.name]{/b}, the {b}farrier{/b}. {b}[characters.goldsmith.name]{/b} here is our {b}goldsmith{/b}.": "Mijn naam is {b}[characters.farrier.name]{/b}, de {b}hoefsmid{/b}. {b}[characters.goldsmith.name]{/b} hier is onze {b}goudsmid{/b}.",
+        "I heard the rumors as well. There should be gold hidden somewhere.": "Ik heb de gerichten ook gehoord. Er zou hier ergens goud te vinden moeten zijn."
       },
       "descriptionText": {
         "You are in a large Smithy.": "Je staat in een grote smederij.",
@@ -279,6 +290,12 @@
         "Talk to smiths": "Praat met de smeden",
         "Browse the shop": "Kijk rond in de winkel",
         "Leave the shop": "Verlaat de smederij"
+      },
+      "text": {
+        "You start browsing the smithy. Everywhere is gear with all kinds of price tags.": "Je kijkt rond in de smederij. Overal staan spullen met een prijskaartje.",
+        "You decide to take a closer look.": "Je besluit om ze van dichterbij te bekijken.",
+        "In the meantime, the smiths behind the counter are starting a conversation.": "Ondertussen beginnen de smeden achter de toonbank met elkaar te praten.",
+        "They continue to converse in whispers, but you can't understand it anymore.": "Ze praten fluisterend verder, maar daar kan je niet veel van verstaan."
       }
     },
     "darkwoods": {
@@ -375,7 +392,9 @@
         "The village is southeast of here.": "Het dorp ligt in het zuidoosten vanaf hier.",
         "First {b}east{/b}, then {b}south{/b}.": "Eerst naar het {b}oosten{/b}, dan naar het {b}zuiden{/b}.",
         "Hmm, the {b}farmer{/b} nearby has a horse.": "Hmm, de {b}boer{/b} verderop heeft een paard.",
-        "Maybe you can borrow it?": "Je zou kunnen vragen of je hem mag lenen?"
+        "Maybe you can borrow it?": "Je zou kunnen vragen of je hem mag lenen?",
+        "People are talking about my {i}mine{/i}!": "Mensen praten over mijn {i}mijn{/i}!",
+        "But this mine is {b}mine{/b}! This is {i}my{/i} treasure.": "Maar deze mijn is van {b}mij{/b}! Dit is {i}mijn{/i} schat."
       },
       "player": {
         "Hello, can you help me?": "Hallo, kun je mij helpen?",
@@ -387,7 +406,8 @@
         "Here you go.": "Hier, alsjeblieft.",
         "I was able to repair your pickaxe": "I was able to repair your pickaxe",
         "{b}[characters.dwarf.name]{/b}, would you happen to know how I could get some medicine?": "{b}[characters.dwarf.name]{/b}, zou jij weten hoe ik aan medicijnen kan komen?",
-        "{b}[characters.dwarf.name]{/b}, would you happen to know how I could get some transportation?": "{b}[characters.dwarf.name]{/b}, zou jij weten hoe ik aan vervoer kan komen?'"
+        "{b}[characters.dwarf.name]{/b}, would you happen to know how I could get some transportation?": "{b}[characters.dwarf.name]{/b}, zou jij weten hoe ik aan vervoer kan komen?'",
+        "Did you also hear that there is a treasure hidden somewhere?": "Heb jij ook gehoord dat er een schat ergens verborgen is?"
       },
       "text": {
         "The dwarf looks grumpy in your direction.": "De dwerg kijkt je een beetje boos aan.",
@@ -399,7 +419,8 @@
         "[characters.dwarf.name] gets up, and walks into the mine. With new energy and a repaired pickaxe, he starts to chop on some {b}gems{/b}.": "[characters.dwarf.name] staat op, en loopt de mijn in. Met nieuwe energie en een gerepareerde houweel, gaat hij op de {b}edelstenen{/b} inhakken.",
         "Pieces of {b}gemstone{/b} fall on the ground. One piece rolls towards you.": "Stukken {b}edelsteen{/b} vallen op de grond. Een stuk rolt naar je toe.",
         "You give the repaired pickaxe to [characters.dwarf.name]. He gives it a thorough inspection.": "Je geeft de gerepareerde houweel aan [characters.dwarf.name]. Hij bekijkt hem grondig.",
-        "[characters.dwarf.name] thinks.": "[characters.dwarf.name] denkt even na."
+        "[characters.dwarf.name] thinks.": "[characters.dwarf.name] denkt even na.",
+        "[characters.dwarf.name] clearly thinks you mean something else.": "[characters.dwarf.name] heeft duidelijk het idee dat je iets anders bedoelt."
       },
       "interactions": {
         "You are stupid yourself!": "Je bent zelf een stom ding!",
@@ -410,6 +431,7 @@
         "I was able to repair your pickaxe": "Ik heb je houweel kunnen repareren",
         "Any idea how I could get any medicine?": "Enig idee hoe ik aan medicijnen kan komen?",
         "Any idea how I could get any transportation?": "Enig idee hoe ik aan vervoer kan komen?",
+        "Did you also hear that there is a treasure hidden somewhere?": "Heb jij ook gehoord dat er een schat ergens verborgen is?",
         "Sorry, I have to go": "Sorry, ik moet er weer vandoor"
       }
     },
@@ -422,6 +444,10 @@
         "Sorry kid{#male/}, I wouldn't know.": "Sorry jongen, dat zou ik echt niet weten.",
         "Sorry kid{#female/}, I wouldn't know.": "Sorry dame, dat zou ik echt niet weten.",
         "I need a new sail for one of the blades.": "Er moet een nieuw doek op een van de wieken komen.",
+        "Its just the latest gossip as of late.": "Het is gewoon de laatste onzin waar men over kletst tegenwoordig.",
+        "Don't make too much of it. I guess you heard if of those {b}smiths in the village{/b} right?": "Geloof er maar niets van hoor. Zeker van de {b}smeden in het dorp{/b} gehoord?",
+        "I think they believe everything. A treasure route that starts at the {b}river{/b}?": "Volgens mij geloven zij alles. Een schatroute die begint bij de {b}rivier{/b}?",
+        "I've been at the river plenty of times, but believe me, there is nothing there.": "Ik ben vaak genoeg bij de rivier geweest, maar geloof me, er is daar niets te vinden.",
         "Whay could you possibly want with this millstone?": "Wat zou je met deze steen moeten?",
         "It is only {b}heavy{/b} and worn out.": "Hij is alleen maar {b}zwaar{/b} en versleten."
       },
@@ -429,6 +455,7 @@
         "Any idea how I could get any transportation?": "Weet u hoe ik aan vervoer kan komen?",
         "Any idea how I could get any medicine?": "Weet u hoe ik aan medicijnen kan komen?",
         "What did you need again for the repairs?": "Wat was er ook alweer nodig om de molen te maken?",
+        "Did you also hear that there is a treasure hidden somewhere?": "Heb jij ook gehoord dat er een schat ergens verborgen is?",
         "Can I have the millstone?": "Zou ik de molensteen mogen hebben?",
         "Goodbye": "Tot ziens"
       },
@@ -437,10 +464,12 @@
         "Any idea how I could get any medicine?": "Weet u hoe ik aan medicijnen kan komen?",
         "What did you need again for the repairs?": "Wat was er ook alweer nodig om de molen te maken?",
         "Ah ok, thanks.": "Oké, bedankt.",
+        "Did you also hear that there is a treasure hidden somewhere?": "Heb jij ook gehoord dat er een schat ergens verborgen is?",
         "Can I have the millstone?": "Zou ik de molensteen mogen hebben?"
       },
       "text": {
-        "The old miller looks at you.": "De oude molenaar kijkt je aan."
+        "The old miller looks at you.": "De oude molenaar kijkt je aan.",
+        "You find this very interesting, and make a note of it.": "Je vindt het erg interessant, en maakt er een aantekening van."
       }
     },
     "farmerConversation": {
@@ -450,6 +479,7 @@
         "Can I help putting out the fire?": "Kan ik helpen met blussen?",
         "Can I help find your horse?": "Hoe zou ik uw paard kunnen vinden?",
         "I found [characters.horse.name]!": "Ik heb [characters.horse.name] teruggevonden!",
+        "Did you also hear that there is a treasure hidden somewhere?": "Heb jij ook gehoord dat er een schat ergens verborgen is?",
         "What could you tell me about the monster in the woods?": "Wat zou je me kunnen vertellen over het monster in het woud?"
       },
       "farmer": {
@@ -464,13 +494,13 @@
         "Drinking water calms him, maybe he is at the {b}river{/b}?": "Van water drinken wordt {b}[characters.horse.name]{/b} rustig, misschien is hij bij de {b}rivier{/b}?",
         "Fantastic!": "Fantastisch!",
         "Hi sweet [characters.horse.name], are you ok?": "Hoi lieve [characters.horse.name], gaat het een beetje?",
-        "Ik wou dat ik je kon bedanken. Helaas kan ik geen appels geven.": "Ik wou dat ik je kon bedanken. Helaas kan ik geen appels geven.",
-        "Maar als je intresse hebt in wat graan, dan geef ik het graag.": "Maar als je intresse hebt in wat graan, dan geef ik het graag.",
-        "Als je Teun of andere spullen wilt lenen om je te helpen, ga je vooral je gang.": "Als je Teun of andere spullen wilt lenen om je te helpen, ga je vooral je gang.",
         "Hey boy, are you hurt?": "Hee, heb je pijn, jongen?",
         "Ah, I see! There is a horseshoe missing!": "Ik zie het al, er mist een hoefijzer!",
         "[characters.horse.name] can't work on the land this way, or pull {b}a cart{/b}.": "Zo kan [characters.horse.name] niet op het land werken, of {b}een wagen{/b} trekken.",
         "Could you bring him to the {b}farrier{/b} for a {b}new horseshoe{/b}?": "Zou je hem naar de {b}hoefsmid{/b} kunnen brengen voor {b}nieuwe hoefijzers{/b}?",
+        "Haha sure! But you should not believe all that rubbish!": "Haha zeker, maar geloof er maar niets van hoor! Het is allemaal onzin!",
+        "Someone told me once you had to walk a certain route: {i}NNWNNES{/i}": "Iemand vertelde mij ooit dat je een route moest lopen: {i}NNWNNOZ{/i}",
+        "No idea what that is supposed to mean.": "Geen idee wat dat betekent.",
         "It's a big firebreathin' monsta'! Yeah that's it! My entire apple harvest is destoyed! Those flames are so hot, yes they are.": "Het is een flink vuurspuwend monster! Zekersteweten wel! de hele appel oogst is naar de knoppen! Die vlammen zijn zo heet, ongelofelijk.",
         "There is no {b}armor{/b} in existence that could protect you from it! Its better to be licht on your feet so that you can run!": "I weet zeker dat er geen {b}harnas{/b} bestaat die je daar tegen zou kunnen beschermen! Kan je maar beter vlot zijn zodat je weg kan duiken of rennen!"
       },
@@ -481,12 +511,14 @@
         "The farmer goes directly to [characters.horse.name].": "De boer gaat meteen naar [characters.horse.name] toe.",
         "The farmer is petting [characters.horse.name].": "De boer staat [characters.horse.name] te aaien.",
         "Farmer [characters.farmer.name] inspects the legs of [characters.horse.name].": "Boer [characters.farmer.name] inspecteert de benen van [characters.horse.name].",
+        "You find this very interesting, and make a note of it.": "Je vindt het erg interessant, en maakt er een aantekening van.",
         "Hmm... buying an {b}armor{/b} would not help in this case.": "Hmmm... een {b}harnas{/b} kopen zou hier niet gaan helpen."
       },
       "interactions": {
         "Can I help putting out the fire?": "Kan ik helpen met blussen?",
         "Can I help find your horse?": "Hoe zou ik uw paard kunnen vinden?",
         "I found [characters.horse.name]!": "Ik heb [characters.horse.name] teruggevonden!",
+        "Did you also hear that there is a treasure hidden somewhere?": "Heb jij ook gehoord dat er een schat ergens verborgen is?",
         "What could you tell me about the monster?": "Wat zou je me over het monster kunnen vertellen?",
         "Goodbye": "Zeg gedag"
       }
@@ -501,6 +533,7 @@
         "Why do you think the 'monster' has your daughter?": "Waarom denkt u dat het 'monster' uw dochter heeft?",
         "Could you tell me more about that monster?": "Kunt u me meer vertellen over het monster?",
         "Do you sell any medicine?": "Zijn hier ook medicijnen te koop?",
+        "Have you heard something about a treasure nearby?": "Heb jij iets gehoord over een schat in de buurt?",
         "Hello? Can I buy something to eat?": "Hello? Kan ik iets te eten kopen?",
         "I would like to buy some cookies.": "Ik wil graag wat koeken kopen.",
         "Here you go, 2 coins.": "Here you go, 2 coins.",
@@ -516,6 +549,7 @@
         "The baker keeps sobbing.": "De bakker blijft snikken.",
         "The baker has trouble not to start crying.": "De bakker heeft moeite om niet in huilen uit te barsten.",
         "{b}[characters.baker.name]{/b} turns red.": "{b}[characters.baker.name]{/b} krijgt een beetje een rood hoofd.",
+        "You find this very interesting, and make a note of it.": "Je vindt het erg interessant, en maakt er een aantekening van.",
         "The baker suddenly realizes that there is someone in his store.": "De bakker heeft ineens door dat er iemand in zijn winkel staat.",
         "The baker gives a few delicious cookies.": "The baker gives a few delicious cookies."
       },
@@ -524,6 +558,7 @@
         "Monster? What are you talking about?": "Monster? Waar heb je het over?",
         "Could you tell me more about that monster?": "Vertel me nog eens over het monster?",
         "Do you know where I could get any medicine?": "Zijn hier ook medicijnen te koop?",
+        "Have you heard something about a treasure nearby?": "Heb jij iets gehoord over een schat in de buurt?",
         "Hello, can I buy something to eat?": "Hallo? Kan ik iets te eten kopen?",
         "I would like to buy some cookies": "Ik wil graag koeken kopen",
         "Here you go, 2 coins": "Alstublieft, 2 geldstukken",
@@ -555,6 +590,11 @@
         "People don't dare to visit her. But she practically makes all medication for everyone here.": "Mensen durven niet bij haar langs te gaan. Maar eigenljk maakt zij alle medicijnen voor iedereen in de omgeving.",
         "Normally I would arrange it for you, but with the current situation with my daughter {b}[characters.daughter.name]{/b}...": "Normaal zou ik het voor je regelen, maar nu met de situatie met {b}[characters.daughter.name]{/b}...",
         "... Let's say I'm avoiding her for the moment.": "... Laten we zeggen dat ik nu even liever niet bij haar langs ga.",
+        "There are rumors.": "Er gaan geruchten.",
+        "But I don't believe any of it. But what I heard was that there is a special plant in the {b}swamp{/b},": "Maar ik geloof er niets van hoor, maar wat ik had gehoord is dat er een speiale plant in het {b}moeras{/b} is.",
+        "that had some kind of {b}Moonstone{/b} hidden beneath it.": "En dat er onder die plant een {b}Maansteen{/b} verborgen ligt.",
+        "And when it starts to glow, that you need to walk a special route.": "En wanneer die gloeit dan moet je een speciale route lopen.",
+        "The plant is said to have {b}diamond-shaped leaves{/b}.": "Het schijnt dat de plant {b}ruit vormige bladeren{/b} heeft.",
         "Oh sorry, I didn't see you there.": "Oh sorry, ik had je even niet in de gaten.",
         "We do have some {b}cookies{/b} for sale.": "We hebben nog wel wat {b}koeken{/b} te koop.",
         "The price is {b}2 coins{/b}.": "Ze kosten {b}2 geldstukken{/b}.",
@@ -569,32 +609,61 @@
         "And then you are begging at the {b}bakery{/b} for some medication!": "En dan smeek je als een klein kind bij de {b}bakker{/b} om medicijnen.",
         "Euhm, didn't you...": "Maar, heb je...",
         "...with a horse?": "...een paard bij je?",
-        "I think {b}farmer [characters.farmer.name]{/b} has a horse?": "Volgens mij heeft {b}boer [characters.farmer.name]{/b} een paard?"
+        "I think {b}farmer [characters.farmer.name]{/b} has a horse?": "Volgens mij heeft {b}boer [characters.farmer.name]{/b} een paard?",
+        "We have no idea what his diet looks like, maybe he still needs to eat.": "We hebben geen idee wat het eet, misschien moet hij nog eten..."
       },
       "interactions": {
         "Do you know how I could get some medication?": "Weten jullie hoe ik aan medicijnen zou kunnen komen?",
         "Do you know how I could get some transportation?": "Weten jullie hoe ik aan vervoer zou kunnen komen?",
+        "What do you know of the monster in the woods?": "Wat weten jullie van het monster in het woud?",
         "I think I'll browse": "Ik kijk nog even rond"
       },
       "player": {
         "Do you know how I could get some medication?": "Weten jullie hoe ik aan medicijnen zou kunnen komen?",
-        "Do you know how I could get some transportation?": "Weten jullie hoe ik aan vervoer zou kunnen komen?"
+        "Do you know how I could get some transportation?": "Weten jullie hoe ik aan vervoer zou kunnen komen?",
+        "What do you know of the monster in the woods?": "Wat weten jullie van het monster in het woud?"
       },
       "farrier": {
         "No clue. I am never sick.": "Geen idee. Ik ben namelijk nooit ziek.",
         "Not true!": "Niet waar!",
-        "We do everything by foot around here.": "We doen hier alles te voet."
+        "We do everything by foot around here.": "We doen hier alles te voet.",
+        "And has a really loud {i}roar{/i}.": "En kan ontzettend hard {i}brullen{/i}."
       },
       "armorer": {
         "Hah! You big baby! You are plenty sick.": "Hah grote aansteller! Je bent vaak genoeg ziek.",
         "...just get here...": "...niet nu...",
         "It is a workhorse, so it won't bring you large distances.": "Het is wel een werkpaard, ver zal je er niet mee komen.",
         "Walking is good for your health!": "Lopen is goed voor je!",
+        "Oi, I think that is a really dangerous one. He has a long tail.": "Oei dat is een gevaarlijke jongen. Hij heeft een lange staart.",
+        "brr.": "brr.",
         "See you later!": "Tot ziens!"
       },
       "text": {
         "[characters.farrier.name]'s head is getting red.": "[characters.farrier.name] krijgt een rood hoofd.",
-        "You feel a bit dumb.": "Je voelt je een beetje dom."
+        "You feel a bit dumb.": "Je voelt je een beetje dom.",
+        "They all shiver.": "Ze staan alle drie te rillen."
+      }
+    },
+    "plants": {
+      "text": {
+        "You take your time to take a closer look at all the different plants that grow here in the {b}swamp{/b}.": "Je neemt je tijd om eens rustig alle verschillende planten hier in het {b}moeras{/b} te bekijken.",
+        "There are plants with {b}thorny{/b} leaves, {b}round{/b} leaves, {b}diamond-shaped{/b} leaves and {b}heart-shaped{/b} leaves.": "Er staan planten met {b}stekelige{/b} bladeren, {b}ronde{/b} bladeren, {b}ruitvormige{/b} bladeren en {b}hartvormige{/b} bladeren.",
+        "You bend over to pick the plant with {b}thorny{/b} leaves.": "Je bukt om de plant met {b}stekelige{/b} bladeren te plukken.",
+        "Just before you touch it, you stop.": "Vlak voordat je hem aanraakt, stop je.",
+        "This plant could be {b}poisonous{/b}.": "Misschien is hij wel {b}giftig{/b}?",
+        "You bend over to pick the plant with {b}round{/b} leaves.": "Je bukt om de plant met {b}ronde{/b} bladeren te plukken.",
+        "You bend over to pick the plant with {b}diamond-shaped{/b} leaves.": "Je bukt om de plant met {b}ruitvormige{/b} bladeren te plukken.",
+        "Then you remember what {b}[characters.baker.name]{/b} said about a {b}Moonstone{/b}.": "Dan herinner je je iets wat {b}[characters.baker.name]{/b} had gezegt over een {b}Moonsteen{/b}.",
+        "You start digging at the roots of the plant, and discover a smooth small stone.": "Je gaat graven bij de wortels van de plant, en vindt een gladde kleine steen.",
+        "The {b}color{/b} seems a bit off. You put it in your bag.": "Hij is iets apart van {b}kleur{/b}. Je stopt hem in je tas.",
+        "You bend over to pick the plant with {b}heart-shaped{/b} leaves.": "Je bukt om de plant met {b}hartvormige{/b} bladeren te plukken."
+      },
+      "interactions": {
+        "Pick plant with thorny leaves": "Pluk de plant met stekelige bladeren",
+        "Pick plant with round leaves": "Pluk de plant met ronde bladeren",
+        "Pick plant with diamond-shaped leaves": "Pluk de plant met ruitvormige bladeren",
+        "Pick plant with heard-shaped leaves": "Pluk de plant met hartvormige bladeren",
+        "Stop looking at the plants": "Stop met planten bestuderen"
       }
     },
     "inventory": {
@@ -608,16 +677,36 @@
         "- Delicious cookies": "- Heerlijke koeken",
         "- A giant trunk, probably of a giant": "- Een grote onderbroek, waarschijnlijk van een reus",
         "- A sparkling gemstone": "- Een fonkelende edelsteen",
+        "- Notes on treasure": "- Schataantekeningen",
+        "- Moonstone, it looks dim": "- Maansteen, hij ziet er dof uit",
+        "- Moonstone, it seems to glow lightly": "- Maansteen, hij lijkt licht te gloeien",
         "You carry the following items:": "Je hebt het volgende bij je:"
       },
       "interactions": {
         "Repair the pickaxe with the branch from the forest": "Repareer houweel met stok uit bos",
+        "Check notes on treasure": "Bekijk schataantekeningen",
         "Close your bag": "Sluit je tas"
       },
       "text": {
         "You remove the old hilt of the pickaxe,": "Je verwijdert het oude heft van de houweel,",
         "and replace the hilt with the branch from the forest.": "en vervangt het met de stok uit het bos.",
         "It fits! The pickaxe is as good as new.": "Het past! Het houweel is weer zo goed als nieuw."
+      }
+    },
+    "treasureNotes": {
+      "text": {
+        "You check the notes you collected on the mysterious treasure.": "Je kijkt in de aantekeningen die je hebt verzameld over de geruchten van de mysterieuze schat:",
+        "- In the {b}swamp{/b}, underneath a plant with {b}diamond-shaped{/b} leaves, lies a {b}Moonstone{/b}.": "- In het {b}moeras{/b}, onder een plant met {b}ruitvormige{/b} bladeren, ligt een {b}Maansteen{/b}.",
+        "- When this stone {b}glows{/b}, you need to walk {b}a route{/b}.": "- Zodra deze steen {b}gloeit{/b}, moet je een speciale {b}route{/b} lopen.",
+        "- The route to walk is {b}NNWNNES{/b}": "- De route om te lopen is {b}NNWNNOZ{/b}",
+        "- The route starts at the {b}river{/b}": "- De route start bij de {b}rivier{/b}",
+        "You have no clue what this route is.": "Je hebt geen idee wat deze route is.",
+        "You have no clue where this route starts.": "Je hebt geen idee waar deze route start.",
+        "You think you have all the information you need.": "Je hebt het gevoel dat je alle informatie hebt verzameld",
+        "You think you are still missing some information.": "Je hebt het gevoel dat je nog niet alle informatie hebt verzameld."
+      },
+      "interactions": {
+        "Put note away": "Berg notities op"
       }
     }
   },
@@ -648,7 +737,8 @@
       "pause": "Pauze Menu",
       "continuePlaying": "Doorgaan met spelen",
       "saveGame": "Spel opslaan",
-      "loadGame": "Spel laden"
+      "loadGame": "Spel laden",
+      "close": "Sluiten"
     }
   }
 }

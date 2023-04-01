@@ -6,10 +6,12 @@ g.defineLocation("mill", ({ describe, onLeave, interaction }) => {
       "You are at the windmill.",
       "The mill misses a {b}sail{/b} of one of its blades."
     );
+    g.descriptionText("");
     g.text(
       "A big {b}millstone{/b} lies next to the mill.",
       "An empty {b}carriage{/b} is parked on the other side of the mill."
     );
+    g.descriptionText("");
     g.text("An old miller appears to be working on restoring the blade.");
 
     g.onState(g.not(g.location("mill").hasFlag("visited")), () => {

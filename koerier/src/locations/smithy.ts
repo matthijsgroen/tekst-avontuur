@@ -37,7 +37,31 @@ g.defineLocation("smithy", ({ describe, interaction, onEnter }) => {
     g.openOverlay("smithsConversation");
   });
 
-  interaction("Browse the shop", g.always(), () => {});
+  interaction("Browse the shop", g.always(), () => {
+    g.text(
+      "You start browsing the smithy. Everywhere is gear with all kinds of price tags.",
+      "You decide to take a closer look."
+    );
+    g.text(
+      "In the meantime, the smiths behind the counter are starting a conversation."
+    );
+    g.character("armorer").say("No, that is really nonsense.");
+    g.character("goldsmith").say(
+      "I'm telling you its true. There is a treasure hidden here in the area."
+    );
+    g.character("armorer").say("And who's treasure would that be?");
+    g.character("farrier").say(
+      "I heard the rumors as well. There should be gold hidden somewhere."
+    );
+    g.character("armorer").say(
+      "{i}Hush!{/i}. Don't talk so loud, we have customers in the shop."
+    );
+    g.text(
+      "They continue to converse in whispers, but you can't understand it anymore."
+    );
+
+    g.item("treasureNotes").setState("existence");
+  });
 
   interaction("Leave the shop", g.always(), () => {
     g.travel("village");

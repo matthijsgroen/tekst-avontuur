@@ -27,6 +27,7 @@ g.defineLocation("farmland", ({ describe, interaction, onLeave }) => {
       "On the right side of the road is a {b}farm{/b}.",
       "Smoke is rising up from behind the farm."
     );
+    g.descriptionText("");
     g.text(
       "In the {b}west{/b} is a {b}forest{/b}.",
       "A small {b}village{/b} lies to the {b}south{/b}."

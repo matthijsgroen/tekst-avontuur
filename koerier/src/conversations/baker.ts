@@ -102,7 +102,6 @@ g.defineOverlay(
       "Do you know where I could get any medicine?",
       g.and(
         g.character("baker").hasState("visited"),
-        g.item("medicine").hasState("unknown"),
         g.not(g.item("cookies").hasState("buying"))
       ),
       () => {
@@ -123,7 +122,32 @@ g.defineOverlay(
         g.character("baker").say(
           "... Let's say I'm avoiding her for the moment."
         );
-        g.item("medicine").setState("location");
+        g.location("swamp").setFlag("allowEntrance");
+      }
+    );
+
+    interaction(
+      "Have you heard something about a treasure nearby?",
+      g.and(
+        g.character("baker").hasState("visited"),
+        g.not(g.item("treasureNotes").hasState("unknown"))
+      ),
+      () => {
+        g.character("player").say(
+          "Have you heard something about a treasure nearby?"
+        );
+        g.character("baker").say(
+          "There are rumors.",
+          "But I don't believe any of it. But what I heard was that there is a special plant in the {b}swamp{/b},",
+          "that had some kind of {b}Moonstone{/b} hidden beneath it."
+        );
+        g.character("baker").say(
+          "And when it starts to glow, that you need to walk a special route.",
+          "The plant is said to have {b}diamond-shaped leaves{/b}."
+        );
+        g.text("You find this very interesting, and make a note of it.");
+        g.item("treasureNotes").setState("possession");
+        g.item("treasureNotes").setFlag("moonStone");
       }
     );
 
