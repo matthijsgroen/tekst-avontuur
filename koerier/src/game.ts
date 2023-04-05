@@ -20,8 +20,8 @@ const palette = createColorPalette([
 ]);
 
 const darkColors = palette.defineColorScheme({
-  default: hexColor("18a81b"),
-  player: hexColor("1aaaa9"),
+  default: hexColor("118111"),
+  player: hexColor("9999ff"),
   dwarf: hexColor("565cfb"),
   miller: hexColor("565cfb"),
   horse: hexColor("ee4040"),

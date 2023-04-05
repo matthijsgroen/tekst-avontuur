@@ -361,6 +361,15 @@
         "Try to pick up fabric": "Probeer stof te pakken",
         "Go north, towards the village": "Ga naar het noorden, richting het dorp"
       }
+    },
+    "cabin": {
+      "descriptionText": {
+        "Strange smells and fumes come out. You carefully approach the door and are in doubt if you should {b}knock{/b}.": "Vreemde geuren en dampen komen naar buiten. Je loopt voorzichtig naar de deur en twijfelt nog of je wel moet {b}aankloppen{/b}.",
+        "You won't get much time to think about it, because the door sweeps open:": "Veel tijd om erover na te denken krijg je echter niet, want ineens zwaait de deur open:"
+      },
+      "interactions": {
+        "leave": "leave"
+      }
     }
   },
   "overlays": {
@@ -642,6 +651,42 @@
         "[characters.farrier.name]'s head is getting red.": "[characters.farrier.name] krijgt een rood hoofd.",
         "You feel a bit dumb.": "Je voelt je een beetje dom.",
         "They all shiver.": "Ze staan alle drie te rillen."
+      }
+    },
+    "witchConversation": {
+      "witch": {
+        "Hello handsome stud, what can I do for you!?": "Hallo knappe kerel, wat kan ik voor je doen!?",
+        "Hello gorgeous lady, what can I do for you!?": "Hallo knappe dame, wat kan ik voor je doen!?",
+        "No need to be scared. I was expecting you!": "Ha! je hoeft niet te schrikken hoor. Ik verwachtte je al!",
+        "My name is {b}[.name]{/b}. You must be {b}[characters.player.name]{/b}.": "Mijn naam is {b}[.name]{/b}. En jij bent zeker {b}[characters.player.name]{/b}.",
+        "Let me guess, you are here for a healingpotion?": "En laat me raden, je komt hier voor een genezingsdrankje?",
+        "Yes, {i}magic{/i} is a powerful thing!": "Ja, {i}magie{/i} is een krachtig iets!"
+      },
+      "text": {
+        "You startle and jump backwards.": "Je schrikt je te pletter.",
+        "You are stammering, not knowing what to say.": "Je staat te stamelen, en weet even niet wat je zeggen moet.",
+        "The woman comes across as quite friendly and enthusiastic.": "De vrouw komt best vriendelijk en enthousiast over.",
+        "... is this a witch?": "... is dit nu een heks?",
+        "You imagined her very differently.": "Je had haar heel anders voorgesteld.",
+        "You are rendered {b}speechless{/b}.": "Je kan echt even niet op woorden komen.",
+        "How does she know all these things?": "Hoe weet ze al die dingen toch?",
+        "In the corner of your eye, you see a {b}raven{/b} fly away from a windowsill.": "In je ooghoek zie je een {b}raaf{/b} wegvliegen uit het venster.",
+        "You start to suspect she received a letter as well...": "Je begint het vermoeden te krijgen dat ze ook een brief heeft gehad..."
+      },
+      "interactions": {
+        "Euhm...": "Euhm...",
+        "Uh oh...": "Uh oh...",
+        "Well...": "Nou...",
+        "But how...": "Maar hoe...",
+        "That is not possible...": "Dat kan toch niet...",
+        "Could you help me with a medicine?": "Could you help me with a medicine?",
+        "Give gemstone to [characters.witch.name]": "Give gemstone to [characters.witch.name]",
+        "Give necklace to [characters.witch.name]": "Give necklace to [characters.witch.name]",
+        "Did you also hear that there is a treasure hidden somewhere?": "Did you also hear that there is a treasure hidden somewhere?",
+        "Goodbye": "Goodbye"
+      },
+      "player": {
+        "...": "..."
       }
     },
     "plants": {

@@ -59,7 +59,7 @@ export type GameState = GameDefinition<
       dragon: { states: "known" | "found" };
       farmer: { flags: "visited" | "toldDragon" | "returnedHorse" };
       daughter: {};
-      witch: {};
+      witch: { states: "intro" | "visited" };
       baker: { states: "intro" | "visited"; flags: "toldDragon" };
       farrier: {};
       goldsmith: {};
@@ -71,6 +71,7 @@ export type GameState = GameDefinition<
       | "farmerConversation"
       | "bakerConversation"
       | "smithsConversation"
+      | "witchConversation"
       | "inventory"
       | "treasureNotes"
       | "plants";

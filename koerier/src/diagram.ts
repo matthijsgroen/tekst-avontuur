@@ -111,7 +111,7 @@ g.definePuzzleDependencies<MetaData>({
   },
   talkToWitch: {
     dependsOn: ["getEntranceToSwamp"],
-    tags: { location: "swamp" },
+    tags: { location: "swamp", state: "progress", languages: ["en"] },
     hierarchy: ["swamp", "cabin"],
   },
   createJewelryAtSmith: {

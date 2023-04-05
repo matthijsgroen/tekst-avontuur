@@ -10,3 +10,4 @@ import "./bakery";
 import "./smithy";
 import "./darkwoods";
 import "./river";
+import "./cabin";

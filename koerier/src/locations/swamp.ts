@@ -46,7 +46,7 @@ g.defineLocation("swamp", ({ describe, interaction, onLeave }) => {
     "Walk towards the cabin",
     g.location("swamp").hasFlag("allowEntrance"),
     () => {
-      //TODO
+      g.travel("cabin");
     }
   );
 
