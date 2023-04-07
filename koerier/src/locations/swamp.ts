@@ -4,12 +4,30 @@ g.defineLocation("swamp", ({ describe, interaction, onLeave }) => {
   onLeave("hills", () => {
     g.text("You climb upwards, to the north, towards the hills.");
   });
+  onLeave("cabin", () => {
+    g.onState(g.location("cabin").hasFlag("visited"), () => {
+      g.onState(
+        g.character("horse").hasState("following"),
+        () => {
+          g.text(
+            "Together with [characters.horse.name] you walk into the swamp."
+          );
+        },
+        () => {
+          g.text("You walk over the windy trail, towards the cabin.");
+        }
+      );
+    });
+  });
 
   describe(() => {
     g.onState(
       g.location("cabin").hasFlag("visited"),
       () => {
-        // TODO
+        g.descriptionText(
+          "A windy trail leads to the {b}cabin of [characters.witch.name]{/b}.",
+          "All matter of {b}plants{/b} grow here, most of them you haven't seen before."
+        );
       },
       () => {
         g.text("You are at the edge of a swamp.");

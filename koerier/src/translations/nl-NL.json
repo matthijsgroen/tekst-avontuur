@@ -172,6 +172,8 @@
     "swamp": {
       "text": {
         "You climb upwards, to the north, towards the hills.": "Je klimt omhoog, noordwaarts, richting de heuvels.",
+        "Together with [characters.horse.name] you walk into the swamp.": "Samen met [characters.horse.name] loop je het moeras in.",
+        "You walk over the windy trail, towards the cabin.": "Je loopt over het kronkelige pad, naar de hut.",
         "You are at the edge of a swamp.": "Je bent aan de rand van het moeras.",
         "At the end of the trail, you stop.": "Aan het eind van het pad blijf je staan.",
         "You hear weird bubbling noises in the distance.": "In de verte klinken rare bubbelende geluiden.",
@@ -179,6 +181,10 @@
         "A small {b}cabin{/b} becomes visible, hidden under some crooked trees.": "Een kleine {b}hut{/b} wordt zichtbaar, verscholen onder wat krom hangende bomen.",
         "All matter of {b}plants{/b} grow here, most of them you haven't seen before.": "Allerlei soorten {b}planten{/b} groeien hier, de meeste heb je nog nooit eerder gezien.",
         "There is a trail going to the {b}north{/b}, up into the {b}hills{/b}.": "Er loopt een pad naar het {b}noorden{/b}, omhoog richting {b}heuvels{/b}."
+      },
+      "descriptionText": {
+        "A windy trail leads to the {b}cabin of [characters.witch.name]{/b}.": "Een kronkelig pad leid naar {b}de hut van [characters.witch.name]{/b}.",
+        "All matter of {b}plants{/b} grow here, most of them you haven't seen before.": "Allerlei soorten {b}planten{/b} groeien hier, de meeste heb je nog nooit eerder gezien."
       },
       "player": {
         "Here we go, in search of the witch.": "Daar gaan we dan, op zoek naar de heks.",
@@ -363,12 +369,20 @@
       }
     },
     "cabin": {
+      "text": {
+        "Together with [characters.horse.name] you walk into the swamp.": "Samen met [characters.horse.name] loop je terug het moeras in.",
+        "You walk over the windy trail, into the swamp.": "Je loopt terug over het kronkelige pad, het moeras in."
+      },
       "descriptionText": {
+        "You are in front of the cabin of {b}[characters.witch.name]{/b}.": "Je staat voor de hut van {b}[characters.witch.name]{/b}.",
+        "Behind the cabin the swamp starts to be really wet, so there is no way further.": "Achter de hut wordt het moeras te drassig, dus je kunt niet verder gaan.",
+        "a small windy trail leads back where you came from.": "een smal kronkelig pad leid terug naar waar je vandaan kwam.",
         "Strange smells and fumes come out. You carefully approach the door and are in doubt if you should {b}knock{/b}.": "Vreemde geuren en dampen komen naar buiten. Je loopt voorzichtig naar de deur en twijfelt nog of je wel moet {b}aankloppen{/b}.",
         "You won't get much time to think about it, because the door sweeps open:": "Veel tijd om erover na te denken krijg je echter niet, want ineens zwaait de deur open:"
       },
       "interactions": {
-        "leave": "leave"
+        "Knock on door": "Klop op de deur",
+        "Go back to swamp": "Ga terug het moeras in"
       }
     }
   },
@@ -413,7 +427,7 @@
         "How can I help you?": "Hoe kan ik je helpen?",
         "Can I have your pickaxe?": "Zou ik je houweel mogen hebben?",
         "Here you go.": "Hier, alsjeblieft.",
-        "I was able to repair your pickaxe": "I was able to repair your pickaxe",
+        "I was able to repair your pickaxe.": "Ik heb je houweel kunnen repareren.",
         "{b}[characters.dwarf.name]{/b}, would you happen to know how I could get some medicine?": "{b}[characters.dwarf.name]{/b}, zou jij weten hoe ik aan medicijnen kan komen?",
         "{b}[characters.dwarf.name]{/b}, would you happen to know how I could get some transportation?": "{b}[characters.dwarf.name]{/b}, zou jij weten hoe ik aan vervoer kan komen?'",
         "Did you also hear that there is a treasure hidden somewhere?": "Heb jij ook gehoord dat er een schat ergens verborgen is?"
@@ -545,7 +559,7 @@
         "Have you heard something about a treasure nearby?": "Heb jij iets gehoord over een schat in de buurt?",
         "Hello? Can I buy something to eat?": "Hello? Kan ik iets te eten kopen?",
         "I would like to buy some cookies.": "Ik wil graag wat koeken kopen.",
-        "Here you go, 2 coins.": "Here you go, 2 coins.",
+        "Here you go, 2 coins.": "Alsjeblieft, 2 geldstukken.",
         "Hmm, maybe another time.": "Hmm, misschien toch een andere keer."
       },
       "text": {
@@ -560,7 +574,7 @@
         "{b}[characters.baker.name]{/b} turns red.": "{b}[characters.baker.name]{/b} krijgt een beetje een rood hoofd.",
         "You find this very interesting, and make a note of it.": "Je vindt het erg interessant, en maakt er een aantekening van.",
         "The baker suddenly realizes that there is someone in his store.": "De bakker heeft ineens door dat er iemand in zijn winkel staat.",
-        "The baker gives a few delicious cookies.": "The baker gives a few delicious cookies."
+        "The baker gives a few delicious cookies.": "De bakker geeft je een paar heerlijke koeken."
       },
       "interactions": {
         "Hello, is everything alright?": "Hallo, is alles goed met u?",
@@ -608,7 +622,7 @@
         "We do have some {b}cookies{/b} for sale.": "We hebben nog wel wat {b}koeken{/b} te koop.",
         "The price is {b}2 coins{/b}.": "Ze kosten {b}2 geldstukken{/b}.",
         "That will be {b}2 coins{/b}.": "Dat is dan {b}2 geldstukken{/b}.",
-        "Here you go.": "Here you go.",
+        "Here you go.": "Alsjeblieft.",
         "Okay, fine": "Oké, prima."
       }
     },
@@ -655,12 +669,21 @@
     },
     "witchConversation": {
       "witch": {
+        "Hi {b}[characters.player.name]{/b}, nice to see you back!": "Hallo {b}[characters.player.name]{/b}, ben je daar weer?",
         "Hello handsome stud, what can I do for you!?": "Hallo knappe kerel, wat kan ik voor je doen!?",
         "Hello gorgeous lady, what can I do for you!?": "Hallo knappe dame, wat kan ik voor je doen!?",
         "No need to be scared. I was expecting you!": "Ha! je hoeft niet te schrikken hoor. Ik verwachtte je al!",
         "My name is {b}[.name]{/b}. You must be {b}[characters.player.name]{/b}.": "Mijn naam is {b}[.name]{/b}. En jij bent zeker {b}[characters.player.name]{/b}.",
         "Let me guess, you are here for a healingpotion?": "En laat me raden, je komt hier voor een genezingsdrankje?",
-        "Yes, {i}magic{/i} is a powerful thing!": "Ja, {i}magie{/i} is een krachtig iets!"
+        "Yes, {i}magic{/i} is a powerful thing!": "Ja, {i}magie{/i} is een krachtig iets!",
+        "Of course I can help you!": "Natuurlijk kan ik je helpen!",
+        "But it won't be for free {b}honey{/b}.": "Maar ik doe het niet voor niets, {b}lieverd{/b}.",
+        "I want something from you first. A nice gift befitting of a lady.": "Ik wil dan eerst iets van jou. Een mooi geschenk geschikt voor een dame.",
+        "If you can surprise me with a nice {b}Ornament{/b},": "If you can surprise me with a nice {b}Ornament{/b},",
+        "I will help you with your with your medicine problem.": "dan zal ik je helpen met je medicatie probleem.",
+        "That gem is a real beauty! But it is not an {b}Ornament{/b}.": "Die edelsteen is prachtig! Maar het is geen {b}Sieraad{/b}.",
+        "Ah, you should not care about such things.": "Ach daar moet je niets om geven.",
+        "The powers of {b}plants{/b} and {b}magic{/b} is much bigger than that of money.": "De krachten van {b}planten{/b} en {b}magie{/b} is vele malen groter dan dat van geld."
       },
       "text": {
         "You startle and jump backwards.": "Je schrikt je te pletter.",
@@ -671,7 +694,13 @@
         "You are rendered {b}speechless{/b}.": "Je kan echt even niet op woorden komen.",
         "How does she know all these things?": "Hoe weet ze al die dingen toch?",
         "In the corner of your eye, you see a {b}raven{/b} fly away from a windowsill.": "In je ooghoek zie je een {b}raaf{/b} wegvliegen uit het venster.",
-        "You start to suspect she received a letter as well...": "Je begint het vermoeden te krijgen dat ze ook een brief heeft gehad..."
+        "You start to suspect she received a letter as well...": "Je begint het vermoeden te krijgen dat ze ook een brief heeft gehad...",
+        "{b}[characters.witch.name]{/b} looks at you. There is a smile on her face.": "{b}[characters.witch.name]{/b} kijkt je aan. Er is een glimlach op haar gezicht.",
+        "You let her know you will try your best.": "Je laat haar weten je uiterste best te doen.",
+        "This doesn't help you.": "Dit helpt je niet verder."
+      },
+      "descriptionText": {
+        "You say goodbye to {b}[characters.witch.name]{/b} and she closes her door.": "Je zegt gedag tegen {b}[characters.witch.name]{/b} en ze sluit haar deur."
       },
       "interactions": {
         "Euhm...": "Euhm...",
@@ -679,14 +708,15 @@
         "Well...": "Nou...",
         "But how...": "Maar hoe...",
         "That is not possible...": "Dat kan toch niet...",
-        "Could you help me with a medicine?": "Could you help me with a medicine?",
-        "Give gemstone to [characters.witch.name]": "Give gemstone to [characters.witch.name]",
+        "Could you help me with a medicine?": "Kunt u me helpen met een medicijn?",
+        "Give gemstone to [characters.witch.name]": "Geef edelsteen aan [characters.witch.name]",
         "Give necklace to [characters.witch.name]": "Give necklace to [characters.witch.name]",
-        "Did you also hear that there is a treasure hidden somewhere?": "Did you also hear that there is a treasure hidden somewhere?",
-        "Goodbye": "Goodbye"
+        "Did you also hear that there is a treasure hidden somewhere?": "Heb jij ook gehoord dat er een schat ergens verborgen is?",
+        "Goodbye": "Tot ziens"
       },
       "player": {
-        "...": "..."
+        "...": "...",
+        "Did you also hear that there is a treasure hidden somewhere?": "Heb jij ook gehoord dat er een schat ergens verborgen is?"
       }
     },
     "plants": {
@@ -730,12 +760,14 @@
       "interactions": {
         "Repair the pickaxe with the branch from the forest": "Repareer houweel met stok uit bos",
         "Check notes on treasure": "Bekijk schataantekeningen",
+        "Eat cookies": "Eet koeken",
         "Close your bag": "Sluit je tas"
       },
       "text": {
         "You remove the old hilt of the pickaxe,": "Je verwijdert het oude heft van de houweel,",
         "and replace the hilt with the branch from the forest.": "en vervangt het met de stok uit het bos.",
-        "It fits! The pickaxe is as good as new.": "Het past! Het houweel is weer zo goed als nieuw."
+        "It fits! The pickaxe is as good as new.": "Het past! Het houweel is weer zo goed als nieuw.",
+        "The cookies smell delicious, but you decide to keep them for later.": "De koeken ruiken heerlijk, maar toch besluit je om ze voor later te bewaren."
       }
     },
     "treasureNotes": {

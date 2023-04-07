@@ -66,7 +66,7 @@ g.definePuzzleDependencies<MetaData>({
   },
   payTwoCoins: {
     dependsOn: ["mainAct"],
-    tags: { location: "village", languages: ["en", "nl"] },
+    tags: { location: "village", state: ["progress"], languages: ["en", "nl"] },
     hierarchy: ["village"],
   },
   buyCookies: {
@@ -111,7 +111,7 @@ g.definePuzzleDependencies<MetaData>({
   },
   talkToWitch: {
     dependsOn: ["getEntranceToSwamp"],
-    tags: { location: "swamp", state: "progress", languages: ["en"] },
+    tags: { location: "swamp", state: "progress", languages: ["en", "nl"] },
     hierarchy: ["swamp", "cabin"],
   },
   createJewelryAtSmith: {
@@ -286,7 +286,7 @@ g.definePuzzleDependencies<MetaData>({
   },
   followMoonStoneTrail: {
     dependsOn: ["findMoonStoneInSwamp", "completeTreasureRouteInfo"],
-    tags: { location: "river" },
+    tags: { location: "river", state: "text", languages: ["en"] },
     hierarchy: ["river"],
   },
   getRuneStone: {

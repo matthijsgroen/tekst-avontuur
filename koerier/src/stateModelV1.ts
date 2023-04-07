@@ -30,6 +30,7 @@ export type GameState = GameDefinition<
       cookies: { states: "price" | "buying" | "possession" | "given" };
       gemstone: { states: "chopped" | "possession" };
       sword: { states: "need" | "possession" };
+      necklace: { states: "need" | "possession" };
       treasureNotes: {
         states: "existence" | "possession";
         flags: "moonStone" | "route" | "startPoint";

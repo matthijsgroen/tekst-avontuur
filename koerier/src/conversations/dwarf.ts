@@ -143,7 +143,7 @@ g.defineOverlay(
       "I was able to repair your pickaxe",
       g.item("pickaxe").hasState("fixed"),
       () => {
-        g.character("player").say("I was able to repair your pickaxe");
+        g.character("player").say("I was able to repair your pickaxe.");
         g.character("dwarf").say("Really? show me!");
         g.character("player").say("Here you go.");
         g.text(

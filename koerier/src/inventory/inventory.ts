@@ -94,6 +94,11 @@ g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
       g.openOverlay("treasureNotes");
     }
   );
+  interaction("Eat cookies", g.item("cookies").hasState("possession"), () => {
+    g.text(
+      "The cookies smell delicious, but you decide to keep them for later."
+    );
+  });
 
   interaction("Close your bag", g.always(), () => {
     closeOverlay();
