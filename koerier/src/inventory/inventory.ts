@@ -50,6 +50,12 @@ g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
     g.onState(g.item("gemstone").hasState("possession"), () => {
       g.descriptionText("- A sparkling gemstone");
     });
+    g.onState(g.item("gold").hasState("possession"), () => {
+      g.descriptionText("- Pieces of gold");
+    });
+    g.onState(g.item("runeStone").hasState("possession"), () => {
+      g.descriptionText("- A runestone with inscriptions");
+    });
     g.onState(g.item("treasureNotes").hasState("possession"), () => {
       g.descriptionText("- Notes on treasure");
     });
@@ -99,6 +105,32 @@ g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
       "The cookies smell delicious, but you decide to keep them for later."
     );
   });
+  interaction(
+    "Wait for darkness",
+    g.and(
+      g.isLocation("river"),
+      g.item("moonStone").hasState("possession"),
+      g.not(g.item("treasureHunt").hasFlag("done"))
+    ),
+    () => {
+      g.item("treasureHunt").setFlag("active");
+      g.location("treasureRoute").setCounter("steps", 0);
+      closeOverlay();
+      g.text(
+        "You are patiently sitting at the bank of the river, waiting for darkness.",
+        "The darker it gets, the more the moonstone starts to {b}glow{/b}."
+      );
+      g.onState(g.character("horse").hasState("following"), () => {
+        g.character("player").say(
+          "{b}[characters.horse.name]{/b} will you wait here for me?"
+        );
+        g.text(
+          "{b}[characters.horse.name]{/b} goes to the waterfront to drink some water."
+        );
+        g.character("horse").setState("river");
+      });
+    }
+  );
 
   interaction("Close your bag", g.always(), () => {
     closeOverlay();
@@ -108,7 +140,11 @@ g.defineOverlay("inventory", ({ onEnter, interaction, closeOverlay }) => {
 g.globalInteraction(
   "Open your bag",
   "b",
-  g.and(g.item("bag").hasState("possession"), g.not(g.isOverlayOpen())),
+  g.and(
+    g.item("bag").hasState("possession"),
+    g.not(g.isOverlayOpen()),
+    g.not(g.item("treasureHunt").hasFlag("active"))
+  ),
   () => {
     g.openOverlay("inventory");
   }

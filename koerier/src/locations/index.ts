@@ -11,3 +11,4 @@ import "./smithy";
 import "./darkwoods";
 import "./river";
 import "./cabin";
+import "./treasureRoute";

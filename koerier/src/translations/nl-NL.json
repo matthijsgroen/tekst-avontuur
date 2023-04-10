@@ -334,6 +334,7 @@
       "text": {
         "Together with [characters.horse.name] you walk north, towards the village.": "Je wandelt samen met [characters.horse.name] naar het noorden, richting het dorp.",
         "You walk to the north, towards the village.": "Je wandelt naar het noorden, richting het dorp.",
+        "Its a nice {b}full moon{/b} this evening.": "Deze avond staat er een mooie {b}volle maan{/b} aan de hemel.",
         "You are standing near a collapsed bridge that used to cross the river.": "Je staat bij een ingestorte brug over de rivier.",
         "There seems no way to cross it now. The river is too wild.": "Er lijkt geen mogenlijkheid te zijn om over te steken. De rivier stroomt snel en gevaarlijk.",
         "A big piece of {b}white cloth, with red dots{/b} lies near the waterfront.": "Langs de waterkant ligt een {b}groot stuk witte stof, met rode stippen{/b}.",
@@ -350,6 +351,9 @@
         "It looks like a huge underpants! White with red dots!": "Het lijkt wel een hele grote onderbroek! Wit met rode stippen!",
         "Suddenly you see a {b}giant{/b} swimming in the river a bit further down.": "Ineens zie je een heel stuk verderop in de rivier een {b}reus{/b} zwemmen.",
         "Je quickly climb up to the path and take the underpants with you.": "Je klimt snel weer naar boven naar het pad en neemt de onderbroek mee."
+      },
+      "descriptionText": {
+        "The light of the moon plays on the water of the river.": "Het licht van de maan lijkt te spelen op het water van de rivier."
       },
       "player": {
         "Drat, I can't leave this area. This was the road towards the castle of the King,": "Verdorie, zo kan ik niet wegkomen. Dit was de weg richting het kasteel van de koning,",
@@ -383,6 +387,84 @@
       "interactions": {
         "Knock on door": "Klop op de deur",
         "Go back to swamp": "Ga terug het moeras in"
+      }
+    },
+    "treasureRoute": {
+      "interactions": {
+        "Inspect tree": "Onderzoek boom",
+        "Go north, to the village": "Ga naar het noorden, naar het dorp",
+        "Go east, along the waterfront": "Ga naar het oosten, langs de waterkant",
+        "Go west, along the waterfront": "Ga naar het westen, langs de waterkant",
+        "Wait for daylight": "Wacht tot het weer dag is",
+        "Go north, towards the farmlands": "Ga naar het noorden, richting de akkers",
+        "Go east, towards the dark wood": "Ga naar het oosten, naar het donkere woud",
+        "Go south, towards the river": "Ga naar het zuiden, naar de rivier",
+        "Go west, between some shops": "Go naar het westen, tussen een paar winkels door",
+        "Go north, between the meadows": "Go naar het noorden, tussen de weilanden door",
+        "Go east, to the other side of the farm": "Ga naar het oosten, naar de andere kant van de boerderij",
+        "Go south, towards village": "Ga naar het zuiden, naar het dorp",
+        "Go west, towards the forest": "Ga naar het westen, naar het bos",
+        "Go north, between some trees": "Ga naar het noorden, tussen de bomen door",
+        "Go east, to the farmlands": "Ga naar het oosten, naar de akkers",
+        "Go east, between some trees": "Ga naar het oosten, tussen de bomen door",
+        "Go south, between some trees": "Ga naar het zuiden, tussen de bomen door",
+        "Go west, towards the hills": "Ga naar het westen, naar de heuvels",
+        "Go west, between some trees": "Ga naar het westen, tussen de bomen door",
+        "Open chest": "Open kist",
+        "Return to starting point": "Keer terug naar het startpunt"
+      },
+      "text": {
+        "After inspection of the tree, you discover that it is {b}hollow{/b}.": "Je onderzoekt de boom, en ontdekt dat deze {b}hol{/b} is.",
+        "There is a small chest inside.": "Er is een klein kistje in de boom.",
+        "You pick up the chest.": "Je pakt het kistje op.",
+        "It is dark, you are at the {b}village{/b}. All shops are closed.": "Het is donker, je bent in het {b}dorp{/b}. Alle winkels zijn gesloten.",
+        "It's now even more quiet than it already was at daytime.": "Het is nu zelfs nog stiller dan dat het overdag al is.",
+        "You walk along the river to the {b}east{/b}.": "Je loopt langs de rivier naar het {b}oosten{/b}.",
+        "You get the feeling you went the wrong way.": "Je krijgt het gevoel dat je de verkeerde kant op bent gegaan.",
+        "You walk along the river to the {b}west{/b}.": "Je loopt langs de rivier naar het {b}westen{/b}.",
+        "You wait till the sun comes up.": "Je wacht tot de zon weer opkomt.",
+        "You go {b}north{/b} to the farmlands.": "Je gaat naar het {b}noorden{/b} naar de akkers.",
+        "You are at the farmlands. It is really dark.": "Je staat tussen de akkers, het is erg donker.",
+        "A glow of fire is coming from the other side of the farm": "Een vurige gloed komt vanaf de andere kant van de boerderij.",
+        "You go {b}east{/b}, towards the dark woods.": "Je gaat naar het  {b}oosten{/b}, richting het donkere woud.",
+        "You decide to walk back to the starting point at the river.": "Je besluit terug te lopen naar het start punt aan de rivier.",
+        "You go {b}west{/b} between some shops, even if there is no real path.": "Je gaat naar het {b}westen{/b} tussen een paar winkels door, ook al loopt er geen echt pad.",
+        "You go {b}north{/b} across some meadows.": "Je gaat {b}noordwaards{/b} tussen een paar weilanden door.",
+        "You almost trip in the darkness.": "Je struikelt bijna door de duisternis.",
+        "You go {b}east{/b}, to the other side of the farm.": "Je gaat naar het {b}oosten{/b}, naar de andere kant van de boerderij.",
+        "You get some light from the fiery glow, and continue.": "Je krijgt wat licht van de vurige gloed, en gaat door.",
+        "You start to feel lost.": "Je voelt je verdwaald.",
+        "You go {b}south{/b}, back to the village.": "Je loopt naar het {b}zuiden{/b}, terug naar het dorp.",
+        "You were here before.": "Hier ben je al eerder geweest.",
+        "You go {b}west{/b}, to the forest.": "Je gaat naar het {b}westen{/b}, naar het bos.",
+        "You are at the forest. It is now incredibly dark.": "Je staat in het bos. Het is nu ongelofelijk donker.",
+        "Luckily you can use the {b}Moonstone{/b} for some light.": "Gelukkig kan je de {b}Maansteen{/b} gebruiken voor wat licht.",
+        "You almost trip over a tree stump.": "Je struikelt bijna over een boomstronk.",
+        "You open the {b}chest{/b}.": "Je opent het {b}kistje{/b}.",
+        "There is {b}gold{/b} inside!": "Er zit {b}goud{/b} in!",
+        "It also contains a stone with {b}weird inscriptions{/b}.": "De kist bevat ook een steen met {b}vreemde inscripties{/b}.",
+        "You put the gold and stone in your {b}bag{/b}.": "Je stopt het goud en de steen in je {b}tas{/b}.",
+        "The gold shimmers a bit different than you are used from gold.": "Het goud glimt op een andere manier dan wat je van goud gewend bent.",
+        "You walk back to the trail in the forest.": "Je loopt terug naar het pad in het bos.",
+        "The sun is coming up again.": "Het zonnetje komt alweer op."
+      },
+      "descriptionText": {
+        "There are {b}farmlands{/b} in the {b}east{/b}.": "In het {b}oosten{/b} zijn {b}akkers{/b}.",
+        "There are {b}hills{/b} in the {b}west{/b}.": "In het {b}westen{/b} zijn {b}heuvels{/b}.",
+        "You walk between the trees {b}northwards{/b}, until you come to an open clearing.": "Je loopt tussen de bomen door naar het {b}noorden{/b}, tot je bij een open plek aankomt.",
+        "You walk between the trees {b}northwards{/b}, until you come to another open clearing.": "Je loopt tussen de bomen door naar het {b}noorden{/b}, tot je bij een andere open plek aankomt.",
+        "You walk between the trees {b}northwards{/b}.": "Je loopt {b}noordwaards{/b} tussen de boen door.",
+        "You walk {b}eastwards{/b} through the forest, using your {b}Moonstone{/b} to illuminate the forest floor.": "Je loopt door het bos richting het {b}oosten{/b} en gebruikt de {b}Maansteen{/b} om licht te schijnen op de ondergrond.",
+        "You continue on until you reach a small stream flowing through the forest.": "Je vervolgd je pad tot je bij een klein beekje aankomt die door het bos loopt.",
+        "You walk between the trees {b}eastwards{/b}.": "Je loopt tussen de bomen door richting het {b}oosten{/b}.",
+        "You reach a fallen tree.": "Je bereikt een omgevallen boom.",
+        "You walk {b}southwards{/b}, between the trees.": "Je loopt naar het {b}zuiden{/b}, tussen de bomen door.",
+        "You walk {b}westwards{/b}, towards the hills.": "Je loopt in {b}westelijke{/b} richting, richting de heuvels.",
+        "You see the outline of a mill in the moonlight.": "Je ziet een silhouette van een molen in het maanlicht.",
+        "You walk {b}westwards{/b}, between the trees.": "Je loopt naar het {b}westen{/b}, tussen de bomen door."
+      },
+      "player": {
+        "Ouch! Grmbl!": "Auw! Grmbl!"
       }
     }
   },
@@ -752,6 +834,8 @@
         "- Delicious cookies": "- Heerlijke koeken",
         "- A giant trunk, probably of a giant": "- Een grote onderbroek, waarschijnlijk van een reus",
         "- A sparkling gemstone": "- Een fonkelende edelsteen",
+        "- Pieces of gold": "- Stukken goud",
+        "- A runestone with inscriptions": "- Een runesteen met inscripties",
         "- Notes on treasure": "- Schataantekeningen",
         "- Moonstone, it looks dim": "- Maansteen, hij ziet er dof uit",
         "- Moonstone, it seems to glow lightly": "- Maansteen, hij lijkt licht te gloeien",
@@ -761,13 +845,20 @@
         "Repair the pickaxe with the branch from the forest": "Repareer houweel met stok uit bos",
         "Check notes on treasure": "Bekijk schataantekeningen",
         "Eat cookies": "Eet koeken",
+        "Wait for darkness": "Wacht tot het donker is",
         "Close your bag": "Sluit je tas"
       },
       "text": {
         "You remove the old hilt of the pickaxe,": "Je verwijdert het oude heft van de houweel,",
         "and replace the hilt with the branch from the forest.": "en vervangt het met de stok uit het bos.",
         "It fits! The pickaxe is as good as new.": "Het past! Het houweel is weer zo goed als nieuw.",
-        "The cookies smell delicious, but you decide to keep them for later.": "De koeken ruiken heerlijk, maar toch besluit je om ze voor later te bewaren."
+        "The cookies smell delicious, but you decide to keep them for later.": "De koeken ruiken heerlijk, maar toch besluit je om ze voor later te bewaren.",
+        "You are patiently sitting at the bank of the river, waiting for darkness.": "Je wacht geduldig aan de oever van de rivier, tot het donker is.",
+        "The darker it gets, the more the moonstone starts to {b}glow{/b}.": "Des te donker het wordt, des te meer begint de maansteen te {b}gloeien{/b}.",
+        "{b}[characters.horse.name]{/b} goes to the waterfront to drink some water.": "{b}[characters.horse.name]{/b} goes to the waterfront to drink some water."
+      },
+      "player": {
+        "{b}[characters.horse.name]{/b} will you wait here for me?": "{b}[characters.horse.name]{/b} will you wait here for me?"
       }
     },
     "treasureNotes": {

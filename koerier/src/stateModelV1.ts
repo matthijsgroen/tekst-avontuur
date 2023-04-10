@@ -18,6 +18,7 @@ export type GameState = GameDefinition<
       smithy: { flags: "visited" };
       darkwoods: { flags: "visited" };
       river: { flags: "visited" };
+      treasureRoute: { counters: "steps" };
     };
     items: {
       bag: { states: "known" | "possession" };
@@ -35,7 +36,10 @@ export type GameState = GameDefinition<
         states: "existence" | "possession";
         flags: "moonStone" | "route" | "startPoint";
       };
+      treasureHunt: { flags: "active" | "done" };
       moonStone: { states: "possession" };
+      gold: { states: "possession" };
+      runeStone: { states: "possession" };
     };
     // lists: { // useful for inventory management
     //   inventory:

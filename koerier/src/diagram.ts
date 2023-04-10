@@ -291,7 +291,7 @@ g.definePuzzleDependencies<MetaData>({
   },
   getRuneStone: {
     dependsOn: ["followMoonStoneTrail"],
-    tags: { location: "forest" },
+    tags: { location: "forest", state: "text", languages: ["en"] },
     hierarchy: ["forest"],
   },
   talkToFarmer: {
@@ -414,7 +414,7 @@ g.definePuzzleDependencies<MetaData>({
   },
   getGoldInForest: {
     dependsOn: ["followMoonStoneTrail"],
-    tags: { location: "forest" },
+    tags: { location: "forest", state: "text", languages: ["en"] },
     hierarchy: ["forest"],
   },
   getMedicineToKing: {
