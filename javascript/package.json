@@ -16,7 +16,7 @@
   "dependencies": {
     "autoprefixer": "^9.5.1",
     "lodash": "^4.17.13",
-    "postcss": "^7.0.16"
+    "postcss": "^8.4.31"
   },
   "devDependencies": {
     "chai": "^4.2.0",
